@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="testInfo">
+
+	<select id="selectTestInfoList" parameterType="hashmap" resultType="allwork.vo.TestInfoVo">
+		SELECT * FROM TEST
+		WHERE 1=1
+		ORDER BY TEST_ID DESC
+		LIMIT #{start}, #{pageSize}	
+	</select>
+	
+	<select id="selectTestInfoCnt" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*) CNT FROM TEST
+	</select>
+	
+	<insert id="insertTestInfo" parameterType="hashmap">
+		INSERT INTO TEST
+		(
+			TEST_ID
+			, NAME
+			, MOBILE_NO
+			, AGE
+		)
+		VALUES
+		(
+			#{testId}
+			, #{name}
+			, #{mobileNo}
+			, #{age}
+		)
+	</insert>
+	
+	<update id="updateJobInfo" parameterType="hashmap">
+		<![CDATA[
+			UPDATE TEST
+			SET
+				NAME = #{name}
+				, MOBILE_NO = #{mobileNo}
+				, age = #{age}
+			 WHERE 1=1
+			 	AND TEST_ID = #{testId}
+		]]>
+	</update>
+	
+	<delete id="deleteTestInfo" parameterType="hashmap">
+		DELETE FROM TEST
+		WHERE TEST_ID = #{testId}
+	</delete>
+
+</mapper>

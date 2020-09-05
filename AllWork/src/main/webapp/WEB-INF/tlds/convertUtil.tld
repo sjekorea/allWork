@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib  xmlns="http://java.sun.com/xml/ns/j2ee"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+                        web-jsptaglibrary_2_0.xsd"
+     version="2.0">
+ 
+     <description>convertUtil</description>
+     <tlib-version>1.1</tlib-version>
+     <short-name>convert</short-name>
+     <uri>/WEB-INF/tlds/convertUtil.tld</uri>
+     <function>
+         <description>Enter 처리</description>
+         <name>convertEnterToBr</name>
+         <function-class>micrm.common.util.ConvertUtil</function-class>
+         <function-signature>
+              String convertEnterToBr(java.lang.String)
+         </function-signature>
+    </function>
+    <function>
+         <description>Br 처리</description>
+         <name>convertBrToEnter</name>
+         <function-class>micrm.common.util.ConvertUtil</function-class>
+         <function-signature>
+              String convertBrToEnter(java.lang.String)
+         </function-signature>
+    </function>
+    <function>
+         <description>Query Quotes 처리</description>
+         <name>convertQueryQuotes</name>
+         <function-class>micrm.common.util.ConvertUtil</function-class>
+         <function-signature>
+              String convertQueryQuotes(java.lang.String)
+         </function-signature>
+    </function>
+</taglib>
