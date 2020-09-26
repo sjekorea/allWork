@@ -1,0 +1,10 @@
+	*{margin:0;padding:0;}
+	li{list-style:none;}
+	body, header, section, footer, nav{margin:0;padding:0;}
+	header, section, footer, nav{display:block;}
+	a:link,a:visited{text-decoration:none;color:#333;}
+	a:focus,a:hover{text-decoration:none;}
+
+	img{border:none;}
+
+	h2, h3{position:absolute;width:1px;height:1px;font-size:1px;line-height:0;left:-9999px;overflow:hidden;}
