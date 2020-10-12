@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netfuMember">
+
+	<select id="selectNetfuMemberMap" parameterType="hashmap" resultType="allwork.vo.NetfuMemberVo">
+		select 
+			*
+		from netfu_member
+		where uid = BINARY(#{loginId})
+	</select>
+	
+	
+	<select id="selectNetfuMemberLoginCnt" parameterType="hashmap" resultType="int">
+		select count(uid) cnt from netfu_member
+		where 1=1
+			and uid = #{loginId}
+			and passwd = #{loginPw}
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
