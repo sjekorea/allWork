@@ -1,0 +1,41 @@
+/*###################################   Header    ###################################*/
+
+  #allworkWrap{width:100%;font-family:"NotoSansKR-Regular";}
+    #headerWrap{width:100%;;height:140px;background-color:#fff;float:left;}
+    #header{width:1280px;height:90px;margin:0 auto;}
+
+      #logoArea{width:380px;height:90px;color:#4F60E3;float:left;}
+      #logoArea h1{width:135px;height:90px;font-size:34px;font-family:"NotoSansKR-Bold";line-height:120px;float:left;color:#4F60E3;}
+      #logoArea h1 a{color:#4F60E3;}
+      #logoArea p{width:240px;height:90px;padding-left:5px;float:left;font-size:12px;line-height:140px;}
+
+      /*#searchArea{width:900px;height:90px;float:right;}
+        #searchArea form{width:630px;height:100px;float:right;}
+          #searchArea fieldset{border:none;;margin-top:24px;margin-left: 128px;}
+          #searchArea legend{display:none;}
+            #searchArea .textBox{width:220px;height:40px;border:3px solid #4F60E3;color:#ccc;float:left;}
+              #searchArea .textBox input{width:100%;height:100%;border:none;}
+            #searchArea .btnBox00{width:46px;height:46px;background-color:#4F60E3;text-align: center;float:left;}
+              #searchArea .btnBox00 input{width:50%;height:50%;border:none;margin-top:12px;}
+            #searchArea .btnBox01{width:120px;height:44px;border:1px solid #4F60E3;text-align: center;margin-left:2px;float:left;}
+              #searchArea .btnBox01 input{width:100%;height:100%;border:none;font-size:16px;background-color:#fff;color:#4F60E3;}
+            #searchArea .btnBox02{width:100px;height:44px;border:1px solid #4F60E3;text-align: center;margin-left:2px;float:left;}
+              #searchArea .btnBox02 input{width:100%;height:100%;border:none;font-size:16px;background-color:#fff;color:#4F60E3;}*/
+
+
+      #headWrap{width:100%;height:48px;border-top:1px solid #ccc;border-bottom:1px solid #ccc;}
+      #head{width:1280px;height:50px;margin:0 auto;}
+        #head .nav{width:780px;height:100%;float:left;margin-left:400px;}
+          #head .nav li{width:119px;line-height:50px;float:left;text-align: center;font-size:18px;border-left:1px solid #ccc;}
+          #head .nav li:last-child{border-right:1px solid #ccc;}
+          #head .nav li a{display:block;width:100%;height:100%;}
+
+          #head .nav li:hover{background-color:#4F60E3;}
+          #head .nav li:hover a{color:#fff;}
+
+        #head .linkArea{width:100px;height: 50px;line-height: 50px;text-align:center;float:left;}
+        #head .linkArea span{display: inline-block;width:48px;height:31px;float:left;padding-top:17px;border-right:1px solid #ccc;}
+        #head .linkArea .a00{width:118px;height:48px;padding-top:0;}
+        #head .linkArea .fa-user-check{background-color:#4F60E3;color:#fff;border-left:1px solid #ccc;}
+
+        #head .dropMenuWrap{display:none;}

@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=https://photo.cloud.naver.com/v2/
+[DOC#15]
+BASEURL=https://static.nid.naver.com/enclogin/nid_td.nvr?m=&ls=1510274d53d6b6-e1b3-45a5-a252-9bfd3ba2e0c7
+ORIGURL=https://static.nid.naver.com/enclogin/nid_t.nvr
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,11
+[InternetShortcut]
+URL=https://photo.cloud.naver.com/v2/#upload
+IDList=
+IconFile=https://photo.cloud.naver.com/favicon.ico
+IconIndex=1

@@ -1,6 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<!DOCTYPE html>
 <html lang="ko">
  <head>
   <meta charset="utf-8"/>
@@ -10,33 +14,36 @@
 	<link rel="stylesheet" type="text/css" href="/css/font.css"/>
   <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
   <link  rel="stylesheet" type="text/css" href="/css/all.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
   <style>
 
   body{background-color:#EDF0F5;}
 
-  /*###################################   Header    ###################################*/d
+  /*###################################   Header    ###################################*/
 
-  #allworkWrap{width:100%;font-family:"NanumBarunGothicRegular";}
-    #headerWrap{width:100%;height:130px;}
+  #allworkWrap{width:100%;font-family:"NotoSansKR-Regular";}
+    #headerWrap{width:100%;height:120px;border-bottom:1px solid #999;position:relative;position:fixed;left:0;top:0px;z-index:100;}
 
-      #topWrap{width:100%;height:40px;background-color:#eee;}
-        #topWrap .topMenu{width:1280px;height:40px;line-height: 40px;text-align: right;margin:0 auto;}
+      #topWrap{width:100%;height:40px;background-color:#eee;overflow:hidden;}
+        #topWrap .topMenu{width:1280px;height:40px;line-height:40px;text-align: right;margin:0 auto;}
         #topWrap .topMenu li{display:inline-block;font-size: 12px;}
 
-      #head{width:100%;height:90px;background-color: #fff;}
+      #head{width:100%;height:80px;background-color: #fff;position:absolute;left:0;top:40px;z-index:1;}
       #header{width:1280px;height:100%;margin:0 auto;background-color: #fff;}
-        #header h1{width:150px;height:90px;line-height: 90px;font-size:32px;font-family:"NotoSansKR-Bold";float:left;}
+        #header h1{width:150px;height:80px;line-height: 80px;font-size:32px;font-family:"NotoSansKR-Bold";float:left;}
         #header h1 a{color:#4F60E3;}
-        #header .nav{width:770px;height:90px;float:left;}
-        #header .nav li{font-size: 20px;display: inline-block;line-height: 100px;padding:0 20px;}
+        #header .nav{width:770px;height:80px;float:left;}
+        #header .nav li{font-size: 20px;display: inline-block;line-height: 80px;padding:0 20px;}
         #header .nav .dropMenuWrap{display: none;}
 
         #header .nav li:hover{background-color:#4F60E3;}
         #header .nav li:hover a{color:#fff;}
 
-        #header .linkArea{width:360px;height:90px;float:left;}
-        #header .linkArea li{font-size:18px;width:180px;height:90px;float:left;text-align: center;line-height: 100px;background-color: aqua;}
+        #header .linkArea{width:360px;height:80px;float:left;}
+        #header .linkArea li{font-size:18px;width:180px;height:80px;float:left;text-align: center;line-height: 80px;background-color: aqua;}
           #header .linkArea .a01{background-color:#273245;}
           #header .linkArea .a02{background-color:#4F60E3;}
           #header .linkArea li a{color:#fff;}
@@ -49,14 +56,22 @@
   /*###################################   containerWrap ###################################*/
   /*###################################   visual ###################################*/
 
-  #containerWrap{width:100%;background-color:#fff;position:relative;}
+  #containerWrap{width:100%;background-color:#fff;margin-top:120px;position:relative;}
   #visualWrap{width:100%;height:400px;overflow:hidden;margin:0 auto;position:absolute;top:0;left:0;}
   #visual{width:1280px;height:400px;margin:0 auto;}
+
+  /*
+  #visual .descBox{width:500px;height:100%;margin:100px auto 0;}
+  #visual .descBox p{width:100%;font-size:28px;font-family:"NanumBarunGothicUltralight";color:#fff;text-align: center;}
+  #visual .descBox .desc0{height:50px;font-size:20px;font-family:"NotoSansKR-Bold";}
+  #visual .descBox .desc1{height:60px;font-size:36px;}
+  */
 
   #visual .descBox{width:500px;height:100%;/*background-color:rgba(0,0,0,1);*/}
   #visual .descBox p{width:100%;font-size:28px;font-family:"NanumBarunGothicUltralight";color:#fff;}
   #visual .descBox .desc0{height:120px;line-height:180px;font-size:20px;font-family:"NotoSansKR-Bold";}
-  #visual .descBox .desc1{height:120px;font-size:46px;}
+  #visual .descBox .desc1{padding-top:100px;height:120px;font-size:44px;line-height:50px;font-family:"NotoSansKR-Regular";}
+  #visual .descBox .desc1 .bold{font-family:"NotoSansKR-Regular";}
 
   #visual .descBox #searchArea{width:500px;height:90px;background-color:rgba(255,255,255,0.6);}
   #visual .descBox #searchArea form{width:460px;height:46px;margin:0px auto;}
@@ -226,254 +241,69 @@
 
 
 	</style>
+  <script>
+jQuery(document).ready(function(){
+  //픽스네비게이션
+  $(window).scroll(function(){
+    var nowScroll=$(document).scrollTop();
+    if(nowScroll>0){
+      $("#headerWrap").stop().animate({"top":"-40px"},50);
+    }
+    else{
+      $("#headerWrap").stop().animate({"top":"0px"},50);
+    }
+  });
+
+
+
+});
+</script>
   </head>
   <body>
       <div id="allworkWrap">
         <div id="headerWrap">
           <div id="topWrap">
             <ul class="topMenu">
-              <li><a href="index.html" title="로그인">로그인&nbsp;|&nbsp;</a></li>
-              <li><a href="index.html" title="회원가입">회원가입</a></li>
+            	<c:choose>
+					<c:when test="${SE_LOGIN_STATUS}">
+						<li><a href="/logout.do" title="로그아웃">로그아웃&nbsp;|&nbsp;</a></li>
+              			<li><a href="#none" title="마이페이지">mypage</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="/login.do" title="로그인">로그인&nbsp;|&nbsp;</a></li>
+              			<li><a href="#none" title="회원가입">회원가입</a></li>
+					</c:otherwise>
+				</c:choose>
             </ul>
           </div>
           <div id="head">
             <div id="header">
-              <h1><a href="index.html" title="allwork사이트">Allwork</a></h1>
+              <h1><a href="/index.do" title="allwork사이트">Allwork</a></h1>
               <ul class="nav">
-                      <li><a href="01_aboutMMCA.html" title="채용정보">채용정보</a>
-                        <h3>채용정보</h3>
-                        <div class="dropMenuWrap">
-                          <div class="dropMenu">
-                            <div id="drop0">
-                              <ol>
-                                <li>인사말</li>
-                                <li>연혁</li>
-                                <li>조직도</li>
-                                <li>후원사</li>
-                              </ol>
-                              <ol>
-                                <li>서울관</li>
-                                <li>과천관</li>
-                                <li>덕수궁관</li>
-                                <li>단체관람</li>
-                                <li>전시해설</li>
-                              </ol>
-                              <ol>
-                                <li>현재전시</li>
-                                <li>예정된전시</li>
-                                <li>과거전시</li>
-                              </ol>
-                              <ol>
-                                <li>필름앤비디오</li>
-                                <li>다원예술</li>
-                              </ol>
-                              <ol>
-                                <li>교육안내</li>
-                                <li>교육신청</li>
-                                <li>어린이미술관</li>
-                              </ol>
-                            </div>
-                            <div class="miniAd">
-                              <p class="aimg">
-                                <img src="img/img_submenu.jpg" alt="광고이미지"/>
-                              </p>
-                              <p class="atext">
-                                예술과 기술의 실험(E.A.T.)<br/>
-                                2018.05.26 ~ 2018.09.16
-                              </p>
-                              <p class="alink">바로가기 <span>▷</span></p>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li><a href="02_information.html" title="인재검색">인재검색</a>
-                        <h3>인재검색</h3>
-                        <div class="dropMenuWrap">
-                          <div class="dropMenu">
-                            <div id="drop1">
-                              <ol>
-                                <li>인사말</li>
-                                <li>연혁</li>
-                                <li>조직도</li>
-                                <li>후원사</li>
-                              </ol>
-                              <ol>
-                                <li>서울관</li>
-                                <li>과천관</li>
-                                <li>덕수궁관</li>
-                                <li>단체관람</li>
-                                <li>전시해설</li>
-                              </ol>
-                              <ol>
-                                <li>현재전시</li>
-                                <li>예정된전시</li>
-                                <li>과거전시</li>
-                              </ol>
-                              <ol>
-                                <li>필름앤비디오</li>
-                                <li>다원예술</li>
-                              </ol>
-                              <ol>
-                                <li>교육안내</li>
-                                <li>교육신청</li>
-                                <li>어린이미술관</li>
-                              </ol>
-                            </div>
-                            <div class="miniAd">
-                              <p class="aimg">
-                                <img src="img/img_submenu.jpg" alt="광고이미지"/>
-                              </p>
-                              <p class="atext">
-                                예술과 기술의 실험(E.A.T.)<br/>
-                                2018.05.26 ~ 2018.09.16
-                              </p>
-                              <p class="alink">바로가기 <span>▷</span></p>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li><a href="03_exhibition.html" title="헤드헌팅">헤드헌팅</a>
-                        <h3>헤드헌팅</h3>
-                        <div class="dropMenuWrap">
-                          <div class="dropMenu">
-                            <div id="drop2">
-                              <ol>
-                                <li>인사말</li>
-                                <li>연혁</li>
-                                <li>조직도</li>
-                                <li>후원사</li>
-                              </ol>
-                              <ol>
-                                <li>서울관</li>
-                                <li>과천관</li>
-                                <li>덕수궁관</li>
-                                <li>단체관람</li>
-                                <li>전시해설</li>
-                              </ol>
-                              <ol>
-                                <li>현재전시</li>
-                                <li>예정된전시</li>
-                                <li>과거전시</li>
-                              </ol>
-                              <ol>
-                                <li>필름앤비디오</li>
-                                <li>다원예술</li>
-                              </ol>
-                              <ol>
-                                <li>교육안내</li>
-                                <li>교육신청</li>
-                                <li>어린이미술관</li>
-                              </ol>
-                            </div>
-                            <div class="miniAd">
-                              <p class="aimg">
-                                <img src="img/img_submenu.jpg" alt="광고이미지"/>
-                              </p>
-                              <p class="atext">
-                                예술과 기술의 실험(E.A.T.)<br/>
-                                2018.05.26 ~ 2018.09.16
-                              </p>
-                              <p class="alink">바로가기 <span>▷</span></p>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li><a href="04_program.html" title="채용진행현황">채용진행현황</a>
-                        <h3>채용진행현황</h3>
-                        <div class="dropMenuWrap">
-                          <div class="dropMenu">
-                            <div id="drop3">
-                              <ol>
-                                <li>인사말</li>
-                                <li>연혁</li>
-                                <li>조직도</li>
-                                <li>후원사</li>
-                              </ol>
-                              <ol>
-                                <li>서울관</li>
-                                <li>과천관</li>
-                                <li>덕수궁관</li>
-                                <li>단체관람</li>
-                                <li>전시해설</li>
-                              </ol>
-                              <ol>
-                                <li>현재전시</li>
-                                <li>예정된전시</li>
-                                <li>과거전시</li>
-                              </ol>
-                              <ol>
-                                <li>필름앤비디오</li>
-                                <li>다원예술</li>
-                              </ol>
-                              <ol>
-                                <li>교육안내</li>
-                                <li>교육신청</li>
-                                <li>어린이미술관</li>
-                              </ol>
-                            </div>
-                            <div class="miniAd">
-                              <p class="aimg">
-                                <img src="img/img_submenu.jpg" alt="광고이미지"/>
-                              </p>
-                              <p class="atext">
-                                예술과 기술의 실험(E.A.T.)<br/>
-                                2018.05.26 ~ 2018.09.16
-                              </p>
-                              <p class="alink">바로가기 <span>▷</span></p>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li><a href="06_edu.html" title="커뮤니티">커뮤니티</a>
-                        <h3>커뮤니티</h3>
-                        <div class="dropMenuWrap">
-                          <div class="dropMenu">
-                            <div id="drop4">
-                              <ol>
-                                <li>인사말</li>
-                                <li>연혁</li>
-                                <li>조직도</li>
-                                <li>후원사</li>
-                              </ol>
-                              <ol>
-                                <li>서울관</li>
-                                <li>과천관</li>
-                                <li>덕수궁관</li>
-                                <li>단체관람</li>
-                                <li>전시해설</li>
-                              </ol>
-                              <ol>
-                                <li>현재전시</li>
-                                <li>예정된전시</li>
-                                <li>과거전시</li>
-                              </ol>
-                              <ol>
-                                <li>필름앤비디오</li>
-                                <li>다원예술</li>
-                              </ol>
-                              <ol>
-                                <li>교육안내</li>
-                                <li>교육신청</li>
-                                <li>어린이미술관</li>
-                              </ol>
-                            </div>
-                            <div class="miniAd">
-                              <p class="aimg">
-                                <img src="img/img_submenu.jpg" alt="광고이미지"/>
-                              </p>
-                              <p class="atext">
-                                예술과 기술의 실험(E.A.T.)<br/>
-                                2018.05.26 ~ 2018.09.16
-                              </p>
-                              <p class="alink">바로가기 <span>▷</span></p>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
+                <li><a href="#none" title="전체메뉴보기"><i class="fas fa-bars"></i></a></li>
+                <li><a href="/recruitSearch.do" title="채용정보">채용정보</a></li>
+                <li><a href="/personSearch.do" title="인재검색">인재검색</a></li>
+                <li><a href="#none" title="헤드헌팅">헤드헌팅</a></li>
+                <li><a href="#none" title="채용진행현황">채용진행현황</a></li>
+                <li><a href="#none" title="커뮤니티">커뮤니티</a></li>
+              </ul>
               <ul class="linkArea">
-                <li class="a01"><a href="01_aboutMMCA.html" title="개인회원 로그인">개인회원 로그인</a></li>
-                <li class="a02"><a href="01_aboutMMCA.html" title="기업회원 로그인">기업회원 로그인</a></li>
+              	<c:choose>
+					<c:when test="${SE_LOGIN_STATUS}">
+						<c:choose>
+							<c:when test="${SE_USER_TYPE eq '1' }">
+								<li class="a01"><a href="/personalHome.do" title="개인회원 홈">개인회원 홈</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="a02"><a href="/companyHome.do" title="기업회원 홈">기업회원 홈</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:when>
+					<c:otherwise>
+		                <li class="a01"><a href="/login.do?type=personal" title="개인회원 로그인">개인회원 로그인</a></li>
+		                <li class="a02"><a href="/login.do?type=company" title="기업회원 로그인">기업회원 로그인</a></li>
+					</c:otherwise>
+				</c:choose>	
               </ul>
             </div>
           </div>
@@ -483,8 +313,8 @@
             <div id="visual">
               <h2>비쥬얼영역</h2>
               <div class="descBox">
-                <p class="desc0">Allwork</p>
-                <p class="desc1"><span>시니어를&nbsp;위한&nbsp;</span><br/><span class="bold">재취업&nbsp;&nbsp;포털</span></p>
+                <!--<p class="desc0">Allwork</p>-->
+                <p class="desc1"><span>40세&nbsp;이상&nbsp;구인구직은</span><br/><span class="bold">올워크</span></p>
                 <div id="searchArea">
                   <form action="https://www.mmca.co.kr/search" method="get" name="searchForm">
                     <fieldset>
@@ -1029,9 +859,9 @@
       					<li><a href="#" title="사이트맵">사이트맵</a></li>
       				</ul>
               <ul class="linkArea">
-                <li><a href="#" title="인스타페이지"><img src="/img/main/icon_insta.png" alt="인스타아이콘"/></a></li>
-                <li><a href="#" title="유투브페이지"><img src="/img/main/icon_you.png" alt="유투브아이콘"/></a></li>
-                <li><a href="#" title="페이스북페이지"><img src="/img/main/icon_face.png" alt="페이스북아이콘"/></a></li>
+                <li><a href="#" title="인스타페이지"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#" title="유투브페이지"><i class="fab fa-youtube"></i></a></li>
+                <li><a href="#" title="페이스북페이지"><i class="fab fa-facebook"></i></a></li>
               </ul>
   						<div class="address">
   							<span>상호 : (주)올워크 | 직업정보제공사업등록번호 : 서울청 제2019-2호 | 대표이사 : 김봉갑 | 평일 : am 09:00 ~ pm 06:00 | 토요일, 일요일, 공휴일 휴무</span><br/>

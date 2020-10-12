@@ -1,14 +1,14 @@
 	/*############ footerWrap + footer ##############*/
 	#footerWrap{width:100%;background-color:#283346;color:#eee;font-size:12px;}
 
-	#footer{width:1280px;height:350px;margin:0 auto;padding-top: 50px;}
+	#footer{width:1280px;height:220px;margin:0 auto;padding-top: 50px;}
 	#footer .footLogo{width:370px;height:120px;line-height: 150px;font-size:32px;font-family:"NotoSansKR-Bold";float:left;text-align: center;}
 	#copyArea{width:910px;height:120px;float:left;}
 	#copyArea ul{float:left;}
-	#copyArea .menuArea{width:380px;}
-	#copyArea .linkArea{width:530px;}
+	#copyArea .menuArea{width:410px;}
+	#copyArea .linkArea{width:500px;}
 
 	#copyArea ul li{float:left;margin-right: 40px;}
 	#copyArea ul li a{color:#fff;}
-	#copyArea .linkArea li{margin-right:0;padding: 0 10px;}
+	#copyArea .linkArea li{margin-right:0;padding: 0 10px;font-size:14px;}
 	#copyArea .address{width:910px;padding-top:20px;float:left;line-height: 24px;}
