@@ -12,7 +12,7 @@
 		jQuery("#dropMenuWrap").stop().slideUp(500);
 		});
 
-	
+
 		jQuery("#searchBtn").click(function(){
 		jQuery("#searchArea").css({"display":"block"});
 		});
@@ -37,5 +37,5 @@
 		jQuery("#mobMenulist").css({"display":"none"});
 		});
 
-		
+
 		});

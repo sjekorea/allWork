@@ -10,251 +10,37 @@
  <head>
   <meta charset="utf-8"/>
   <title> 이력서 등록 </title>
-  <link rel="stylesheet" type="text/css" href="/css/header.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/header_personal.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/resume.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/footer.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/font.css"/>
   <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
   <link  rel="stylesheet" type="text/css" href="/css/all.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
-  <style>
-
-
-  body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
-  /*###################################   Header    ###################################*/
-  #allworkWrap{width:100%;}
-    #headerWrap{width:100%;height:40px;border-bottom:1px solid #333;}
-      #topWrap{width:1280px;height:40px;margin:0 auto;font-family:"NotoSansKR-Bold";}
-      #topWrap h1{width:100px;height:100%;font-size:18px;line-height: 40px;float: left;}
-      #topWrap h1 a{display: block;width:100%;height: 100%;}
-
-      #topWrap ul{width:1180px;height:100%;font-size: 12px;line-height: 40px;text-align: right;float: left;}
-      #topWrap ul li{display: inline-block;font-family:"NotoSansKR-Regular";}
-      #topWrap ul li a{color:#333;}
-
-  /*###################################   containerWrap  ###################################*/
-      #containerWrap{width:100%;margin: 20px auto 80px;overflow: hidden;}
-      #container{width:1280px;margin:0 auto;}
-
-  /*###################################   reg_leftPart   ###################################*/
-      #res_leftPart{width:1060px;float:left;margin-right:10px;}
-
-      #res_leftPart ul{width:610px;margin:30px auto 0;}
-      #res_leftPart ul li{width:198px;height:48px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;float:left;}
-      #res_leftPart ul li:last-child{margin-right:0px;}
-      #res_leftPart ul li a{display:block;width:100%;height:100%;color:#666;}
-      #res_leftPart ul li.res_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
-      #res_leftPart ul li.res_ok a{color:#fff;}
-
-      /*###############################   resume00   ###############################*/
-      #resume00{width:980px;margin-bottom:10px;padding:40px;overflow: hidden;background-color:#fff;}
-
-      #resume00 #imgArea{width:148px;height:198px;float: left;margin-right:20px;border:1px solid #ccc;}
-      #resume00 #imgArea p{width:100%;height:100%;}
-
-      #resume00 #detailArea{width:810px;float: left;}
-      #resume00 #detailArea .detail_title{width:100%;padding-top:9px;height:30px;font-size:24px;font-family:"NotoSansKR-Thin";}
-      #resume00 #detailArea .personal_setting{width:110px;height:28px;line-height:28px;font-size:14px;margin-bottom:10px;margin-left:700px;text-align:center;border:1px solid #808495;}
-      #resume00 #detailArea .tabelArea{width:100%;text-indent:10px;overflow: hidden;border-top:1px solid #808495;}
-      #resume00 #detailArea .tabelArea p{float: left;}
-      #resume00 #detailArea .tabelArea .table_title{width:120px;height:39px;line-height:40px;border-bottom:1px solid #ccc;background-color:#808495;color:#fff;}
-      #resume00 #detailArea .tabelArea .table_desc{width:285px;height:39px;line-height:40px;border-bottom:1px solid #808495;color:#333;}
-      #resume00 #detailArea .tabelArea .table_desc01{width:690px;height:39px;line-height:40px;border-bottom:1px solid #808495;color:#333;}
-
-                            #resume00 #detailArea .personal_setting:hover{background-color:#eee;}
-
-      /*###############################   resume01  ###############################*/
-      #resume01{width:100%;overflow:hidden;margin-bottom:10px;}
-      #resForm01{width:980px;background-color:#fff;padding:40px;}
-
-
-
-      fieldset{border:none;}
-      legend{font-size:24px;padding-bottom:20px;font-family:"NotoSansKR-Thin";}
-      #resForm01 div{width:100%;}
-      caption{display:none;}
-      tbody{width:100%;text-align:left;}
-      tr{width:100%;font-size:16px;height:80px;}
-      th{width:180px;font-family:"NotoSansKR-Medium";}
-      th .necessary{padding-left:3px;color:red;}
-
-      td{width:800px;font-size:14px;padding-top:10px;}
-      td input[type="button"]{width:120px;height:40px;padding:0 10px;text-align:center;font-size:16px;
-                              background-color:#fff;
-                              border:1px solid #999;vertical-align:top;margin-right:20px;}
-      td input[type="text"]{width:800px;height:40px;background-color:#fff;border:1px solid #999;text-indent:10px;}
-      td input::placeholder{color:#ccc;font-size:16px;}
-      td input[type="checkbox"]{width:20px;height:20px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}
-      td input[type="radio"]{width:20px;height:20px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}
-
-      td span{display:inline-block;padding-right:20px;padding-bottom:10px;}
-      td select{width:200px;height:42px;border:1px solid #999;font-size:16px;text-indent:10px;color:#666;vertical-align:top;}
-      td textarea{width:100%;height:200px;}
-      td input[type="date"]{width:160px;height:40px;border:1px solid #999;font-size:14px;padding:0 10px;color:#666;}
-      .comment{color:red;font-size:12px;}
-
-
-      .moreTab{width:100%;height:40px;border-top:1px solid #ccc;}
-      .moreTab input{width:100%;height:100%;border:none;background-color:#fff;font-size:14px;}
-
-
-
-
-      /*###############################   resume02  ###############################*/
-      #resume02{width:100%;overflow:hidden;margin-bottom:10px;}
-      #resForm02{width:980px;background-color:#fff;padding:40px;}
-
-      /*###############################   resume03  ###############################*/
-      #resume03{width:100%;overflow:hidden;margin-bottom:10px;}
-      #resForm03{width:980px;background-color:#fff;padding:40px;}
-      #resForm03 .final_education{width:980px;height:40px;display: table;background-color:#eee;}
-      #resForm03 .final_education th{text-indent:40px;line-height:50px;font-size:14px;}
-      #resForm03 .final_education td{padding-top:0;}
-      #resForm03 .final_education select{height:40px;vertical-align:middle;margin:5px 0;}
-      #resForm03 .education{width:980px;height:120px;}
-      #resForm03 .education th{display:none;}
-      #resForm03 .education span{padding:0;margin-bottom:5px;}
-      #resForm03 #res03_desc02_3{width:40px;height:42px;background-color:#43425D;color:#fff;font-size:14px;padding:0;margin-right:0;}
-      #resForm03 #res03_desc03_2{width:280px;}
-      #resForm03 #res03_desc03_3{width:274px;}
-
-      #resForm03 input[type="text"]{width:556px;height:40px;}
-      #resForm03 input::placeholder{text-indent:10px;font-size:16px;color:#ccc;}
-
-      /*###############################   resume03  ###############################*/
-      #resume04{width:100%;overflow:hidden;margin-bottom:10px;}
-      #resForm04{width:980px;background-color:#fff;padding:40px;}
-      #resForm04 #res04_desc02_2{width:40px;height:42px;background-color:#43425D;color:#fff;font-size:14px;padding:0;margin-right:0;}
-
-      #resForm04 .total_experience{width:980px;height:50px;display: table;background-color:#eee;}
-      #resForm04 .total_experience th{text-indent:40px;line-height:50px;font-size:14px;}
-      #resForm04 .total_experience td{padding-top:0;}
-      #resForm04 .total_experience select{height:40px;vertical-align:middle;margin:5px 0;}
-      #resForm04 .experience{width:980px;height:120px;}
-      #resForm04 .experience th{display:none;}
-      #resForm04 .experience span{padding:0;margin-bottom:5px;}
-
-      #resForm04 input[type="text"]{width:756px;height:40px;}
-      #resForm04 input::placeholder{text-indent:10px;font-size:16px;color:#ccc;}
-      #resForm04 input[type="checkbox"]{vertical-align:middle;}
-
-      /*###############################   resume05  ###############################*/
-      #resume05{width:100%;overflow:hidden;margin-bottom:10px;}
-      #resForm05{width:980px;background-color:#fff;padding:40px;}
-      #resForm05 th{display:none;}
-      #resForm05 td{width:980px;}
-
-      /*###############################   resForm06   ###############################*/
-      #resume06{width:100%;overflow:hidden;margin-bottom:10px;}
-      #resForm06{width:980px;background-color:#fff;padding:40px;}
-      #resForm06 th{display:none;}
-      #resForm06 td{width:980px;}
-      #resForm06 td p{height:60px;padding:0;float:left;}
-      #resForm06 td span{display:inline;font-size:12px;font-family:"NotoSansKR-Medium";}
-      #resForm06 td .part01{width:200px;height:40px;}
-      #resForm06 td .part01 input{padding:0 10px;width:180px;}
-      #resForm06 td .part02{width:570px;height:40px;}
-      #resForm06 td .part02 select{display: inline-block;margin:0;width:190px;}
-      #resForm06 td .part03{width:166px;height:40px;}
-      #resForm06 td .part04{width:40px;height:42px;margin-top:20px;}
-      #resForm06 td .part04 input{width:100%;height:100%;background-color:#43425D;color:#fff;font-size:14px;margin-right:0;}
-      #resForm06 td input{width:100%;padding:0;}
-
-      /*###############################   resForm07   ###############################*/
-      #resume07{width:100%;overflow:hidden;margin-bottom:10px;}
-      #resForm07{width:980px;background-color:#fff;padding:40px;}
-      #resForm07 th{display:none;}
-      #resForm07 td{width:980px;}
-      #resForm07 td p{height:60px;padding:0;float:left;}
-      #resForm07 td span{display:inline;font-size:12px;font-family:"NotoSansKR-Medium";}
-      #resForm07 td .part01{width:200px;height:40px;}
-      #resForm07 td .part01 input{padding:0 10px;width:180px;}
-      #resForm07 td .part02{width:276px;}
-      #resForm07 td .part03{width:90px;}
-      #resForm07 td .part04{width:200px;height:44px;}
-      #resForm07 td .part05{width:80px;}
-      #resForm07 td .part06{width:90px;}
-      #resForm07 td .part07{width:80px;}
-      #resForm07 td .part08{width:40px;height:42px;margin-top:20px;}
-      #resForm07 td .part08 input{width:100%;height:100%;background-color:#43425D;color:#fff;font-size:14px;margin-right:0;}
-      #resForm07 td p input{width:100%;padding:0;}
-      #resForm07 select{width:100%;}
-
-      /*###############################   resForm08   ###############################*/
-      #resume08{width:100%;overflow:hidden;margin-bottom:10px;}
-      #resForm08{width:980px;background-color:#fff;padding:40px;}
-      #resForm08 legend span{font-size:16px;font-family:"NotoSansKR-Regular";}
-      #resForm08 th{display:none;}
-      #resForm08 td{width:980px;}
-      #resForm08 input[type="text"]{width:980px;}
-      #resForm08 textarea{width:980px;}
-
-      /*###############################   resForm09   ###############################*/
-      #resume09{width:100%;overflow:hidden;margin-bottom:10px;}
-      #resForm09{width:980px;background-color:#fff;padding:40px;}
-      #resForm09 th{display:none;}
-      #resForm09 td{width:980px;}
-
-      #resForm09 .file_btn{border:none;}
-      #resForm09 input[type="file"]{position: absolute;
-                                    width: 0;
-                                    height: 0;
-                                    padding: 0;
-                                    overflow: hidden;
-                                    border: 0;
-                                }
-    #resForm09 label {font-family:"NotoSansKR-Medium";
-                        display: inline-block;
-                        height: 40px;
-                        line-height:40px;
-                        width:100px;
-                        text-align: center;
-                        color: #fff;
-                        vertical-align: middle;
-                        background-color: #4F60E3;
-                        cursor: pointer;
-                        border: 1px solid #ebebeb;
-
-                    }
-    #resForm09 #res09_desc01{
-
-                        display: inline-block;
-                        width:832px;
-                        height: 40px;
-                        font-size:16px;
-                        color:#ccc;
-                        padding: 0 10px;
-                          vertical-align: middle;
-                          background-color: #f5f5f5;
-                        border: 1px solid #ebebeb;
-
-
-                      }
-
-
-
-
-
-  /*###################################   reg_rightPart   ###################################*/
-      #res_rightPart{width:210px;float:left;}
-      #res_rightPart ul{width:100%;}
-      #res_rightPart ul li{width:198px;height:78px;margin-bottom:5px;text-align:center;line-height:80px;background-color:#fff;border:1px solid #ccc;}
-      #res_rightPart ul li a{display:block;width:100%;height:100%;color:#666;}
-      #res_rightPart ul li.res_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
-      #res_rightPart ul li.res_ok a{color:#fff;}
-
-
-
-	 </style>
+  <style></style>
   </head>
   <body>
       <div id="allworkWrap">
         <div id="headerWrap">
-          <div id="topWrap">
-            <h1><a href="/index.do" title="올워크홈">Allwork</a></h1>
-            <ul class="topMenu">
-              <li><a href="/personalHome.do" title="개인회원 홈">개인회원 홈&nbsp;&nbsp;|&nbsp;&nbsp;</a></li>
-              <li><a href="#none" title="이력서 관리">이력서 관리</a></li>
+          <div id="header">
+            <div id="logoArea">
+              <h1><a href="/index.do" title="allwork사이트">Allwork</a></h1>
+              <p>시니어를&nbsp;위한&nbsp;재취업&nbsp;포털</p>
+            </div>
+          </div>
+          <div id="headWrap">
+            <div id="head">
+            <ul class="nav">
+              <li><a href="/recruitSearch.do" title="채용정보">채용정보</a></li>
+              <li><a href="#none" title="헤드헌팅">헤드헌팅</a></li>
+              <li><a href="#none" title="채용진행현황">채용진행현황</a></li>
+              <li><a href="#none" title="커뮤니티">커뮤니티</a></li>
             </ul>
+            <div class="linkArea">
+              <a href="#" title="마이페이지"><span class ="fas fa-user-check"></span></a>
+              <a href="#none" title="메뉴전체보기"><span class="fas fa-bars"></span></a>
+            </div>
+          </div>
           </div>
         </div>
         <div id="containerWrap">
@@ -268,7 +54,7 @@
                   <p class="detail_title">기본정보</p>
                   <p class="personal_setting"><a href="#none" title="기본정보수정"><i class="fas fa-cog"></i>&nbsp;기본정보수정</a></p>
                   <div class="tabelArea">
-                    <p class="table_title">이름</p><p class="table_desc">홍길동</p>
+                    <p class="table_title">이름</p><p class="table_desc">${SE_USER_NM}</p>
                     <p class="table_title">이메일</p><p class="table_desc">asdf@naver.com</p>
                     <p class="table_title">휴대폰</p><p class="table_desc">010-000-0000</p>
                     <p class="table_title">연락처</p><p class="table_desc">-</p>
@@ -331,33 +117,57 @@
                         <tr>
                           <th>근무지역<span class="necessary">*</span></th>
                           <td>
-          									<select id="res02_desc03" name="res02_desc03" title="1차지역선택">
-                              <option value="1차지역선택">1차지역선택</option>
-          										<option value="전체">전체</option>
-          										<option value="서울">서울</option>
-          										<option value="인천">인천</option>
-          										<option value="경기">경기</option>
-          										<option value="광주">광주</option>
+                            <select id="reg02_desc05" name="reg02_desc05" title="시도선택">
+                              <option value="시도선택">시도선택</option>
+                              <option value="전체">전국</option>
+                              <option value="서울">서울</option>
+                              <option value="인천">인천</option>
+                              <option value="경기">경기</option>
+                              <option value="광주">광주</option>
                               <option value="대전">대전</option>
                               <option value="대구">대구</option>
                               <option value="부산">부산</option>
                               <option value="세종">세종</option>
-          										<option value="울산">울산</option>
-          										<option value="강원">강원</option>
-          										<option value="경북">경북</option>
-          										<option value="경남">경남</option>
+                              <option value="울산">울산</option>
+                              <option value="강원">강원</option>
+                              <option value="경북">경북</option>
+                              <option value="경남">경남</option>
                               <option value="전남">전남</option>
                               <option value="전북">전북</option>
                               <option value="충남">충남</option>
                               <option value="충북">충북</option>
                               <option value="제주">제주</option>
-          									</select>
-                            <select id="res02_desc03_1" name="res02_desc03_1" title="2차지역선택">
-          										<option value="2차지역선택">2차지역선택</option>
-          									</select>
-                            <select id="res02_desc03_2" name="res02_desc03_2" title="3차지역선택">
-          										<option value="3차지역선택">3차지역선택</option>
-          									</select>
+                              <option value="해외">해외</option>
+                            </select>
+                            <select id="reg02_desc05_1" name="reg02_desc05_1" title="시구군선택">
+                              <option value="시군선택">시구군선택</option>
+                              <option value="서울전체">서울전체</option>
+                              <option value="강남구">강남구</option>
+                              <option value="강동구">강동구</option>
+                              <option value="강북구">강북구</option>
+                              <option value="강서구">강서구</option>
+                              <option value="관악구">관악구</option>
+                              <option value="광진구">광진구</option>
+                              <option value="구로구">구로구</option>
+                              <option value="금천구">금천구</option>
+                              <option value="노원구">노원구</option>
+                              <option value="도봉구">도봉구</option>
+                              <option value="동대문구">동대문구</option>
+                              <option value="동작구">동작구</option>
+                              <option value="마포구">마포구</option>
+                              <option value="서대문구">서대문구</option>
+                              <option value="서초구">서초구</option>
+                              <option value="성동구">성동구</option>
+                              <option value="성북구">성북구</option>
+                              <option value="송파구">송파구</option>
+                              <option value="양천구">양천구</option>
+                              <option value="영등포구">영등포구</option>
+                              <option value="용산구">용산구</option>
+                              <option value="은평구">은평구</option>
+                              <option value="종로구">종로구</option>
+                              <option value="중구">중구</option>
+                              <option value="중랑구">중랑구</option>
+                            </select>
                             <input id="res02_desc03_3" type="button" name="res02_desc03_3" value="+ 추가"/>
                           </td>
                         </tr>
@@ -430,8 +240,10 @@
                           <th>희망연봉<span class="necessary">*</span></th>
                           <td>
           									<select id="res02_desc08" name="res02_desc08" title="연봉/시급선택">
-          										<option value="연봉/시급선택">연봉/시급선택</option>
-          										<option value="연봉">연봉</option>
+                              <option value="연봉">연봉</option>
+                              <option value="시급">월급</option>
+                              <option value="시급">주급</option>
+                              <option value="시급">일급</option>
                               <option value="시급">시급</option>
           									</select>
                             <select id="res02_desc08_1" name="res02_desc08_1" title="연봉선택">
@@ -778,30 +590,8 @@
             </div>
           </div>
         </div>
-        <div id="footerWrap">
-    			<div id="footer">
-    				<h2>Allwork정보 및 이용약관</h2>
-            <p class="footLogo">Allwork</p>
-            <div id="copyArea">
-      				<ul class="menuArea">
-      					<li><a href="#" title="회사소개">회사소개</a></li>
-      					<li><a href="#" title="고객센터">고객센터</a></li>
-      					<li><a href="#" title="개인정보처리방침">개인정보처리방침</a></li>
-      					<li><a href="#" title="사이트맵">사이트맵</a></li>
-      				</ul>
-              <ul class="linkArea">
-                <li><a href="#" title="인스타페이지"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="#" title="유투브페이지"><i class="fab fa-youtube"></i></a></li>
-                <li><a href="#" title="페이스북페이지"><i class="fab fa-facebook"></i></a></li>
-              </ul>
-  						<div class="address">
-  							<span>상호 : (주)올워크 | 직업정보제공사업등록번호 : 서울청 제2019-2호 | 대표이사 : 김봉갑 | 평일 : am 09:00 ~ pm 06:00 | 토요일, 일요일, 공휴일 휴무</span><br/>
-  							<span>E-mail : mail@allwork.co.kr Tel. 02-585-0108 | 주소 : 06640 서울특별시 서초구 서초중앙로 52 (서초동, 영진빌딩) 3층</span><br/>
-  							<span>Copyright ⓒ allwork.co.kr all rights reserved.</span>
-  						</div>
-            </div>
-    			</div>
-    		</div>
+		
+		<jsp:include page="/footer.do" />
       </div>
   </body>
 </html>

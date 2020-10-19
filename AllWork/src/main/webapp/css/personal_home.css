@@ -1,0 +1,92 @@
+body{font-family:"NotoSansKR-Regular";}
+/*###################################   containerWrap  ###################################*/
+    #containerWrap{width:1280px;margin: 0 auto;overflow: hidden;}
+/*###################################   leftpart   ###################################*/
+      #leftPart{width:220px;height:100%;float: left;}
+      #myBox{width:100%;height:300px;background-color:#F4F8FC;overflow: hidden;}
+      #myBox .imgArea{width:124px;height:124px;position: relative;margin: 50px auto 0;}
+      #myBox .imgArea .myImg{width:100%;height:100%;border-radius:50%;margin: 0 auto;background-color: #fff;overflow: hidden;}
+      #myBox .imgArea .myImg img{width:100%;}
+      #myBox .imgArea .cameraBtn{width:34px; height:34px;border-radius:17px;line-height: 34px;background-color:#4F60E3;text-align: center;position: absolute;bottom: 0;right: 0;}
+      #myBox .imgArea .fas{color: #fff;}
+
+      #myBox p{width: 100%;text-align: center;}
+      #myBox .myName{padding-top: 12px;padding-bottom:10px;font-size:16px;}
+      #myBox .myDetail{width:100px;height: 30px;line-height: 29px;margin: 0 auto;border: 1px solid #4F60E3;font-size:14px;}
+      #myBox .myDetail a{color:#4F60E3;}
+
+        #myBox .myDetail:hover a{color:#000;}
+        #myBox .myDetail:hover{border: 1px solid #000;}
+
+      #menuTree{width:100%;height:100%;margin-top:20px;font-size:16px;}
+      #menuTree ul{width:100%;font-size: 16px;text-indent:20px;}
+      #menuTree ul .gnb{padding-top:10px;padding-bottom: 20px;}
+      #menuTree ul .payService{height:64px;background-color: #FFCE00;}
+      #menuTree ul .payService li a{color:#666;}
+      #menuTree ol{width:100%;font-size: 14px;text-indent:40px;}
+      #menuTree ol a{color:#999;}
+
+/*###################################   rightpart   ###################################*/
+#rightPart{width:1000px;height:100%;margin-left:60px;float: left;}
+
+/*###################################   reviewpart   ###################################*/
+#reviewPart{width:100%;height:300px;overflow: hidden;}
+#reviewPart ul{width:740px;height:154px;margin: 98px auto 0;}
+#reviewPart ul li{width:110px;height:100%;text-align: center;float:left;margin-right:100px;}
+        #reviewPart ul li:last-child{margin-right:0px;}
+
+#reviewPart ul li a{display: block;width: 100%;height: 100%;}
+#reviewPart ul li a strong{display: block;width: 106px;height: 106px;line-height: 106px;margin-bottom: 40px;border-radius:53px;font-size:30px;color:#999;background-color:#F4F8FC;}
+#reviewPart ul li a span{font-size: 16px;color:#999;}
+
+#reviewPart ul .review01 a strong{color:#4F60E3;}
+#reviewPart ul .review01 a span{color:#4F60E3;}
+#reviewPart ul .review01 a strong:hover{color:#000;}
+#reviewPart ul .review01 a span:hover{color:#000;}
+
+/*###################################   recommendpart   ###################################*/
+#recommendPart{width:100%;margin-top: 30px;overflow: hidden;}
+#recommendPart h4{width:100%;padding-bottom:10px;}
+#recommendPart ul{width:100%;height:140px;}
+#recommendPart li{width:198px;height:138px;border: 1px solid #ccc;float:left;}
+
+      #recommendPart li:hover{border: 1px solid #666;}
+
+#recommendPart li a{display: block;width:100%;height: 100%;}
+#recommendPart ul li a .descBox{width:80%;height:80%;padding: 10%;}
+#recommendPart ul li a span{font-size:12px;}
+
+#recommendPart ul li a .desc01{width:100%;font-size: 14px;line-height:24px;padding-bottom: 18px;float:left;}
+#recommendPart ul li a .desc02{width:100%;font-size: 14px;font-family:"NotoSansKR-Bold";float:left;}
+#recommendPart ul li a .desc03{width:100%;font-size: 12px;line-height:36px;font-family:"NotoSansKR-Light";float:left;}
+#recommendPart ul li a .desc04{width:50%;text-align:left;float:left;padding-top:10px;}
+#recommendPart ul li a .desc05{width:50%;text-align: right;float:right;padding-top:10px;}
+
+/*###################################   listpart   ###################################*/
+#listPart{width:100%;margin-top: 30px;margin-bottom: 100px;overflow: hidden;font-size: 14px;}
+#listPart .tab{width:540px;height:40px;}
+#listPart .tab li{width:178px;height:38px;line-height:38px;text-align:center; background-color: #eee;border:1px solid #ccc;float:left;}
+#listPart .tab li a{display: block;width: 100%;height: 100%;color:#ccc;}
+
+        #listPart .tab li:hover{border: 1px solid #999;}
+        #listPart .tab li:hover a{color: #999;}
+
+#listPart .tab li a.selected{background-color: #fff;color:#000;}
+
+#listPart .list{width:100%;border-top:1px solid #999;overflow: hidden;}
+#listPart .list li{width:100%;height:150px;border-bottom:1px solid #ccc;}
+#listPart .list li a{display: block;width: 100%;height: 100%;overflow: hidden;}
+
+        #listPart .list li a:hover{background-color: #F4F8FC;}
+
+#listPart .list li a .title{width:226px;height: 100%;line-height:150px;text-align:center;font-size: 16px;float:left;}
+#listPart .list li a .desc{width:550px;height:100%;float:left;padding-top:35px;}
+  #listPart .list li a .desc .desc0{width:100%;font-size: 16px;padding-bottom: 15px;float:left;}
+  #listPart .list li a .desc .desc1{width:220px;float:left;color:#666;}
+  #listPart .list li a .desc .desc2{width:80px;float:left;color:#666;}
+  #listPart .list li a .desc .desc3{width:250px;float:left;color:#666;}
+
+#listPart .list li a .deadline{width:124px;height:40px;margin: 55px 50px;line-height:40px;text-align:center;float:left;font-size:14px;}
+  #listPart .list li a .deadline00{background-color: #4F60E3;color:#fff;}
+  #listPart .list li a .deadline01{background-color: #000;color:#fff;}
+  #listPart .list li a .deadline02{background-color: #E0F1FF;color:#333;}

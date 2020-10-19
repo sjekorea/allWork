@@ -1,0 +1,222 @@
+body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
+/*###################################   Header    ###################################*/
+#allworkWrap{width:100%;}
+  /*#headerWrap{width:100%;height:40px;border-bottom:1px solid #333;}
+    #topWrap{width:1280px;height:40px;margin:0 auto;font-family:"NotoSansKR-Bold";}
+    #topWrap h1{width:100px;height:100%;font-size:18px;line-height: 40px;float: left;}
+    #topWrap h1 a{display: block;width:100%;height: 100%;}
+
+    #topWrap ul{width:1180px;height:100%;font-size: 12px;line-height: 40px;text-align: right;float: left;}
+    #topWrap ul li{display: inline-block;font-family:"NotoSansKR-Regular";}
+    #topWrap ul li a{color:#333;}*/
+
+/*###################################   containerWrap  ###################################*/
+    #containerWrap{width:100%;overflow: hidden;}
+    #container{width:1280px;margin:10px auto 0;}
+
+/*###################################   reg_leftPart   ###################################*/
+    #res_leftPart{width:1060px;float:left;margin-right:10px;}
+
+    #res_leftPart ul{width:610px;margin:30px auto 0;}
+    #res_leftPart ul li{width:198px;height:48px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;float:left;}
+    #res_leftPart ul li:last-child{margin-right:0px;}
+    #res_leftPart ul li a{display:block;width:100%;height:100%;color:#666;}
+    #res_leftPart ul li.res_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
+    #res_leftPart ul li.res_ok a{color:#fff;}
+
+    /*###############################   resume00   ###############################*/
+    #resume00{width:980px;margin-bottom:10px;padding:40px;overflow: hidden;background-color:#fff;}
+
+    #resume00 #imgArea{width:148px;height:198px;float: left;margin-right:20px;border:1px solid #ccc;}
+    #resume00 #imgArea p{width:100%;height:100%;}
+
+    #resume00 #detailArea{width:810px;float: left;}
+    #resume00 #detailArea .detail_title{width:100%;padding-top:9px;height:30px;font-size:24px;font-family:"NotoSansKR-Thin";}
+    #resume00 #detailArea .personal_setting{width:110px;height:28px;line-height:28px;font-size:14px;margin-bottom:10px;margin-left:700px;text-align:center;border:1px solid #808495;}
+    #resume00 #detailArea .tabelArea{width:100%;text-indent:10px;overflow: hidden;border-top:1px solid #808495;}
+    #resume00 #detailArea .tabelArea p{float: left;}
+    #resume00 #detailArea .tabelArea .table_title{width:120px;height:39px;line-height:40px;border-bottom:1px solid #ccc;background-color:#808495;color:#fff;}
+    #resume00 #detailArea .tabelArea .table_desc{width:285px;height:39px;line-height:40px;border-bottom:1px solid #808495;color:#333;}
+    #resume00 #detailArea .tabelArea .table_desc01{width:690px;height:39px;line-height:40px;border-bottom:1px solid #808495;color:#333;}
+
+                          #resume00 #detailArea .personal_setting:hover{background-color:#eee;}
+
+    /*###############################   resume01  ###############################*/
+    #resume01{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resForm01{width:980px;background-color:#fff;padding:40px;}
+
+
+
+    fieldset{border:none;}
+    legend{font-size:24px;padding-bottom:20px;font-family:"NotoSansKR-Thin";}
+    #resForm01 div{width:100%;}
+    caption{display:none;}
+    tbody{width:100%;text-align:left;}
+    tr{width:100%;font-size:16px;height:80px;}
+    th{width:180px;font-family:"NotoSansKR-Medium";}
+    th .necessary{padding-left:3px;color:red;}
+
+    td{width:800px;font-size:14px;padding-top:10px;}
+    td input[type="button"]{width:120px;height:40px;padding:0 10px;text-align:center;font-size:16px;
+                            background-color:#fff;
+                            border:1px solid #999;vertical-align:top;margin-right:20px;}
+    td input[type="text"]{width:800px;height:40px;background-color:#fff;border:1px solid #999;text-indent:10px;}
+    td input::placeholder{color:#ccc;font-size:16px;}
+    td input[type="checkbox"]{width:20px;height:20px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}
+    td input[type="radio"]{width:20px;height:20px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}
+
+    td span{display:inline-block;padding-right:20px;padding-bottom:10px;}
+    td select{width:200px;height:42px;border:1px solid #999;font-size:16px;text-indent:10px;color:#666;vertical-align:top;}
+    td textarea{width:100%;height:200px;}
+    td input[type="date"]{width:160px;height:40px;border:1px solid #999;font-size:14px;padding:0 10px;color:#666;}
+    .comment{color:red;font-size:12px;}
+
+
+    .moreTab{width:100%;height:40px;border-top:1px solid #ccc;}
+    .moreTab input{width:100%;height:100%;border:none;background-color:#fff;font-size:14px;}
+
+
+
+
+    /*###############################   resume02  ###############################*/
+    #resume02{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resForm02{width:980px;background-color:#fff;padding:40px;}
+
+    /*###############################   resume03  ###############################*/
+    #resume03{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resForm03{width:980px;background-color:#fff;padding:40px;}
+    #resForm03 .final_education{width:980px;height:40px;display: table;background-color:#eee;}
+    #resForm03 .final_education th{text-indent:40px;line-height:50px;font-size:14px;}
+    #resForm03 .final_education td{padding-top:0;}
+    #resForm03 .final_education select{height:40px;vertical-align:middle;margin:5px 0;}
+    #resForm03 .education{width:980px;height:120px;}
+    #resForm03 .education th{display:none;}
+    #resForm03 .education span{padding:0;margin-bottom:5px;}
+    #resForm03 #res03_desc02_3{width:40px;height:42px;background-color:#43425D;color:#fff;font-size:14px;padding:0;margin-right:0;}
+    #resForm03 #res03_desc03_2{width:280px;}
+    #resForm03 #res03_desc03_3{width:274px;}
+
+    #resForm03 input[type="text"]{width:556px;height:40px;}
+    #resForm03 input::placeholder{text-indent:10px;font-size:16px;color:#ccc;}
+
+    /*###############################   resume03  ###############################*/
+    #resume04{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resForm04{width:980px;background-color:#fff;padding:40px;}
+    #resForm04 #res04_desc02_2{width:40px;height:42px;background-color:#43425D;color:#fff;font-size:14px;padding:0;margin-right:0;}
+
+    #resForm04 .total_experience{width:980px;height:50px;display: table;background-color:#eee;}
+    #resForm04 .total_experience th{text-indent:40px;line-height:50px;font-size:14px;}
+    #resForm04 .total_experience td{padding-top:0;}
+    #resForm04 .total_experience select{height:40px;vertical-align:middle;margin:5px 0;}
+    #resForm04 .experience{width:980px;height:120px;}
+    #resForm04 .experience th{display:none;}
+    #resForm04 .experience span{padding:0;margin-bottom:5px;}
+
+    #resForm04 input[type="text"]{width:756px;height:40px;}
+    #resForm04 input::placeholder{text-indent:10px;font-size:16px;color:#ccc;}
+    #resForm04 input[type="checkbox"]{vertical-align:middle;}
+
+    /*###############################   resume05  ###############################*/
+    #resume05{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resForm05{width:980px;background-color:#fff;padding:40px;}
+    #resForm05 th{display:none;}
+    #resForm05 td{width:980px;}
+
+    /*###############################   resForm06   ###############################*/
+    #resume06{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resForm06{width:980px;background-color:#fff;padding:40px;}
+    #resForm06 th{display:none;}
+    #resForm06 td{width:980px;}
+    #resForm06 td p{height:60px;padding:0;float:left;}
+    #resForm06 td span{display:inline;font-size:12px;font-family:"NotoSansKR-Medium";}
+    #resForm06 td .part01{width:200px;height:40px;}
+    #resForm06 td .part01 input{padding:0 10px;width:180px;}
+    #resForm06 td .part02{width:570px;height:40px;}
+    #resForm06 td .part02 select{display: inline-block;margin:0;width:190px;}
+    #resForm06 td .part03{width:166px;height:40px;}
+    #resForm06 td .part04{width:40px;height:42px;margin-top:20px;}
+    #resForm06 td .part04 input{width:100%;height:100%;background-color:#43425D;color:#fff;font-size:14px;margin-right:0;}
+    #resForm06 td input{width:100%;padding:0;}
+
+    /*###############################   resForm07   ###############################*/
+    #resume07{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resForm07{width:980px;background-color:#fff;padding:40px;}
+    #resForm07 th{display:none;}
+    #resForm07 td{width:980px;}
+    #resForm07 td p{height:60px;padding:0;float:left;}
+    #resForm07 td span{display:inline;font-size:12px;font-family:"NotoSansKR-Medium";}
+    #resForm07 td .part01{width:200px;height:40px;}
+    #resForm07 td .part01 input{padding:0 10px;width:180px;}
+    #resForm07 td .part02{width:276px;}
+    #resForm07 td .part03{width:90px;}
+    #resForm07 td .part04{width:200px;height:44px;}
+    #resForm07 td .part05{width:80px;}
+    #resForm07 td .part06{width:90px;}
+    #resForm07 td .part07{width:80px;}
+    #resForm07 td .part08{width:40px;height:42px;margin-top:20px;}
+    #resForm07 td .part08 input{width:100%;height:100%;background-color:#43425D;color:#fff;font-size:14px;margin-right:0;}
+    #resForm07 td p input{width:100%;padding:0;}
+    #resForm07 select{width:100%;}
+
+    /*###############################   resForm08   ###############################*/
+    #resume08{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resForm08{width:980px;background-color:#fff;padding:40px;}
+    #resForm08 legend span{font-size:16px;font-family:"NotoSansKR-Regular";}
+    #resForm08 th{display:none;}
+    #resForm08 td{width:980px;}
+    #resForm08 input[type="text"]{width:980px;}
+    #resForm08 textarea{width:980px;}
+
+    /*###############################   resForm09   ###############################*/
+    #resume09{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resForm09{width:980px;background-color:#fff;padding:40px;}
+    #resForm09 th{display:none;}
+    #resForm09 td{width:980px;}
+
+    #resForm09 .file_btn{border:none;}
+    #resForm09 input[type="file"]{position: absolute;
+                                  width: 0;
+                                  height: 0;
+                                  padding: 0;
+                                  overflow: hidden;
+                                  border: 0;
+                              }
+  #resForm09 label {font-family:"NotoSansKR-Medium";
+                      display: inline-block;
+                      height: 40px;
+                      line-height:40px;
+                      width:100px;
+                      text-align: center;
+                      color: #fff;
+                      vertical-align: middle;
+                      background-color: #4F60E3;
+                      cursor: pointer;
+                      border: 1px solid #ebebeb;
+
+                  }
+  #resForm09 #res09_desc01{
+
+                      display: inline-block;
+                      width:832px;
+                      height: 40px;
+                      font-size:16px;
+                      color:#ccc;
+                      padding: 0 10px;
+                        vertical-align: middle;
+                        background-color: #f5f5f5;
+                      border: 1px solid #ebebeb;
+
+
+                    }
+
+
+
+
+
+/*###################################   reg_rightPart   ###################################*/
+    #res_rightPart{width:210px;float:left;}
+    #res_rightPart ul{width:100%;}
+    #res_rightPart ul li{width:198px;height:78px;margin-bottom:5px;text-align:center;line-height:80px;background-color:#fff;border:1px solid #ccc;}
+    #res_rightPart ul li a{display:block;width:100%;height:100%;color:#666;}
+    #res_rightPart ul li.res_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
+    #res_rightPart ul li.res_ok a{color:#fff;}

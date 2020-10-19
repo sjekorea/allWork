@@ -10,144 +10,13 @@
   <meta charset="utf-8"/>
   <title> 인재검색 </title>
   <link rel="stylesheet" type="text/css" href="/css/header_company.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/company_03.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/footer.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/font.css"/>
   <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
   <link  rel="stylesheet" type="text/css" href="/css/all.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
-  <style>
-
-
-  body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
-
-
-  /*###################################   containerWrap  ###################################*/
-      #containerWrap{width:1280px;margin: 20px auto 100px;overflow: hidden;}
-  /*###################################   leftpart   ###################################*/
-      #leftPart{width:200px;height:100%;float: left;}
-      #menuTree{width:198px;height:408px;background-color: #fff;border: 1px solid #ccc;}
-      #menuTree p{width: 198px;height:78px;line-height: 78px;text-align: center;border-bottom: 1px solid #ccc;}
-      #menuTree p a{display: block;width: 100%;height:100%;color:#4F60E3;}
-
-          #menuTree p:hover{background-color: #F7FAFF;}
-
-      #menuTree ul{width:100%;height:380px;padding-top:20px;}
-      #menuTree ul .gnb{width:100%;line-height: 22px;text-indent:30px;padding-top:10px;padding-bottom: 10px;}
-      #menuTree ul .gnb a{font-size: 16px;}
-      #menuTree ul .subMenu{width:100%;text-indent:50px;padding-top:5px;}
-      #menuTree ul .subMenu li{width:100%;}
-      #menuTree ul .subMenu li a{color:#666;font-size:14px;}
-
-/*###################################   applyBox   ###################################*/
-      #applyBox{width:138px;height:138px;background-color: #fff;border: 1px solid #ccc;margin-top:10px;padding: 30px;}
-      #applyBox p{width: 100%;}
-      #applyBox .apply_btn01{margin-bottom:15px;}
-      #applyBox p label{font-size:14px;line-height:30px;}
-      #applyBox p input{width:138px;height: 30px;border: 1px solid #aaa;background-color: #fff;}
-
-              #applyBox p input:hover{background-color:#4F60E3;color:#fff;}
-
-  /*###################################   rightpart   ###################################*/
-  #rightPart{width:1060px;margin-left:20px;float: left;}
-
-  /*###################################   part01/추천인재  ###################################*/
-  #part01{width:100%;overflow: hidden;}
-  #part01 ul{width:1060px;height:250px;margin-bottom:20px;}
-  #part01 ul li{width:248px;height:248px;background-color: #fff;border: 1px solid #fff;margin-right:20px;float: left;}
-  #part01 ul li:last-child{margin-right:0;}
-  #part01 ul li a{display: block;width:100%;height:100%;}
-  #part01 ul li a div{width:208px;height:208px;padding:20px;}
-  #part01 ul li a div p{font-size:20px;padding-bottom:20px;}
-  #part01 ul li a div .star{width:100%;text-align: right;color:#eee;}
-  #part01 ul li a div .desc01{width:100%;font-size:14px;padding-bottom:10px;}
-  #part01 ul li a div .desc02{width:100%;font-size:10px;color:#4F60E3;}
-  #part01 ul li a div .desc03{width:100%;font-size:16px;font-family:"NotoSansKR-Bold"; }
-  #part01 ul li a div .desc04{width:100%;font-size:10px;color:#999;}
-
-                #part01 ul li:hover{border: 1px solid #4F60E3;}
-
-  /*###################################   part02/검색  ###################################*/
-  #part02{width:100%;margin-top:10px;overflow: hidden;}
-  #part02 form{width:1060px;height:70px;}
-  #part02 form fieldset{border:none;}
-  #part02 form fieldset legend{display: none;}
-  #part02 form fieldset div{width:100%;height:20px;margin-bottom:10px;}
-  #part02 form fieldset div input{width:20px;height:20px;}
-  #part02 form fieldset div label{font-size:14px;padding-left:10px;padding-right:30px;vertical-align:top;}
-  #part02 form fieldset p{float: left;width:308px;height:38px;background-color: #fff;border:1px solid #999;}
-  #part02 form fieldset p input{border:none;width:308px;height:38px;text-indent: 10px;}
-  #part02 form fieldset p.btnBox{width: 130px;height:40px;border:none;}
-  #part02 form fieldset p.btnBox input{width: 130px;height:40px;background-color:#4F60E3;color:#fff;font-size:16px;}
-
-/*###################################   part03/상세검색  ###################################*/
-  #part03{width:100%;margin-top:10px;overflow: hidden;}
-  #row01{width:1058px;text-indent:20px;line-height:50px;background-color:#fff;border:1px solid #ccc;float:left;}
-  #row01 dl{width:210px;border-right:1px solid #ccc;float:left;}
-  #row01 dl dt{width:100%;height: 49px;background-color:#eee;border-bottom:1px solid #ccc; }
-  #row01 dl dd{width:100%;height: 280px;overflow:auto;}
-  #row01 dl dd div{width:100%;height: 100%;}
-  #row01 dl dd div ul{width:100%;height: 100%;}
-  #row01 dl dd div ul li{width:100%;height:30px;}
-  #row01 dl dd div ul li input{display: block;width: 100%;height:30px;line-height: 30px;border:none;background-color:#fff;
-                               text-align:left;text-indent:20px;font-size:14px;}
-
-                               #row01 dl:last-child{width:214px;border:none;}
-
-#row02{width:1058px;text-indent:20px;line-height:50px;background-color:#fff;border:1px solid #ccc;float:left;}
-#row02 dl{width:210px;border-right:1px solid #ccc;float:left;}
-#row02 dl dt{width:100%;height: 49px;background-color:#eee;border-bottom:1px solid #ccc; }
-#row02 dl dd{width:100%;height: 280px;overflow:auto;}
-#row02 dl dd div{width:100%;height: 100%;}
-#row02 dl dd div ul{width:100%;height: 100%;}
-#row02 dl dd div ul li{width:100%;height:30px;line-height: 30px;font-size:14px;background-color:#EDF0F5;}
-#row02 dl dd div ul li input{display: block;width: 100%;height:30px;line-height: 30px;border:none;background-color:#fff;
-                             text-align:left;text-indent:20px;font-size:14px;color:#000;}
-
-
-                              #row02 dl:last-child{width:214px;border:none;}
-                              #row02 dd{display: none;}
-
-
-  /*###################################   listpart   ###################################*/
-  #listPart{width:100%;margin-top: 40px;overflow: hidden;font-size: 14px;}
-  #listPart h4{width:100%;font-size:18px;text-indent:40px;margin-bottom: 10px;}
-  #listPart .title{width:1060px;height:40px;line-height: 40px;background-color:#fff;color:#333;text-align: center;border-bottom:1px solid #000;}
-  #listPart .title li{float:left;}
-  #listPart .title li.desc01{width:180px;}
-  #listPart .title li.desc02{width:420px;}
-  #listPart .title li.desc03{width:160px;text-align: left;}
-  #listPart .title li.desc04{width:160px;text-align: left;}
-  #listPart .title li.desc05{width:100px;}
-
-
-
-
-  #listPart .list{width:100%;overflow: hidden;background-color:#fff;}
-  #listPart .list li{width:1058px;height:148px;border:1px solid #fff;border-bottom:1px solid #ccc;}
-  #listPart .list li a{display: block;width: 100%;height: 100%;overflow: hidden;}
-
-          #listPart .list li:hover{border:1px solid #4F60E3;}
-
-  #listPart .list li a p{height:100px;float:left;font-size: 16px;padding-top:50px;line-height: 24px;}
-  #listPart .list li a .desc00{width:180px;text-align: center;}
-  #listPart .list li a .desc01{width:420px;}
-  #listPart .list li a .desc02{width:160px;}
-  #listPart .list li a .desc03{width:160px;}
-  #listPart .list li a .date{width:100px;line-height:58px;text-align: center;}
-
-  #listPart .numareaWrap{width:100%;overflow: hidden;background-color:#fff;}
-  #listPart .numArea{width:360px;height:30px;line-height:28px;padding-top:30px;padding-bottom:30px;text-align: center;margin:0 auto;}
-  #listPart .numArea li{width:28px;height:28px;border:1px solid #ccc;float:left;}
-  #listPart .numArea li a{color:#ccc;}
-
-                  #listPart .numArea li:hover{border: 1px solid #666;}
-                  #listPart .numArea li:hover a{color:#666;}
-
-  #listPart .numArea .p01{border: 1px solid #666;}
-  #listPart .numArea .p01 a{color:#666;}
-
-
-	 </style>
+  <style></style>
   </head>
   <body>
       <div id="allworkWrap">
@@ -155,14 +24,14 @@
           <div id="topWrap">
             <h1><a href="/index.do" title="올워크홈">Allwork</a></h1>
             <ul class="topMenu">
-              <li><a href="#none" title="기업정보/관리">올워크&nbsp;&nbsp;<i class="fas fa-chevron-down"></i>&nbsp;&nbsp;|&nbsp;&nbsp;</a></li>
+              <li><a href="/index.do" title="기업정보/관리">올워크&nbsp;&nbsp;<i class="fas fa-chevron-down"></i>&nbsp;&nbsp;|&nbsp;&nbsp;</a></li>
               <li><a href="#none" title="고객센터">고객센터&nbsp;&nbsp;|&nbsp;&nbsp;</a></li>
               <li><a href="/companyHome.do" title="기업회원 홈">기업회원 홈</a></li>
             </ul>
           </div>
           <div id="headWrap">
             <div id="head">
-              <p><a href="/companyHome.do" title="기업홈">올워크</a></p>
+              <p><a href="/companyHome.do" title="기업홈">${SE_USER_NM}</a></p>
               <ul class="nav">
                 <li><a href="/recruitInfoReg.do" title="공고등록">공고등록</a></li>
                 <li><a href="#none" title="공고ㆍ지원자관리">공고ㆍ지원자관리</a></li>
@@ -186,7 +55,7 @@
                 <li class="gnb"><a href="/personSearch.do" title="인재검색">인재검색</a>
                   <h3>인재검색</h3>
                     <ol class="subMenu">
-                      <li><a href="#" title="상세검색">상세검색</a></li>
+                      <li><a href="/personSearch.do" title="상세검색">상세검색</a></li>
                       <li><a href="#" title="직무별">직무별</a></li>
                       <li><a href="#" title="산업별">산업별</a></li>
                       <li><a href="#" title="지역별">지역별</a></li>
@@ -201,7 +70,7 @@
           </div>
           <div id="rightPart">
             <div id="part01">
-              <ul>
+              <ul class="adPart">
                 <li>
                   <a href="#none" title="유료인재광고01">
                     <div>
@@ -679,31 +548,10 @@
             </div>
           </div>
         </div>
-
-        <div id="footerWrap">
-    			<div id="footer">
-    				<h2>Allwork정보 및 이용약관</h2>
-            <p class="footLogo">Allwork</p>
-            <div id="copyArea">
-      				<ul class="menuArea">
-      					<li><a href="#" title="회사소개">회사소개</a></li>
-      					<li><a href="#" title="고객센터">고객센터</a></li>
-      					<li><a href="#" title="개인정보처리방침">개인정보처리방침</a></li>
-      					<li><a href="#" title="사이트맵">사이트맵</a></li>
-      				</ul>
-              <ul class="linkArea">
-                <li><a href="#" title="인스타페이지"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="#" title="유투브페이지"><i class="fab fa-youtube"></i></a></li>
-                <li><a href="#" title="페이스북페이지"><i class="fab fa-facebook"></i></a></li>
-              </ul>
-  						<div class="address">
-  							<span>상호 : (주)올워크 | 직업정보제공사업등록번호 : 서울청 제2019-2호 | 대표이사 : 김봉갑 | 평일 : am 09:00 ~ pm 06:00 | 토요일, 일요일, 공휴일 휴무</span><br/>
-  							<span>E-mail : mail@allwork.co.kr Tel. 02-585-0108 | 주소 : 06640 서울특별시 서초구 서초중앙로 52 (서초동, 영진빌딩) 3층</span><br/>
-  							<span>Copyright ⓒ allwork.co.kr all rights reserved.</span>
-  						</div>
-            </div>
-    			</div>
-    		</div>
+		
+		<jsp:include page="/footer.do" />
+      
       </div>
   </body>
 </html>
+

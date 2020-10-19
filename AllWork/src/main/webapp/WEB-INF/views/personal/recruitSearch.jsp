@@ -10,110 +10,13 @@
   <meta charset="utf-8"/>
   <title> 채용정보 </title>
   <link rel="stylesheet" type="text/css" href="/css/header_personal.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/personal_01.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/footer.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/font.css"/>
   <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
   <link  rel="stylesheet" type="text/css" href="/css/all.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
-  <style>
-
-
-      body{background-color:#EDF0F5;font-family:"NotoSansKR-Regular";}
-
-
-      /*#####  현재페이지 메뉴  ###################################*/
-      #head .nav .nav01{background-color:#4F60E3;}
-      #head .nav .nav01 a{color:#fff;}
-      /*###################################   containerWrap  ###################################*/
-        #containerWrap{width:1280px;margin:0 auto;overflow: hidden;}
-
-        /*###################################   leftpart   ###################################*/
-        #rec_left{width:200px;height:100%;float: left;margin-top:20px;}
-        #menuTree{width:198px;height:387px;background-color: #fff;border: 1px solid #ccc;}
-        #menuTree p{width: 198px;height:78px;line-height: 78px;text-align: center;border-bottom: 1px solid #ccc;}
-        #menuTree p a{display: block;width: 100%;height:100%;color:#4F60E3;}
-
-            #menuTree p:hover{background-color: #F7FAFF;}
-
-        #menuTree ul{width:100%;height:380px;padding-top:20px;}
-        #menuTree ul .menu{width:100%;line-height: 22px;text-indent:30px;padding-top:10px;padding-bottom: 10px;}
-        #menuTree ul .menu a{font-size: 16px;font-family:"NotoSansKR-Medium";}
-        #menuTree ul .subMenu{width:100%;text-indent:50px;padding-top:5px;}
-        #menuTree ul .subMenu li{width:100%;}
-        #menuTree ul .subMenu li a{color:#888;font-size:14px;font-family:"NotoSansKR-Regular";}
-
-
-
-
-      /*###################################   part03/상세검색  ###################################*/
-      #rec_right{width:1060px;overflow: hidden;margin-top:20px;margin-left:20px;float:left;}
-
-        #recruitment{width:100%;overflow: hidden;}
-        #recruitment h4{width:100%;font-size:18px;padding:20px 0 10px;}
-        #recruitment #rec_row01{width:1058px;text-indent:20px;line-height:50px;background-color:#fff;border:1px solid #ccc;margin-bottom:20px;float:left;}
-        #recruitment #rec_row01 dl{width:175px;border-right:1px solid #ccc;float:left;}
-        #recruitment #rec_row01 dl dt{width:100%;height: 49px;background-color:#eee;border-bottom:1px solid #ccc;}
-        #recruitment #rec_row01 dl dt a{display:block;width:100%;height:100%;color:#333;}
-        #recruitment #rec_row01 dl dd{width:100%;height: 280px;overflow: scroll;}
-        #recruitment #rec_row01 dl dd div{width:100%;height: 100%;}
-        #recruitment #rec_row01 dl dd div ul{width:100%;height: 100%;}
-        #recruitment #rec_row01 dl dd div ul li{width:100%;height:30px;}
-        #recruitment #rec_row01 dl dd div ul li input{display: block;width: 100%;height:30px;line-height: 30px;border:none;background-color:#fff;
-                                     text-align:left;text-indent:20px;font-size:14px;}
-
-                                    #recruitment #rec_row01 dl:last-child{width:178px;border:none;}
-
-        /*###################################   rec_listpart   ###################################*/
-        #rec_listPart01, #rec_listPart02, #rec_listPart03, #rec_listPart04{width:1060px;margin-top:40px;padding-bottom:30px;overflow: hidden;font-size: 14px;}
-        #rec_titleArea01, #rec_titleArea02, #rec_titleArea03, #rec_titleArea04{width:100%;height:40px;}
-        #rec_titleArea01 h4, #rec_titleArea02 h4, #rec_titleArea03 h4, #rec_titleArea04 h4{width:50%;font-size:18px;float: left;}
-        #rec_titleArea01 .rec_align, #rec_titleArea02 .rec_align, #rec_titleArea03 .rec_align, #rec_titleArea04 .rec_align{width:50%;text-align: right;float: left;padding-top:10px;}
-        #rec_titleArea01 .rec_align li, #rec_titleArea02 .rec_align li, #rec_titleArea03 .rec_align li, #rec_titleArea04 .rec_align li{display:inline-block;margin-bottom:10px;}
-        #rec_titleArea01 .rec_align li a, #rec_titleArea02 .rec_align li a, #rec_titleArea03 .rec_align li a, #rec_titleArea04 .rec_align li a{font-size:11px;}
-
-        .rec_title{width:1060px;height:40px;line-height: 40px;color:#333;text-align:center;background-color:#fff;border-bottom:2px solid #666;}
-        .rec_title li{float:left;font-family:"NotoSansKR-Bold";}
-        .rec_title li.desc01{width:200px;}
-        .rec_title li.desc02{width:460px;}
-        .rec_title li.desc03{width:60px;}
-        .rec_title li.desc04{width:60px;}
-        .rec_title li.desc05{width:80px;}
-        .rec_title li.desc06{width:160px;}
-
-        .rec_list{width:1060px;overflow: hidden;background-color:#fff;}
-        .rec_list li{width:1058px;height:148px;border:1px solid #fff;border-bottom:1px solid #ccc;}
-        .rec_list li a{display: block;width: 100%;height: 100%;overflow: hidden;}
-
-                .rec_list li:hover{border:1px solid #4F60E3;}
-
-        .rec_list li a .list_title{width:200px;height: 100%;line-height:150px;text-align:center;font-size: 16px;float:left;}
-        .rec_list li a .desc1{width:458px;height:100%;float:left;padding-top:35px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
-        .rec_list li a .desc1 .desc11{width:100%;font-size: 16px;padding-bottom: 15px;float:left;}
-        .rec_list li a .desc1 .desc12{width:100%;float:left;color:#666;}
-
-        .rec_list li a .desc2{width:120px;height:100%;line-height:150px;float:left;text-align: center;}
-        .rec_list li a .desc2 .desc21{width:60px;height:100%;float:left;color:#666;}
-        .rec_list li a .desc2 .desc22{width:60px;height:100%;float:left;color:#666;}
-
-        .rec_list li a .desc3{width:80px;height:100%;float:left;padding-top:55px;text-align: center;}
-
-        .rec_list li a .deadline{width:120px;height:40px;margin:55px 20px;line-height:40px;text-align:center;float:left;font-size:14px;}
-        .rec_list li a .deadline00{background-color: #4F60E3;color:#fff;}
-        .rec_list li a .deadline01{background-color: #000;color:#fff;}
-        .rec_list li a .deadline02{background-color: #E0F1FF;color:#333;}
-
-        .numareaWrap{width:100%;overflow: hidden;background-color:#fff;}
-        .numArea{width:360px;height:30px;line-height:28px;padding-top:30px;padding-bottom:30px;text-align: center;margin:0 auto;}
-        .numArea li{width:28px;height:28px;border:1px solid #ccc;float:left;}
-        .numArea li a{color:#ccc;}
-
-                      .numArea li:hover{border: 1px solid #666;}
-                      .numArea li:hover a{color:#666;}
-
-        .numArea .p01{border: 1px solid #666;}
-        .numArea .p01 a{color:#666;}
-
-	 </style>
+  <style> </style>
   </head>
   <body>
       <div id="allworkWrap">
@@ -123,17 +26,6 @@
               <h1><a href="/index.do" title="allwork사이트">Allwork</a></h1>
               <p>시니어를&nbsp;위한&nbsp;재취업&nbsp;포털</p>
             </div>
-            <!--<div id="searchArea">
-              <form action="https://www.mmca.co.kr/search" method="get" name="searchForm">
-      					<fieldset>
-      					<legend>검색</legend>
-                <p class="textBox"><input id="searchText" type="text" name="q"  title="allwork 검색" maxlength="100"/></p>
-                <p class="btnBox00"><input id="search_btn00" type="image" src="img/personal00/searchBtn.png" name="searchBtn00" alt="검색버튼" title="돋보기 이미지"/></p>
-                <p class="btnBox01"><input id="search_btn01" type="button" name="searchBtn01" value="직무&middot;지역찾기"/></p>
-                <p class="btnBox02"><input id="search_btn02" type="button" name="searchBtn02" value="상세검색"/></p>
-                </fieldset>
-      				</form>
-            </div>-->
           </div>
           <div id="headWrap">
             <div id="head">
@@ -144,8 +36,7 @@
               <li class="nav04"><a href="#none" title="커뮤니티">커뮤니티</a></li>
             </ul>
             <div class="linkArea">
-              <a href="/personalHome.do" title="마이페이지"><span class ="fas fa-user-check"></span></a>
-              <!--<a href="#none" title="기업회원 홈"><span class="a00">기업회원 홈</span></a>-->
+              <a href="#" title="마이페이지"><span class ="fas fa-user-check"></span></a>
               <a href="#none" title="메뉴전체보기"><span class="fas fa-bars"></span></a>
             </div>
           </div>
@@ -160,7 +51,7 @@
                   <h3>채용정보</h3>
                     <ol class="subMenu">
                       <li><a href="/recruitSearch.do" title="상세검색">상세검색</a></li>
-                      <li><a href="#" title="직무별">직무별</a></li>
+                      <li><a href="/recruitSearchByDuty.do" title="직무별">직무별</a></li>
                       <li><a href="#" title="산업별">산업별</a></li>
                       <li><a href="#" title="지역별">지역별</a></li>
                     </ol>
@@ -819,30 +710,10 @@
             </div>
           </div>
         </div>
-        <div id="footerWrap">
-    			<div id="footer">
-    				<h2>Allwork정보 및 이용약관</h2>
-            <p class="footLogo">Allwork</p>
-            <div id="copyArea">
-      				<ul class="menuArea">
-      					<li><a href="#" title="회사소개">회사소개</a></li>
-      					<li><a href="#" title="고객센터">고객센터</a></li>
-      					<li><a href="#" title="개인정보처리방침">개인정보처리방침</a></li>
-      					<li><a href="#" title="사이트맵">사이트맵</a></li>
-      				</ul>
-              <ul class="linkArea">
-                <li><a href="#" title="인스타페이지"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="#" title="유투브페이지"><i class="fab fa-youtube"></i></a></li>
-                <li><a href="#" title="페이스북페이지"><i class="fab fa-facebook"></i></a></li>
-              </ul>
-  						<div class="address">
-  							<span>상호 : (주)올워크 | 직업정보제공사업등록번호 : 서울청 제2019-2호 | 대표이사 : 김봉갑 | 평일 : am 09:00 ~ pm 06:00 | 토요일, 일요일, 공휴일 휴무</span><br/>
-  							<span>E-mail : mail@allwork.co.kr Tel. 02-585-0108 | 주소 : 06640 서울특별시 서초구 서초중앙로 52 (서초동, 영진빌딩) 3층</span><br/>
-  							<span>Copyright ⓒ allwork.co.kr all rights reserved.</span>
-  						</div>
-            </div>
-    			</div>
-    		</div>
+		
+		<jsp:include page="/footer.do" />
       </div>
   </body>
 </html>
+
+

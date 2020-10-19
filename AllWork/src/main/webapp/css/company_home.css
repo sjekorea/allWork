@@ -1,0 +1,101 @@
+body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
+
+
+
+/*###################################   containerWrap  ###################################*/
+    #containerWrap{width:1280px;margin: 20px auto 100px;overflow: hidden;}
+/*###################################   leftpart   ###################################*/
+      #leftPart{width:300px;height:100%;float: left;}
+      #mycompanyBox{width:260px;height:160px;background-color:#fff;padding:20px;}
+
+      #mycompanyBox p{text-align: center;}
+      #mycompanyBox .settingBtn{width:100%;text-align: right;font-size: 12px;}
+      #mycompanyBox .companyName{width: 100%;font-size:32px;padding-top:30px;}
+      #mycompanyBox .uploadApplication{width:120px;height:30px;line-height: 30px;margin: 0 auto;font-size:14px;margin-top:10px;border: 1px solid #4F60E3;}
+      #mycompanyBox .uploadApplication a{width: 100%;height:100%;color:#4F60E3;}
+
+            #mycompanyBox .uploadApplication:hover{border:1px solid #333;}
+            #mycompanyBox .uploadApplication:hover a{color:#333;}
+
+      #paymentBox{width:220px;height:50px;padding:40px; background-color: #FFCE00;font-size: 14px;line-height: 28px;color:#333;}
+          #paymentBox .payBtn{text-decoration: underline;}
+
+      #menuTree{width:300px;height:100%;line-height:22px;font-size:16px;}
+      #menuTree ul{width:260px;font-size: 16px;text-indent:20px;background-color: #fff;padding:20px;}
+      #menuTree ul .gnb{padding-top:10px;padding-bottom: 20px;}
+      /*#menuTree ul .payService{height:64px;background-color: #FFCE00;}*/
+      #menuTree ul .payService li a{color:#666;}
+      #menuTree ol{width:100%;font-size: 14px;text-indent:40px;}
+      #menuTree ol a{color:#999;}
+
+/*###################################   rightpart   ###################################*/
+#rightPart{width:942px;margin-left:38px;float: left;}
+
+/*###################################   part00/지원자관리  ###################################*/
+#part00{width:100%;overflow: hidden;margin-bottom: 20px;}
+#part00 h4{width:100%; height:40px;line-height: 50px;font-size: 12px;}
+#part00 h4 a{color:#999;}
+#part00 ul{width:940px;}
+#part00 .list00 li{width:940px;height:100px;background-color: #fff;border: 1px solid #fff;border-bottom: 1px solid #ccc;}
+
+      #part00 .list00 li:hover{border: 1px solid #4F60E3;}
+
+#part00 .list00 li p{width: 100px;height:100%;line-height: 100px;text-align: center;float: left;}
+#part00 .list00 li div{width: 840px;height:100%;float: left;}
+#part00 .list00 .desc .desc0{width:100%;height:60px;text-align: left;line-height: 85px;float: left;}
+
+        #part00 .list00 .desc .desc0 a:hover{text-decoration: underline;}
+
+#part00 .list00 .desc .desc1{width:50%;height:40px;line-height: 20px;font-size: 12px;float: left;}
+
+      #part00 .list00 .desc .desc1 a:hover{text-decoration: underline;}
+
+#part00 .list00 .desc .desc2{width:50%;height:40px;line-height: 20px;font-size: 12px;float: left;}
+#part00 .list00 .desc .desc2 .total{color:#4F60E3;font-weight:700;}
+
+      #part00 .list00 .desc .desc2 a:hover{text-decoration: underline;}
+
+
+
+/*###################################   part01/맞춤인재 관리    ###################################*/
+#part01{width:100%;overflow: hidden;}
+#part01 h4{width:100%; height:40px;line-height: 50px;font-size: 12px;}
+#part01 h4 a{color:#999;}
+#part01 ul{width:100%;}
+#part01 ul li{width:940px;height:100px;background-color: #fff;border: 1px solid #fff;border-bottom: 1px solid #ccc;}
+#part01 ul li p{float:left;}
+#part01 ul li .img00{width:80px;height: 80px;margin:10px 10px;overflow: hidden;}
+#part01 ul li .img00 img{width:100%;}
+#part01 ul li .desc00{width:270px;height:70px;padding-top:30px;text-align: center;}
+#part01 ul li .desc00 .name{font-size:18px;}
+#part01 ul li .desc00 .age{font-size:14px;}
+#part01 ul li .desc01{width:420px;height:70px;padding-top:30px;line-height:24px;}
+#part01 ul li .desc01 .detail{font-size:18px;}
+#part01 ul li .desc01 .title01{font-size:14px;}
+#part01 ul li .date{width:150px;line-height:100px;font-size:14px;}
+
+#part01 ul li:hover{border: 1px solid #4F60E3;}
+
+/*###################################   listpart   ###################################*/
+#listPart{width:100%;margin-top: 30px;margin-bottom: 10px;overflow: hidden;font-size: 14px;}
+#listPart .tab{width:540px;height:40px;}
+#listPart .tab li{width:178px;height:38px;line-height:38px;text-align:center; background-color: #eee;border:1px solid #ccc;float:left;}
+#listPart .tab li a{display: block;width: 100%;height: 100%;color:#ccc;}
+
+        #listPart .tab li:hover{border: 1px solid #999;}
+        #listPart .tab li:hover a{color: #999;}
+
+#listPart .tab li a.selected{background-color: #fff;color:#000;}
+
+#listPart .list{width:100%;border-top:1px solid #999;overflow: hidden;background-color: #fff;}
+#listPart .list li{width:100%;height:149px;border-bottom:1px solid #ccc;}
+#listPart .list li a{display: block;width: 100%;height: 100%;overflow: hidden;}
+
+        #listPart .list li a:hover{background-color: #F7FAFF;}
+
+#listPart .list li a p{height:100px;float:left;font-size: 16px;padding-top:50px;line-height: 24px;}
+#listPart .list li a .desc00{width:150px;text-align: center;}
+#listPart .list li a .desc01{width:450px;}
+#listPart .list li a .desc02{width:120px;}
+#listPart .list li a .desc03{width:120px;}
+#listPart .list li a .date{width:100px;line-height:58px;}

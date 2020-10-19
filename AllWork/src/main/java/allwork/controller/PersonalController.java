@@ -53,6 +53,7 @@ public class PersonalController {
 			int netfuScrapCnt = netfuScrapService.selectNetfuScrapCnt(commandMap.getMap());
 			
 			mv.addObject("memberMap", memberMap);
+			//log.info("########### memberMap : \n"+memberMap.toString());
 			mv.addObject("netfuItemResumeCnt", netfuItemResumeCnt);
 			mv.addObject("netfuItemCompanyCnt", netfuItemCompanyCnt);
 			mv.addObject("netfuScrapCnt", netfuScrapCnt);
@@ -69,6 +70,15 @@ public class PersonalController {
 	public ModelAndView recruitSearch(CommandMap commandMap) {
 		
 		ModelAndView mv = new ModelAndView("/personal/recruitSearch");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/recruitSearchByDuty")
+	public ModelAndView recruitSearchByDuty(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/personal/recruitSearchByDuty");
 		
 		return mv;
 	}

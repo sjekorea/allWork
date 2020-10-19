@@ -10,163 +10,13 @@
   <meta charset="utf-8"/>
   <title> 채용공고 등록 </title>
   <link rel="stylesheet" type="text/css" href="/css/header_company.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/company_01.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/footer.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/font.css"/>
   <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
   <link  rel="stylesheet" type="text/css" href="/css/all.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
-  <style>
-
-
-  body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
-
-  /*###################################   containerWrap  ###################################*/
-      #containerWrap{width:100%;margin: 10px auto 80px;overflow: hidden;}
-      #container{width:1280px;margin:0 auto;}
-
-  /*###################################   reg_leftPart   ###################################*/
-      #reg_leftPart{width:1060px;float:left;margin-right:10px;}
-
-      #reg_leftPart ul{width:405px;margin:0 auto;}
-      #reg_leftPart ul li{width:198px;height:48px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;float:left;}
-      #reg_leftPart ul li:last-child{margin-right:0px;}
-      #reg_leftPart ul li a{display:block;width:100%;height:100%;color:#666;}
-      #reg_leftPart ul li.reg_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
-      #reg_leftPart ul li.reg_ok a{color:#fff;}
-
-      /*###############################   regist00   ###############################*/
-      #regist00{width:1060px;margin-bottom:10px;}
-      #company_detail{width:1060px;overflow:hidden;background-color:#fff;margin-bottom:10px;}
-      #company_detail p{float:left;height: 126px;line-height:126px;}
-      #company_detail .company_name{width:220px;padding-left:40px;font-size:32px;}
-      #company_detail .company_hp{width:560px;}
-      #company_detail .company_logo{width:238px;height:124px;line-height:124px;text-align: center;border:1px solid #ccc;}
-
-      #detailArea{width:981px;padding:40px 39px 40px;background-color:#fff;}
-      #detailArea .detail_title{width:100%;height:30px;font-size:24px;font-family:"NotoSansKR-Thin";}
-      #detailArea .company_setting{width:110px;height:28px;line-height:28px;font-size:14px;margin-bottom:10px;margin-left:871px;text-align:center;border:1px solid #808495;}
-      #detailArea .tabelArea{width:100%;text-indent:10px;overflow: hidden;border-top:1px solid #808495;}
-      #detailArea .tabelArea p{float: left;}
-      #detailArea .tabelArea .table_title{width:120px;height:39px;line-height:40px;border-bottom:1px solid #ccc;background-color:#808495;color:#fff;}
-      #detailArea .tabelArea .table_desc{width:207px;height:39px;line-height:40px;border-bottom:1px solid #808495;}
-      #detailArea .tabelArea .table_desc01{width:860px;height:39px;line-height:40px;border-bottom:1px solid #808495;}
-
-                    #detailArea .company_setting:hover{background-color:#eee;}
-
-
-        fieldset{border:none;}
-        legend{font-size:24px;padding-bottom:20px;font-family:"NotoSansKR-Thin";}
-        #regForm01 div{width:100%;}
-        caption{display:none;}
-        tbody{width:100%;text-align:left;}
-        tr{width:100%;height:60px;font-size:16px;height:100px;}
-        th{width:180px;font-family:"NotoSansKR-Medium";}
-        td{width:800px;font-size:14px;}
-        td label{font-family:"NotoSansKR-Regular";}
-        td input[type="button"]{width:120px;height:40px;padding:0 10px;text-align:center;font-size:16px;
-                                background-color:#fff;
-                                border:1px solid #999;vertical-align:top;margin-right:20px;}
-        td input[type="text"]{width:800px;height:40px;background-color:#fff;border:1px solid #999;text-indent:10px;}
-        td input::placeholder{color:#ccc;font-size:16px;}
-        td input[type="checkbox"]{width:20px;height:20px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}
-        td input[type="radio"]{width:20px;height:20px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}
-
-        td span{display:inline-block;padding-right:20px;}
-        td select{width:200px;height:40px;border:1px solid #999;font-size:16px;text-indent:10px;color:#666;}
-        td textarea{width:100%;height:200px;}
-        td input[type="date"]{width:160px;height:40px;border:1px solid #999;font-size:14px;padding:0 10px;color:#666;}
-        .comment{color:red;font-size:12px;padding-top:5px;}
-        .necessary{padding-right:0;}
-
-        /*###############################   regist01   ###############################*/
-        #regist01{width:100%;overflow:hidden;margin-bottom:10px;}
-        #regForm01{width:980px;background-color:#fff;padding:40px;}
-
-
-        /*###############################   regist02   ###############################*/
-        #regist02{width:100%;overflow:hidden;margin-bottom:10px;}
-        #regForm02{width:980px;background-color:#fff;padding:40px;}
-        #regForm02 input[type="checkbox"]{margin-top:3px;}
-        #reg02_desc08_1{width:50px; height:20px;vertical-align:top;}
-        #reg02_desc12_2, #reg02_desc12_3{width:50px; height:20px;vertical-align:top;}
-
-        /*###############################   regist03   ###############################*/
-        #regist03{width:100%;overflow:hidden;margin-bottom:10px;}
-        #regForm03{width:980px;background-color:#fff;padding:40px;}
-        #regForm03 th{display:none;}
-        #regForm03 td{width:980px;}
-        #regForm03 p{width:100%;padding-bottom:20px;}
-
-        /*###############################   regist04   ###############################*/
-        #regist04{width:100%;overflow:hidden;margin-bottom:10px;}
-        #regForm04{width:980px;background-color:#fff;padding:40px;}
-        #regForm04 span{width:176px;margin-bottom:10px;padding-top:8px;}
-
-        /*###############################   regist05   ###############################*/
-        #regist05{width:100%;overflow:hidden;margin-bottom:10px;}
-        #regForm05{width:980px;background-color:#fff;padding:40px;}
-        #regForm05 tr{height:60px;}
-
-        #regForm05 .file_btn{border:none;}
-        #regForm05 input[type="file"]{position: absolute;
-                                      width: 0;
-                                      height: 0;
-                                      padding: 0;
-                                      overflow: hidden;
-                                      border: 0;
-                                  }
-        #regForm05 label.fileUp {font-family:"NotoSansKR-Medium";
-                          display: inline-block;
-                          height: 40px;
-                          line-height:40px;
-                          width:100px;
-                          text-align: center;
-                          color: #fff;
-                          vertical-align: middle;
-                          background-color: #4F60E3;
-                          cursor: pointer;
-                          border: 1px solid #ebebeb;
-
-                      }
-        #regForm05 #reg05_desc05{
-
-                          display: inline-block;
-                          width:240px;
-                          height: 40px;
-                          font-size:16px;
-                          color:#ccc;
-                          padding: 0 10px;
-                            vertical-align: middle;
-                            background-color: #f5f5f5;
-                          border: 1px solid #ebebeb;
-
-
-                        }
-
-        /*###############################   regist06   ###############################*/
-        #regist06{width:100%;overflow:hidden;margin-bottom:10px;}
-        #regForm06{width:980px;background-color:#fff;padding:40px;}
-        #regForm06 input[type="text"]{width:200px;}
-        #regForm06 tr{height:60px;}
-
-        #contact{width:100%;}
-        #contact tr{margin:10px 0;}
-        #contact span{padding:0 5px;}
-        #contact label{display: inline-block;width:160px;}
-        #contact input[type="text"]{width:160px;height:40px;margin:5px 0;}
-        #contact select{width:160px;}
-
-  /*###################################   reg_rightPart   ###################################*/
-      #reg_rightPart{width:210px;float:left;}
-      #reg_rightPart ul{width:100%;}
-      #reg_rightPart ul li{width:198px;height:78px;margin-bottom:5px;text-align:center;line-height:80px;background-color:#fff;border:1px solid #ccc;}
-      #reg_rightPart ul li a{display:block;width:100%;height:100%;color:#666;}
-      #reg_rightPart ul li.reg_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
-      #reg_rightPart ul li.reg_ok a{color:#fff;}
-
-
-
-	 </style>
+  <style></style>
   </head>
   <body>
     <div id="allworkWrap">
@@ -174,14 +24,14 @@
         <div id="topWrap">
           <h1><a href="/index.do" title="올워크홈">Allwork</a></h1>
           <ul class="topMenu">
-            <li><a href="#none" title="기업정보/관리">올워크&nbsp;&nbsp;<i class="fas fa-chevron-down"></i>&nbsp;&nbsp;|&nbsp;&nbsp;</a></li>
+            <li><a href="/index.do" title="기업정보/관리">올워크&nbsp;&nbsp;<i class="fas fa-chevron-down"></i>&nbsp;&nbsp;|&nbsp;&nbsp;</a></li>
             <li><a href="#none" title="고객센터">고객센터&nbsp;&nbsp;|&nbsp;&nbsp;</a></li>
             <li><a href="/companyHome.do" title="기업회원 홈">기업회원 홈</a></li>
           </ul>
         </div>
         <div id="headWrap">
           <div id="head">
-            <p><a href="/companyHome.do" title="기업홈">올워크</a></p>
+            <p><a href="/companyHome.do" title="기업홈">${SE_USER_NM}</a></p>
             <ul class="nav">
               <li><a href="/recruitInfoReg.do" title="공고등록">공고등록</a></li>
               <li><a href="#none" title="공고ㆍ지원자관리">공고ㆍ지원자관리</a></li>
@@ -202,7 +52,7 @@
           <div id="reg_leftPart">
             <div id="regist00">
               <div id="company_detail">
-                <p class="company_name">일마그나</p>
+                <p class="company_name">${SE_USER_NM}</p>
                 <p class="company_hp"><a href="#none" title="기업홈페이지">www.ilmagna.com</a></p>
                 <p class="company_logo">logo</p>
               </div>
@@ -316,22 +166,56 @@
                           <tr>
                             <th>근무지역<span class="necessary">*</span></th>
                             <td>
-            									<select id="reg02_desc05" name="reg02_desc05" title="1차지역선택">
-                                <option value="1차직무선택">1차직무선택</option>
-            										<option value="IT.인터넷.게임.모바일">IT.인터넷.게임.모바일</option>
-            										<option value="전문직.금융.세무.법무">전문직.금융.세무.법무</option>
-            										<option value="생산.제조.기계.산업">생산.제조.기계.산업</option>
-            										<option value="건설.인테리어.부동산">건설.인테리어.부동산</option>
-            										<option value="유통.무역.운수">유통.무역.운수</option>
-                                <option value="경영.기획.사무">경영.기획.사무</option>
-                                <option value="영업.판매">영업.판매</option>
-                                <option value="교육.서비스">교육.서비스</option>
+            									<select id="reg02_desc05" name="reg02_desc05" title="시도선택">
+                                <option value="시도선택">시도선택</option>
+            										<option value="전체">전국</option>
+            										<option value="서울">서울</option>
+            										<option value="인천">인천</option>
+            										<option value="경기">경기</option>
+            										<option value="광주">광주</option>
+                                <option value="대전">대전</option>
+                                <option value="대구">대구</option>
+                                <option value="부산">부산</option>
+                                <option value="세종">세종</option>
+            										<option value="울산">울산</option>
+            										<option value="강원">강원</option>
+            										<option value="경북">경북</option>
+            										<option value="경남">경남</option>
+                                <option value="전남">전남</option>
+                                <option value="전북">전북</option>
+                                <option value="충남">충남</option>
+                                <option value="충북">충북</option>
+                                <option value="제주">제주</option>
+                                <option value="해외">해외</option>
             									</select>
-                              <select id="reg02_desc05_1" name="reg02_desc05_1" title="2차지역선택">
-            										<option value="2차직무선택">2차직무선택</option>
-            									</select>
-                              <select id="reg02_desc05_2" name="reg02_desc05_2" title="3차지역선택">
-            										<option value="3차직무선택">3차직무선택</option>
+                              <select id="reg02_desc05_1" name="reg02_desc05_1" title="시군선택">
+                                <option value="시군선택">시구군선택</option>
+                                <option value="서울전체">서울전체</option>
+            										<option value="강남구">강남구</option>
+            										<option value="강동구">강동구</option>
+            										<option value="강북구">강북구</option>
+            										<option value="강서구">강서구</option>
+                                <option value="관악구">관악구</option>
+                                <option value="광진구">광진구</option>
+                                <option value="구로구">구로구</option>
+                                <option value="금천구">금천구</option>
+            										<option value="노원구">노원구</option>
+            										<option value="도봉구">도봉구</option>
+            										<option value="동대문구">동대문구</option>
+            										<option value="동작구">동작구</option>
+                                <option value="마포구">마포구</option>
+                                <option value="서대문구">서대문구</option>
+                                <option value="서초구">서초구</option>
+                                <option value="성동구">성동구</option>
+                                <option value="성북구">성북구</option>
+                                <option value="송파구">송파구</option>
+                                <option value="양천구">양천구</option>
+                                <option value="영등포구">영등포구</option>
+                                <option value="용산구">용산구</option>
+                                <option value="은평구">은평구</option>
+                                <option value="종로구">종로구</option>
+                                <option value="중구">중구</option>
+                                <option value="중랑구">중랑구</option>
             									</select>
                               <input id="reg02_desc05_3" type="button" name="reg02_desc05_3" value="+ 추가"/>
                               <span class="comment">최대 3개까지 선택 가능</span>
@@ -398,8 +282,10 @@
                             <th>급여조건<span class="necessary">*</span></th>
                             <td>
                               <select id="res02_desc10" name="res02_desc10" title="연봉/시급선택">
-            										<option value="연봉/시급선택">연봉/시급선택</option>
             										<option value="연봉">연봉</option>
+                                <option value="시급">월급</option>
+                                <option value="시급">주급</option>
+                                <option value="시급">일급</option>
                                 <option value="시급">시급</option>
             									</select>
             									<select id="reg02_desc10_1" name="reg02_desc10_1" title="연봉선택">
@@ -425,11 +311,11 @@
                             <td>
             									<select id="reg02_desc11" name="reg02_desc11" title="학력 선택">
             										<option value="학력 선택">학력 선택</option>
-            										<option value="고등학교졸업">고등학교졸업</option>
-            										<option value="대학졸업(2,3년)">대학졸업(2,3년)</option>
-            										<option value="대학졸업(4년)">대학졸업(4년)</option>
-            										<option value="석사">석사</option>
-                                <option value="박사">박사</option>
+            										<option value="고등학교졸업">고등학교졸업 이상</option>
+            										<option value="대학졸업(2,3년)">대학졸업(2,3년) 이상</option>
+            										<option value="대학졸업(4년)">대학졸업(4년) 이상</option>
+            										<option value="석사">석사 이상</option>
+                                <option value="박사">박사 이상</option>
             									</select>
                             </td>
                           </tr>

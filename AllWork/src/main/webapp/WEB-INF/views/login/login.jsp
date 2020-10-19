@@ -17,58 +17,13 @@
  <head>
   <meta charset="utf-8"/>
   <title> 개인회원 로그인 </title>
-  <link rel="stylesheet" type="text/css" href="/css/header.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/header_mini.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/login_01.css"/>
   <link rel="stylesheet" type="text/css" href="/css/footer_white.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/font.css"/>
   <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
   <link  rel="stylesheet" type="text/css" href="/css/all.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
-  <style>
-
-
-  /*###################################   Header    ###################################*/
-  #allworkWrap{width:100%;font-family:"NotoSansKR-Regular";}
-
-  /*###################################   topmenuWrap    ###################################*/
-  #topmenuWrap{width:100%;overflow: hidden;border-bottom:1px solid #ccc;}
-  #topmenuWrap .topMenu{width:1280px;height:40px;line-height:40px;text-align:right;font-size:12px;margin: 0 auto;}
-  #topmenuWrap .topMenu li{display: inline-block;}
-  #topmenuWrap .topMenu .allworkHome{font-family:"NotoSansKR-Bold";}
-
-  /*###################################   loginWrap    ###################################*/
-  #loginWrap{width:100%;overflow:hidden;}
-  #loginArea{width:1280px;margin: 0 auto;}
-  #loginArea .logintext{width:500px;margin: 0 auto;text-align:center;padding-top: 100px;padding-bottom:50px;font-size:20px;line-height: 46px;color:#666;}
-  #loginArea .logintext h1{font-size:45px;font-family:"NotoSansKR-Bold";color:#4F60E3;}
-  #loginArea Form{width:500px;margin: 0 auto;}
-  #loginArea fieldset{width:100%;border:none;}
-  #loginArea legend{display:none;}
-  #loginArea .tab{width:100%;font-size:14px;}
-  #loginArea .tab span{display:inline-block;padding-right:10px;}
-  #loginArea .loginBox{width:100%;height:300px;}
-  #loginArea .loginBox p{width:498px;height:48px;border:1px solid #ccc;margin:10px 0;}
-  #loginArea .loginBox p input{display:block;width:100%;height:100%;border:none;background-color:#fff;text-indent:10px;}
-  #loginArea .loginBox p input::placeholder{color:#ccc;font-size:18px;}
-  #loginArea .loginBox p.button{border:none;margin-bottom:0;}
-  #loginArea .loginBox p.button input{display:inline;;width:500px;height:50px;background-color:#4F60E3;color:#fff;font-size:18px;}
-
-  #loginArea .loginBox p.checkbox{width:50%;height:50px;text-align:left;border:none;float:left;}
-  #loginArea .loginBox p.checkbox input{display:inline;;width:20px;height:20px;vertical-align:bottom;}
-  #loginArea .loginBox p.checkbox label{font-size:12px;padding-left:10px;}
-  #loginArea .loginBox p.findArea{width:50%;height:50px;text-align:right;border:none;font-size:12px;float:left;}
-  #loginArea .loginBox p.findArea .register a{color:#4F60E3;font-family:"NotoSansKR-Bold";}
-
-  #loginArea .snsLogin{width:900px;height: 40px;margin:0 auto 100px;}
-  #loginArea .snsLogin li{width:288px;height:38px;border:1px solid #333;margin-right:10px;line-height:38px;text-align: center;float:left;}
-  #loginArea .snsLogin li:last-child{margin-right:0;}
-
-              #loginArea .snsLogin li:hover{border:1px solid #ccc}
-
-  #loginArea .snsLogin li a{display:block;width:100%;height:100%;font-size:12px;}
-  #loginArea .snsLogin li a img{width:20px;vertical-align:middle;}
-
-
-	 </style>
 </head>
 
 <body>
@@ -100,7 +55,7 @@
 							<p class="findArea">
 								<span><a href="#none" title="아이디찾기">아이디찾기&nbsp;&nbsp;|&nbsp;</a></span>
 								<span><a href="#none" title="비밀번호찾기">비밀번호찾기&nbsp;&nbsp;|&nbsp;</a></span>
-								<span class="register"><a href="#none" title="회원가입">회원가입</a></span>
+								<span class="register"><a href="javascript:memberJoin();" title="회원가입">회원가입</a></span>
 							</p>
 						</div>
 					</fieldset>
@@ -237,7 +192,16 @@
 		ajax('post', '/loginProcess.ajax', param, callback);
 	}
 	
+	
+	function memberJoin(){
+		 if($("input:radio[id='company_login']").is(':checked')){
+			 location.href = "/companyJoin.do";
+		 }else{
+			 location.href = "/personalJoin.do";
+		 }
+	}
 </script>
 
 
 </html>
+
