@@ -1,0 +1,49 @@
+body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
+
+/*###################################   containerWrap  ###################################*/
+  #containerWrap{width:100%;margin-bottom:40px;overflow: hidden;}
+
+#container{width:1280px;margin:0 auto;}
+
+#menuTree ul .menu03 .subMenu03_03{text-decoration: underline;}
+
+/*###################################   rightpart   ###################################*/
+#rightPart{width:1060px;height:100%;margin-left:20px;margin-top:20px;float: left;background-color:#fff;
+  border:1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;}
+
+/*###################################   listpart   ###################################*/
+#listPart{width:960px;margin:30px auto 0;overflow: hidden;font-size: 14px;}
+#listPart h4{width:100%;height:30px;font-size:18px;}
+#listPart .comment{width:100%;height:26px;text-align: right;font-size:12px;color:#4F60E3;}
+
+/*###################################   listpart   ###################################*/
+#listPart .list{width:100%;border-top:1px solid #999;overflow: hidden;}
+#listPart .list li{width:100%;height:150px;border-bottom:1px solid #ccc;}
+input{width:16px; height: 16px;}
+
+#listPart .list li div{float:left;line-height:50px;text-align: center;line-height:150px;font-size:14px;}
+#listPart .list li .desc01{width:200px;height:100%;}
+#listPart .list li .desc02{width:610px;height:100%;text-align:left;}
+#listPart .list li .desc03{width:150px;height:100%;}
+
+  #listPart .list .list_title{width:100%;height:50px;background-color:#EDF0F5;}
+  #listPart .list .list_title div{float:left;height:100%;line-height:50px;text-align: center;}
+
+.numareaWrap{width:100%;overflow: hidden;background-color:#fff;}
+.numArea{width:30px;height:30px;line-height:28px;padding-top:30px;padding-bottom:30px;text-align: center;margin:0 auto;}
+.numArea li{width:30px;height:30px;
+  border:1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float:left;}
+.numArea li a{color:#ccc;}
+
+              .numArea li:hover{border: 1px solid #666;}
+              .numArea li:hover a{color:#666;}
+
+.numArea .p01{border: 1px solid #666;}
+.numArea .p01 a{color:#666;}

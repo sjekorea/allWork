@@ -12,27 +12,55 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 
 /*###################################   containerWrap  ###################################*/
     #containerWrap{width:100%;overflow: hidden;}
-    #container{width:1280px;margin:10px auto 0;}
+    #container{width:1280px;overflow: hidden;margin:10px auto 80px;}
 
-/*###################################   reg_leftPart   ###################################*/
-    #res_leftPart{width:1060px;float:left;margin-right:10px;}
+    /*###################################   leftpart   ###################################*/
+  #leftcontainer{width:200px;height:100%;margin-right:20px;float:left;}
+  #leftcontainer div{float:left;}
 
-    #res_leftPart ul{width:610px;margin:30px auto 0;}
-    #res_leftPart ul li{width:198px;height:48px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;float:left;}
-    #res_leftPart ul li:last-child{margin-right:0px;}
-    #res_leftPart ul li a{display:block;width:100%;height:100%;color:#666;}
-    #res_leftPart ul li.res_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
-    #res_leftPart ul li.res_ok a{color:#fff;}
+    /*###################################   res_leftPart   ###################################*/
+       #res_leftPart{width:200px;}
+        #res_leftPart ul{width:100%;}
+        #res_leftPart ul li{width:198px;height:48px;margin-bottom:5px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;}
+        #res_leftPart ul li a{display:block;width:100%;height:100%;color:#666;}
+        #res_leftPart ul li.res_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
+        #res_leftPart ul li.res_ok a{color:#fff;}
+
+/*###################################   res_rightPart   ###################################*/
+#rightcontainer{width:1060px;height:100%;margin:20px 0;float:left;}
+
+    #res_rightPart{width:100%;height:100%;}
+
+    #res_rightPart ul{width:610px;margin:30px auto 0;}
+    #res_rightPart ul li{width:200px;height:50px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;
+      border:1px solid #ccc;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      float:left;}
+    #res_rightPart ul li:last-child{margin-right:0px;}
+    #res_rightPart ul li a{display:block;width:100%;height:100%;color:#666;}
+    #res_rightPart ul li.res_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
+    #res_rightPart ul li.res_ok a{color:#fff;}
 
     /*###############################   resume00   ###############################*/
     #resume00{width:980px;margin-bottom:10px;padding:40px;overflow: hidden;background-color:#fff;}
 
-    #resume00 #imgArea{width:148px;height:198px;float: left;margin-right:20px;border:1px solid #ccc;}
-    #resume00 #imgArea p{width:100%;height:100%;}
+    #resume00 #imgArea{width:150px;height:200px;float: left;margin-right:20px;
+      border:1px solid #ccc;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;}
+    #resume00 #imgArea p{width:100%;height:100%;overflow: hidden;}
+    #resume00 #imgArea p img{width:100%;}
 
     #resume00 #detailArea{width:810px;float: left;}
     #resume00 #detailArea .detail_title{width:100%;padding-top:9px;height:30px;font-size:24px;font-family:"NotoSansKR-Thin";}
-    #resume00 #detailArea .personal_setting{width:110px;height:28px;line-height:28px;font-size:14px;margin-bottom:10px;margin-left:700px;text-align:center;border:1px solid #808495;}
+    #resume00 #detailArea .personal_setting{width:110px;height:28px;line-height:28px;font-size:14px;margin-bottom:10px;margin-left:700px;text-align:center;
+      border:1px solid #808495;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;}
     #resume00 #detailArea .tabelArea{width:100%;text-indent:10px;overflow: hidden;border-top:1px solid #808495;}
     #resume00 #detailArea .tabelArea p{float: left;}
     #resume00 #detailArea .tabelArea .table_title{width:120px;height:39px;line-height:40px;border-bottom:1px solid #ccc;background-color:#808495;color:#fff;}
@@ -208,15 +236,3 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 
 
                     }
-
-
-
-
-
-/*###################################   reg_rightPart   ###################################*/
-    #res_rightPart{width:210px;float:left;}
-    #res_rightPart ul{width:100%;}
-    #res_rightPart ul li{width:198px;height:78px;margin-bottom:5px;text-align:center;line-height:80px;background-color:#fff;border:1px solid #ccc;}
-    #res_rightPart ul li a{display:block;width:100%;height:100%;color:#666;}
-    #res_rightPart ul li.res_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
-    #res_rightPart ul li.res_ok a{color:#fff;}

@@ -21,10 +21,10 @@ public class NetfuMemberController {
 	private NetfuMemberService netfuMemberService;
 	
 	
-	@RequestMapping(value="/personalJoin.do")
+	@RequestMapping(value="/personJoin.do")
 	public ModelAndView personalJoin(CommandMap commandMap) {
 		
-		ModelAndView mv = new ModelAndView("/personal/personalJoin");
+		ModelAndView mv = new ModelAndView("/person/personJoin");
 		
 		return mv;
 	}

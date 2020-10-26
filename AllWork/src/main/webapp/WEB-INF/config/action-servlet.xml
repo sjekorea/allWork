@@ -71,7 +71,9 @@
 			p:order="0" 
 			p:viewClass="org.springframework.web.servlet.view.JstlView" 
 			p:prefix="/WEB-INF/views" 
-			p:suffix=".jsp" />
+			p:suffix=".jsp"
+			p:contentType="text/html;charset=UTF-8" />
+			
 			
 			
 	<context:annotation-config />

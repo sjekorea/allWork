@@ -6,15 +6,68 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #containerWrap{width:100%;margin: 10px auto 80px;overflow: hidden;}
     #container{width:1280px;margin:0 auto;}
 
-/*###################################   reg_leftPart   ###################################*/
-    #reg_leftPart{width:1060px;float:left;margin-right:10px;}
+    /*###################################   leftpart   ###################################*/
+    #leftcontainer{width:200px;height:100%;margin:20px 20px 0 0;float:left;}
 
-    #reg_leftPart ul{width:405px;margin:0 auto;}
-    #reg_leftPart ul li{width:198px;height:48px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;float:left;}
-    #reg_leftPart ul li:last-child{margin-right:0px;}
+    #leftPart{width:200px;height:100%;}
+    #menuTree{width:198px;overflow: hidden;background-color: #fff;
+      border: 1px solid #ccc;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;}
+    #menuTree p{width: 198px;height:78px;line-height: 78px;text-align: center;
+      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;}
+    #menuTree p a{display: block;width: 100%;height:100%;color:#4F60E3;}
+
+        #menuTree p:hover{background-color: #F7FAFF;}
+
+    #menuTree ul{width:100%;overflow: hidden;padding:20px 0;}
+    #menuTree ul .gnb{width:100%;line-height: 22px;text-indent:20px;padding-top:10px;padding-bottom: 10px;}
+    #menuTree ul .gnb a{font-size: 16px;}
+    #menuTree ul .subMenu{width:100%;text-indent:40px;padding-top:5px;}
+    #menuTree ul .subMenu li{width:100%;}
+    #menuTree ul .subMenu li a{color:#666;font-size:14px;}
+
+/*###################################   reg_leftPart   ###################################*/
+    #reg_leftPart{width:200px;margin-top:20px;}
+    #reg_leftPart ul{width:100%;}
+    #reg_leftPart ul li{width:200px;height:50px;margin-bottom:5px;text-align:center;line-height:50px;background-color:#fff;
+      border:1px solid #ccc;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;}
     #reg_leftPart ul li a{display:block;width:100%;height:100%;color:#666;}
-    #reg_leftPart ul li.reg_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
+    #reg_leftPart ul li.reg_ok{background-color:#4F60E3;
+      border:1px solid #4F60E3;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;}
     #reg_leftPart ul li.reg_ok a{color:#fff;}
+
+/*###################################   reg_rightPart   ###################################*/
+#rightcontainer{width:1060px;height:100%;margin:20px 0;float:left;}
+
+    #reg_rightPart{width:1060px;}
+
+    #reg_rightPart ul{width:405px;margin:0 auto;}
+    #reg_rightPart ul li{width:198px;height:48px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;
+      border:1px solid #ccc;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      float:left;}
+    #reg_rightPart ul li:last-child{margin-right:0px;}
+    #reg_rightPart ul li a{display:block;width:100%;height:100%;color:#666;}
+    #reg_rightPart ul li.reg_ok{background-color:#4F60E3;
+      border:1px solid #4F60E3;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;}
+    #reg_rightPart ul li.reg_ok a{color:#fff;}
 
     /*###############################   regist00   ###############################*/
     #regist00{width:1060px;margin-bottom:10px;}
@@ -22,7 +75,12 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #company_detail p{float:left;height: 126px;line-height:126px;}
     #company_detail .company_name{width:220px;padding-left:40px;font-size:32px;}
     #company_detail .company_hp{width:560px;}
-    #company_detail .company_logo{width:238px;height:124px;line-height:124px;text-align: center;border:1px solid #ccc;}
+    #company_detail .company_logo{width:240px;height:126px;overflow: hidden;line-height:124px;text-align: center;
+      border:1px solid #ccc;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;}
+    #company_detail .company_logo img{width:100%;}
 
     #detailArea{width:981px;padding:40px 39px 40px;background-color:#fff;}
     #detailArea .detail_title{width:100%;height:30px;font-size:24px;font-family:"NotoSansKR-Thin";}
@@ -137,11 +195,3 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
       #contact label{display: inline-block;width:160px;}
       #contact input[type="text"]{width:160px;height:40px;margin:5px 0;}
       #contact select{width:160px;}
-
-/*###################################   reg_rightPart   ###################################*/
-    #reg_rightPart{width:210px;float:left;}
-    #reg_rightPart ul{width:100%;}
-    #reg_rightPart ul li{width:198px;height:78px;margin-bottom:5px;text-align:center;line-height:80px;background-color:#fff;border:1px solid #ccc;}
-    #reg_rightPart ul li a{display:block;width:100%;height:100%;color:#666;}
-    #reg_rightPart ul li.reg_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
-    #reg_rightPart ul li.reg_ok a{color:#fff;}

@@ -1,0 +1,26 @@
+/*###################################   Header    ###################################*/
+#allworkWrap{width:100%;font-family:"NotoSansKR-Regular";}
+  #headerWrap{width:100%;height:100px;background-color:#000;}
+    #topWrap{width:1280px;height:40px;margin:0 auto;}
+    #topWrap h1{width:100px;height:40px;line-height:30px;float: left;}
+    #topWrap h1 a{color:#fff;font-size:20px;}
+
+    #topWrap ul{width:1180px;height:100%;font-size: 12px;line-height: 40px;text-align: right;float: left;}
+    #topWrap ul li{display: inline-block;}
+    #topWrap ul li a{color:#fff;}
+
+  #headWrap{width:100%;height:60px;border-bottom:1px solid #ccc;background-color: #fff;}
+    #head{width:1280px;height:100%;margin:0 auto;}
+    #head p{width:80px;height:100%;line-height:60px;font-size:24px;float:left;}
+    #head .nav{width:1040px;height:100%;margin-left:40px;float:left;}
+    #head .nav li{display: inline-block;text-align: center;font-size:18px;line-height: 60px;padding: 0 20px;}
+
+            #head .nav li:hover{background-color:#4F60E3;}
+            #head .nav li:hover a{color:#fff;}
+
+    #head .link01{width:120px;height:60px;font-size:14px;text-align: center;line-height:60px;background-color:#4F60E3;float:left;
+      border-left:1px solid #ccc;border-right:1px solid #ccc;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;}
+    #head .link01 a{color:#fff;}

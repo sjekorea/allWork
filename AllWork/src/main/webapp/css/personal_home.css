@@ -1,6 +1,6 @@
 body{font-family:"NotoSansKR-Regular";}
 /*###################################   containerWrap  ###################################*/
-    #containerWrap{width:1280px;margin: 0 auto;overflow: hidden;}
+    #containerWrap{width:1280px;margin:0 auto;overflow: hidden;}
 /*###################################   leftpart   ###################################*/
       #leftPart{width:220px;height:100%;float: left;}
       #myBox{width:100%;height:300px;background-color:#F4F8FC;overflow: hidden;}
@@ -24,7 +24,7 @@ body{font-family:"NotoSansKR-Regular";}
       #menuTree ul .payService{height:64px;background-color: #FFCE00;}
       #menuTree ul .payService li a{color:#666;}
       #menuTree ol{width:100%;font-size: 14px;text-indent:40px;}
-      #menuTree ol a{color:#999;}
+      #menuTree ol a{color:#666;}
 
 /*###################################   rightpart   ###################################*/
 #rightPart{width:1000px;height:100%;margin-left:60px;float: left;}
@@ -48,7 +48,11 @@ body{font-family:"NotoSansKR-Regular";}
 #recommendPart{width:100%;margin-top: 30px;overflow: hidden;}
 #recommendPart h4{width:100%;padding-bottom:10px;}
 #recommendPart ul{width:100%;height:140px;}
-#recommendPart li{width:198px;height:138px;border: 1px solid #ccc;float:left;}
+#recommendPart li{width:200px;height:140px;float:left;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;}
 
       #recommendPart li:hover{border: 1px solid #666;}
 
@@ -65,7 +69,11 @@ body{font-family:"NotoSansKR-Regular";}
 /*###################################   listpart   ###################################*/
 #listPart{width:100%;margin-top: 30px;margin-bottom: 100px;overflow: hidden;font-size: 14px;}
 #listPart .tab{width:540px;height:40px;}
-#listPart .tab li{width:178px;height:38px;line-height:38px;text-align:center; background-color: #eee;border:1px solid #ccc;float:left;}
+#listPart .tab li{width:180px;height:40px;line-height:38px;text-align:center; background-color: #eee;float:left;
+  border:1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;}
 #listPart .tab li a{display: block;width: 100%;height: 100%;color:#ccc;}
 
         #listPart .tab li:hover{border: 1px solid #999;}

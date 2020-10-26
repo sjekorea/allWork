@@ -15,7 +15,7 @@ import allwork.dao.TestInfoDao;
 @Service("testInfoService")
 public class TestInfoServiceImpl implements TestInfoService{
 
-Logger log = Logger.getLogger(this.getClass());
+	Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource(name="testInfoDao")
 	private TestInfoDao testInfoDao;

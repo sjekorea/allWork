@@ -1,0 +1,161 @@
+body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
+/*###################################   containerWrap  ###################################*/
+#containerWrap{width:1280px;margin: 20px auto 100px;overflow: hidden;}
+
+/*###################################   leftpart   ###################################*/
+#leftPart{width:200px;height:100%;float: left;}
+#menuTree{width:198px;overflow: hidden;background-color: #fff;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;}
+#menuTree p{width: 198px;height:78px;line-height: 78px;text-align: center;border-bottom: 1px solid #ccc;}
+#menuTree p a{display: block;width: 100%;height:100%;color:#4F60E3;}
+
+    #menuTree p:hover{background-color: #F7FAFF;}
+
+#menuTree ul{width:100%;overflow: hidden;padding:20px 0;}
+#menuTree ul .gnb{width:100%;line-height: 22px;text-indent:20px;padding-top:10px;padding-bottom: 10px;}
+#menuTree ul .gnb a{font-size: 16px;}
+#menuTree ul .subMenu{width:100%;text-indent:40px;padding-top:5px;}
+#menuTree ul .subMenu li{width:100%;}
+#menuTree ul .subMenu li a{color:#666;font-size:14px;}
+#menuTree ul .subMenu .subMenu01{text-decoration: underline;}
+
+
+/*###################################   rightpart   ###################################*/
+#rightPart{width:1060px;margin-left:20px;float: left;}
+
+/*###################################   part01/추천인재  ###################################*/
+#part01{width:1060px;height:250px;margin-bottom:20px;}
+#part01 ul.adPart{width:1060px;height:100%;}
+#part01 ul.adPart li{width:250px;height:250px;background-color: #fff;
+  border: 1px solid #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-right:19px;float: left;}
+#part01 ul.adPart li:last-child{margin-right:0;}
+#part01 ul.adPart li a{display: block;width:100%;height:100%;overflow: hidden;}
+#part01 ul.adPart li a div{width:208px;height:208px;padding:20px;}
+#part01 ul.adPart li a div p{width:100%;font-size:20px;padding-bottom:20px;}
+#part01 ul.adPart li a div .star{text-align: right;color:#eee;}
+#part01 ul.adPart li a div .desc01{font-size:14px;padding-bottom:10px;}
+#part01 ul.adPart li a div .desc02{font-size:10px;color:#4F60E3;}
+#part01 ul.adPart li a div .desc03{font-size:16px;font-family:"NotoSansKR-Bold"; }
+#part01 ul.adPart li a div .desc04{font-size:10px;color:#999;}
+
+              #part01 ul li:hover{border: 1px solid #4F60E3;}
+
+/*###################################   part02/검색  ###################################*/
+#part02{width:1060px;margin-top:10px;overflow: hidden;}
+#part02 form{width:1060px;height:70px;}
+#part02 form fieldset{border:none;}
+#part02 form fieldset legend{display: none;}
+#part02 form fieldset div{width:100%;height:20px;margin-bottom:10px;}
+#part02 form fieldset div input{width:20px;height:20px;}
+#part02 form fieldset div label{font-size:14px;padding-left:10px;padding-right:30px;vertical-align:top;}
+#part02 form fieldset p{float: left;width:310px;height:40px;background-color: #fff;
+  border:1px solid #999;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;}
+#part02 form fieldset p input{border:none;width:308px;height:38px;text-indent: 10px;}
+#part02 form fieldset p.btnBox{width: 128px;height:40px;border:none;}
+#part02 form fieldset p.btnBox input{width: 128px;height:40px;background-color:#4F60E3;color:#fff;font-size:16px;}
+
+/*###################################   part03/상세검색  ###################################*/
+#part03{width:1060px;margin-top:10px;overflow: hidden;}
+#row01{width:1059px;text-indent:20px;line-height:50px;background-color:#fff;
+  border-top:1px solid #ccc;
+  border-left:1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float:left;}
+#row01 dl{width:211px;
+  border-right:1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float:left;}
+#row01 dl dt{width:100%;height:50px;background-color:#eee;
+  border-bottom:1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+#row01 dl dd{width:100%;height: 280px;overflow:scroll;}
+#row01 dl dd div{width:100%;height: 100%;}
+#row01 dl dd div ul{width:100%;height: 100%;}
+#row01 dl dd div ul li{width:100%;height:30px;}
+#row01 dl dd div ul li input{display: block;width: 100%;height:30px;line-height: 30px;border:none;background-color:#fff;
+                             text-align:left;text-indent:20px;font-size:14px;}
+
+                             #row01 dl:last-child{width:214px;}
+
+#row02{width:1058px;text-indent:20px;line-height:49px;background-color:#fff;
+  border-top:1px solid #ccc;
+  border-left:1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float:left;}
+#row02 dl{width:210px;
+  border-right:1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float:left;}
+#row02 dl dt{width:100%;height:48px;background-color:#eee;
+  border-bottom:1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+#row02 dl dd{width:100%;height: 280px;overflow:scroll;}
+#row02 dl dd div{width:100%;height: 100%;}
+#row02 dl dd div ul{width:100%;height: 100%;}
+#row02 dl dd div ul li{width:100%;height:30px;}
+#row02 dl dd div ul li input{display: block;width: 100%;height:30px;line-height: 30px;border:none;background-color:#fff;
+                             text-align:left;text-indent:20px;font-size:14px;}
+
+                          #row02 dl:last-child{width:217px;}
+                          #row02 dd{display: none;}
+
+
+/*###################################   listpart   ###################################*/
+#listPart{width:100%;margin-top: 40px;overflow: hidden;font-size: 14px;}
+#listPart h4{width:100%;font-size:18px;text-indent:40px;margin-bottom: 10px;}
+#listPart .title{width:1060px;height:40px;line-height: 40px;background-color:#fff;color:#333;text-align: center;border-bottom:1px solid #000;}
+#listPart .title li{float:left;}
+#listPart .title li.desc01{width:180px;}
+#listPart .title li.desc02{width:420px;}
+#listPart .title li.desc03{width:160px;text-align: left;}
+#listPart .title li.desc04{width:160px;text-align: left;}
+#listPart .title li.desc05{width:100px;}
+
+
+
+
+#listPart .list{width:100%;overflow: hidden;background-color:#fff;}
+#listPart .list li{width:1058px;height:148px;border:1px solid #fff;border-bottom:1px solid #ccc;}
+#listPart .list li a{display: block;width: 100%;height: 100%;overflow: hidden;}
+
+        #listPart .list li:hover{border:1px solid #4F60E3;}
+
+#listPart .list li a p{height:100px;float:left;font-size: 16px;padding-top:50px;line-height: 24px;}
+#listPart .list li a .desc00{width:180px;text-align: center;}
+#listPart .list li a .desc01{width:420px;}
+#listPart .list li a .desc02{width:160px;}
+#listPart .list li a .desc03{width:160px;}
+#listPart .list li a .date{width:100px;line-height:58px;text-align: center;}
+
+#listPart .numareaWrap{width:100%;overflow: hidden;background-color:#fff;}
+#listPart .numArea{width:360px;height:30px;line-height:28px;padding-top:30px;padding-bottom:30px;text-align: center;margin:0 auto;}
+#listPart .numArea li{width:28px;height:28px;border:1px solid #ccc;float:left;}
+#listPart .numArea li a{color:#ccc;}
+
+                #listPart .numArea li:hover{border: 1px solid #666;}
+                #listPart .numArea li:hover a{color:#666;}
+
+#listPart .numArea .p01{border: 1px solid #666;}
+#listPart .numArea .p01 a{color:#666;}

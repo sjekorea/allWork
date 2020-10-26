@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netfuCate">
+	
+	<select id="selectNetfuCateList" parameterType="hashmap" resultType="allwork.vo.NetfuCateVo">
+		select * from netfu_cate
+		where 1=1
+			and type = #{type}
+			and p_code = #{pCode}
+		order by rank
+	</select>
+	
+	
+	<select id="selectNetfuCateMap" parameterType="hashmap" resultType="allwork.vo.NetfuCateVo">
+		select name from netfu_cate
+		where 1=1
+			and code = #{code}
+		order by rank
+	</select>
+	
+	
+	
+
+</mapper>

@@ -8,16 +8,20 @@ body{background-color:#EDF0F5;font-family:"NotoSansKR-Regular";}
   #containerWrap{width:1280px;margin:0 auto;overflow: hidden;}
 
   /*###################################   leftpart   ###################################*/
-  #rec_left{width:200px;height:100%;float: left;margin-top:20px;}
-  #menuTree{width:198px;height:387px;background-color: #fff;border: 1px solid #ccc;}
-  #menuTree p{width: 198px;height:78px;line-height: 78px;text-align: center;border-bottom: 1px solid #ccc;}
+  #rec_left{width:200px;height:100%;float: left;margin:20px 0;}
+  #menuTree{width:198px;overflow: hidden;background-color: #fff;border: 1px solid #ccc;}
+  #menuTree p{width: 198px;height:78px;line-height: 78px;text-align: center;
+    border-bottom: 1px solid #ccc;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;}
   #menuTree p a{display: block;width: 100%;height:100%;color:#4F60E3;}
 
       #menuTree p:hover{background-color: #F7FAFF;}
 
-  #menuTree ul{width:100%;height:380px;padding-top:20px;}
+  #menuTree ul{width:100%;overflow: hidden;padding:20px 0;}
   #menuTree ul .menu{width:100%;line-height: 22px;text-indent:30px;padding-top:10px;padding-bottom: 10px;}
-  #menuTree ul .menu a{font-size: 16px;font-family:"NotoSansKR-Medium";}
+  #menuTree ul .menu a{font-size: 16px;}
   #menuTree ul .subMenu{width:100%;text-indent:50px;padding-top:5px;}
   #menuTree ul .subMenu li{width:100%;}
   #menuTree ul .subMenu li a{color:#888;font-size:14px;font-family:"NotoSansKR-Regular";}
@@ -53,9 +57,23 @@ body{background-color:#EDF0F5;font-family:"NotoSansKR-Regular";}
     h4 span{font-size:15px;color:#666;padding-left:10px;}
     #recruitment{width:100%;overflow: hidden;}
     #recruitment h4{width:100%;font-size:18px;padding:20px 0 10px;}
-    #recruitment #rec_row01{width:1058px;text-indent:20px;line-height:50px;background-color:#fff;border:1px solid #ccc;float:left;}
-    #recruitment #rec_row01 dl{width:175px;border-right:1px solid #ccc;float:left;}
-    #recruitment #rec_row01 dl dt{width:100%;height:49px;background-color:#eee;border-bottom:2px solid #000;}
+    #recruitment #rec_row01{width:1058px;text-indent:20px;line-height:50px;background-color:#fff;
+      border:1px solid #ccc;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      float:left;}
+    #recruitment #rec_row01 dl{width:175px;
+      border-right:1px solid #ccc;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      float:left;}
+    #recruitment #rec_row01 dl dt{width:100%;height:49px;background-color:#eee;
+      border-bottom:2px solid #000;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;}
     #recruitment #rec_row01 dl dt a{display:block;width:100%;height:100%;color:#333;}
     #recruitment #rec_row01 dl dd{width:100%;height: 280px;overflow: scroll;}
     #recruitment #rec_row01 dl dd div{width:100%;height: 100%;}

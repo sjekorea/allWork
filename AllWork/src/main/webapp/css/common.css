@@ -1,0 +1,14 @@
+/*###################################   progress_bar  ###################################*/
+#progress_barWrap{width:100%;height:100%;background-color:#fff;position:absolute;top:0;left:0;overflow:hidden;z-index:1000;}
+#progress_bar{width:200px;height:18px;text-align: center;border:1px solid #ccc;border-radius:10px;margin:400px auto 0;position: relative;overflow:hidden;}
+#progress_bar .load{width:200px;height:18px;line-height: 16px;font-size:12px;position:absolute;top:0px;left:0;color:#EDF0F5;}
+#progress_bar .bar{width:200px;height:18px;background-color:#4F60E3;
+animation: progress 2s ease-out;}
+@keyframes progress {
+  0%  {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

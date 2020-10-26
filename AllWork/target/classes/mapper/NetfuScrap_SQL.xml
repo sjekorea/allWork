@@ -5,8 +5,8 @@
 	<select id="selectNetfuScrapCnt" parameterType="hashmap" resultType="int">
 		select count(uid) cnt from netfu_scrap
 		where 1=1
-			and type='job'
-			and uid=#{loginId}
+			and type = 'job'
+			and uid = #{loginId}
 			and sub_type in ('company', 'hdht')
 			and date_add(wdate, interval '3' month) > sysdate()
 	</select>

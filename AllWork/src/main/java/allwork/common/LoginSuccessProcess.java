@@ -19,7 +19,13 @@ public class LoginSuccessProcess{
 			
 			session.setAttribute("SE_LOGIN_ID", memberInfoMap.get("uid"));
 	        session.setAttribute("SE_USER_NM", memberInfoMap.get("name"));
-	        session.setAttribute("SE_USER_TYPE", memberInfoMap.get("type"));
+	        if("1".equals((String)memberInfoMap.get("type"))){	
+	        	session.setAttribute("SE_USER_TYPE", "person");
+	        }else if("2".equals((String)memberInfoMap.get("type"))){	
+	        	session.setAttribute("SE_USER_TYPE", "company");
+	        }else{
+	        	session.setAttribute("SE_USER_TYPE", "none");
+	        }
 			session.setAttribute("SE_LOGIN_STATUS", true);
 	        
 		}catch(Exception e){

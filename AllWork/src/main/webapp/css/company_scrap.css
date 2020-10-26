@@ -1,0 +1,89 @@
+body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
+
+/*###################################   containerWrap  ###################################*/
+  #containerWrap{width:100%;margin-bottom:40px;overflow: hidden;}
+
+#container{width:1280px;margin:0 auto;}
+
+#menuTree ul .gnb02 .subMenu02_01{text-decoration: underline;}
+
+/*###################################   rightpart   ###################################*/
+#rightPart{width:1060px;height:100%;margin-left:20px;margin-top:20px;float: left;background-color:#fff;
+  border:1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;}
+
+  /*###################################   part01/맞춤인재 관리    ###################################*/
+  #part01{width:100%;overflow: hidden;}
+  #part01 h4{width:100%; height:40px;line-height: 50px;font-size: 12px;}
+  #part01 h4 a{color:#999;}
+  #part01 ul{width:100%;}
+  #part01 ul li{width:940px;height:100px;background-color: #fff;border: 1px solid #fff;border-bottom: 1px solid #ccc;}
+  #part01 ul li p{float:left;}
+  #part01 ul li .img00{width:80px;height: 80px;margin:10px 10px;overflow: hidden;}
+  #part01 ul li .img00 img{width:100%;}
+  #part01 ul li .desc00{width:270px;height:70px;padding-top:30px;text-align: center;}
+  #part01 ul li .desc00 .name{font-size:18px;}
+  #part01 ul li .desc00 .age{font-size:14px;}
+  #part01 ul li .desc01{width:420px;height:70px;padding-top:30px;line-height:24px;}
+  #part01 ul li .desc01 .detail{font-size:18px;}
+  #part01 ul li .desc01 .title01{font-size:14px;}
+  #part01 ul li .date{width:150px;line-height:100px;font-size:14px;}
+
+  #part01 ul li:hover{border: 1px solid #4F60E3;}
+
+
+  /*###################################   listpart   ###################################*/
+  #listPart{width:960px;margin:30px auto 0;overflow: hidden;font-size: 14px;}
+  #listPart h4{width:200px;height:50px;font-size:18px;float: left;}
+  #listPart .delete{margin-left:640px;width:120px;height:40px;margin-top:10px;line-height:38px;text-align:center;
+   margin-bottom:5px;
+    border:1px solid #000;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  float: left;}
+
+  #listPart .list{width:100%;border-top:1px solid #999;overflow: hidden;}
+  #listPart .list li{width:100%;height:150px;border-bottom:1px solid #ccc;}
+  input{width:16px; height: 16px;}
+
+  #listPart .list li div{height:160px;float:left;text-align: center;font-size:14px;}
+  #listPart .list li .desc00{width:60px;height:150px;line-height:150px;}
+  #listPart .list li .desc01{width:100px;height:120px;margin:15px 20px 0;overflow: hidden;}
+  #listPart .list li .desc01 img{width:100%;}
+  #listPart .list li .desc02{width:120px;height:90px;padding-top:60px;}
+  #listPart .list li .desc02 .t_desc01{width:100%;}
+  #listPart .list li .desc02 .t_desc02{width:100%;}
+  #listPart .list li .desc03{width:120px;height:90px;padding-top:60px;}
+  #listPart .list li .desc03 .t_desc01{width:x%;}
+  #listPart .list li .desc03 .t_desc02{width:100%;}
+  #listPart .list li .desc04{width:420px;height:150px;line-height:150px;}
+          #listPart .list li .desc04:hover a{text-decoration: underline;}
+  #listPart .list li .desc05{width:100px;height:150px;line-height:150px;}
+
+    #listPart .list .list_title{width:100%;height:50px;background-color:#EDF0F5;}
+    #listPart .list .list_title div{float:left;line-height:50px;text-align: center;}
+    #listPart .list .list_title .desc00{width:60px;height:100%;}
+    #listPart .list .list_title .desc01{width:140px;height:50px;text-align:center;line-height:50px;padding-top:0px;margin:0;}
+    #listPart .list .list_title .desc02{width:120px;height:50px;padding-top:0px;}
+    #listPart .list .list_title .desc03{width:120px;height:50px;padding-top:0px;}
+    #listPart .list .list_title .desc04{width:420px;height:50px;padding-top:0px;}
+    #listPart .list .list_title .desc05{width:100px;height:50px;padding-top:0px;}
+
+.numareaWrap{width:100%;overflow: hidden;background-color:#fff;}
+.numArea{width:30px;height:30px;line-height:28px;padding-top:30px;padding-bottom:30px;text-align: center;margin:0 auto;}
+.numArea li{width:30px;height:30px;
+  border:1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float:left;}
+.numArea li a{color:#ccc;}
+
+              .numArea li:hover{border: 1px solid #666;}
+              .numArea li:hover a{color:#666;}
+
+.numArea .p01{border: 1px solid #666;}
+.numArea .p01 a{color:#666;}

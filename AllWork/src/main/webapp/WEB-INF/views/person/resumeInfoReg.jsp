@@ -1,0 +1,443 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+
+<jsp:include page="/personHeader.do" />
+
+<link rel="stylesheet" type="text/css" href="/css/resume.css"/>
+
+<div id="containerWrap">
+	<div id="container">
+		<div id="leftcontainer">
+			<div id="rec_left">
+				<jsp:include page="/personSubMenu.do" />
+			</div>
+			<div id="res_leftPart">
+				<ul>
+					<li><a href="#none" title="미리보기">미리보기</a></li>
+					<li><a href="#none" title="임시저장">임시저장</a></li>
+					<li class="res_ok"><a href="#none" title="등록완료">등록완료</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="rightcontainer">
+			<div id="res_rightPart">
+				<div id="resume00">
+					<div id="imgArea">
+						<p><img src="img/company_home/img00.jpeg" alt="본인사진" /></p>
+					</div>
+					<div id="detailArea">
+						<p class="detail_title">기본정보</p>
+						<p class="personal_setting"><a href="#none" title="기본정보수정"><i class="fas fa-cog"></i>&nbsp;기본정보수정</a></p>
+						<div class="tabelArea">
+							<p class="table_title">이름</p>
+							<p class="table_desc">홍길동</p>
+							<p class="table_title">이메일</p>
+							<p class="table_desc">asdf@naver.com</p>
+							<p class="table_title">휴대폰</p>
+							<p class="table_desc">010-000-0000</p>
+							<p class="table_title">연락처</p>
+							<p class="table_desc">-</p>
+							<p class="table_title">주소</p>
+							<p class="table_desc01">[463-869] 경기 성남시 분당구 정자일로 156</p>
+						</div>
+					</div>
+				</div>
+				<div id="resume01">
+					<form id="resForm01" action="#none" method="post">
+						<fieldset>
+							<legend>이력서 등록하기</legend>
+							<div>
+								<table>
+									<caption>이력서 등록하기</caption>
+									<tbody>
+										<tr>
+											<th>이력서 공개<span class="necessary">*</span></th>
+											<td><span><input id="res01_desc01" type="radio" name="res01_desc01" /><label for="res01_desc01">&nbsp;공개</label></span>
+												<span><input id="res01_desc01_1" type="radio" name="res01_desc01_1" /><label for="res01_desc01_1">&nbsp;비공개</label></span>
+											</td>
+										</tr>
+										<tr>
+											<th>이력서 유형<span class="necessary">*</span></th>
+											<td><span><input id="res01_desc02" type="radio" name="res01_desc02" /><label for="res01_desc02">&nbsp;모두</label></span>
+												<span><input id="res01_desc02_1" type="radio" name="res01_desc02_1" /><label for="res01_desc02_1">&nbsp;일반</label></span>
+												<span><input id="res01_desc02_2" type="radio" name="res01_desc02_2" /><label for="res01_desc02_2">&nbsp;아르바이트</label></span>
+												<span><input id="res01_desc02_3" type="radio" name="res01_desc02_3" /><label for="res01_desc02_3">&nbsp;프리랜서</label></span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div id="resume02">
+					<form id="resForm02" action="#none" method="post">
+						<fieldset>
+							<legend>희망구직 정보</legend>
+							<table>
+								<caption>희망구직 정보</caption>
+								<tbody>
+									<tr>
+										<th>이력서 제목<span class="necessary">*</span></th>
+										<td><span><input id="res02_desc01" type="text" name="res02_desc01" placeholder="(예 : ASP, SQL, MT 웹프로그래밍)" /></span>
+											<span>이력서 제목은 이력서 열람여부를 결정짓는 중요한 부분이므로 희망직무 또는 구체적인 지원분야를 쓰시는 것이 좋습니다.</span></td>
+									</tr>
+									<tr>
+										<th>현재상태</th>
+										<td><span><input id="res02_desc02" type="radio" name="res02_desc02" /><label for="res02_desc02">&nbsp;&nbsp;구직희망(미취업)</label></span>
+											<span><input id="res02_desc02_1" type="radio" name="res02_desc02_1" /><label for="res02_desc02_1">&nbsp;&nbsp;이직희망(재직중)</label></span>
+											<span><input id="res02_desc02_2" type="radio" name="res02_desc02_2" /><label for="res02_desc02_2">&nbsp;&nbsp;구직희망안함</label></span>
+										</td>
+									</tr>
+									<tr>
+										<th>근무지역<span class="necessary">*</span></th>
+										<td>
+											<select id="reg02_desc05" name="reg02_desc05"title="시도선택">
+												<option value="시도선택">시도선택</option>
+												<option value="전체">전국</option>
+												<option value="서울">서울</option>
+											</select>
+											<select id="reg02_desc05_1" name="reg02_desc05_1" title="시구군선택">
+												<option value="시군선택">시구군선택</option>
+												<option value="서울전체">서울전체</option>
+												<option value="강남구">강남구</option>
+											</select>
+											<input id="res02_desc03_3" type="button" name="res02_desc03_3" value="+ 추가" />
+										</td>
+									</tr>
+									<tr>
+										<th>직무분야<span class="necessary">*</span></th>
+										<td>
+											<select id="res02_desc04" name="res02_desc04" title="1차직무선택">
+												<option value="1차직무선택">1차직무선택</option>
+												<option value="IT.인터넷.게임.모바일">IT.인터넷.게임.모바일</option>
+												<option value="전문직.금융.세무.법무">전문직.금융.세무.법무</option>
+											</select>
+											<select id="res02_desc04_1" name="res02_desc04_1" title="2차직무선택">
+												<option value="2차직무선택">2차직무선택</option>
+											</select>
+											<select id="res02_desc04_2" name="res02_desc04_2" title="3차직무선택">
+												<option value="3차직무선택">3차직무선택</option>
+											</select>
+											<input id="res02_desc04_3" type="button" name="res02_desc04_3" value="+ 추가" />
+										</td>
+									</tr>
+									<tr>
+										<th>산업분야<span class="necessary">*</span></th>
+										<td>
+											<select id="res02_desc05" name="res02_desc05" title="1차산업선택">
+												<option value="1차산업선택">1차산업선택</option>
+												<option value="IT.인터넷.게임.모바일">IT.인터넷.게임.모바일</option>
+											</select>
+											<select id="res02_desc05_1" name="res02_desc05_1" title="2차산업선택">
+												<option value="2차산업선택">2차산업선택</option>
+											</select>
+											<select id="res02_desc05_2" name="res02_desc05_2" title="3차산업선택">
+												<option value="3차산업선택">3차산업선택</option>
+											</select>
+											<input id="res02_desc05_3" type="button" name="res02_desc05_3" value="+ 추가" />
+										</td>
+									</tr>
+									<tr>
+										<th>선택적 직무</th>
+										<td>
+											<span><input id="res02_desc06" type="radio" name="res02_desc06" /><label for="res02_desc06">&nbsp;운전전문직군</label></span>
+											<span><input id="res02_desc06_1" type="radio" name="res02_desc06_1" /><label for="res02_desc06_1">&nbsp;경비직군</label></span>
+											<span><input id="res02_desc06_2" type="radio" name="res02_desc06_2" /><label for="res02_desc06_2">&nbsp;일반관리직</label></span>
+											<span class="comment">위 직무분야 외 선택적 직무</span>
+										</td>
+									</tr>
+									<tr>
+										<th>희망근무형태<span class="necessary">*</span></th>
+										<td>
+											<span><input id="res02_desc07" type="checkbox" name="res02_desc07" /><label for="res02_desc07">정규직</label></span>
+											<span><input id="res02_desc07_1" type="checkbox" name="res02_desc07_1" /><label for="res02_desc07_1">계약직</label></span>
+											<span><input id="res02_desc07_2" type="checkbox" name="res02_desc07_2" /><label for="res02_desc07_2">프리랜서</label></span>
+											<span><input id="res02_desc07_3" type="checkbox" name="res02_desc07_3" /><label for="res02_desc07_3">아르바이트</label></span>
+											<span><input id="res02_desc07_4" type="checkbox" name="res02_desc07_4" /><label for="res02_desc07_4">추후협의</label></span>
+										</td>
+									</tr>
+									<tr>
+										<th>희망연봉<span class="necessary">*</span></th>
+										<td>
+											<select id="res02_desc08" name="res02_desc08" title="연봉/시급선택">
+												<option value="연봉">연봉</option>
+												<option value="시급">월급</option>
+											</select>
+											<select id="res02_desc08_1" name="res02_desc08_1" title="연봉선택">
+												<option value="2,600만원 이하">2,600만원 이하</option>
+												<option value="2,600~2,800만원">2,600~2,800만원</option>
+											</select>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+					</form>
+				</div>
+				<div id="resume03">
+					<form id="resForm03" action="#none" method="post">
+						<fieldset>
+							<legend>학력사항</legend>
+							<table>
+								<caption>학력사항</caption>
+								<tbody>
+									<tr class="final_education">
+										<th>최종학력</th>
+										<td>
+											<select id="res03_desc01" name="res03_desc01" title="학력 선택">
+												<option value="학력 무관">학력 무관</option>
+												<option value="고등학교졸업">고등학교졸업</option>
+											</select>
+										</td>
+									</tr>
+									<tr class="education">
+										<th>학력</th>
+										<td>
+											<span>
+												<input id="res03_desc02" type="date" name="res03_desc02" /><!--
+											 --><select id="res03_desc02_1" name="res03_desc02_1" title="학교구분">
+													<option value="학교구분">학교구분</option>
+													<option value="학력 무관">학력 무관</option>
+													<option value="고등학교졸업">고등학교졸업</option>
+													<option value="대학졸업(2,3년)">대학졸업(2,3년)</option>
+													<option value="대학졸업(4년)">대학졸업(4년)</option>
+													<option value="대학원 석사졸업">대학원 석사졸업</option>
+													<option value="대학원 박사졸업">대학원 박사졸업</option>
+												</select><!--
+											 --><input id="res03_desc02_2" type="text" name="res03_desc02_2" placeholder="학교명" /><!--
+											 --><input id="res03_desc02_3" type="button" name="res03_desc02_3" value="삭제" />
+											</span>
+											<span>
+												<input id="res03_desc03" type="date" name="res03_desc03" /><!--
+											 --><select id="res03_desc03_1" name="res03_desc03_1" title="졸업상태">
+													<option value="졸업상태">졸업상태</option>
+													<option value="졸업">졸업</option>
+													<option value="재학">재학</option>
+													<option value="퇴학">퇴학</option>
+												</select><!--
+											 --><input id="res03_desc03_2" type="text" name="res03_desc03_2" placeholder="학교명" /><!--
+											 --><input id="res03_desc03_3" type="text" name="res03_desc03_3" placeholder="전공명" />
+											</span>
+											<span class="comment"> 다중 경력자는 [추가]를 클릭하면 현재 입력폼에서 추가 경력을 작성할 수 있습니다.</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+					</form>
+					<p class="moreTab">
+						<input id="more_btn" type="button" name="more_btn" value="+ 추가" />
+					</p>
+				</div>
+				<div id="resume04">
+					<form id="resForm04" action="#none" method="post">
+						<fieldset>
+							<legend>경력사항</legend>
+							<table>
+								<caption>경력사항</caption>
+								<tbody>
+									<tr class="total_experience">
+										<th>총 경력년수</th>
+										<td>
+											<select id="res04_desc01" name="res04_desc01" title="경력연차">
+												<option value="선택">선택</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+											</select>&nbsp;년 
+											<select id="res04_desc01_1" name="res04_desc01_1" title="경력연차">
+												<option value="선택">선택</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+											</select>&nbsp;개월 
+											<input id="res04_desc01_2" type="checkbox" name="res04_desc01_2" /><label for="res04_desc01_2">신입</label>
+										</td>
+									</tr>
+									<tr class="experience">
+										<th>경력</th>
+										<td>
+											<span>
+												<input id="res04_desc02" type="date" name="res04_desc02" /><!--
+											 --><input id="res04_desc02_1" type="text" name="res04_desc02_1" placeholder="회사명" /><!--
+											 --><input id="res04_desc02_2" type="button" name="res04_desc02_2" value="삭제" />
+											</span>
+											<span>
+												<input id="res04_desc03" type="date" name="res04_desc03" /><!--
+											 --><input id="res04_desc03_1" type="text" name="res04_desc03_1" placeholder="담당업무" />
+											</span>
+											<span class="comment"> 다중 경력자는 [추가]를 클릭하면 현재 입력폼에서 추가 경력을 작성할 수 있습니다.</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+					</form>
+					<p class="moreTab"><input id="more_btn01" type="button" name="more_btn01"value="+ 추가" /></p>
+				</div>
+				<div id="resume05">
+					<form id="resForm05" action="#none" method="post">
+						<fieldset>
+							<legend>보유기술</legend>
+							<table>
+								<caption>보유기술</caption>
+								<tbody>
+									<tr>
+										<th>보유기술</th>
+										<td><textarea id="res05_desc01" name="res05_desc01"></textarea></td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+					</form>
+				</div>
+				<div id="resume06">
+					<form id="resForm06" action="#none" method="post">
+						<fieldset>
+							<legend>자격사항</legend>
+							<table>
+								<caption>자격사항</caption>
+								<tbody>
+									<tr>
+										<th>자격사항</th>
+										<td>
+											<p class="part01">
+												<span>취득일자</span><br />
+												<input id="res06_desc01" type="date" name="res06_desc01" value="년/월/일" />
+											</p>
+											<p class="part02">
+												<span>자격증명</span><br />
+												<select id="res06_desc01_1" name="res06_desc01_1" title="자격증1차선택">
+													<option value="자격증 1차선택">자격증 1차선택</option>
+													<option value="기계·전자">기계·전자</option>
+												</select><!--
+											 --><select id="res06_desc01_2" name="res06_desc01_2" title="자격증2차선택">
+														<option value="자격증 2차선택">자격증 2차선택</option>
+														<option value="기계">기계</option>
+														<option value="전자">전자</option>
+													</select><!--
+											 --><select id="res06_desc01_3" name="res06_desc01_3" title="자격증2차선택">
+													<option value="자격증 3차선택">자격증 3차선택</option>
+													<option value="건설기계기술사">건설기계기술사</option>
+												</select>
+											</p>
+											<p class="part03">
+												<span>발행처</span><br />
+												<input id="res06_desc01_4" type="text" name="res06_desc01_4" />
+											</p>
+											<p class="part04">
+												<input id="res06_desc01_5" type="button" name="res06_desc01_5" value="삭제" />
+											</p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+					</form>
+					<p class="moreTab"><input id="more_btn03" type="button" name="more_btn03" value="+ 추가" />
+					</p>
+				</div>
+				<div id="resume07">
+					<form id="resForm07" action="#none" method="post">
+						<fieldset>
+							<legend>외국어</legend>
+							<table>
+								<caption>외국어</caption>
+								<tbody>
+									<tr>
+										<th>외국어</th>
+										<td>
+											<p class="part01">
+												<span>취득일자</span><br />
+												<input id="res07_desc01" type="date" name="res07_desc01" />
+											</p>
+											<p class="part02">
+												<span>외국어명</span><br />
+												<input id="res07_desc01_1" type="text" name="res07_desc01_1" />
+											</p>
+											<p class="part03">
+												<span>수준</span><br />
+												<select id="res07_desc01_2" name="res07_desc01_2" title="선택">
+													<option value="선택">선택</option>
+													<option value="상">상</option>
+													<option value="중">중</option>
+													<option value="하">하</option>
+												</select>
+											</p>
+											<p class="part04">
+												<span>발행처</span><br />
+												<input id="res07_desc01_3" type="text" name="res07_desc01_3" />
+											</p>
+											<p class="part05">
+												<span>점수</span><br />
+												<input id="res07_desc01_4" type="text" name="res07_desc01_4" />
+											</p>
+											<p class="part06">
+												<span>점수/등급</span><br />
+												<select id="res07_desc01_5" name="res07_desc01_5" title="선택">
+													<option value="선택">선택</option>
+													<option value="상">점</option>
+													<option value="중">중</option>
+													<option value="하">하</option>
+												</select>
+											</p>
+											<p class="part08"><input id="res07_desc01_6" type="button" name="res07_desc01_6" value="삭제" /></p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+					</form>
+					<p class="moreTab"><input id="more_btn02" type="button" name="more_btn02" value="+ 추가" /></p>
+				</div>
+				<div id="resume08">
+					<form id="resForm08" action="#none" method="post">
+						<fieldset>
+							<legend>
+								자기소개서<span>(경력위주로 작성해주세요)</span>
+							</legend>
+							<table>
+								<caption>자기소개서</caption>
+								<tbody>
+									<tr>
+										<th>자기소개서</th>
+										<td>
+											<span><input id="res08_desc01" type="text" name="res08_desc01" placeholder="자기소개서 제목" /></span>
+											<textarea id="res08_desc01_1"></textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+					</form>
+				</div>
+				<div id="resume09">
+					<form id="resForm09" action="#none" method="post">
+						<fieldset>
+							<legend>파일 첨부하기</legend>
+							<table>
+								<caption>파일 첨부하기</caption>
+								<tbody>
+									<tr>
+										<th>파일 첨부하기</th>
+										<td>
+											<span class="file_btn">
+												<input id="res09_desc01" /><label for="res09_desc01_1">파일첨부</label>
+												<input id="res09_desc01_1" type="file" name="res09_desc01" />
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+					</form>
+				</div>
+				<ul>
+					<li><a href="#none" title="미리보기">미리보기</a></li>
+					<li><a href="#none" title="임시저장">임시저장</a></li>
+					<li class="res_ok"><a href="#none" title="등록완료">등록완료</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<jsp:include page="/footer.do" />

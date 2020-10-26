@@ -20,7 +20,7 @@ import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuScrapService;
 
 @Controller
-public class PersonalController {
+public class PersonController {
 	
 	Logger log = Logger.getLogger(this.getClass());
 	
@@ -36,10 +36,14 @@ public class PersonalController {
 	@Resource(name="netfuScrapService")
 	private NetfuScrapService netfuScrapService;
 	
-	@RequestMapping(value="/personalHome")
-	public ModelAndView personalHome(CommandMap commandMap, HttpSession session) {
+	
+	/*
+	 * 개인 회원 홈
+	 */
+	@RequestMapping(value="/personHome")
+	public ModelAndView personHome(CommandMap commandMap, HttpSession session) {
 		
-		ModelAndView mv = new ModelAndView("/personal/personalHome");
+		ModelAndView mv = new ModelAndView("/person/personHome");
 		
 		try{
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
@@ -59,35 +63,116 @@ public class PersonalController {
 			mv.addObject("netfuScrapCnt", netfuScrapCnt);
 			
 		}catch(Exception e){
-			log.info(this.getClass().getName()+".personalHome Exception !!!!! \n"+e.toString());
+			log.info(this.getClass().getName()+".personHome Exception !!!!! \n"+e.toString());
 		}
 		
 		return mv;
 	}
 	
 	
+	/*
+	 * 채용정보 검색
+	 */
 	@RequestMapping(value="/recruitSearch")
 	public ModelAndView recruitSearch(CommandMap commandMap) {
 		
-		ModelAndView mv = new ModelAndView("/personal/recruitSearch");
+		ModelAndView mv = new ModelAndView("/person/recruitSearch");
 		
 		return mv;
 	}
 	
 	
+	/*
+	 * 채용정보 검색 - 직무별
+	 */
 	@RequestMapping(value="/recruitSearchByDuty")
 	public ModelAndView recruitSearchByDuty(CommandMap commandMap) {
 		
-		ModelAndView mv = new ModelAndView("/personal/recruitSearchByDuty");
+		ModelAndView mv = new ModelAndView("/person/recruitSearchByDuty");
 		
 		return mv;
 	}
-
 	
+	
+	/*
+	 * 이력서 등록
+	 */
 	@RequestMapping(value="/resumeInfoReg")
 	public ModelAndView resumeInfoReg(CommandMap commandMap) {
 		
-		ModelAndView mv = new ModelAndView("/personal/resumeInfoReg");
+		ModelAndView mv = new ModelAndView("/person/resumeInfoReg");
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 입사 지원 관리
+	 */
+	@RequestMapping(value="/personApplicationList")
+	public ModelAndView personApplicationList(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/person/personApplicationList");
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 스크랩 채용정보
+	 */
+	@RequestMapping(value="/recruitScrapList")
+	public ModelAndView recruitScrapList(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/person/recruitScrapList");
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 관심 기업 목록
+	 */
+	@RequestMapping(value="/interestCompanyList")
+	public ModelAndView interestCompanyList(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/person/interestCompanyList");
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 면접 요청 기업
+	 */
+	@RequestMapping(value="/interviewRequestCompany")
+	public ModelAndView interviewRequestCompany(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/person/interviewRequestCompany");
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 맟춤채용정보
+	 */
+	@RequestMapping(value="/companySettedList")
+	public ModelAndView companySettedList(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/person/companySettedList");
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 맟춤채용정보
+	 */
+	@RequestMapping(value="/companySearchSetting")
+	public ModelAndView companySearchSetting(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/person/companySearchSetting");
 		
 		return mv;
 	}
