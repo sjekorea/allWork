@@ -78,6 +78,52 @@ public class CommonController {
 	}
 	
 	
+	@RequestMapping(value="/recruitInfoSubMenu.do")
+	public ModelAndView recruitInfoSubMenu(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/include/recruitInfoSubMenu");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/personInfoSubMenu.do")
+	public ModelAndView personInfoSubMenu(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/include/personInfoSubMenu");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/headHuntingSubMenu.do")
+	public ModelAndView headHuntingSubMenu(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/include/headHuntingSubMenu");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/recruitStatusSubMenu.do")
+	public ModelAndView recruitStatusSubMenu(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/include/recruitStatusSubMenu");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/communityHeader.do")
+	public ModelAndView communityHeader(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/include/communityHeader");
+		
+		return mv;
+	}
+	
+	
+	
 	@RequestMapping(value="/footer.do")
 	public ModelAndView footer(CommandMap commandMap) {
 		

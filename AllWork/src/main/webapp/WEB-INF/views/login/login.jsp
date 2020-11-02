@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -10,6 +11,7 @@
 <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/js/moment.min.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/process.js"></script>
 <script type="text/javascript" src="/js/Cookie.js"></script>
 
 <!DOCTYPE html>
@@ -18,6 +20,7 @@
 <title>로그인</title>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="/css/common.css"/>
 <link rel="stylesheet" type="text/css" href="/css/header_mini.css"/>
 <link rel="stylesheet" type="text/css" href="/css/login_01.css"/>
 <link rel="stylesheet" type="text/css" href="/css/footer_white.css"/>
@@ -28,11 +31,10 @@
 
 <body>
 	<div id="progress_barWrap" style="display:none;">
-		<div id="progress_bar">
-		<p class="load">loading...</p>
-		<p class="bar"></p>
-		</div>
-	</div>
+		<p id="progress_bar">
+			<img src="/img/main/loading_circle.gif" alt="로딩이미지"/>
+		</p>
+    </div>
 	<div id="allworkWrap">
 		<div id="topmenuWrap">
 			<ul class="topMenu">
@@ -87,7 +89,6 @@
 			goLogin();
 		}
 	}
-	
 	
 	$(document).ready(function(){
 		

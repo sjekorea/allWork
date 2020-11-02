@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -6,597 +7,557 @@
 
 <!DOCTYPE html>
 <html lang="ko">
- <head>
-  <meta charset="utf-8"/>
-  <title> 개인회원 회원가입 </title>
-  <link rel="stylesheet" type="text/css" href="/css/header_mini.css"/>
-  <link rel="stylesheet" type="text/css" href="/css/register_01.css"/>
-  <link rel="stylesheet" type="text/css" href="/css/footer_white.css"/>
-	<link rel="stylesheet" type="text/css" href="/css/font.css"/>
-  <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
-  <link  rel="stylesheet" type="text/css" href="/css/all.css"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
-  <style></style>
-  </head>
-  <body>
-  <div id="allworkWrap">
-    <div id="topmenuWrap">
-      <ul class="topMenu">
-        <li class="allworkHome"><a href="/index.do" title="allwork사이트">Allwork&nbsp;&nbsp;|&nbsp;</a></li>
-        <li><a href="#none" title="고객센터">고객센터</a></li>
-      </ul>
-    </div>
-    <div id="registerWrap">
-      <div id="registerArea">
-        <div class="registertext">
-         <h4>개인회원가입</h4>
-         <p>올워크 모든회원의 가입은 <span class="bold">무료</span>입니다.</p>
-        </div>
+<head>
+<meta charset="utf-8" />
+<title>개인회원 회원가입</title>
+<link rel="stylesheet" type="text/css" href="/css/header_mini.css" />
+<link rel="stylesheet" type="text/css" href="/css/register_01.css" />
+<link rel="stylesheet" type="text/css" href="/css/footer_white.css" />
+<link rel="stylesheet" type="text/css" href="/css/font.css" />
+<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/css/all.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+<style></style>
+</head>
+<body>
+	<div id="allworkWrap">
+		<div id="topmenuWrap">
+			<ul class="topMenu">
+				<li class="allworkHome"><a href="/index.do" title="allwork사이트">Allwork&nbsp;&nbsp;|&nbsp;</a></li>
+				<li><a href="#none" title="고객센터">고객센터</a></li>
+			</ul>
+		</div>
+		<div id="registerWrap">
+			<div id="registerArea">
+				<div class="registertext">
+					<h4>개인회원가입</h4>
+					<p>
+						올워크 모든회원의 가입은 <span class="bold">무료</span>입니다.
+					</p>
+				</div>
 				<form action="#none" method="post">
 					<fieldset>
 						<legend>회원가입</legend>
-            <div class="tab">
-              <span class="btn_persnal"><input id="persnal_register" type="radio" name="persnal_register" onClick="location.href='/personalJoin.do'" checked="checked"/><label for="persnal_register">&nbsp;개인회원</label></span>
-              <span class="btn_company"><input id="company_register" type="radio" name="company_register" onClick="location.href='/companyjoin.do'"/><label for="company_register">&nbsp;기업회원</label></span>
-            </div>
-            <div class="descBox">
-              <p class="title">일반 개인회원<br/>혜택</p>
-              <p class="desc">
-                <span><i class="far fa-check-circle"></i>입사지원 기업보기</span>
-                <span><i class="far fa-check-circle"></i>입사요청 기업보기</span>
-                <span><i class="far fa-check-circle"></i>채용정보 메일링 서비스</span>
-                <span><i class="far fa-check-circle"></i>무료 채용정보 열람</span>
-              </p>
-              <p class="title">개인유료회원<br/>혜택</p>
-              <p class="desc">
-                <span><i class="far fa-check-circle"></i>올워크 구인정보 무제한 검색</span>
-                <span><i class="far fa-check-circle"></i>기업의 채용대행, 헤드헌팅 우선추천</span>
-                <span><i class="far fa-check-circle"></i>정회원 전용 프리미엄좀 운영</span>
-                <span><i class="far fa-check-circle"></i>기타 정회원 우선 정책 유지</span>
-              </p>
-            </div>
-            <div class="snsRegister">
-              <p>소셜 회원가입</p>
-              <ul>
-                <li><a href="#none" title="네이버 회원가입"><img src="/img/login/sns01.png" alt="이미지00"/>&nbsp;&nbsp;&nbsp;&nbsp;네이버 회원가입</a></li>
-                <li><a href="#none" title="카카오 회원가입"><img src="/img/login/sns02.png" alt="이미지00"/>&nbsp;&nbsp;&nbsp;&nbsp;카카오 회원가입</a></li>
-        				<li><a href="#none" title="구글 회원가입"><img src="/img/login/sns03.jpg" alt="이미지00"/>&nbsp;&nbsp;&nbsp;&nbsp;구글 회원가입</a></li>
-        			</ul>
-            </div>
-            <div class="registerBox">
-              <table>
-                <caption>모집요강</caption>
-                <tbody>
-                  <tr>
-                    <th>이름<span class="necessary">*</span></th>
-                    <td><input id="username" type="text" name="username" title="이름"/></td>
-  						    </tr>
-                  <tr>
-                    <th>아이디<span class="necessary">*</span></th>
-						        <td>
-                      <input id="userid" type="text" name="userid" title="아이디"/>
-                      <input type="submit" value="중복확인" title="중복확인"/>
-                      <span class="comment">영문과 숫자를 조합하여 4~20자 이내로 입력하세요.</span>
-                    </td>
-      						</tr>
-                  <tr>
-                    <th>비밀번호<span class="necessary">*</span></th>
-      							<td>
-                      <input id="userpass" type="password" name="userpass" title="비밀번호"/>
-                      <span class="comment">비밀번호는 6~16자 영문, 숫자를 조합하여 사용할 수 있습니다.</span>
-                    </td>
-      						</tr>
-                  <tr>
-                    <th>비밀번호 확인<span class="necessary">*</span></th>
-      							<td>
-                      <input id="userpass01" type="password" name="userpass01" title="비밀번호확"/>
-                      <span class="comment">비밀번호 확인을 위해 다시 한 번 입력해 주시기 바랍니다.</span>
-                    </td>
-      						</tr>
-                  <tr>
-                    <th>생년월일<span class="necessary">*</span></th>
-                    <td>
-                      <span>
-                        <select id="year" name="year" title="생년월일선택">
-                          <option value="선택">선택</option>
-                          <option value="1981">1981</option>
-                          <option value="1980">1980</option>
-                          <option value="1979">1979</option>
-                          <option value="1978">1978</option>
-                          <option value="1977">1977</option>
-                          <option value="1976">1976</option>
-                          <option value="1975">1975</option>
-                          <option value="1974">1974</option>
-                          <option value="1973">1973</option>
-                          <option value="1972">1972</option>
-                          <option value="1971">1971</option>
-                          <option value="1970">1970</option>
-                          <option value="1969">1969</option>
-                          <option value="1968">1968</option>
-                          <option value="1967">1967</option>
-                          <option value="1966">1966</option>
-                          <option value="1965">1965</option>
-                          <option value="1964">1964</option>
-                          <option value="1963">1963</option>
-                          <option value="1962">1962</option>
-                          <option value="1961">1961</option>
-                          <option value="1960">1960</option>
-                          <option value="1959">1959</option>
-                          <option value="1958">1958</option>
-                          <option value="1957">1957</option>
-                          <option value="1956">1956</option>
-                          <option value="1955">1955</option>
-                          <option value="1954">1954</option>
-                          <option value="1953">1953</option>
-                          <option value="1952">1952</option>
-                          <option value="1951">1951</option>
-                          <option value="1950">1950</option>
-                          <option value="1949">1949</option>
-                          <option value="1948">1948</option>
-                          <option value="1947">1947</option>
-                          <option value="1946">1946</option>
-                          <option value="1945">1945</option>
-                          <option value="1944">1944</option>
-                          <option value="1943">1943</option>
-                          <option value="1942">1942</option>
-                          <option value="1941">1941</option>
-                          <option value="1940">1940</option>
-                          <option value="1939">1939</option>
-                          <option value="1938">1938</option>
-                          <option value="1937">1937</option>
-                          <option value="1936">1936</option>
-                          <option value="1935">1935</option>
-                          <option value="1934">1934</option>
-                          <option value="1933">1933</option>
-                          <option value="1932">1932</option>
-                          <option value="1931">1931</option>
-                          <option value="1930">1930</option>
-                          <option value="1929">1929</option>
-                          <option value="1928">1928</option>
-                          <option value="1927">1927</option>
-                          <option value="1926">1926</option>
-                          <option value="1925">1925</option>
-                          <option value="1924">1924</option>
-                          <option value="1923">1923</option>
-                          <option value="1922">1922</option>
-                          <option value="1921">1921</option>
-                        </select>
-                        <label for="year">&nbsp;년</label>
-                      </span>
-                      <span><input id="month" type="text" name="month"/><label for="month">&nbsp;월</label></span>
-                      <span><input id="day" type="text" name="day"/><label for="day">&nbsp;일</label></span>
-                      <span class="comment">40세 이상만 가입이 가능합니다.</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>성별<span class="necessary">*</span></th>
-                    <td>
-                      <span class="male"><input id="gender_male" type="radio" name="gender_male" checked="checked"/><label for="gender_male">남자</label></span>
-                      <span class="female"><input id="gender_female" type="radio" name="gender_female"/><label for="gender_female">여자</label></span>
-                    </td>
-                  </tr>
-                  <tr class="email">
-                    <th>이메일<span class="necessary">*</span></th>
-                    <td>
-                      <span><input id="email01" type="text" name="email01" title="아이디만 입력"/></span><span>&nbsp;@&nbsp;</span><span><input id="email02" type="text" name="email02" title="이메일 주소 선택"/></span>
-                      <span>
-                        <select id="email03" name="email03" title="이메일 선택">
-                          <option value="direct">직접입력</option>
-                          <option value="gmail.com">gmail.com</option>
-                          <option value="naver.com">naver.com</option>
-                          <option value="daum.net">daum.net</option>
-                          <option value="nate.com">nate.com</option>
-                        </select>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr class="phone">
-                    <th>휴대폰 인증<span class="necessary">*</span></th>
-                    <td>
-                      <p><label for="phoneNum">휴대폰 번호</label><input id="phoneNum" type="text" name="phoneNum" title="휴대폰번호"/><input type="submit" value="인증번호 전송" title="인증번호 전송"/></p>
-                      <p><label for="confirmNum">인증번호 입력</label><input id="confirmNum" type="text" name="confirmNum" title="인증번호"/><input class="ok" type="submit" value="확인" title="확인"/><input type="submit" value="재전송" title="재전송"/></p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="agreement">
-              <p class="comment01">필수동의 항목과 마케팅 정보 수신(선택)에 모두 동의합니다.</p>
-              <ol>
-                <li><span><input id="agree00" type="checkbox" name="agree00"/>&nbsp;<label for="agree00">전체동의</label></span></li>
-                <li class="descArea">
-                  <span class="desc"><input id="agree01" type="checkbox" name="agree01"/>&nbsp;<label for="agree01">[필수] 이용약관 동의</label></span><span class="descBtn"><input id="desc_Btn" type="button" name="desc_Btn" value="내용보기 ∨"/></span>
-                  <span class="agreeDesc01">
-                    개인회원 이용약관.
-::: 개인 회원 서비스 이용 약관 ::: (적용 2013.9.1/ 2018.4.25 일부개정/2020.5.1 일부개정)
-제1조 (목적)
-이 약관은 ㈜올워크(이하”회사”라고 합니다)이 제공하는 ‘Allwork 사이트’(이하 “Allwork”라고 합니다)의 이용조건 및 제반 절차 등에 관한 사항을 규정함을 목적으로 합니다.
-제2조 (“Allwork”의 이용)
-① “회원”은 “Allwork”에서 단일id 및 password로 이용하실 수 있으며, “회사”가 “㈜Allwork ”의 각 개별 사이트 서비스 이용을 위하여 회원이 제공하신 정보를 이용하는 것에 동의합니다.
-② "회원"이 되고자 하는 자가 "회사"가 정한 소정의 절차를 거쳐서 "동의" 단추를 누르면 본 약관에 동의하는 것으로 간주합니다. 본 약관에 정하는 이외의 이용자와 "서비스제공자"의 권리, 의무 및 책임사항에 관해서는 전기통신사업법 기타 대한민국의 관련 법령과 상관습에 의합니다.
-제3조 (회원의 정의)
-① "회원"이란 "회사"의 "개인서비스"에 접속하여 본 약관에 따라 "Allwork-개인서비스"의 회원으로 가입하여 "Allwork"를 이용하는 자를 말합니다.
-제4조 (서비스의 제공 및 변경)
-① "회사"는 "회원"에게 아래와 같은 서비스를 제공합니다.
-1. 이력서 작성/저장/수정/db에 이력서 등록
-2. 온라인 입사지원
-3. 기업의 인재추천 및 채용제의 서비스(이력서 공개 또는 비공개로 설정한 경우 모두 적용함)
-4. 헤드헌터/서치펌 이력서 발송
-5. 맞춤채용정보 검색/등록
-6. 스크랩한 채용정보
-7. 스크랩한 취업자료
-8. 마감된 구인정보 검색
-9. 파일 저장함
-10. 메일서비스신청
-11. 기타 "회사"가 자체 개발하거나 다른 회사와의 협력계약 등을 통해 "회원"들에게 제공할 일체의 서비스
-12. 회원에게 필요로 할 수도 있는 보험관련 기타 정보
-② "회사"는 그 변경 될 서비스의 내용 및 제공 일자를 제6조 제2항에서 정한 방법으로 이용자에게 통지하고, 제1항에 정한 서비스를 변경하여 제공할 수 있습니다.
-③ "회사"는 "회원"들을 위한 치과병원정보, 올워크실버스타참여 및 참여에 필요한 모든 정보를 제공한다.
-    추가로 "회사"는 회원들을 위한 다양한 정보를 제공한다.
-제5조 (서비스의 중단)
-① "회사"는 컴퓨터 등 정보통신설비의 보수점검 교체 및 고장, 통신의 두절 등의 사유가 발생한 경우에는 서비스의 제공을 일시적으로 중단할 수 있고, 새로운 서비스로의 교체 기타 "회사"가 적절하다고 판단하는 사유에 기하여 현재 제공되는 서비스를 완전히 중단할 수 있습니다.
-② 제1항에 의한 서비스 중단의 경우에는 "회사"는 제7조 제2항에서 정한 방법으로 "회원"에게 통지합니다. 다만, "회사"가 통제할 수 없는 사유로 인한 서비스의 중단(시스템 관리자의 고의, 중과실이 없는 디스크 장애, 시스템다운 등)으로 인하여 사전 통지가 불가능한 경우에는 그러하지 아니합니다.
-제6조 (회원 탈퇴 및 자격 상실 등)
-① "회원"은 "회사"에 언제든지 자신의 회원등록을 말소해 줄 것("회원" 탈퇴)을 요청할 수 있으며 "회사"는 위 요청을 받았을 시 해당 "회원"의 정보말소를 위한 절차를 밟습니다.
-② "회원"이 다음 각 호의 사유에 해당하는 경우, "회사"는 "회원"의 자격을 적절한 방법으로 제한 및 정지, 상실시킬 수 있습니다.
-1. 허위 내용을 등록한 경우
-2. 다른 사람의 서비스 이용을 방해하거나 그 정보를 도용하는 등 전자거래질서를 위협하는 경우
-3. 서비스를 이용하여 법령과 본 약관이 금지하거나 공서양속에 반하는 행위를 하는 경우
-③ "회사"가 "회원"의 회원자격을 상실시키기로 결정한 경우에는 회원등록을 말소합니다. 이 경우 회원에게 회원등록 말소 전에 이를 통지하고, 소명할 기회를 부여합니다.
-제7조 (회원에 대한 통지)
-① "회사"는 "본 서비스"에 대한 공지사항을 "회원"에게 "회사"가 부여한 메일주소로 할 수 있습니다.
-② "회사"가 불특정다수 "회원"에 대한 통지를 하는 경우 칠(7)일 이상 "회사" 게시판에 공시함으로써 개별 통지에 갈음할 수 있습니다.
-제8조 (이용자의 개인정보보호 의무)
-"회사"는 "정보 통신망 법" 등 관계 법령이 정하는 바에 따라 "회원"의 개인정보를 보호하기 위해 노력합니다. 개인정보의 보호 및 사용에 대해서는 관련법 및 "회사"의 개인정보취급방침이 적용됩니다.
-① “회사”는 " Allwork "에 등록된 id와 이력서 정보(이름, id, 주민등록번호 등 이력서 기재사항 모두 포함)를 관리합니다.
-② “회사”는 "회원"이 입력한 이력서 내용은 "회원"이 이력서를 "비공개"로 설정한 경우에는 외부로 노출하지 않습니다.(단, 제 4조 ①항에 해당되는 경우는 예외로 함)
-③ "회사"는 관련법령이 정하는 바에 따라서 "회원"의 개인정보를 보호하기 위하여 노력합니다.
-④ "회사"는 "회원"이 작성한 공개이력서에 한해 “회사”가 운영하는 취업센터에 이력서를 동시에 게재합니다.
-제9조 (서비스제공자의 의무)
-① "회사"는 법령과 본 약관이 금지하거나 공서양속에 반하는 행위를 하지 않으며 본 약관이 정하는 바에 따라 지속적이고, 안정적으로 서비스를 제공하기 위해서 노력합니다.
-② "회사"는 "회원"이 안전하게 인터넷 서비스를 이용할 수 있도록 "회원"의 개인정보(신용정보 포함)보호를 위한 보안 시스템을 구축합니다.
-③ "회사"는 "회원"이 원하지 않는 영리목적의 광고 성 전자우편을 발송하지 않습니다.
-제10조 (이용 해지 및 이용제한)
-① "회원"이 " Allwork "의 이용을 해지하고자 하는 때에는 "회원"본인이 서비스 또는 전자 우편을 통하여 해지하고자 하는 날의 2일전까지(단, 해지 일이 법정공휴일인 경우 공휴일 개시 3일전까지) 이를 "회사"에 신청하여야 합니다.
-제11조 (손해배상 및 면책조항)
-"회사"는 " Allwork "의 이용과 관련하여 "회사"의 고의 또는 중대한 과실 없이 "회원"에게 발생한 일체의 손해에 관하여 책임을 부담하지 않습니다.
-제12조 (약관의 개정)
-① "회사"는 약관의 규제 등에 관한 법률, 전자거래기본법, 전자 서명 법, 정보 통신망 이용촉진 등에 관한 법률 등 관련법을 위배하지 않는 범위에서 본 약관을 개정할 수 있습니다.
-② "회사"가 본 약관을 개정할 경우에는 적용일자 및 개정사유를 명시하여 현행약관과 함께 초기화면에 그 적용일자 칠(7일) 이전부터 적용일자 전일까지 공지합니다.
-③ "회원"은 변경된 약관에 대해 거부할 권리가 있습니다. "회원"은 변경된 약관이 공지된 후 십오(15)일 이내에 거부의사를 표명할 수 있습니다. "회원"이 거부하는 경우 "회사"는 당해 "회원"과의 계약을 해지할 수 있습니다. 만약 "회원"이 변경된 약관이 공지 된 후 십오(15)일 이내에 거부의사를 표시하지 않는 경우에는 동의하는 것으로 간주합니다.
-제13조 (재판관할)
-"회사"와 "회원"간에 발생한 서비스 이용에 관한 분쟁에 대하여는 대한민국 법을 적용하며, 본 분쟁으로 인한 소는 민사소송법상의 관할을 가지는 대한민국의 법원에 제기합니다. (2001년 12월 18일자 변경)
-부 칙
-제1조 (시행일) 본 약관은 2013년 9월1일부터 시행합니다.
-제2조 (다른 조항 개정) 제4조 (서비스의 제공 및 변경) 에 다음과 같은 항목을 추가한다.
-       1 부터 11 생략
-       12. 회원에게 필요로 할 수도 있는 보험관련 기타 정보. 를 추가한다.
-                  </span>
-                </li>
-                <li class="descArea">
-                  <span class="desc"><input id="agree02" type="checkbox" name="agree02"/>&nbsp;<label for="agree02">[필수] 개인정보 수집 및 이용 동의</label></span><span class="descBtn"><input id="desc_Btn" type="button" name="desc_Btn" value="내용보기 ∨"/></span>
-                  <span class="agreeDesc02">
-                    개인정보  취급방침
-㈜올워크(이하 ‘회사’라 함)는 이용자들의 개인정보보호를 매우 중요시하며, 이용자가 “Allwork 취업사이트”(이하 ‘Allwork’)를 이용함과 동시에 온라인상에서 “회사”에 제공한 개인정보가  보호 받을 수 있도록 최선을 다하고 있습니다.
-이에  “회사”는 통신비밀보호법, 전기통신사업법, 정보통신망 이용촉진 등에 관한 법률 등 정보통신서비스 제공자가  준수하여야 할 관련 법규상의 개인정보보호 규정 및 정보통신부가 제정한 개인정보보호지침을 준수하고 있습니다.
-“회사”는  개인정보 보호정책을 통하여 이용자들이 제공하는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며 개인정보보호를 위해 어떠한 조치가 취해지고  있는지 알려드립니다.
-“회사”는  개인정보 보호정책을  Allwork  홈페이지 첫 화면에 공개함으로써 이용자들이 언제나 용이하게 보실  수 있도록 조치하고 있습니다.
-“회사”의  개인정보 보호정책은 정부의 법률 및 지침 변경이나 “회사”의 내부 방침 변경 등으로 인하여 수시로 변경될 수 있고, 이에 따른 개인정보 보호정책의 지속적인 개선을 위하여 필요한  절차를 정하고 있습니다.
-그리고  개인정보 보호정책을 개정하는 경우 “회사”는 그 변경사항에 대하여 즉시 홈페이지를 통하여 게시하고 버전번호 및 개정일자 등을 부여하여 개정된  사항을 이용자들이 쉽게 알아볼 수 있도록 하고 있습니다.  이용자들께서는  사이트 방문 시 수시로 확인하시기 바랍니다.
- 회사 의 개인정보취급 방침은 다음과 같은 내용을 담고 있습니다.
-가. 총칙
-
-나. 개인정보의 수집 및 이용목적
-
-다. 개인정보 수집 항목 및 수집방법
-
-라. 개인정보의 제3자 제공 및 취급위탁
-
-마. 개인정보의 보유 및 이용기간
-
-바. 개인정보의 열람, 수정, 삭제 및 파기
-
-사. 쿠키의 운용
-
-아. 개인정보 보호를 위한 기술 및 관리적 대책
-
-자. 링크
-
-차. 게시물
-
-카. 비회원의 개인정보 보호
-
-타. 이용자의 권리와 의무
-
-파. “회사”의 개인정보 관리책임자 및 담당자의 소속-성명 및 연락처
-
-a. 고객센터 안내
-
-b. 부칙
-
-가. 총칙
-① 개인정보란 생존하는 개인에 관한 정보로서 당해 정보에 포함되어 있는 성명,  주민등록번호  등의 사항에 의하여 당해 개인을 식별할 수 있는 정보 (당해 정보만으로는 특정 개인을 식별할 수 없더라도 다른 정보와  용이하게 결합하여 식별할 수 있는 것을 포함합니다)를 말합니다.
-② “회사”는  귀하의 개인정보보호를 매우 중요시하며,  『정보  통신망 이용 촉진 및 정보 보호에 관한 법률』상의 개인정보취급방침 및 정보통신부가 제정한 『개인정보취급방침』을 준수하고 있습니다.  Allwork 는 개인정보취급방침을 통하여 귀하께서 제공하시는 개인정보가  어떠한 용도와 방식으로 이용되고 있으며 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다.
-③ “회사”는  개인정보취급방침을 홈페이지 첫 화면에 공개함으로써 귀하께서 언제나 용이하게 보실 수 있도록 조치하고 있습니다.
-④ “회사”는  개인정보취급방침의 지속적인 개선을 위하여 개인정보취급방침을 개정하는데 필요한 절차를 정하고 있습니다. 그리고 개인정보취급방침을 개정하는 경우 버전번호 등을 부여하여  개정된 사항을 귀하께서 쉽게 알아볼 수 있도록 하고 있습니다.
-
-
-나. 개인정보의 수집 및 이용 목적
-“회사”는 개인정보를 서비스 이용자의 구분,  이력서  등록과 입사지원 등 취업활동, 고용 및 취업동향을 파악하기 위한 통계분석,  회사 의 마케팅자료로 이용하여 서비스 이용자의 효과적인 취업지원 및  기업체의 인재채용에 적합한 서비스를 제공하기 위하여 개인정보를 수집하고 있으며 수집된 정보를 아래와 같이 이용하고 있습니다. (각 수집항목별 수집목적 제시)
-개인회원
-(1)  회원관리
-회원제 서비스 이용에 따른 본인확인, 본인의 의사확인, 고객문의에 대한  응답, 새로운 정보의 소개 및 고지사항 전달
-(2) 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산
-본인인증, 채용정보 매칭 및 컨텐츠 제공을 위한 개인식별, 회원간의 상호 연락, 구매 및 요금 결제, 물품  및 증빙발송, 부정 이용방지와 비인가 사용방지
-(3) 서비스 개발 및 마케팅ㆍ광고에의 활용
-맞춤 서비스 제공, 서비스 안내 및 이용권유, 서비스 개선 및 신규 서비스  개발을 위한 통계 및 접속빈도 파악, 통계학적 특성에 따른 광고 게재, 이벤트 정보 및 참여기회 제공
-(4) 고용 및 취업동향 파악을 위한 통계학적 분석
-기업회원
-(1) 아이디, 비밀번호, 회사명, 대표자성명, 사업자 등록번호: 회원제 서비스 이용에 따른 확인 절차
-(2) 채용자담당자, 기업형태, 홈페이지, 사원수, 설립연도, 자본금, 매출액, 회사소개, 복리후생, 급여제도: 회원이 기업의 채용정보 열람 시 사용 및 구인 서비스  제공
-(3) 가입경로: 새로운 서비스 및 이벤트 정보 등을 위한 마케팅  자료,   아이디, 비밀번호, 사업자등록번호, 대표자명, 주소, 기업형태, 사원수/설립년도, 자본금/매출액, 상장여부, 담당자명, 전화번호, 이메일
-
-
-다. 개인정보 수집 항목 및 수집방법
-“회사”는 별도의 회원가입 절차 없이 특정 유료 서비스를 제외한 대부분의 콘텐츠에 자유롭게 접근할 수 있으며 회원제 서비스를 이용하시려면  회원가입 통해 원활한 고객상담 및 각종 서비스 제공을 위해 아래와 같은 개인정보를 수집하고 있습니다. 필수항목을 입력하여야 하며 선택항목은 입력하지 않더라도 서비스  이용에 제한을 두지 않습니다.
-1)  회원가입 시 수집하는 항목
-① 개인  회원
-필수항목: 이름, 본인인증정보 또는 중복가입확인정보(DI),  아이디, 비밀번호, 생년월일, 성별, 연락처(전화번호/휴대폰번호),  e-메일, 최종학력, 경력유무, 희망직종
-
-선택항목: 주소,  이메일  수신 설정, SMS/MMS 수신 설정, 가입경로
-② 기업  회원
-필수항목:  이름, 본인인증정보 또는 중복가입확인정보(DI), 아이디, 비밀번호, 회사명, 기업형태, 업종, 사업자등록번호, 대표자명, 전화번호, e-메일, 우편번호, 주소
-
-선택항목:  사원수,  자본금,  매출액,  회사소개,  복리후생,  급여제도,  팩스번호,  홈페이지,메일링 서비스  설정, 연혁 및 실적, 가입경로
-③ 서치펌 회원
-필수항목:  이름, 본인인증정보 또는 중복가입확인정보(DI), 아이디, 비밀번호, 서치펌명, 사업자등록번호, 대표자명,  전화번호, e-메일, 우편번호, 주소
-
-선택항목:  팩스번호, 홈페이지
-④ 교육기관  회원
-필수항목:  이름, 본인인증정보 또는 중복가입확인정보(DI), 아이디, 비밀번호, 회사명, 사업자등록번호, 대표자명,  전화번호, e-메일, 우편번호, 주소
-
-선택항목:  팩스번호, 홈페이지
-2)  이력서 등록 시 수집하는 항목
-필수 항목:  이름, 연락처(전화번호/휴대폰), e-메일, 사진,  우편번호, 주소, 학력사항, 경력사항,  고용형태,희망연봉, 희망근무지, 지원분야(업직종), 자기소개서, 희망근무일시
-
-선택 항목:  홈페이지,  희망급여, 근무가능일, 취업우대사항(보훈대상, 취업보호대상), 장애여부, 병역사항, 고용지원금대상, 사회활동, 수상내역, 교육이수내용, 자격증, OA능력, 컴퓨터  능력,  해외연수, 어학시험, 외국어 구사능력, 나의 성향, IT/디자인능력,장점/강점
-3) 채용정보 등록 시 수집하는 항목
-담당자의 정보는 채용 이외의 용도로 이용할 수 없으며, 신청하신 서비스의 원활한 이용과 정보도용 및 허위정보 게재로 인한 피해를 방지하기 위해  채용담당자의 개인정보를 확인하고 있습니다.
-*채용공고 등록  시: 담당자 이름, 연락처(전화번호/휴대폰번호), e-메일
-*채용광고 신청  시: 회사명, 담당자 이름, 전화번호, e-메일
-*인재서칭(이력서열람)  신청 시: 담당자 이름, 중복가입확인정보(DI), 소속부서, 연락처(전화번호/휴대폰번호),  e-메일
-4)  교육정보 등록 시 수집하는 항목
-담당자의  정보는 교육정보 상담문의에 대한 답변 이외의 용도로 이용할 수  없으며, 신청하신 서비스의 원활한 이용과 정보도용 및 허위정보 게재로 인한 피해를 방지하기 위해 교육담당자의 개인정보를 확인하고 있습니다.
-교육정보 등록  시: 담당자 이름, 전화번호, e-메일
-5)  유료 정보 이용 시 수집하는 항목
-유료 서비스 이용 과정에서 아래와 같은 결제 정보들이 수집될 수 있습니다.
-신용카드 결제:  카드사명, 카드번호 등
-은행계좌 이체:  은행명,  계좌번호 등
-휴대전화 결제:  가입자명, 이동전화번호, 결제승인번호 등
-6)  모바일  서비스 이용 시 수집되는 항목
-모바일  서비스의 특성상 단말기 모델 정보가 수집될 수 있으나,이는 개인을 식별할 수 없는 형태입니다.
-7)  서비스 이용과정이나 사업처리 과정에서 아래와 같은 정보들이 자동으로 생성되어 수집될 수 있습니다.
-IP Address, 쿠키, 방문 일시, 서비스 이용 기록, 불량 이용 기록
-8)  개인정보 수집방법
-홈페이지, 서비스 이용, 이벤트 응모, 팩스, 우편, 전화, 고객센터 문의하기
-라.  개인정보의 제 3자 제공 및 취급위탁
-“회사”는 어떠한 경우에도 개인정보를 “나.  개인정보의  수집 및 이용 목적”에서 고지한 범위 내에서 사용하며 범위를 초과하여 귀하의 개인정보를 이용하지 않습니다. 다만, 아래의 경우에는 예외로 합니다.
-1) 개인회원이  사전에 동의한 경우
-이용자(개인회원)의 재취업을 위해서 기업회원 및 채용요청을 한 회사에 개인정보  중 구체적으로 식별
-  할 수 없고, 채용회사의 채용기준 구분이 최소한으로 가능한 이름”, “출생년도”,“학력”, ”경력사항”, “거주지”항목에 대해서만 개인정보가 제공됩니다.
-
-
-
-      제공받는  자
-      제공하는  항목
-      제공받는자의 이용목적
-      보유  및 이용기간
-
-
-      기업회원 및 채용요청 회사
-      이름:홍**
-        출생년도:1958년
-        학력:대졸,전자공학과
-        경력사항:한국전자 품질관리
-      거주지:경기도 수원시
-      회원사 및 관계사에 구인정보 제공
-      회원 탈퇴시 혹은 채용 종료시까지
-
-
-
-2) 제휴관계 :
-제 3의 “회사”와 제휴관계를 맺을 경우에는 “회사” 개인회원 약관  제8조에 따릅니다.
-3) 매각. 인수합병 등 :
-서비스제공자의  권리와 의무가 완전 승계. 이전되는 경우 반드시 사전에 정당한 사유와 절차에 대해 상세하게  고지할 것이며 이용자의 개인정보에 대한 동의 철회의 선택권을 부여합니다.
-4) 고지 및  동의방법 :
-온라인  홈페이지의 공지사항을 통해 최소 7일 이전부터 고지함과 동시에 이메일 등을 이용하여 1회 이상 개별적으로 고지하고 3)에 대해서는 반드시 적극적인 동의 방법에 의해서만 절차를  진행합니다.
-5) 다음은  예외로 합니다.
-- 관계법령에  의하여 수사상의 목적으로 관계기관으로부터의 요구가 있을 경우
-- 통계작성. 학술연구나 시장조사를 위하여 특정 개인을 식별할 수 없는 형태로  광고주. 협력사나 연구단체 등에 제공하는 경우
-- 기타 관계법령에서 정한 절차에 따른 요청이 있는  경우
-
-그러나 예외 사항에서도 관계법령에 의하거나 수사기관의 요청에 의해 정보를 제공한 경우에는 이를 “회사”에 고지하는 것을 원칙으로 운영합니다. 그러나 법률상의 근거에 의해 부득이하게 고지를 하지 못할 수도  있습니다. 본래의 수집 및 이용목적에 반하여 무분별하게 정보가 제공되지  않도록 하겠습니다.
-6)  취급위탁
- 회사 는 서비스 향상을 위해서 아래와 같이 개인정보를 위탁하고 있으며, 관계 법령에 따라 위탁계약 시 개인정보가 안전하게 관리될 수 있도록 필요한 사항을 규정하고 있습니다.
-변동사항  발생 시 공지사항 또는 개인정보취급방침을 통해 고지하도록 하겠습니다.
-
-
-
-      수탁업체
-      위탁  업무 내용
-      개인정보  이용 기간
-
-
-      구미전자정보기술원
-         벤처기업협회
-         한국전자기술협회
-       한국소공인진흥협회
-      올워크 개인회원들에게 재취업정보 제공 및 구미전자정보기술원 회원사에 인재정보 제공
-      회원 탈퇴시 혹은 위탁계약 종료시까지
-
-
-
-마. 개인정보의 보유 및 이용기간
-서비스 이용자가 “Allwork”의 회원으로서 서비스를 계속 이용하는 동안 “회사”는 이용자의  개인정보를 계속 보유하며 서비스 제공 등을 위해 이용합니다.
-서비스  이용자의 개인정보는 그 수집 및 이용 목적(설문조사, 이벤트 등 일시적인 목적을 포함)이 달성되거나 이용자가 “바. 개인정보의 열람, 수정 및 삭제”와 같이 직접 삭제 또는 회원 탈퇴한 경우에  재생할 수 없는 방법으로 파기됩니다.
-“회사”는  이용자의 권리 남용, 악용 방지, 권리침해/명예훼손 분쟁 및 수사협조 등의 요청이 있었을 경우에는 이의  재발에 대비하여 회원의 이용계약 해지 시로부터 1년 동안 회원의 개인정보를 보관할 수 있습니다.
-회사 내부  방침에 의한 정보보유 사유
-
-- 부정이용기록
-
-- 보존 이유 : 부정이용방지
-
-- 보존 기간 : 1년
-상법, 전자 상거래 등 에서의 소비자보호에 관한 법률 등 관계법령의  규정에 의하여 보존할 필요가 있는 경우 “회사”는 관계법령에서 정한 일정한 기간 동안 회원정보를 보관합니다. 이 경우 “회사”는 보관하는 정보를 그 보관의 목적으로만  이용하며 보존기간은 아래와 같습니다.
-관련법령에  의한 정보보유 사유
-- 계약 또는 청약철회 등에 관한 기록
-
-  보존 이유 : 전자상거래 등에서의 소비자 보호에 관한 법률
-
-  보존 기간 : 5년
-- 대금결제 및 재화 등의 공급에 관한 기록
-
-보존 이유 : 전자상거래 등에서의 소비자 보호에 관한 법률
-
-보존 기간 : 5년
-- 소비자의 불만 또는 분쟁처리에 관한 기록
-
-보존 이유 : 전자상거래 등에서의 소비자 보호에 관한 법률
-
-보존 기간 : 3년
-바. 개인정보의 열람, 수정, 삭제 및 파기
-서비스 이용자는 자유롭게 본인의 개인정보를 열람,  수정 및  삭제할 수 있습니다. 개인정보를 열람, 수정 및 삭제 하고자 할 경우에는 “Allwork”의 '개인회원서비스'의 개인정보관리, 이력서관리에서 직접 처리할 수 있습니다. 이 밖에 개인정보관리책임자에게 전화, 서면, 이메일로 연락하면 즉각 처리합니다.
-“회사”는  귀하가 개인정보의 오류에 대한 정정을 요청한 경우,  정정을  완료하기 전까지 당해 개인정보를 이용하거나 제공을 하지 않습니다.
-회원탈퇴를  원할 경우 “회사”의 고객센터로 이메일, 전화, fax 등을 통해 연락하여 본인 확인 절차를 거친 후 탈퇴할 수  있습니다. “회사”는 회원탈퇴를 하고 개인정보파기 등의 조치를 취한 경우에는  그 사실을 이용자에게 통지할 수 있습니다.
-개인정보가  파기된다는 것은 추후 열람이나 이용이 불가능한 형태로 처리된다는 것을 의미합니다.  이 경우  전자적 파일 형태인 경우에는 하드디스크에서 재생 불가능하게 삭제되며 종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각됩니다.
- Allwork 는 이용자가 타인의 개인정보를 도용하여 회원가입과  서비스를 이용하였을 경우에는 지체 없이 해당 아이디에 대한 서비스 이용정지 또는 회원탈퇴 등 필요한 조치를 취합니다.
-사. 쿠키의 운용
-쿠키란 웹사이트가 사용자의 하드디스크(hard  disk)에  전송하는 특별한 텍스트 파일(text  file)을  말합니다. 쿠키는 웹사이트의 서버(server)에서만 읽어드릴 수 있는 형태로 전송되며 개인이 사용하는  브라우저(browser)의 디렉토리(directory) 하위에 저장됩니다.
-쿠키는  웹사이트가 사용자에 관하여 무엇인가를 기억할 수 있도록 하기 위해 만들어졌습니다.  즉  이용자의 편의를 돕고 개별 맞춤 서비스를 제공하는 등 웹사이트와 방문자 간의 원활한 의사소통에 이용되며, 쿠키를 통해 수집된 정보만으로는 개인을 식별할 수 없습니다.
- 회사 가 쿠키를 통해 수집하는 정보는 '01. 개인정보의 수집 및 이용목적 '와 같으며 '다. 개인정보의 수집범위 ' 외의 용도로는 이용되지 않습니다. 또한 쿠키를 통해 '나. 개인정보의 수집 및 이용목적'과 같은 목적으로 수집된 정보라 할지라도 이미 수집된 개인의  실명 데이타와는 통합하여 분석하지 않습니다.
-서비스  이용자가 회원 등록하여 로그인(log  in) 한 후  스크랩 기능을 이용할 경우 해당 채용공고를 선택하였다는 정보를 저장하여 스크랩 기능을 원만히 이용할 수 있도록 하고 있습니다.
-방문자는  쿠키에 대해 선택권을 가지고 있습니다.  귀하의 웹  브라우저 상단의 도구/ 인터넷 옵션 탭(option tab)에서 모든 쿠키의 허용, 동의를 통한 쿠키의 허용, 모든 쿠키의 차단을 스스로 결정할 수 있습니다.
-  아. 개인정보 보호를 위한 기술 및 관리적 대책
-
-
- Allwork 는 회원 개인정보의 상실, 유출, 변조, 훼손 등으로부터 보호하기 위하여 다음과 같은 대책을 마련하고  있습니다.
-1) 기술적 대책
-서비스 이용자의 개인정보는 입력하시는 비밀번호에 의해 보호되며 파일 및 각종 데이터는 암호화나 파일 잠금 기능(lock)을 통해 전송되며 중요한 데이터는 별도의 보안 장치를 통해  보호되고 있습니다.
-금융신용  관련 정보 등 보안이 요구되는 정보의 경우 산업표준인 ssl(secure socket layer) 128bit 방식을 이용하여 암호화되어 전송되며 서비스 이용자가 사용하시는  스크린 하단 작업표시줄에 자물쇠 마크를 통해 확인할 수 있습니다.  이렇게  전송된 정보는 방화벽(fire  wall) 시스템  체계를 통하여 이중망으로 구성된 시스템에 안전하게 저장됩니다.
-컴퓨터  바이러스에 의한 피해를 방지하기 위하여 백신 프로그램을 주기적으로 업데이트하고 있으며 새로운 바이러스가 출현할 경우 백신이 마련되는 즉시  사용하여 개인정보가 훼손되지 않도록 조치하고 있습니다.
-해킹 등  외부 침입에 대비하여 각 서버마다 침입 탐지 시스템 및 취약점 분석 시스템을 24시간 가동하여 보안에 만전을 기하고 있습니다.
-2) 관리적  대책
-개인정보관리책임자와 최소한의 인원으로 구성된 별도의 부서를 마련하여 개인정보에 대한 접근권한을 제한하고 있으며 개인정보를 취급하는 직원을  대상으로 새로운 보안 기술 습득 및 개인정보보호 의무 등에 관해 정기적인 사내 교육 및 외부 위탁교육을 실시하고 있습니다.
- 회사 의 모든 직원의 보안서약서를 통하여 사람에 의한 정보유출을  사전에 방지하고 개인정보취급방침에 대한 이행사항 및 직원의 준수여부를 감사하기 위한 내부절차를 마련하고 있습니다. 개인정보 관련 취급자의 업무 인수인계는 보안이 유지된 상태에서  철저하게 이뤄지고 있으며 입사 및 퇴사 후 개인정보 사고에 대한 책임은 명확화하고 있습니다.
-개인정보와  일반 데이터를 혼합하여 보관하지 않고 별도의 서버를 통해 분리하여 보관하고 있으며 전산 시스템은 전문co-location 서비스 업체를 통해 관리하고 있어 출입을 통제하고 있습니다.
-“회사”는  귀하의 개인정보를 보호하기 위하여 최선의 노력을 다하고 있지만 인터넷상의 데이터 전송은 완벽한 안전을 보장받을 수 없으며 이러한 위험은  “회사”와 귀하가 함께 부담해야 합니다.
-“회사”는  이용자 개인의 실수나 기본적인 인터넷의 위험성 때문에 일어나는 일들에 대해 책임을 지지 않습니다. 회원 개개인이 본인의 개인정보를 보호하기 위해서 자신의 id 와 비밀번호를 적절하게 관리하고 여기에 대한 책임을 져야 합니다. 그 외 내부 관리자의 실수나 기술관리상의 사고로 인해 개인정보의  상실, 유출, 변조, 훼손이 유발될 경우 “회사”는 즉각 귀하께 사실을 알리고 적절한  대책과 보상을 강구할 것입니다.
-  자. 링크
-
-
-“Allwork”의 페이지는 다양한 배너와 링크(link)를 포함하고 있습니다. 많은 경우 타 사이트의 페이지와 연결되어 있으며 이는 광고주와의  계약관계에 의하거나 제공받은 콘텐츠의 출처를 밝히기 위한 조치입니다.
-“Allwork”가 포함하고 있는 링크를 클릭(click)하여 타 사이트(site)의 페이지로 옮겨갈 경우 해당 사이트의 개인정보취급방침은  “회사”와 무관하므로 새로 방문한 사이트의 정책을 검토해 보시기 바랍니다.
-  차. 게시물
-
-
-“회사”는 귀하의 게시물을 소중하게 생각하며 변조,  훼손, 삭제되지 않도록 최선을 다하여 보호합니다. 그러나 다음의 경우는 그렇지 아니합니다.
- - 스팸(spam)성 게시물 (예: 행운의 편지, 8억 메일, 특정사이트 광고 등) 타인을 비방목적으로 허위사실을 유포하여 타인의 명예를 훼손한  글
- - 동의 없는 타인의 신상공개
- -   회사 의 저작권 및 제 3자의 저작권 등 기타 권리를 침해하는 내용
- - 허위 사실로 특정 기업의 영업방해 및 소속 특정인의 명예를  훼손하는 글
- - 기타 게시판 주제와 다른 내용의 게시물
- “회사”는 바람직한 게시판 문화를 활성화하기 위하여 동의 없는 타인의 신상 공개 시 특정 부분을 삭제하거나 기호 등으로 수정하여 게시할 수  있습니다. 다른 주제의 게시판으로 이동 가능한 내용일 경우 해당 게시물에  이동 경로를 밝혀 오해가 없도록 하고 있으며 그 외의 경우 명시적 또는 개별적인 경고 후 삭제 조치할 수 있습니다.
- 특히  “회사”는 특정 게시물에 대해 게시물 작성자 이외의 타인으로부터 문제제기가 접수된 글을 임시 삭제하고 있습니다. 이후 게시물에 대한 사실 여부 및 게시물 작성자와 문제를 제기한  타인 간의 합의에 의해 재등록 하거나 완전 삭제할 수 있습니다.
-  그러나  근본적으로 게시물에 관련된 제반 권리와 책임은 작성자 개인에게 있습니다.  또  게시물을 통해 자발적으로 공개된 정보는 보호받기 어려우므로 게시물 작성 및 정보 공개 전에 심사숙고 하시기 바랍니다.
- 카. 아동의 개인정보 보호
-
-
-“회사”는 “Allwork”의 특성 상 어떠한 경우에도 만15세 미만 아동의 회원가입을 허용하지 않습니다.
- 타. 비회원의 개인정보 보호
-
-
-“회사”는 회원 가입을 하지 않으면 대부분의 콘텐츠를 자유롭게 이용할 수 있습니다.
-파. 이용자의 권리와 의무
-
-
-서비스 이용자의 개인정보를 최신의 상태로 정확하게 입력하여 불의의 사고를 예방해 주시기 바랍니다. 이용자가 입력한 부정확한 정보로 인해 발생하는 사고의 책임은  이용자 자신에게 있으며 타인 정보의 도용 등 허위정보를 입력할 경우 회원자격이 상실될 수 있습니다.
- 귀하는  개인정보를 보호받을 권리와 함께 스스로를 보호하고 타인의 정보를 침해하지 않을 의무도 가지고 있습니다. 비밀번호를 포함한 귀하의 개인정보가 유출되지 않도록 조심하시고  게시물을 포함한 타인의 개인정보를 훼손하지 않도록 유의해 주십시오.
-  서비스  이용자가 위 책임을 다하지 못하고 타인의 정보 및 존엄성을 훼손할 시에는 『정보 통신망 이용 촉진 및 정보 보호 등에 관한 법률』 등 관련 법률에 의해 처벌받을 수 있습니다.
-  하. “회사”의 개인정보 관리책임자 및 담당자의 소속-성명 및 연락처
-
-
-“회사”는 귀하가 좋은 정보를 안전하게 이용할 수 있도록 최선을 다하고 있습니다.  개인정보를  보호하는데 있어 귀하께 고지한 사항들에 반하는 사고가 발생할 경우 개인정보관리책임자가 책임을 집니다.
- 이용자  개인정보와 관련한 아이디(id)의 비밀번호에 대한 보안유지책임은 해당 이용자 자신에게 있습니다. (주)올워크에서는 비밀번호에 대해 어떠한 방법으로도 이용자에게 직접적으로  질문하는 경우는 없으므로 타인에게 비밀번호가 유출되지 않도록 각별히 주의하시기 바랍니다. 특히 "아. 개인정보 보호를 위한 기술관리적 대책"항 에서 명시한 것과 같이 공공장소에서 온라인상에서 접속해 있을  경우에는 더욱 유의하셔야 합니다.
- “회사”는  개인정보에 대한 의견수렴 및 불만처리를 담당하는 개인정보 관리책임자 및 담당자를 지정하고 있고, 연락처는 아래와 같습니다.
- “회사”  대표이사의 위임을 받아 아래의 관리책임자가 관리업무를 수행하고 있으며 청소년 유해정보로부터 청소년을 보호하기 위하여 다음과 같이  청소년보호책임자를 지정하여 청소년보호와 관련된 업무를 수행하고 있습니다.
- 개인 정보  관리 책임자
- 이름: 한진성
-
-소속: (주)올워크
-
-전화:  02-585-0108
-a.  고객센터  안내
-
-
-현재 “회사”는 고객의 불만처리와 관련된 개인정보의 관리를 위한 고객센터를 운영하고 있습니다.
-  근무시간: 평일 09:00~18:00, 점심시간은 12:00~13:00, 토요일 , 공휴일은 휴무입니다.
-  고객센터  전화번호 :02-585-0108
-  이메일: mail@allwork.co.kr
-전자우편이나  팩스 및 우편을 이용한 상담은 접수 후 12시간 내에 성실하게 답변 드리겠습니다. 다만, 근무시간 이후 또는 주말 및 공휴일에는 익일 처리하는 것을  원칙으로 합니다.
- 기타  개인정보에 관한 상담이 필요한 경우에는 개인정보침해신고센터,  정보보호마크  인증위원회, 대검찰청 인터넷범죄수사센터, 경찰청 사이버범죄수사대, 통신위원회 등으로 문의하실 수 있습니다.
- 개인정보침해신고센터
-
-  전화 :  1336
-
-  url : http://www.cyberprivacy.or.kr
-
-  정보보호마크 인증위원회
-
-  전화 :  02-580-0533
-
-  url : http://www.privacymark.or.kr
-
-  대검찰청 인터넷범죄수사센터
-
-  전화 :  02-3480-3600
-
-  url : http://icic.sppo.go.kr
-
-  경찰청 사이버범죄수사대 url : http://www.police.go.kr/cybercenter
-
-  통신위원회
-
-  전화 :  02-750-1788
-
-  url : http://www.kcc.go.kr
-
-
-b. 부칙
-
-
-현 개인정보취급방침은 2015년 10월 20일에 개정되었으며 정부의 정책 또는 보안기술의 변경에 따라 내용의 추가, 삭제 및 수정이 있을 시에는 개정 최소 10일 전부터 홈페이지의 '공지'를 통해 고지할 것입니다.
-개인정보취급방침  버전번호 :  v1.1
-
-개인정보취급방침  변경시행일자 : 2015-11-01
-                  </span>
-                </li>
-                <li><span><input id="agree03" type="checkbox" name="agree03"/>&nbsp;<label for="agree03">[선택] 마케팅 정보 이메일 수신 동의</label></span></li>
-                <li><span><input id="agree04" type="checkbox" name="agree04"/>&nbsp;<label for="agree04">[선택] 마케팅 정보 SMS 수신 동의</label></span></li>
-              </ol>
-            </div>
+						<div class="tab">
+							<span class="btn_persnal"><input id="persnal_register"
+								type="radio" name="persnal_register"
+								onClick="location.href='register_01_개인회원가입.html'"
+								checked="checked" /><label for="persnal_register">&nbsp;개인회원</label></span>
+							<span class="btn_company"><input id="company_register"
+								type="radio" name="company_register"
+								onClick="location.href='register_02_기업회원가입.html'" /><label
+								for="company_register">&nbsp;기업회원</label></span>
+						</div>
+						<div class="descBox">
+							<p class="title">
+								일반 개인회원<br />혜택
+							</p>
+							<p class="desc">
+								<span><i class="far fa-check-circle"></i>입사지원 기업보기</span> <span><i
+									class="far fa-check-circle"></i>입사요청 기업보기</span> <span><i
+									class="far fa-check-circle"></i>채용정보 메일링 서비스</span> <span><i
+									class="far fa-check-circle"></i>무료 채용정보 열람</span>
+							</p>
+							<p class="title">
+								개인유료회원<br />혜택
+							</p>
+							<p class="desc">
+								<span><i class="far fa-check-circle"></i>올워크 구인정보 무제한 검색</span>
+								<span><i class="far fa-check-circle"></i>기업의 채용대행, 헤드헌팅
+									우선추천</span> <span><i class="far fa-check-circle"></i>정회원 전용
+									프리미엄좀 운영</span> <span><i class="far fa-check-circle"></i>기타 정회원
+									우선 정책 유지</span>
+							</p>
+						</div>
+						<div class="snsRegister">
+							<p>소셜 회원가입</p>
+							<ul>
+								<li><a href="#none" title="네이버 회원가입"><img
+										src="img/login/sns01.png" alt="이미지00" />&nbsp;&nbsp;&nbsp;&nbsp;네이버
+										회원가입</a></li>
+								<li><a href="#none" title="카카오 회원가입"><img
+										src="img/login/sns02.png" alt="이미지00" />&nbsp;&nbsp;&nbsp;&nbsp;카카오
+										회원가입</a></li>
+								<li><a href="#none" title="구글 회원가입"><img
+										src="img/login/sns03.jpg" alt="이미지00" />&nbsp;&nbsp;&nbsp;&nbsp;구글
+										회원가입</a></li>
+							</ul>
+						</div>
+						<div class="registerBox">
+							<table>
+								<caption>모집요강</caption>
+								<tbody>
+									<tr>
+										<th>이름<span class="necessary">*</span></th>
+										<td><input id="username" type="text" name="username"
+											title="이름" /></td>
+									</tr>
+									<tr>
+										<th>아이디<span class="necessary">*</span></th>
+										<td><input id="userid" type="text" name="userid"
+											title="아이디" /> <input type="submit" value="중복확인" title="중복확인" />
+											<span class="comment">영문과 숫자를 조합하여 4~20자 이내로 입력하세요.</span></td>
+									</tr>
+									<tr>
+										<th>비밀번호<span class="necessary">*</span></th>
+										<td><input id="userpass" type="password" name="userpass"
+											title="비밀번호" /> <span class="comment">비밀번호는 6~16자 영문,
+												숫자를 조합하여 사용할 수 있습니다.</span></td>
+									</tr>
+									<tr>
+										<th>비밀번호 확인<span class="necessary">*</span></th>
+										<td><input id="userpass01" type="password"
+											name="userpass01" title="비밀번호확" /> <span class="comment">비밀번호
+												확인을 위해 다시 한 번 입력해 주시기 바랍니다.</span></td>
+									</tr>
+									<tr>
+										<th>생년월일<span class="necessary">*</span></th>
+										<td><span> <select id="year" name="year"
+												title="생년월일선택">
+													<option value="선택">선택</option>
+													<option value="1981">1981</option>
+													<option value="1980">1980</option>
+													<option value="1979">1979</option>
+													<option value="1978">1978</option>
+													<option value="1977">1977</option>
+													<option value="1976">1976</option>
+													<option value="1975">1975</option>
+													<option value="1974">1974</option>
+													<option value="1973">1973</option>
+													<option value="1972">1972</option>
+													<option value="1971">1971</option>
+													<option value="1970">1970</option>
+													<option value="1969">1969</option>
+													<option value="1968">1968</option>
+													<option value="1967">1967</option>
+													<option value="1966">1966</option>
+													<option value="1965">1965</option>
+													<option value="1964">1964</option>
+													<option value="1963">1963</option>
+													<option value="1962">1962</option>
+													<option value="1961">1961</option>
+													<option value="1960">1960</option>
+													<option value="1959">1959</option>
+													<option value="1958">1958</option>
+													<option value="1957">1957</option>
+													<option value="1956">1956</option>
+													<option value="1955">1955</option>
+													<option value="1954">1954</option>
+													<option value="1953">1953</option>
+													<option value="1952">1952</option>
+													<option value="1951">1951</option>
+													<option value="1950">1950</option>
+													<option value="1949">1949</option>
+													<option value="1948">1948</option>
+													<option value="1947">1947</option>
+													<option value="1946">1946</option>
+													<option value="1945">1945</option>
+													<option value="1944">1944</option>
+													<option value="1943">1943</option>
+													<option value="1942">1942</option>
+													<option value="1941">1941</option>
+													<option value="1940">1940</option>
+													<option value="1939">1939</option>
+													<option value="1938">1938</option>
+													<option value="1937">1937</option>
+													<option value="1936">1936</option>
+													<option value="1935">1935</option>
+													<option value="1934">1934</option>
+													<option value="1933">1933</option>
+													<option value="1932">1932</option>
+													<option value="1931">1931</option>
+													<option value="1930">1930</option>
+													<option value="1929">1929</option>
+													<option value="1928">1928</option>
+													<option value="1927">1927</option>
+													<option value="1926">1926</option>
+													<option value="1925">1925</option>
+													<option value="1924">1924</option>
+													<option value="1923">1923</option>
+													<option value="1922">1922</option>
+													<option value="1921">1921</option>
+											</select> <label for="year">&nbsp;년</label>
+										</span> <span><input id="month" type="text" name="month" /><label
+												for="month">&nbsp;월</label></span> <span><input id="day"
+												type="text" name="day" /><label for="day">&nbsp;일</label></span> <span
+											class="comment">40세 이상만 가입이 가능합니다.</span></td>
+									</tr>
+									<tr>
+										<th>성별<span class="necessary">*</span></th>
+										<td><span class="male"><input id="gender_male"
+												type="radio" name="gender_male" checked="checked" /><label
+												for="gender_male">남자</label></span> <span class="female"><input
+												id="gender_female" type="radio" name="gender_female" /><label
+												for="gender_female">여자</label></span></td>
+									</tr>
+									<tr class="email">
+										<th>이메일<span class="necessary">*</span></th>
+										<td><span><input id="email01" type="text"
+												name="email01" title="아이디만 입력" /></span><span>&nbsp;@&nbsp;</span><span><input
+												id="email02" type="text" name="email02" title="이메일 주소 선택" /></span>
+											<span> <select id="email03" name="email03"
+												title="이메일 선택">
+													<option value="direct">직접입력</option>
+													<option value="gmail.com">gmail.com</option>
+													<option value="naver.com">naver.com</option>
+													<option value="daum.net">daum.net</option>
+													<option value="nate.com">nate.com</option>
+											</select>
+										</span></td>
+									</tr>
+									<tr class="phone">
+										<th>휴대폰 인증<span class="necessary">*</span></th>
+										<td>
+											<p>
+												<label for="phoneNum">휴대폰 번호</label><input id="phoneNum"
+													type="text" name="phoneNum" title="휴대폰번호" /><input
+													type="submit" value="인증번호 전송" title="인증번호 전송" />
+											</p>
+											<p>
+												<label for="confirmNum">인증번호 입력</label><input
+													id="confirmNum" type="text" name="confirmNum" title="인증번호" /><input
+													class="ok" type="submit" value="확인" title="확인" /><input
+													type="submit" value="재전송" title="재전송" />
+											</p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="agreement">
+							<p class="comment01">필수동의 항목과 마케팅 정보 수신(선택)에 모두 동의합니다.</p>
+							<ol>
+								<li><span><input id="agree00" type="checkbox"
+										name="agree00" />&nbsp;<label for="agree00">전체동의</label></span></li>
+								<li class="descArea"><span class="desc"><input
+										id="agree01" type="checkbox" name="agree01" />&nbsp;<label
+										for="agree01">[필수] 이용약관 동의</label></span><span class="descBtn"><input
+										id="desc_Btn" type="button" name="desc_Btn" value="내용보기 ∨" /></span>
+									<span class="agreeDesc01"> 개인회원 이용약관. ::: 개인 회원 서비스 이용
+										약관 ::: (적용 2013.9.1/ 2018.4.25 일부개정/2020.5.1 일부개정) 제1조 (목적) 이
+										약관은 ㈜올워크(이하”회사”라고 합니다)이 제공하는 ‘Allwork 사이트’(이하 “Allwork”라고
+										합니다)의 이용조건 및 제반 절차 등에 관한 사항을 규정함을 목적으로 합니다. 제2조 (“Allwork”의
+										이용) ① “회원”은 “Allwork”에서 단일id 및 password로 이용하실 수 있으며, “회사”가
+										“㈜Allwork ”의 각 개별 사이트 서비스 이용을 위하여 회원이 제공하신 정보를 이용하는 것에 동의합니다.
+										② "회원"이 되고자 하는 자가 "회사"가 정한 소정의 절차를 거쳐서 "동의" 단추를 누르면 본 약관에 동의하는
+										것으로 간주합니다. 본 약관에 정하는 이외의 이용자와 "서비스제공자"의 권리, 의무 및 책임사항에 관해서는
+										전기통신사업법 기타 대한민국의 관련 법령과 상관습에 의합니다. 제3조 (회원의 정의) ① "회원"이란 "회사"의
+										"개인서비스"에 접속하여 본 약관에 따라 "Allwork-개인서비스"의 회원으로 가입하여 "Allwork"를
+										이용하는 자를 말합니다. 제4조 (서비스의 제공 및 변경) ① "회사"는 "회원"에게 아래와 같은 서비스를
+										제공합니다. 1. 이력서 작성/저장/수정/db에 이력서 등록 2. 온라인 입사지원 3. 기업의 인재추천 및
+										채용제의 서비스(이력서 공개 또는 비공개로 설정한 경우 모두 적용함) 4. 헤드헌터/서치펌 이력서 발송 5.
+										맞춤채용정보 검색/등록 6. 스크랩한 채용정보 7. 스크랩한 취업자료 8. 마감된 구인정보 검색 9. 파일
+										저장함 10. 메일서비스신청 11. 기타 "회사"가 자체 개발하거나 다른 회사와의 협력계약 등을 통해
+										"회원"들에게 제공할 일체의 서비스 12. 회원에게 필요로 할 수도 있는 보험관련 기타 정보 ② "회사"는 그
+										변경 될 서비스의 내용 및 제공 일자를 제6조 제2항에서 정한 방법으로 이용자에게 통지하고, 제1항에 정한
+										서비스를 변경하여 제공할 수 있습니다. ③ "회사"는 "회원"들을 위한 치과병원정보, 올워크실버스타참여 및
+										참여에 필요한 모든 정보를 제공한다.     추가로 "회사"는 회원들을 위한 다양한 정보를 제공한다. 제5조
+										(서비스의 중단) ① "회사"는 컴퓨터 등 정보통신설비의 보수점검 교체 및 고장, 통신의 두절 등의 사유가
+										발생한 경우에는 서비스의 제공을 일시적으로 중단할 수 있고, 새로운 서비스로의 교체 기타 "회사"가 적절하다고
+										판단하는 사유에 기하여 현재 제공되는 서비스를 완전히 중단할 수 있습니다. ② 제1항에 의한 서비스 중단의
+										경우에는 "회사"는 제7조 제2항에서 정한 방법으로 "회원"에게 통지합니다. 다만, "회사"가 통제할 수 없는
+										사유로 인한 서비스의 중단(시스템 관리자의 고의, 중과실이 없는 디스크 장애, 시스템다운 등)으로 인하여 사전
+										통지가 불가능한 경우에는 그러하지 아니합니다. 제6조 (회원 탈퇴 및 자격 상실 등) ① "회원"은 "회사"에
+										언제든지 자신의 회원등록을 말소해 줄 것("회원" 탈퇴)을 요청할 수 있으며 "회사"는 위 요청을 받았을 시
+										해당 "회원"의 정보말소를 위한 절차를 밟습니다. ② "회원"이 다음 각 호의 사유에 해당하는 경우, "회사"는
+										"회원"의 자격을 적절한 방법으로 제한 및 정지, 상실시킬 수 있습니다. 1. 허위 내용을 등록한 경우 2.
+										다른 사람의 서비스 이용을 방해하거나 그 정보를 도용하는 등 전자거래질서를 위협하는 경우 3. 서비스를 이용하여
+										법령과 본 약관이 금지하거나 공서양속에 반하는 행위를 하는 경우 ③ "회사"가 "회원"의 회원자격을 상실시키기로
+										결정한 경우에는 회원등록을 말소합니다. 이 경우 회원에게 회원등록 말소 전에 이를 통지하고, 소명할 기회를
+										부여합니다. 제7조 (회원에 대한 통지) ① "회사"는 "본 서비스"에 대한 공지사항을 "회원"에게 "회사"가
+										부여한 메일주소로 할 수 있습니다. ② "회사"가 불특정다수 "회원"에 대한 통지를 하는 경우 칠(7)일 이상
+										"회사" 게시판에 공시함으로써 개별 통지에 갈음할 수 있습니다. 제8조 (이용자의 개인정보보호 의무) "회사"는
+										"정보 통신망 법" 등 관계 법령이 정하는 바에 따라 "회원"의 개인정보를 보호하기 위해 노력합니다. 개인정보의
+										보호 및 사용에 대해서는 관련법 및 "회사"의 개인정보취급방침이 적용됩니다. ① “회사”는 " Allwork
+										"에 등록된 id와 이력서 정보(이름, id, 주민등록번호 등 이력서 기재사항 모두 포함)를 관리합니다. ②
+										“회사”는 "회원"이 입력한 이력서 내용은 "회원"이 이력서를 "비공개"로 설정한 경우에는 외부로 노출하지
+										않습니다.(단, 제 4조 ①항에 해당되는 경우는 예외로 함) ③ "회사"는 관련법령이 정하는 바에 따라서
+										"회원"의 개인정보를 보호하기 위하여 노력합니다. ④ "회사"는 "회원"이 작성한 공개이력서에 한해 “회사”가
+										운영하는 취업센터에 이력서를 동시에 게재합니다. 제9조 (서비스제공자의 의무) ① "회사"는 법령과 본 약관이
+										금지하거나 공서양속에 반하는 행위를 하지 않으며 본 약관이 정하는 바에 따라 지속적이고, 안정적으로 서비스를
+										제공하기 위해서 노력합니다. ② "회사"는 "회원"이 안전하게 인터넷 서비스를 이용할 수 있도록 "회원"의
+										개인정보(신용정보 포함)보호를 위한 보안 시스템을 구축합니다. ③ "회사"는 "회원"이 원하지 않는 영리목적의
+										광고 성 전자우편을 발송하지 않습니다. 제10조 (이용 해지 및 이용제한) ① "회원"이 " Allwork "의
+										이용을 해지하고자 하는 때에는 "회원"본인이 서비스 또는 전자 우편을 통하여 해지하고자 하는 날의
+										2일전까지(단, 해지 일이 법정공휴일인 경우 공휴일 개시 3일전까지) 이를 "회사"에 신청하여야 합니다.
+										제11조 (손해배상 및 면책조항) "회사"는 " Allwork "의 이용과 관련하여 "회사"의 고의 또는 중대한
+										과실 없이 "회원"에게 발생한 일체의 손해에 관하여 책임을 부담하지 않습니다. 제12조 (약관의 개정) ①
+										"회사"는 약관의 규제 등에 관한 법률, 전자거래기본법, 전자 서명 법, 정보 통신망 이용촉진 등에 관한 법률
+										등 관련법을 위배하지 않는 범위에서 본 약관을 개정할 수 있습니다. ② "회사"가 본 약관을 개정할 경우에는
+										적용일자 및 개정사유를 명시하여 현행약관과 함께 초기화면에 그 적용일자 칠(7일) 이전부터 적용일자 전일까지
+										공지합니다. ③ "회원"은 변경된 약관에 대해 거부할 권리가 있습니다. "회원"은 변경된 약관이 공지된 후
+										십오(15)일 이내에 거부의사를 표명할 수 있습니다. "회원"이 거부하는 경우 "회사"는 당해 "회원"과의
+										계약을 해지할 수 있습니다. 만약 "회원"이 변경된 약관이 공지 된 후 십오(15)일 이내에 거부의사를 표시하지
+										않는 경우에는 동의하는 것으로 간주합니다. 제13조 (재판관할) "회사"와 "회원"간에 발생한 서비스 이용에
+										관한 분쟁에 대하여는 대한민국 법을 적용하며, 본 분쟁으로 인한 소는 민사소송법상의 관할을 가지는 대한민국의
+										법원에 제기합니다. (2001년 12월 18일자 변경) 부 칙 제1조 (시행일) 본 약관은 2013년
+										9월1일부터 시행합니다. 제2조 (다른 조항 개정) 제4조 (서비스의 제공 및 변경) 에 다음과 같은 항목을
+										추가한다.        1 부터 11 생략        12. 회원에게 필요로 할 수도 있는 보험관련 기타
+										정보. 를 추가한다. </span></li>
+								<li class="descArea"><span class="desc"><input
+										id="agree02" type="checkbox" name="agree02" />&nbsp;<label
+										for="agree02">[필수] 개인정보 수집 및 이용 동의</label></span><span
+									class="descBtn"><input id="desc_Btn" type="button"
+										name="desc_Btn" value="내용보기 ∨" /></span> <span class="agreeDesc02">
+										개인정보 취급방침 ㈜올워크(이하 ‘회사’라 함)는 이용자들의 개인정보보호를 매우 중요시하며, 이용자가
+										“Allwork 취업사이트”(이하 ‘Allwork’)를 이용함과 동시에 온라인상에서 “회사”에 제공한 개인정보가
+										보호 받을 수 있도록 최선을 다하고 있습니다. 이에 “회사”는 통신비밀보호법, 전기통신사업법, 정보통신망
+										이용촉진 등에 관한 법률 등 정보통신서비스 제공자가 준수하여야 할 관련 법규상의 개인정보보호 규정 및
+										정보통신부가 제정한 개인정보보호지침을 준수하고 있습니다. “회사”는 개인정보 보호정책을 통하여 이용자들이
+										제공하는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며 개인정보보호를 위해 어떠한 조치가 취해지고 있는지
+										알려드립니다. “회사”는 개인정보 보호정책을 Allwork 홈페이지 첫 화면에 공개함으로써 이용자들이 언제나
+										용이하게 보실 수 있도록 조치하고 있습니다. “회사”의 개인정보 보호정책은 정부의 법률 및 지침 변경이나
+										“회사”의 내부 방침 변경 등으로 인하여 수시로 변경될 수 있고, 이에 따른 개인정보 보호정책의 지속적인 개선을
+										위하여 필요한 절차를 정하고 있습니다. 그리고 개인정보 보호정책을 개정하는 경우 “회사”는 그 변경사항에 대하여
+										즉시 홈페이지를 통하여 게시하고 버전번호 및 개정일자 등을 부여하여 개정된 사항을 이용자들이 쉽게 알아볼 수
+										있도록 하고 있습니다. 이용자들께서는 사이트 방문 시 수시로 확인하시기 바랍니다. 회사 의 개인정보취급 방침은
+										다음과 같은 내용을 담고 있습니다. 가. 총칙 나. 개인정보의 수집 및 이용목적 다. 개인정보 수집 항목 및
+										수집방법 라. 개인정보의 제3자 제공 및 취급위탁 마. 개인정보의 보유 및 이용기간 바. 개인정보의 열람,
+										수정, 삭제 및 파기 사. 쿠키의 운용 아. 개인정보 보호를 위한 기술 및 관리적 대책 자. 링크 차. 게시물
+
+										카. 비회원의 개인정보 보호 타. 이용자의 권리와 의무 파. “회사”의 개인정보 관리책임자 및 담당자의
+										소속-성명 및 연락처 a. 고객센터 안내 b. 부칙 가. 총칙 ① 개인정보란 생존하는 개인에 관한 정보로서 당해
+										정보에 포함되어 있는 성명, 주민등록번호 등의 사항에 의하여 당해 개인을 식별할 수 있는 정보 (당해
+										정보만으로는 특정 개인을 식별할 수 없더라도 다른 정보와 용이하게 결합하여 식별할 수 있는 것을 포함합니다)를
+										말합니다. ② “회사”는 귀하의 개인정보보호를 매우 중요시하며, 『정보 통신망 이용 촉진 및 정보 보호에 관한
+										법률』상의 개인정보취급방침 및 정보통신부가 제정한 『개인정보취급방침』을 준수하고 있습니다. Allwork 는
+										개인정보취급방침을 통하여 귀하께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며 개인정보보호를
+										위해 어떠한 조치가 취해지고 있는지 알려드립니다. ③ “회사”는 개인정보취급방침을 홈페이지 첫 화면에
+										공개함으로써 귀하께서 언제나 용이하게 보실 수 있도록 조치하고 있습니다. ④ “회사”는 개인정보취급방침의
+										지속적인 개선을 위하여 개인정보취급방침을 개정하는데 필요한 절차를 정하고 있습니다. 그리고 개인정보취급방침을
+										개정하는 경우 버전번호 등을 부여하여 개정된 사항을 귀하께서 쉽게 알아볼 수 있도록 하고 있습니다. 나.
+										개인정보의 수집 및 이용 목적 “회사”는 개인정보를 서비스 이용자의 구분, 이력서 등록과 입사지원 등 취업활동,
+										고용 및 취업동향을 파악하기 위한 통계분석, 회사 의 마케팅자료로 이용하여 서비스 이용자의 효과적인 취업지원 및
+										기업체의 인재채용에 적합한 서비스를 제공하기 위하여 개인정보를 수집하고 있으며 수집된 정보를 아래와 같이
+										이용하고 있습니다. (각 수집항목별 수집목적 제시) 개인회원 (1) 회원관리 회원제 서비스 이용에 따른
+										본인확인, 본인의 의사확인, 고객문의에 대한 응답, 새로운 정보의 소개 및 고지사항 전달 (2) 서비스 제공에
+										관한 계약 이행 및 서비스 제공에 따른 요금정산 본인인증, 채용정보 매칭 및 컨텐츠 제공을 위한 개인식별,
+										회원간의 상호 연락, 구매 및 요금 결제, 물품 및 증빙발송, 부정 이용방지와 비인가 사용방지 (3) 서비스
+										개발 및 마케팅ㆍ광고에의 활용 맞춤 서비스 제공, 서비스 안내 및 이용권유, 서비스 개선 및 신규 서비스 개발을
+										위한 통계 및 접속빈도 파악, 통계학적 특성에 따른 광고 게재, 이벤트 정보 및 참여기회 제공 (4) 고용 및
+										취업동향 파악을 위한 통계학적 분석 기업회원 (1) 아이디, 비밀번호, 회사명, 대표자성명, 사업자 등록번호:
+										회원제 서비스 이용에 따른 확인 절차 (2) 채용자담당자, 기업형태, 홈페이지, 사원수, 설립연도, 자본금,
+										매출액, 회사소개, 복리후생, 급여제도: 회원이 기업의 채용정보 열람 시 사용 및 구인 서비스 제공 (3)
+										가입경로: 새로운 서비스 및 이벤트 정보 등을 위한 마케팅 자료, 아이디, 비밀번호, 사업자등록번호, 대표자명,
+										주소, 기업형태, 사원수/설립년도, 자본금/매출액, 상장여부, 담당자명, 전화번호, 이메일 다. 개인정보 수집
+										항목 및 수집방법 “회사”는 별도의 회원가입 절차 없이 특정 유료 서비스를 제외한 대부분의 콘텐츠에 자유롭게
+										접근할 수 있으며 회원제 서비스를 이용하시려면 회원가입 통해 원활한 고객상담 및 각종 서비스 제공을 위해 아래와
+										같은 개인정보를 수집하고 있습니다. 필수항목을 입력하여야 하며 선택항목은 입력하지 않더라도 서비스 이용에 제한을
+										두지 않습니다. 1) 회원가입 시 수집하는 항목 ① 개인 회원 필수항목: 이름, 본인인증정보 또는
+										중복가입확인정보(DI), 아이디, 비밀번호, 생년월일, 성별, 연락처(전화번호/휴대폰번호), e-메일,
+										최종학력, 경력유무, 희망직종 선택항목: 주소, 이메일 수신 설정, SMS/MMS 수신 설정, 가입경로 ② 기업
+										회원 필수항목: 이름, 본인인증정보 또는 중복가입확인정보(DI), 아이디, 비밀번호, 회사명, 기업형태, 업종,
+										사업자등록번호, 대표자명, 전화번호, e-메일, 우편번호, 주소 선택항목: 사원수, 자본금, 매출액, 회사소개,
+										복리후생, 급여제도, 팩스번호, 홈페이지,메일링 서비스 설정, 연혁 및 실적, 가입경로 ③ 서치펌 회원
+										필수항목: 이름, 본인인증정보 또는 중복가입확인정보(DI), 아이디, 비밀번호, 서치펌명, 사업자등록번호,
+										대표자명, 전화번호, e-메일, 우편번호, 주소 선택항목: 팩스번호, 홈페이지 ④ 교육기관 회원 필수항목:
+										이름, 본인인증정보 또는 중복가입확인정보(DI), 아이디, 비밀번호, 회사명, 사업자등록번호, 대표자명,
+										전화번호, e-메일, 우편번호, 주소 선택항목: 팩스번호, 홈페이지 2) 이력서 등록 시 수집하는 항목 필수
+										항목: 이름, 연락처(전화번호/휴대폰), e-메일, 사진, 우편번호, 주소, 학력사항, 경력사항,
+										고용형태,희망연봉, 희망근무지, 지원분야(업직종), 자기소개서, 희망근무일시 선택 항목: 홈페이지, 희망급여,
+										근무가능일, 취업우대사항(보훈대상, 취업보호대상), 장애여부, 병역사항, 고용지원금대상, 사회활동, 수상내역,
+										교육이수내용, 자격증, OA능력, 컴퓨터 능력, 해외연수, 어학시험, 외국어 구사능력, 나의 성향,
+										IT/디자인능력,장점/강점 3) 채용정보 등록 시 수집하는 항목 담당자의 정보는 채용 이외의 용도로 이용할 수
+										없으며, 신청하신 서비스의 원활한 이용과 정보도용 및 허위정보 게재로 인한 피해를 방지하기 위해 채용담당자의
+										개인정보를 확인하고 있습니다. *채용공고 등록 시: 담당자 이름, 연락처(전화번호/휴대폰번호), e-메일
+										*채용광고 신청 시: 회사명, 담당자 이름, 전화번호, e-메일 *인재서칭(이력서열람) 신청 시: 담당자 이름,
+										중복가입확인정보(DI), 소속부서, 연락처(전화번호/휴대폰번호), e-메일 4) 교육정보 등록 시 수집하는 항목
+										담당자의 정보는 교육정보 상담문의에 대한 답변 이외의 용도로 이용할 수 없으며, 신청하신 서비스의 원활한 이용과
+										정보도용 및 허위정보 게재로 인한 피해를 방지하기 위해 교육담당자의 개인정보를 확인하고 있습니다. 교육정보 등록
+										시: 담당자 이름, 전화번호, e-메일 5) 유료 정보 이용 시 수집하는 항목 유료 서비스 이용 과정에서 아래와
+										같은 결제 정보들이 수집될 수 있습니다. 신용카드 결제: 카드사명, 카드번호 등 은행계좌 이체: 은행명,
+										계좌번호 등 휴대전화 결제: 가입자명, 이동전화번호, 결제승인번호 등 6) 모바일 서비스 이용 시 수집되는 항목
+										모바일 서비스의 특성상 단말기 모델 정보가 수집될 수 있으나,이는 개인을 식별할 수 없는 형태입니다. 7)
+										서비스 이용과정이나 사업처리 과정에서 아래와 같은 정보들이 자동으로 생성되어 수집될 수 있습니다. IP
+										Address, 쿠키, 방문 일시, 서비스 이용 기록, 불량 이용 기록 8) 개인정보 수집방법 홈페이지, 서비스
+										이용, 이벤트 응모, 팩스, 우편, 전화, 고객센터 문의하기 라. 개인정보의 제 3자 제공 및 취급위탁
+										“회사”는 어떠한 경우에도 개인정보를 “나. 개인정보의 수집 및 이용 목적”에서 고지한 범위 내에서 사용하며
+										범위를 초과하여 귀하의 개인정보를 이용하지 않습니다. 다만, 아래의 경우에는 예외로 합니다. 1) 개인회원이
+										사전에 동의한 경우 이용자(개인회원)의 재취업을 위해서 기업회원 및 채용요청을 한 회사에 개인정보 중 구체적으로
+										식별 할 수 없고, 채용회사의 채용기준 구분이 최소한으로 가능한 이름”, “출생년도”,“학력”, ”경력사항”,
+										“거주지”항목에 대해서만 개인정보가 제공됩니다. 제공받는 자 제공하는 항목 제공받는자의 이용목적 보유 및
+										이용기간 기업회원 및 채용요청 회사 이름:홍** 출생년도:1958년 학력:대졸,전자공학과 경력사항:한국전자
+										품질관리 거주지:경기도 수원시 회원사 및 관계사에 구인정보 제공 회원 탈퇴시 혹은 채용 종료시까지 2) 제휴관계
+										: 제 3의 “회사”와 제휴관계를 맺을 경우에는 “회사” 개인회원 약관 제8조에 따릅니다. 3) 매각. 인수합병
+										등 : 서비스제공자의 권리와 의무가 완전 승계. 이전되는 경우 반드시 사전에 정당한 사유와 절차에 대해 상세하게
+										고지할 것이며 이용자의 개인정보에 대한 동의 철회의 선택권을 부여합니다. 4) 고지 및 동의방법 : 온라인
+										홈페이지의 공지사항을 통해 최소 7일 이전부터 고지함과 동시에 이메일 등을 이용하여 1회 이상 개별적으로
+										고지하고 3)에 대해서는 반드시 적극적인 동의 방법에 의해서만 절차를 진행합니다. 5) 다음은 예외로 합니다.
+										- 관계법령에 의하여 수사상의 목적으로 관계기관으로부터의 요구가 있을 경우 - 통계작성. 학술연구나 시장조사를
+										위하여 특정 개인을 식별할 수 없는 형태로 광고주. 협력사나 연구단체 등에 제공하는 경우 - 기타 관계법령에서
+										정한 절차에 따른 요청이 있는 경우 그러나 예외 사항에서도 관계법령에 의하거나 수사기관의 요청에 의해 정보를
+										제공한 경우에는 이를 “회사”에 고지하는 것을 원칙으로 운영합니다. 그러나 법률상의 근거에 의해 부득이하게
+										고지를 하지 못할 수도 있습니다. 본래의 수집 및 이용목적에 반하여 무분별하게 정보가 제공되지 않도록
+										하겠습니다. 6) 취급위탁 회사 는 서비스 향상을 위해서 아래와 같이 개인정보를 위탁하고 있으며, 관계 법령에
+										따라 위탁계약 시 개인정보가 안전하게 관리될 수 있도록 필요한 사항을 규정하고 있습니다. 변동사항 발생 시
+										공지사항 또는 개인정보취급방침을 통해 고지하도록 하겠습니다. 수탁업체 위탁 업무 내용 개인정보 이용 기간
+
+
+										구미전자정보기술원 벤처기업협회 한국전자기술협회 한국소공인진흥협회 올워크 개인회원들에게 재취업정보 제공 및
+										구미전자정보기술원 회원사에 인재정보 제공 회원 탈퇴시 혹은 위탁계약 종료시까지 마. 개인정보의 보유 및 이용기간
+										서비스 이용자가 “Allwork”의 회원으로서 서비스를 계속 이용하는 동안 “회사”는 이용자의 개인정보를 계속
+										보유하며 서비스 제공 등을 위해 이용합니다. 서비스 이용자의 개인정보는 그 수집 및 이용 목적(설문조사, 이벤트
+										등 일시적인 목적을 포함)이 달성되거나 이용자가 “바. 개인정보의 열람, 수정 및 삭제”와 같이 직접 삭제 또는
+										회원 탈퇴한 경우에 재생할 수 없는 방법으로 파기됩니다. “회사”는 이용자의 권리 남용, 악용 방지,
+										권리침해/명예훼손 분쟁 및 수사협조 등의 요청이 있었을 경우에는 이의 재발에 대비하여 회원의 이용계약 해지
+										시로부터 1년 동안 회원의 개인정보를 보관할 수 있습니다. 회사 내부 방침에 의한 정보보유 사유 - 부정이용기록
+
+										- 보존 이유 : 부정이용방지 - 보존 기간 : 1년 상법, 전자 상거래 등 에서의 소비자보호에 관한 법률 등
+										관계법령의 규정에 의하여 보존할 필요가 있는 경우 “회사”는 관계법령에서 정한 일정한 기간 동안 회원정보를
+										보관합니다. 이 경우 “회사”는 보관하는 정보를 그 보관의 목적으로만 이용하며 보존기간은 아래와 같습니다.
+										관련법령에 의한 정보보유 사유 - 계약 또는 청약철회 등에 관한 기록 보존 이유 : 전자상거래 등에서의 소비자
+										보호에 관한 법률 보존 기간 : 5년 - 대금결제 및 재화 등의 공급에 관한 기록 보존 이유 : 전자상거래
+										등에서의 소비자 보호에 관한 법률 보존 기간 : 5년 - 소비자의 불만 또는 분쟁처리에 관한 기록 보존 이유 :
+										전자상거래 등에서의 소비자 보호에 관한 법률 보존 기간 : 3년 바. 개인정보의 열람, 수정, 삭제 및 파기
+										서비스 이용자는 자유롭게 본인의 개인정보를 열람, 수정 및 삭제할 수 있습니다. 개인정보를 열람, 수정 및 삭제
+										하고자 할 경우에는 “Allwork”의 '개인회원서비스'의 개인정보관리, 이력서관리에서 직접 처리할 수
+										있습니다. 이 밖에 개인정보관리책임자에게 전화, 서면, 이메일로 연락하면 즉각 처리합니다. “회사”는 귀하가
+										개인정보의 오류에 대한 정정을 요청한 경우, 정정을 완료하기 전까지 당해 개인정보를 이용하거나 제공을 하지
+										않습니다. 회원탈퇴를 원할 경우 “회사”의 고객센터로 이메일, 전화, fax 등을 통해 연락하여 본인 확인
+										절차를 거친 후 탈퇴할 수 있습니다. “회사”는 회원탈퇴를 하고 개인정보파기 등의 조치를 취한 경우에는 그
+										사실을 이용자에게 통지할 수 있습니다. 개인정보가 파기된다는 것은 추후 열람이나 이용이 불가능한 형태로
+										처리된다는 것을 의미합니다. 이 경우 전자적 파일 형태인 경우에는 하드디스크에서 재생 불가능하게 삭제되며 종이에
+										출력된 개인정보는 분쇄기로 분쇄하거나 소각됩니다. Allwork 는 이용자가 타인의 개인정보를 도용하여
+										회원가입과 서비스를 이용하였을 경우에는 지체 없이 해당 아이디에 대한 서비스 이용정지 또는 회원탈퇴 등 필요한
+										조치를 취합니다. 사. 쿠키의 운용 쿠키란 웹사이트가 사용자의 하드디스크(hard disk)에 전송하는 특별한
+										텍스트 파일(text file)을 말합니다. 쿠키는 웹사이트의 서버(server)에서만 읽어드릴 수 있는 형태로
+										전송되며 개인이 사용하는 브라우저(browser)의 디렉토리(directory) 하위에 저장됩니다. 쿠키는
+										웹사이트가 사용자에 관하여 무엇인가를 기억할 수 있도록 하기 위해 만들어졌습니다. 즉 이용자의 편의를 돕고 개별
+										맞춤 서비스를 제공하는 등 웹사이트와 방문자 간의 원활한 의사소통에 이용되며, 쿠키를 통해 수집된 정보만으로는
+										개인을 식별할 수 없습니다. 회사 가 쿠키를 통해 수집하는 정보는 '01. 개인정보의 수집 및 이용목적 '와
+										같으며 '다. 개인정보의 수집범위 ' 외의 용도로는 이용되지 않습니다. 또한 쿠키를 통해 '나. 개인정보의 수집
+										및 이용목적'과 같은 목적으로 수집된 정보라 할지라도 이미 수집된 개인의 실명 데이타와는 통합하여 분석하지
+										않습니다. 서비스 이용자가 회원 등록하여 로그인(log in) 한 후 스크랩 기능을 이용할 경우 해당 채용공고를
+										선택하였다는 정보를 저장하여 스크랩 기능을 원만히 이용할 수 있도록 하고 있습니다. 방문자는 쿠키에 대해
+										선택권을 가지고 있습니다. 귀하의 웹 브라우저 상단의 도구/ 인터넷 옵션 탭(option tab)에서 모든
+										쿠키의 허용, 동의를 통한 쿠키의 허용, 모든 쿠키의 차단을 스스로 결정할 수 있습니다. 아. 개인정보 보호를
+										위한 기술 및 관리적 대책 Allwork 는 회원 개인정보의 상실, 유출, 변조, 훼손 등으로부터 보호하기
+										위하여 다음과 같은 대책을 마련하고 있습니다. 1) 기술적 대책 서비스 이용자의 개인정보는 입력하시는 비밀번호에
+										의해 보호되며 파일 및 각종 데이터는 암호화나 파일 잠금 기능(lock)을 통해 전송되며 중요한 데이터는 별도의
+										보안 장치를 통해 보호되고 있습니다. 금융신용 관련 정보 등 보안이 요구되는 정보의 경우 산업표준인
+										ssl(secure socket layer) 128bit 방식을 이용하여 암호화되어 전송되며 서비스 이용자가
+										사용하시는 스크린 하단 작업표시줄에 자물쇠 마크를 통해 확인할 수 있습니다. 이렇게 전송된 정보는
+										방화벽(fire wall) 시스템 체계를 통하여 이중망으로 구성된 시스템에 안전하게 저장됩니다. 컴퓨터
+										바이러스에 의한 피해를 방지하기 위하여 백신 프로그램을 주기적으로 업데이트하고 있으며 새로운 바이러스가 출현할
+										경우 백신이 마련되는 즉시 사용하여 개인정보가 훼손되지 않도록 조치하고 있습니다. 해킹 등 외부 침입에 대비하여
+										각 서버마다 침입 탐지 시스템 및 취약점 분석 시스템을 24시간 가동하여 보안에 만전을 기하고 있습니다. 2)
+										관리적 대책 개인정보관리책임자와 최소한의 인원으로 구성된 별도의 부서를 마련하여 개인정보에 대한 접근권한을
+										제한하고 있으며 개인정보를 취급하는 직원을 대상으로 새로운 보안 기술 습득 및 개인정보보호 의무 등에 관해
+										정기적인 사내 교육 및 외부 위탁교육을 실시하고 있습니다. 회사 의 모든 직원의 보안서약서를 통하여 사람에 의한
+										정보유출을 사전에 방지하고 개인정보취급방침에 대한 이행사항 및 직원의 준수여부를 감사하기 위한 내부절차를
+										마련하고 있습니다. 개인정보 관련 취급자의 업무 인수인계는 보안이 유지된 상태에서 철저하게 이뤄지고 있으며 입사
+										및 퇴사 후 개인정보 사고에 대한 책임은 명확화하고 있습니다. 개인정보와 일반 데이터를 혼합하여 보관하지 않고
+										별도의 서버를 통해 분리하여 보관하고 있으며 전산 시스템은 전문co-location 서비스 업체를 통해 관리하고
+										있어 출입을 통제하고 있습니다. “회사”는 귀하의 개인정보를 보호하기 위하여 최선의 노력을 다하고 있지만
+										인터넷상의 데이터 전송은 완벽한 안전을 보장받을 수 없으며 이러한 위험은 “회사”와 귀하가 함께 부담해야
+										합니다. “회사”는 이용자 개인의 실수나 기본적인 인터넷의 위험성 때문에 일어나는 일들에 대해 책임을 지지
+										않습니다. 회원 개개인이 본인의 개인정보를 보호하기 위해서 자신의 id 와 비밀번호를 적절하게 관리하고 여기에
+										대한 책임을 져야 합니다. 그 외 내부 관리자의 실수나 기술관리상의 사고로 인해 개인정보의 상실, 유출, 변조,
+										훼손이 유발될 경우 “회사”는 즉각 귀하께 사실을 알리고 적절한 대책과 보상을 강구할 것입니다. 자. 링크
+
+
+										“Allwork”의 페이지는 다양한 배너와 링크(link)를 포함하고 있습니다. 많은 경우 타 사이트의 페이지와
+										연결되어 있으며 이는 광고주와의 계약관계에 의하거나 제공받은 콘텐츠의 출처를 밝히기 위한 조치입니다.
+										“Allwork”가 포함하고 있는 링크를 클릭(click)하여 타 사이트(site)의 페이지로 옮겨갈 경우 해당
+										사이트의 개인정보취급방침은 “회사”와 무관하므로 새로 방문한 사이트의 정책을 검토해 보시기 바랍니다. 차.
+										게시물 “회사”는 귀하의 게시물을 소중하게 생각하며 변조, 훼손, 삭제되지 않도록 최선을 다하여 보호합니다.
+										그러나 다음의 경우는 그렇지 아니합니다. - 스팸(spam)성 게시물 (예: 행운의 편지, 8억 메일,
+										특정사이트 광고 등) 타인을 비방목적으로 허위사실을 유포하여 타인의 명예를 훼손한 글 - 동의 없는 타인의
+										신상공개 - 회사 의 저작권 및 제 3자의 저작권 등 기타 권리를 침해하는 내용 - 허위 사실로 특정 기업의
+										영업방해 및 소속 특정인의 명예를 훼손하는 글 - 기타 게시판 주제와 다른 내용의 게시물 “회사”는 바람직한
+										게시판 문화를 활성화하기 위하여 동의 없는 타인의 신상 공개 시 특정 부분을 삭제하거나 기호 등으로 수정하여
+										게시할 수 있습니다. 다른 주제의 게시판으로 이동 가능한 내용일 경우 해당 게시물에 이동 경로를 밝혀 오해가
+										없도록 하고 있으며 그 외의 경우 명시적 또는 개별적인 경고 후 삭제 조치할 수 있습니다. 특히 “회사”는 특정
+										게시물에 대해 게시물 작성자 이외의 타인으로부터 문제제기가 접수된 글을 임시 삭제하고 있습니다. 이후 게시물에
+										대한 사실 여부 및 게시물 작성자와 문제를 제기한 타인 간의 합의에 의해 재등록 하거나 완전 삭제할 수
+										있습니다. 그러나 근본적으로 게시물에 관련된 제반 권리와 책임은 작성자 개인에게 있습니다. 또 게시물을 통해
+										자발적으로 공개된 정보는 보호받기 어려우므로 게시물 작성 및 정보 공개 전에 심사숙고 하시기 바랍니다. 카.
+										아동의 개인정보 보호 “회사”는 “Allwork”의 특성 상 어떠한 경우에도 만15세 미만 아동의 회원가입을
+										허용하지 않습니다. 타. 비회원의 개인정보 보호 “회사”는 회원 가입을 하지 않으면 대부분의 콘텐츠를 자유롭게
+										이용할 수 있습니다. 파. 이용자의 권리와 의무 서비스 이용자의 개인정보를 최신의 상태로 정확하게 입력하여
+										불의의 사고를 예방해 주시기 바랍니다. 이용자가 입력한 부정확한 정보로 인해 발생하는 사고의 책임은 이용자
+										자신에게 있으며 타인 정보의 도용 등 허위정보를 입력할 경우 회원자격이 상실될 수 있습니다. 귀하는 개인정보를
+										보호받을 권리와 함께 스스로를 보호하고 타인의 정보를 침해하지 않을 의무도 가지고 있습니다. 비밀번호를 포함한
+										귀하의 개인정보가 유출되지 않도록 조심하시고 게시물을 포함한 타인의 개인정보를 훼손하지 않도록 유의해 주십시오.
+										서비스 이용자가 위 책임을 다하지 못하고 타인의 정보 및 존엄성을 훼손할 시에는 『정보 통신망 이용 촉진 및
+										정보 보호 등에 관한 법률』 등 관련 법률에 의해 처벌받을 수 있습니다. 하. “회사”의 개인정보 관리책임자 및
+										담당자의 소속-성명 및 연락처 “회사”는 귀하가 좋은 정보를 안전하게 이용할 수 있도록 최선을 다하고 있습니다.
+										개인정보를 보호하는데 있어 귀하께 고지한 사항들에 반하는 사고가 발생할 경우 개인정보관리책임자가 책임을 집니다.
+										이용자 개인정보와 관련한 아이디(id)의 비밀번호에 대한 보안유지책임은 해당 이용자 자신에게 있습니다.
+										(주)올워크에서는 비밀번호에 대해 어떠한 방법으로도 이용자에게 직접적으로 질문하는 경우는 없으므로 타인에게
+										비밀번호가 유출되지 않도록 각별히 주의하시기 바랍니다. 특히 "아. 개인정보 보호를 위한 기술관리적 대책"항
+										에서 명시한 것과 같이 공공장소에서 온라인상에서 접속해 있을 경우에는 더욱 유의하셔야 합니다. “회사”는
+										개인정보에 대한 의견수렴 및 불만처리를 담당하는 개인정보 관리책임자 및 담당자를 지정하고 있고, 연락처는 아래와
+										같습니다. “회사” 대표이사의 위임을 받아 아래의 관리책임자가 관리업무를 수행하고 있으며 청소년 유해정보로부터
+										청소년을 보호하기 위하여 다음과 같이 청소년보호책임자를 지정하여 청소년보호와 관련된 업무를 수행하고 있습니다.
+										개인 정보 관리 책임자 이름: 한진성 소속: (주)올워크 전화: 02-585-0108 a. 고객센터 안내 현재
+										“회사”는 고객의 불만처리와 관련된 개인정보의 관리를 위한 고객센터를 운영하고 있습니다. 근무시간: 평일
+										09:00~18:00, 점심시간은 12:00~13:00, 토요일 , 공휴일은 휴무입니다. 고객센터 전화번호
+										:02-585-0108 이메일: mail@allwork.co.kr 전자우편이나 팩스 및 우편을 이용한 상담은
+										접수 후 12시간 내에 성실하게 답변 드리겠습니다. 다만, 근무시간 이후 또는 주말 및 공휴일에는 익일 처리하는
+										것을 원칙으로 합니다. 기타 개인정보에 관한 상담이 필요한 경우에는 개인정보침해신고센터, 정보보호마크
+										인증위원회, 대검찰청 인터넷범죄수사센터, 경찰청 사이버범죄수사대, 통신위원회 등으로 문의하실 수 있습니다.
+										개인정보침해신고센터 전화 : 1336 url : http://www.cyberprivacy.or.kr
+
+										정보보호마크 인증위원회 전화 : 02-580-0533 url :
+										http://www.privacymark.or.kr 대검찰청 인터넷범죄수사센터 전화 : 02-3480-3600
+
+										url : http://icic.sppo.go.kr 경찰청 사이버범죄수사대 url :
+										http://www.police.go.kr/cybercenter 통신위원회 전화 : 02-750-1788 url
+										: http://www.kcc.go.kr b. 부칙 현 개인정보취급방침은 2015년 10월 20일에 개정되었으며
+										정부의 정책 또는 보안기술의 변경에 따라 내용의 추가, 삭제 및 수정이 있을 시에는 개정 최소 10일 전부터
+										홈페이지의 '공지'를 통해 고지할 것입니다. 개인정보취급방침 버전번호 : v1.1 개인정보취급방침 변경시행일자
+										: 2015-11-01 </span></li>
+								<li><span><input id="agree03" type="checkbox"
+										name="agree03" />&nbsp;<label for="agree03">[선택] 마케팅
+											정보 이메일 수신 동의</label></span></li>
+								<li><span><input id="agree04" type="checkbox"
+										name="agree04" />&nbsp;<label for="agree04">[선택] 마케팅
+											정보 SMS 수신 동의</label></span></li>
+							</ol>
+						</div>
 					</fieldset>
 				</form>
-        <div class="agree_ok">
-          <ul>
-            <li><a href="#none" title="취소">취소</a></li>
-            <li><a href="#none" title="가입하기">가입하기</a></li>
-          </ul>
-        </div>
-  		</div>
-	  </div>
-		
-		<jsp:include page="/footer.do" />
-    </div>
-  </body>
+				<div class="agree_ok">
+					<ul>
+						<li><a href="#none" title="취소">취소</a></li>
+						<li><a href="#none" title="가입하기">가입하기</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="footerWrap">
+			<div id="footer">
+				<h2>Allwork정보 및 이용약관</h2>
+				<p class="footLogo">Allwork</p>
+				<div id="copyArea">
+					<ul class="menuArea">
+						<li><a href="#" title="회사소개">회사소개</a></li>
+						<li><a href="#" title="고객센터">고객센터</a></li>
+						<li><a href="#" title="개인정보처리방침">개인정보처리방침</a></li>
+						<li><a href="#" title="사이트맵">사이트맵</a></li>
+					</ul>
+					<ul class="linkArea">
+						<li><a href="#" title="인스타페이지"><i
+								class="fab fa-instagram"></i></a></li>
+						<li><a href="#" title="유투브페이지"><i class="fab fa-youtube"></i></a></li>
+						<li><a href="#" title="페이스북페이지"><i
+								class="fab fa-facebook"></i></a></li>
+					</ul>
+					<div class="address">
+						<span>상호 : (주)올워크 | 직업정보제공사업등록번호 : 서울청 제2019-2호 | 대표이사 :
+							김봉갑 | 평일 : am 09:00 ~ pm 06:00 | 토요일, 일요일, 공휴일 휴무</span><br /> <span>E-mail
+							: mail@allwork.co.kr Tel. 02-585-0108 | 주소 : 06640 서울특별시 서초구
+							서초중앙로 52 (서초동, 영진빌딩) 3층</span><br /> <span>Copyright ⓒ
+							allwork.co.kr all rights reserved.</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
 </html>
+
 

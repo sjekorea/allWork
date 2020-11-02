@@ -28,3 +28,30 @@
       #header .linkArea .a02 a{color:#fff;}
 
       #header .linkArea .a01:hover a{color:#999;}
+
+      /*전체메뉴 보기  ###################################*/
+      #allMenuWrap{width:100%;height:500px;background-color:#fff;position:absolute;top:100px;left:0px;z-index:20;border-top:1px solid #ccc;border-bottom:1px solid #ccc;}
+      #allMenu{width:1280px;height:500px;margin:0 auto;}
+      #allMenu p{text-align: right;font-size:40px;}
+      #allMenu .sitemapArea{margin-left:210px;width:1070px;border-left:1px solid #eee;overflow: hidden;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;}
+      #allMenu .sitemap{width:356px;border-right:1px solid #eee;border-bottom:1px solid #eee;height:380px;float:left;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;}
+      #allMenu h4{width:100%;height:40px;line-height:40px;text-indent:20px;color:#aaa;font-size:18px;
+      border-top:1px solid #eee;border-bottom:1px solid #eee;font-family:"NotoSansKR-Medium";
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;}
+      #allMenu ul{width:100%;}
+      #allMenu ul li{width:100%;text-indent:20px;}
+      #allMenu ul .sitemap_depth01{width:300px;height:40px;line-height:40PX;font-size:14px;}
+      #allMenu ul .sitemap_depth02{margin-left:40px;width:260px;line-height:30px;font-size:14px;text-indent:55px;font-family:"NotoSansKR-Thin";}
+
+      #allMenu #allMenu_ect{width:1280px;height:30px;margin-top:10px;text-align: right;font-family:"NotoSansKR-Medium";}
+      #allMenu #allMenu_ect span{font-size:14px;}
+
+      #allMenu ul li:hover a{color:#aaa;}

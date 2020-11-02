@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <jsp:include page="/companyHeader.do" />
 
-<link rel="stylesheet" type="text/css" href="/css/header_company_home.css"/>
 <link rel="stylesheet" type="text/css" href="/css/company_home.css"/>
 
 <div id="containerWrap">
@@ -18,27 +22,27 @@
 		</div>
 		<div id="menuTree">
 			<ul>
-				<li class="gnb"><a href="#" title="채용관리">채용관리</a>
+				<li class="gnb"><a href="/recruitListProgress.do" title="채용관리">채용관리</a>
 					<h3>채용관리</h3>
 					<ol>
 						<li><a href="/recruitInfoReg.do" title="채용공고 등록">채용공고 등록</a></li>
-						<li><a href="#" title="진행중인 채용정보">진행중인 채용정보</a></li>
-						<li><a href="#" title="마감된 채용정보">마감된 채용정보</a></li>
+						<li><a href="/recruitListProgress.do" title="진행중인 채용정보">진행중인 채용정보</a></li>
+						<li><a href="/recruitListClosed.do" title="마감된 채용정보">마감된 채용정보</a></li>
 					</ol>
 				</li>
-				<li class="gnb"><a href="#" title="인재관리">인재관리</a>
+				<li class="gnb"><a href="/personScrapList.do" title="인재관리">인재관리</a>
 					<h3>인재관리</h3>
 					<ol>
-						<li><a href="#" title="스크랩인재">스크랩인재</a></li>
+						<li><a href="/personScrapList.do" title="스크랩인재">스크랩인재</a></li>
 						<li><a href="#" title="유료서비스 신청">유료서비스 신청</a></li>
-						<li><a href="#" title="맞춤서비스 설정">맞춤서비스 설정</a></li>
-						<li><a href="#" title="맞춤 인재정보">맞춤 인재정보</a></li>
+						<li><a href="/personSearchSetting.do" title="맞춤서비스 설정">맞춤서비스 설정</a></li>
+						<li><a href="/personSettedList.do" title="맞춤 인재정보">맞춤 인재정보</a></li>
 					</ol>
 				</li>
-				<li class="gnb"><a href="#" title="입사지원 관리">입사지원 관리</a>
+				<li class="gnb"><a href="/companyApplicantList.do" title="입사지원 관리">입사지원 관리</a>
 					<h3>입사지원 관리</h3>
 					<ol>
-						<li><a href="#" title="입사지원 관리">입사지원 관리</a></li>
+						<li><a href="/companyApplicantList.do" title="입사지원 관리">입사지원 관리</a></li>
 						<li><a href="#" title="입사지원/면접제의 요청관리">입사지원/면접제의관리</a></li>
 					</ol>
 				</li>

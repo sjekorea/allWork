@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -34,16 +35,16 @@
 		<div id="headerWrap">
 			<div id="topWrap">
 				<ul class="topMenu">
-						<c:choose>
-							<c:when test="${SE_LOGIN_STATUS}">
-								<li><a href="/logout.do" title="로그아웃">로그아웃&nbsp;|&nbsp;</a></li>
-								<li><a href="#" title="mypage">mypage</a></li>
-							</c:when>
-							<c:otherwise>
-								<li><a href="/login.do" title="로그인">로그인&nbsp;|&nbsp;</a></li>
-								<li><a href="/personJoin.do" title="회원가입">회원가입</a></li>
-							</c:otherwise>
-						</c:choose>
+					<c:choose>
+						<c:when test="${SE_LOGIN_STATUS}">
+							<li><a href="/logout.do" title="로그아웃">로그아웃&nbsp;|&nbsp;</a></li>
+							<li><a href="#" title="mypage">mypage</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="/login.do" title="로그인">로그인&nbsp;|&nbsp;</a></li>
+							<li><a href="/personJoin.do" title="회원가입">회원가입</a></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 			<div id="head">
@@ -57,25 +58,25 @@
 						<li><a href="/personSearch.do" title="인재검색">인재검색</a></li>
 						<li><a href="#none" title="헤드헌팅">헤드헌팅</a></li>
 						<li><a href="#none" title="채용진행현황">채용진행현황</a></li>
-						<li><a href="#none" title="커뮤니티">커뮤니티</a></li>
+						<li><a href="/boardList.do" title="커뮤니티">커뮤니티</a></li>
 					</ul>
 					<ul class="linkArea">
-							<c:choose>
-								<c:when test="${SE_LOGIN_STATUS}">
-									<c:choose>
-										<c:when test="${SE_USER_TYPE eq 'person'}">
-											<li class="a01"><a href="/personHome.do" title="개인회원 홈">개인회원 홈</a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="a01"><a href="/companyHome.do" title="기업회원 홈">기업회원 홈</a></li>
-										</c:otherwise>
-									</c:choose>
-								</c:when>
-								<c:otherwise>
-									<li class="a01"><a href="/login.do?type=person" title="개인회원 로그인">개인회원 로그인</a></li>
-									<li class="a02"><a href="/login.do?type=company" title="기업회원 로그인">기업회원 로그인</a></li>
-								</c:otherwise>
-							</c:choose>
+						<c:choose>
+							<c:when test="${SE_LOGIN_STATUS}">
+								<c:choose>
+									<c:when test="${SE_USER_TYPE eq 'person'}">
+										<li class="a01"><a href="/personHome.do" title="개인회원 홈">개인회원 홈</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="a01"><a href="/companyHome.do" title="기업회원 홈">기업회원 홈</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+							<c:otherwise>
+								<li class="a01"><a href="/login.do?type=person" title="개인회원 로그인">개인회원 로그인</a></li>
+								<li class="a02"><a href="/login.do?type=company" title="기업회원 로그인">기업회원 로그인</a></li>
+							</c:otherwise>
+						</c:choose>
 					</ul>
 				</div>
 			</div>
@@ -105,14 +106,14 @@
 						<h4>인재검색</h4>
 						<ul>
 							<li class="sitemap_depth01"><a href="/personSearch.do" title="인재검색">인재검색</a>
-							<li class="sitemap_depth02"><a href="#" title="상세검색">상세검색</a></li>
+							<li class="sitemap_depth02"><a href="/personSearch.do" title="상세검색">상세검색</a></li>
 							<li class="sitemap_depth02"><a href="#" title="직무별">직무별</a></li>
 							<li class="sitemap_depth02"><a href="#" title="산업별">산업별</a></li>
 							<li class="sitemap_depth02"><a href="#" title="지역별">지역별</a></li>
 							<li class="sitemap_depth02"><a href="#" title="기업별">기업별</a></li>
 							<li class="sitemap_depth02"><a href="#" title="프리랜서">프리랜서</a></li>
 							<li class="sitemap_depth02"><a href="#" title="알바">알바</a></li>
-							<li class="sitemap_depth01"><a href="#" title="스크랩인재">스크랩인재</a></li>
+							<li class="sitemap_depth01"><a href="/personScrapList.do" title="스크랩인재">스크랩인재</a></li>
 							<li class="sitemap_depth01"><a href="#" title="우수추천인재">우수추천인재</a></li>
 						</ul>
 					</div>

@@ -1,4 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<link rel="stylesheet" type="text/css" href="/css/common.css"/>
 
 <div id="menuTree">
 	<p class="settingBtn">
@@ -12,7 +19,7 @@
 				<li class="subMenu01_02"><a href="/recruitListProgress.do" title="진행중인 채용정보">진행중인 채용정보</a></li>
 				<li class="subMenu01_03"><a href="/recruitListClosed.do" title="마감된 채용정보">마감된 채용정보</a></li>
 			</ol></li>
-		<li class="gnb gnb02"><a href="/personSearch.do" title="인재관리">인재관리</a>
+		<li class="gnb gnb02"><a href="/personScrapList.do" title="인재관리">인재관리</a>
 			<h3>인재관리</h3>
 			<ol class="subMenu subMenu02">
 				<li class="subMenu02_01"><a href="/personScrapList.do" title="스크랩 인재">스크랩 인재</a></li>

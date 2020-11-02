@@ -1,7 +1,7 @@
 body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 
 /*###################################   containerWrap  ###################################*/
-  #containerWrap{width:100%;margin-bottom:40px;overflow: hidden;}
+  #containerWrap{width:100%;/*margin-top:100px;*/margin-bottom:40px;overflow: hidden;}
 
 #container{width:1280px;margin:0 auto;}
 

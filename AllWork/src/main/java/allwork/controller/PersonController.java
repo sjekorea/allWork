@@ -2,6 +2,7 @@ package allwork.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ import allwork.service.NetfuMemberService;
 import allwork.service.NetfuItemResumeService;
 import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuScrapService;
+import allwork.service.RecruitInfoService;
 
 @Controller
 public class PersonController {
@@ -35,6 +37,9 @@ public class PersonController {
 	
 	@Resource(name="netfuScrapService")
 	private NetfuScrapService netfuScrapService;
+	
+	@Resource(name="recruitInfoService")
+	private RecruitInfoService recruitInfoService;
 	
 	
 	/*
@@ -56,11 +61,17 @@ public class PersonController {
 			// 스크랩한 채용정보
 			int netfuScrapCnt = netfuScrapService.selectNetfuScrapCnt(commandMap.getMap());
 			
+			// 추천 채용정보
+			List<Map<String, Object>> recommandRecruitList = recruitInfoService.selectRecommandRecruitList(commandMap.getMap());
+			
+			System.out.println("recommandRecruitList.size() ====> "+recommandRecruitList.size());
+			
+			
 			mv.addObject("memberMap", memberMap);
-			//log.info("########### memberMap : \n"+memberMap.toString());
 			mv.addObject("netfuItemResumeCnt", netfuItemResumeCnt);
 			mv.addObject("netfuItemCompanyCnt", netfuItemCompanyCnt);
 			mv.addObject("netfuScrapCnt", netfuScrapCnt);
+			mv.addObject("recommandRecruitList", recommandRecruitList);
 			
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".personHome Exception !!!!! \n"+e.toString());

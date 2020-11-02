@@ -3,86 +3,60 @@
 body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 
 /*###################################   containerWrap  ###################################*/
-    #containerWrap{width:100%;margin: 10px auto 80px;overflow: hidden;}
+    #containerWrap{width:100%;margin:0 auto 80px;overflow: hidden;}
     #container{width:1280px;margin:0 auto;}
 
     /*###################################   leftpart   ###################################*/
-    #leftcontainer{width:200px;height:100%;margin:20px 20px 0 0;float:left;}
-
-    #leftPart{width:200px;height:100%;}
-    #menuTree{width:198px;overflow: hidden;background-color: #fff;
-      border: 1px solid #ccc;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;}
-    #menuTree p{width: 198px;height:78px;line-height: 78px;text-align: center;
-      border-bottom: 1px solid #ccc;
-      border-bottom: 1px solid #ccc;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;}
-    #menuTree p a{display: block;width: 100%;height:100%;color:#4F60E3;}
-
-        #menuTree p:hover{background-color: #F7FAFF;}
-
-    #menuTree ul{width:100%;overflow: hidden;padding:20px 0;}
-    #menuTree ul .gnb{width:100%;line-height: 22px;text-indent:20px;padding-top:10px;padding-bottom: 10px;}
-    #menuTree ul .gnb a{font-size: 16px;}
-    #menuTree ul .subMenu{width:100%;text-indent:40px;padding-top:5px;}
-    #menuTree ul .subMenu li{width:100%;}
-    #menuTree ul .subMenu li a{color:#666;font-size:14px;}
-
-/*###################################   reg_leftPart   ###################################*/
-    #reg_leftPart{width:200px;margin-top:20px;}
-    #reg_leftPart ul{width:100%;}
-    #reg_leftPart ul li{width:200px;height:50px;margin-bottom:5px;text-align:center;line-height:50px;background-color:#fff;
+    /*###################################   reg_leftPart   ###################################*/
+    #leftPart_buttom{width:200px;margin-top:20px;}
+    #leftPart_buttom ul{width:100%;}
+    #leftPart_buttom ul li{width:200px;height:50px;margin-bottom:5px;text-align:center;line-height:50px;background-color:#fff;
       border:1px solid #ccc;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;}
-    #reg_leftPart ul li a{display:block;width:100%;height:100%;color:#666;}
-    #reg_leftPart ul li.reg_ok{background-color:#4F60E3;
+    #leftPart_buttom ul li a{display:block;width:100%;height:100%;color:#666;}
+    #leftPart_buttom ul li.reg_ok{background-color:#4F60E3;
       border:1px solid #4F60E3;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;}
-    #reg_leftPart ul li.reg_ok a{color:#fff;}
+    #leftPart_buttom ul li.reg_ok a{color:#fff;}
 
 /*###################################   reg_rightPart   ###################################*/
-#rightcontainer{width:1060px;height:100%;margin:20px 0;float:left;}
 
-    #reg_rightPart{width:1060px;}
+    #rightPart{width:1060px;height:100%;margin-top:20px;margin-left:20px;float:left;}
 
-    #reg_rightPart ul{width:405px;margin:0 auto;}
-    #reg_rightPart ul li{width:198px;height:48px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;
+    #rightPart ul{width:405px;margin:0 auto;}
+    #rightPart ul li{width:198px;height:48px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;
       border:1px solid #ccc;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       float:left;}
-    #reg_rightPart ul li:last-child{margin-right:0px;}
-    #reg_rightPart ul li a{display:block;width:100%;height:100%;color:#666;}
-    #reg_rightPart ul li.reg_ok{background-color:#4F60E3;
+    #rightPart ul li:last-child{margin-right:0px;}
+    #rightPart ul li a{display:block;width:100%;height:100%;color:#666;}
+    #rightPart ul li.reg_ok{background-color:#4F60E3;
       border:1px solid #4F60E3;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;}
-    #reg_rightPart ul li.reg_ok a{color:#fff;}
+    #rightPart ul li.reg_ok a{color:#fff;}
 
     /*###############################   regist00   ###############################*/
     #regist00{width:1060px;margin-bottom:10px;}
-    #company_detail{width:1060px;overflow:hidden;background-color:#fff;margin-bottom:10px;}
+    #company_detail{width:1060px;overflow:hidden;background-color:#fff;border:1px solid #ccc;margin-bottom:10px;}
     #company_detail p{float:left;height: 126px;line-height:126px;}
     #company_detail .company_name{width:220px;padding-left:40px;font-size:32px;}
     #company_detail .company_hp{width:560px;}
     #company_detail .company_logo{width:240px;height:126px;overflow: hidden;line-height:124px;text-align: center;
-      border:1px solid #ccc;
+      border-left:1px solid #ccc;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;}
     #company_detail .company_logo img{width:100%;}
 
-    #detailArea{width:981px;padding:40px 39px 40px;background-color:#fff;}
+    #detailArea{width:981px;padding:40px 39px 40px;background-color:#fff;border:1px solid #ccc;}
     #detailArea .detail_title{width:100%;height:30px;font-size:24px;font-family:"NotoSansKR-Thin";}
     #detailArea .company_setting{width:110px;height:28px;line-height:28px;font-size:14px;margin-bottom:10px;margin-left:871px;text-align:center;border:1px solid #808495;}
     #detailArea .tabelArea{width:100%;text-indent:10px;overflow: hidden;border-top:1px solid #808495;}
@@ -119,31 +93,30 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
       .necessary{padding-right:0;}
 
       /*###############################   regist01   ###############################*/
-      #regist01{width:100%;overflow:hidden;margin-bottom:10px;}
+      #regist01{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
       #regForm01{width:980px;background-color:#fff;padding:40px;}
 
-
       /*###############################   regist02   ###############################*/
-      #regist02{width:100%;overflow:hidden;margin-bottom:10px;}
+      #regist02{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
       #regForm02{width:980px;background-color:#fff;padding:40px;}
       #regForm02 input[type="checkbox"]{margin-top:3px;}
       #reg02_desc08_1{width:50px; height:20px;vertical-align:top;}
       #reg02_desc12_2, #reg02_desc12_3{width:50px; height:20px;vertical-align:top;}
 
       /*###############################   regist03   ###############################*/
-      #regist03{width:100%;overflow:hidden;margin-bottom:10px;}
+      #regist03{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
       #regForm03{width:980px;background-color:#fff;padding:40px;}
       #regForm03 th{display:none;}
       #regForm03 td{width:980px;}
       #regForm03 p{width:100%;padding-bottom:20px;}
 
       /*###############################   regist04   ###############################*/
-      #regist04{width:100%;overflow:hidden;margin-bottom:10px;}
+      #regist04{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
       #regForm04{width:980px;background-color:#fff;padding:40px;}
       #regForm04 span{width:176px;margin-bottom:10px;padding-top:8px;}
 
       /*###############################   regist05   ###############################*/
-      #regist05{width:100%;overflow:hidden;margin-bottom:10px;}
+      #regist05{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
       #regForm05{width:980px;background-color:#fff;padding:40px;}
       #regForm05 tr{height:60px;}
 
@@ -184,7 +157,7 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
                       }
 
       /*###############################   regist06   ###############################*/
-      #regist06{width:100%;overflow:hidden;margin-bottom:10px;}
+      #regist06{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
       #regForm06{width:980px;background-color:#fff;padding:40px;}
       #regForm06 input[type="text"]{width:200px;}
       #regForm06 tr{height:60px;}

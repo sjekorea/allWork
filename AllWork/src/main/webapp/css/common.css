@@ -1,14 +1,25 @@
-/*###################################   progress_bar  ###################################*/
-#progress_barWrap{width:100%;height:100%;background-color:#fff;position:absolute;top:0;left:0;overflow:hidden;z-index:1000;}
-#progress_bar{width:200px;height:18px;text-align: center;border:1px solid #ccc;border-radius:10px;margin:400px auto 0;position: relative;overflow:hidden;}
-#progress_bar .load{width:200px;height:18px;line-height: 16px;font-size:12px;position:absolute;top:0px;left:0;color:#EDF0F5;}
-#progress_bar .bar{width:200px;height:18px;background-color:#4F60E3;
-animation: progress 2s ease-out;}
-@keyframes progress {
-  0%  {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-}
+/*로딩바 ########################################################################*/
+/*#allworkWrap{display:none;}*/
+#progress_barWrap{width:100%;height:100%;background-color:#fff;position:absolute;left:0;z-index:1000;opacity: 0.7;}
+#progress_bar{width:300px;height:300px;margin:0 auto;}
+#progress_bar img{width:100%;}
+
+
+/* 사이드 메뉴 공통   ###############################################*/
+#leftPart{width:200px;height:100%;float: left;margin-top:20px;}
+#menuTree{width:198px;overflow: hidden;background-color: #fff;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;}
+#menuTree p{width: 198px;height:78px;line-height: 78px;text-align: center;border-bottom: 1px solid #ccc;}
+#menuTree p a{display: block;width: 100%;height:100%;color:#4F60E3;}
+
+#menuTree p:hover{background-color: #F7FAFF;}
+
+#menuTree ul{width:100%;overflow: hidden;padding:20px 0;}
+#menuTree ul .gnb, #menuTree ul .menu{width:100%;line-height: 22px;text-indent:20px;padding-top:10px;padding-bottom: 10px;}
+#menuTree ul .gnb a, #menuTree ul .menu a{font-size: 16px;}
+#menuTree ul .subMenu{width:100%;text-indent:40px;padding-top:5px;}
+#menuTree ul .subMenu li{width:100%;}
+#menuTree ul .subMenu li a{color:#666;font-size:14px;}

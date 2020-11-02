@@ -11,40 +11,43 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #topWrap ul li a{color:#333;}*/
 
 /*###################################   containerWrap  ###################################*/
-    #containerWrap{width:100%;overflow: hidden;}
-    #container{width:1280px;overflow: hidden;margin:10px auto 80px;}
+#containerWrap{width:100%;margin:0 auto 80px;overflow: hidden;}
+#container{width:1280px;margin:0 auto;}
 
     /*###################################   leftpart   ###################################*/
-  #leftcontainer{width:200px;height:100%;margin-right:20px;float:left;}
-  #leftcontainer div{float:left;}
-
     /*###################################   res_leftPart   ###################################*/
-       #res_leftPart{width:200px;}
-        #res_leftPart ul{width:100%;}
-        #res_leftPart ul li{width:198px;height:48px;margin-bottom:5px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;}
-        #res_leftPart ul li a{display:block;width:100%;height:100%;color:#666;}
-        #res_leftPart ul li.res_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
-        #res_leftPart ul li.res_ok a{color:#fff;}
+       #leftPart_buttom{width:200px;margin-top:20px;}
+        #leftPart_buttom ul{width:100%;}
+        #leftPart_buttom ul li{width:198px;height:48px;margin-bottom:5px;text-align:center;line-height:50px;background-color:#fff;
+          border:1px solid #ccc;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;}
+        #leftPart_buttom ul li a{display:block;width:100%;height:100%;color:#666;}
+        #leftPart_buttom ul li.res_ok{background-color:#4F60E3;
+          border:1px solid #4F60E3;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;}
+        #leftPart_buttom ul li.res_ok a{color:#fff;}
 
 /*###################################   res_rightPart   ###################################*/
-#rightcontainer{width:1060px;height:100%;margin:20px 0;float:left;}
+    #rightPart{width:1060px;height:100%;margin-top:20px;margin-left:20px;float:left;}
 
-    #res_rightPart{width:100%;height:100%;}
-
-    #res_rightPart ul{width:610px;margin:30px auto 0;}
-    #res_rightPart ul li{width:200px;height:50px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;
+    #rightPart ul{width:610px;margin:30px auto 0;}
+    #rightPart ul li{width:200px;height:50px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;
       border:1px solid #ccc;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       float:left;}
-    #res_rightPart ul li:last-child{margin-right:0px;}
-    #res_rightPart ul li a{display:block;width:100%;height:100%;color:#666;}
-    #res_rightPart ul li.res_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
-    #res_rightPart ul li.res_ok a{color:#fff;}
+    #rightPart ul li:last-child{margin-right:0px;}
+    #rightPart ul li a{display:block;width:100%;height:100%;color:#666;}
+    #rightPart ul li.res_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
+    #rightPart ul li.res_ok a{color:#fff;}
 
     /*###############################   resume00   ###############################*/
-    #resume00{width:980px;margin-bottom:10px;padding:40px;overflow: hidden;background-color:#fff;}
+    #resume00{width:980px;margin-bottom:10px;padding:40px;overflow: hidden;background-color:#fff;border:1px solid #ccc;}
 
     #resume00 #imgArea{width:150px;height:200px;float: left;margin-right:20px;
       border:1px solid #ccc;
@@ -70,7 +73,7 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
                           #resume00 #detailArea .personal_setting:hover{background-color:#eee;}
 
     /*###############################   resume01  ###############################*/
-    #resume01{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resume01{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
     #resForm01{width:980px;background-color:#fff;padding:40px;}
 
 
@@ -107,11 +110,11 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 
 
     /*###############################   resume02  ###############################*/
-    #resume02{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resume02{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
     #resForm02{width:980px;background-color:#fff;padding:40px;}
 
     /*###############################   resume03  ###############################*/
-    #resume03{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resume03{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
     #resForm03{width:980px;background-color:#fff;padding:40px;}
     #resForm03 .final_education{width:980px;height:40px;display: table;background-color:#eee;}
     #resForm03 .final_education th{text-indent:40px;line-height:50px;font-size:14px;}
@@ -128,7 +131,7 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resForm03 input::placeholder{text-indent:10px;font-size:16px;color:#ccc;}
 
     /*###############################   resume03  ###############################*/
-    #resume04{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resume04{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
     #resForm04{width:980px;background-color:#fff;padding:40px;}
     #resForm04 #res04_desc02_2{width:40px;height:42px;background-color:#43425D;color:#fff;font-size:14px;padding:0;margin-right:0;}
 
@@ -145,13 +148,13 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resForm04 input[type="checkbox"]{vertical-align:middle;}
 
     /*###############################   resume05  ###############################*/
-    #resume05{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resume05{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
     #resForm05{width:980px;background-color:#fff;padding:40px;}
     #resForm05 th{display:none;}
     #resForm05 td{width:980px;}
 
     /*###############################   resForm06   ###############################*/
-    #resume06{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resume06{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
     #resForm06{width:980px;background-color:#fff;padding:40px;}
     #resForm06 th{display:none;}
     #resForm06 td{width:980px;}
@@ -167,7 +170,7 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resForm06 td input{width:100%;padding:0;}
 
     /*###############################   resForm07   ###############################*/
-    #resume07{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resume07{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
     #resForm07{width:980px;background-color:#fff;padding:40px;}
     #resForm07 th{display:none;}
     #resForm07 td{width:980px;}
@@ -187,7 +190,7 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resForm07 select{width:100%;}
 
     /*###############################   resForm08   ###############################*/
-    #resume08{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resume08{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
     #resForm08{width:980px;background-color:#fff;padding:40px;}
     #resForm08 legend span{font-size:16px;font-family:"NotoSansKR-Regular";}
     #resForm08 th{display:none;}
@@ -196,7 +199,7 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resForm08 textarea{width:980px;}
 
     /*###############################   resForm09   ###############################*/
-    #resume09{width:100%;overflow:hidden;margin-bottom:10px;}
+    #resume09{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
     #resForm09{width:980px;background-color:#fff;padding:40px;}
     #resForm09 th{display:none;}
     #resForm09 td{width:980px;}

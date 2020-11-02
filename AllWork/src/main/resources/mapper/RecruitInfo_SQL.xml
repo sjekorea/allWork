@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="recruitInfo">
+
+	<select id="selectRecommandRecruitList" parameterType="hashmap" resultType="allwork.vo.RecruitInfoVo">
+		<![CDATA[
+		SELECT a.company_title, a.company_initial, a.order_view, b.* 
+		FROM recruit_company AS a, recruit_item AS b 
+		WHERE 1=1
+			and a.prs='P' AND b.prs='P' AND a.ser=b.target_ser 
+		ORDER BY a.order_view, b.date_req DESC
+		LIMIT 0, 5
+		]]>
+	</select>
+
+
+</mapper>

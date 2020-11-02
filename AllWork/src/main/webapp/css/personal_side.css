@@ -1,5 +1,5 @@
 /*###################################   leftpart   ###################################*/
-#leftPart{width:200px;height:100%;float: left;margin:20px 0;}
+#leftPart{width:200px;height:100%;float: left;margin-top:20px;}
 #menuTree{width:198px;overflow: hidden;background-color: #fff;border: 1px solid #ccc;}
 #menuTree p{width: 198px;height:78px;line-height: 78px;text-align: center;
   border-bottom: 1px solid #ccc;

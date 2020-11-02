@@ -1,15 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <jsp:include page="/personHeader.do" />
 
-<link rel="stylesheet" type="text/css" href="/css/header_personal.css"/>
 <link rel="stylesheet" type="text/css" href="/css/personal_01_01.css"/>
 
 <div id="containerWrap">
-	<div id="rec_left">
-		<jsp:include page="/personSubMenu.do" />
+	<div id="leftPart">
+		<jsp:include page="/recruitInfoSubMenu.do" />
 	</div>
-	<div id="rec_right">
+	<div id="rightPart">
 		<div id="recruitment">
 			<h4>직무별</h4>
 			<div id="rec_row01">
