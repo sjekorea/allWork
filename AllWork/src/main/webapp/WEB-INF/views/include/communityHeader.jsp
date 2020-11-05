@@ -26,6 +26,11 @@
 </style>
 </head>
 <body>
+	<div id="progress_barWrap" style="display:none;">
+		<p id="progress_bar">
+			<img src="/img/main/loading_circle.gif" alt="로딩이미지"/>
+		</p>
+    </div>
 	<div id="allworkWrap">
 		<div id="headerWrap">
 			<div id="topWrap">

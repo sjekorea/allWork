@@ -9,6 +9,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <title>allwork</title>
 <link rel="stylesheet" type="text/css" href="/css/common.css" />
 <link rel="stylesheet" type="text/css" href="/css/header_main.css" />
@@ -25,12 +26,17 @@
 <script src="/js/index00.js"></script>
 <script type="text/javascript" src="/js/moment.min.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<script type="text/javascript" src="/js/process.js"></script>
 <style>
 </style>
 <script></script>
 </head>
 <body>
+	<div id="progress_barWrap" style="display:none;">
+		<p id="progress_bar">
+			<img src="/img/main/loading_circle.gif" alt="로딩이미지"/>
+		</p>
+    </div>
 	<div id="allworkWrap">
 		<div id="headerWrap">
 			<div id="topWrap">

@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="/WEB-INF/tlds/convertUtil.tld" prefix="convert" %>
+<%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert" %>
 
 <jsp:include page="/personHeader.do" />
 
@@ -18,99 +20,108 @@
 			<div id="listPart">
 				<h4>스크랩한 기업</h4>
 				<p class="delete">
-					<a href="#none" title="선택삭제">선택삭제</a>
+					<a href="#" title="선택삭제">선택삭제</a>
 				</p>
 				<ul class="list">
 					<li class="list_title">
-						<div class="desc00">
-							<input type="checkbox" />
-						</div>
+						<div class="desc00"><input type="checkbox" name="all"/></div>
 						<div class="desc01">채용공고</div>
 						<div class="desc02">마감일</div>
 						<div class="desc03">스크랩일</div>
 					</li>
-					<li>
-						<div class="desc00">
-							<input type="checkbox" />
-						</div>
-						<div class="desc01">
-							<p class="title">
-								(주)파인스태프&nbsp;<a href="#none" title="관심기업체크"><i
-									class="far fa-heart"></i></a>
-							</p>
-							<a href="#none" title="채용공고">
-								<p class="t_desc01">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							</a>
-							<p class="t_desc02">경력무관 | 학력무관 | 서울>서초구 | 정규직</p>
-						</div>
-						<div class="desc02">
-							<p class="d_day">20-10-22</p>
-						</div>
-						<div class="desc03">
-							<p class="scrap_day">20-10-22</p>
-						</div>
-					</li>
-					<li>
-						<div class="desc00">
-							<input type="checkbox" />
-						</div>
-						<div class="desc01">
-							<p class="title">
-								(주)파인스태프&nbsp;<a href="#none" title="관심기업체크"><i
-									class="far fa-heart"></i></a>
-							</p>
-							<a href="#none" title="채용공고">
-								<p class="t_desc01">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							</a>
-							<p class="t_desc02">경력무관 | 학력무관 | 서울>서초구 | 정규직</p>
-						</div>
-						<div class="desc02">
-							<p class="d_day">20-10-22</p>
-						</div>
-						<div class="desc03">
-							<p class="scrap_day">20-10-22</p>
-						</div>
-					</li>
-					<li>
-						<div class="desc00">
-							<input type="checkbox" />
-						</div>
-						<div class="desc01">
-							<p class="title">
-								(주)파인스태프&nbsp;<a href="#none" title="관심기업체크"><i
-									class="far fa-heart"></i></a>
-							</p>
-							<a href="#none" title="채용공고">
-								<p class="t_desc01">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							</a>
-							<p class="t_desc02">경력무관 | 학력무관 | 서울>서초구 | 정규직</p>
-						</div>
-						<div class="desc02">
-							<p class="d_day">20-10-22</p>
-						</div>
-						<div class="desc03">
-							<p class="scrap_day">20-10-22</p>
-						</div>
-					</li>
+					
+					<c:choose>
+						<c:when test="${recruitScrapList.size() > 0 }">
+							<c:forEach var="result" items="${recruitScrapList}" varStatus="status">
+								<li>
+									<div class="desc00"><input type="checkbox" name="chk" value="${result.noTo }" /></div>
+									<div class="desc01">
+										<p class="title">
+											${result.bizName }&nbsp;<a href="#none" title="관심기업체크"><i class="far fa-heart"></i></a>
+										</p>
+										<a href="#none" title="채용공고">
+											<p class="t_desc01">${convert:compByte(result.bizTitle, 100, "...")}</p>
+										</a>
+										<p class="t_desc02">${result.bizCareer } | ${result.bizAbility } | ${result.bizArea1Name } | ${result.bizJobfromName }</p>
+									</div>
+									<div class="desc02"><p class="d_day">${codeConvert:getRecruitStatusText(result.bizIng, result.bizEndType, result.bizEndDay) }</p></div>
+									<div class="desc03"><p class="scrap_day">${result.wdate }</p></div>
+								</li>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<li style="width:100%;"><div class="desc01">내역이 없습니다.</div></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
-				<ul class="numArea">
-					<!--<li><a href="#" title="prev"><i class="fas fa-chevron-left"></i></a></li>-->
-					<li class="p01"><a href="#" title="page1">1</a></li>
-					<!--<li><a href="#" title="page2">2</a></li>
-					<li><a href="#" title="page3">3</a></li>
-					<li><a href="#" title="page4">4</a></li>
-					<li><a href="#" title="page5">5</a></li>
-					<li><a href="#" title="page6">6</a></li>
-					<li><a href="#" title="page7">7</a></li>
-					<li><a href="#" title="page8">8</a></li>
-					<li><a href="#" title="page9">9</a></li>
-					<li><a href="#" title="page10">10</a></li>
-					<li><a href="#" title="next"><i class="fas fa-chevron-right"></i></a></li>-->
-				</ul>
+				<div class="numareaWrap">
+					<ul class="numArea">
+		                ${pageMap.pageHtml }
+	              </ul>
+              </div>
 			</div>
 		</div>
 	</div>
 </div>
-
-
 <jsp:include page="/footer.do" />
+
+<form id="searchForm" method="post" action="/recruitScrapList.do">
+	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
+</form>
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$(".list_title .desc00 input[type=checkbox]").click(function(e){
+			if($(this).prop("checked")) {  
+				$("input[type=checkbox]").prop("checked",true); 
+			} else { 
+				$("input[type=checkbox]").prop("checked",false); 
+			}
+		});
+		
+		$(".delete a").click(function(e){
+			deleteRecruitScrap();
+		});
+		
+	});	
+	
+	
+	function deleteRecruitScrap(){
+		
+		if($("input[name=chk]:checked").length <= 0){
+			alert("삭제할 항목을 선택하세요.");
+			return;
+		}
+		
+		var deleteItemMulti = "";
+		
+		$("input[name=chk]").each(function() {
+		      if(this.checked){
+		    	  deleteItemMulti += this.value+",";
+		      }
+		});
+		deleteItemMulti = deleteItemMulti.substring(0, deleteItemMulti.length-1);
+		$("#progress_barWrap").css("display", "block");
+		var callback = function(data){
+			alert("저장 되었습니다.");
+			$("#searchForm #pageNo").val("1");
+			$("#searchForm").submit();
+		};
+		var param = {
+					deleteItemMulti : deleteItemMulti
+				};
+		ajax('post', '/deleteRecruitScrapMulti.ajax', param, callback);
+	}
+	
+	
+	function goPage(targetPage){
+		$("#progress_barWrap").css("display", "block");
+		$("#pageNo").val(targetPage);
+		$("#searchForm").submit();
+	}
+		
+</script>
+
+
+

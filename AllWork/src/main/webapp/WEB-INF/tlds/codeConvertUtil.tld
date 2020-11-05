@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib  xmlns="http://java.sun.com/xml/ns/j2ee"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+                        web-jsptaglibrary_2_0.xsd"
+     version="2.0">
+ 
+     <description>codeConvertUtil</description>
+     <tlib-version>1.1</tlib-version>
+     <short-name>codeConvert</short-name>
+     <uri>/WEB-INF/tlds/codeConvertUtil.tld</uri>
+     <function>
+         <description>성별 정보</description>
+         <name>getBizSex</name>
+         <function-class>allwork.common.util.CodeConvertUtil</function-class>
+         <function-signature>
+              String getBizSex(java.lang.String)
+         </function-signature>
+    </function>
+    <function>
+         <description>마감 정보</description>
+         <name>getRecruitStatus</name>
+         <function-class>allwork.common.util.CodeConvertUtil</function-class>
+         <function-signature>
+              String getRecruitStatus(java.lang.String, java.lang.String, java.lang.String)
+         </function-signature>
+    </function>
+    <function>
+         <description>마감 정보</description>
+         <name>getRecruitStatusText</name>
+         <function-class>allwork.common.util.CodeConvertUtil</function-class>
+         <function-signature>
+              String getRecruitStatus(java.lang.String, java.lang.String, java.lang.String)
+         </function-signature>
+    </function>
+</taglib>

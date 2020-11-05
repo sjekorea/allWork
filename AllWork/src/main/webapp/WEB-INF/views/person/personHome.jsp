@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="/WEB-INF/tlds/convertUtil.tld" prefix="convert" %>
+<%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert" %>
 
 <jsp:include page="/personHeader.do" />
 
@@ -46,8 +48,8 @@
 				<li class="gnb"><a href="/companySettedList.do" title="맞춤서비스 관리">맞춤서비스 관리</a>
 					<h3>맞춤서비스 관리</h3>
 					<ol>
-						<li><a href="/companySettedList.do" title="맞춤채용정보">맞춤채용정보</a></li>
-						<li><a href="/companySearchSetting.do" title="맞춤서비스설정">맞춤서비스설정</a></li>
+						<li><a href="/recruitSettedList.do" title="맞춤채용정보">맞춤채용정보</a></li>
+						<li><a href="/recruitSearchSetting.do" title="맞춤서비스설정">맞춤서비스설정</a></li>
 					</ol>
 				</li>
 				<li class="gnb payService"><a href="#" title="유료서비스">유료서비스</a>
@@ -64,7 +66,7 @@
 	<div id="rightPart">
 		<div id="reviewPart">
 			<ul>
-				<li class="review00"><a href="#" title="지원완료"><strong>${netfuItemCompanyCnt }</strong><span>지원완료</span></a></li>
+				<li class="review00"><a href="#" title="지원완료"><strong>${onlineRecruitCnt }</strong><span>지원완료</span></a></li>
 				<li class="review01"><a href="#" title="이력서열람"><strong>3</strong><span>이력서열람</span></a></li>
 				<li class="review02"><a href="#" title="스크랩공고"><strong>${netfuScrapCnt }</strong><span>스크랩공고</span></a></li>
 				<li class="review03"><a href="#" title="관심기업공고"><strong>0</strong><span>관심기업공고</span></a></li>
@@ -77,18 +79,18 @@
 					<c:when test="${recommandRecruitList.size() > 0 }">
 						<c:forEach var="result" items="${recommandRecruitList}" varStatus="status">
 							<li>
-			                  <a href="#" title="기업회원등록공고">
-			                    <div class="descBox">
-			                      <p class="desc01">${result.companyTitle }</p>
-			                      <p class="desc02">${result.recruitItemContents }</p>
-			                      <span class="desc03">${result.men }</span>
-			                    </div>
-			                  </a>
+			                	<a href="#" title="추천채용정보">
+			                    	<div class="descBox">
+			                      		<p class="desc01">${result.companyTitle }</p>
+			                      		<p class="desc02">${convert:compByte(result.recruitItemContents, 30, "...")}</p>
+			                     		<span class="desc03">${result.men }</span>
+			                    	</div>
+			                  	</a>
 			                </li>
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
-						<li><div class="descBox"><p class="desc02">내역이 없습니다.</p></li>
+						<li style="width:100%;"><div class="descBox"><p class="desc02">내역이 없습니다.</p></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
@@ -96,13 +98,65 @@
 		<div id="listPart">
 			<ul class="tab">
 				<li><a class="selected" href="#none" title="맞춤채용공고">맞춤채용공고</a></li>
-				<li><a class="selected" href="#none" title="스크랩공고">스크랩공고</a></li>
-				<li><a class="selected" href="#none" title="최근 본 공고">최근 본 공고</a></li>
+				<li><a href="#none" title="스크랩공고">스크랩공고</a></li>
+				<li><a href="#none" title="최근 본 공고">최근 본 공고</a></li>
 			</ul>
-			<ul class="list">
+			<ul class="list" id="list01">
+				<c:choose>
+					<c:when test="${recruitSettedList.size() > 0 }">
+						<c:forEach var="result" items="${recruitSettedList}" varStatus="status">
+							<li>
+								<a href="#none" title="맞춤채용공고">
+									<p class="title">${result.bizName }</p>
+									<div class="desc">
+										<p class="desc0">${convert:compByte(result.bizTitle, 100, "...")}</p>
+										<p class="desc1"><strong>급여 </strong>${result.bizPayName }</p>
+										<p class="desc2"><strong>경력 </strong>${result.bizCareer }</p>
+										<p class="desc3"><strong>나이 </strong>${result.bizAge }</p>
+										<p class="desc1"><strong>지역 </strong>${result.bizArea1Name }</p>
+										<p class="desc2"><strong>학력 </strong>${result.bizAbility }</p>
+										<p class="desc3"><strong>성별 </strong>${codeConvert:getBizSex(result.bizSex) }</p>
+									</div>
+									${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }
+								</a>
+							</li>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<li style="width:100%;"><p class="title">내역이 없습니다.</p></li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+			<ul class="list" id="list02" style="display:none;">
+				<c:choose>
+					<c:when test="${recruitScrapList.size() > 0 }">
+						<c:forEach var="result" items="${recruitScrapList}" varStatus="status">
+							<li>
+								<a href="#none" title="스크랩한 공고">
+									<p class="title">${result.bizName }</p>
+									<div class="desc">
+										<p class="desc0">${convert:compByte(result.bizTitle, 100, "...")}</p>
+										<p class="desc1"><strong>급여 </strong>${result.bizPayName }</p>
+										<p class="desc2"><strong>경력 </strong>${result.bizCareer }</p>
+										<p class="desc3"><strong>나이 </strong>${result.bizAge }</p>
+										<p class="desc1"><strong>지역 </strong>${result.bizArea1Name }</p>
+										<p class="desc2"><strong>학력 </strong>${result.bizAbility }</p>
+										<p class="desc3"><strong>성별 </strong>${codeConvert:getBizSex(result.bizSex) }</p>
+									</div>
+									${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }
+								</a>
+							</li>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<li style="width:100%;"><p class="title">내역이 없습니다.</p></li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+			<ul class="list" id="list03" style="display:none;">
 				<li>
-					<a href="#none" title="맞춤채용공고">
-						<p class="title">(주)파인스태프</p>
+					<a href="#none" title="최근 본 공고">
+						<p class="title">(주)최근 본 공고</p>
 						<div class="desc">
 							<p class="desc0">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
 							<p class="desc1"><strong>급여 </strong>3000-3500만원</p>
@@ -115,38 +169,22 @@
 						<p class="deadline deadline00">상시채용</p>
 					</a>
 				</li>
-				<li>
-					<a href="#none" title="맞춤채용공고">
-					<p class="title">(주)파인스태프</p>
-						<div class="desc">
-							<p class="desc0">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc1"><strong>급여 </strong>3000-3500만원</p>
-							<p class="desc2"><strong>경력 </strong>무관</p>
-							<p class="desc3"><strong>나이 </strong>무관</p>
-							<p class="desc1"><strong>지역 </strong>경기 광주시</p>
-							<p class="desc2"><strong>학력 </strong>무관</p>
-							<p class="desc3"><strong>성별 </strong>무관</p>
-						</div>
-						<p class="deadline deadline01">채용시마감</p>
-					</a>
-				</li>
-				<li>
-					<a href="#none" title="맞춤채용공고">
-						<p class="title">(주)파인스태프</p>
-						<div class="desc">
-							<p class="desc0">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc1"><strong>급여 </strong>3000-3500만원</p>
-							<p class="desc2"><strong>경력 </strong>무관</p>
-							<p class="desc3"><strong>나이 </strong>무관</p>
-							<p class="desc1"><strong>지역 </strong>경기 광주시</p>
-							<p class="desc2"><strong>학력 </strong>무관</p>
-							<p class="desc3"><strong>성별 </strong>무관</p>
-						</div>
-						<p class="deadline deadline02">~2/14(목)</p>
-					</a>
-				</li>
 			</ul>
 		</div>
 	</div>
 </div>
 <jsp:include page="/footer.do" />
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$(".tab li a").click(function(e){
+			$(this).parent().parent().find("a").removeClass('selected');
+			$(this).addClass('selected');
+			var idx = $(this).parent("li").index();
+			$(".list").eq(idx).css("display", "block").siblings(".list").css("display", "none");
+		});
+	});	
+		
+</script>

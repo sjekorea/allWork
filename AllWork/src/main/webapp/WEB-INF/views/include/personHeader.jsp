@@ -16,13 +16,18 @@
 	<link rel="stylesheet" type="text/css" href="/css/font.css" />
 	<link rel="stylesheet" type="text/css" href="/css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="/css/all.css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="/js/jquery-1.12.4.js"></script>
+	<script src="/js/jquery-3.3.1.min.js"></script>
 	<script src="/js/jquery-ui.min.js"></script>
 	<script src="/js/common.js"></script>
+	<script src="/js/process.js"></script>
 	<style></style>
 </head>
 <body>
+	<div id="progress_barWrap" style="display:none;">
+		<p id="progress_bar">
+			<img src="/img/main/loading_circle.gif" alt="로딩이미지"/>
+		</p>
+    </div>
 	<div id="allworkWrap">
 		<div id="headerWrap">
 			<div id="topWrap">

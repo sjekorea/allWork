@@ -28,7 +28,7 @@
 		<li class="menu menu03"><a href="/recruitScrapList.do" title="스크랩/관심기업">스크랩/관심기업</a>
 			<h3>스크랩/관심기업</h3>
 			<ol class="subMenu subMenu03">
-				<li class="subMenu03_01"><a href="/recruitScrapList.do" title="스크랩">스크랩</a></li>
+				<li class="subMenu03_01"><a href="/recruitScrapList.do" title="스크랩">스크랩한 채용정보</a></li>
 				<li class="subMenu03_02"><a href="/interestCompanyList.do" title="관심기업">관심기업</a></li>
 				<li class="subMenu03_03"><a href="/interviewRequestCompany.do" title="면접요청기업">면접요청기업</a></li>
 			</ol></li>
@@ -36,8 +36,8 @@
 		<li class="menu menu05"><a href="/companySettedList.do" title="맞춤서비스관리">맞춤서비스관리</a>
 			<h3>맞춤서비스관리</h3>
 			<ol class="subMenu subMenu05">
-				<li class="subMenu05_01"><a href="/companySettedList.do" title="맞춤채용정보">맞춤채용정보</a></li>
-				<li class="subMenu05_02"><a href="/companySearchSetting.do" title="맞춤서비스설정">맞춤서비스설정</a></li>
+				<li class="subMenu05_01"><a href="/recruitSettedList.do" title="맞춤채용정보">맞춤채용정보</a></li>
+				<li class="subMenu05_02"><a href="/recruitSearchSetting.do" title="맞춤서비스설정">맞춤서비스설정</a></li>
 			</ol></li>
 		<li class="menu menu06"><a href="#" title="유료서비스">유료서비스</a>
 			<h3>유료서비스</h3>

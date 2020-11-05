@@ -2,9 +2,91 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="netfuItemCompany">
 
-	<select id="selectNetfuItemCompanyCnt" parameterType="hashmap" resultType="int">
+	
+	<!-- 온라인 입사지원 Count -->
+	<select id="selectOnlineRecruitCnt" parameterType="hashmap" resultType="int">
 		select count(no) cnt from netfu_online_recruit where uid=#{loginId} and type='job' and to_type='online'
 	</select>
+	
+	
+	<!-- 맞춤 채용 정보 Count - 개인회원 홈 -->
+	<select id="selectRecruitSettedCnt" parameterType="hashmap" resultType="int">
+		select count(no)
+		from netfu_item_company
+		where 1=1
+	</select>
+	
+	
+	<!-- 맞춤 채용 정보 목록 - 개인회원 홈 -->
+	<select id="selectRecruitSettedList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
+		select 	
+			no, uid, biz_name, biz_title
+			, biz_pay, getCodeName(biz_pay) biz_pay_name ### 급여정보
+			, biz_career ## 경력
+			, biz_age ## 나이
+			, biz_area1, getCodeName(biz_area1) biz_area1_name ## 근무지역
+			, biz_ability	## 학력
+			, biz_sex
+			, biz_end_day, biz_end_type, biz_ing
+			, biz_type1, getCodeName(biz_type1) biz_type1_name
+			, biz_area1, getCodeName(biz_area1) biz_area1_name
+			, biz_area2, getCodeName(biz_area2) biz_area2_name
+			, biz_jobfrom, getCodeName(biz_jobfrom) biz_jobfrom_name
+			, DATE_FORMAT(wdate, '%Y-%m-%d') wdate
+		from netfu_item_company
+		where 1=1
+		order by u_wdate desc 	
+		limit #{start}, #{pageSize}
+	</select>
+	
+	
+	<!-- 스크랩한 채용정보 -->
+	<select id="selectRecruitScrapCnt" parameterType="hashmap" resultType="int">
+		select count(no) 
+		from netfu_scrap
+		where 1=1
+			and type = 'job'
+			and uid = #{loginId}
+			and sub_type in ('company', 'hdht')
+			and date_add(wdate, interval '3' month) > sysdate()
+	</select>
+	
+	
+	<!-- 스크랩한 채용정보 -->
+	<select id="selectRecruitScrapList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
+		select 	
+			ns.no_to, nic.no, nic.uid, nic.biz_name, nic.biz_title
+			, nic.biz_pay, getCodeName(nic.biz_pay) biz_pay_name ### 급여정보
+			, nic.biz_career ## 경력
+			, nic.biz_age ## 나이
+			, nic.biz_area1, getCodeName(nic.biz_area1) biz_area1_name ## 근무지역
+			, nic.biz_ability	## 학력
+			, nic.biz_sex
+			, nic.biz_end_day, nic.biz_end_type, nic.biz_ing
+			, nic.biz_type1, getCodeName(nic.biz_type1) biz_type1_name
+			, nic.biz_area1, getCodeName(nic.biz_area1) biz_area1_name
+			, nic.biz_area2, getCodeName(nic.biz_area2) biz_area2_name
+			, nic.biz_jobfrom, getCodeName(nic.biz_jobfrom) biz_jobfrom_name
+			, DATE_FORMAT(nic.wdate, '%Y-%m-%d') wdate
+		from netfu_scrap ns, netfu_item_company nic
+		where 1=1
+			and ns.type = 'job'
+			and ns.uid = #{loginId}
+			and ns.sub_type in ('company', 'hdht')
+			and date_add(ns.wdate, interval '3' month) > sysdate()
+			and ns.no = nic.no
+		order by u_wdate desc 
+		LIMIT #{start}, #{pageSize}	
+	</select>
+	
+	<!-- 스크랩한 채용정보 삭제 -->
+	<delete id="deleteRecruitScrapMulti" parameterType="hashmap">
+		delete from netfu_scrap 
+		where 1=1
+			and uid = #{loginId}
+			and FIND_IN_SET(no_to, #{deleteItemMulti})
+	</delete>
+	
 
-
+	
 </mapper>

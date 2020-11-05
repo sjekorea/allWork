@@ -2,50 +2,57 @@ package allwork.vo;
 
 public class NetfuItemCompanyVo {
 	
+	private int noTo;
 	private int no;
 	private String uid;
-	private int info_type;
-	private String biz_name;
-	private String biz_title;
-	private String biz_post;
-	private String biz_address1;
-	private String biz_address2;
-	private String biz_type1;
-	private String biz_type2;
-	private String biz_type3;
-	private String biz_type4;
-	private String biz_type5;
-	private String biz_type6;
-	private String biz_position;
-	private String biz_area1;
-	private String biz_area2;
-	private String biz_area3;
-	private String biz_area4;
-	private String biz_area5;
-	private String biz_area6;
-	private String biz_subway;
-	private String biz_business;
-	private int biz_men;
-	private String biz_jobfrom;
-	private String biz_pay;
-	private String biz_welfare;
-	private String biz_sex;
-	private String biz_age;
-	private String biz_ability;
-	private String biz_preferential;
-	private int biz_career;
-	private String biz_detail;
-	private String biz_end_day;
-	private String biz_end_type;
-	private String biz_ing;
-	private String biz_method;
-	private String biz_person;
-	private String biz_pemail;
-	private String biz_pphone;
-	private String biz_pfax;
+	private int infoType;
+	private String bizName;
+	private String bizTitle;
+	private String bizPost;
+	private String bizAddress1;
+	private String bizAddress2;
+	private String bizType1;
+	private String bizType1Name;
+	private String bizType2;
+	private String bizType3;
+	private String bizType4;
+	private String bizType5;
+	private String bizType6;
+	private String bizPosition;
+	private String bizArea1;
+	private String bizArea1Name;
+	private String bizArea2;
+	private String bizArea2Name;
+	private String bizArea3;
+	private String bizArea4;
+	private String bizArea5;
+	private String bizArea6;
+	private String bizSubway;
+	private String bizBusiness;
+	private int bizMen;
+	private String bizJobfrom;
+	private String bizJobfromName;
+	private String bizPay;
+	private String bizPayName;
+	private String bizWelfare;
+	private String bizSex;
+	private String bizSexName;
+	private String bizAge;
+	private String bizAbility;
+	private String bizPreferential;
+	private int bizCareer;
+	private String bizDetail;
+	private String bizEndDay;
+	private String bizEndType;
+	private String bizIng;
+	private String bizMethod;
+	private String bizPerson;
+	private String bizPemail;
+	private String bizPphone;
+	private String bizPfax;
 	private String wdate;
-	private String u_wdate;
-	private String j_wdate;
+	private String uWdate;
+	private String jWdate;
 	private String service1;
 	private String service2;
 	private String service3;
@@ -58,148 +65,180 @@ public class NetfuItemCompanyVo {
 	private String service9;
 	private String service10;
 	private String service11;
-	private String biz_paper;
-	private String biz_form;
-	private String biz_form_file;
-	private String biz_type7;
-	private String biz_type8;
-	private String biz_type9;
-	private String sms_send;
-	private String biz_page;
+	private String bizPaper;
+	private String bizForm;
+	private String bizFormFile;
+	private String bizType7;
+	private String bizType8;
+	private String bizType9;
+	private String smsSend;
+	private String bizPage;
 	private int hit;
-	private String type_r;
-	private int order_view;
+	private String typeR;
+	private int orderView;
+	
+
+	public int getNoTo() {
+		return noTo;
+	}
+	public void setNoTo(int noTo) {
+		this.noTo = noTo;
+	}
+	public String getBizArea2Name() {
+		return bizArea2Name;
+	}
+	public String getBizJobfromName() {
+		return bizJobfromName;
+	}
+	public void setBizArea2Name(String bizArea2Name) {
+		this.bizArea2Name = bizArea2Name;
+	}
+	public void setBizJobfromName(String bizJobfromName) {
+		this.bizJobfromName = bizJobfromName;
+	}
 	public int getNo() {
 		return no;
 	}
 	public String getUid() {
 		return uid;
 	}
-	public int getInfo_type() {
-		return info_type;
+	public int getInfoType() {
+		return infoType;
 	}
-	public String getBiz_name() {
-		return biz_name;
+	public String getBizName() {
+		return bizName;
 	}
-	public String getBiz_title() {
-		return biz_title;
+	public String getBizTitle() {
+		return bizTitle;
 	}
-	public String getBiz_post() {
-		return biz_post;
+	public String getBizPost() {
+		return bizPost;
 	}
-	public String getBiz_address1() {
-		return biz_address1;
+	public String getBizAddress1() {
+		return bizAddress1;
 	}
-	public String getBiz_address2() {
-		return biz_address2;
+	public String getBizAddress2() {
+		return bizAddress2;
 	}
-	public String getBiz_type1() {
-		return biz_type1;
+	public String getBizType1() {
+		return bizType1;
 	}
-	public String getBiz_type2() {
-		return biz_type2;
+	public String getBizType1Name() {
+		return bizType1Name;
 	}
-	public String getBiz_type3() {
-		return biz_type3;
+	public String getBizType2() {
+		return bizType2;
 	}
-	public String getBiz_type4() {
-		return biz_type4;
+	public String getBizType3() {
+		return bizType3;
 	}
-	public String getBiz_type5() {
-		return biz_type5;
+	public String getBizType4() {
+		return bizType4;
 	}
-	public String getBiz_type6() {
-		return biz_type6;
+	public String getBizType5() {
+		return bizType5;
 	}
-	public String getBiz_position() {
-		return biz_position;
+	public String getBizType6() {
+		return bizType6;
 	}
-	public String getBiz_area1() {
-		return biz_area1;
+	public String getBizPosition() {
+		return bizPosition;
 	}
-	public String getBiz_area2() {
-		return biz_area2;
+	public String getBizArea1() {
+		return bizArea1;
 	}
-	public String getBiz_area3() {
-		return biz_area3;
+	public String getBizArea1Name() {
+		return bizArea1Name;
 	}
-	public String getBiz_area4() {
-		return biz_area4;
+	public String getBizArea2() {
+		return bizArea2;
 	}
-	public String getBiz_area5() {
-		return biz_area5;
+	public String getBizArea3() {
+		return bizArea3;
 	}
-	public String getBiz_area6() {
-		return biz_area6;
+	public String getBizArea4() {
+		return bizArea4;
 	}
-	public String getBiz_subway() {
-		return biz_subway;
+	public String getBizArea5() {
+		return bizArea5;
 	}
-	public String getBiz_business() {
-		return biz_business;
+	public String getBizArea6() {
+		return bizArea6;
 	}
-	public int getBiz_men() {
-		return biz_men;
+	public String getBizSubway() {
+		return bizSubway;
 	}
-	public String getBiz_jobfrom() {
-		return biz_jobfrom;
+	public String getBizBusiness() {
+		return bizBusiness;
 	}
-	public String getBiz_pay() {
-		return biz_pay;
+	public int getBizMen() {
+		return bizMen;
 	}
-	public String getBiz_welfare() {
-		return biz_welfare;
+	public String getBizJobfrom() {
+		return bizJobfrom;
 	}
-	public String getBiz_sex() {
-		return biz_sex;
+	public String getBizPay() {
+		return bizPay;
 	}
-	public String getBiz_age() {
-		return biz_age;
+	public String getBizPayName() {
+		return bizPayName;
 	}
-	public String getBiz_ability() {
-		return biz_ability;
+	public String getBizWelfare() {
+		return bizWelfare;
 	}
-	public String getBiz_preferential() {
-		return biz_preferential;
+	public String getBizSex() {
+		return bizSex;
 	}
-	public int getBiz_career() {
-		return biz_career;
+	public String getBizSexName() {
+		return bizSexName;
 	}
-	public String getBiz_detail() {
-		return biz_detail;
+	public String getBizAge() {
+		return bizAge;
 	}
-	public String getBiz_end_day() {
-		return biz_end_day;
+	public String getBizAbility() {
+		return bizAbility;
 	}
-	public String getBiz_end_type() {
-		return biz_end_type;
+	public String getBizPreferential() {
+		return bizPreferential;
 	}
-	public String getBiz_ing() {
-		return biz_ing;
+	public int getBizCareer() {
+		return bizCareer;
 	}
-	public String getBiz_method() {
-		return biz_method;
+	public String getBizDetail() {
+		return bizDetail;
 	}
-	public String getBiz_person() {
-		return biz_person;
+	public String getBizEndDay() {
+		return bizEndDay;
 	}
-	public String getBiz_pemail() {
-		return biz_pemail;
+	public String getBizEndType() {
+		return bizEndType;
 	}
-	public String getBiz_pphone() {
-		return biz_pphone;
+	public String getBizIng() {
+		return bizIng;
 	}
-	public String getBiz_pfax() {
-		return biz_pfax;
+	public String getBizMethod() {
+		return bizMethod;
+	}
+	public String getBizPerson() {
+		return bizPerson;
+	}
+	public String getBizPemail() {
+		return bizPemail;
+	}
+	public String getBizPphone() {
+		return bizPphone;
+	}
+	public String getBizPfax() {
+		return bizPfax;
 	}
 	public String getWdate() {
 		return wdate;
 	}
-	public String getU_wdate() {
-		return u_wdate;
+	public String getuWdate() {
+		return uWdate;
 	}
-	public String getJ_wdate() {
-		return j_wdate;
+	public String getjWdate() {
+		return jWdate;
 	}
 	public String getService1() {
 		return service1;
@@ -237,38 +276,38 @@ public class NetfuItemCompanyVo {
 	public String getService11() {
 		return service11;
 	}
-	public String getBiz_paper() {
-		return biz_paper;
+	public String getBizPaper() {
+		return bizPaper;
 	}
-	public String getBiz_form() {
-		return biz_form;
+	public String getBizForm() {
+		return bizForm;
 	}
-	public String getBiz_form_file() {
-		return biz_form_file;
+	public String getBizFormFile() {
+		return bizFormFile;
 	}
-	public String getBiz_type7() {
-		return biz_type7;
+	public String getBizType7() {
+		return bizType7;
 	}
-	public String getBiz_type8() {
-		return biz_type8;
+	public String getBizType8() {
+		return bizType8;
 	}
-	public String getBiz_type9() {
-		return biz_type9;
+	public String getBizType9() {
+		return bizType9;
 	}
-	public String getSms_send() {
-		return sms_send;
+	public String getSmsSend() {
+		return smsSend;
 	}
-	public String getBiz_page() {
-		return biz_page;
+	public String getBizPage() {
+		return bizPage;
 	}
 	public int getHit() {
 		return hit;
 	}
-	public String getType_r() {
-		return type_r;
+	public String getTypeR() {
+		return typeR;
 	}
-	public int getOrder_view() {
-		return order_view;
+	public int getOrderView() {
+		return orderView;
 	}
 	public void setNo(int no) {
 		this.no = no;
@@ -276,131 +315,143 @@ public class NetfuItemCompanyVo {
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
-	public void setInfo_type(int info_type) {
-		this.info_type = info_type;
+	public void setInfoType(int infoType) {
+		this.infoType = infoType;
 	}
-	public void setBiz_name(String biz_name) {
-		this.biz_name = biz_name;
+	public void setBizName(String bizName) {
+		this.bizName = bizName;
 	}
-	public void setBiz_title(String biz_title) {
-		this.biz_title = biz_title;
+	public void setBizTitle(String bizTitle) {
+		this.bizTitle = bizTitle;
 	}
-	public void setBiz_post(String biz_post) {
-		this.biz_post = biz_post;
+	public void setBizPost(String bizPost) {
+		this.bizPost = bizPost;
 	}
-	public void setBiz_address1(String biz_address1) {
-		this.biz_address1 = biz_address1;
+	public void setBizAddress1(String bizAddress1) {
+		this.bizAddress1 = bizAddress1;
 	}
-	public void setBiz_address2(String biz_address2) {
-		this.biz_address2 = biz_address2;
+	public void setBizAddress2(String bizAddress2) {
+		this.bizAddress2 = bizAddress2;
 	}
-	public void setBiz_type1(String biz_type1) {
-		this.biz_type1 = biz_type1;
+	public void setBizType1(String bizType1) {
+		this.bizType1 = bizType1;
 	}
-	public void setBiz_type2(String biz_type2) {
-		this.biz_type2 = biz_type2;
+	public void setBizType1Name(String bizType1Name) {
+		this.bizType1Name = bizType1Name;
 	}
-	public void setBiz_type3(String biz_type3) {
-		this.biz_type3 = biz_type3;
+	public void setBizType2(String bizType2) {
+		this.bizType2 = bizType2;
 	}
-	public void setBiz_type4(String biz_type4) {
-		this.biz_type4 = biz_type4;
+	public void setBizType3(String bizType3) {
+		this.bizType3 = bizType3;
 	}
-	public void setBiz_type5(String biz_type5) {
-		this.biz_type5 = biz_type5;
+	public void setBizType4(String bizType4) {
+		this.bizType4 = bizType4;
 	}
-	public void setBiz_type6(String biz_type6) {
-		this.biz_type6 = biz_type6;
+	public void setBizType5(String bizType5) {
+		this.bizType5 = bizType5;
 	}
-	public void setBiz_position(String biz_position) {
-		this.biz_position = biz_position;
+	public void setBizType6(String bizType6) {
+		this.bizType6 = bizType6;
 	}
-	public void setBiz_area1(String biz_area1) {
-		this.biz_area1 = biz_area1;
+	public void setBizPosition(String bizPosition) {
+		this.bizPosition = bizPosition;
 	}
-	public void setBiz_area2(String biz_area2) {
-		this.biz_area2 = biz_area2;
+	public void setBizArea1(String bizArea1) {
+		this.bizArea1 = bizArea1;
 	}
-	public void setBiz_area3(String biz_area3) {
-		this.biz_area3 = biz_area3;
+	public void setBizArea1Name(String bizArea1Name) {
+		this.bizArea1Name = bizArea1Name;
 	}
-	public void setBiz_area4(String biz_area4) {
-		this.biz_area4 = biz_area4;
+	public void setBizArea2(String bizArea2) {
+		this.bizArea2 = bizArea2;
 	}
-	public void setBiz_area5(String biz_area5) {
-		this.biz_area5 = biz_area5;
+	public void setBizArea3(String bizArea3) {
+		this.bizArea3 = bizArea3;
 	}
-	public void setBiz_area6(String biz_area6) {
-		this.biz_area6 = biz_area6;
+	public void setBizArea4(String bizArea4) {
+		this.bizArea4 = bizArea4;
 	}
-	public void setBiz_subway(String biz_subway) {
-		this.biz_subway = biz_subway;
+	public void setBizArea5(String bizArea5) {
+		this.bizArea5 = bizArea5;
 	}
-	public void setBiz_business(String biz_business) {
-		this.biz_business = biz_business;
+	public void setBizArea6(String bizArea6) {
+		this.bizArea6 = bizArea6;
 	}
-	public void setBiz_men(int biz_men) {
-		this.biz_men = biz_men;
+	public void setBizSubway(String bizSubway) {
+		this.bizSubway = bizSubway;
 	}
-	public void setBiz_jobfrom(String biz_jobfrom) {
-		this.biz_jobfrom = biz_jobfrom;
+	public void setBizBusiness(String bizBusiness) {
+		this.bizBusiness = bizBusiness;
 	}
-	public void setBiz_pay(String biz_pay) {
-		this.biz_pay = biz_pay;
+	public void setBizMen(int bizMen) {
+		this.bizMen = bizMen;
 	}
-	public void setBiz_welfare(String biz_welfare) {
-		this.biz_welfare = biz_welfare;
+	public void setBizJobfrom(String bizJobfrom) {
+		this.bizJobfrom = bizJobfrom;
 	}
-	public void setBiz_sex(String biz_sex) {
-		this.biz_sex = biz_sex;
+	public void setBizPay(String bizPay) {
+		this.bizPay = bizPay;
 	}
-	public void setBiz_age(String biz_age) {
-		this.biz_age = biz_age;
+	public void setBizPayName(String bizPayName) {
+		this.bizPayName = bizPayName;
 	}
-	public void setBiz_ability(String biz_ability) {
-		this.biz_ability = biz_ability;
+	public void setBizWelfare(String bizWelfare) {
+		this.bizWelfare = bizWelfare;
 	}
-	public void setBiz_preferential(String biz_preferential) {
-		this.biz_preferential = biz_preferential;
+	public void setBizSex(String bizSex) {
+		this.bizSex = bizSex;
 	}
-	public void setBiz_career(int biz_career) {
-		this.biz_career = biz_career;
+	public void setBizSexName(String bizSexName) {
+		this.bizSexName = bizSexName;
 	}
-	public void setBiz_detail(String biz_detail) {
-		this.biz_detail = biz_detail;
+	public void setBizAge(String bizAge) {
+		this.bizAge = bizAge;
 	}
-	public void setBiz_end_day(String biz_end_day) {
-		this.biz_end_day = biz_end_day;
+	public void setBizAbility(String bizAbility) {
+		this.bizAbility = bizAbility;
 	}
-	public void setBiz_end_type(String biz_end_type) {
-		this.biz_end_type = biz_end_type;
+	public void setBizPreferential(String bizPreferential) {
+		this.bizPreferential = bizPreferential;
 	}
-	public void setBiz_ing(String biz_ing) {
-		this.biz_ing = biz_ing;
+	public void setBizCareer(int bizCareer) {
+		this.bizCareer = bizCareer;
 	}
-	public void setBiz_method(String biz_method) {
-		this.biz_method = biz_method;
+	public void setBizDetail(String bizDetail) {
+		this.bizDetail = bizDetail;
 	}
-	public void setBiz_person(String biz_person) {
-		this.biz_person = biz_person;
+	public void setBizEndDay(String bizEndDay) {
+		this.bizEndDay = bizEndDay;
 	}
-	public void setBiz_pemail(String biz_pemail) {
-		this.biz_pemail = biz_pemail;
+	public void setBizEndType(String bizEndType) {
+		this.bizEndType = bizEndType;
 	}
-	public void setBiz_pphone(String biz_pphone) {
-		this.biz_pphone = biz_pphone;
+	public void setBizIng(String bizIng) {
+		this.bizIng = bizIng;
 	}
-	public void setBiz_pfax(String biz_pfax) {
-		this.biz_pfax = biz_pfax;
+	public void setBizMethod(String bizMethod) {
+		this.bizMethod = bizMethod;
+	}
+	public void setBizPerson(String bizPerson) {
+		this.bizPerson = bizPerson;
+	}
+	public void setBizPemail(String bizPemail) {
+		this.bizPemail = bizPemail;
+	}
+	public void setBizPphone(String bizPphone) {
+		this.bizPphone = bizPphone;
+	}
+	public void setBizPfax(String bizPfax) {
+		this.bizPfax = bizPfax;
 	}
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
-	public void setU_wdate(String u_wdate) {
-		this.u_wdate = u_wdate;
+	public void setuWdate(String uWdate) {
+		this.uWdate = uWdate;
 	}
-	public void setJ_wdate(String j_wdate) {
-		this.j_wdate = j_wdate;
+	public void setjWdate(String jWdate) {
+		this.jWdate = jWdate;
 	}
 	public void setService1(String service1) {
 		this.service1 = service1;
@@ -438,41 +489,39 @@ public class NetfuItemCompanyVo {
 	public void setService11(String service11) {
 		this.service11 = service11;
 	}
-	public void setBiz_paper(String biz_paper) {
-		this.biz_paper = biz_paper;
+	public void setBizPaper(String bizPaper) {
+		this.bizPaper = bizPaper;
 	}
-	public void setBiz_form(String biz_form) {
-		this.biz_form = biz_form;
+	public void setBizForm(String bizForm) {
+		this.bizForm = bizForm;
 	}
-	public void setBiz_form_file(String biz_form_file) {
-		this.biz_form_file = biz_form_file;
+	public void setBizFormFile(String bizFormFile) {
+		this.bizFormFile = bizFormFile;
 	}
-	public void setBiz_type7(String biz_type7) {
-		this.biz_type7 = biz_type7;
+	public void setBizType7(String bizType7) {
+		this.bizType7 = bizType7;
 	}
-	public void setBiz_type8(String biz_type8) {
-		this.biz_type8 = biz_type8;
+	public void setBizType8(String bizType8) {
+		this.bizType8 = bizType8;
 	}
-	public void setBiz_type9(String biz_type9) {
-		this.biz_type9 = biz_type9;
+	public void setBizType9(String bizType9) {
+		this.bizType9 = bizType9;
 	}
-	public void setSms_send(String sms_send) {
-		this.sms_send = sms_send;
+	public void setSmsSend(String smsSend) {
+		this.smsSend = smsSend;
 	}
-	public void setBiz_page(String biz_page) {
-		this.biz_page = biz_page;
+	public void setBizPage(String bizPage) {
+		this.bizPage = bizPage;
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	public void setType_r(String type_r) {
-		this.type_r = type_r;
+	public void setTypeR(String typeR) {
+		this.typeR = typeR;
 	}
-	public void setOrder_view(int order_view) {
-		this.order_view = order_view;
+	public void setOrderView(int orderView) {
+		this.orderView = orderView;
 	}
 	
 	
-	
-
 }

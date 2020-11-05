@@ -12,7 +12,7 @@
      <function>
          <description>Enter 처리</description>
          <name>convertEnterToBr</name>
-         <function-class>micrm.common.util.ConvertUtil</function-class>
+         <function-class>allwork.common.util.ConvertUtil</function-class>
          <function-signature>
               String convertEnterToBr(java.lang.String)
          </function-signature>
@@ -20,7 +20,7 @@
     <function>
          <description>Br 처리</description>
          <name>convertBrToEnter</name>
-         <function-class>micrm.common.util.ConvertUtil</function-class>
+         <function-class>allwork.common.util.ConvertUtil</function-class>
          <function-signature>
               String convertBrToEnter(java.lang.String)
          </function-signature>
@@ -28,9 +28,25 @@
     <function>
          <description>Query Quotes 처리</description>
          <name>convertQueryQuotes</name>
-         <function-class>micrm.common.util.ConvertUtil</function-class>
+         <function-class>allwork.common.util.ConvertUtil</function-class>
          <function-signature>
               String convertQueryQuotes(java.lang.String)
+         </function-signature>
+    </function>
+    <function>
+         <description>Slice the long Sentence</description>
+         <name>comp</name>
+         <function-class>allwork.common.util.ConvertUtil</function-class>
+         <function-signature>
+              String comp(java.lang.String, java.lang.Integer)
+         </function-signature>
+    </function>
+    <function>
+         <description>Slice the long Sentence By byte</description>
+         <name>compByte</name>
+         <function-class>allwork.common.util.ConvertUtil</function-class>
+         <function-signature>
+              String compByte(java.lang.String, java.lang.Integer, java.lang.String)
          </function-signature>
     </function>
 </taglib>

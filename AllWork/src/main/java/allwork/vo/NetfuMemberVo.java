@@ -46,6 +46,9 @@ public class NetfuMemberVo {
 	private String useAwnl;
 	private int tosa180422;
 	private String tosa180422Date;
+	
+	
+	
 	public int getNo() {
 		return no;
 	}
