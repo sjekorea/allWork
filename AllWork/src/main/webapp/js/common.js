@@ -9,6 +9,7 @@
       }
     });
 
+
 jQuery(document).ready(function(){
 
   		jQuery("#allMenuWrap").css({"display":"none"});
@@ -21,6 +22,10 @@ jQuery(document).ready(function(){
   		jQuery("#allMenuWrap").css({"display":"none"});
   		});
 
+      //팝업창 닫기
+  		jQuery("#popupClose").click(function(){
+  		jQuery("#popupWrap").hide();
+  		});
 
 
 

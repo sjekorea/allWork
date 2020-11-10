@@ -46,7 +46,6 @@ public class CompanyController {
 		}
 		
 		
-		
 		return mv;
 	}
 	
@@ -58,54 +57,6 @@ public class CompanyController {
 	public ModelAndView recruitInfoReg(CommandMap commandMap) {
 		
 		ModelAndView mv = new ModelAndView("/company/recruitInfoReg");
-		
-		return mv;
-	}
-	
-
-	/*
-	 * 진행중인 채용정보
-	 */
-	@RequestMapping(value="/recruitListProgress")
-	public ModelAndView recruitListProgress(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/company/recruitListProgress");
-		
-		return mv;
-	}
-	
-
-	/*
-	 * 마감된 채용정보
-	 */
-	@RequestMapping(value="/recruitListClosed")
-	public ModelAndView recruitListClosed(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/company/recruitListClosed");
-		
-		return mv;
-	}
-	
-	
-	/*
-	 * 인재정보 검색
-	 */
-	@RequestMapping(value="/personSearch")
-	public ModelAndView personSearch(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/company/personSearch");
-		
-		return mv;
-	}
-	
-	
-	/*
-	 * 인재정보 검색 - 직무별
-	 */
-	@RequestMapping(value="/personSearchByDuty")
-	public ModelAndView personSearchByDuty(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/company/personSearchByDuty");
 		
 		return mv;
 	}
@@ -122,29 +73,6 @@ public class CompanyController {
 		return mv;
 	}
 	
-
-	/*
-	 * 맞춤인재정보 설정
-	 */
-	@RequestMapping(value="/personSearchSetting")
-	public ModelAndView personSearchSetting(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/company/personSearchSetting");
-		
-		return mv;
-	}
-	
-
-	/*
-	 * 맟춤인재정보
-	 */
-	@RequestMapping(value="/personSettedList")
-	public ModelAndView personSettedList(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/company/personSettedList");
-		
-		return mv;
-	}
 	
 	
 	/*

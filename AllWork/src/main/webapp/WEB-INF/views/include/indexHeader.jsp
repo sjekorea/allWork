@@ -142,7 +142,7 @@
 				</div>
 				<div id="allMenu_ect">
 					<span><a href="#" title="고객센터">고객센터</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-					<span><a href="#" title="회사소개">회사소개</a></span>
+					<span><a href="/introAbout.do" title="회사소개">회사소개</a></span>
 				</div>
 			</div>
 		</div>

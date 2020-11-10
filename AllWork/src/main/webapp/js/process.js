@@ -305,3 +305,11 @@ function convertEnter(str){
 	str = str.replace(/\n\r/g, " ");
 	return str;
 }
+
+function loadingOn(){
+	$("#progress_barWrap").css("display", "block");
+}
+
+function loadingOff(){
+	$("#progress_barWrap").css("display", "none");
+}

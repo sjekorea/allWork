@@ -35,8 +35,8 @@
 					<ol>
 						<li><a href="/personScrapList.do" title="스크랩인재">스크랩인재</a></li>
 						<li><a href="#" title="유료서비스 신청">유료서비스 신청</a></li>
-						<li><a href="/personSearchSetting.do" title="맞춤서비스 설정">맞춤서비스 설정</a></li>
-						<li><a href="/personSettedList.do" title="맞춤 인재정보">맞춤 인재정보</a></li>
+						<li><a href="/fitPersonSetting.do" title="맞춤서비스 설정">맞춤서비스 설정</a></li>
+						<li><a href="/fitPersonList.do" title="맞춤 인재정보">맞춤 인재정보</a></li>
 					</ol>
 				</li>
 				<li class="gnb"><a href="/companyApplicantList.do" title="입사지원 관리">입사지원 관리</a>

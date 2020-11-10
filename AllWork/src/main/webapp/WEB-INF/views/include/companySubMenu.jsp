@@ -24,8 +24,8 @@
 			<ol class="subMenu subMenu02">
 				<li class="subMenu02_01"><a href="/personScrapList.do" title="스크랩 인재">스크랩 인재</a></li>
 				<li class="subMenu02_02"><a href="#" title="유료서비스 신청">유료서비스 신청</a></li>
-				<li class="subMenu02_03"><a href="/personSearchSetting.do" title="맞춤서비스 설정">맞춤서비스 설정</a></li>
-				<li class="subMenu02_04"><a href="/personSettedList.do" title="맞춤 인재정보">맞춤 인재정보</a></li>
+				<li class="subMenu02_03"><a href="/fitPersonSetting.do" title="맞춤서비스 설정">맞춤서비스 설정</a></li>
+				<li class="subMenu02_04"><a href="/fitPersonList.do" title="맞춤 인재정보">맞춤 인재정보</a></li>
 			</ol></li>
 		<li class="gnb gnb03"><a href="/companyApplicantList.do" title="입사지원 관리">입사지원 관리</a>
 			<h3>입사지원 관리</h3>

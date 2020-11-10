@@ -1,0 +1,20 @@
+#allworkWrap{width:100%;font-family:"NotoSansKR-Regular";}
+/*
+바디에 직접달았음
+#containerWrap{width:1920px;height:2000px;margin:0 auto;
+background-image:url("img/introduction_background.jpg");
+background-repeat: no-repeat;}*/
+#container{width: 1280px;margin:0 auto 600px;overflow: hidden;}
+#intro_menuTree ul .menu01{text-decoration: underline;}
+
+#rightPart{padding:0 50px;width:980px;overflow: hidden;}
+#part01{width:100%;margin-top:100px;}
+#part01 .logo{width:100%;font-size:30px;font-family:"NotoSansKR-Bold";padding-bottom:50px;}
+#part01 .desc{width:100%;font-size:18px;line-height:34px;padding-bottom:50px;}
+#part01 .line{width:40px;border-bottom:1px solid #000;}
+
+#part02{width:100%;}
+#part02 .title{width:100%;font-size:34px;line-height:46px;font-family:"NotoSansKR-Thin";color:#4F60E3;padding-bottom:40px;padding-top:120px;}
+#part02 ul{width:100%;}
+#part02 ul li{width:100%;line-height:30px;}
+#part02 .fa-check-circle{padding-right:10px;}

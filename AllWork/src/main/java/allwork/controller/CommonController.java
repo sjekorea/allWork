@@ -19,10 +19,13 @@ import allwork.service.NetfuCateService;
 @Controller
 public class CommonController {
 	
-	Logger log = Logger.getLogger(this.getClass());
-	
-	@Resource(name="netfuCateService")
-	private NetfuCateService netfuCateService;
+	@RequestMapping(value="/commonHeader.do")
+	public ModelAndView commonHeader(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/include/commonHeader");
+		
+		return mv;
+	}
 	
 	@RequestMapping(value="/indexHeader.do")
 	public ModelAndView indexHeader(CommandMap commandMap) {
@@ -123,28 +126,29 @@ public class CommonController {
 	}
 	
 	
+	@RequestMapping(value="/introHeader.do")
+	public ModelAndView introHeader(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/include/introHeader");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/introSubMenu.do")
+	public ModelAndView introSubMenu(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/include/introSubMenu");
+		
+		return mv;
+	}
+	
 	
 	@RequestMapping(value="/footer.do")
 	public ModelAndView footer(CommandMap commandMap) {
 		
 		ModelAndView mv = new ModelAndView("/include/footer");
 		
-		return mv;
-	}
-	
-	
-	@RequestMapping(value="/getCodeListAjax.do")
-	public ModelAndView getCodeListAjax(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView();
-		try{
-			List<Map<String, Object>> netfuCateList = netfuCateService.selectNetfuCateList(commandMap.getMap());
-			mv.addObject("list", netfuCateList);
-			mv.addObject("map", commandMap.getMap());
-			mv.setViewName("jsonView");
-		}catch(Exception e){
-			System.out.println(this.getClass().getName()+" getCodeListAjax.ajax Exception!!!!  "+e.toString());
-		}
 		return mv;
 	}
 

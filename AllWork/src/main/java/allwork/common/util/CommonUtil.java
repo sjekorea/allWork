@@ -121,7 +121,6 @@ public class CommonUtil {
 		
 	}
 	
-	
 	public static String addDateDate(int addMonth){
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
@@ -130,6 +129,16 @@ public class CommonUtil {
 	    cal.add(Calendar.MONTH, addMonth);
 		String rtnDate = format.format(cal.getTime());
 		return rtnDate;
+	}
+	
+	public static ArrayList<Integer> getNumberRanage(int startNum, int endNum){
+		
+		ArrayList rtnList = new ArrayList<Integer>();
+		
+		for(int i = startNum ; i <= endNum ; i++){
+			rtnList.add(Integer.valueOf(i));
+		}
+		return rtnList;
 	}
 
 }

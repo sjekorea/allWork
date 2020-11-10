@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -20,6 +21,7 @@
 	<script src="/js/jquery-ui.min.js"></script>
 	<script src="/js/common.js"></script>
 	<script src="/js/process.js"></script>
+	<script src="/js/code.js"></script>
 	<style></style>
 </head>
 <body>
@@ -101,7 +103,7 @@
 					</div>
 					<div id="allMenu_ect">
 						<span><a href="#" title="고객센터">고객센터</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-						<span><a href="#" title="회사소개">회사소개</a></span>
+						<span><a href="/introAbout.do" title="회사소개">회사소개</a></span>
 					</div>
 				</div>
 			</div>

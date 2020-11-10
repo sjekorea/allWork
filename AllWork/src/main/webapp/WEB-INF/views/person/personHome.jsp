@@ -45,11 +45,11 @@
 						<li><a href="/interviewRequestCompany.do" title="면접요청기업">면접요청기업</a></li>
 					</ol>
 				</li>
-				<li class="gnb"><a href="/companySettedList.do" title="맞춤서비스 관리">맞춤서비스 관리</a>
+				<li class="gnb"><a href="/fitRecruitList.do" title="맞춤서비스 관리">맞춤서비스 관리</a>
 					<h3>맞춤서비스 관리</h3>
 					<ol>
-						<li><a href="/recruitSettedList.do" title="맞춤채용정보">맞춤채용정보</a></li>
-						<li><a href="/recruitSearchSetting.do" title="맞춤서비스설정">맞춤서비스설정</a></li>
+						<li><a href="/fitRecruitList.do" title="맞춤채용정보">맞춤채용정보</a></li>
+						<li><a href="/fitRecruitSetting.do" title="맞춤서비스설정">맞춤서비스설정</a></li>
 					</ol>
 				</li>
 				<li class="gnb payService"><a href="#" title="유료서비스">유료서비스</a>
@@ -106,7 +106,7 @@
 					<c:when test="${recruitSettedList.size() > 0 }">
 						<c:forEach var="result" items="${recruitSettedList}" varStatus="status">
 							<li>
-								<a href="#none" title="맞춤채용공고">
+								<a href="javascript:goDetail('${result.no }')">
 									<p class="title">${result.bizName }</p>
 									<div class="desc">
 										<p class="desc0">${convert:compByte(result.bizTitle, 100, "...")}</p>
@@ -132,7 +132,7 @@
 					<c:when test="${recruitScrapList.size() > 0 }">
 						<c:forEach var="result" items="${recruitScrapList}" varStatus="status">
 							<li>
-								<a href="#none" title="스크랩한 공고">
+								<a href="javascript:goDetail('${result.no }')">
 									<p class="title">${result.bizName }</p>
 									<div class="desc">
 										<p class="desc0">${convert:compByte(result.bizTitle, 100, "...")}</p>
@@ -175,6 +175,10 @@
 </div>
 <jsp:include page="/footer.do" />
 
+<form id="searchForm" name="searchForm" method="post" action="/recruitScrapList.do">
+	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
+	<input type="hidden" name="no" id="no" value="" />
+</form>
 
 <script type="text/javascript">
 	
@@ -187,4 +191,13 @@
 		});
 	});	
 		
+	
+
+	
+	function goDetail(no){
+		$("#no").val(no);
+		$("#searchForm").attr("action", "/recruitDetail.do");
+		$("#searchForm").submit();
+	}
+	
 </script>

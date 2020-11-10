@@ -39,7 +39,7 @@
 										<p class="title">
 											${result.bizName }&nbsp;<a href="#none" title="관심기업체크"><i class="far fa-heart"></i></a>
 										</p>
-										<a href="#none" title="채용공고">
+										<a href="javascript:goDetail('${result.no }')" title="채용공고">
 											<p class="t_desc01">${convert:compByte(result.bizTitle, 100, "...")}</p>
 										</a>
 										<p class="t_desc02">${result.bizCareer } | ${result.bizAbility } | ${result.bizArea1Name } | ${result.bizJobfromName }</p>
@@ -65,8 +65,9 @@
 </div>
 <jsp:include page="/footer.do" />
 
-<form id="searchForm" method="post" action="/recruitScrapList.do">
+<form id="searchForm" name="searchForm" method="post" action="/recruitScrapList.do">
 	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
+	<input type="hidden" name="no" id="no" value="" />
 </form>
 
 <script type="text/javascript">
@@ -112,6 +113,12 @@
 					deleteItemMulti : deleteItemMulti
 				};
 		ajax('post', '/deleteRecruitScrapMulti.ajax', param, callback);
+	}
+	
+	function goDetail(no){
+		$("#no").val(no);
+		$("#searchForm").attr("action", "/recruitDetail.do");
+		$("#searchForm").submit();
 	}
 	
 	

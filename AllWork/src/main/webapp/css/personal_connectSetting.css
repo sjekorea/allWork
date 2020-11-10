@@ -31,9 +31,9 @@ margin-bottom:34px;}
   th{width:180px;text-indent:20px;font-family:"NotoSansKR-Medium";}
 
   td{width:800px;font-size:14px;padding-top:10px;}
-  td input[type="button"]{width:120px;height:40px;padding:0 10px;text-align:center;font-size:16px;
+  td input[type="button"]{width:80px;height:40px;padding:0 0px;text-align:center;font-size:16px;
                           background-color:#fff;
-                          border:1px solid #999;vertical-align:top;margin-right:20px;}
+                          border:1px solid #999;vertical-align:top;margin-right:0px;}
   td input[type="text"]{width:800px;height:40px;background-color:#fff;border:1px solid #999;text-indent:10px;}
   td input::placeholder{color:#ccc;font-size:16px;}
   td input[type="checkbox"]{width:20px;height:20px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}

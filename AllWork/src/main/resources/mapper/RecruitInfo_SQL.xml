@@ -5,7 +5,7 @@
 	<!-- 추천채용 정보 List - 개인 회원 홈  -->
 	<select id="selectRecommandRecruitList" parameterType="hashmap" resultType="allwork.vo.RecruitInfoVo">
 		<![CDATA[
-		SELECT a.company_title, a.company_initial, a.order_view, b.* 
+		SELECT a.ser, a.company_title, a.company_initial, a.order_view, b.* 
 		FROM recruit_company AS a, recruit_item AS b 
 		WHERE 1=1
 			and a.prs='P' AND b.prs='P' AND a.ser=b.target_ser 

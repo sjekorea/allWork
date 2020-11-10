@@ -9,21 +9,22 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-<title>게시판</title>
-<link rel="stylesheet" type="text/css" href="/css/header_main_1.css" />
-<link rel="stylesheet" type="text/css" href="/css/footer.css" />
-<link rel="stylesheet" type="text/css" href="/css/font.css" />
-<link rel="stylesheet" type="text/css" href="/css/reset.css" />
-<link rel="stylesheet" type="text/css" href="/css/all.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="/js/jquery-1.12.4.js"></script>
-<script src="/js/jquery-ui.min.js"></script>
-<script src="/js/common.js"></script>
-<script src="/js/process.js"></script>
-<style>
-</style>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+	<title>게시판</title>
+	<link rel="stylesheet" type="text/css" href="/css/header_main_1.css" />
+	<link rel="stylesheet" type="text/css" href="/css/footer.css" />
+	<link rel="stylesheet" type="text/css" href="/css/font.css" />
+	<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="/css/all.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="/js/jquery-1.12.4.js"></script>
+	<script src="/js/jquery-ui.min.js"></script>
+	<script src="/js/common.js"></script>
+	<script src="/js/process.js"></script>
+	<script src="/js/code.js"></script>
+	<style>
+	</style>
 </head>
 <body>
 	<div id="progress_barWrap" style="display:none;">
@@ -132,7 +133,7 @@
 					</div>
 					<div id="allMenu_ect">
 						<span><a href="#" title="고객센터">고객센터</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-						<span><a href="#" title="회사소개">회사소개</a></span>
+						<span><a href="/introAbout.do" title="회사소개">회사소개</a></span>
 					</div>
 				</div>
 			</div>

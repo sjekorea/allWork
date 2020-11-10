@@ -1,5 +1,5 @@
-/*로딩바 ########################################################################*/
-/*#allworkWrap{display:none;}*/
+/*로딩바 ########################################################################
+#allworkWrap{display:none;}*/
 #progress_barWrap{width:100%;height:100%;background-color:#fff;position:absolute;left:0;z-index:1000;opacity: 0.7;}
 #progress_bar{width:300px;height:300px;margin:0 auto;}
 #progress_bar img{width:100%;}
@@ -15,7 +15,7 @@
 #menuTree p{width: 198px;height:78px;line-height: 78px;text-align: center;border-bottom: 1px solid #ccc;}
 #menuTree p a{display: block;width: 100%;height:100%;color:#4F60E3;}
 
-#menuTree p:hover{background-color: #F7FAFF;}
+    #menuTree p:hover{background-color: #F7FAFF;}
 
 #menuTree ul{width:100%;overflow: hidden;padding:20px 0;}
 #menuTree ul .gnb, #menuTree ul .menu{width:100%;line-height: 22px;text-indent:20px;padding-top:10px;padding-bottom: 10px;}
@@ -23,3 +23,15 @@
 #menuTree ul .subMenu{width:100%;text-indent:40px;padding-top:5px;}
 #menuTree ul .subMenu li{width:100%;}
 #menuTree ul .subMenu li a{color:#666;font-size:14px;}
+
+
+
+/* 회사소개 사이드 메뉴   ###############################################*/
+#intro_menuTree{width:200px;overflow: hidden;}
+#intro_menuTree p{display:none;}
+
+#intro_menuTree ul{width:100%;overflow: hidden;padding:20px 0;}
+#intro_menuTree ul .menu{width:100%;line-height: 22px;text-indent:20px;padding-top:10px;padding-bottom: 10px;}
+#intro_menuTree ul .menu a{font-size: 16px;}
+#intro_menuTree ol .subMenu{width:100%;text-indent:40px;padding-top:5px;}
+#intro_menuTree ol .subMenu a{color:#666;font-size:14px;}
