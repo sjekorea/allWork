@@ -30,7 +30,31 @@
          <name>getRecruitStatusText</name>
          <function-class>allwork.common.util.CodeConvertUtil</function-class>
          <function-signature>
-              String getRecruitStatus(java.lang.String, java.lang.String, java.lang.String)
+              String getRecruitStatusText(java.lang.String, java.lang.String, java.lang.String)
+         </function-signature>
+    </function>
+     <function>
+         <description>학력 정보</description>
+         <name>getBizAbility</name>
+         <function-class>allwork.common.util.CodeConvertUtil</function-class>
+         <function-signature>
+              String getBizAbility(java.lang.String)
+         </function-signature>
+    </function>
+    <function>
+         <description>연력 정보</description>
+         <name>getBizAge</name>
+         <function-class>allwork.common.util.CodeConvertUtil</function-class>
+         <function-signature>
+              String getBizAge(java.lang.String)
+         </function-signature>
+    </function>
+    <function>
+         <description>경력 정보</description>
+         <name>getBizCareer</name>
+         <function-class>allwork.common.util.CodeConvertUtil</function-class>
+         <function-signature>
+              String getBizCareer(java.lang.String)
          </function-signature>
     </function>
 </taglib>

@@ -79,7 +79,6 @@
 	<context:annotation-config />
 	<!-- <task:annotation-driven scheduler="scheduler" />
 	<task:scheduler id="scheduler" pool-size="10" /> -->
-	
 	<tx:annotation-driven proxy-target-class="true"/>
 	
 </beans>

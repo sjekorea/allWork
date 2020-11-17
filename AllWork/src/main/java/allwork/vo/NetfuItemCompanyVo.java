@@ -14,19 +14,34 @@ public class NetfuItemCompanyVo {
 	private String bizType1;
 	private String bizType1Name;
 	private String bizType2;
+	private String bizType2Name;
 	private String bizType3;
+	private String bizType3Name;
 	private String bizType4;
+	private String bizType4Name;
 	private String bizType5;
+	private String bizType5Name;
 	private String bizType6;
+	private String bizType6Name;
+	private String bizType7;
+	private String bizType7Name;
+	private String bizType8;
+	private String bizType8Name;
+	private String bizType9;
+	private String bizType9Name;
 	private String bizPosition;
 	private String bizArea1;
 	private String bizArea1Name;
 	private String bizArea2;
 	private String bizArea2Name;
 	private String bizArea3;
+	private String bizArea3Name;
 	private String bizArea4;
+	private String bizArea4Name;
 	private String bizArea5;
+	private String bizArea5Name;
 	private String bizArea6;
+	private String bizArea6Name;
 	private String bizSubway;
 	private String bizBusiness;
 	private int bizMen;
@@ -40,12 +55,14 @@ public class NetfuItemCompanyVo {
 	private String bizAge;
 	private String bizAbility;
 	private String bizPreferential;
+	private String bizPreferentialName;
 	private int bizCareer;
 	private String bizDetail;
 	private String bizEndDay;
 	private String bizEndType;
 	private String bizIng;
 	private String bizMethod;
+	private String bizMethodName;
 	private String bizPerson;
 	private String bizPemail;
 	private String bizPphone;
@@ -66,35 +83,56 @@ public class NetfuItemCompanyVo {
 	private String service10;
 	private String service11;
 	private String bizPaper;
+	private String bizPaperName;
 	private String bizForm;
 	private String bizFormFile;
-	private String bizType7;
-	private String bizType8;
-	private String bizType9;
 	private String smsSend;
 	private String bizPage;
 	private int hit;
 	private String typeR;
 	private int orderView;
+	private String open;
 	
-
+	
+	
+	public String getOpen() {
+		return open;
+	}
+	public void setOpen(String open) {
+		this.open = open;
+	}
+	public String getBizPreferentialName() {
+		return bizPreferentialName;
+	}
+	public void setBizPreferentialName(String bizPreferentialName) {
+		this.bizPreferentialName = bizPreferentialName;
+	}
+	public String getBizType7Name() {
+		return bizType7Name;
+	}
+	public String getBizType8Name() {
+		return bizType8Name;
+	}
+	public String getBizType9Name() {
+		return bizType9Name;
+	}
+	public String getBizPaperName() {
+		return bizPaperName;
+	}
+	public void setBizType7Name(String bizType7Name) {
+		this.bizType7Name = bizType7Name;
+	}
+	public void setBizType8Name(String bizType8Name) {
+		this.bizType8Name = bizType8Name;
+	}
+	public void setBizType9Name(String bizType9Name) {
+		this.bizType9Name = bizType9Name;
+	}
+	public void setBizPaperName(String bizPaperName) {
+		this.bizPaperName = bizPaperName;
+	}
 	public int getNoTo() {
 		return noTo;
-	}
-	public void setNoTo(int noTo) {
-		this.noTo = noTo;
-	}
-	public String getBizArea2Name() {
-		return bizArea2Name;
-	}
-	public String getBizJobfromName() {
-		return bizJobfromName;
-	}
-	public void setBizArea2Name(String bizArea2Name) {
-		this.bizArea2Name = bizArea2Name;
-	}
-	public void setBizJobfromName(String bizJobfromName) {
-		this.bizJobfromName = bizJobfromName;
 	}
 	public int getNo() {
 		return no;
@@ -129,17 +167,32 @@ public class NetfuItemCompanyVo {
 	public String getBizType2() {
 		return bizType2;
 	}
+	public String getBizType2Name() {
+		return bizType2Name;
+	}
 	public String getBizType3() {
 		return bizType3;
+	}
+	public String getBizType3Name() {
+		return bizType3Name;
 	}
 	public String getBizType4() {
 		return bizType4;
 	}
+	public String getBizType4Name() {
+		return bizType4Name;
+	}
 	public String getBizType5() {
 		return bizType5;
 	}
+	public String getBizType5Name() {
+		return bizType5Name;
+	}
 	public String getBizType6() {
 		return bizType6;
+	}
+	public String getBizType6Name() {
+		return bizType6Name;
 	}
 	public String getBizPosition() {
 		return bizPosition;
@@ -153,17 +206,32 @@ public class NetfuItemCompanyVo {
 	public String getBizArea2() {
 		return bizArea2;
 	}
+	public String getBizArea2Name() {
+		return bizArea2Name;
+	}
 	public String getBizArea3() {
 		return bizArea3;
+	}
+	public String getBizArea3Name() {
+		return bizArea3Name;
 	}
 	public String getBizArea4() {
 		return bizArea4;
 	}
+	public String getBizArea4Name() {
+		return bizArea4Name;
+	}
 	public String getBizArea5() {
 		return bizArea5;
 	}
+	public String getBizArea5Name() {
+		return bizArea5Name;
+	}
 	public String getBizArea6() {
 		return bizArea6;
+	}
+	public String getBizArea6Name() {
+		return bizArea6Name;
 	}
 	public String getBizSubway() {
 		return bizSubway;
@@ -176,6 +244,9 @@ public class NetfuItemCompanyVo {
 	}
 	public String getBizJobfrom() {
 		return bizJobfrom;
+	}
+	public String getBizJobfromName() {
+		return bizJobfromName;
 	}
 	public String getBizPay() {
 		return bizPay;
@@ -218,6 +289,9 @@ public class NetfuItemCompanyVo {
 	}
 	public String getBizMethod() {
 		return bizMethod;
+	}
+	public String getBizMethodName() {
+		return bizMethodName;
 	}
 	public String getBizPerson() {
 		return bizPerson;
@@ -309,6 +383,9 @@ public class NetfuItemCompanyVo {
 	public int getOrderView() {
 		return orderView;
 	}
+	public void setNoTo(int noTo) {
+		this.noTo = noTo;
+	}
 	public void setNo(int no) {
 		this.no = no;
 	}
@@ -342,17 +419,32 @@ public class NetfuItemCompanyVo {
 	public void setBizType2(String bizType2) {
 		this.bizType2 = bizType2;
 	}
+	public void setBizType2Name(String bizType2Name) {
+		this.bizType2Name = bizType2Name;
+	}
 	public void setBizType3(String bizType3) {
 		this.bizType3 = bizType3;
+	}
+	public void setBizType3Name(String bizType3Name) {
+		this.bizType3Name = bizType3Name;
 	}
 	public void setBizType4(String bizType4) {
 		this.bizType4 = bizType4;
 	}
+	public void setBizType4Name(String bizType4Name) {
+		this.bizType4Name = bizType4Name;
+	}
 	public void setBizType5(String bizType5) {
 		this.bizType5 = bizType5;
 	}
+	public void setBizType5Name(String bizType5Name) {
+		this.bizType5Name = bizType5Name;
+	}
 	public void setBizType6(String bizType6) {
 		this.bizType6 = bizType6;
+	}
+	public void setBizType6Name(String bizType6Name) {
+		this.bizType6Name = bizType6Name;
 	}
 	public void setBizPosition(String bizPosition) {
 		this.bizPosition = bizPosition;
@@ -366,17 +458,32 @@ public class NetfuItemCompanyVo {
 	public void setBizArea2(String bizArea2) {
 		this.bizArea2 = bizArea2;
 	}
+	public void setBizArea2Name(String bizArea2Name) {
+		this.bizArea2Name = bizArea2Name;
+	}
 	public void setBizArea3(String bizArea3) {
 		this.bizArea3 = bizArea3;
+	}
+	public void setBizArea3Name(String bizArea3Name) {
+		this.bizArea3Name = bizArea3Name;
 	}
 	public void setBizArea4(String bizArea4) {
 		this.bizArea4 = bizArea4;
 	}
+	public void setBizArea4Name(String bizArea4Name) {
+		this.bizArea4Name = bizArea4Name;
+	}
 	public void setBizArea5(String bizArea5) {
 		this.bizArea5 = bizArea5;
 	}
+	public void setBizArea5Name(String bizArea5Name) {
+		this.bizArea5Name = bizArea5Name;
+	}
 	public void setBizArea6(String bizArea6) {
 		this.bizArea6 = bizArea6;
+	}
+	public void setBizArea6Name(String bizArea6Name) {
+		this.bizArea6Name = bizArea6Name;
 	}
 	public void setBizSubway(String bizSubway) {
 		this.bizSubway = bizSubway;
@@ -389,6 +496,9 @@ public class NetfuItemCompanyVo {
 	}
 	public void setBizJobfrom(String bizJobfrom) {
 		this.bizJobfrom = bizJobfrom;
+	}
+	public void setBizJobfromName(String bizJobfromName) {
+		this.bizJobfromName = bizJobfromName;
 	}
 	public void setBizPay(String bizPay) {
 		this.bizPay = bizPay;
@@ -431,6 +541,9 @@ public class NetfuItemCompanyVo {
 	}
 	public void setBizMethod(String bizMethod) {
 		this.bizMethod = bizMethod;
+	}
+	public void setBizMethodName(String bizMethodName) {
+		this.bizMethodName = bizMethodName;
 	}
 	public void setBizPerson(String bizPerson) {
 		this.bizPerson = bizPerson;
@@ -522,6 +635,5 @@ public class NetfuItemCompanyVo {
 	public void setOrderView(int orderView) {
 		this.orderView = orderView;
 	}
-	
 	
 }

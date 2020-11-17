@@ -4,7 +4,12 @@
 
 	
 	<select id="selectNetfuItemResumeCnt" parameterType="hashmap" resultType="int">
-		select count(no) cnt from netfu_item_resume where uid = #{loginId}
+		<![CDATA[
+		select count(no) cnt from netfu_item_resume 
+		where 1=1
+			and uid = #{loginId}
+			and inid_secret <> 'yes'
+		]]>
 	</select>
 
 

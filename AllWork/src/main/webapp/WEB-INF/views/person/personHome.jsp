@@ -106,7 +106,7 @@
 					<c:when test="${recruitSettedList.size() > 0 }">
 						<c:forEach var="result" items="${recruitSettedList}" varStatus="status">
 							<li>
-								<a href="javascript:goDetail('${result.no }')">
+								<a href="javascript:goDetail('${result.uid }', '${result.no }', '${result.open }')">
 									<p class="title">${result.bizName }</p>
 									<div class="desc">
 										<p class="desc0">${convert:compByte(result.bizTitle, 100, "...")}</p>
@@ -132,7 +132,7 @@
 					<c:when test="${recruitScrapList.size() > 0 }">
 						<c:forEach var="result" items="${recruitScrapList}" varStatus="status">
 							<li>
-								<a href="javascript:goDetail('${result.no }')">
+								<a href="javascript:goDetail('${result.uid }', '${result.no }', '${result.open }')">
 									<p class="title">${result.bizName }</p>
 									<div class="desc">
 										<p class="desc0">${convert:compByte(result.bizTitle, 100, "...")}</p>
@@ -177,6 +177,7 @@
 
 <form id="searchForm" name="searchForm" method="post" action="/recruitScrapList.do">
 	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
+	<input type="hidden" name="uid" id="uid" value="" />
 	<input type="hidden" name="no" id="no" value="" />
 </form>
 
@@ -190,14 +191,33 @@
 			$(".list").eq(idx).css("display", "block").siblings(".list").css("display", "none");
 		});
 	});	
-		
-	
 
 	
-	function goDetail(no){
-		$("#no").val(no);
-		$("#searchForm").attr("action", "/recruitDetail.do");
-		$("#searchForm").submit();
+	function goDetail(uid, no, open){
+		$("#progress_barWrap").css("display", "block");
+		if("open" != open){
+			alert("현재 비공개 상태로 설정되어 있습니다.");
+			loadingOff();
+		}else if("${SE_USER_TYPE}" != "person"){
+			alert("개인회원만 스크랩이 가능합니다.");
+		}else{
+			var callback = function(data){
+				//if(data.rstCnt <= 0){
+				//	alert("이력서를 먼저 작성해 주세요");
+				//	loadingOff();
+				//}else{
+					$("#uid").val(uid);
+					$("#no").val(no);
+					$("#searchForm").attr("action", "/recruitDetail.do");
+					$("#searchForm").submit();
+				//}
+			};
+			var param = {
+					
+			};
+			
+			ajax('post', '/selectNetfuItemResumeCnt.ajax', param, callback);
+		}
 	}
 	
 </script>

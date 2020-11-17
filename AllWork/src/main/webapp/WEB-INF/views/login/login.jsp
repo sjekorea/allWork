@@ -154,6 +154,7 @@
 			alertAndFocus("비밀번호를 입력하세요.", $("#loginPw"));
 			return;
 		}
+		
 		var callback = function(data){
 			if(data.rstCnt > 0){
 				if($("#requestUri").val() != null && $("#requestUri").val() != ""){
@@ -172,7 +173,7 @@
 			}
 		};
 		var param = {
-				loginId : $("#loginId").val()
+						loginId : $("#loginId").val()
 						, loginPw : $("#loginPw").val()
 					};
 		ajax('post', '/loginProcess.ajax', param, callback);

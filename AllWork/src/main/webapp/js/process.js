@@ -294,7 +294,6 @@ function getUUID() { // UUID v4 generator in JavaScript (RFC4122 compliant)
 
 
 function convertQuot(str){
-	alert("aaa");
 	str = str.replace(/\"/g, "A");
 	str = str.replace(/\'/g, "BB");
 	return str;
@@ -307,6 +306,7 @@ function convertEnter(str){
 }
 
 function loadingOn(){
+	$("#progress_barWrap").css("height", "100%");
 	$("#progress_barWrap").css("display", "block");
 }
 

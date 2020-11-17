@@ -306,29 +306,30 @@ public class DateUtil {
 	/**
 	*	오늘날짜와 특정 날짜 비교
 	*/
-	public static int getCompareDate(String compareDateStr) throws Exception{
+	public static long getCompareDate(String compareDateStr) throws Exception{
 		
 		Date compareDate;	// 비교일
 		Date currentDate; 		// 현재날짜 Date
 		String today = ""; 		// 현재날짜
-		String compareVal = "N";
-		int compare = 0;
+		long compareTime = 0;
+		long compareDay = 0;
 
 		try{
 		
-			SimpleDateFormat df = new SimpleDateFormat ("yyyy-MM-dd", Locale.KOREA );
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			Date currentTime = new Date();
 			today = df.format( currentTime ); //현재시간 (String)
 
 			compareDate = df.parse(compareDateStr);
-			currentDate = df.parse( today );
-
-			compare = currentDate.compareTo(compareDate); // 날짜비교
+			currentDate = df.parse(today);
+			
+			compareTime = compareDate.getTime() - currentDate.getTime();
+			compareDay = compareTime / (24*60*60*1000);
 			
 		}catch (Exception e){
 			System.out.println("DateUtil.getCompareDate() EXCEPTION !!!! \n"+e.toString());
 		}
-		return compare;
+		return compareDay;
 	}
 	
 	

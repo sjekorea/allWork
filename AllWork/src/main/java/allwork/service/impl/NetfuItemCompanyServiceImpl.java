@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import allwork.dao.NetfuCompanyDao;
 import allwork.dao.NetfuItemCompanyDao;
 import allwork.service.NetfuItemCompanyService;
 
@@ -19,6 +20,11 @@ public class NetfuItemCompanyServiceImpl implements NetfuItemCompanyService{
 	@Resource(name="netfuItemCompanyDao")
 	private NetfuItemCompanyDao netfuItemCompanyDao;
 
+
+	@Override
+	public Map<String, Object> selectNetfuItemCompanyMap(Map<String, Object> map) throws Exception {
+		return netfuItemCompanyDao.selectNetfuItemCompanyMap(map);
+	}
 	
 	// 온라인 입사지원 Count - 개인회원 홈
 	@Override
@@ -36,24 +42,6 @@ public class NetfuItemCompanyServiceImpl implements NetfuItemCompanyService{
 	@Override
 	public List<Map<String, Object>> selectRecruitSettedList(Map<String, Object> map) throws Exception {
 		return netfuItemCompanyDao.selectRecruitSettedList(map);
-	}
-	
-	// 스크랩한 채용정보 Count 
-	@Override
-	public int selectRecruitScrapCnt(Map<String, Object> map) throws Exception {
-		return netfuItemCompanyDao.selectRecruitScrapCnt(map);
-	}
-	
-	// 스크랩한 채용정보 목록 
-	@Override
-	public List<Map<String, Object>> selectRecruitScrapList(Map<String, Object> map) throws Exception {
-		return netfuItemCompanyDao.selectRecruitScrapList(map);
-	}
-	
-	// 스크랩한 채용정보 삭제
-	@Override
-	public int deleteRecruitScrapMulti(Map<String, Object> map) throws Exception {
-		return netfuItemCompanyDao.deleteRecruitScrapMulti(map);
 	}
 
 }

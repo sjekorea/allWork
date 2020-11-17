@@ -81,7 +81,7 @@ public class PersonController {
 			List<Map<String, Object>> recruitSettedList = netfuItemCompanyService.selectRecruitSettedList(commandMap.getMap());
 			
 			// 스크랩 공고
-			List<Map<String, Object>> recruitScrapList = netfuItemCompanyService.selectRecruitScrapList(commandMap.getMap());
+			List<Map<String, Object>> recruitScrapList = netfuScrapService.selectNetfuScrapList(commandMap.getMap());
 			
 			
 			mv.addObject("memberMap", memberMap);

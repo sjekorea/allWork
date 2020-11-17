@@ -17,6 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/font.css" />
 	<link rel="stylesheet" type="text/css" href="/css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="/css/all.css" />
+	<link rel="stylesheet" type="text/css" href="/css/common.css" />
 	<script src="/js/jquery-3.3.1.min.js"></script>
 	<script src="/js/jquery-ui.min.js"></script>
 	<script src="/js/common.js"></script>
@@ -25,7 +26,7 @@
 	<style></style>
 </head>
 <body>
-	<div id="progress_barWrap" style="display:none;">
+	<div id="progress_barWrap">
 		<p id="progress_bar">
 			<img src="/img/main/loading_circle.gif" alt="로딩이미지"/>
 		</p>

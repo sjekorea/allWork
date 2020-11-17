@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netfuCompany">
+
+	 <!-- 기업 정보 -->
+	 <select id="selectNetfuCompanyMap" parameterType="hashmap" resultType="allwork.vo.NetfuCompanyVo">
+		select 
+			no,
+			uid,
+			biz_no,
+			biz_copy,
+			biz_name,
+			biz_recharger,
+			biz_subject,
+			biz_fonundation,
+			biz_men,
+			biz_list,
+			getCodeName(biz_list) biz_list_name,
+			biz_form,
+			getCodeName(biz_form) biz_form_name,
+			biz_category,
+			getCodeName(biz_category) biz_category_name,
+			biz_capital,
+			biz_selling,
+			biz_vision,
+			biz_history,
+			biz_phone,
+			biz_fax,
+			biz_post,
+			biz_address1,
+			biz_address2,
+			biz_email,
+			biz_home,
+			biz_logo,
+			photo1,
+			photo2,
+			photo3,
+			photo4,
+			manager,
+			lat,
+			lng,
+			admit,
+			order_view,
+			kind
+		FROM netfu_company 
+		WHERE 1=1
+			AND uid = #{uid}
+	</select>
+
+</mapper>
