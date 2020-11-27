@@ -16,7 +16,7 @@
 		<div id="myBox">
 			<div class="imgArea">
 				<p class="cameraBtn"><a href="#" title="사진등록버튼"><i class="fas fa-camera-retro"></i></a></p>
-				<p class="myImg"><img src="/img/company_home/img00.jpeg" alt="본인사진"/></p>
+				<p class="myImg"><img src="/img/person.jpg" alt="본인사진"/></p>
 			</div>
 			<p class="myName"><strong>${SE_USER_NM }</strong>님</p>
 			<p class="myDetail"><a href="#" title="이력서보기버튼">이력서보기</a></p>
@@ -34,7 +34,7 @@
 				<li class="gnb"><a href="/personApplicationList.do" title="입사지원관리">입사지원관리</a>
 					<h3>입사지원관리</h3>
 					<ol>
-						<li><a href="/personApplicationList.do" title="입사지원현황">입사지원현황</a></li>
+						<li><a href="/personApplyList.do" title="입사지원현황">입사지원현황</a></li>
 					</ol>
 				</li>
 				<li class="gnb"><a href="/recruitScrapList.do" title="스크랩/관심기업">스크랩/관심기업</a>
@@ -67,9 +67,9 @@
 		<div id="reviewPart">
 			<ul>
 				<li class="review00"><a href="#" title="지원완료"><strong>${onlineRecruitCnt }</strong><span>지원완료</span></a></li>
-				<li class="review01"><a href="#" title="이력서열람"><strong>3</strong><span>이력서열람</span></a></li>
+				<li class="review01"><a href="#" title="이력서열람"><strong>${netfuOpenResumeCnt }</strong><span>이력서열람</span></a></li>
 				<li class="review02"><a href="#" title="스크랩공고"><strong>${netfuScrapCnt }</strong><span>스크랩공고</span></a></li>
-				<li class="review03"><a href="#" title="관심기업공고"><strong>0</strong><span>관심기업공고</span></a></li>
+				<li class="review03"><a href="#" title="관심기업공고"><strong>${netfuConcernCnt }</strong><span>관심기업공고</span></a></li>
 			</ul>
 		</div>
 		<div id="recommendPart">
@@ -106,15 +106,15 @@
 					<c:when test="${recruitSettedList.size() > 0 }">
 						<c:forEach var="result" items="${recruitSettedList}" varStatus="status">
 							<li>
-								<a href="javascript:goDetail('${result.uid }', '${result.no }', '${result.open }')">
+								<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
 									<p class="title">${result.bizName }</p>
 									<div class="desc">
 										<p class="desc0">${convert:compByte(result.bizTitle, 100, "...")}</p>
 										<p class="desc1"><strong>급여 </strong>${result.bizPayName }</p>
-										<p class="desc2"><strong>경력 </strong>${result.bizCareer }</p>
+										<p class="desc2"><strong>경력 </strong>${codeConvert:getBizCareer(result.bizCareer) }</p>
 										<p class="desc3"><strong>나이 </strong>${result.bizAge }</p>
 										<p class="desc1"><strong>지역 </strong>${result.bizArea1Name }</p>
-										<p class="desc2"><strong>학력 </strong>${result.bizAbility }</p>
+										<p class="desc2"><strong>학력 </strong>${codeConvert:getBizAbility(result.bizAbility) }</p>
 										<p class="desc3"><strong>성별 </strong>${codeConvert:getBizSex(result.bizSex) }</p>
 									</div>
 									${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }
@@ -132,15 +132,15 @@
 					<c:when test="${recruitScrapList.size() > 0 }">
 						<c:forEach var="result" items="${recruitScrapList}" varStatus="status">
 							<li>
-								<a href="javascript:goDetail('${result.uid }', '${result.no }', '${result.open }')">
+								<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
 									<p class="title">${result.bizName }</p>
 									<div class="desc">
 										<p class="desc0">${convert:compByte(result.bizTitle, 100, "...")}</p>
 										<p class="desc1"><strong>급여 </strong>${result.bizPayName }</p>
-										<p class="desc2"><strong>경력 </strong>${result.bizCareer }</p>
+										<p class="desc2"><strong>경력 </strong>${codeConvert:getBizCareer(result.bizCareer) }</p>
 										<p class="desc3"><strong>나이 </strong>${result.bizAge }</p>
 										<p class="desc1"><strong>지역 </strong>${result.bizArea1Name }</p>
-										<p class="desc2"><strong>학력 </strong>${result.bizAbility }</p>
+										<p class="desc2"><strong>학력 </strong>${codeConvert:getBizAbility(result.bizAbility) }</p>
 										<p class="desc3"><strong>성별 </strong>${codeConvert:getBizSex(result.bizSex) }</p>
 									</div>
 									${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }
@@ -177,8 +177,12 @@
 
 <form id="searchForm" name="searchForm" method="post" action="/recruitScrapList.do">
 	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
-	<input type="hidden" name="uid" id="uid" value="" />
+	<input type="hidden" name="personUid" id="personUid" value="" />
+	<input type="hidden" name="companyUid" id="companyUid" value="" />
 	<input type="hidden" name="no" id="no" value="" />
+	<input type="hidden" name="recruitNo" id="recruitNo" value="" />
+	<input type="hidden" name="resumeNo" id="resumeNo" value="" />
+	<input type="hidden" name="leftMenuUrl" id="leftMenuUrl" value="/personSubMenu.do" />
 </form>
 
 <script type="text/javascript">
@@ -193,21 +197,24 @@
 	});	
 
 	
-	function goDetail(uid, no, open){
-		$("#progress_barWrap").css("display", "block");
+	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
+		
+		loadingOn();
 		if("open" != open){
 			alert("현재 비공개 상태로 설정되어 있습니다.");
 			loadingOff();
-		}else if("${SE_USER_TYPE}" != "person"){
-			alert("개인회원만 스크랩이 가능합니다.");
+
 		}else{
 			var callback = function(data){
 				//if(data.rstCnt <= 0){
 				//	alert("이력서를 먼저 작성해 주세요");
 				//	loadingOff();
 				//}else{
-					$("#uid").val(uid);
+					$("#companyUid").val(companyUid);
+					$("#personUid").val(personUid);
 					$("#no").val(no);
+					$("#recruitNo").val(recruitNo);
+					$("#resumeNo").val(resumeNo);
 					$("#searchForm").attr("action", "/recruitDetail.do");
 					$("#searchForm").submit();
 				//}

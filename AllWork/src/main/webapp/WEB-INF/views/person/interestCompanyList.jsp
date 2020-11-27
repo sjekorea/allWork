@@ -29,48 +29,81 @@
 						<div class="desc02">진행중인 공고</div>
 						<div class="desc03">채용소식 알람</div>
 					</li>
-					<li>
-						<div class="desc00">
-							<input type="checkbox" />
-						</div>
-						<div class="desc01">
-							<a href="#none" title="회사명">
-								<p>(주)파인스태프</p>
-							</a>
-						</div>
-						<div class="desc02">
-							<a href="#none" title="진행중인공고">
-								<p>
-									채용중 <span>1</span>건
-								</p>
-							</a>
-						</div>
-						<div class="desc03">
-							<p>
-								<input type="radio" />
-							</p>
-						</div>
-					</li>
+					<c:choose>
+						<c:when test="${netfuConcernList.size() > 0 }">
+							<c:forEach var="result" items="${netfuConcernList}" varStatus="status">
+								<li>
+									<div class="desc00"><input type="checkbox" name="chk" value="${result.rUid }" /></div>
+									<div class="desc01"><a href="javascript:goRecruitList('${result.rUid }', 'yes');"><p>${result.bizName }</p></a></div>
+									<div class="desc02"><a href="javascript:goRecruitList('${result.rUid }', '');"><p>채용중 <span>${result.bizIngCnt }</span>건</p></a></div>
+									<div class="desc03"><p><input type="radio" /></p></div>
+								</li>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<li style="width:100%;"><div class="desc01">내역이 없습니다.</div></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 				<ul class="numArea">
-					<!--<li><a href="#" title="prev"><i class="fas fa-chevron-left"></i></a></li>-->
-					<li class="p01"><a href="#" title="page1">1</a></li>
-					<!--<li><a href="#" title="page2">2</a></li>
-					<li><a href="#" title="page3">3</a></li>
-					<li><a href="#" title="page4">4</a></li>
-					<li><a href="#" title="page5">5</a></li>
-					<li><a href="#" title="page6">6</a></li>
-					<li><a href="#" title="page7">7</a></li>
-					<li><a href="#" title="page8">8</a></li>
-					<li><a href="#" title="page9">9</a></li>
-					<li><a href="#" title="page10">10</a></li>
-					<li><a href="#" title="next"><i class="fas fa-chevron-right"></i></a></li>-->
+					${pageMap.pageHtml }
 				</ul>
 			</div>
 		</div>
 	</div>
 </div>
-
-
 <jsp:include page="/footer.do" />
+<form id="searchForm" name="searchForm" method="post" action="/interestCompanyList.do">
+	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
+	<input type="hidden" name="rUid" id="rUid" value="" />
+	<input type="hidden" name="companyUid" id="companyUid" value="" />
+	<input type="hidden" name="bizIng" id="bizIng" value="" />
+</form>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$(".delete a").click(function(e){
+			deleteConcern();
+		});
+			
+	});	
+	
+	function deleteConcern(){
+		
+		if($("input[name=chk]:checked").length <= 0){
+			alert("삭제할 항목을 선택하세요.");
+			return;
+		}
+		
+		var deleteItemMulti = "";
+		
+		$("input[name=chk]").each(function() {
+		      if(this.checked){
+		    	  deleteItemMulti += this.value+",";
+		      }
+		});
+		deleteItemMulti = deleteItemMulti.substring(0, deleteItemMulti.length-1);
+		loadingOn();
+		
+		var callback = function(data){
+			alert("저장 되었습니다.");
+			$("#pageNo").val("1");
+			$("#searchForm").submit();
+		};
+		var param = {
+					deleteItemMulti : deleteItemMulti
+				};
+		ajax('post', '/deleteNetfuConcernMulti.ajax', param, callback);
+	}
+	
+	function goRecruitList(companyUid, bizIng){
+		loadingOn();
+		$("#companyUid").val(companyUid);
+		$("#bizIng").val(bizIng);
+		$("#pageNo").val("");
+		$("#searchForm").attr("action", "/recruitByCompanyList.do");
+		$("#searchForm").submit();
+		
+	}
+</script>
 

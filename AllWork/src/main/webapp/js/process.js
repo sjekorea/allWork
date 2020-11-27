@@ -305,11 +305,32 @@ function convertEnter(str){
 	return str;
 }
 
+
+function isEmpty(str){
+	
+	if(typeof str == "undefined" || str == null || str == "")
+		return true;
+	else
+		return false ;
+}
+
+
 function loadingOn(){
-	$("#progress_barWrap").css("height", "100%");
-	$("#progress_barWrap").css("display", "block");
+    var width  = window.document.body.clientWidth;
+	var height = $(document).height();
+    $("#progress_barWrap").css("width", width);
+	$("#progress_barWrap").css("height", height);
+	$("#progress_barWrap").css("opacity", "0.7");
+	$("#progress_barWrap").show();
 }
 
 function loadingOff(){
-	$("#progress_barWrap").css("display", "none");
+	$("#progress_barWrap").hide();
+}
+
+
+function goPage(targetPage){
+	loadingOn();
+	$("#pageNo").val(targetPage);
+	$("#searchForm").submit();
 }

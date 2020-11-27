@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="/WEB-INF/tlds/convertUtil.tld" prefix="convert" %>
+<%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert" %>
 
 <jsp:include page="/personHeader.do" />
 
@@ -20,32 +22,49 @@
 				<p class="delete"><a href="#" title="맞춤설정">맞춤설정</a></p>
 				<div class="tableArea">
 					<p class="table_title">직종</p>
-					<p class="table_desc table_desc01"></p>
+					<p class="table_desc table_desc01">
+						${myServiceMap.job1Name } 
+						${convert:checkNull(myServiceMap.job2Name) eq '' ? '' : '>'.concat(myServiceMap.job2Name) }
+						${convert:checkNull(myServiceMap.job3Name) eq '' ? '' : '>'.concat(myServiceMap.job3Name) }
+						${convert:checkNull(myServiceMap.job4Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(myServiceMap.job4Name) }
+						${convert:checkNull(myServiceMap.job5Name) eq '' ? '' : '>'.concat(myServiceMap.job5Name) }
+						${convert:checkNull(myServiceMap.job6Name) eq '' ? '' : '>'.concat(myServiceMap.job6Name) }
+						${convert:checkNull(myServiceMap.job7Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(myServiceMap.job7Name) }
+						${convert:checkNull(myServiceMap.job8Name) eq '' ? '' : '>'.concat(myServiceMap.job8Name) }
+						${convert:checkNull(myServiceMap.job9Name) eq '' ? '' : '>'.concat(myServiceMap.job9Name) }
+					</p>
 					<p class="table_title">근무지역</p>
-					<p class="table_desc"></p>
+					<p class="table_desc">
+						${myServiceMap.areaName }
+						${convert:checkNull(myServiceMap.area2Name) eq '' ? '' : '>'.concat(myServiceMap.area2Name) }
+						${convert:checkNull(myServiceMap.area3Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(myServiceMap.area3Name) }
+						${convert:checkNull(myServiceMap.area4Name) eq '' ? '' : '>'.concat(myServiceMap.area4Name) }
+						${convert:checkNull(myServiceMap.area5Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(myServiceMap.area5Name) }
+						${convert:checkNull(myServiceMap.area6Name) eq '' ? '' : '>'.concat(myServiceMap.area6Name) }
+					</p>
 					<p class="table_title">성별</p>
-					<p class="table_desc"></p>
+					<p class="table_desc">${codeConvert:getBizSex(myServiceMap.sex) }</p>
 					<p class="table_title">학력</p>
-					<p class="table_desc"></p>
+					<p class="table_desc">${codeConvert:getBizAbility(myServiceMap.school) }</p>
 					<p class="table_title">고용형태</p>
-					<p class="table_desc"></p>
+					<p class="table_desc">${myServiceMap.formName }</p>
 					<p class="table_title">급여정도</p>
-					<p class="table_desc"></p>
+					<p class="table_desc">${myServiceMap.payTypeName } / ${myServiceMap.payName }</p>
 					<p class="table_title">경력</p>
-					<p class="table_desc"></p>
+					<p class="table_desc">${codeConvert:getBizCareerSplit(myServiceMap.career) }</p>
 				</div>
 			</div>
 			<div id="listPart">
 				<p class="listTitle">검색된 맞춤채용정보</p>
 				<select id="align">
-					<option value="시도선택">정렬방식선택</option>
-					<option value="전체">등록일순</option>
-					<option value="서울">수정일순</option>
-					<option value="인천">마감일순</option>
-					<option value="경기">경력높은순</option>
-					<option value="광주">경력낮은순</option>
-					<option value="대전">학력높은순</option>
-					<option value="대구">학력낮은순</option>
+					<option value="">정렬방식선택</option>
+					<option value="wdate desc" <c:if test="${map.orderRule eq 'wdate desc'}">selected</c:if>>등록일순</option>
+					<option value="u_wdate desc" <c:if test="${map.orderRule eq 'u_wdate desc'}">selected</c:if>>수정일순</option>
+					<option value="biz_end_day desc" <c:if test="${map.orderRule eq 'biz_end_day desc'}">selected</c:if>>마감일순</option>
+					<option value="biz_career" <c:if test="${map.orderRule eq 'biz_career'}">selected</c:if>>경력높은순</option>
+					<option value="biz_career desc" <c:if test="${map.orderRule eq 'biz_career desc'}">selected</c:if>>경력낮은순</option>
+					<option value="biz_ability" <c:if test="${map.orderRule eq 'biz_ability'}">selected</c:if>>학력높은순</option>
+					<option value="biz_ability desc" <c:if test="${map.orderRule eq 'biz_ability desc'}">selected</c:if>>학력낮은순</option>
 				</select>
 				<ul class="list">
 					<li class="list_title">
@@ -53,48 +72,34 @@
 						<div class="desc02">채용정보</div>
 						<div class="desc03">마감일</div>
 					</li>
-					<li>
-						<a href="#none" title="맞춤채용공고">
-							<p class="title">(주)파인스태프</p>
-							<div class="desc">
-								<p class="desc0">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-								<p class="desc1">
-									<strong>급여 </strong>3000-3500만원
-								</p>
-								<p class="desc2">
-									<strong>경력 </strong>무관
-								</p>
-								<p class="desc3">
-									<strong>나이 </strong>무관
-								</p>
-								<p class="desc1">
-									<strong>지역 </strong>경기 광주시
-								</p>
-								<p class="desc2">
-									<strong>학력 </strong>무관
-								</p>
-								<p class="desc3">
-									<strong>성별 </strong>무관
-								</p>
-							</div>
-							<p class="deadline deadline01">채용시마감</p>
-						</a>
-					</li>
+					<c:choose>
+						<c:when test="${myServiceRecruitList.size() > 0 }">
+							<c:forEach var="result" items="${myServiceRecruitList}" varStatus="status">
+								<li>
+									<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
+										<p class="title">${result.bizName }</p>
+										<div class="desc">
+											<p class="desc0">${convert:compByte(result.bizTitle, 100, "...")}</p>
+											<p class="desc1"><strong>급여 </strong>${result.bizPayName }</p>
+											<p class="desc2"><strong>경력 </strong>${codeConvert:getBizCareer(result.bizCareer) }</p>
+											<p class="desc3"><strong>나이 </strong>${result.bizAge }</p>
+											<p class="desc1"><strong>지역 </strong>${result.bizArea1Name }</p>
+											<p class="desc2"><strong>학력 </strong>${codeConvert:getBizAbility(result.bizAbility) }</p>
+											<p class="desc3"><strong>성별 </strong>${codeConvert:getBizSex(result.bizSex) }</p>
+										</div>
+										${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }
+									</a>
+								</li>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<li style="width:100%;"><p class="title">내역이 없습니다.</p></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 				<div class="numareaWrap">
 					<ul class="numArea">
-						<!--<li><a href="#" title="prev"><i class="fas fa-chevron-left"></i></a></li>-->
-						<li class="p01"><a href="#" title="page1">1</a></li>
-						<!--<li><a href="#" title="page2">2</a></li>
-						<li><a href="#" title="page3">3</a></li>
-						<li><a href="#" title="page4">4</a></li>
-						<li><a href="#" title="page5">5</a></li>
-						<li><a href="#" title="page6">6</a></li>
-						<li><a href="#" title="page7">7</a></li>
-						<li><a href="#" title="page8">8</a></li>
-						<li><a href="#" title="page9">9</a></li>
-						<li><a href="#" title="page10">10</a></li>
-						<li><a href="#" title="next"><i class="fas fa-chevron-right"></i></a></li>-->
+		                ${pageMap.pageHtml }
 					</ul>
 				</div>
 			</div>
@@ -103,8 +108,15 @@
 </div>
 <jsp:include page="/footer.do" />
 
-<form id="searchForm" method="post" action="/recruitScrapList.do">
+<form id="searchForm" method="post" action="/fitRecruitList.do">
 	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
+	<input type="hidden" name="personUid" id="personUid" value="" />
+	<input type="hidden" name="companyUid" id="companyUid" value="" />
+	<input type="hidden" name="no" id="no" value="" />
+	<input type="hidden" name="recruitNo" id="recruitNo" value="" />
+	<input type="hidden" name="resumeNo" id="resumeNo" value="" />
+	<input type="hidden" name="leftMenuUrl" id="leftMenuUrl" value="/personSubMenu.do" />
+	<input type="hidden" name="orderRule" id="orderRule" value="" />
 </form>
 
 <script type="text/javascript">
@@ -115,13 +127,43 @@
 			location.href = "/fitRecruitSetting.do";
 		});
 		
+		$("#align").on("change", function(e){
+			loadingOn();
+			$("#orderRule").val($("#align option:selected").val());
+			$("#searchForm").submit();
+		});
+		
 	});	
 	
 	
-	function goPage(targetPage){
-		$("#progress_barWrap").css("display", "block");
-		$("#pageNo").val(targetPage);
-		$("#searchForm").submit();
+	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
+		
+		loadingOn();
+		if("open" != open){
+			alert("현재 비공개 상태로 설정되어 있습니다.");
+			loadingOff();
+
+		}else{
+			var callback = function(data){
+				//if(data.rstCnt <= 0){
+				//	alert("이력서를 먼저 작성해 주세요");
+				//	loadingOff();
+				//}else{
+					$("#companyUid").val(companyUid);
+					$("#personUid").val(personUid);
+					$("#no").val(no);
+					$("#recruitNo").val(recruitNo);
+					$("#resumeNo").val(resumeNo);
+					$("#searchForm").attr("action", "/recruitDetail.do");
+					$("#searchForm").submit();
+				//}
+			};
+			var param = {
+					
+			};
+			
+			ajax('post', '/selectNetfuItemResumeCnt.ajax', param, callback);
+		}
 	}
 		
 </script>

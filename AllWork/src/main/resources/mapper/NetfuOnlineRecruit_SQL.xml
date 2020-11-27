@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netfuOnlineRecruit">
+
+		 
+	<!-- 온라인 입사지원 Count -->
+	<select id="selectOnlineRecruitCnt" parameterType="hashmap" resultType="int">
+		select count(no) cnt from netfu_online_recruit where uid=#{loginId} and type='job'
+	</select>
+	
+
+	<!-- 온라인 지원 여부 / 면접 요청 여부 -->
+	<select id="selectNetfuOnlineRecruitRegistCnt" parameterType="hashmap" resultType="int">
+		select count(*) cnt from netfu_online_recruit
+		where 1=1
+			<if test="toType != null and toType != ''">
+				and to_type = #{toType}
+			</if>
+			and type = 'job'
+			and sub_type = 'company'
+			and uid = #{uid}
+			and to_uid = #{toUid}
+			and to_no = #{toNo}
+	</select>
+	
+	
+	<!-- 면접 요청 기업  count -->
+	<select id="selectInterviewRequestCompanyCnt" parameterType="hashmap" resultType="int">
+	select 
+		count(no) cnt
+	from netfu_item_company
+	where no in (select  to_no from netfu_online_recruit
+                where type = 'job' 
+                and sub_type = 'company'
+                and to_type = 'interview' and to_uid= #{loginId})
+	</select>
+	
+	
+	<!-- 면접 요청 기업  -->
+	<select id="selectInterviewRequestCompanyList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
+	select 
+		no, uid, info_type, biz_name, biz_title, 'open', biz_post, biz_address1, biz_address2, 
+		biz_type1, getCodeName(biz_type1) biz_type1_name,
+		biz_type2, getCodeName(biz_type2) biz_type2_name,
+		biz_type3, getCodeName(biz_type3) biz_type3_name,
+		biz_type4, getCodeName(biz_type4) biz_type4_name,
+		biz_type5, getCodeName(biz_type5) biz_type5_name,
+		biz_type6, getCodeName(biz_type6) biz_type6_name,
+		biz_type7, getCodeName(biz_type7) biz_type7_name,
+		biz_type8, getCodeName(biz_type8) biz_type8_name,
+		biz_type9, getCodeName(biz_type9) biz_type9_name,
+		biz_position, 
+		biz_area1, getCodeName(biz_area1) biz_area1_name,
+		biz_area2, getCodeName(biz_area2) biz_area2_name,
+		biz_area3, getCodeName(biz_area3) biz_area3_name,
+		biz_area4, getCodeName(biz_area4) biz_area4_name,
+		biz_area5, getCodeName(biz_area5) biz_area5_name,
+		biz_area6, getCodeName(biz_area6) biz_area6_name,
+		biz_subway, biz_business, biz_men,
+		biz_jobfrom, getCodeName(biz_jobfrom) biz_jobfrom_name,
+		biz_pay, getCodeName(biz_pay) biz_pay_name,
+		biz_welfare, biz_sex, biz_age, biz_ability,
+		biz_preferential, getCodeName(biz_preferential) biz_preferential_name,
+		biz_career, biz_detail, biz_end_day, biz_end_type, biz_ing, 
+		biz_method, getCodeName(biz_method) biz_method_name,
+		biz_person, biz_pemail, biz_pphone, biz_pfax, 
+		DATE_FORMAT(wdate, '%m/%d') wdate,
+		DATE_FORMAT(u_wdate, '%m/%d') u_wdate,
+		DATE_FORMAT(j_wdate, '%m/%d') j_wdate,
+		service1, service2, service3, service4, service5, service100,
+		service6, service7, service8, service9, service10, service11,
+		biz_paper, getCodeName(biz_paper) biz_paper_name,
+		biz_form, biz_form_file, sms_send, biz_page, hit, type_r, order_view
+	from netfu_item_company
+	where 1=1
+		and no in (select to_no from netfu_online_recruit
+                where type = 'job' 
+                and sub_type = 'company'
+                and to_type = 'interview' and to_uid = #{loginId})
+	</select>
+	
+	
+	<!-- 입사지원 현황 count(to_type:onlene:온라인 / to_type:email:이메일)  -->
+	<select id="selectApplyCnt" parameterType="hashmap" resultType="int">
+	SELECT count(nic.no) cnt
+	FROM netfu_online_recruit AS nor, netfu_item_resume AS nir , netfu_item_company  AS nic
+	WHERE 1=1
+		and (
+				nor.type = 'job' 
+				AND nor.sub_type = 'company'
+				<if test="applyType != null and applyType != ''">
+					AND nor.to_type = #{applyType}
+				</if> 
+			) 
+		AND (nir.no = nor.from_no and nic.no = nor.to_no)
+		and nor.uid = #{loginId}
+	</select>
+	
+	
+	<!-- 입사지원 현황(to_type:onlene:온라인 / to_type:email:이메일)  -->
+	<select id="selectApplyList" parameterType="hashmap" resultType="allwork.vo.NetfuOnlineRecruitVo">
+	SELECT 
+		nic.no recruitNo
+		, nir.no resumeNo
+		, nor.from_no
+		, nic.biz_name
+		, nic.info_type
+		, nic.biz_title
+		, nir.inid_title
+		, nir.inid_area1
+		, getCodeName(nir.inid_area1) indiArea1Name
+		, nir.inid_last_school
+		, nir.inid_career
+		, nir.inid_pay
+		, getCodeName(nir.inid_pay) inidPayName
+		, DATE_FORMAT(nor.wdate, '%m/%d') wdate
+		, nor.no no
+		, nor.uid uid
+		, nic.biz_end_day
+		, nic.uid companyUid
+		, nir.uid personUid
+	FROM netfu_online_recruit nor, netfu_item_resume nir , netfu_item_company nic
+	WHERE 1=1
+		and (
+				nor.type = 'job' 
+				AND nor.sub_type = 'company'
+				<if test="applyType != null and applyType != ''">
+					AND nor.to_type = #{applyType}
+				</if> 
+			) 
+		AND (nir.no = nor.from_no and nic.no = nor.to_no)
+		and nor.uid = #{loginId}
+	</select>
+	
+	
+	<!-- 입사지원정보 삭제 -->
+	<delete id="deleteNetfuOnlineRecruitMulti" parameterType="hashmap">
+		delete from netfu_online_recruit
+		where 1=1
+			and uid = #{loginId}
+			and FIND_IN_SET(no, #{deleteItemMulti})
+	</delete>
+	
+</mapper>

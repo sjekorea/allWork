@@ -8,21 +8,21 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-import allwork.dao.RecruitInfoDao;
-import allwork.service.RecruitInfoService;
+import allwork.dao.RecruitItemDao;
+import allwork.service.RecruitItemService;
 
-@Service("recruitInfoService")
-public class RecruitInfoServiceImpl implements RecruitInfoService{
+@Service("recruitItemService")
+public class RecruitItemServiceImpl implements RecruitItemService{
 
 	Logger log = Logger.getLogger(this.getClass());
 	
-	@Resource(name="recruitInfoDao")
-	private RecruitInfoDao recruitInfoDao;
+	@Resource(name="recruitItemDao")
+	private RecruitItemDao recruitItemDao;
 	
 
 	@Override
 	public List<Map<String, Object>> selectRecommandRecruitList(Map<String, Object> map) throws Exception {
-		return recruitInfoDao.selectRecommandRecruitList(map);
+		return recruitItemDao.selectRecommandRecruitList(map);
 	}
 
 }

@@ -6,14 +6,21 @@
 <%@ taglib uri="/WEB-INF/tlds/convertUtil.tld" prefix="convert" %>
 <%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert" %>
 
-<jsp:include page="/personHeader.do" />
+<c:choose>
+	<c:when test="${SE_USER_TYPE eq 'person' }">
+		<jsp:include page="/personHeader.do" />
+	</c:when>
+	<c:otherwise>
+		<jsp:include page="/companyHeader.do" />
+	</c:otherwise>
+</c:choose>
 
 <link rel="stylesheet" type="text/css" href="/css/company_01_view.css"/>
 
 <div id="containerWrap">
 	<div id="container">
 		<div id="leftPart">
-			<jsp:include page="/recruitInfoSubMenu.do" />
+			<jsp:include page="${map.leftMenuUrl }" />
 		</div>
 		<div id="rightPart">
 			<div id="regist00">
@@ -187,8 +194,11 @@
 					<c:if test="${scrapCnt <= 0 }">
 						<li id="scrapBtn"><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>
 					</c:if>
-					<c:if test="${recruitMap.bizForm eq 'online'}">
-						<li class="reg_ok"><a href="#none" title="입사지원">입사지원</a></li>
+					<c:if test="${recruitMap.bizMethodName.contains('온라인')}">
+						<li class="reg_ok"><a href="javascript:applyPopup('online');" title="입사지원">온라인입사지원</a></li>
+					</c:if>
+					<c:if test="${recruitMap.bizMethodName.contains('이메일')}">
+						<li class="reg_ok"><a href="javascript:applyPopup('email');" title="입사지원">이메일입사지원</a></li>
 					</c:if>
 				</ul>
 			</c:if>
@@ -201,6 +211,9 @@
 	<input type="hidden" name="no" id="no" value="${map.no}" />
 	<input type="hidden" name="uid" id="uid" value="${SE_LOGIN_ID }">
 	<input type="hidden" name="rUid" id="rUid" value="${recruitMap.uid }">
+	<input type="hidden" name="scrapCnt" id="scrapCnt" value="${scrapCnt }">
+	<input type="hidden" name="concernCnt" id="concernCnt" value="${concernCnt }">
+	<input type="hidden" name="resumeCnt" id="resumeCnt" value="${resumeCnt }">
 </form>
 
 
@@ -211,44 +224,88 @@
 		
 	});	
 
-	
+	// 스크랩 등록
 	function goScrapRegist(){
 		
-		loadingOn();
-		var callback = function(data){
-			alert("저장 되었습니다.");
-			$("#scrapBtn").hide();
-			loadingOff();
-		};
-		
-		var param = {
-					no : $("#no").val()
-					, type : "job"
-					, subType : "company"
-					, uid : $("#uid").val()
-					, rUid : $("#rUid").val()
-				};
-		ajax('post', '/registScrap.ajax', param, callback);
+		//if($("#resumeCnt").val() <= 0){
+		//	alert("이력서를 먼저 작성해 주세요");
+		//	return;
+		//}else{
+			loadingOn();
+			var callback = function(data){
+				alert("저장 되었습니다.");
+				$("#scrapBtn").hide();
+				loadingOff();
+			};
+			
+			var param = {
+						no : $("#no").val()
+						, type : "job"
+						, subType : "company"
+						, uid : $("#uid").val()
+						, rUid : $("#rUid").val()
+					};
+			ajax('post', '/registScrap.ajax', param, callback);
+		//}
 	}
 	
-	
+	// 관심기업 등록
 	function goConcernRegist(){
+		//if($("#resumeCnt").val() <= 0){
+		//	alert("이력서를 먼저 작성해 주세요");
+		//	return;
+		//}else{
+			loadingOn();
+			var callback = function(data){
+				alert("저장 되었습니다.");
+				$("#concernCnt").val(data.rstCnt);
+				loadingOff();
+			};
+			
+			var param = {
+						no : $("#no").val()
+						, type : "job"
+						, subType : "company"
+						, uid : $("#uid").val()
+						, rUid : $("#rUid").val()
+					};
+			ajax('post', '/registNetfuConcern.ajax', param, callback);
+		//}
+	}
+	
+	// 입사지원 popup
+	function applyPopup(applyType){
 		
-		loadingOn();
-		var callback = function(data){
-			alert("저장 되었습니다.");
-			$("#concernCnt").val(data.rstCnt);
-			loadingOff();
-		};
+		if($("#resumeCnt").val() <= 0){
+			alert("이력서를 먼저 작성해 주세요");
+			return;
 		
-		var param = {
-					no : $("#no").val()
-					, type : "job"
-					, subType : "company"
-					, uid : $("#uid").val()
-					, rUid : $("#rUid").val()
-				};
-		ajax('post', '/registNetfuConcern.ajax', param, callback);
+		}else{
+			var callback = function(data){
+				if(data.rstCnt > 0){
+					alert("이미 지원 하셨습니다.");
+					loadingOff();
+				}else{
+					// 입사 지원 popup];
+				}
+			};
+			
+			var param = {
+						toType : applyType
+						, type : "job"
+						, subType : "company"
+						, uid : $("#uid").val()
+						, toUid : $("#rUid").val()
+						, toNo : $("#no").val()
+					}; 
+			ajax('post', '/selectNetfuOnlineRecruitRegistCnt.ajax', param, callback);
+		}		
+	}
+	
+	// 입사지원 등록
+	function registApply(applyType){
+		
+		
 	}
 	
 </script>

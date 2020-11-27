@@ -27,7 +27,7 @@ public class CompanyController {
 	/*
 	 * 기업회원 홈
 	 */
-	@RequestMapping(value="/companyHome")
+	@RequestMapping(value="/companyHome.do")
 	public ModelAndView companyHome(CommandMap commandMap, HttpSession session) {
 		
 		ModelAndView mv = new ModelAndView("/company/companyHome");
@@ -53,7 +53,7 @@ public class CompanyController {
 	/*
 	 * 채용정보 등록
 	 */
-	@RequestMapping(value="/recruitInfoReg")
+	@RequestMapping(value="/recruitInfoReg.do")
 	public ModelAndView recruitInfoReg(CommandMap commandMap) {
 		
 		ModelAndView mv = new ModelAndView("/company/recruitInfoReg");
@@ -65,7 +65,7 @@ public class CompanyController {
 	/*
 	 * 스크랩 인재
 	 */
-	@RequestMapping(value="/personScrapList")
+	@RequestMapping(value="/personScrapList.do")
 	public ModelAndView personScrapList(CommandMap commandMap) {
 		
 		ModelAndView mv = new ModelAndView("/company/personScrapList");
@@ -78,7 +78,7 @@ public class CompanyController {
 	/*
 	 * 입사지원 관리
 	 */
-	@RequestMapping(value="/companyApplicantList")
+	@RequestMapping(value="/companyApplicantList.do")
 	public ModelAndView companyApplicantList(CommandMap commandMap) {
 		
 		ModelAndView mv = new ModelAndView("/company/companyApplicantList");

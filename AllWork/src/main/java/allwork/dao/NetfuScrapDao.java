@@ -21,9 +21,14 @@ public class NetfuScrapDao extends AbstractDAO{
 		return (List<Map<String, Object>>)selectList("netfuScrap.selectNetfuScrapList", map);
 	}
 	
+	// 스크랩 여부
+	public int selectNetfuScrapRegistCnt(Map<String, Object> map) throws Exception{
+		return selectCnt("netfuScrap.selectNetfuScrapRegistCnt", map);
+	}
+	
 	// 스크랩한 채용 정보 등록
 	public int insertNetfuScrap(Map<String, Object> map) throws Exception{ 
-		return delete("netfuScrap.insertNetfuScrap", map);
+		return insert("netfuScrap.insertNetfuScrap", map);
 	}
 	
 	// 스크랩한 채용 정보 삭제

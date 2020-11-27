@@ -4,45 +4,65 @@ public class NetfuItemResumeVo {
 
 	private int no;
 	private String uid;
-	private int info_type;
+	private int infoType;
 	private String basic;
 	private String name;
-	private String inid_p_chk;
-	private String inid_photo;
-	private String inid_phone;
-	private String inid_hphone;
-	private String inid_email;
-	private String inid_post;
-	private String inid_address1;
-	private String inid_address2;
-	private String inid_home;
-	private String inid_title;
-	private String indi_condition;
-	private String inid_area1;
-	private String inid_area2;
-	private String inid_area3;
-	private String inid_area4;
-	private String inid_area5;
-	private String inid_area6;
-	private String inid_type1;
-	private String inid_type2;
-	private String inid_type3;
-	private String inid_type4;
-	private String inid_type5;
-	private String inid_type6;
-	private String inid_mylskill;
-	private String inid_jobform;
-	private String inid_pay;
-	private String inid_last_school;
-	private String inid_career;
-	private String inid_license;
-	private String inid_languages;
-	private String inid_introduce;
-	private String inid_secret;
+	private String inidPChk;
+	private String inidPhoto;
+	private String inidPhone;
+	private String inidHphone;
+	private String inidEmail;
+	private String inidPost;
+	private String inidAddress1;
+	private String inidAddress2;
+	private String inidHome;
+	private String inidTitle;
+	private String indiCondition;
+	private String inidArea1;
+	private String inidArea1Name;
+	private String inidArea2;
+	private String inidArea2Name;
+	private String inidArea3;
+	private String inidArea3Name;
+	private String inidArea4;
+	private String inidArea4Name;
+	private String inidArea5;
+	private String inidArea5Name;
+	private String inidArea6;
+	private String inidArea6Name;
+	private String inidType1;
+	private String inidType1Name;
+	private String inidType2;
+	private String inidType2Name;
+	private String inidType3;
+	private String inidType3Name;
+	private String inidType4;
+	private String inidType4Name;
+	private String inidType5;
+	private String inidType5Name;
+	private String inidType6;
+	private String inidType6Name;
+	private String inidType7;
+	private String inidType7Name;
+	private String inidType8;
+	private String inidType8Name;
+	private String inidType9;
+	private String inidType9Name;
+	private String inidMylskill;
+	private String inidJobform;
+	private String inidJobformName;
+	private String inidPay;
+	private String inidPayName;
+	private String inidLastSchool;
+	private String inidCareer;
+	private String inidLicense;
+	private String inidLanguages;
+	private String inidIntroduce;
+	private String inidSecret;
 	private String wdate;
-	private String u_wdate;
-	private String j_wdate;
-	private String hit;
+	private String uWdate;
+	private String jWdate;
+	private int hit;
 	private String service11;
 	private String service12;
 	private String service13;
@@ -51,20 +71,19 @@ public class NetfuItemResumeVo {
 	private String service15;
 	private String service16;
 	private String service17;
-	private String inid_type7;
-	private String inid_type8;
-	private String inid_type9;
-	private String inid_sex;
-	private String sms_send;
-	private String a_insert;
+	private String inidSex;
+	private String smsSend;
+	private String aInsert;
+	
+	
 	public int getNo() {
 		return no;
 	}
 	public String getUid() {
 		return uid;
 	}
-	public int getInfo_type() {
-		return info_type;
+	public int getInfoType() {
+		return infoType;
 	}
 	public String getBasic() {
 		return basic;
@@ -72,112 +91,172 @@ public class NetfuItemResumeVo {
 	public String getName() {
 		return name;
 	}
-	public String getInid_p_chk() {
-		return inid_p_chk;
+	public String getInidPChk() {
+		return inidPChk;
 	}
-	public String getInid_photo() {
-		return inid_photo;
+	public String getInidPhoto() {
+		return inidPhoto;
 	}
-	public String getInid_phone() {
-		return inid_phone;
+	public String getInidPhone() {
+		return inidPhone;
 	}
-	public String getInid_hphone() {
-		return inid_hphone;
+	public String getInidHphone() {
+		return inidHphone;
 	}
-	public String getInid_email() {
-		return inid_email;
+	public String getInidEmail() {
+		return inidEmail;
 	}
-	public String getInid_post() {
-		return inid_post;
+	public String getInidPost() {
+		return inidPost;
 	}
-	public String getInid_address1() {
-		return inid_address1;
+	public String getInidAddress1() {
+		return inidAddress1;
 	}
-	public String getInid_address2() {
-		return inid_address2;
+	public String getInidAddress2() {
+		return inidAddress2;
 	}
-	public String getInid_home() {
-		return inid_home;
+	public String getInidHome() {
+		return inidHome;
 	}
-	public String getInid_title() {
-		return inid_title;
+	public String getInidTitle() {
+		return inidTitle;
 	}
-	public String getIndi_condition() {
-		return indi_condition;
+	public String getIndiCondition() {
+		return indiCondition;
 	}
-	public String getInid_area1() {
-		return inid_area1;
+	public String getInidArea1() {
+		return inidArea1;
 	}
-	public String getInid_area2() {
-		return inid_area2;
+	public String getInidArea1Name() {
+		return inidArea1Name;
 	}
-	public String getInid_area3() {
-		return inid_area3;
+	public String getInidArea2() {
+		return inidArea2;
 	}
-	public String getInid_area4() {
-		return inid_area4;
+	public String getInidArea2Name() {
+		return inidArea2Name;
 	}
-	public String getInid_area5() {
-		return inid_area5;
+	public String getInidArea3() {
+		return inidArea3;
 	}
-	public String getInid_area6() {
-		return inid_area6;
+	public String getInidArea3Name() {
+		return inidArea3Name;
 	}
-	public String getInid_type1() {
-		return inid_type1;
+	public String getInidArea4() {
+		return inidArea4;
 	}
-	public String getInid_type2() {
-		return inid_type2;
+	public String getInidArea4Name() {
+		return inidArea4Name;
 	}
-	public String getInid_type3() {
-		return inid_type3;
+	public String getInidArea5() {
+		return inidArea5;
 	}
-	public String getInid_type4() {
-		return inid_type4;
+	public String getInidArea5Name() {
+		return inidArea5Name;
 	}
-	public String getInid_type5() {
-		return inid_type5;
+	public String getInidArea6() {
+		return inidArea6;
 	}
-	public String getInid_type6() {
-		return inid_type6;
+	public String getInidArea6Name() {
+		return inidArea6Name;
 	}
-	public String getInid_mylskill() {
-		return inid_mylskill;
+	public String getInidType1() {
+		return inidType1;
 	}
-	public String getInid_jobform() {
-		return inid_jobform;
+	public String getInidType1Name() {
+		return inidType1Name;
 	}
-	public String getInid_pay() {
-		return inid_pay;
+	public String getInidType2() {
+		return inidType2;
 	}
-	public String getInid_last_school() {
-		return inid_last_school;
+	public String getInidType2Name() {
+		return inidType2Name;
 	}
-	public String getInid_career() {
-		return inid_career;
+	public String getInidType3() {
+		return inidType3;
 	}
-	public String getInid_license() {
-		return inid_license;
+	public String getInidType3Name() {
+		return inidType3Name;
 	}
-	public String getInid_languages() {
-		return inid_languages;
+	public String getInidType4() {
+		return inidType4;
 	}
-	public String getInid_introduce() {
-		return inid_introduce;
+	public String getInidType4Name() {
+		return inidType4Name;
 	}
-	public String getInid_secret() {
-		return inid_secret;
+	public String getInidType5() {
+		return inidType5;
+	}
+	public String getInidType5Name() {
+		return inidType5Name;
+	}
+	public String getInidType6() {
+		return inidType6;
+	}
+	public String getInidType6Name() {
+		return inidType6Name;
+	}
+	public String getInidType7() {
+		return inidType7;
+	}
+	public String getInidType7Name() {
+		return inidType7Name;
+	}
+	public String getInidType8() {
+		return inidType8;
+	}
+	public String getInidType8Name() {
+		return inidType8Name;
+	}
+	public String getInidType9() {
+		return inidType9;
+	}
+	public String getInidType9Name() {
+		return inidType9Name;
+	}
+	public String getInidMylskill() {
+		return inidMylskill;
+	}
+	public String getInidJobform() {
+		return inidJobform;
+	}
+	public String getInidJobformName() {
+		return inidJobformName;
+	}
+	public String getInidPay() {
+		return inidPay;
+	}
+	public String getInidPayName() {
+		return inidPayName;
+	}
+	public String getInidLastSchool() {
+		return inidLastSchool;
+	}
+	public String getInidCareer() {
+		return inidCareer;
+	}
+	public String getInidLicense() {
+		return inidLicense;
+	}
+	public String getInidLanguages() {
+		return inidLanguages;
+	}
+	public String getInidIntroduce() {
+		return inidIntroduce;
+	}
+	public String getInidSecret() {
+		return inidSecret;
 	}
 	public String getWdate() {
 		return wdate;
 	}
-	public String getU_wdate() {
-		return u_wdate;
+	public String getuWdate() {
+		return uWdate;
 	}
-	public String getJ_wdate() {
-		return j_wdate;
+	public String getjWdate() {
+		return jWdate;
 	}
-	public String getHit() {
+	public int getHit() {
 		return hit;
 	}
 	public String getService11() {
@@ -204,23 +283,14 @@ public class NetfuItemResumeVo {
 	public String getService17() {
 		return service17;
 	}
-	public String getInid_type7() {
-		return inid_type7;
+	public String getInidSex() {
+		return inidSex;
 	}
-	public String getInid_type8() {
-		return inid_type8;
+	public String getSmsSend() {
+		return smsSend;
 	}
-	public String getInid_type9() {
-		return inid_type9;
-	}
-	public String getInid_sex() {
-		return inid_sex;
-	}
-	public String getSms_send() {
-		return sms_send;
-	}
-	public String getA_insert() {
-		return a_insert;
+	public String getaInsert() {
+		return aInsert;
 	}
 	public void setNo(int no) {
 		this.no = no;
@@ -228,8 +298,8 @@ public class NetfuItemResumeVo {
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
-	public void setInfo_type(int info_type) {
-		this.info_type = info_type;
+	public void setInfoType(int infoType) {
+		this.infoType = infoType;
 	}
 	public void setBasic(String basic) {
 		this.basic = basic;
@@ -237,112 +307,172 @@ public class NetfuItemResumeVo {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public void setInid_p_chk(String inid_p_chk) {
-		this.inid_p_chk = inid_p_chk;
+	public void setInidPChk(String inidPChk) {
+		this.inidPChk = inidPChk;
 	}
-	public void setInid_photo(String inid_photo) {
-		this.inid_photo = inid_photo;
+	public void setInidPhoto(String inidPhoto) {
+		this.inidPhoto = inidPhoto;
 	}
-	public void setInid_phone(String inid_phone) {
-		this.inid_phone = inid_phone;
+	public void setInidPhone(String inidPhone) {
+		this.inidPhone = inidPhone;
 	}
-	public void setInid_hphone(String inid_hphone) {
-		this.inid_hphone = inid_hphone;
+	public void setInidHphone(String inidHphone) {
+		this.inidHphone = inidHphone;
 	}
-	public void setInid_email(String inid_email) {
-		this.inid_email = inid_email;
+	public void setInidEmail(String inidEmail) {
+		this.inidEmail = inidEmail;
 	}
-	public void setInid_post(String inid_post) {
-		this.inid_post = inid_post;
+	public void setInidPost(String inidPost) {
+		this.inidPost = inidPost;
 	}
-	public void setInid_address1(String inid_address1) {
-		this.inid_address1 = inid_address1;
+	public void setInidAddress1(String inidAddress1) {
+		this.inidAddress1 = inidAddress1;
 	}
-	public void setInid_address2(String inid_address2) {
-		this.inid_address2 = inid_address2;
+	public void setInidAddress2(String inidAddress2) {
+		this.inidAddress2 = inidAddress2;
 	}
-	public void setInid_home(String inid_home) {
-		this.inid_home = inid_home;
+	public void setInidHome(String inidHome) {
+		this.inidHome = inidHome;
 	}
-	public void setInid_title(String inid_title) {
-		this.inid_title = inid_title;
+	public void setInidTitle(String inidTitle) {
+		this.inidTitle = inidTitle;
 	}
-	public void setIndi_condition(String indi_condition) {
-		this.indi_condition = indi_condition;
+	public void setIndiCondition(String indiCondition) {
+		this.indiCondition = indiCondition;
 	}
-	public void setInid_area1(String inid_area1) {
-		this.inid_area1 = inid_area1;
+	public void setInidArea1(String inidArea1) {
+		this.inidArea1 = inidArea1;
 	}
-	public void setInid_area2(String inid_area2) {
-		this.inid_area2 = inid_area2;
+	public void setInidArea1Name(String inidArea1Name) {
+		this.inidArea1Name = inidArea1Name;
 	}
-	public void setInid_area3(String inid_area3) {
-		this.inid_area3 = inid_area3;
+	public void setInidArea2(String inidArea2) {
+		this.inidArea2 = inidArea2;
 	}
-	public void setInid_area4(String inid_area4) {
-		this.inid_area4 = inid_area4;
+	public void setInidArea2Name(String inidArea2Name) {
+		this.inidArea2Name = inidArea2Name;
 	}
-	public void setInid_area5(String inid_area5) {
-		this.inid_area5 = inid_area5;
+	public void setInidArea3(String inidArea3) {
+		this.inidArea3 = inidArea3;
 	}
-	public void setInid_area6(String inid_area6) {
-		this.inid_area6 = inid_area6;
+	public void setInidArea3Name(String inidArea3Name) {
+		this.inidArea3Name = inidArea3Name;
 	}
-	public void setInid_type1(String inid_type1) {
-		this.inid_type1 = inid_type1;
+	public void setInidArea4(String inidArea4) {
+		this.inidArea4 = inidArea4;
 	}
-	public void setInid_type2(String inid_type2) {
-		this.inid_type2 = inid_type2;
+	public void setInidArea4Name(String inidArea4Name) {
+		this.inidArea4Name = inidArea4Name;
 	}
-	public void setInid_type3(String inid_type3) {
-		this.inid_type3 = inid_type3;
+	public void setInidArea5(String inidArea5) {
+		this.inidArea5 = inidArea5;
 	}
-	public void setInid_type4(String inid_type4) {
-		this.inid_type4 = inid_type4;
+	public void setInidArea5Name(String inidArea5Name) {
+		this.inidArea5Name = inidArea5Name;
 	}
-	public void setInid_type5(String inid_type5) {
-		this.inid_type5 = inid_type5;
+	public void setInidArea6(String inidArea6) {
+		this.inidArea6 = inidArea6;
 	}
-	public void setInid_type6(String inid_type6) {
-		this.inid_type6 = inid_type6;
+	public void setInidArea6Name(String inidArea6Name) {
+		this.inidArea6Name = inidArea6Name;
 	}
-	public void setInid_mylskill(String inid_mylskill) {
-		this.inid_mylskill = inid_mylskill;
+	public void setInidType1(String inidType1) {
+		this.inidType1 = inidType1;
 	}
-	public void setInid_jobform(String inid_jobform) {
-		this.inid_jobform = inid_jobform;
+	public void setInidType1Name(String inidType1Name) {
+		this.inidType1Name = inidType1Name;
 	}
-	public void setInid_pay(String inid_pay) {
-		this.inid_pay = inid_pay;
+	public void setInidType2(String inidType2) {
+		this.inidType2 = inidType2;
 	}
-	public void setInid_last_school(String inid_last_school) {
-		this.inid_last_school = inid_last_school;
+	public void setInidType2Name(String inidType2Name) {
+		this.inidType2Name = inidType2Name;
 	}
-	public void setInid_career(String inid_career) {
-		this.inid_career = inid_career;
+	public void setInidType3(String inidType3) {
+		this.inidType3 = inidType3;
 	}
-	public void setInid_license(String inid_license) {
-		this.inid_license = inid_license;
+	public void setInidType3Name(String inidType3Name) {
+		this.inidType3Name = inidType3Name;
 	}
-	public void setInid_languages(String inid_languages) {
-		this.inid_languages = inid_languages;
+	public void setInidType4(String inidType4) {
+		this.inidType4 = inidType4;
 	}
-	public void setInid_introduce(String inid_introduce) {
-		this.inid_introduce = inid_introduce;
+	public void setInidType4Name(String inidType4Name) {
+		this.inidType4Name = inidType4Name;
 	}
-	public void setInid_secret(String inid_secret) {
-		this.inid_secret = inid_secret;
+	public void setInidType5(String inidType5) {
+		this.inidType5 = inidType5;
+	}
+	public void setInidType5Name(String inidType5Name) {
+		this.inidType5Name = inidType5Name;
+	}
+	public void setInidType6(String inidType6) {
+		this.inidType6 = inidType6;
+	}
+	public void setInidType6Name(String inidType6Name) {
+		this.inidType6Name = inidType6Name;
+	}
+	public void setInidType7(String inidType7) {
+		this.inidType7 = inidType7;
+	}
+	public void setInidType7Name(String inidType7Name) {
+		this.inidType7Name = inidType7Name;
+	}
+	public void setInidType8(String inidType8) {
+		this.inidType8 = inidType8;
+	}
+	public void setInidType8Name(String inidType8Name) {
+		this.inidType8Name = inidType8Name;
+	}
+	public void setInidType9(String inidType9) {
+		this.inidType9 = inidType9;
+	}
+	public void setInidType9Name(String inidType9Name) {
+		this.inidType9Name = inidType9Name;
+	}
+	public void setInidMylskill(String inidMylskill) {
+		this.inidMylskill = inidMylskill;
+	}
+	public void setInidJobform(String inidJobform) {
+		this.inidJobform = inidJobform;
+	}
+	public void setInidJobformName(String inidJobformName) {
+		this.inidJobformName = inidJobformName;
+	}
+	public void setInidPay(String inidPay) {
+		this.inidPay = inidPay;
+	}
+	public void setInidPayName(String inidPayName) {
+		this.inidPayName = inidPayName;
+	}
+	public void setInidLastSchool(String inidLastSchool) {
+		this.inidLastSchool = inidLastSchool;
+	}
+	public void setInidCareer(String inidCareer) {
+		this.inidCareer = inidCareer;
+	}
+	public void setInidLicense(String inidLicense) {
+		this.inidLicense = inidLicense;
+	}
+	public void setInidLanguages(String inidLanguages) {
+		this.inidLanguages = inidLanguages;
+	}
+	public void setInidIntroduce(String inidIntroduce) {
+		this.inidIntroduce = inidIntroduce;
+	}
+	public void setInidSecret(String inidSecret) {
+		this.inidSecret = inidSecret;
 	}
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
-	public void setU_wdate(String u_wdate) {
-		this.u_wdate = u_wdate;
+	public void setuWdate(String uWdate) {
+		this.uWdate = uWdate;
 	}
-	public void setJ_wdate(String j_wdate) {
-		this.j_wdate = j_wdate;
+	public void setjWdate(String jWdate) {
+		this.jWdate = jWdate;
 	}
-	public void setHit(String hit) {
+	public void setHit(int hit) {
 		this.hit = hit;
 	}
 	public void setService11(String service11) {
@@ -369,23 +499,15 @@ public class NetfuItemResumeVo {
 	public void setService17(String service17) {
 		this.service17 = service17;
 	}
-	public void setInid_type7(String inid_type7) {
-		this.inid_type7 = inid_type7;
+	public void setInidSex(String inidSex) {
+		this.inidSex = inidSex;
 	}
-	public void setInid_type8(String inid_type8) {
-		this.inid_type8 = inid_type8;
+	public void setSmsSend(String smsSend) {
+		this.smsSend = smsSend;
 	}
-	public void setInid_type9(String inid_type9) {
-		this.inid_type9 = inid_type9;
+	public void setaInsert(String aInsert) {
+		this.aInsert = aInsert;
 	}
-	public void setInid_sex(String inid_sex) {
-		this.inid_sex = inid_sex;
-	}
-	public void setSms_send(String sms_send) {
-		this.sms_send = sms_send;
-	}
-	public void setA_insert(String a_insert) {
-		this.a_insert = a_insert;
-	}
+	
 }	
 	

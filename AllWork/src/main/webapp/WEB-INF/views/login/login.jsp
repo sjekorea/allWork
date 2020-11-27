@@ -30,7 +30,7 @@
 </head>
 
 <body>
-	<div id="progress_barWrap" style="display:none;">
+	<div id="progress_barWrap">
 		<p id="progress_bar">
 			<img src="/img/main/loading_circle.gif" alt="로딩이미지"/>
 		</p>
@@ -143,7 +143,7 @@
 	
 	function goLogin(){
 		
-		$("#progress_barWrap").css("display", "block");
+		loadingOn();
 		
 		if(checkNull($("#loginId").val())){
 			alertAndFocus("로그인 ID를 입력하세요.", $("#loginId"));

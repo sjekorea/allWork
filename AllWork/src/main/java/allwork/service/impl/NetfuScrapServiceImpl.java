@@ -32,6 +32,12 @@ public class NetfuScrapServiceImpl implements NetfuScrapService{
 		return netfuScrapDao.selectNetfuScrapList(map);
 	}
 	
+	// 스크랩한 채용정보 Count 
+	@Override
+	public int selectNetfuScrapRegistCnt(Map<String, Object> map) throws Exception {
+		return netfuScrapDao.selectNetfuScrapRegistCnt(map);
+	}
+	
 	// 스크랩한 채용정보 등록
 	@Override
 	public int insertNetfuScrap(Map<String, Object> map) throws Exception {

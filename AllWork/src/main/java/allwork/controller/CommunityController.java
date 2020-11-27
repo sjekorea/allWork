@@ -16,7 +16,7 @@ public class CommunityController {
 	/*
 	 * 게시판 목록
 	 */
-	@RequestMapping(value="/boardList")
+	@RequestMapping(value="/boardList.do")
 	public ModelAndView boardList(CommandMap commandMap) {
 		
 		ModelAndView mv = new ModelAndView("/community/boardList");
@@ -28,7 +28,7 @@ public class CommunityController {
 	/*
 	 * 게시판 보기
 	 */
-	@RequestMapping(value="/boardView")
+	@RequestMapping(value="/boardView.do")
 	public ModelAndView boardView(CommandMap commandMap) {
 		
 		ModelAndView mv = new ModelAndView("/community/boardView");

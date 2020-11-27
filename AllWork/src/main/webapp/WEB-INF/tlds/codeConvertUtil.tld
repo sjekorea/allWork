@@ -33,6 +33,14 @@
               String getRecruitStatusText(java.lang.String, java.lang.String, java.lang.String)
          </function-signature>
     </function>
+    <function>
+         <description>마감 정보</description>
+         <name>getRecruitStatusTextShort</name>
+         <function-class>allwork.common.util.CodeConvertUtil</function-class>
+         <function-signature>
+              String getRecruitStatusTextShort(java.lang.String, java.lang.String, java.lang.String)
+         </function-signature>
+    </function>
      <function>
          <description>학력 정보</description>
          <name>getBizAbility</name>
@@ -41,8 +49,16 @@
               String getBizAbility(java.lang.String)
          </function-signature>
     </function>
+     <function>
+         <description>학력 정보</description>
+         <name>getBizAbilityShort</name>
+         <function-class>allwork.common.util.CodeConvertUtil</function-class>
+         <function-signature>
+              String getBizAbilityShort(java.lang.String)
+         </function-signature>
+    </function>
     <function>
-         <description>연력 정보</description>
+         <description>연령 정보</description>
          <name>getBizAge</name>
          <function-class>allwork.common.util.CodeConvertUtil</function-class>
          <function-signature>
@@ -55,6 +71,30 @@
          <function-class>allwork.common.util.CodeConvertUtil</function-class>
          <function-signature>
               String getBizCareer(java.lang.String)
+         </function-signature>
+    </function>
+    <function>
+         <description>경력 정보(split)</description>
+         <name>getBizCareerSplit</name>
+         <function-class>allwork.common.util.CodeConvertUtil</function-class>
+         <function-signature>
+              String getBizCareerSplit(java.lang.String)
+         </function-signature>
+    </function>
+    <function>
+         <description>생년월일 정보(생년)</description>
+         <name>getBirthYear</name>
+         <function-class>allwork.common.util.CodeConvertUtil</function-class>
+         <function-signature>
+              String getBirthYear(java.lang.String)
+         </function-signature>
+    </function>
+    <function>
+         <description>현재상태 정보</description>
+         <name>getCondition</name>
+         <function-class>allwork.common.util.CodeConvertUtil</function-class>
+         <function-signature>
+              String getCondition(java.lang.String)
          </function-signature>
     </function>
 </taglib>

@@ -20,16 +20,34 @@ public class NetfuItemCompanyServiceImpl implements NetfuItemCompanyService{
 	@Resource(name="netfuItemCompanyDao")
 	private NetfuItemCompanyDao netfuItemCompanyDao;
 
+	
+	// 채용 정보 상세 검색 Count
+	@Override
+	public int selectNetfuItemCompanyCnt(Map<String, Object> map) throws Exception {
+		return netfuItemCompanyDao.selectNetfuItemCompanyCnt(map);
+	}
+	
+	// 채용 정보 상세 검색  목록 
+	@Override
+	public List<Map<String, Object>> selectNetfuItemCompanyList(Map<String, Object> map) throws Exception {
+		return netfuItemCompanyDao.selectNetfuItemCompanyList(map);
+	}
+	
+	// 기업별 채용공고  Count
+	@Override
+	public int selectNetfuItemCompanyCntByCompany(Map<String, Object> map) throws Exception {
+		return netfuItemCompanyDao.selectNetfuItemCompanyCntByCompany(map);
+	}
+	
+	// 기업별 채용공고   목록 
+	@Override
+	public List<Map<String, Object>> selectNetfuItemCompanyListByCompany(Map<String, Object> map) throws Exception {
+		return netfuItemCompanyDao.selectNetfuItemCompanyListByCompany(map);
+	}
 
 	@Override
 	public Map<String, Object> selectNetfuItemCompanyMap(Map<String, Object> map) throws Exception {
 		return netfuItemCompanyDao.selectNetfuItemCompanyMap(map);
-	}
-	
-	// 온라인 입사지원 Count - 개인회원 홈
-	@Override
-	public int selectOnlineRecruitCnt(Map<String, Object> map) throws Exception {
-		return netfuItemCompanyDao.selectOnlineRecruitCnt(map);
 	}
 	
 	// 맞춤 채용 정보 Count

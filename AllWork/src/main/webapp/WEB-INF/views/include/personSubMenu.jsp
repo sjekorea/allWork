@@ -19,10 +19,10 @@
 				<li class="subMenu01_02"><a href="#" title="이력서수정">이력서수정</a></li>
 			</ol>
 		</li>
-		<li class="menu menu02"><a href="/personApplicationList.do" title="입사지원관리">입사지원관리</a>
+		<li class="menu menu02"><a href="/personApplyList.do" title="입사지원관리">입사지원관리</a>
 			<h3>입사지원관리</h3>
 			<ol class="subMenu subMenu02">
-				<li class="subMenu02_01"><a href="/personApplicationList.do" title="입사지원현황">입사지원현황</a></li>
+				<li class="subMenu02_01"><a href="/personApplyList.do" title="입사지원현황">입사 지원 현황</a></li>
 			</ol>
 		</li>
 		<li class="menu menu03"><a href="/recruitScrapList.do" title="스크랩/관심기업">스크랩/관심기업</a>

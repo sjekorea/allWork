@@ -17,10 +17,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import allwork.common.CommandMap;
 import allwork.service.NetfuMemberService;
+import allwork.service.NetfuOnlineRecruitService;
+import allwork.service.NetfuOpenResumeService;
 import allwork.service.NetfuItemResumeService;
+import allwork.service.NetfuConcernService;
 import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuScrapService;
-import allwork.service.RecruitInfoService;
+import allwork.service.RecruitItemService;
 import allwork.common.util.PaginationUtil;
 import allwork.common.util.ConvertUtil;
 
@@ -41,14 +44,23 @@ public class PersonController {
 	@Resource(name="netfuScrapService")
 	private NetfuScrapService netfuScrapService;
 	
-	@Resource(name="recruitInfoService")
-	private RecruitInfoService recruitInfoService;
+	@Resource(name="recruitItemService")
+	private RecruitItemService recruitItemService;
+	
+	@Resource(name="netfuOnlineRecruitService")
+	private NetfuOnlineRecruitService netfuOnlineRecruitService;
+	
+	@Resource(name="netfuConcernService")
+	private NetfuConcernService netfuConcernService;
+	
+	@Resource(name="netfuOpenResumeService")
+	private NetfuOpenResumeService netfuOpenResumeService;
 	
 	
 	/*
 	 * 개인 회원 홈
 	 */
-	@RequestMapping(value="/personHome")
+	@RequestMapping(value="/personHome.do")
 	public ModelAndView personHome(CommandMap commandMap, HttpSession session) {
 		
 		ModelAndView mv = new ModelAndView("/person/personHome");
@@ -67,15 +79,20 @@ public class PersonController {
 			// 개인정보 조회
 			Map<String, Object> memberMap = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
 			
-			/*// 등록된 이력서 갯수
-			int netfuItemResumeCnt = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
 			// 온라인 입사지원 수
-			int onlineRecruitCnt = netfuItemCompanyService.selectOnlineRecruitCnt(commandMap.getMap());
+			int onlineRecruitCnt = netfuOnlineRecruitService.selectOnlineRecruitCnt(commandMap.getMap());
+			
 			// 스크랩한 채용정보
-			int netfuScrapCnt = netfuScrapService.selectNetfuScrapCnt(commandMap.getMap());*/
+			int netfuOpenResumeCnt = netfuOpenResumeService.selectNetfuOpenResumeCnt(commandMap.getMap());
+			
+			// 스크랩한 채용정보
+			int netfuScrapCnt = netfuScrapService.selectNetfuScrapCnt(commandMap.getMap());
+			
+			// 관심기업 공고
+			int netfuConcernCnt = netfuConcernService.selectNetfuConcernRegistCnt(commandMap.getMap());
 			
 			// 추천 채용정보
-			List<Map<String, Object>> recommandRecruitList = recruitInfoService.selectRecommandRecruitList(commandMap.getMap());
+			List<Map<String, Object>> recommandRecruitList = recruitItemService.selectRecommandRecruitList(commandMap.getMap());
 			
 			// 맞춤 채용 정보
 			List<Map<String, Object>> recruitSettedList = netfuItemCompanyService.selectRecruitSettedList(commandMap.getMap());
@@ -85,9 +102,10 @@ public class PersonController {
 			
 			
 			mv.addObject("memberMap", memberMap);
-			//mv.addObject("netfuItemResumeCnt", netfuItemResumeCnt);
-			//mv.addObject("onlineRecruitCnt", onlineRecruitCnt);
-			//mv.addObject("netfuScrapCnt", netfuScrapCnt);
+			mv.addObject("onlineRecruitCnt", onlineRecruitCnt);
+			mv.addObject("netfuOpenResumeCnt", netfuOpenResumeCnt);
+			mv.addObject("netfuScrapCnt", netfuScrapCnt);
+			mv.addObject("netfuConcernCnt", netfuConcernCnt);
 			mv.addObject("recommandRecruitList", recommandRecruitList);
 			mv.addObject("recruitSettedList", recruitSettedList);
 			mv.addObject("recruitScrapList", recruitScrapList);
@@ -103,22 +121,10 @@ public class PersonController {
 	/*
 	 * 이력서 등록
 	 */
-	@RequestMapping(value="/resumeInfoReg")
+	@RequestMapping(value="/resumeInfoReg.do")
 	public ModelAndView resumeInfoReg(CommandMap commandMap) {
 		
 		ModelAndView mv = new ModelAndView("/person/resumeInfoReg");
-		
-		return mv;
-	}
-	
-	
-	/*
-	 * 입사 지원 관리
-	 */
-	@RequestMapping(value="/personApplicationList")
-	public ModelAndView personApplicationList(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/person/personApplicationList");
 		
 		return mv;
 	}

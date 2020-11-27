@@ -3,8 +3,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="/WEB-INF/tlds/convertUtil.tld" prefix="convert" %>
+<%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert" %>
 
-<jsp:include page="/companyHeader.do" />
+<c:choose>
+	<c:when test="${SE_USER_TYPE eq 'person' }">
+		<jsp:include page="/personHeader.do" />
+	</c:when>
+	<c:otherwise>
+		<jsp:include page="/companyHeader.do" />
+	</c:otherwise>
+</c:choose>
 
 <link rel="stylesheet" type="text/css" href="/css/resume_view.css"/>
 
@@ -12,27 +21,34 @@
 	<div id="container">
 		<div id="leftPart">
 			<div id="menuTree">
-				<jsp:include page="/personInfoSubMenu.do" />
+				<c:choose>
+					<c:when test="${SE_USER_TYPE eq 'person' }">
+						<jsp:include page="/personSubMenu.do" />
+					</c:when>
+					<c:otherwise>
+						<jsp:include page="/companySubMenu.do" />
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		<div id="rightPart">
 			<div id="resume00">
 				<div id="imgArea">
-					<p><img src="/img/company_home/img00.jpeg" alt="본인사진" /></p>
+					<p><img src="/img/person.jpg" alt="본인사진" /></p>
 				</div>
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
 					<div class="tabelArea">
 						<p class="table_title">이름</p>
-						<p class="table_desc">홍길동</p>
+						<p class="table_desc">${memberMap.name }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${SE_LOGIN_ID }</p>
 						<p class="table_title">이메일</p>
-						<p class="table_desc">asdf@naver.com</p>
+						<p class="table_desc">${memberMap.email }</p>
 						<p class="table_title">휴대폰</p>
-						<p class="table_desc">010-000-0000</p>
+						<p class="table_desc">${memberMap.hphone }</p>
 						<p class="table_title">연락처</p>
-						<p class="table_desc">-</p>
+						<p class="table_desc">${memberMap.phone }</p>
 						<p class="table_title">주소</p>
-						<p class="table_desc01">[463-869] 경기 성남시 분당구 정자일로 156</p>
+						<p class="table_desc01">[${memberMap.post }] ${memberMap.address1 } ${memberMap.address2 }</p>
 					</div>
 				</div>
 			</div>
@@ -43,39 +59,50 @@
 						<tbody>
 							<tr>
 								<th>이력서 제목</th>
-								<td>소방안전원, 계측제어정비, 설계</td>
+								<td>${resumeMap.inidTitle }</td>
 							</tr>
 							<tr>
 								<th>현재상태</th>
-								<td>구직희망(미취업)</td>
+								<td>${codeConvert:getCondition(resumeMap.indiCondition)}</td>
 							</tr>
 							<tr>
 								<th>근무지역</th>
 								<td class="workPlace">
-									<p>경기도&nbsp;>&nbsp;안양시</p>
-									<p>경기도&nbsp;>&nbsp;의왕시</p>
-									<p>경기도&nbsp;>&nbsp;군포시</p>
+									<p>${resumeMap.inidArea1Name }&nbsp;
+									   ${convert:checkNull(resumeMap.inidArea2Name) eq '' ? '' : '>&nbsp;'.concat(resumeMap.inidArea2Name) }</p>
+									   ${convert:checkNull(resumeMap.inidArea3Name) eq '' ? '' : '<p>&nbsp;'.concat(resumeMap.inidArea3Name) }
+									   ${convert:checkNull(resumeMap.inidArea4Name) eq '' ? '' : '>&nbsp;'.concat(resumeMap.inidArea4Name).concat('</p>') }
+									   ${convert:checkNull(resumeMap.inidArea5Name) eq '' ? '' : '<p>&nbsp;'.concat(resumeMap.inidArea5Name) }
+									   ${convert:checkNull(resumeMap.inidArea6Name) eq '' ? '' : '>&nbsp;'.concat(resumeMap.inidArea6Name).concat('</p>') }
 								</td>
 							</tr>
 							<tr>
 								<th>직무분야</th>
-								<td>경영.기획.사무 > 총무.법무.사무 > 일반관리직</td>
+								<td>경영.기획.사무 > 총무.법무.사무 > 일반관리직 ????</td>
 							</tr>
 							<tr>
 								<th>산업분야</th>
-								<td>제조·생산·화학업>전기·전자·제어>전자</td>
+								<td>${resumeMap.inidType1Name } 
+									${convert:checkNull(resumeMap.inidType2Name) eq '' ? '' : '>'.concat(resumeMap.inidType2Name) }
+									${convert:checkNull(resumeMap.inidType3Name) eq '' ? '' : '>'.concat(resumeMap.inidType3Name) }
+									${convert:checkNull(resumeMap.inidType4Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(resumeMap.inidType4Name) }
+									${convert:checkNull(resumeMap.inidType5Name) eq '' ? '' : '>'.concat(resumeMap.inidType5Name) }
+									${convert:checkNull(resumeMap.inidType6Name) eq '' ? '' : '>'.concat(resumeMap.inidType6Name) }
+									${convert:checkNull(resumeMap.inidType7Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(resumeMap.inidType7Name) }
+									${convert:checkNull(resumeMap.inidType8Name) eq '' ? '' : '>'.concat(resumeMap.inidType8Name) }
+									${convert:checkNull(resumeMap.inidType9Name) eq '' ? '' : '>'.concat(resumeMap.inidType9Name) }</td>
 							</tr>
 							<tr>
 								<th>선택적 직무</th>
-								<td>운전전문직군</td>
+								<td>운전전문직군 ???</td>
 							</tr>
 							<tr>
 								<th>희망근무형태</th>
-								<td>정규직</td>
+								<td>${resumeMap.inidJobformName }</td>
 							</tr>
 							<tr>
 								<th>희망연봉</th>
-								<td>2,600만원 이하</td>
+								<td>${resumeMap.inidPayName }</td>
 							</tr>
 						</tbody>
 					</table>
@@ -126,7 +153,7 @@
 			<div id="resume05">
 				<div id="resForm05">
 					<h4>보유기술</h4>
-					<p>소방안전관리 및 계측제어설비정비,설계.</p>
+					<p>${resumeMap.inidMylskill eq '' ? '-' : convert:convertEnterToBr(resumeMap.inidMylskill) }</p>
 				</div>
 			</div>
 			<div id="resume06">
@@ -175,10 +202,7 @@
 			<div id="resume08">
 				<div id="resForm08">
 					<h4>자기소개서</h4>
-					<p>
-						포항소재 포스코 및 포스코ICT(자회사)에서 20년 근무경력있슴니다.<br /> 담당업무:계측설비정비 및 설계,시운전.<br />
-						퇴사후 포항소재 (주)보광테크 에서 12년근무했슴니다.<br /> 담당업무:전기,계측자재납품 및 설치,시운전<br />
-					</p>
+					<p>${resumeMap.inidIntroduce }</p>
 				</div>
 			</div>
 			<ul class="buttons">

@@ -30,18 +30,18 @@ function getNetfuCateListForSelect(type, pObj, empayTitle, selectObjId, loadingF
 }
 
 
-function getNetfuCateListForCheckbox(type, cbObjId, loadingFlag){
+function getNetfuCateListForCheckbox(type, appendObjId, objId, loadingFlag){
 	
 	if(loadingFlag) loadingOn();
 	
 	var itemHtml = "";
 	var callback = function(data){
 		
-		var cbObj = $("#"+cbObjId);
+		var cbObj = $("#"+appendObjId);
 		
 		$(cbObj).empty();
 		for(var count = 0 ; count < data.list.length ; count++){
-			itemHtml = "<span><input id='"+cbObjId+(count+1)+"' type='checkbox' name='"+cbObjId+(count+1)+"' /><label for='"+cbObjId+(count+1)+"'>"+data.list[count].name+"</label></span>";
+			itemHtml = "<span><input id='"+objId+"' type='checkbox' name='"+objId+"' value='"+data.list[count].code+"' />"+data.list[count].name+"</span>";
 			$(cbObj).append(itemHtml);
 		}
 		

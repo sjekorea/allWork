@@ -11,7 +11,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 		<title>맞춤채용정보</title>
-		<link rel="stylesheet" type="text/css" href="/css/header_personal.css" />
+		<link rel="stylesheet" type="text/css" href="/css/header_company.css" />
 		<link rel="stylesheet" type="text/css" href="/css/footer.css" />
 		<link rel="stylesheet" type="text/css" href="/css/font.css" />
 		<link rel="stylesheet" type="text/css" href="/css/reset.css" />

@@ -19,6 +19,7 @@ public class NetfuCompanyServiceImpl implements NetfuCompanyService{
 	private NetfuCompanyDao netfuCompanyDao;
 
 	
+	// 기업 정보
 	@Override
 	public Map<String, Object> selectNetfuCompanyMap(Map<String, Object> map) throws Exception {
 		return netfuCompanyDao.selectNetfuCompanyMap(map);

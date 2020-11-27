@@ -2,14 +2,172 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="netfuItemResume">
 
+
+	<!-- 최근 등록된 이력서 no -->
+	<select id="selectRecentlyResumeNo" parameterType="hashmap" resultType="int">
+		select
+		aa.no
+		from 
+		(
+			select @ROWNUM := @ROWNUM+1 AS ROWNUM, nir.no
+			from netfu_item_resume nir, (select @ROWNUM := 0) TMP
+			where 1=1
+				and uid = #{loginId}
+				and inid_secret <![CDATA[<>]]> 'yes'
+			order by wdate desc
+		) aa
+		where aa.ROWNUM = 1
+	</select>
+
 	
+	<!-- 이력서 갯수 -->
 	<select id="selectNetfuItemResumeCnt" parameterType="hashmap" resultType="int">
-		<![CDATA[
-		select count(no) cnt from netfu_item_resume 
+		select 
+			count(no) cnt
+		from netfu_item_resume
 		where 1=1
-			and uid = #{loginId}
-			and inid_secret <> 'yes'
-		]]>
+			and inid_secret <![CDATA[<>]]> 'yes'
+			<if test="loginId != null and loginId != ''">
+				and uid = #{loginId}
+			</if>
+	</select>
+	
+	
+	<!-- 이력서 리스트 -->
+	<select id="selectNetfuItemResumeList" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
+		select 
+			no
+			, uid
+			, info_type
+			, basic
+			, name
+			, inid_p_chk
+			, inid_photo
+			, inid_phone
+			, inid_hphone
+			, inid_email
+			, inid_post
+			, inid_address1
+			, inid_address2
+			, inid_home
+			, inid_title
+			, indi_condition
+			, inid_area1 , getCodeName(inid_area1) inid_area1_name
+			, inid_area2 , getCodeName(inid_area2) inid_area2_name
+			, inid_area3 , getCodeName(inid_area3) inid_area3_name
+			, inid_area4 , getCodeName(inid_area4) inid_area4_name
+			, inid_area5 , getCodeName(inid_area5) inid_area5_name
+			, inid_area6 , getCodeName(inid_area6) inid_area6_name
+			, inid_type1 , getCodeName(inid_type1) inid_type1_name
+			, inid_type2 , getCodeName(inid_type2) inid_type2_name
+			, inid_type3 , getCodeName(inid_type3) inid_type3_name
+			, inid_type4 , getCodeName(inid_type4) inid_type4_name
+			, inid_type5 , getCodeName(inid_type5) inid_type5_name
+			, inid_type6 , getCodeName(inid_type6) inid_type6_name
+			, inid_type7 , getCodeName(inid_type7) inid_type7_name
+			, inid_type8 , getCodeName(inid_type8) inid_type8_name
+			, inid_type9 , getCodeName(inid_type9) inid_type9_name
+			, inid_mylskill
+			, inid_jobform , getCodeName(inid_jobform) inid_jobform_name
+			, inid_pay , getCodeName(inid_pay) inid_pay_name
+			, inid_last_school
+			, inid_career
+			, inid_license
+			, inid_languages
+			, inid_introduce
+			, inid_secret
+			, wdate
+			, u_wdate
+			, j_wdate
+			, hit
+			, service11
+			, service12
+			, service13
+			, service101
+			, service14
+			, service15
+			, service16
+			, service17
+			, inid_sex
+			, sms_send
+			, a_insert
+		from netfu_item_resume
+		where 1=1
+			and inid_secret <![CDATA[<>]]> 'yes'
+			<if test="loginId != null and loginId != ''">
+				and uid = #{loginId}
+			</if>
+		order by ${orderField} ${orderRule}
+		limit #{start}, #{pageSize}
+	</select>
+	
+	
+	<!-- 이력서 정보 -->
+	<select id="selectNetfuItemResumeMap" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
+		select 
+			no
+			, uid
+			, info_type
+			, basic
+			, name
+			, inid_p_chk
+			, inid_photo
+			, inid_phone
+			, inid_hphone
+			, inid_email
+			, inid_post
+			, inid_address1
+			, inid_address2
+			, inid_home
+			, inid_title
+			, indi_condition
+			, inid_area1 , getCodeName(inid_area1) inid_area1_name
+			, inid_area2 , getCodeName(inid_area2) inid_area2_name
+			, inid_area3 , getCodeName(inid_area3) inid_area3_name
+			, inid_area4 , getCodeName(inid_area4) inid_area4_name
+			, inid_area5 , getCodeName(inid_area5) inid_area5_name
+			, inid_area6 , getCodeName(inid_area6) inid_area6_name
+			, inid_type1 , getCodeName(inid_type1) inid_type1_name
+			, inid_type2 , getCodeName(inid_type2) inid_type2_name
+			, inid_type3 , getCodeName(inid_type3) inid_type3_name
+			, inid_type4 , getCodeName(inid_type4) inid_type4_name
+			, inid_type5 , getCodeName(inid_type5) inid_type5_name
+			, inid_type6 , getCodeName(inid_type6) inid_type6_name
+			, inid_type7 , getCodeName(inid_type7) inid_type7_name
+			, inid_type8 , getCodeName(inid_type8) inid_type8_name
+			, inid_type9 , getCodeName(inid_type9) inid_type9_name
+			, inid_mylskill
+			, inid_jobform , getCodeName(inid_jobform) inid_jobform_name
+			, inid_pay , getCodeName(inid_pay) inid_pay_name
+			, inid_last_school
+			, inid_career
+			, inid_license
+			, inid_languages
+			, inid_introduce
+			, inid_secret
+			, wdate
+			, u_wdate
+			, j_wdate
+			, hit
+			, service11
+			, service12
+			, service13
+			, service101
+			, service14
+			, service15
+			, service16
+			, service17
+			, inid_sex
+			, sms_send
+			, a_insert
+		from netfu_item_resume
+		where 1=1
+			<if test="loginId != null and loginId != ''">
+				and uid = #{loginId}
+			</if>
+			<if test="no != null and no != ''">
+				and no = #{no}
+			</if>
 	</select>
 
 

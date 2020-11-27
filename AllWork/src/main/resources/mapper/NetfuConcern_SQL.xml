@@ -8,9 +8,12 @@
 		from netfu_concern nc, netfu_item_company nic
 		where 1=1
 			and nc.uid = #{loginId}
-			and nic.no = #{no}
-			and r_uid = nic.uid
+			<if test="no != null and no != ''">
+				and nic.no = #{no}
+			</if>
+			and nc.r_uid = nic.uid
 	</select>
+
 
 	<!-- 관심기업 수 -->
 	<select id="selectNetfuConcernCnt" parameterType="hashmap" resultType="int">
@@ -19,8 +22,8 @@
 		(
 			select
 				nco.uid
-				, count(nic.no) cnt
 				, nco.biz_name
+				, nc.r_uid
 			from netfu_concern nc, netfu_item_company nic, netfu_company nco
 			where 1=1
 				and nc.uid = #{loginId}
@@ -28,9 +31,7 @@
 				and nc.sub_type = 'company'
 				and nc.r_uid = nco.uid
 				and nc.r_uid = nic.uid
-				and nic.biz_ing != 'yes'
-				and biz_end_day >= CURRENT_TIMESTAMP()
-			group by nic.uid, nco.biz_name
+			group by nc.uid, nco.biz_name, nc.r_uid
 		) a
 	</select>
 	
@@ -38,9 +39,11 @@
 	<!-- 관심기업 목록 -->
 	<select id="selectNetfuConcernList" parameterType="hashmap" resultType="allwork.vo.NetfuConcernVo">
 		select
-			nco.uid
-			, count(nic.no) cnt
+			nc.uid
 			, nco.biz_name
+			, nc.r_uid
+			, sum(if((nic.biz_ing <![CDATA[<>]]> 'yes' and nic.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()), 1, 0)) biz_ing_cnt
+			, sum(if((nic.biz_ing = 'yes' or nic.biz_end_day <![CDATA[<]]> CURRENT_TIMESTAMP()), 1, 0)) biz_not_ing_cnt
 		from netfu_concern nc, netfu_item_company nic, netfu_company nco
 		where 1=1
 			and nc.uid = #{loginId}
@@ -48,14 +51,12 @@
 			and nc.sub_type = 'company'
 			and nc.r_uid = nco.uid
 			and nc.r_uid = nic.uid
-			and nic.biz_ing != 'yes'
-			and biz_end_day >= CURRENT_TIMESTAMP()
-		group by nic.uid, nco.biz_name
+		group by nc.uid, nco.biz_name, nc.r_uid
 	</select>
 	
 
 	<!-- 관심기업 채용정보 수 -->
-	<select id="selectNetfuConcernRecruntCnt" parameterType="hashmap" resultType="int">
+	<select id="selectNetfuConcernRecruitCnt" parameterType="hashmap" resultType="int">
 		select count(uid) cnt from netfu_concern
 		where 1=1
 			and type = 'job'
@@ -65,8 +66,10 @@
 	</select>
 	
 	
+	
 	<!-- 관심기업 채용정보 -->
 	<select id="selectNetfuConcernRecruitList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
+		<![CDATA[
 		select 	
 			ns.no_to, nic.no, nic.uid, nic.biz_name, nic.biz_title
 			, nic.biz_pay, getCodeName(nic.biz_pay) biz_pay_name ### 급여정보
@@ -90,7 +93,9 @@
 			and date_add(ns.wdate, interval '3' month) > sysdate()
 		order by u_wdate desc 
 		LIMIT #{start}, #{pageSize}	
+		]]>
 	</select>
+	
 	
 	<!-- 관심기업 채용정보 등록 -->
 	<insert id="insertNetfuConcern" parameterType="hashmap">
