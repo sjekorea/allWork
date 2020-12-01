@@ -1,5 +1,6 @@
 package allwork.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -10,12 +11,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+
 import allwork.common.CommandMap;
+import allwork.common.util.CodeConvertUtil;
+import allwork.common.util.ConvertUtil;
 import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuItemResumeService;
 import allwork.service.NetfuMemberService;
 import allwork.service.NetfuOnlineRecruitService;
 import allwork.service.NetfuScrapService;
+import de.ailis.pherialize.Mixed;
+import de.ailis.pherialize.MixedArray;
+import de.ailis.pherialize.Pherialize;
 
 @Controller
 public class ResumeController {
@@ -93,18 +101,42 @@ public class ResumeController {
 			commandMap.put("toUid", commandMap.get("personUid"));
 			commandMap.put("toNo", commandMap.get("resumeNo"));
 			commandMap.put("toType", "interview");
-			int concernCnt = netfuOnlineRecruitService.selectNetfuOnlineRecruitRegistCnt(commandMap.getMap());
+			int interviewCnt = netfuOnlineRecruitService.selectNetfuOnlineRecruitRegistCnt(commandMap.getMap());
 			
 			// 등록 채용정보 갯수
 			commandMap.put("uid", commandMap.get("companyUid"));
-			int resumeCnt = netfuItemCompanyService.selectNetfuItemCompanyCnt(commandMap.getMap());
+			int recruitCnt = netfuItemCompanyService.selectNetfuItemCompanyCnt(commandMap.getMap());
 			
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("memberMap", memberMap);
 			mv.addObject("resumeMap", resumeMap);
+			
+			/*
+			String lastSchool = (String)resumeMap.get("inidLastSchool");
+			
+			
+			MixedArray list = new MixedArray();
+			
+			//list = Pherialize.unserialize(lastSchool).toArray();
+			
+			String[] lastSchoolArr;
+			//Map<String, Object> inidLastSchoolMap = new HashMap<String, Object>();
+			if(!"".equals(ConvertUtil.checkNull(lastSchool)) && lastSchool.length() > 0){
+				lastSchoolArr = lastSchool.split("____");
+				System.out.println("lastSchoolArr =======> "+lastSchoolArr.length);
+				if(lastSchoolArr.length > 1){
+					System.out.println("lastSchoolArr =======> "+lastSchoolArr[1].length());
+					Mixed mixed = ConvertUtil.unserializeString(lastSchoolArr[1]);
+					System.out.println("mixed =======> "+mixed.toString());
+					list = ConvertUtil.unserializeString(lastSchoolArr[1]).toArray();
+				}
+			}
+			
+			System.out.println("inidLastSchoolMap =======> \n"+list.toString());*/
+			
 			mv.addObject("scrapCnt", scrapCnt);
-			mv.addObject("concernCnt", concernCnt);
-			mv.addObject("resumeCnt", resumeCnt);
+			mv.addObject("interviewCnt", interviewCnt);
+			mv.addObject("recruitCnt", recruitCnt);
 			
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".resumeDetail Exception !!!!! \n"+e.toString());

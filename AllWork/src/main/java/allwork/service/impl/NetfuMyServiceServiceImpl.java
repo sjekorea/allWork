@@ -32,6 +32,18 @@ public class NetfuMyServiceServiceImpl implements NetfuMyServiceService{
 		return netfuMyServiceDao.selectMyServiceRecruitList(map);
 	}
 	
+	// 맞춤 인재 정보  검색 Count
+	@Override
+	public int selectMyServiceResumeCnt(Map<String, Object> map) throws Exception {
+		return netfuMyServiceDao.selectMyServiceResumeCnt(map);
+	}
+	
+	// 맞춤 인재 정보  목록 
+	@Override
+	public List<Map<String, Object>> selectMyServiceResumeList(Map<String, Object> map) throws Exception {
+		return netfuMyServiceDao.selectMyServiceResumeList(map);
+	}
+	
 	// 맞춤 정보 설정 정보
 	@Override
 	public Map<String, Object> selectNetfuMyServiceMap(Map<String, Object> map) throws Exception {

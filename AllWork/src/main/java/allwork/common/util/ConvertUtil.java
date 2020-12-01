@@ -10,6 +10,8 @@ import java.nio.charset.CodingErrorAction;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.ailis.pherialize.Mixed;
+
 
 public class ConvertUtil {
 	
@@ -214,6 +216,50 @@ public class ConvertUtil {
             }
         }
         return count;
+    }
+    
+    
+    // 나이 계산
+    public static String calcAge(String birth){
+    	String rtnStr = "";
+    	
+    	try{
+    		if(!"".equals(ConvertUtil.checkNull(birth))){
+        		if(birth.length() > 4){
+        			int thisYear = DateUtil.int_thisYear();
+        			int compareYear = Integer.parseInt(birth.substring(0, 4));
+        			
+        			rtnStr = String.valueOf((thisYear - compareYear)+1)+"세";
+        		}
+        	}
+    	}catch(Exception e){
+    		System.out.println("ConvertUtil.calcAge Exceptoin!!!!! \n"+e.toString());
+    	}
+    	
+    	return rtnStr;
+    	
+    }
+    
+    
+    public static Mixed unserializeString(String serializeData)
+    {
+    int pos = 0;
+    int length = 0;
+
+        pos = serializeData.indexOf(':', pos + 2);
+        length = Integer.parseInt(serializeData.substring(pos + 2, pos));
+        
+        int startPos = pos+2;
+        int lastEndPos = pos+2+length;
+    	String original = serializeData.substring(startPos, lastEndPos);
+    	// BigChar means characters occupy more than one byte
+    	//e.g. Chinese characters. The length defined in serialization are for byte (one Chinese character use more than one byte), but the "charAt" function is for codePoint(one Chinese character is on codePoint)
+    	// Actually, this is not the exact number of bigchar because in some encoding, one Character need 3 or more bytes. But for solving this issue, this doesn't matter.
+    	int numberOfBigChar = original.getBytes().length - length; 
+    	String actual = serializeData.substring(startPos, lastEndPos-numberOfBigChar);
+    	
+        pos = pos + length + 4 - numberOfBigChar;
+        return new Mixed(actual);
     }
 	
 }

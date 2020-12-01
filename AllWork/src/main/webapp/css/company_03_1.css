@@ -1,142 +1,111 @@
 body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 /*###################################   containerWrap  ###################################*/
-#containerWrap{width:1280px;margin: 20px auto 100px;overflow: hidden;}
+#containerWrap{width:1000px;margin: 20px auto 100px;overflow: hidden;}
 
 /*현재페이지 언더라인  ###################################*/
 #menuTree ul .subMenu .subMenu01{text-decoration: underline;}
 
 /*###################################   rightpart   ###################################*/
-#rightPart{width:1060px;margin-left:20px;float: left;}
+#rightPart{width:790px;margin-left:10px;float: left;}
 
 /*###################################   part01/추천인재  ###################################*/
-#part01{width:1060px;height:250px;margin-bottom:20px;}
-#part01 ul.adPart{width:1060px;height:100%;}
-#part01 ul.adPart li{width:250px;height:250px;background-color: #fff;
-  border: 1px solid #ccc;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  margin-right:19px;float: left;}
-#part01 ul.adPart li:last-child{margin-right:0;}
+#part01{width:790px;overflow:hidden;margin-bottom:20px;}
+#part01 ul.adPart{width:800px;height:100%;}
+#part01 ul.adPart li{width:190px;height:190px;background-color: #fff;border: 1px solid #ccc;margin-right:9px;float: left;}
 #part01 ul.adPart li a{display: block;width:100%;height:100%;overflow: hidden;}
-#part01 ul.adPart li a div{width:208px;height:208px;padding:20px;}
-#part01 ul.adPart li a div p{width:100%;font-size:20px;padding-bottom:20px;}
-#part01 ul.adPart li a div .star{text-align: right;color:#eee;}
-#part01 ul.adPart li a div .desc01{font-size:14px;padding-bottom:10px;}
+#part01 ul.adPart li a div{width:190px;height:190px;padding:12px;}
+#part01 ul.adPart li a div p{width:100%;font-size:20px;padding-bottom:5px;}
+#part01 ul.adPart li a div .star{text-align: right;color:#eee;font-size:16px;}
+#part01 ul.adPart li a div .desc01{font-size:14px;}
 #part01 ul.adPart li a div .desc02{font-size:10px;color:#4F60E3;}
-#part01 ul.adPart li a div .desc03{font-size:16px;font-family:"NotoSansKR-Bold"; }
+#part01 ul.adPart li a div .desc03{font-size:14px;font-family:"NotoSansKR-Bold";}
 #part01 ul.adPart li a div .desc04{font-size:10px;color:#999;}
 
               #part01 ul li:hover{border: 1px solid #4F60E3;}
 
 /*###################################   part02/검색  ###################################*/
-#part02{width:1060px;margin-top:10px;overflow: hidden;}
-#part02 form{width:1060px;height:70px;}
+#part02{width:790px;margin-top:10px;overflow: hidden;}
+#part02 form{width:790px;height:70px;}
 #part02 form fieldset{border:none;}
 #part02 form fieldset legend{display: none;}
 #part02 form fieldset div{width:100%;height:20px;margin-bottom:10px;}
-#part02 form fieldset div input{width:20px;height:20px;}
-#part02 form fieldset div label{font-size:14px;padding-left:10px;padding-right:30px;vertical-align:top;}
-#part02 form fieldset p{float: left;width:310px;height:40px;background-color: #fff;
-  border:1px solid #999;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;}
-#part02 form fieldset p input{border:none;width:308px;height:38px;text-indent: 10px;}
-#part02 form fieldset p.btnBox{width: 128px;height:40px;border:none;}
-#part02 form fieldset p.btnBox input{width: 128px;height:40px;background-color:#4F60E3;color:#fff;font-size:16px;}
+#part02 form fieldset div input{width:16px;height:16px;}
+#part02 form fieldset div label{font-size:14px;padding-left:10px;padding-right:20px;vertical-align:top;}
+#part02 form fieldset p{float: left;width:230px;height:40px;background-color: #fff;border:1px solid #999;}
+#part02 form fieldset p input{border:none;width:100%;height:100%;padding:10px;}
+#part02 form fieldset p input::placeholder{color:#ccc;}
+#part02 form fieldset p.btnBox{width:100px;height:40px;border:none;}
+#part02 form fieldset p.btnBox input{width:100%;height:100%;background-color:#4F60E3;color:#fff;font-size:16px;}
 
 /*###################################   part03/상세검색  ###################################*/
-#part03{width:1060px;margin-top:10px;overflow: hidden;}
-#row01{width:1059px;text-indent:20px;line-height:50px;background-color:#fff;
-  border-top:1px solid #ccc;
-  border-left:1px solid #ccc;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  float:left;}
-#row01 dl{width:211px;
-  border-right:1px solid #ccc;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  float:left;}
-#row01 dl dt{width:100%;height:50px;background-color:#eee;
-  border-bottom:1px solid #ccc;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-#row01 dl dd{width:100%;height: 280px;overflow:scroll;}
-#row01 dl dd div{width:100%;height: 100%;}
-#row01 dl dd div ul{width:100%;height: 100%;}
-#row01 dl dd div ul li{width:100%;height:30px;}
-#row01 dl dd div ul li input{display: block;width: 100%;height:30px;line-height: 30px;border:none;background-color:#fff;
+/*############  1열  ########################*/
+#part03{width:790px;margin-top:10px;overflow: hidden;}
+#row01{width:790px;text-indent:20px;line-height:50px;background-color:#fff;border-top:1px solid #ccc;border-left:1px solid #ccc;float:left;}
+#row01 .tab{width:100%;height:50px;background-color:#43425D;border-bottom:1px solid #ccc;}
+#row01 .tab li{width:160px;height:100%;border-right:1px solid #ccc;float:left;}
+#row01 .tab li a{display:block;width:100%;height:100%;color:#fff;}
+#row01 .tab li:last-child{width:149px;}
+
+#row01 .descArea{width:100%;height:200px;}
+#row01 .descArea ul{width:160px;height:100%;border-right:1px solid #ccc;float:left;overflow:scroll;}
+#row01 .descArea ul li{width:100%;height:30px;}
+#row01 .descArea ul li input{display: block;width: 100%;height:30px;line-height: 30px;border:none;background-color:#fff;
                              text-align:left;text-indent:20px;font-size:14px;}
 
-                             #row01 dl:last-child{width:214px;}
+            #row01 .descArea ul:last-child{width:149px;}
+            #row01 .tab li:hover{background-color:#000;}
 
-#row02{width:1058px;text-indent:20px;line-height:49px;background-color:#fff;
-  border-top:1px solid #ccc;
-  border-left:1px solid #ccc;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  float:left;}
-#row02 dl{width:210px;
-  border-right:1px solid #ccc;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  float:left;}
-#row02 dl dt{width:100%;height:48px;background-color:#eee;
-  border-bottom:1px solid #ccc;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-#row02 dl dd{width:100%;height: 280px;overflow:scroll;}
-#row02 dl dd div{width:100%;height: 100%;}
-#row02 dl dd div ul{width:100%;height: 100%;}
-#row02 dl dd div ul li{width:100%;height:30px;}
-#row02 dl dd div ul li input{display: block;width: 100%;height:30px;line-height: 30px;border:none;background-color:#fff;
-                             text-align:left;text-indent:20px;font-size:14px;}
+            #row01 .descArea ul li input:hover{color:#4F60E3;}
+/*### 버튼 on
+            #row01 .descArea ul li input.on{background-color:#eee;}*/
+/*############  2열  ########################*/
+#row02{width:790px;text-indent:20px;line-height:50px;background-color:#fff;border-top:1px solid #ccc;border-left:1px solid #ccc;float:left;}
+#row02 .tab{width:100%;height:50px;background-color:#43425D;border-bottom:1px solid #ccc;}
+#row02 .tab li{width:160px;height:100%;border-right:1px solid #ccc;float:left;}
+#row02 .tab li a{display:block;width:100%;height:100%;color:#fff;}
+#row02 .tab li:last-child{width:149px;}
 
-                          #row02 dl:last-child{width:217px;}
-                          #row02 dd{display: none;}
+#row02 .descArea{width:100%;height:200px;}
+#row02 .descArea ul{width:160px;height:100%;border-right:1px solid #ccc;float:left;overflow:scroll;}
+#row02 .descArea ul li{width:100%;height:30px;}
+#row02 .descArea ul li input{display: block;width: 100%;height:30px;line-height: 30px;border:none;background-color:#fff;
+                            text-align:left;text-indent:20px;font-size:14px;}
 
+            #row02 .descArea ul:last-child{width:149px;}
+            #row02 .tab li:hover{background-color:#000;}
+            #row02 .tab li:last-child:hover{background-color:#eee;}
+/*#####  2열 안보이게  #####*/ #row02 .descArea{display:none;}
 
-/*###################################   listpart   ###################################*/
+/*###################################   listpart 인재정보   ###################################*/
 #listPart{width:100%;margin-top: 40px;overflow: hidden;font-size: 14px;}
 #listPart h4{width:100%;font-size:18px;text-indent:40px;margin-bottom: 10px;}
-#listPart .title{width:1060px;height:40px;line-height: 40px;background-color:#fff;color:#333;text-align: center;border-bottom:1px solid #000;}
+#listPart .title{width:790px;height:40px;line-height: 40px;background-color:#fff;color:#333;text-align: center;border-bottom:1px solid #000;}
 #listPart .title li{float:left;}
-#listPart .title li.desc01{width:180px;}
-#listPart .title li.desc02{width:420px;}
-#listPart .title li.desc03{width:160px;text-align: left;}
-#listPart .title li.desc04{width:160px;text-align: left;}
-#listPart .title li.desc05{width:100px;}
+#listPart .title li.desc01{width:120px;}
+#listPart .title li.desc02{width:350px;}
+#listPart .title li.desc03{width:100px;}
+#listPart .title li.desc04{width:120px;}
+#listPart .title li.desc05{width:80px;}
 
-
-
-
-#listPart .list{width:100%;overflow: hidden;background-color:#fff;}
-#listPart .list li{width:1058px;height:148px;border:1px solid #fff;border-bottom:1px solid #ccc;}
+#listPart .list{width:100%;overflow: hidden;background-color:#fff;text-align: center;}
+#listPart .list li{width:790px;height:150px;border:1px solid #fff;border-bottom:1px solid #ccc;}
 #listPart .list li a{display: block;width: 100%;height: 100%;overflow: hidden;}
 
         #listPart .list li:hover{border:1px solid #4F60E3;}
 
-#listPart .list li a p{height:100px;float:left;font-size: 16px;padding-top:50px;line-height: 24px;}
-#listPart .list li a .desc00{width:180px;text-align: center;}
-#listPart .list li a .desc01{width:420px;}
-#listPart .list li a .desc02{width:160px;}
-#listPart .list li a .desc03{width:160px;}
-#listPart .list li a .date{width:100px;line-height:58px;text-align: center;}
+#listPart .list li a p{height:100px;float:left;font-size:14px;padding-top:50px;line-height: 24px;}
+#listPart .list li a .desc00{width:120px;text-align: center;}
+#listPart .list li a .desc01{width:350px;text-align: left;}
+#listPart .list li a .desc02{width:100px;}
+#listPart .list li a .desc03{width:120px;}
+#listPart .list li a .date{width:80px;line-height:58px;}
 
-#listPart .numareaWrap{width:100%;overflow: hidden;background-color:#fff;}
+#listPart .numareaWrap{width:100%;padding-bottom:30px;overflow: hidden;background-color:#fff;}
 #listPart .numArea{width:360px;height:30px;line-height:28px;padding-top:30px;padding-bottom:30px;text-align: center;margin:0 auto;}
-#listPart .numArea li{width:28px;height:28px;border:1px solid #ccc;float:left;}
+#listPart .numArea li{width:28px;height:28px;border:1px solid #fff;float:left;}
 #listPart .numArea li a{color:#ccc;}
 
-                #listPart .numArea li:hover{border: 1px solid #666;}
+                #listPart .numArea li:hover{border: 1px solid #ccc;}
                 #listPart .numArea li:hover a{color:#666;}
 
 #listPart .numArea .p01{border: 1px solid #666;}

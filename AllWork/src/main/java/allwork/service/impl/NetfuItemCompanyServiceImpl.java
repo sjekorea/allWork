@@ -44,22 +44,15 @@ public class NetfuItemCompanyServiceImpl implements NetfuItemCompanyService{
 	public List<Map<String, Object>> selectNetfuItemCompanyListByCompany(Map<String, Object> map) throws Exception {
 		return netfuItemCompanyDao.selectNetfuItemCompanyListByCompany(map);
 	}
+	
+	// 진행중인 채용공고-selectbox용
+	@Override
+	public List<Map<String, Object>> selectNetfuItemCompanyProceess(Map<String, Object> map) throws Exception {
+		return netfuItemCompanyDao.selectNetfuItemCompanyProceess(map);
+	}
 
 	@Override
 	public Map<String, Object> selectNetfuItemCompanyMap(Map<String, Object> map) throws Exception {
 		return netfuItemCompanyDao.selectNetfuItemCompanyMap(map);
 	}
-	
-	// 맞춤 채용 정보 Count
-	@Override
-	public int selectRecruitSettedCnt(Map<String, Object> map) throws Exception {
-		return netfuItemCompanyDao.selectRecruitSettedCnt(map);
-	}
-	
-	// 맞춤 채용 정보 목록 
-	@Override
-	public List<Map<String, Object>> selectRecruitSettedList(Map<String, Object> map) throws Exception {
-		return netfuItemCompanyDao.selectRecruitSettedList(map);
-	}
-
 }

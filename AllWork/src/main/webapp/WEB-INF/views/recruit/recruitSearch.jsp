@@ -248,7 +248,7 @@
 					break;
 				case 1 : 
 					$("#orderField").val("u_wdate");
-					orderRuleUdate = (orderRuleUdate == "desc") ? "" : "desc";
+					orderRuleUwdate = (orderRuleUwdate == "desc") ? "" : "desc";
 					$("#orderRuleUwdate").val(orderRuleUwdate);
 					$("#orderRule").val(orderRuleUwdate);
 					break;

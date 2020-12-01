@@ -30,7 +30,7 @@
 </head>
 
 <body>
-	<div id="progress_barWrap">
+	<div id="progress_barWrap" style="display:none;">
 		<p id="progress_bar">
 			<img src="/img/main/loading_circle.gif" alt="로딩이미지"/>
 		</p>
@@ -170,6 +170,7 @@
 				
 			}else{
 				alert("ID, 비밀번호를 확인하세요.");
+				loadingOff();
 			}
 		};
 		var param = {

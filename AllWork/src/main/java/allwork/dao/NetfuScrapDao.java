@@ -11,14 +11,25 @@ import allwork.common.dao.AbstractDAO;
 public class NetfuScrapDao extends AbstractDAO{
 	
 	// 스크랩한 채용 정보  갯수
-	public int selectNetfuScrapCnt(Map<String, Object> map) throws Exception{
-		return selectCnt("netfuScrap.selectNetfuScrapCnt", map);
+	public int selectRecruitScrapCnt(Map<String, Object> map) throws Exception{
+		return selectCnt("netfuScrap.selectRecruitScrapCnt", map);
 	}
 	
 	// 스크랩한 채용 정보 목록
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectNetfuScrapList(Map<String, Object> map) {
-		return (List<Map<String, Object>>)selectList("netfuScrap.selectNetfuScrapList", map);
+	public List<Map<String, Object>> selectRecruitScrapList(Map<String, Object> map) {
+		return (List<Map<String, Object>>)selectList("netfuScrap.selectRecruitScrapList", map);
+	}
+	
+	// 스크랩한 이력서 정보  갯수
+	public int selectResumeScrapCnt(Map<String, Object> map) throws Exception{
+		return selectCnt("netfuScrap.selectResumeScrapCnt", map);
+	}
+	
+	// 스크랩한 이력서 정보 목록
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectResumeScrapList(Map<String, Object> map) {
+		return (List<Map<String, Object>>)selectList("netfuScrap.selectResumeScrapList", map);
 	}
 	
 	// 스크랩 여부

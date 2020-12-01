@@ -1,7 +1,8 @@
 package allwork.vo;
 
 public class NetfuItemResumeVo {
-
+	
+	private int noTo;
 	private int no;
 	private String uid;
 	private int infoType;
@@ -74,8 +75,29 @@ public class NetfuItemResumeVo {
 	private String inidSex;
 	private String smsSend;
 	private String aInsert;
+	private String birth;
+	private String sex;
 	
 	
+	
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getBirth() {
+		return birth;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+	public int getNoTo() {
+		return noTo;
+	}
+	public void setNoTo(int noTo) {
+		this.noTo = noTo;
+	}
 	public int getNo() {
 		return no;
 	}

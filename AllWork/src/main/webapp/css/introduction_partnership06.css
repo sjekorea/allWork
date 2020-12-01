@@ -5,10 +5,10 @@
 #containerWrap{width:1920px;height:2000px;margin:0 auto;
 background-image:url("img/introduction_background.jpg");
 background-repeat: no-repeat;}*/
-#container{width: 1280px;margin:0 auto 100px;overflow: hidden;padding-bottom:500px;}
+#container{width: 1000px;margin:0 auto 100px;overflow: hidden;padding-bottom:500px;}
 #intro_menuTree ul .subMenu06{text-decoration: underline;}
 
-#rightPart{padding-top:140px;width:1080px;overflow: hidden;text-align: center;}
+#rightPart{padding-top:140px;width:800px;overflow: hidden;text-align: center;}
 #rightPart .icon{width:100%;font-size:50px;color:#ccc;}
 #rightPart .title{font-size:26px;padding-bottom:30px;}
 #rightPart .desc{font-size:14px;color:#666;line-height: 22px;}

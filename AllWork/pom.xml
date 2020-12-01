@@ -302,7 +302,11 @@
 		    <version>1.9</version>
 		</dependency>
 		
-		
+		<dependency>	
+		    <groupId>com.xk72</groupId>
+		    <artifactId>pherialize</artifactId>
+		    <version>1.2.4</version>
+		</dependency>
 		    
 	</dependencies>
     <build>

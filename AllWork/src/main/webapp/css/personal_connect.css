@@ -1,78 +1,61 @@
 body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 
 /*###################################   containerWrap  ###################################*/
-    #containerWrap{width:100%;overflow: hidden;}
-    #container{width:1280px;overflow: hidden;margin:10px auto 80px;}
+  #containerWrap{width:100%;overflow: hidden;margin:20px 0 100px;}
+  #container{width:1000px;margin:0 auto;}
 
-    #menuTree ul .menu05 .subMenu05_01{text-decoration: underline;}
+  /*현재메뉴 언더라인*/
+  #menuTree ul .menu05 .subMenu05_01{text-decoration: underline;}
 
 /*###################################   res_rightPart   ###################################*/
-#rightPart{width:1060px;height:100%;margin:20px 0 20px 20px;overflow: hidden;background-color:#fff;
-  border:1px solid #ccc;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  float:left;}
+#rightPart{width:790px;height:100%;margin-left:10px;overflow: hidden;background-color:#fff;border:1px solid #ccc;float:left;padding:40px;}
 
-  #detailArea{width:960px;margin:30px auto;font-size: 14px;}
-  #detailArea h4{width:100%;height:50px;font-size:18px;}
-  #detailArea .delete{margin-left:840px;width:120px;height:40px;margin-top:10px;line-height:38px;text-align:center;
-   margin-bottom:5px;
-    border:1px solid #000;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  float: left;}
-    #detailArea .tableArea{width:100%;text-indent:20px;overflow: hidden;border-top:1px solid #999;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;}
+  #detailArea{width:710px;margin:0px auto;font-size: 14px;}
+  #detailArea h4{width:200px;height:50px;line-height:50px;font-size:18px;float: left;}
+  #detailArea .delete{margin-left:390px;width:120px;height:40px;margin-top:10px;line-height:38px;text-align:center;margin-bottom:5px;border:1px solid #000;float:left;}
+    #detailArea .tableArea{width:100%;text-indent:20px;overflow: hidden;border-top:1px solid #999;}
     #detailArea .tableArea p{float: left;}
-    #detailArea .tableArea .table_title{width:120px;height:39px;line-height:40px;border-bottom:1px solid #999;background-color:#EDF0F5;color:#000;}
-    #detailArea .tableArea .table_desc{width:200px;height:39px;line-height:40px;border-bottom:1px solid #999;color:#333;}
-    #detailArea .tableArea .table_desc01{width:840px;}
+    #detailArea .tableArea .table_title{width:100px;height:39px;line-height:40px;border-bottom:1px solid #999;background-color:#EDF0F5;color:#000;}
+    #detailArea .tableArea .table_desc{width:136px;height:39px;line-height:40px;border-bottom:1px solid #999;color:#333;}
+    #detailArea .tableArea .table_desc01{width:610px;}
 
     /*###################################   listpart   ###################################*/
-    #listPart{width:960px;margin: 30px auto 0;overflow: hidden;font-size: 14px;}
+    #listPart{width:710px;margin: 30px auto 0;overflow: hidden;font-size: 14px;}
     #listPart .listTitle{width:140px;height:40px;line-height:60px;font-size:12px;float: left;}
-    #align{margin-left: 700px;width:120px;height:40px;text-indent:10px;float: left;margin-bottom:5px;}
+    #align{margin-left:450px;width:120px;height:40px;text-indent:10px;float: left;margin-bottom:5px;}
 
+    /*###################################   리스트 내용먼저 잡음   ###################################*/
     #listPart .list{width:100%;border-top:1px solid #999;overflow: hidden;}
     #listPart .list li{width:100%;height:150px;border-bottom:1px solid #ccc;}
     #listPart .list li a{display: block;width: 100%;height: 100%;overflow: hidden;}
 
             #listPart .list li a:hover{background-color: #F4F8FC;}
 
-    #listPart .list li a .title{width:200px;height: 100%;line-height:150px;text-align:center;font-size: 16px;float:left;}
-    #listPart .list li a .desc{width:540px;height:100%;float:left;padding-top:35px;}
-      #listPart .list li a .desc .desc0{width:100%;font-size: 16px;padding-bottom: 15px;float:left;}
-      #listPart .list li a .desc .desc1{width:220px;float:left;color:#666;}
-      #listPart .list li a .desc .desc2{width:80px;float:left;color:#666;}
-      #listPart .list li a .desc .desc3{width:240px;float:left;color:#666;}
+    #listPart .list li a .title{width:180px;height: 100%;line-height:150px;text-align:center;font-size:14px;float:left;}
+    #listPart .list li a .desc{width:350px;height:100%;float:left;padding-top:35px;}
+      #listPart .list li a .desc .desc0{width:100%;font-size:14px;padding-bottom: 15px;float:left;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+      #listPart .list li a .desc .desc1{width:150px;float:left;color:#666;}
+      #listPart .list li a .desc .desc2{width:60px;float:left;color:#666;}
+      #listPart .list li a .desc .desc3{width:120px;float:left;color:#666;}
 
-    #listPart .list li a .deadline{width:120px;height:40px;margin: 55px 50px;line-height:40px;text-align:center;float:left;font-size:14px;}
+    #listPart .list li a .deadline{width:100px;height:40px;margin: 55px 40px;line-height:40px;text-align:center;float:left;font-size:12px;}
       #listPart .list li a .deadline00{background-color: #4F60E3;color:#fff;}
       #listPart .list li a .deadline01{background-color: #000;color:#fff;}
       #listPart .list li a .deadline02{background-color: #E0F1FF;color:#333;}
 
-
+      /*###################################   리스트 타이틀  ###################################*/
       #listPart .list .list_title{width:100%;height:50px;background-color:#EDF0F5;}
       #listPart .list .list_title div{float:left;line-height:50px;text-align: center;}
-      #listPart .list .list_title .desc01{width:200px;height:100%;}
-      #listPart .list .list_title .desc02{width:540px;height:50px;text-align:center;line-height:50px;padding-top:0px;}
-      #listPart .list .list_title .desc03{width:220px;height:100%;}
+      #listPart .list .list_title .desc01{width:180px;height:100%;}
+      #listPart .list .list_title .desc02{width:350px;height:50px;text-align:center;line-height:50px;padding-top:0px;}
+      #listPart .list .list_title .desc03{width:180px;height:100%;}
 
       .numareaWrap{width:100%;overflow: hidden;background-color:#fff;}
-      .numArea{width:30px;height:30px;line-height:28px;padding-top:30px;padding-bottom:30px;text-align: center;margin:0 auto;}
-      .numArea li{width:30px;height:30px;
-        border:1px solid #ccc;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        float:left;}
+      .numArea{width:360px;height:30px;line-height:28px;padding-top:30px;padding-bottom:30px;text-align: center;margin:0 auto;}
+      .numArea li{width:30px;height:30px;border:1px solid #fff;float:left;}
       .numArea li a{color:#ccc;}
 
-                    .numArea li:hover{border: 1px solid #666;}
+                    .numArea li:hover{border: 1px solid #ccc;}
                     .numArea li:hover a{color:#666;}
 
       .numArea .p01{border: 1px solid #666;}

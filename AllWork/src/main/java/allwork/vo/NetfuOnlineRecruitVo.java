@@ -28,10 +28,36 @@ public class NetfuOnlineRecruitVo {
 	private String bizEndDay;
 	private String companyUid;
 	private String personUid;
+	private String pChk;
+	private String photo;
+	private String name;
+	private String inidSecret;
 	
 	
-	
-	
+	public String getInidSecret() {
+		return inidSecret;
+	}
+	public void setInidSecret(String inidSecret) {
+		this.inidSecret = inidSecret;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getpChk() {
+		return pChk;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setpChk(String pChk) {
+		this.pChk = pChk;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 	public String getPersonUid() {
 		return personUid;
 	}

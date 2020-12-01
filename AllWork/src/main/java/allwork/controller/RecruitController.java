@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import allwork.common.CommandMap;
+import allwork.common.util.CommonColumnUtil;
 import allwork.common.util.ConvertUtil;
 import allwork.common.util.PaginationUtil;
 import allwork.service.NetfuCompanyService;
@@ -58,12 +59,14 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "wdate");
+				commandMap.put("orderField", "nic.wdate");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);
+			
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
 			// 채용정보 검색 리스트
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
@@ -98,7 +101,7 @@ public class RecruitController {
 		return mv;
 	}
 	
-
+	
 	/*
 	 * 채용정보 상세
 	 */
@@ -110,6 +113,7 @@ public class RecruitController {
 		try{
 			
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
 			// 기업정보 select
 			commandMap.put("uid", commandMap.get("companyUid"));
@@ -148,15 +152,45 @@ public class RecruitController {
 	}
 	
 
-	
-
 	/*
 	 * 진행중인 채용정보
 	 */
 	@RequestMapping(value="/recruitListProgress.do")
-	public ModelAndView recruitListProgress(CommandMap commandMap) {
+	public ModelAndView recruitListProgress(CommandMap commandMap, HttpSession session) {
 		
 		ModelAndView mv = new ModelAndView("/recruit/recruitListProgress");
+		
+		int pageSize = 10;
+		int totalSize = 0;
+		
+		try{
+				
+			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
+				commandMap.put("pageNo", "1");
+				commandMap.put("orderRule", "nic.wdate desc");
+				commandMap.put("companyUid", (String)session.getAttribute("SE_LOGIN_ID"));
+				commandMap.put("bizIng", "no");
+			}
+			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
+			commandMap.put("pageSize", pageSize);
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+			
+			// 채용정보 검색 리스트
+			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyListByCompany(commandMap.getMap());
+			Map<String, Object> pageMap = new HashMap<String, Object>();
+			if(recruitList.size() > 0){
+				totalSize = netfuItemCompanyService.selectNetfuItemCompanyCntByCompany(commandMap.getMap());
+				pageMap = PaginationUtil.makePageInfo(totalSize, pageSize, (String)commandMap.get("pageNo"));
+				commandMap.put("totalSize", totalSize);
+			}
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("recruitList", recruitList);
+			mv.addObject("pageMap", pageMap);
+		
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".recruitListProgress Exception !!!!! \n"+e.toString());
+		}
 		
 		return mv;
 	}
@@ -166,12 +200,48 @@ public class RecruitController {
 	 * 마감된 채용정보
 	 */
 	@RequestMapping(value="/recruitListClosed.do")
-	public ModelAndView recruitListClosed(CommandMap commandMap) {
+	public ModelAndView recruitListClosed(CommandMap commandMap, HttpSession session) {
 		
 		ModelAndView mv = new ModelAndView("/recruit/recruitListClosed");
 		
+		int pageSize = 10;
+		int totalSize = 0;
+		
+		try{
+				
+			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
+				commandMap.put("pageNo", "1");
+				commandMap.put("orderField", "nic.wdate");
+				commandMap.put("orderRule", "desc");
+				commandMap.put("companyUid", (String)session.getAttribute("SE_LOGIN_ID"));
+				commandMap.put("bizIng", "");
+			}
+			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
+			commandMap.put("pageSize", pageSize);
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+			
+			// 채용정보 검색 리스트
+			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyListByCompany(commandMap.getMap());
+			Map<String, Object> pageMap = new HashMap<String, Object>();
+			if(recruitList.size() > 0){
+				totalSize = netfuItemCompanyService.selectNetfuItemCompanyCntByCompany(commandMap.getMap());
+				pageMap = PaginationUtil.makePageInfo(totalSize, pageSize, (String)commandMap.get("pageNo"));
+				commandMap.put("totalSize", totalSize);
+			}
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("recruitList", recruitList);
+			mv.addObject("pageMap", pageMap);
+		
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".recruitListClosed Exception !!!!! \n"+e.toString());
+		}
+		
 		return mv;
 	}
+	
+	
+	
 	
 
 }

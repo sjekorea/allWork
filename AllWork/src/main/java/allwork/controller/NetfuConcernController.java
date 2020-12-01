@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import allwork.common.CommandMap;
+import allwork.common.util.CommonColumnUtil;
 import allwork.common.util.ConvertUtil;
 import allwork.common.util.PaginationUtil;
 import allwork.service.NetfuConcernService;
@@ -115,6 +116,7 @@ public class NetfuConcernController {
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
 			// 관심기업 목록
 			List<Map<String, Object>> recruitByCompanyList = netfuItemCompanyService.selectNetfuItemCompanyListByCompany(commandMap.getMap());

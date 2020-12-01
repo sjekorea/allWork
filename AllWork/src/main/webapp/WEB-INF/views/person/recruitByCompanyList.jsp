@@ -86,10 +86,6 @@
 	
 	$(document).ready(function(){
 		
-		$(".delete a").click(function(e){
-			location.href = "/fitRecruitSetting.do";
-		});
-		
 		$("#align").on("change", function(e){
 			loadingOn();
 			$("#orderRule").val($("#align option:selected").val());

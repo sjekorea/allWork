@@ -41,6 +41,17 @@ public class NetfuOnlineRecruitDao extends AbstractDAO{
 	public List<Map<String, Object>> selectApplyList(Map<String, Object> map) {
 		return (List<Map<String, Object>>)selectList("netfuOnlineRecruit.selectApplyList", map);
 	}
+
+	// 입사 지원자 현황 count
+	public int selectApplicantCnt(Map<String, Object> map) throws Exception{
+		return selectCnt("netfuOnlineRecruit.selectApplicantCnt", map);
+	}
+	
+	// 입사지원자 현황 List
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectApplicantList(Map<String, Object> map) {
+		return (List<Map<String, Object>>)selectList("netfuOnlineRecruit.selectApplicantList", map);
+	}
 	
 	// 입사 지원 정보 삭제
 	public int deleteNetfuOnlineRecruitMulti(Map<String, Object> map) throws Exception{ 

@@ -1,13 +1,13 @@
 #footerWrap{width:100%;color:#666;font-size:12px;border-top:1px solid #333;}
 
-#footer{width:1280px;height:180px;margin:0 auto;padding-top: 50px;}
-#footer .footLogo{width:370px;height:120px;line-height: 150px;font-size:32px;font-family:"NotoSansKR-Bold";float:left;text-align: center;}
-#copyArea{width:910px;height:120px;float:left;}
+#footer{width:1000px;height:220px;margin:0 auto;padding-top: 50px;}
+#footer .footLogo{width:180px;height:120px;line-height: 130px;font-size:32px;font-family:"NotoSansKR-Bold";float:left;text-align: center;}
+#copyArea{width:820px;height:120px;float:left;}
 #copyArea ul{float:left;}
 #copyArea .menuArea{width:410px;}
-#copyArea .linkArea{width:500px;}
+#copyArea .linkArea{width:410px;}
 
 #copyArea ul li{float:left;margin-right: 40px;}
 #copyArea ul li a{color:#666;}
 #copyArea .linkArea li{margin-right:0;padding: 0 10px;font-size:14px;}
-#copyArea .address{width:910px;padding-top:20px;float:left;line-height: 24px;}
+#copyArea .address{width:820px;padding-top:20px;float:left;line-height: 24px;}

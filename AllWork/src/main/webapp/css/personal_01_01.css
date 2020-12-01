@@ -5,130 +5,114 @@ body{background-color:#EDF0F5;font-family:"NotoSansKR-Regular";}
 #head .nav .nav01{background-color:#4F60E3;}
 #head .nav .nav01 a{color:#fff;}
 /*###################################   containerWrap  ###################################*/
-#containerWrap{width:1280px;margin: 20px auto 100px;overflow: hidden;}
+#containerWrap{width:1000px;margin:20px auto 100px;overflow: hidden;}
 
 /*현재페이지 언더라인  ###################################*/
 #menuTree ul .subMenu02{text-decoration: underline;}
 
-
-/*###################################   part03/상세검색  ##################################
-#rec_right{width:1060px;overflow: hidden;margin-top:20px;margin-left:20px;float:left;}
+/*###################################   part03/상세검색  ###################################*/
+#rightPart{width:790px;overflow: hidden;margin-left:10px;float:left;}
 
   #recruitment{width:100%;overflow: hidden;}
-  #recruitment h4{width:100%;font-size:18px;padding:20px 0 10px;}
-  #recruitment .tab{width:100%;height:50px;border-left:1px solid #ccc;border-top:1px solid #ccc;border-bottom:2px solid #000;}
-  #recruitment .tab li{float:left;width:175px;height:50px;border-right:1px solid #ccc;}
-  #recruitment .tab li:last-child{float:left;width:178px;height:50px;}
-  #recruitment .tab li input{width:100%;height:100%;border:none;background-color:#fff;font-size:16px;text-align: left;text-indent:20px;}
+  #recruitment h4{width:100%;height:25px;font-size:18px;margin:10px 0;}
+  #recruitment #rec_row01{width:790px;overflow: hidden;text-indent:20px;line-height:50px;background-color:#fff;border:1px solid #ccc;}
+/*###################################   part03/상세검색 탭  ###################################*/
+  #recruitment #rec_row01 .tab{width:100%;height:50px;}
+  #recruitment #rec_row01 .tab li{width:200px;height:48px;border-right:1px solid #ccc;float:left;background-color:#ddd;border-bottom:2px solid #000;}
+            /* 직무별 탭 활성화 */#recruitment #rec_row01 .tab li:first-child{background-color:#000;}
+  #recruitment #rec_row01 .tab a{display:block;width:100%;height:100%;color:#fff;}
 
-  #recruitment #tab01{background-color:#000;color:#fff;}
+/*###################################   part03/상세검색 내용 숨기기  ###################################*/
+  #recruitment #rec_row01 .descArea{display:none;}
+  #recruitment #rec_row01 .descArea{width:100%;height:288px;}
+  #recruitment #rec_row01 .descArea ul{width:200px;height: 100%;float:left;border-right:1px solid #ccc;overflow: scroll;}
+  #recruitment #rec_row01 .descArea ul li{width:100%;height:30px;}
+  #recruitment #rec_row01 .descArea ul li input{display: block;width:100%;resize:none;height:30px;background-color:#fff;
+                               text-align:left;text-indent:20px;line-height:30px;font-size:14px;
+                               outline:none;
+                               border:none;}
 
-  #recruitment #rec_row01{width:100%;overflow: hidden;}
-  #recruitment #rec_row01 ul{overflow:scroll;width:175px;height:270px;background-color:#fff;padding-top:10px;float:left;border-right:1px solid #ccc;border-bottom:1px solid #ccc;}
-  #recruitment #rec_row01 ul li{width:175px;height:30px;float:left;}
-  #recruitment #rec_row01 ul li input{display:inline-block;width:100%;height:100%;border:none;background-color:#fff;text-align: left;text-indent:20px;font-size:14px;}
+#recruitment #rec_row01 .tab li:last-child{width:188px;border-right:none;}
+#recruitment #rec_row01 .descArea ul:last-child{width:188px;border:none;}
 
-  #recruitment #rec_row01 ul:first-child{border-left:1px solid #ccc;}
-  #recruitment #rec_row01 ul:last-child{width:178px;}
-
-  .cate_location li, .cate_industry li, .cate_education li, .cate_ect li, .cate_freelancer li{display:none;}#*/
-
-  /*###################################   상세검색-탭활성화 전  ###################################*/
-  #rightPart{width:1060px;overflow: hidden;margin-left:20px;float:left;}
-
-    h4 span{font-size:15px;color:#666;padding-left:10px;}
-    #recruitment{width:100%;overflow: hidden;}
-    #recruitment h4{width:100%;font-size:18px;padding:20px 0 10px;}
-    #recruitment #rec_row01{width:1060px;text-indent:20px;line-height:50px;background-color:#fff;
-      border:1px solid #ccc;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      float:left;}
-    #recruitment #rec_row01 dl{width:176px;
-      border-right:1px solid #ccc;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      float:left;}
-    #recruitment #rec_row01 dl dt{width:100%;height:49px;background-color:#eee;
-      border-bottom:2px solid #000;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;}
-    #recruitment #rec_row01 dl dt a{display:block;width:100%;height:100%;color:#333;}
-    #recruitment #rec_row01 dl dd{width:100%;height: 280px;overflow: scroll;}
-    #recruitment #rec_row01 dl dd div{width:100%;height: 100%;}
-    #recruitment #rec_row01 dl dd div ul{width:100%;height: 100%;}
-    #recruitment #rec_row01 dl dd div ul li{width:100%;height:30px;}
-    #recruitment #rec_row01 dl dd div ul li input{display: block;width: 100%;height:30px;line-height: 30px;border:none;background-color:#fff;
-                                 text-align:left;text-indent:20px;font-size:14px;}
-
-    #recruitment #rec_row01 dl:last-child{width:178px;border:none;}
-
-    /*###################################   상세검색-탭활성화 후  ###################################*/
-    #recruitment #rec_row01 dl dd{display:none;}
-
-    #recruitment #rec_row01 dl:first-child dt{background-color:#000;} /*직무별 탭 활성화*/
-    #recruitment #rec_row01 dl dt a{color:#aaa;}
-    #recruitment #rec_row01 dl:first-child dt a{color:#fff;}
-
-    #recruitment #cateOn{width:1059px;height:278px;border-left:1px solid #ccc;float:left;background-color:#fff;border-bottom:1px solid #ccc;margin-bottom:20px;}
-    #recruitment #cateOn ul{width:175px;height:100%;border-right:1px solid #ccc;float:left;overflow:scroll;}
-    #recruitment #cateOn ul li{width:100%;height:30px;}
-    #recruitment #cateOn ul li input{display: block;width:100%;height:30px;line-height: 30px;border:none;background-color:#fff;
-                                 text-align:left;text-indent:20px;font-size:14px;}
-
-    #recruitment #cateOn .select03{width:706px;}
-    #recruitment #cateOn .select03 li{width:175px;float:left;}
+                  #recruitment #rec_row01 div ul li:hover input{color:#4F60E3;}
+                  #recruitment #rec_row01 .tab li:hover{background-color:#000;}
 
 
-  /*###################################   rec_listpart   ###################################*/
-  #rec_listPart01, #rec_listPart02, #rec_listPart03, #rec_listPart04{width:1060px;margin-top:40px;padding-bottom:30px;overflow: hidden;font-size: 14px;}
-  #rec_titleArea01, #rec_titleArea02, #rec_titleArea03, #rec_titleArea04{width:100%;height:40px;}
-  #rec_titleArea01 h4, #rec_titleArea02 h4, #rec_titleArea03 h4, #rec_titleArea04 h4{width:50%;font-size:18px;float: left;}
-  #rec_titleArea01 .rec_align, #rec_titleArea02 .rec_align, #rec_titleArea03 .rec_align, #rec_titleArea04 .rec_align{width:50%;text-align: right;float: left;padding-top:10px;}
-  #rec_titleArea01 .rec_align li, #rec_titleArea02 .rec_align li, #rec_titleArea03 .rec_align li, #rec_titleArea04 .rec_align li{display:inline-block;margin-bottom:10px;}
-  #rec_titleArea01 .rec_align li a, #rec_titleArea02 .rec_align li a, #rec_titleArea03 .rec_align li a, #rec_titleArea04 .rec_align li a{font-size:11px;}
+/*###################################   서브항목 레이어  cateOn   ###################################*/
+#recruitment #cateOn{width:790px;height:288px;float:left;background-color:#fff;}
+#recruitment #cateOn ul{width:200px;height:100%;border-right:1px solid #ccc;float:left;overflow:scroll;}
+#recruitment #cateOn ul li{width:100%;height:30px;}
+#recruitment #cateOn ul li input{display: block;width:100%;height:30px;line-height: 30px;border:none;background-color:#fff;
+                             text-align:left;text-indent:20px;font-size:14px;}
 
-  .rec_title{width:1060px;height:40px;line-height: 40px;color:#333;text-align:center;background-color:#fff;border-bottom:2px solid #666;}
-  .rec_title li{float:left;font-family:"NotoSansKR-Bold";}
-  .rec_title li.desc01{width:200px;}
-  .rec_title li.desc02{width:460px;}
-  .rec_title li.desc03{width:60px;}
-  .rec_title li.desc04{width:60px;}
-  .rec_title li.desc05{width:80px;}
-  .rec_title li.desc06{width:160px;}
+#recruitment #cateOn .select03{width:389px;}
+#recruitment #cateOn .select03 li{width:129px;float:left;}
 
-  .rec_list{width:1060px;overflow: hidden;background-color:#fff;}
-  .rec_list li{width:1058px;height:148px;border:1px solid #fff;border-bottom:1px solid #ccc;}
-  .rec_list li a{display: block;width: 100%;height: 100%;overflow: hidden;}
+/*### 버튼 on
+#recruitment #rec_row01 div ul li input.on{background-color:#eee;color:#4F60E3;}   ###*/
 
-          .rec_list li:hover{border:1px solid #4F60E3;}
+/*###################################  상세검색버튼  searchBox   ###################################*/
+#rightPart #recruitment #searchBox{display:none;}
+#rightPart #recruitment #searchBox{width:790px;padding:20px;overflow: hidden;border:1px solid #ccc;background-color:#fff;}
+#rightPart #recruitment #searchBox p{float:left;height:30px;line-height: 30px;}
+#rightPart #recruitment #searchBox p.keywords{width:540px;}
+#rightPart #recruitment #searchBox p.keywords span{padding-right:10px;}
+#rightPart #recruitment #searchBox p.keywords .fa-times{margin-left:2px;vertical-align: middle;font-size:12px;color:#666;}
+#rightPart #recruitment #searchBox p.keywords input{display:inline-block;border:none;background-color:#fff;}
+#rightPart #recruitment #searchBox p.reset{width:50px;}
+#rightPart #recruitment #searchBox p.reset a{font-size:12px;font-family:"NotoSansKR-Bold";color:#999;}
+#rightPart #recruitment #searchBox p.goBtn{width:158px;}
+#rightPart #recruitment #searchBox p.goBtn input{display:block;width:160px;height: 30px;border:none;background-color:#4F60E3;color:#fff;}
 
-  .rec_list li a .list_title{width:200px;height: 100%;line-height:150px;text-align:center;font-size: 16px;float:left;}
-  .rec_list li a .desc1{width:458px;height:100%;float:left;padding-top:35px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
-  .rec_list li a .desc1 .desc11{width:100%;font-size: 16px;padding-bottom: 15px;float:left;}
-  .rec_list li a .desc1 .desc12{width:100%;float:left;color:#666;}
 
-  .rec_list li a .desc2{width:120px;height:100%;line-height:150px;float:left;text-align: center;}
-  .rec_list li a .desc2 .desc21{width:60px;height:100%;float:left;color:#666;}
-  .rec_list li a .desc2 .desc22{width:60px;height:100%;float:left;color:#666;}
+/*###################################   rec_listpart   ###################################*/
+#rec_listPart01, #rec_listPart02, #rec_listPart03, #rec_listPart04{width:790px;margin-top:40px;padding-bottom:30px;overflow: hidden;font-size: 14px;}
+#rec_titleArea01, #rec_titleArea02, #rec_titleArea03, #rec_titleArea04{width:100%;height:40px;}
+#rec_titleArea01 h4, #rec_titleArea02 h4, #rec_titleArea03 h4, #rec_titleArea04 h4{width:50%;font-size:18px;float: left;}
+#rec_titleArea01 .rec_align, #rec_titleArea02 .rec_align, #rec_titleArea03 .rec_align, #rec_titleArea04 .rec_align{width:50%;text-align: right;float: left;padding-top:10px;}
+#rec_titleArea01 .rec_align li, #rec_titleArea02 .rec_align li, #rec_titleArea03 .rec_align li, #rec_titleArea04 .rec_align li{display:inline-block;margin-bottom:10px;}
+#rec_titleArea01 .rec_align li a, #rec_titleArea02 .rec_align li a, #rec_titleArea03 .rec_align li a, #rec_titleArea04 .rec_align li a{font-size:11px;}
 
-  .rec_list li a .desc3{width:80px;height:100%;float:left;padding-top:55px;text-align: center;}
+.rec_title{width:790px;height:40px;line-height: 40px;color:#333;text-align:center;background-color:#fff;border-bottom:2px solid #666;}
+.rec_title li{float:left;font-family:"NotoSansKR-Bold";}
+.rec_title li.desc01{width:140px;}
+.rec_title li.desc02{width:360px;}
+.rec_title li.desc03{width:40px;}
+.rec_title li.desc04{width:40px;}
+.rec_title li.desc05{width:60px;}
+.rec_title li.desc06{width:140px;}
 
-  .rec_list li a .deadline{width:120px;height:40px;margin:55px 20px;line-height:40px;text-align:center;float:left;font-size:14px;}
-  .rec_list li a .deadline00{background-color: #4F60E3;color:#fff;}
-  .rec_list li a .deadline01{background-color: #000;color:#fff;}
-  .rec_list li a .deadline02{background-color: #E0F1FF;color:#333;}
+.rec_list{width:790px;overflow: hidden;background-color:#fff;}
+.rec_list li{width:790px;height:148px;border:1px solid #fff;border-bottom:1px solid #ccc;font-size:14px;}
+.rec_list li a{display: block;width: 100%;height: 100%;overflow: hidden;}
 
-  .numareaWrap{width:100%;overflow: hidden;background-color:#fff;}
-  .numArea{width:360px;height:30px;line-height:28px;padding-top:30px;padding-bottom:30px;text-align: center;margin:0 auto;}
-  .numArea li{width:28px;height:28px;border:1px solid #ccc;float:left;}
-  .numArea li a{color:#ccc;}
+        .rec_list li:hover{border:1px solid #4F60E3;}
 
-                .numArea li:hover{border: 1px solid #666;}
-                .numArea li:hover a{color:#666;}
+.rec_list li a .list_title{width:140px;height: 100%;line-height:150px;text-align:center;float:left;}
+.rec_list li a .desc1{width:360px;height:100%;float:left;padding-top:35px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.rec_list li a .desc1 .desc11{width:100%;padding-bottom: 15px;float:left;}
+.rec_list li a .desc1 .desc12{width:100%;float:left;color:#666;}
 
-  .numArea .p01{border: 1px solid #666;}
-  .numArea .p01 a{color:#666;}
+.rec_list li a .desc2{width:80px;height:100%;line-height:150px;float:left;text-align: center;font-size:12px;}
+.rec_list li a .desc2 .desc21{width:40px;height:100%;float:left;color:#666;}
+.rec_list li a .desc2 .desc22{width:40px;height:100%;float:left;color:#666;}
+
+.rec_list li a .desc3{width:60px;height:100%;float:left;padding-top:55px;text-align: center;font-size:12px;}
+
+.rec_list li a .deadline{width:100px;height:40px;margin:55px 20px;line-height:40px;text-align:center;float:left;font-size:12px;}
+.rec_list li a .deadline00{background-color: #4F60E3;color:#fff;}
+.rec_list li a .deadline01{background-color: #000;color:#fff;}
+.rec_list li a .deadline02{background-color: #E0F1FF;color:#333;}
+
+.numareaWrap{width:100%;padding-bottom:30px;overflow: hidden;background-color:#fff;}
+.numArea{width:360px;height:30px;line-height:28px;padding-top:30px;padding-bottom:30px;text-align: center;margin:0 auto;}
+.numArea li{width:28px;height:28px;
+  border:1px solid #fff;float:left;}
+.numArea li a{color:#ccc;}
+
+              .numArea li:hover{border: 1px solid #ccc;}
+              .numArea li:hover a{color:#666;}
+
+.numArea .p01{border: 1px solid #666;}
+.numArea .p01 a{color:#666;}

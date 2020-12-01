@@ -6,7 +6,15 @@
 		select 
 			*
 		from netfu_member
-		where uid = BINARY(#{loginId})
+		where 1=1
+			<choose>
+				<when test="personUid != null and personUid != ''">
+					and uid = BINARY(#{personUid})	
+				</when>
+				<otherwise>
+					and uid = BINARY(#{loginId})
+				</otherwise>
+			</choose>
 	</select>
 	
 	

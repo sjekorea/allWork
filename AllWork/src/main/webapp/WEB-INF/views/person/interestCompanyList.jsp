@@ -34,8 +34,8 @@
 							<c:forEach var="result" items="${netfuConcernList}" varStatus="status">
 								<li>
 									<div class="desc00"><input type="checkbox" name="chk" value="${result.rUid }" /></div>
-									<div class="desc01"><a href="javascript:goRecruitList('${result.rUid }', 'yes');"><p>${result.bizName }</p></a></div>
-									<div class="desc02"><a href="javascript:goRecruitList('${result.rUid }', '');"><p>채용중 <span>${result.bizIngCnt }</span>건</p></a></div>
+									<div class="desc01"><a href="javascript:goRecruitList('${result.rUid }', '');"><p>${result.bizName }</p></a></div>
+									<div class="desc02"><a href="javascript:goRecruitList('${result.rUid }', 'no');"><p>채용중 <span>${result.bizIngCnt }</span>건</p></a></div>
 									<div class="desc03"><p><input type="radio" /></p></div>
 								</li>
 							</c:forEach>

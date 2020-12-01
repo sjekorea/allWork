@@ -5,13 +5,13 @@
 #containerWrap{width:1920px;height:2000px;margin:0 auto;
 background-image:url("img/introduction_background.jpg");
 background-repeat: no-repeat;}*/
-#container{width: 1280px;margin:0 auto;overflow: hidden;padding-bottom:500px;}
+#container{width: 1000px;margin:0 auto;overflow: hidden;padding-bottom:500px;}
 #intro_menuTree ul .subMenu01{text-decoration: underline;}
 
-#rightPart{padding:0 60px;width:960px;overflow: hidden;}
-#rightPart ul{width:1080px;overflow: hidden;padding-top:100px;}
-#rightPart ul li{width:240px;height:550px;margin-right:120px;float: left;}
-#rightPart ul li .partner{margin:0 auto;width:200px;height:125px;padding-top:75px;color:#4F60E3;border:1px solid #4F60E3;border-radius:120px;
+#rightPart{width:800px;overflow: hidden;}
+#rightPart ul{width:900px;overflow: hidden;padding-top:80px;}
+#rightPart ul li{width:230px;height:600px;margin-right:55px;float: left;}
+#rightPart ul li .partner{margin:0 auto;width:200px;height:200px;padding-top:75px;color:#4F60E3;border:1px solid #4F60E3;border-radius:120px;
 font-family:"NotoSansKR-Medium";text-align: center;margin-bottom:40px;}
 #rightPart ul li .partner01{height:200px;padding-top:0;line-height:200px;}
 #rightPart ul li .desc{width:100%;line-height:30px;font-size:14px;color:#666;}

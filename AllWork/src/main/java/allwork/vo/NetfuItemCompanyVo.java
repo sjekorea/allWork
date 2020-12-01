@@ -92,9 +92,16 @@ public class NetfuItemCompanyVo {
 	private String typeR;
 	private int orderView;
 	private String open;
+	private int totalApplianceCnt;
 	
 	
 	
+	public int getTotalApplianceCnt() {
+		return totalApplianceCnt;
+	}
+	public void setTotalApplianceCnt(int totalApplianceCnt) {
+		this.totalApplianceCnt = totalApplianceCnt;
+	}
 	public String getOpen() {
 		return open;
 	}

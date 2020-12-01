@@ -33,21 +33,16 @@ public class NetfuItemCompanyDao extends AbstractDAO{
 		return (List<Map<String, Object>>)selectList("netfuItemCompany.selectNetfuItemCompanyListByCompany", map);
 	}
 	
+	// 진행중인 채용공고 - selectbox 용
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectNetfuItemCompanyProceess(Map<String, Object> map) {
+		return (List<Map<String, Object>>)selectList("netfuItemCompany.selectNetfuItemCompanyProceess", map);
+	}
+	
 	// 채용정보 상세
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> selectNetfuItemCompanyMap(Map<String, Object> map) throws Exception{
 		return (Map<String, Object>) selectOne("netfuItemCompany.selectNetfuItemCompanyMap", map);
-	}
-	
-	// 맞춤 채용 정보  갯수 - 개인 회원 홈
-	public int selectRecruitSettedCnt(Map<String, Object> map) throws Exception{
-		return selectCnt("netfuItemCompany.selectRecruitSettedCnt", map);
-	}
-	
-	// 맞춤 채용 정보 목록
-	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectRecruitSettedList(Map<String, Object> map) {
-		return (List<Map<String, Object>>)selectList("netfuItemCompany.selectRecruitSettedList", map);
 	}
 
 }

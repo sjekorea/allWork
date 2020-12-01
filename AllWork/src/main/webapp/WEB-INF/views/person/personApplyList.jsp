@@ -163,7 +163,7 @@
 		
 		$("input[name=chk]").each(function() {
 		      if(this.checked){
-		    	  deleteApplyMulti += this.value+",";
+		    	  deleteItemMulti += this.value+",";
 		      }
 		});
 		deleteItemMulti = deleteItemMulti.substring(0, deleteItemMulti.length-1);

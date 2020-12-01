@@ -23,41 +23,9 @@
 		     상세요강 : 모집요강 ==> biz_detail
 	 -->
 	<select id="selectNetfuItemCompanyList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
-		
 		select 
-			no, uid, info_type, biz_name, biz_title, 'open', biz_post, biz_address1, biz_address2, 
-			biz_type1, getCodeName(biz_type1) biz_type1_name,
-			biz_type2, getCodeName(biz_type2) biz_type2_name,
-			biz_type3, getCodeName(biz_type3) biz_type3_name,
-			biz_type4, getCodeName(biz_type4) biz_type4_name,
-			biz_type5, getCodeName(biz_type5) biz_type5_name,
-			biz_type6, getCodeName(biz_type6) biz_type6_name,
-			biz_type7, getCodeName(biz_type7) biz_type7_name,
-			biz_type8, getCodeName(biz_type8) biz_type8_name,
-			biz_type9, getCodeName(biz_type9) biz_type9_name,
-			biz_position, 
-			biz_area1, getCodeName(biz_area1) biz_area1_name,
-			biz_area2, getCodeName(biz_area2) biz_area2_name,
-			biz_area3, getCodeName(biz_area3) biz_area3_name,
-			biz_area4, getCodeName(biz_area4) biz_area4_name,
-			biz_area5, getCodeName(biz_area5) biz_area5_name,
-			biz_area6, getCodeName(biz_area6) biz_area6_name,
-			biz_subway, biz_business, biz_men,
-			biz_jobfrom, getCodeName(biz_jobfrom) biz_jobfrom_name,
-			biz_pay, getCodeName(biz_pay) biz_pay_name,
-			biz_welfare, biz_sex, biz_age, biz_ability,
-			biz_preferential, getCodeName(biz_preferential) biz_preferential_name,
-			biz_career, biz_detail, biz_end_day, biz_end_type, biz_ing, 
-			biz_method, getCodeName(biz_method) biz_method_name,
-			biz_person, biz_pemail, biz_pphone, biz_pfax, 
-			DATE_FORMAT(wdate, '%m/%d') wdate,
-			DATE_FORMAT(u_wdate, '%m/%d') u_wdate,
-			DATE_FORMAT(j_wdate, '%m/%d') j_wdate,
-			service1, service2, service3, service4, service5, service100,
-			service6, service7, service8, service9, service10, service11,
-			biz_paper, getCodeName(biz_paper) biz_paper_name,
-			biz_form, biz_form_file, sms_send, biz_page, hit, type_r, order_view
-		from netfu_item_company
+			${recruitColumn}
+		from netfu_item_company nic
 		where 1=1
 			and biz_ing <![CDATA[<>]]> 'yes'
 			and biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()
@@ -70,7 +38,6 @@
 	</select>
 	
 	
-	
 	<!-- 기업별 채용공고 Count -->
 	<select id="selectNetfuItemCompanyCntByCompany" parameterType="hashmap" resultType="int">
 		select count(no) cnt
@@ -79,134 +46,75 @@
 			<if test="companyUid != null and companyUid != ''">
 				and uid = #{companyUid}
 			</if>
-			<if test="bizIng != null and bizIng != ''">
-				and biz_ing <![CDATA[<>]]> 'yes'
-			and biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()
-			</if>
+			<choose>
+				<when test = "bizIng != null and bizIng != ''">
+					and biz_ing = 'no'
+		            and ((biz_end_day >= curdate() and biz_end_type ='input') or biz_end_type !='input')
+		            and (service1 >= curdate() or service2 >= curdate() or service3 >= curdate() or service4 >= curdate() or service5 >= curdate() or service100 >= curdate())
+				</when>
+				<otherwise>
+					and ((biz_end_day <![CDATA[<]]> curdate() and biz_end_type ='input') or biz_ing='yes' 
+				            or (service1 <![CDATA[<]]> curdate() and service2 <![CDATA[<]]> curdate() and service3 <![CDATA[<]]> curdate() 
+				            	and service4 <![CDATA[<]]> curdate() and service5 <![CDATA[<]]> curdate() and service100 <![CDATA[<]]> curdate())
+				         )
+				</otherwise>
+			</choose>
 	</select>
-	
 	
 	
 	<!-- 기업별 채용공고 목록 -->
 	<select id="selectNetfuItemCompanyListByCompany" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
 		select 
-			no, uid, info_type, biz_name, biz_title, 'open', biz_post, biz_address1, biz_address2, 
-			biz_type1, getCodeName(biz_type1) biz_type1_name,
-			biz_type2, getCodeName(biz_type2) biz_type2_name,
-			biz_type3, getCodeName(biz_type3) biz_type3_name,
-			biz_type4, getCodeName(biz_type4) biz_type4_name,
-			biz_type5, getCodeName(biz_type5) biz_type5_name,
-			biz_type6, getCodeName(biz_type6) biz_type6_name,
-			biz_type7, getCodeName(biz_type7) biz_type7_name,
-			biz_type8, getCodeName(biz_type8) biz_type8_name,
-			biz_type9, getCodeName(biz_type9) biz_type9_name,
-			biz_position, 
-			biz_area1, getCodeName(biz_area1) biz_area1_name,
-			biz_area2, getCodeName(biz_area2) biz_area2_name,
-			biz_area3, getCodeName(biz_area3) biz_area3_name,
-			biz_area4, getCodeName(biz_area4) biz_area4_name,
-			biz_area5, getCodeName(biz_area5) biz_area5_name,
-			biz_area6, getCodeName(biz_area6) biz_area6_name,
-			biz_subway, biz_business, biz_men,
-			biz_jobfrom, getCodeName(biz_jobfrom) biz_jobfrom_name,
-			biz_pay, getCodeName(biz_pay) biz_pay_name,
-			biz_welfare, biz_sex, biz_age, biz_ability,
-			biz_preferential, getCodeName(biz_preferential) biz_preferential_name,
-			biz_career, biz_detail, biz_end_day, biz_end_type, biz_ing, 
-			biz_method, getCodeName(biz_method) biz_method_name,
-			biz_person, biz_pemail, biz_pphone, biz_pfax, 
-			DATE_FORMAT(wdate, '%m/%d') wdate,
-			DATE_FORMAT(u_wdate, '%m/%d') u_wdate,
-			DATE_FORMAT(j_wdate, '%m/%d') j_wdate,
-			service1, service2, service3, service4, service5, service100,
-			service6, service7, service8, service9, service10, service11,
-			biz_paper, getCodeName(biz_paper) biz_paper_name,
-			biz_form, biz_form_file, sms_send, biz_page, hit, type_r, order_view
-		from netfu_item_company
+			nic.no, 'open', nic.uid, nic.biz_title, nic.biz_ing, nic.biz_end_type, nic.biz_end_day
+			, count(nor.no) total_appliance_cnt
+		from netfu_item_company nic, netfu_online_recruit nor
 		where 1=1
 			<if test="companyUid != null and companyUid != ''">
-				and uid = #{companyUid}
+				and nic.uid = #{companyUid}
 			</if>
-			<if test="bizIng != null and bizIng != ''">
-				and biz_ing <![CDATA[<>]]> 'yes'
-				and biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()
-			</if>
-		order by ${orderRule}
+			<choose>
+				<when test="bizIng != null and bizIng != ''">
+					and nic.biz_ing = 'no'
+		            and ((nic.biz_end_day >= curdate() and nic.biz_end_type ='input') or nic.biz_end_type !='input')
+		            and (nic.service1 >= curdate() or nic.service2 >= curdate() or nic.service3 >= curdate() or nic.service4 >= curdate() or nic.service5 >= curdate() or nic.service100 >= curdate())
+				</when>
+				<otherwise>
+					and ((nic.biz_end_day <![CDATA[<]]> curdate() and nic.biz_end_type ='input') or nic.biz_ing='yes' 
+				            or (nic.service1 <![CDATA[<]]> curdate() and nic.service2 <![CDATA[<]]> curdate() and nic.service3 <![CDATA[<]]> curdate() 
+				            	and nic.service4 <![CDATA[<]]> curdate() and nic.service5 <![CDATA[<]]> curdate() and nic.service100 <![CDATA[<]]> curdate())
+				         )
+				</otherwise>
+			</choose>
+		    and nic.uid = nor.to_uid
+    		and nic.no = nor.to_no 
+		    and nor.to_type in ('email', 'online')
+		group by nic.no, nic.uid, nic.biz_title, nic.biz_ing, nic.biz_end_type, nic.biz_end_day
+		order by ${orderField} ${orderRule}
 		limit #{start}, #{pageSize}
 	</select>
 	
 	
-	<!-- 채용정보 -->
+	<!-- 진행중인 채용공고 - selectbox 용 -->
+	<select id="selectNetfuItemCompanyProceess" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
+		select no, biz_title
+		from netfu_item_company
+		where 1=1
+			and uid = #{companyUid}
+			and biz_ing = 'no'
+            and ((biz_end_day >= curdate() and biz_end_type ='input') or biz_end_type !='input')
+            and (service1 >= curdate() or service2 >= curdate() or service3 >= curdate() or service4 >= curdate() or service5 >= curdate() or service100 >= curdate())
+	</select>
+	
+	
+	<!-- 채용정보 상세 -->
 	<select id="selectNetfuItemCompanyMap" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
 		select 
-			no, uid, info_type, biz_name, biz_title, 'open',
-			biz_post, biz_address1, biz_address2,
-			biz_type1, getCodeName(biz_type1) biz_type1_name,
-			biz_type2, getCodeName(biz_type2) biz_type2_name,
-			biz_type3, getCodeName(biz_type3) biz_type3_name,
-			biz_type4, getCodeName(biz_type4) biz_type4_name,
-			biz_type5, getCodeName(biz_type5) biz_type5_name,
-			biz_type6, getCodeName(biz_type6) biz_type6_name,
-			biz_type7, getCodeName(biz_type7) biz_type7_name,
-			biz_type8, getCodeName(biz_type8) biz_type8_name,
-			biz_type9, getCodeName(biz_type9) biz_type9_name,
-			biz_position,
-			biz_area1, getCodeName(biz_area1) biz_area1_name,
-			biz_area2, getCodeName(biz_area2) biz_area2_name,
-			biz_area3, getCodeName(biz_area3) biz_area3_name,
-			biz_area4, getCodeName(biz_area4) biz_area4_name,
-			biz_area5, getCodeName(biz_area5) biz_area5_name,
-			biz_area6, getCodeName(biz_area6) biz_area6_name,
-			biz_subway, biz_business, biz_men,
-			biz_jobfrom, getCodeName(biz_jobfrom) biz_jobfrom_name,
-			biz_pay, getCodeName(biz_pay) biz_pay_name,
-			biz_welfare, biz_sex, biz_age, biz_ability,
-			biz_preferential, getCodeName(biz_preferential) biz_preferential_name,
-			biz_career, biz_detail, biz_end_day, biz_end_type, biz_ing,
-			biz_method, getCodeName(biz_method) biz_method_name,
-			biz_person, biz_pemail, biz_pphone, biz_pfax,
-			DATE_FORMAT(wdate, '%m/%d') wdate,
-			DATE_FORMAT(u_wdate, '%m/%d') u_wdate,
-			DATE_FORMAT(j_wdate, '%m/%d') j_wdate,
-			service1, service2,service3, service4, service5, service100, 
-			service6, service7, service8, service9, service10, service11,
-			biz_paper, getCodeName(biz_paper) biz_paper_name,
-			biz_form, biz_form_file, sms_send, biz_page, hit, type_r, order_view
-		from netfu_item_company
+			${recruitColumn}
+		from netfu_item_company nic
 		WHERE 1=1
 			AND no = #{no}
 	</select>
 	
-	
-	<!-- 맞춤 채용 정보 Count - 개인회원 홈 -->
-	<select id="selectRecruitSettedCnt" parameterType="hashmap" resultType="int">
-		select count(no)
-		from netfu_item_company
-		where 1=1
-	</select>
-	
-	
-	<!-- 맞춤 채용 정보 목록 - 개인회원 홈 -->
-	<select id="selectRecruitSettedList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
-		select 	
-			no, uid, biz_name, biz_title, 'open'
-			, biz_pay, getCodeName(biz_pay) biz_pay_name ### 급여정보
-			, biz_career ## 경력
-			, biz_age ## 나이
-			, biz_area1, getCodeName(biz_area1) biz_area1_name ## 근무지역
-			, biz_ability	## 학력
-			, biz_sex
-			, biz_end_day, biz_end_type, biz_ing
-			, biz_type1, getCodeName(biz_type1) biz_type1_name
-			, biz_area1, getCodeName(biz_area1) biz_area1_name
-			, biz_area2, getCodeName(biz_area2) biz_area2_name
-			, biz_jobfrom, getCodeName(biz_jobfrom) biz_jobfrom_name
-			, DATE_FORMAT(wdate, '%Y-%m-%d') wdate
-		from netfu_item_company
-		where 1=1
-		order by u_wdate desc 	
-		limit #{start}, #{pageSize}
-	</select>
 
 	
 </mapper>

@@ -57,6 +57,18 @@ public class NetfuOnlineRecruitServiceImpl implements NetfuOnlineRecruitService{
 		return netfuOnlineRecruitDao.selectApplyList(map);
 	}
 	
+	// 입사지원자현황 Count
+	@Override
+	public int selectApplicantCnt(Map<String, Object> map) throws Exception {
+		return netfuOnlineRecruitDao.selectApplicantCnt(map);
+	}
+	
+	// 입사지원자현황 목록 
+	@Override
+	public List<Map<String, Object>> selectApplicantList(Map<String, Object> map) throws Exception {
+		return netfuOnlineRecruitDao.selectApplicantList(map);
+	}
+	
 	// 입사지원정보 삭제
 	@Override
 	public int deleteNetfuOnlineRecruitMulti(Map<String, Object> map) throws Exception {

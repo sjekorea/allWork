@@ -57,7 +57,7 @@
 					<ul class="nav">
 						<li><a href="#none" title="전체메뉴보기"><i class="fas fa-bars"></i></a></li>
 						<li><a href="/recruitSearch.do" title="채용정보">채용정보</a></li>
-						<li><a href="/personSearch.do" title="인재검색">인재검색</a></li>
+						<li><a href="/resumeSearch.do" title="인재검색">인재검색</a></li>
 						<li><a href="#" title="헤드헌팅">헤드헌팅</a></li>
 						<li><a href="#" title="채용진행현황">채용진행현황</a></li>
 						<li><a href="/boardList.do" title="커뮤니티">커뮤니티</a></li>
@@ -103,15 +103,15 @@
 						<div class="sitemap">
 							<h4>인재검색</h4>
 							<ul>
-								<li class="sitemap_depth01"><a href="/personSearch.do" title="인재검색">인재검색</a>
-								<li class="sitemap_depth02"><a href="/personSearch.do" title="상세검색">상세검색</a></li>
+								<li class="sitemap_depth01"><a href="/resumeSearch.do" title="인재검색">인재검색</a>
+								<li class="sitemap_depth02"><a href="/resumeSearch.do" title="상세검색">상세검색</a></li>
 								<li class="sitemap_depth02"><a href="#" title="직무별">직무별</a></li>
 								<li class="sitemap_depth02"><a href="#" title="산업별">산업별</a></li>
 								<li class="sitemap_depth02"><a href="#" title="지역별">지역별</a></li>
 								<li class="sitemap_depth02"><a href="#" title="기업별">기업별</a></li>
 								<li class="sitemap_depth02"><a href="#" title="프리랜서">프리랜서</a></li>
 								<li class="sitemap_depth02"><a href="#" title="알바">알바</a></li>
-								<li class="sitemap_depth01"><a href="/personScrapList.do" title="스크랩인재">스크랩인재</a></li>
+								<li class="sitemap_depth01"><a href="/resumeScrapList.do" title="스크랩인재">스크랩인재</a></li>
 								<li class="sitemap_depth01"><a href="#" title="우수추천인재">우수추천인재</a></li>
 							</ul>
 						</div>

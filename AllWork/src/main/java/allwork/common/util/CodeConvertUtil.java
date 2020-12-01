@@ -293,5 +293,41 @@ public class CodeConvertUtil {
 		return rtnStr;
 	}
 	
+	
+	// 최종 학력 정보
+	public static String getLastSchool(String inidLastSchool){
+		String rtnStr = "";
+		
+		String lastSchoolArr[];
+		
+		if(!"".equals(ConvertUtil.checkNull(inidLastSchool)) && inidLastSchool.length() > 0){
+			lastSchoolArr = inidLastSchool.split("____");
+			
+			if(lastSchoolArr.length > 1){
+				rtnStr = CodeConvertUtil.getBizAbility(lastSchoolArr[0]);
+			}
+		}
+		
+		return rtnStr;
+	}
+
+	
+	// 경력 정보
+	public static String getTotalCareer(String inidCareer){
+		String rtnStr = "";
+		
+		String totalCareerArr[];
+		
+		if(!"".equals(ConvertUtil.checkNull(inidCareer)) && inidCareer.length() > 0){
+			totalCareerArr = inidCareer.split("____");
+			
+			if(totalCareerArr.length > 2){
+				rtnStr = totalCareerArr[0]+"년 "+totalCareerArr[1]+"개월";
+			}
+		}
+		
+		return rtnStr;
+	}
+	
 
 }

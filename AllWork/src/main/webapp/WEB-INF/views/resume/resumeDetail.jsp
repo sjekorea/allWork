@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib uri="/WEB-INF/tlds/convertUtil.tld" prefix="convert" %>
-<%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="/WEB-INF/tlds/convertUtil.tld" prefix="convert"%>
+<%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert"%>
 
 <c:choose>
 	<c:when test="${SE_USER_TYPE eq 'person' }">
@@ -15,7 +16,7 @@
 	</c:otherwise>
 </c:choose>
 
-<link rel="stylesheet" type="text/css" href="/css/resume_view.css"/>
+<link rel="stylesheet" type="text/css" href="/css/resume_view.css" />
 
 <div id="containerWrap">
 	<div id="container">
@@ -34,13 +35,15 @@
 		<div id="rightPart">
 			<div id="resume00">
 				<div id="imgArea">
-					<p><img src="/img/person.jpg" alt="본인사진" /></p>
+					<p>
+						<img src="/img/person.jpg" alt="본인사진" />
+					</p>
 				</div>
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
 					<div class="tabelArea">
 						<p class="table_title">이름</p>
-						<p class="table_desc">${memberMap.name }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${SE_LOGIN_ID }</p>
+						<p class="table_desc">${memberMap.name }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${memberMap.uid }</p>
 						<p class="table_title">이메일</p>
 						<p class="table_desc">${memberMap.email }</p>
 						<p class="table_title">휴대폰</p>
@@ -48,7 +51,8 @@
 						<p class="table_title">연락처</p>
 						<p class="table_desc">${memberMap.phone }</p>
 						<p class="table_title">주소</p>
-						<p class="table_desc01">[${memberMap.post }] ${memberMap.address1 } ${memberMap.address2 }</p>
+						<p class="table_desc01">[${memberMap.post }]
+							${memberMap.address1 } ${memberMap.address2 }</p>
 					</div>
 				</div>
 			</div>
@@ -69,11 +73,11 @@
 								<th>근무지역</th>
 								<td class="workPlace">
 									<p>${resumeMap.inidArea1Name }&nbsp;
-									   ${convert:checkNull(resumeMap.inidArea2Name) eq '' ? '' : '>&nbsp;'.concat(resumeMap.inidArea2Name) }</p>
-									   ${convert:checkNull(resumeMap.inidArea3Name) eq '' ? '' : '<p>&nbsp;'.concat(resumeMap.inidArea3Name) }
-									   ${convert:checkNull(resumeMap.inidArea4Name) eq '' ? '' : '>&nbsp;'.concat(resumeMap.inidArea4Name).concat('</p>') }
-									   ${convert:checkNull(resumeMap.inidArea5Name) eq '' ? '' : '<p>&nbsp;'.concat(resumeMap.inidArea5Name) }
-									   ${convert:checkNull(resumeMap.inidArea6Name) eq '' ? '' : '>&nbsp;'.concat(resumeMap.inidArea6Name).concat('</p>') }
+										${convert:checkNull(resumeMap.inidArea2Name) eq '' ? '' : '>&nbsp;'.concat(resumeMap.inidArea2Name) }</p>
+									${convert:checkNull(resumeMap.inidArea3Name) eq '' ? '' : '<p>&nbsp;'.concat(resumeMap.inidArea3Name) }
+									${convert:checkNull(resumeMap.inidArea4Name) eq '' ? '' : '>&nbsp;'.concat(resumeMap.inidArea4Name).concat('</p>') }
+									${convert:checkNull(resumeMap.inidArea5Name) eq '' ? '' : '<p>&nbsp;'.concat(resumeMap.inidArea5Name) }
+									${convert:checkNull(resumeMap.inidArea6Name) eq '' ? '' : '>&nbsp;'.concat(resumeMap.inidArea6Name).concat('</p>') }
 								</td>
 							</tr>
 							<tr>
@@ -82,7 +86,7 @@
 							</tr>
 							<tr>
 								<th>산업분야</th>
-								<td>${resumeMap.inidType1Name } 
+								<td>${resumeMap.inidType1Name }
 									${convert:checkNull(resumeMap.inidType2Name) eq '' ? '' : '>'.concat(resumeMap.inidType2Name) }
 									${convert:checkNull(resumeMap.inidType3Name) eq '' ? '' : '>'.concat(resumeMap.inidType3Name) }
 									${convert:checkNull(resumeMap.inidType4Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(resumeMap.inidType4Name) }
@@ -112,7 +116,7 @@
 				<div id="resForm03">
 					<h4>학력사항</h4>
 					<p class="final_education">
-						<span>최종학력</span><span class="edu_result">대학원 석사졸업</span>
+						<span>최종학력</span><span class="edu_result">${codeConvert:getLastSchool(resumeMap.inidLastSchool) }</span>
 					</p>
 					<ul>
 						<li class="edu_title">
@@ -134,7 +138,7 @@
 				<div id="resForm04">
 					<h4>학력사항</h4>
 					<p class="final_education">
-						<span>총 경력년수</span><span class="edu_result">20년 0개월</span>
+						<span>총 경력년수</span><span class="edu_result">${codeConvert:getTotalCareer(resumeMap.inidCareer) }</span>
 					</p>
 					<ul>
 						<li class="edu_title">
@@ -206,13 +210,98 @@
 				</div>
 			</div>
 			<ul class="buttons">
-				<li><a href="#none" title="포트폴리오 다운로드">포트폴리오 다운로드</a></li>
-				<li class="res_ok"><a href="#none" title="면접제의">면접제의</a></li>
-				<li><a href="#none" title="스크랩">스크랩</a></li>
-				<li><a href="#none" title="인쇄">인쇄</a></li>
+				<ul>
+					<li><a href="#none" title="포트폴리오 다운로드">포트폴리오 다운로드</a></li>
+					<c:if test="${scrapCnt <= 0 }">
+						<li><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>
+					</c:if>
+					<c:if test="${interviewCnt <= 0 }">
+						<li class="res_ok"><a href="#none" title="면접제의">면접제의</a></li>
+					</c:if>
+				</ul>
 			</ul>
 		</div>
 	</div>
 </div>
+
 <jsp:include page="/footer.do" />
+
+<form id="registForm" name="registForm" method="post">
+	<input type="hidden" name="no" id="no" value="${map.no}" />
+	<input type="hidden" name="uid" id="uid" value="${SE_LOGIN_ID }">
+	<input type="hidden" name="rUid" id="rUid" value="">
+	<input type="hidden" name="scrapCnt" id="scrapCnt" value="${scrapCnt }">
+	<input type="hidden" name="interviewCnt" id="interviewCnt" value="${interviewCnt }">
+	<input type="hidden" name="recruitCnt" id="recruitCnt" value="${recruitCnt }">
+</form>
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		
+	});	
+
+	// 스크랩 등록
+	function goScrapRegist(){
+		
+		//if($("#resumeCnt").val() <= 0){
+		//	alert("이력서를 먼저 작성해 주세요");
+		//	return;
+		//}else{
+			loadingOn();
+			var callback = function(data){
+				alert("저장 되었습니다.");
+				$("#scrapBtn").hide();
+				loadingOff();
+			};
+			
+			var param = {
+						no : $("#no").val()
+						, type : "job"
+						, subType : "company"
+						, uid : $("#uid").val()
+						, rUid : $("#rUid").val()
+					};
+			ajax('post', '/registScrap.ajax', param, callback);
+		//}
+	}
+	
+	// 입사지원 popup
+	function applyPopup(applyType){
+		
+		if($("#resumeCnt").val() <= 0){
+			alert("이력서를 먼저 작성해 주세요");
+			return;
+		
+		}else{
+			var callback = function(data){
+				if(data.rstCnt > 0){
+					alert("이미 지원 하셨습니다.");
+					loadingOff();
+				}else{
+					// 입사 지원 popup];
+				}
+			};
+			
+			var param = {
+						toType : applyType
+						, type : "job"
+						, subType : "company"
+						, uid : $("#uid").val()
+						, toUid : $("#rUid").val()
+						, toNo : $("#no").val()
+					}; 
+			ajax('post', '/selectNetfuOnlineRecruitRegistCnt.ajax', param, callback);
+		}		
+	}
+	
+	// 입사지원 등록
+	function registApply(applyType){
+		
+		
+	}
+	
+</script>
 

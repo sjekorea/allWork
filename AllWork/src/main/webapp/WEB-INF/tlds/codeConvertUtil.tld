@@ -97,4 +97,20 @@
               String getCondition(java.lang.String)
          </function-signature>
     </function>
+    <function>
+         <description>최종 학력 정보</description>
+         <name>getLastSchool</name>
+         <function-class>allwork.common.util.CodeConvertUtil</function-class>
+         <function-signature>
+              String getLastSchool(java.lang.String)
+         </function-signature>
+    </function>
+    <function>
+         <description>총 경력 년수 정보</description>
+         <name>getTotalCareer</name>
+         <function-class>allwork.common.util.CodeConvertUtil</function-class>
+         <function-signature>
+              String getTotalCareer(java.lang.String)
+         </function-signature>
+    </function>
 </taglib>

@@ -40,7 +40,7 @@
 				<li class="gnb"><a href="/recruitScrapList.do" title="스크랩/관심기업">스크랩/관심기업</a>
 					<h3>스크랩/관심기업</h3>
 					<ol>
-						<li><a href="/recruitScrapList.do" title="스크랩">스크랩</a></li>
+						<li><a href="/recruitScrapList.do" title="스크랩">스크랩한 채용정보</a></li>
 						<li><a href="/interestCompanyList.do" title="관심기업">관심기업</a></li>
 						<li><a href="/interviewRequestCompany.do" title="면접요청기업">면접요청기업</a></li>
 					</ol>
@@ -97,14 +97,14 @@
 		</div>
 		<div id="listPart">
 			<ul class="tab">
-				<li><a class="selected" href="#none" title="맞춤채용공고">맞춤채용공고</a></li>
-				<li><a href="#none" title="스크랩공고">스크랩공고</a></li>
-				<li><a href="#none" title="최근 본 공고">최근 본 공고</a></li>
+				<li><a class="selected" href="#" title="맞춤채용공고">맞춤채용공고</a></li>
+				<li><a href="#" title="스크랩공고">스크랩공고</a></li>
+				<li><a href="#" title="최근 본 공고">최근 본 공고</a></li>
 			</ul>
 			<ul class="list" id="list01">
 				<c:choose>
-					<c:when test="${recruitSettedList.size() > 0 }">
-						<c:forEach var="result" items="${recruitSettedList}" varStatus="status">
+					<c:when test="${myServiceRecruitList.size() > 0 }">
+						<c:forEach var="result" items="${myServiceRecruitList}" varStatus="status">
 							<li>
 								<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
 									<p class="title">${result.bizName }</p>

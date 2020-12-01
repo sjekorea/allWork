@@ -22,14 +22,26 @@ public class NetfuScrapServiceImpl implements NetfuScrapService{
 	
 	// 스크랩한 채용정보 Count 
 	@Override
-	public int selectNetfuScrapCnt(Map<String, Object> map) throws Exception {
-		return netfuScrapDao.selectNetfuScrapCnt(map);
+	public int selectRecruitScrapCnt(Map<String, Object> map) throws Exception {
+		return netfuScrapDao.selectRecruitScrapCnt(map);
 	}
 	
 	// 스크랩한 채용정보 목록 
 	@Override
-	public List<Map<String, Object>> selectNetfuScrapList(Map<String, Object> map) throws Exception {
-		return netfuScrapDao.selectNetfuScrapList(map);
+	public List<Map<String, Object>> selectRecruitScrapList(Map<String, Object> map) throws Exception {
+		return netfuScrapDao.selectRecruitScrapList(map);
+	}
+	
+	// 스크랩한 이력서 정보 Count 
+	@Override
+	public int selectResumeScrapCnt(Map<String, Object> map) throws Exception {
+		return netfuScrapDao.selectResumeScrapCnt(map);
+	}
+	
+	// 스크랩한 이력서 정보 목록 
+	@Override
+	public List<Map<String, Object>> selectResumeScrapList(Map<String, Object> map) throws Exception {
+		return netfuScrapDao.selectResumeScrapList(map);
 	}
 	
 	// 스크랩한 채용정보 Count 

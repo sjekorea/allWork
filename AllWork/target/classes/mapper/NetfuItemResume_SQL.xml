@@ -36,22 +36,8 @@
 	<!-- 이력서 리스트 -->
 	<select id="selectNetfuItemResumeList" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
 		select 
-			no
-			, uid
-			, info_type
-			, basic
-			, name
-			, inid_p_chk
-			, inid_photo
-			, inid_phone
-			, inid_hphone
-			, inid_email
-			, inid_post
-			, inid_address1
-			, inid_address2
-			, inid_home
-			, inid_title
-			, indi_condition
+			no , uid , info_type , basic , name , inid_p_chk , inid_photo , inid_phone , inid_hphone , inid_email , inid_post
+			, inid_address1 , inid_address2 , inid_home , inid_title , indi_condition
 			, inid_area1 , getCodeName(inid_area1) inid_area1_name
 			, inid_area2 , getCodeName(inid_area2) inid_area2_name
 			, inid_area3 , getCodeName(inid_area3) inid_area3_name
@@ -70,27 +56,12 @@
 			, inid_mylskill
 			, inid_jobform , getCodeName(inid_jobform) inid_jobform_name
 			, inid_pay , getCodeName(inid_pay) inid_pay_name
-			, inid_last_school
-			, inid_career
-			, inid_license
-			, inid_languages
-			, inid_introduce
-			, inid_secret
-			, wdate
-			, u_wdate
-			, j_wdate
-			, hit
-			, service11
-			, service12
-			, service13
-			, service101
-			, service14
-			, service15
-			, service16
-			, service17
-			, inid_sex
-			, sms_send
-			, a_insert
+			, inid_last_school , inid_career , inid_license , inid_languages , inid_introduce , inid_secret
+			, DATE_FORMAT(wdate, '%m/%d') wdate
+			, DATE_FORMAT(u_wdate, '%m/%d') u_wdate
+			, DATE_FORMAT(j_wdate, '%m/%d') j_wdate
+			, hit , service11 , service12 , service13 , service101 , service14 , service15 , service16 , service17
+			, inid_sex , sms_send , a_insert
 		from netfu_item_resume
 		where 1=1
 			and inid_secret <![CDATA[<>]]> 'yes'
@@ -105,22 +76,8 @@
 	<!-- 이력서 정보 -->
 	<select id="selectNetfuItemResumeMap" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
 		select 
-			no
-			, uid
-			, info_type
-			, basic
-			, name
-			, inid_p_chk
-			, inid_photo
-			, inid_phone
-			, inid_hphone
-			, inid_email
-			, inid_post
-			, inid_address1
-			, inid_address2
-			, inid_home
-			, inid_title
-			, indi_condition
+			no , uid , info_type , basic , name , inid_p_chk , inid_photo , inid_phone , inid_hphone , inid_email , inid_post
+			, inid_address1 , inid_address2 , inid_home , inid_title , indi_condition
 			, inid_area1 , getCodeName(inid_area1) inid_area1_name
 			, inid_area2 , getCodeName(inid_area2) inid_area2_name
 			, inid_area3 , getCodeName(inid_area3) inid_area3_name
@@ -139,32 +96,22 @@
 			, inid_mylskill
 			, inid_jobform , getCodeName(inid_jobform) inid_jobform_name
 			, inid_pay , getCodeName(inid_pay) inid_pay_name
-			, inid_last_school
-			, inid_career
-			, inid_license
-			, inid_languages
-			, inid_introduce
-			, inid_secret
-			, wdate
-			, u_wdate
-			, j_wdate
-			, hit
-			, service11
-			, service12
-			, service13
-			, service101
-			, service14
-			, service15
-			, service16
-			, service17
-			, inid_sex
-			, sms_send
-			, a_insert
+			, inid_last_school , inid_career , inid_license , inid_languages , inid_introduce , inid_secret
+			, DATE_FORMAT(wdate, '%m/%d') wdate
+			, DATE_FORMAT(u_wdate, '%m/%d') u_wdate
+			, DATE_FORMAT(j_wdate, '%m/%d') j_wdate
+			, hit , service11 , service12 , service13 , service101 , service14 , service15 , service16 , service17
+			, inid_sex , sms_send , a_insert
 		from netfu_item_resume
 		where 1=1
-			<if test="loginId != null and loginId != ''">
-				and uid = #{loginId}
-			</if>
+			<choose>
+				<when test="personUid != null and personUid != ''">
+					and uid = #{personUid}
+				</when>
+				<otherwise>
+					and uid = #{loginId}
+				</otherwise>
+			</choose>
 			<if test="no != null and no != ''">
 				and no = #{no}
 			</if>

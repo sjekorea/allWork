@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import allwork.common.CommandMap;
 import allwork.service.NetfuMemberService;
+import allwork.service.NetfuMyServiceService;
 import allwork.service.NetfuOnlineRecruitService;
 import allwork.service.NetfuOpenResumeService;
 import allwork.service.NetfuItemResumeService;
@@ -25,6 +26,7 @@ import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuScrapService;
 import allwork.service.RecruitItemService;
 import allwork.common.util.PaginationUtil;
+import allwork.common.util.CommonColumnUtil;
 import allwork.common.util.ConvertUtil;
 
 @Controller
@@ -56,6 +58,9 @@ public class PersonController {
 	@Resource(name="netfuOpenResumeService")
 	private NetfuOpenResumeService netfuOpenResumeService;
 	
+	@Resource(name="netfuMyServiceService")
+	private NetfuMyServiceService netfuMyServiceService;
+	
 	
 	/*
 	 * 개인 회원 홈
@@ -76,6 +81,8 @@ public class PersonController {
 			commandMap.put("pageSize", pageSize);
 			
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+			
 			// 개인정보 조회
 			Map<String, Object> memberMap = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
 			
@@ -86,7 +93,7 @@ public class PersonController {
 			int netfuOpenResumeCnt = netfuOpenResumeService.selectNetfuOpenResumeCnt(commandMap.getMap());
 			
 			// 스크랩한 채용정보
-			int netfuScrapCnt = netfuScrapService.selectNetfuScrapCnt(commandMap.getMap());
+			int netfuScrapCnt = netfuScrapService.selectRecruitScrapCnt(commandMap.getMap());
 			
 			// 관심기업 공고
 			int netfuConcernCnt = netfuConcernService.selectNetfuConcernRegistCnt(commandMap.getMap());
@@ -95,11 +102,10 @@ public class PersonController {
 			List<Map<String, Object>> recommandRecruitList = recruitItemService.selectRecommandRecruitList(commandMap.getMap());
 			
 			// 맞춤 채용 정보
-			List<Map<String, Object>> recruitSettedList = netfuItemCompanyService.selectRecruitSettedList(commandMap.getMap());
+			List<Map<String, Object>> myServiceRecruitList = netfuMyServiceService.selectMyServiceRecruitList(commandMap.getMap());
 			
 			// 스크랩 공고
-			List<Map<String, Object>> recruitScrapList = netfuScrapService.selectNetfuScrapList(commandMap.getMap());
-			
+			List<Map<String, Object>> recruitScrapList = netfuScrapService.selectRecruitScrapList(commandMap.getMap());
 			
 			mv.addObject("memberMap", memberMap);
 			mv.addObject("onlineRecruitCnt", onlineRecruitCnt);
@@ -107,7 +113,7 @@ public class PersonController {
 			mv.addObject("netfuScrapCnt", netfuScrapCnt);
 			mv.addObject("netfuConcernCnt", netfuConcernCnt);
 			mv.addObject("recommandRecruitList", recommandRecruitList);
-			mv.addObject("recruitSettedList", recruitSettedList);
+			mv.addObject("myServiceRecruitList", myServiceRecruitList);
 			mv.addObject("recruitScrapList", recruitScrapList);
 			
 		}catch(Exception e){

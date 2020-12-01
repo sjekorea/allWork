@@ -57,4 +57,12 @@
               String checkNull(java.lang.String)
          </function-signature>
     </function>
+    <function>
+         <description>Calculate Age</description>
+         <name>calcAge</name>
+         <function-class>allwork.common.util.ConvertUtil</function-class>
+         <function-signature>
+              String calcAge(java.lang.String)
+         </function-signature>
+    </function>
 </taglib>
