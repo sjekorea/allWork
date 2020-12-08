@@ -9,6 +9,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 <title>기업회원 회원가입</title>
 <link rel="stylesheet" type="text/css" href="/css/header_mini.css" />
 <link rel="stylesheet" type="text/css" href="/css/register_02.css" />
@@ -16,10 +17,22 @@
 <link rel="stylesheet" type="text/css" href="/css/font.css" />
 <link rel="stylesheet" type="text/css" href="/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="/css/all.css" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/js/jquery-1.12.4.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/index00.js"></script>
+<script type="text/javascript" src="/js/moment.min.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/process.js"></script>
 <style></style>
 </head>
 <body>
+	<div id="progress_barWrap" style="display:none;">
+		<p id="progress_bar">
+			<img src="/img/main/loading_circle.gif" alt="로딩이미지"/>
+		</p>
+    </div>
 	<div id="allworkWrap">
 		<div id="topmenuWrap">
 			<ul class="topMenu">
@@ -39,14 +52,12 @@
 					<fieldset>
 						<legend>회원가입</legend>
 						<div class="tab">
-							<span class="btn_persnal"><input id="persnal_register"
-								type="radio" name="persnal_register"
-								onClick="location.href='register_01_개인회원가입.html'" /><label
-								for="persnal_register">&nbsp;개인회원</label></span> <span
-								class="btn_company"><input id="company_register"
-								type="radio" name="company_register"
-								onClick="location.href='register_02_기업회원가입.html'"
-								checked="checked" /><label for="company_register">&nbsp;기업회원</label></span>
+							<span class="btn_persnal">
+								<input id="persnal_register" type="radio" name="persnal_register" onClick="location.href='personJoin.do'" /><label for="persnal_register">&nbsp;개인회원</label>
+							</span>
+							<span class="btn_company">
+								<input id="company_register" type="radio" name="company_register" checked="checked" /><label for="company_register">&nbsp;기업회원</label>
+							</span>
 						</div>
 						<div class="descBox">
 							<p class="title">

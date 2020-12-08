@@ -27,5 +27,11 @@ public class NetfuMemberServiceImpl implements NetfuMemberService{
 	public int selectNetfuMemberLoginCnt(Map<String, Object> map) throws Exception {
 		return netfuMemberDao.selectNetfuMemberLoginCnt(map);
 	}
+	
+	// 회원가입(회원정보 등록)
+	@Override
+	public int insertNetfuMember(Map<String, Object> map) throws Exception {
+		return netfuMemberDao.insertNetfuMember(map);
+	}
 
 }

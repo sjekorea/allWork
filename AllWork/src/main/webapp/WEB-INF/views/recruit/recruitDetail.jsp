@@ -17,6 +17,48 @@
 
 <link rel="stylesheet" type="text/css" href="/css/company_01_view.css"/>
 
+<div id="popupWrap_apply">
+<div class="topArea">
+<p class="close_btn"><i class="fas fa-times"></i></p>
+<p class="email_img"><i class="fas fa-envelope-open-text"></i></p>
+<p>이메일 입사지원</p>
+</div>
+<div class="descArea">
+<p>
+채용 담당자의 이메일로 홍길동님의 이력서가 전송됩니다.
+</p>
+<form>
+<fieldset>
+<legend>이메일 입사지원</legend>
+<ul class="title">
+<li>보내는 사람</li>
+<li>채용 담당자</li>
+<li>이메일 제목</li>
+<li>지원 이력서</li>
+<li>첨부파일</li>
+</ul>
+<ul class="desc">
+<li>홍길동(test@hanmail.net)</li>
+<li>신규식(test@hanmail.net)</li>
+<li><input type="text"/></li>
+<li>
+<select>
+<option value="3차직무선택">홍길동 이력</option>
+</select>
+</li>
+<li>
+<input id="res09_desc01"/><label for="res09_desc01_1">파일첨부</label><input id="res09_desc01_1" type="file"/>
+</li>
+</ul>
+</fieldset>
+</form>
+</div>
+<div class="btnArea">
+<p class="a01"><a href="#" title="지원하기">지원하기</a></p>
+<p class="a02"><a href="#" title="취소">취소</a></p>
+</div>
+</div>
+
 <div id="containerWrap">
 	<div id="container">
 		<div id="leftPart">
@@ -205,8 +247,9 @@
 		</div>
 	</div>
 </div>
-<jsp:include page="/footer.do" />
 
+<jsp:include page="/footer.do" />
+      
 <form id="registForm" name="registForm" method="post">
 	<input type="hidden" name="no" id="no" value="${map.no}" />
 	<input type="hidden" name="uid" id="uid" value="${SE_LOGIN_ID }">

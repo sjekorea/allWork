@@ -74,7 +74,19 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
             #row02 .descArea ul:last-child{width:149px;}
             #row02 .tab li:hover{background-color:#000;}
             #row02 .tab li:last-child:hover{background-color:#eee;}
-/*#####  2열 안보이게  #####*/ #row02 .descArea{display:none;}
+/*#####  2열 안보이게  ######row02 .descArea{display:none;}*/ 
+
+/*###################################   상세검색버튼 searchBox   ###################################*/
+#searchBox{width:790px;padding:20px;overflow: hidden;border:1px solid #ccc;background-color:#fff;}
+#searchBox p{float:left;height:30px;line-height: 30px;}
+#searchBox p.keywords{width:540px;}
+#searchBox p.keywords span{padding-right:10px;}
+#searchBox p.keywords .fa-times{margin-left:2px;vertical-align: middle;font-size:12px;color:#666;}
+#searchBox p.keywords input{display:inline-block;border:none;background-color:#fff;}
+#searchBox p.reset{width:50px;}
+#searchBox p.reset a{font-size:12px;font-family:"NotoSansKR-Bold";color:#999;}
+#searchBox p.goBtn{width:158px;}
+#searchBox p.goBtn input{display:block;width:160px;height: 30px;border:none;background-color:#4F60E3;color:#fff;}
 
 /*###################################   listpart 인재정보   ###################################*/
 #listPart{width:100%;margin-top: 40px;overflow: hidden;font-size: 14px;}

@@ -78,15 +78,17 @@
 				<c:choose>
 					<c:when test="${recommandRecruitList.size() > 0 }">
 						<c:forEach var="result" items="${recommandRecruitList}" varStatus="status">
-							<li>
-			                	<a href="#" title="추천채용정보">
-			                    	<div class="descBox">
-			                      		<p class="desc01">${result.companyTitle }</p>
-			                      		<p class="desc02">${convert:compByte(result.recruitItemContents, 30, "...")}</p>
-			                     		<span class="desc03">${result.men }</span>
-			                    	</div>
-			                  	</a>
-			                </li>
+							<c:if test="${status.index < 4 }">
+								<li>
+				                	<a href="#" title="추천채용정보">
+				                    	<div class="descBox">
+				                      		<p class="desc01">${result.companyTitle }</p>
+				                      		<p class="desc02">${convert:compByte(result.recruitItemContents, 30, "...")}</p>
+				                     		<span class="desc03">${result.men }</span>
+				                    	</div>
+				                  	</a>
+				                </li>
+							</c:if>
 						</c:forEach>
 					</c:when>
 					<c:otherwise>

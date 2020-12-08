@@ -53,8 +53,7 @@ body{background-color:#EDF0F5;font-family:"NotoSansKR-Regular";}
 #recruitment #rec_row01 div ul li input.on{background-color:#eee;color:#4F60E3;}   ###*/
 
 /*###################################  상세검색버튼  searchBox   ###################################*/
-#rightPart #recruitment #searchBox{display:none;}
-#rightPart #recruitment #searchBox{width:790px;padding:20px;overflow: hidden;border:1px solid #ccc;background-color:#fff;}
+#rightPart #recruitment #searchBox{text-indent:0;width:790px;padding:20px;overflow: hidden;border-top:1px solid #ccc;background-color:#fff;}
 #rightPart #recruitment #searchBox p{float:left;height:30px;line-height: 30px;}
 #rightPart #recruitment #searchBox p.keywords{width:540px;}
 #rightPart #recruitment #searchBox p.keywords span{padding-right:10px;}

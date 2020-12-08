@@ -40,7 +40,7 @@
 					<li><span><i class="far fa-check-circle"></i></span>실제적인 구인구직
 						관련 정보만을 제공합니다.</li>
 					<li><span><i class="far fa-check-circle"></i></span>자체적인 구인정보
-						필터링 시스템 운영을 통해 보험영업, 단순 서비스 업무, 일용직 등등에 대한 제안을 사전 차단함으로써<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;실질적이고
+						필터링 시스템 운영을 통해 보험영업, 단순 서비스 업무, 일용직 등등에 대한 제안을 사전 차단함으로써 실질적이고
 						안정적인 구직활동이 될 수 있도록 도와드립니다.</li>
 				</ul>
 			</div>

@@ -18,6 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="/css/all.css" />
 	<link rel="stylesheet" type="text/css" href="/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="/css/popup.css" />
 	<script src="/js/jquery-3.3.1.min.js"></script>
 	<script src="/js/jquery-ui.min.js"></script>
 	<script src="/js/common.js"></script>

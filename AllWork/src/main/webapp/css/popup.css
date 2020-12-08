@@ -13,7 +13,7 @@ body{font-family:"NotoSansKR-Regular";}
 
 
 /* 채용공고 보기_이메일지원하기 팝업 */
-#popupWrap_apply{width:602px;height:640px;position:absolute;top:220px;left:50%;margin-left:-250px;background-color:#fff;}
+#popupWrap_apply{display:none;width:602px;height:640px;position:absolute;top:220px;left:50%;margin-left:-250px;background-color:#fff;}
 
 #popupWrap_apply .topArea{width:100%;overflow: hidden;background-color:#EDF0F5;padding:40px;}
 #popupWrap_apply .topArea p{width:100%;text-align: center;}

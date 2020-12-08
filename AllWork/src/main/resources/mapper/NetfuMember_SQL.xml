@@ -25,6 +25,38 @@
 			and passwd = #{loginPw}
 	</select>
 
+
+	<!-- 스크랩한 채용정보 등록 -->
+	<insert id="insertNetfuMember" parameterType="hashmap">
+		<![CDATA[
+			insert into netfu_member
+			(uid, passwd, name, hphone, birth, sex, use_mail, use_sms, email, wdate, login_date, memo, addr_coord, memo_coord, type_r2, p_chk, type, hit, a_insert, tosa180422_date)
+			values
+			(
+				#{uid}
+				, #{passwd}
+				, #{name}
+				, #{hphone}
+				, #{birth}
+				, #{sex}
+				, 'yes'
+				, 'yes'
+				, #{email}
+				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s') 
+				, ''
+				, ''
+				, ''
+				, ''
+				, #{pChk}
+				, #{type}
+				, 0
+				, 'no'
+				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s') 
+			)
+		]]>
+	</insert>
+
 </mapper>
 
 

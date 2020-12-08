@@ -16,7 +16,6 @@
 				<li class="subMenu02"><a href="/recruitSearchByDuty.do" title="직무별">직무별</a></li>
 				<li class="subMenu03"><a href="#" title="산업별">산업별</a></li>
 				<li class="subMenu04"><a href="#" title="지역별">지역별</a></li>
-				<li class="subMenu05"><a href="#" title="기업별">기업별</a></li>
 			</ol>
 		</li>
 		<li class="gnb gnb02"><a href="#" title="프리랜서">프리랜서</a></li>

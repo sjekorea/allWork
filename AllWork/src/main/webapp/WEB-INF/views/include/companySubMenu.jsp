@@ -31,7 +31,7 @@
 			<h3>입사지원 관리</h3>
 			<ol class="subMenu subMenu03">
 				<li class="subMenu03_01"><a href="/companyApplicantList.do" title="입사지원 관리">입사지원자 관리</a></li>
-				<li class="subMenu03_02"><a href="#" title="면접제의관리">면접제의관리</a></li>
+				<li class="subMenu03_02"><a href="#" title="면접제의관리">면접제의 요청관리</a></li>
 			</ol></li>
 		<li class="gnb gnb04"><a href="#" title="유료서비스">유료서비스</a>
 			<h3>유료서비스</h3>

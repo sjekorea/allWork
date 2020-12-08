@@ -45,7 +45,7 @@
 					<h3>입사지원 관리</h3>
 					<ol>
 						<li><a href="/companyApplicantList.do" title="입사지원 관리">입사지원자 관리</a></li>
-						<li><a href="#" title="입사지원/면접제의 요청관리">면접제의관리</a></li>
+						<li><a href="#" title="입사지원/면접제의 요청관리">면접제의 요청관리</a></li>
 					</ol>
 				</li>
 				<li class="gnb payService"><a href="#" title="유료서비스">유료서비스</a>
