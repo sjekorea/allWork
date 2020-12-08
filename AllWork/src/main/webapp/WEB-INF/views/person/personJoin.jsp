@@ -206,7 +206,6 @@
 		});
 		
 		$(".agree_ok").find("a:eq(1)").on("click", function(e){
-			alert("aa");
 			goRegistMember();
 		});
 		
@@ -225,8 +224,6 @@
 	
 	// 회원정보 등록
 	function goRegistMember(){
-		
-		alert("aaaaaa");
 		
 		var sex = "man";
 		
@@ -250,6 +247,13 @@
 					, pChk : "yes"
 					, type : "1"
 					, hit : 0
+					, useMail : "yes"
+					, useSms : "yes"
+					, memo : ""
+					, addrCoord : ""
+					, memoCoord : ""
+					, typeR2 : ""
+					, aInsert : "no"
 				};
 		ajax('post', '/registNetfuMember.ajax', param, callback);
 	}

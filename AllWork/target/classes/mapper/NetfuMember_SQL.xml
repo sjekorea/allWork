@@ -39,19 +39,19 @@
 				, #{hphone}
 				, #{birth}
 				, #{sex}
-				, 'yes'
-				, 'yes'
+				, #{useMail}
+				, #{useSms}
 				, #{email}
 				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
 				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s') 
-				, ''
-				, ''
-				, ''
-				, ''
+				, #{memo}
+				, #{addrCoord}
+				, #{memoCoord}
+				, #{typeR2}
 				, #{pChk}
 				, #{type}
-				, 0
-				, 'no'
+				, #{hit}
+				, #{aInsert}
 				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s') 
 			)
 		]]>

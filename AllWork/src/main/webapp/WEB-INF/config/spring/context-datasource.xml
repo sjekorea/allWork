@@ -26,7 +26,7 @@
 	
 	<bean id="dataSourceSpied" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost/allworkcokr?serverTimezone=Asia/Seoul" />
+        <property name="url" value="jdbc:mysql://localhost/allworkcokr?serverTimezone=Asia/Seoul&amp;useUnicode=true&amp;characterEncoding=utf8" />
         <property name="username" value="root" />
         <property name="password" value="local12#$" />
 	</bean>
