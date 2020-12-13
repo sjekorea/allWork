@@ -89,8 +89,8 @@
 									<tr>
 										<th>아이디<span class="necessary">*</span></th>
 										<td>
-											<input id="uid" type="text" name="uid" title="아이디" value="test01"/>
-											<input id="btuChkDupUid" type="submit" value="중복확인" title="중복확인" />
+											<input id="uid" type="text" name="uid" title="아이디" value=""/>
+											<input id="btuChkDupUid" type="submit" value="중복확인" title="중복확인"/>
 											<span class="comment">영문과 숫자를 조합하여 4~20자 이내로 입력하세요.</span>
 										</td>
 									</tr>
@@ -104,16 +104,16 @@
 									<tr>
 										<th>비밀번호 확인<span class="necessary">*</span></th>
 										<td>
-											<input id="passwdConfirm" type="password" name="passwdConfirm" title="비밀번호확"/>
+											<input id="passwdConfirm" type="password" name="passwdConfirm" value="1111" title="비밀번호확"/>
 											<span class="comment">비밀번호 확인을 위해 다시 한 번 입력해 주시기 바랍니다.</span>
 										</td>
 									</tr>
 									<tr>
 										<th>생년월일<span class="necessary">*</span></th>
 										<td>
-											<span><input id="year" type="text" name="year" value="1950"/><label for="year">&nbsp;년</label></span>
-											<span><input id="month" type="text" name="month" value="12"/><label for="month">&nbsp;월</label></span>
-											<span><input id="day" type="text" name="day" value="10"/><label for="day">&nbsp;일</label></span>
+											<span><input id="year" type="text" name="year" value="" maxlength="4" numberOnly /><label for="year">&nbsp;년</label></span>
+											<span><input id="month" type="text" name="month" value="" maxlength="2" numberOnly /><label for="month">&nbsp;월</label></span>
+											<span><input id="day" type="text" name="day" value="" maxlength="2" numberOnly /><label for="day">&nbsp;일</label></span>
 											<span class="comment">40세 이상만 가입이 가능합니다.</span>
 											<input type="hidden" name="birth" id="birth" value="" />
 										</td>
@@ -121,18 +121,18 @@
 									<tr>
 										<th>성별<span class="necessary">*</span></th>
 										<td>
-											<span class="male"><input id="gender_male" type="radio" name="gender_male" checked="checked"/><label for="gender_male">남자</label></span>
-											<span class="female"><input id="gender_female" type="radio" name="gender_female"/><label for="gender_female">여자</label></span>
+											<span>&nbsp;<input id="sex" type="radio" name="sex" value="man" checked="checked"/>남자</span>
+											<span>&nbsp;<input id="sex" type="radio" name="sex" value="woman" />여자</span>
 										</td>
 									</tr>
 									<tr class="email">
 										<th>이메일<span class="necessary">*</span></th>
 										<td>
-											<span><input id="email" type="text" name="email" value="test01" title="아이디만 입력"/></span>
-											<span>&nbsp;@&nbsp;</span><span><input id="emailHost" type="text" name="emailHost" value="test.com" title="이메일 주소 선택"/></span>
+											<span><input id="emailId" type="text" name="emailId" value="" title="아이디만 입력"/></span>
+											<span>&nbsp;@&nbsp;</span><span><input id="emailHost" type="text" name="emailHost" value="" title="이메일 주소 선택"/></span>
 											<span>
 												<select id="selEmailHost" name="selEmailHost" title="이메일 선택">
-													<option value="direct">직접입력</option>
+													<option value="">직접입력</option>
 													<option value="gmail.com">gmail.com</option>
 													<option value="naver.com">naver.com</option>
 													<option value="daum.net">daum.net</option>
@@ -140,6 +140,7 @@
 												</select>
 											</span>
 										</td>
+										<input type="hidden" name="email" id="email" value="" />
 									</tr>
 									<tr class="phone">
 										<th>휴대폰 인증<span class="necessary">*</span></th>
@@ -168,17 +169,13 @@
 									</li>
 									<li class="descArea">
 										<span class="desc"><input id="agree01" type="checkbox" name="agree01"/>&nbsp;<label for="agree01">[필수] 이용약관 동의</label></span>
-										<span class="descBtn"><input id="desc_Btn" type="button" name="desc_Btn" value=""/></span>
-										<span class="agreeDesc01">
-                    						<jsp:include page="/memberAgree1.do" />
-										</span>
+										<span class="descBtn"><input id="desc_Btn" type="button" name="desc_Btn" value="내용보기 ∨"/></span>
+										<span class="agreeDesc01"><jsp:include page="/memberAgree1.do" /></span>
 									</li>
 									<li class="descArea">
 										<span class="desc"><input id="agree02" type="checkbox" name="agree02"/>&nbsp;<label for="agree02">[필수] 개인정보 수집 및 이용 동의</label></span>
-										<span class="descBtn"><input id="desc_Btn" type="button" name="desc_Btn" value=""/></span>
-										<span class="agreeDesc02">
-											<jsp:include page="/memberAgree2.do" />
-										</span>
+										<span class="descBtn"><input id="desc_Btn" type="button" name="desc_Btn" value="내용보기 ∨"/></span>
+										<span class="agreeDesc02"><jsp:include page="/memberAgree2.do" /></span>
 									</li>
 									<li><span><input id="agree03" type="checkbox" name="agree03"/>&nbsp;<label for="agree03">[선택] 마케팅 정보 이메일 수신 동의</label></span></li>
 									<li><span><input id="agree04" type="checkbox" name="agree04"/>&nbsp;<label for="agree04">[선택] 마케팅 정보 SMS 수신 동의</label></span></li>
@@ -194,38 +191,188 @@
 					</div>
 				</div>
 			</div>  
-
+<input type="hidden" name="chkDupChk" id="chkDupChk" value="N" />
 <jsp:include page="/footer.do" />
 
 <script type="text/javascript">
 	
 	$(document).ready(function(){
 		
-		$(".agree_ok").find("a:eq(0)").on("click", function(e){
-			location.href = "/index.do";
+		$("input:text[numberOnly]").on("keypress", function(e){
+			if (!(event.which && (event.which  > 47 && event.which  < 58 || event.which == 8))){
+				event.preventDefault();
+			}
 		});
 		
-		$(".agree_ok").find("a:eq(1)").on("click", function(e){
-			goRegistMember();
+		$("#uid").on("focus", function(e){
+			$("#btuChkDupUid").css("display", "inline-block");
+			$("#chkDupChk").val("N");
 		});
-		
+				
 		$("#btuChkDupUid").on("click", function(e){
 			e.preventDefault();
 			chkDupUid();
 		});
 		
+		$("#selEmailHost").on("change", function(e){
+			if($(this).val() == ""){
+				$("#emailHost").css("background-color", "#FFFFFF");
+				$("#emailHost").attr("readonly",false);
+			}else{
+				$("#emailHost").css("background-color", "#EAEAEA");
+				$("#emailHost").attr("readonly",true);
+			}
+			$("#emailHost").val($(this).val());
+		});
+				
+		$("#agree00").on("click", function(e){
+			$("#agree01").prop("checked", $("#agree00").is(":checked"));
+			$("#agree02").prop("checked", $("#agree00").is(":checked"));
+			$("#agree03").prop("checked", $("#agree00").is(":checked"));
+			$("#agree04").prop("checked", $("#agree00").is(":checked"));
+		});
+		
+				$(".agree_ok").find("a:eq(0)").on("click", function(e){
+			location.href = "/index.do";
+		});
+		
+		
+		$(".agree_ok").find("a:eq(1)").on("click", function(e){
+			goRegistMember();
+		});
+		
 	});	
+
 	
-	
+	// 아이디 중복 확인
 	function chkDupUid(){
-		alert("chkDupUid");
+		
+		if(checkNull($("#uid").val())){
+			alertAndFocus("아이디를 입력하세요.", $("#uid"));
+			return;
+		}
+		
+		loadingOn();
+		
+		var callback = function(data){
+			if(data.rstCnt > 0){
+				alert("사용중인 아이디 입니다.");
+				$("#chkDupChk").val("N");
+			}else{
+				alert("사용가능한 아이디 입니다.");
+				$("#btuChkDupUid").css("display", "none");
+				$("#chkDupChk").val("Y");
+			}
+			loadingOff();
+		};
+		
+		var param = {
+					uid : $("#uid").val()
+				};
+		ajax('post', '/chkDupUid.ajax', param, callback);
 	}
 	
 	
 	// 회원정보 등록
 	function goRegistMember(){
 		
-		var sex = "man";
+		if(checkNull($("#uid").val())){
+			alertAndFocus("아이디를 입력하세요.", $("#uid"));
+			return;
+		}
+		
+		if($("#chkDupChk").val() != "Y"){
+			alert("아이디 중복확인은 필수 입니다.");
+			return;
+		}
+		
+		if(checkNull($("#passwd").val())){
+			alertAndFocus("비밀번호를 입력하세요.", $("#passwd"));
+			return;
+		}
+		
+		if(checkNull($("#passwdConfirm").val())){
+			alertAndFocus("비밀번호 확인을 입력하세요.", $("#passwdConfirm"));
+			return;
+		}
+		
+		if(!chkPwd($("#passwd").val())){
+			alertAndFocus("비밀번호는 6~16자 영문, 숫자를 조합하여 사용할 수 있습니다.\n비밀번호를 확인하세요.", $("#passwd"));
+			return;
+		}
+		
+		if($("#passwd").val() != $("#passwdConfirm").val()){
+			alertAndFocus("비밀번호와 비밀번호 확인정보가 일치하지 않습니다.", $("#passwdConfirm"));
+			return;
+		}
+		
+		if(checkNull($("#year").val())){
+			alertAndFocus("출생년도를 입력하세요.", $("#year"));
+			return;
+		}
+		
+		if($("#year").val().length != 4){
+			alertAndFocus("출생년도를 확인하세요.", $("#year"));
+			return;
+		}
+		
+		if(checkNull($("#month").val())){
+			alertAndFocus("출생월를 입력하세요.", $("#month"));
+			return;
+		}
+		
+		if($("#month").val().length == 1){
+			$("#month").val(fillZero($("#month").val(), 2));
+		}
+		
+		if(checkNull($("#day").val())){
+			alertAndFocus("출생일를 입력하세요.", $("#day"));
+			return;
+		}
+		
+		if($("#day").val().length == 1){
+			$("#day").val(fillZero($("#day").val(), 2));
+		}
+		
+		if((getNowYear() - $("#year").val() + 1) < 40){
+			alert("40세 이상만 가입이 가능합니다.");
+			return;
+		}
+		
+		var sex = $("input[name=sex]:checked").val();
+		sex = (isEmpty(sex) ? "man" : sex);
+		
+		if(checkNull($("#emailId").val())){
+			alertAndFocus("이메일 ID를 입력하세요.", $("#emailId"));
+			return;
+		}
+		
+		if(checkNull($("#emailHost").val())){
+			alertAndFocus("이메일 종류를 입력하세요.", $("#emailHost"));
+			return;
+		}
+		
+		$("#email").val($("#emailId").val()+"@"+$("#emailHost").val());
+		
+		if(!validateEmail($("#email").val())){
+			alertAndFocus("이메일 정보를 확인하세요.", $("#emailId"));
+			return;
+		}
+		
+		if(checkNull($("#hphone").val())){
+			alertAndFocus("휴대폰 번호를 입력하세요.", $("#hphone"));
+			return;
+		}
+				
+		if(!$("#agree01").is(":checked")){
+			alert("[필수]이용약관에 동의 하셔야 합니다.");
+			return;
+		}
+		
+		if(!$("#agree02").is(":checked")){
+			alert("[필수]개인정보 수집 및 이용에 동의 하셔야 합니다.");
+			return;
+		}
 		
 		loadingOn();
 		

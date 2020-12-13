@@ -65,6 +65,24 @@ public class NetfuMemberController {
 
 	
 	/*
+	 * ID 중복 확인
+	 */
+	@RequestMapping(value="/chkDupUid.ajax")
+	public ModelAndView chkDupUid(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		try{
+			int rstCnt = netfuMemberService.selectUidExistCnt(commandMap.getMap());
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("rstCnt", rstCnt);
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".chkDupUid Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+
+	
+	/*
 	 * 회원가입(회원정보 등록)
 	 */
 	@RequestMapping(value="/registNetfuMember.ajax")

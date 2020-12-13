@@ -52,8 +52,8 @@
 					<fieldset>
 						<legend>로그인</legend>
 						<div class="tab">
-							<span class="btn_persnal"><input id="persnal_login" type="radio" name="persnal_login" checked="checked"/><label for="persnal_login">&nbsp;개인회원</label></span>
-							<span class="btn_company"><input id="company_login" type="radio" name="company_login"/><label for="company_login">&nbsp;기업회원</label></span>
+							<span class="btn_persnal"><input id="persnal_login" type="radio" name="loginType" checked="checked" value="1"/>&nbsp;개인회원</span>
+							<span class="btn_company"><input id="company_login" type="radio" name="loginType" value="2"/>&nbsp;기업회원</span>
 						</div>
 						<div class="loginBox">
 							<p><input id="loginId" type="text" name="loginId" title="아이디" placeholder=" 아이디"/></p>
@@ -134,10 +134,6 @@
 	            setCookie("allworkId", $("#loginId").val(), 7); // 7일 동안 쿠키 보관
 	        }
 	    });
-	    
-	    $("persnal_login").click(function(){
-	    	
-	    });
 	});
 	
 	
@@ -154,6 +150,8 @@
 			alertAndFocus("비밀번호를 입력하세요.", $("#loginPw"));
 			return;
 		}
+		
+		var type = $("input[name=loginType]:checked").val();
 		
 		var callback = function(data){
 			if(data.rstCnt > 0){
@@ -176,6 +174,7 @@
 		var param = {
 						loginId : $("#loginId").val()
 						, loginPw : $("#loginPw").val()
+						, type : type
 					};
 		ajax('post', '/loginProcess.ajax', param, callback);
 	}

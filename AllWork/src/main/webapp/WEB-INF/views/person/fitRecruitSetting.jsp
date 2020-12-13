@@ -323,7 +323,7 @@
 					, school : $("#jobSchool option:selected").val()
 					, career : career
 					, payType : $("#jobPay1 option:selected").val()
-					, pay : $("#jobPay2 option:selected").val()
+					, pay : $("#jobPay1 option:selected").val()
 				};
 		ajax('post', '/registMyService.ajax', param, callback);
 	}

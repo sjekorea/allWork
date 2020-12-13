@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="netfuMember">
 
+	<!-- 회원 정보  -->
 	<select id="selectNetfuMemberMap" parameterType="hashmap" resultType="allwork.vo.NetfuMemberVo">
 		select 
 			*
@@ -18,15 +19,25 @@
 	</select>
 	
 	
+	<!-- 회원 가입 여부(로그인 처리) -->
 	<select id="selectNetfuMemberLoginCnt" parameterType="hashmap" resultType="int">
 		select count(uid) cnt from netfu_member
 		where 1=1
 			and uid = #{loginId}
 			and passwd = #{loginPw}
+			and type = #{type}
+	</select>
+	
+	
+	<!-- ID 중복 확인 -->
+	<select id="selectUidExistCnt" parameterType="hashmap" resultType="int">
+		select count(uid) cnt from netfu_member
+		where 1=1
+			and uid = #{loginId}
 	</select>
 
 
-	<!-- 스크랩한 채용정보 등록 -->
+	<!-- 회원가입 정보 등록 -->
 	<insert id="insertNetfuMember" parameterType="hashmap">
 		<![CDATA[
 			insert into netfu_member

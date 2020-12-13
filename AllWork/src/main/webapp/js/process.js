@@ -150,17 +150,16 @@ function byteCheck(el){
 
 
 function chkPwd(str){
-	 var pw = str;
+	 var pw = str.replace(/\s/g,"");
 	 var num = pw.search(/[0-9]/g);
 	 var eng = pw.search(/[a-z]/ig);
-	 var spe = pw.search(/[~!@.#$%\^*_+=]/gi);
+	 //var spe = pw.search(/[~!@.#$%\^*_+=]/gi);
 	 var resultBoo = true;
 	 
-	 if(pw.length < 8){
+	 if(pw.length < 6){
 		 resultBoo = false;
-	 }else if(num < 0 || eng < 0 || spe < 0 ){
-		 resultBoo = false;
-	 }else if(str != str.replace(/\s/g,"")){
+	 //}else if(num < 0 || eng < 0 || spe < 0 ){
+	 }else if(num < 0 || eng < 0){ 
 		 resultBoo = false;
 	 }else{
 		 resultBoo = true;

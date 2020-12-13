@@ -111,7 +111,7 @@ public class NetfuConcernController {
 			
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderRule", "wdate desc");
+				commandMap.put("orderRule", "nic.wdate desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);

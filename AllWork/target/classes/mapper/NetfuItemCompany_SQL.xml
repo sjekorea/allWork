@@ -65,7 +65,7 @@
 	<!-- 기업별 채용공고 목록 -->
 	<select id="selectNetfuItemCompanyListByCompany" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
 		select 
-			nic.no, 'open', nic.uid, nic.biz_title, nic.biz_ing, nic.biz_end_type, nic.biz_end_day
+			nic.no, 'open', nic.biz_name, nic.uid, nic.biz_title, nic.biz_ing, nic.biz_end_type, nic.biz_end_day
 			, count(nor.no) total_appliance_cnt
 		from netfu_item_company nic, netfu_online_recruit nor
 		where 1=1

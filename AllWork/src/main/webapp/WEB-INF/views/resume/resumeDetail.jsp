@@ -51,8 +51,7 @@
 						<p class="table_title">연락처</p>
 						<p class="table_desc">${memberMap.phone }</p>
 						<p class="table_title">주소</p>
-						<p class="table_desc01">[${memberMap.post }]
-							${memberMap.address1 } ${memberMap.address2 }</p>
+						<p class="table_desc01">[${memberMap.post }] ${memberMap.address1 } ${memberMap.address2 }</p>
 					</div>
 				</div>
 			</div>
@@ -260,7 +259,7 @@
 			var param = {
 						no : $("#no").val()
 						, type : "job"
-						, subType : "company"
+						, subType : "indi"
 						, uid : $("#uid").val()
 						, rUid : $("#rUid").val()
 					};
