@@ -441,3 +441,19 @@
 	</div>
 </div>
 <jsp:include page="/footer.do" />
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$(".reg_ok").on("click", function(e){
+			alert("regist!");
+		});
+	});	
+	
+	
+	function recruitInfoRegist(){
+		alert("recruitInfoRegist");
+	}
+	
+</script>
+

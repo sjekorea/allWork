@@ -16,8 +16,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Component("fileUtils")
 public class FileUtils {
 	
-	private static final String filePath = "D:\\allWork\\allWork\\AllWork\\src\\main\\webapp\\peg\\";
-	//private static final String filePath = "/var/lib/tomcat8/webapps/ROOT/peg/";
+	//private static final String filePath = "D:\\allWork\\allWork\\AllWork\\src\\main\\webapp\\peg\\";
+	private static final String filePath = "/var/lib/tomcat8/webapps/ROOT/peg/";
 	private static final String fileUrl = "/contentsImg/";
 	
 	public List<Map<String,Object>> parseInsertFileInfo(Map<String,Object> map, HttpServletRequest request) throws Exception{
