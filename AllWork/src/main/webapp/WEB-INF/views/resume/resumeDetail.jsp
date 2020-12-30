@@ -34,25 +34,36 @@
 		</div>
 		<div id="rightPart">
 			<div id="resume00">
-				<div id="imgArea">
-					<p>
-						<img src="/img/person.jpg" alt="본인사진" />
-					</p>
-				</div>
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
-					<div class="tabelArea">
-						<p class="table_title">이름</p>
-						<p class="table_desc">${memberMap.name }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${memberMap.uid }</p>
-						<p class="table_title">이메일</p>
-						<p class="table_desc">${memberMap.email }</p>
-						<p class="table_title">휴대폰</p>
-						<p class="table_desc">${memberMap.hphone }</p>
-						<p class="table_title">연락처</p>
-						<p class="table_desc">${memberMap.phone }</p>
-						<p class="table_title">주소</p>
-						<p class="table_desc01">[${memberMap.post }] ${memberMap.address1 } ${memberMap.address2 }</p>
+					<div id="imgArea">
+						<p><img src="img/company_home/img00.jpeg" alt="본인사진"/></p>
 					</div>
+					<table>
+						<caption>이력 등록하기</caption>
+						<tbody class="tabelArea">
+							<tr>
+								<th class="table_title">이름</th>
+								<td class="table_desc">${memberMap.name }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${memberMap.uid }</td>
+							</tr>
+							<tr>
+								<th class="table_title">이메일</th>
+								<td class="table_desc">${memberMap.email }</td>
+							</tr>
+							<tr>
+								<th class="table_title">휴대폰</th>
+								<td class="table_desc">${memberMap.hphone }</td>
+							</tr>
+							<tr>
+								<th class="table_title">연락처</th>
+								<td class="table_desc">${memberMap.phone }</td>
+							</tr>
+							<tr>
+								<th class="table_title">주소</th>
+								<td class="table_desc"><p>[${memberMap.post }] ${memberMap.address1 } ${memberMap.address2 }</p></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 			<div id="resume02">
@@ -72,40 +83,40 @@
 								<th>근무지역</th>
 								<td class="workPlace">
 									<p>${resumeMap.inidArea1Name }&nbsp;
-										${convert:checkNull(resumeMap.inidArea2Name) eq '' ? '' : '>&nbsp;'.concat(resumeMap.inidArea2Name) }</p>
-									${convert:checkNull(resumeMap.inidArea3Name) eq '' ? '' : '<p>&nbsp;'.concat(resumeMap.inidArea3Name) }
-									${convert:checkNull(resumeMap.inidArea4Name) eq '' ? '' : '>&nbsp;'.concat(resumeMap.inidArea4Name).concat('</p>') }
-									${convert:checkNull(resumeMap.inidArea5Name) eq '' ? '' : '<p>&nbsp;'.concat(resumeMap.inidArea5Name) }
-									${convert:checkNull(resumeMap.inidArea6Name) eq '' ? '' : '>&nbsp;'.concat(resumeMap.inidArea6Name).concat('</p>') }
+									${convert:checkNull(resumeMap.inidArea2Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidArea2Name) }</p>
+									${convert:checkNull(resumeMap.inidArea3Name) eq '' ? '' : '<p>'.concat(resumeMap.inidArea3Name).concat('&nbsp;') }
+									${convert:checkNull(resumeMap.inidArea4Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidArea4Name).concat('</p>') }
+									${convert:checkNull(resumeMap.inidArea5Name) eq '' ? '' : '<p>'.concat(resumeMap.inidArea5Name).concat('&nbsp;') }
+									${convert:checkNull(resumeMap.inidArea6Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidArea6Name).concat('</p>') }
 								</td>
 							</tr>
 							<tr>
 								<th>직무분야</th>
-								<td>경영.기획.사무 > 총무.법무.사무 > 일반관리직 ????</td>
+								<td>
+									<p>${resumeMap.inidType1Name }&nbsp;
+									${convert:checkNull(resumeMap.inidType2Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType2Name).concat('&nbsp;') }
+									${convert:checkNull(resumeMap.inidType3Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType3Name).concat('</p>') }
+									${convert:checkNull(resumeMap.inidType4Name) eq '' ? '' : '<p>'.concat(resumeMap.inidType4Name).concat('&nbsp;') }
+									${convert:checkNull(resumeMap.inidType5Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType5Name).concat('&nbsp;') }
+									${convert:checkNull(resumeMap.inidType6Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType6Name).concat('</p>') }
+									${convert:checkNull(resumeMap.inidType7Name) eq '' ? '' : '<p>'.concat(resumeMap.inidType7Name).concat('&nbsp;') }
+									${convert:checkNull(resumeMap.inidType8Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType8Name).concat('&nbsp;') }
+									${convert:checkNull(resumeMap.inidType9Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType9Name).concat('</p>') }
+								</td>
 							</tr>
 							<tr>
 								<th>산업분야</th>
-								<td>${resumeMap.inidType1Name }
-									${convert:checkNull(resumeMap.inidType2Name) eq '' ? '' : '>'.concat(resumeMap.inidType2Name) }
-									${convert:checkNull(resumeMap.inidType3Name) eq '' ? '' : '>'.concat(resumeMap.inidType3Name) }
-									${convert:checkNull(resumeMap.inidType4Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(resumeMap.inidType4Name) }
-									${convert:checkNull(resumeMap.inidType5Name) eq '' ? '' : '>'.concat(resumeMap.inidType5Name) }
-									${convert:checkNull(resumeMap.inidType6Name) eq '' ? '' : '>'.concat(resumeMap.inidType6Name) }
-									${convert:checkNull(resumeMap.inidType7Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(resumeMap.inidType7Name) }
-									${convert:checkNull(resumeMap.inidType8Name) eq '' ? '' : '>'.concat(resumeMap.inidType8Name) }
-									${convert:checkNull(resumeMap.inidType9Name) eq '' ? '' : '>'.concat(resumeMap.inidType9Name) }</td>
-							</tr>
-							<tr>
-								<th>선택적 직무</th>
-								<td>운전전문직군 ???</td>
+								<td>
+									
+								</td>
 							</tr>
 							<tr>
 								<th>희망근무형태</th>
-								<td>${resumeMap.inidJobformName }</td>
+								<td><p>${resumeMap.inidJobformName }</p></td>
 							</tr>
 							<tr>
 								<th>희망연봉</th>
-								<td>${resumeMap.inidPayName }</td>
+								<td><p>${resumeMap.inidPayName }</p></td>
 							</tr>
 						</tbody>
 					</table>

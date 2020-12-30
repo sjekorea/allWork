@@ -41,5 +41,39 @@ public class CommonColumnUtil {
 		
 		return rtnStr;
 	}
+	
+	
+	public static String getResumeColumn(){
+		
+		String rtnStr = "";
+		rtnStr += "nir.no, nir.uid, nir.info_type, nir.basic, nir.name, nir.inid_p_chk, nir.inid_photo, nir.inid_phone, nir.inid_hphone, nir.inid_email, nir.inid_post ";
+		rtnStr += ", nir.inid_address1, nir.inid_address2, nir.inid_home, nir.inid_title, nir.indi_condition";
+		rtnStr += ", nir.inid_area1, getCodeName(nir.inid_area1) inid_area1_name";
+		rtnStr += ", nir.inid_area2, getCodeName(nir.inid_area2) inid_area2_name";
+		rtnStr += ", nir.inid_area3, getCodeName(nir.inid_area3) inid_area3_name";
+		rtnStr += ", nir.inid_area4, getCodeName(nir.inid_area4) inid_area4_name";
+		rtnStr += ", nir.inid_area5, getCodeName(nir.inid_area5) inid_area5_name";
+		rtnStr += ", nir.inid_area6, getCodeName(nir.inid_area6) inid_area6_name";
+		rtnStr += ", nir.inid_type1, getCodeName(nir.inid_type1) inid_type1_name";
+		rtnStr += ", nir.inid_type2, getCodeName(nir.inid_type2) inid_type2_name";
+		rtnStr += ", nir.inid_type3, getCodeName(nir.inid_type3) inid_type3_name";
+		rtnStr += ", nir.inid_type4, getCodeName(nir.inid_type4) inid_type4_name";
+		rtnStr += ", nir.inid_type5, getCodeName(nir.inid_type5) inid_type5_name";
+		rtnStr += ", nir.inid_type6, getCodeName(nir.inid_type6) inid_type6_name";
+		rtnStr += ", nir.inid_type7, getCodeName(nir.inid_type7) inid_type7_name";
+		rtnStr += ", nir.inid_type8, getCodeName(nir.inid_type8) inid_type8_name";
+		rtnStr += ", nir.inid_type9, getCodeName(nir.inid_type9) inid_type9_name";
+		rtnStr += ", nir.inid_mylskill";
+		rtnStr += ", nir.inid_jobform, getCodeName(nir.inid_jobform) inid_jobform_name";
+		rtnStr += ", nir.inid_pay, getCodeName(nir.inid_pay) inid_pay_name";
+		rtnStr += ", nir.inid_last_school, nir.inid_career, nir.inid_license, nir.inid_languages, nir.inid_introduce, nir.inid_secret";
+		rtnStr += ", DATE_FORMAT(nir.wdate, '%m/%d') wdate";
+		rtnStr += ", DATE_FORMAT(nir.u_wdate, '%m/%d') u_wdate";
+		rtnStr += ", DATE_FORMAT(nir.j_wdate, '%m/%d') j_wdate";
+		rtnStr += ", nir.hit, nir.service11, nir.service12, nir.service13, nir.service101, nir.service14, nir.service15, nir.service16, nir.service17";
+		rtnStr += ", nir.inid_sex, nir.sms_send, nir.a_insert";
+		
+		return rtnStr;
+	}
 
 }

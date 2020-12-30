@@ -1,0 +1,39 @@
+body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
+
+/*###################################   containerWrap  ###################################*/
+#containerWrap{width:100%;overflow: hidden;margin:20px 0 100px;}
+#container{width:1000px;margin:0 auto;}
+
+/*현재메뉴 언더라인*/
+#menuTree ul .menu01 .subMenu01_01{text-decoration: underline;}
+
+/*###################################   rightpart   ###################################*/
+#rightPart{width:790px;height:100%;margin-left:10px;float:left;background-color:#fff;border:1px solid #ccc;padding:40px;}
+
+/*###################################   listpart   ###################################*/
+#listPart{width:710px;margin:0 auto;overflow: hidden;font-size: 14px;}
+#listPart h4{width:200px;height:50px;line-height:50px;font-size:18px;float: left;}
+#listPart .upload{margin-left:265px;width:120px;height:40px;margin-top:10px;line-height:38px;text-align:center;margin-bottom:5px;border:1px solid #000;float: left;}
+#listPart .delete{margin-left:5px;width:120px;height:40px;margin-top:10px;line-height:38px;text-align:center;margin-bottom:5px;border:1px solid #000;float: left;}
+
+/*###################################   listpart   ###################################*/
+#listPart .list{width:100%;border-top:1px solid #999;overflow: hidden;border-collapse:collapse;
+  table-layout: fixed;
+  word-wrap: break-word;}
+#listPart .list caption{display:none;}
+#listPart .list tbody{width:100%;border-collapse:collapse;}
+#listPart .list tr{width:100%;border-bottom:1px solid #ccc;text-align: center;font-size:14px;}
+/*체크박스*/input{width:16px; height: 16px;}
+
+/*###################################   리스트 제목부분   ###################################*/
+  #listPart .list .list_title th{height:50px;line-height: 50px;margin:0;background-color:#EDF0F5;}
+  #listPart .list .desc td{padding: 20px 0;}
+  #listPart .list .desc00{width:50px;}
+  #listPart .list .desc01{width:400px;}
+  #listPart .list .desc02{width:100px;}
+  #listPart .list .desc03{width:80px;}
+  #listPart .list .desc04{width:80px;}
+
+  #listPart .list td.desc01{text-align: left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+  #listPart .list td a:hover{text-decoration: underline;}

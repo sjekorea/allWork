@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="/WEB-INF/tlds/convertUtil.tld" prefix="convert" %>
+<%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert" %>
 
 <jsp:include page="/personHeader.do" />
 
@@ -14,645 +16,103 @@
 		<jsp:include page="/recruitInfoSubMenu.do" />
 	</div>
 	<div id="rightPart">
-		
-		
-		
-		
-		
-		
-<div id="recruitment">
-<h4>채용정보 상세검색</h4>
-<div id="rec_row01">
-<ul class="tab">
-<li><a href="#" title="직무별">직무별</a></li>
-<li><a href="#" title="산업별">산업별</a></li>
-<li><a href="#" title="지역별">지역별</a></li>
-<li><a href="#" title="상세조건별">상세조건별</a></li>
-</ul>
-<div class="descArea">
-<ul class="cate_job">
-<li><input id="column02_btn01" class="on" type="button" name="column02_btn01" value="경영·사무"/></li>
-<li><input id="column02_btn02" class="on" type="button" name="column02_btn02" value="마케팅·광고·홍보"/></li>
-<li><input id="column02_btn03" class="on" type="button" name="column02_btn03" value="IT·인터넷"/></li>
-<li><input id="column02_btn04" class="on" type="button" name="column02_btn04" value="디자인"/></li>
-<li><input id="column02_btn05" class="on" type="button" name="column02_btn05" value="무역·유통"/></li>
-<li><input id="column02_btn06" class="on" type="button" name="column02_btn06" value="영업·고객상담"/></li>
-<li><input id="column02_btn07" class="on" type="button" name="column02_btn07" value="서비스"/></li>
-<li><input id="column02_btn08" class="on" type="button" name="column02_btn08" value="연구개발·설계"/></li>
-<li><input id="column02_btn09" class="on" type="button" name="column02_btn09" value="생산·제조"/></li>
-<li><input id="column02_btn10" class="on" type="button" name="column02_btn10" value="교육"/></li>
-<li><input id="column02_btn11" class="on" type="button" name="column02_btn11" value="건설"/></li>
-<li><input id="column02_btn12" class="on" type="button" name="column02_btn12" value="의료"/></li>
-<li><input id="column02_btn13" class="on" type="button" name="column02_btn13" value="미디어"/></li>
-<li><input id="column02_btn14" class="on" type="button" name="column02_btn14" value="전문·특수직"/></li>
-</ul>
-<ul class="cate_industry">
-<li><input id="column03_btn01" class="on" type="button" name="column03_btn01" value="서비스업"/></li>
-<li><input id="column03_btn02" class="on" type="button" name="column03_btn02" value="금융·은행업"/></li>
-<li><input id="column03_btn03" class="on" type="button" name="column03_btn03" value="IT·정보통신업"/></li>
-<li><input id="column03_btn04" class="on" type="button" name="column03_btn04" value="판매·유통업"/></li>
-<li><input id="column03_btn05" class="on" type="button" name="column03_btn05" value="교육업"/></li>
-<li><input id="column03_btn06" class="on" type="button" name="column03_btn06" value="건설업"/></li>
-<li><input id="column03_btn07" class="on" type="button" name="column03_btn07" value="의료·제약업"/></li>
-<li><input id="column03_btn08" class="on" type="button" name="column03_btn08" value="미디어·광고업"/></li>
-<li><input id="column03_btn09" class="on" type="button" name="column03_btn09" value="문화·예술·디자인업"/></li>
-<li><input id="column03_btn10" class="on" type="button" name="column03_btn10" value="기관·협회"/></li>
-</ul>
-<ul class="cate_location">
-<li><input id="column01_btn01" class="on" type="button" name="column01_btn01" value="서울특별시"/></li>
-<li><input id="column01_btn02" class="on" type="button" name="column01_btn02" value="경기도"/></li>
-<li><input id="column01_btn03" class="on" type="button" name="column01_btn03" value="인천광역시"/></li>
-<li><input id="column01_btn04" class="on" type="button" name="column01_btn04" value="대전광역시"/></li>
-<li><input id="column01_btn05" class="on" type="button" name="column01_btn05" value="세종특별자치시"/></li>
-<li><input id="column01_btn06" class="on" type="button" name="column01_btn06" value="충청남도"/></li>
-<li><input id="column01_btn07" class="on" type="button" name="column01_btn07" value="충청북도"/></li>
-<li><input id="column01_btn08" class="on" type="button" name="column01_btn08" value="광주광역시"/></li>
-<li><input id="column01_btn09" class="on" type="button" name="column01_btn09" value="전라남도"/></li>
-<li><input id="column01_btn10" class="on" type="button" name="column01_btn10" value="전라북도"/></li>
-<li><input id="column01_btn11" class="on" type="button" name="column01_btn11" value="대구광역시"/></li>
-<li><input id="column01_btn12" class="on" type="button" name="column01_btn12" value="경상북도"/></li>
-<li><input id="column01_btn13" class="on" type="button" name="column01_btn13" value="부산광역시"/></li>
-<li><input id="column01_btn14" class="on" type="button" name="column01_btn14" value="울산광역시"/></li>
-<li><input id="column01_btn15" class="on" type="button" name="column01_btn15" value="경상남도"/></li>
-<li><input id="column01_btn16" class="on" type="button" name="column01_btn16" value="강원도"/></li>
-<li><input id="column01_btn17" class="on" type="button" name="column01_btn17" value="제주특별자치도"/></li>
-<li><input id="column01_btn18" class="on" type="button" name="column01_btn18" value="전국"/></li>
-<li><input id="column01_btn19" class="on" type="button" name="column01_btn19" value="해외"/></li>
-</ul>
-<!--<ul class="cate_education">
-<li><input id="column05_btn01" class="on" type="button" name="column05_btn01" value="학력무관"/></li>
-<li><input id="column05_btn02" class="on" type="button" name="column05_btn02" value="고졸채용"/></li>
-<li><input id="column05_btn03" class="on" type="button" name="column05_btn03" value="대학(2,3년제) 채용"/></li>
-<li><input id="column05_btn04" class="on" type="button" name="column05_btn04" value="대학(4년제) 채용"/></li>
-<li><input id="column05_btn05" class="on" type="button" name="column05_btn05" value="고등학교졸업"/></li>
-<li><input id="column05_btn06" class="on" type="button" name="column05_btn06" value="석박사 우대"/></li>
-</ul>-->
-<ul class="cate_ect">
-<li><input id="column06_btn01" class="on" type="button" name="column06_btn01" value="해외지역"/></li>
-<li><input id="column06_btn02" class="on" type="button" name="column06_btn02" value="직급/직책별"/></li>
-<li><input id="column06_btn03" class="on" type="button" name="column06_btn03" value="전공계열별"/></li>
-<li><input id="column06_btn04" class="on" type="button" name="column06_btn04" value="우대조건별"/></li>
-<li><input id="column06_btn05" class="on" type="button" name="column06_btn05" value="자격증별"/></li>
-<li><input id="column06_btn06" class="on" type="button" name="column06_btn06" value="복리후생별"/></li>
-</ul>
-<!--<ul class="cate_freelancer">
-<li><input id="column07_btn01" class="on" type="button" name="column07_btn01" value="기계, 전자, 전기"/></li>
-<li><input id="column07_btn02" class="on" type="button" name="column07_btn02" value="엔지니어"/></li>
-<li><input id="column07_btn03" class="on" type="button" name="column07_btn03" value="연구개발, 국책과제"/></li>
-<li><input id="column07_btn04" class="on" type="button" name="column07_btn04" value="It,프로그래밍"/></li>
-<li><input id="column07_btn05" class="on" type="button" name="column07_btn05" value="비지니스컨설팅"/></li>
-<li><input id="column07_btn06" class="on" type="button" name="column07_btn06" value="영업,마케팅"/></li>
-<li><input id="column07_btn07" class="on" type="button" name="rcolumn07_btn07" value="기타"/></li>
-</ul>-->
-</div>
-<div id="cateOn">
-<ul class="select01">
-<li><input id="column02_btn01" class="on" type="button" name="column02_btn01" value="경영·사무"/></li>
-<li><input id="column02_btn02" class="on" type="button" name="column02_btn02" value="마케팅·광고·홍보"/></li>
-<li><input id="column02_btn03" class="on" type="button" name="column02_btn03" value="IT·인터넷"/></li>
-<li><input id="column02_btn04" class="on" type="button" name="column02_btn04" value="디자인"/></li>
-<li><input id="column02_btn05" class="on" type="button" name="column02_btn05" value="무역·유통"/></li>
-<li><input id="column02_btn06" class="on" type="button" name="column02_btn06" value="영업·고객상담"/></li>
-<li><input id="column02_btn07" class="on" type="button" name="column02_btn07" value="서비스"/></li>
-<li><input id="column02_btn08" class="on" type="button" name="column02_btn08" value="연구개발·설계"/></li>
-<li><input id="column02_btn09" class="on" type="button" name="column02_btn09" value="생산·제조"/></li>
-<li><input id="column02_btn10" class="on" type="button" name="column02_btn10" value="교육"/></li>
-<li><input id="column02_btn11" class="on" type="button" name="column02_btn11" value="건설"/></li>
-<li><input id="column02_btn12" class="on" type="button" name="column02_btn12" value="의료"/></li>
-<li><input id="column02_btn13" class="on" type="button" name="column02_btn13" value="미디어"/></li>
-<li><input id="column02_btn14" class="on" type="button" name="column02_btn14" value="전문·특수직"/></li>
-</ul>
-<ul class="select02">
-<li><input id="column02_btn011" class="on" type="button" name="column02_btn011" value="자동차·조선·기계"/></li>
-<li><input id="column02_btn021" class="on" type="button" name="column02_btn021" value="반도체·디스플레이"/></li>
-<li><input id="column02_btn031" class="on" type="button" name="column02_btn031" value="화학·에너지·환경"/></li>
-<li><input id="column02_btn041" class="on" type="button" name="column02_btn041" value="전기·전자·제어"/></li>
-<li><input id="column02_btn051" class="on" type="button" name="column02_btn051" value="기계설계·CAD·CAM"/></li>
-<li><input id="column02_btn061" class="on" type="button" name="column02_btn061" value="통신기술·네트워크구축"/></li>
-<li><input id="column02_btn071" class="on" type="button" name="column02_btn071" value="바이오·제약·식품"/></li>
-</ul>
-<ul class="select03">
-<li><input id="column02_btn012" class="on" type="button" name="column02_btn012" value="기계"/></li>
-<li><input id="column02_btn022" class="on" type="button" name="column02_btn022" value="기구설계"/></li>
-<li><input id="column02_btn032" class="on" type="button" name="column02_btn032" value="생산기술"/></li>
-<li><input id="column02_btn042" class="on" type="button" name="column02_btn042" value="제품개발"/></li>
-<li><input id="column02_btn052" class="on" type="button" name="column02_btn052" value="금형설계"/></li>
-<li><input id="column02_btn062" class="on" type="button" name="column02_btn062" value="R&D"/></li>
-<li><input id="column02_btn072" class="on" type="button" name="column02_btn072" value="메카트로닉스"/></li>
-<li><input id="column02_btn042" class="on" type="button" name="column02_btn042" value="금속"/></li>
-<li><input id="column02_btn052" class="on" type="button" name="column02_btn052" value="조선/플랜트"/></li>
-<li><input id="column02_btn062" class="on" type="button" name="column02_btn062" value="건설/건축"/></li>
-<li><input id="column02_btn072" class="on" type="button" name="column02_btn072" value="철강"/></li>
-</ul>
-</div>
-<div id="searchBox">
-<p class="keywords">
-<span><input type="button" value="서울특별시"/><i class="fas fa-times"></i></span>
-<span><input type="button" value="서울특별시"/><i class="fas fa-times"></i></span>
-<span><input type="button" value="서울특별시"/><i class="fas fa-times"></i></span>
-<span><input type="button" value="서울특별시"/><i class="fas fa-times"></i></span>
-<span><input type="button" value="서울특별시"/><i class="fas fa-times"></i></span>
-</p>
-<p class="reset"><a href="#none" title="초기화">초기화</a></p>
-<p class="goBtn"><input id="search_btn" type="button" value="선택된 조건 검색하기"/></p>
-</div>
-</div>
-</div>
-
-		
-		
-		
-		
+		<div id="recruitment">
+			<h4>채용정보 직무별</h4>
+			<div id="part02">
+				<form id="keyworkSearchForm" name="keyworkSearchForm" method="post" action="/recruitSearch.do" >
+					<fieldset>
+						<legend>검색</legend>
+						<div>
+							<span><input type="radio" id="keywordR" name="keywordR" value="and" checked /></span>&nbsp;‘그리고’(and) 검색
+							<span><input type="radio" id="keywordR" name="keywordR" value="or" <c:if test="${map.keywordCondition eq 'or' }">checked</c:if> /></span>&nbsp;‘또는’(or) 검색 
+						</div>
+						<p><input type="text" id="keyword1" name="keyword1" value="${map.keyword1 }" placeholder="전체(직무, 산업, 이력서내용, 이력서 번호 등)" /></p>
+						<p><input type="text" id="keyword2" name="keyword2" value="${map.keyword2 }" placeholder="회사명" /></p>
+						<p><input type="text" id="keyword3" name="keyword3" value="${map.keyword3 }" placeholder="학교명, 전공명" /></p>
+						<p class="btnBox"><input id="keyword_search_btn" type="button" name="keyword_search_btn" value="검색" style="cursor:pointer;"/></p>
+						<input type="hidden" name="keywordCondition" id="keywordCondition" value="${map.keywordCondition }"/>
+						<input type="hidden" name="searchFlag" id="searchFlag" value="keyword"/>
+					</fieldset>
+				</form>
+			</div>	
+			<div id="rec_row01">
+				<ul class="tab">
+					<li><a href="#" title="직무별">직무별</a></li>
+					<li><a href="#" title="산업별">산업별</a></li>
+					<li><a href="#" title="지역별">지역별</a></li>
+					<li><a href="#" title="상세조건별">상세조건별</a></li>
+				</ul>
+				<div id="cateOn">
+					<ul class="select01" id="select01">
+	                    <c:forEach var="result" items="${jobList}" varStatus="status">
+							<li><input id="bizType1" class="on" type="button" name="${result.code}" value="${result.name}"/></li>
+						</c:forEach>
+                  	</ul>
+                  	<ul class="select02" id="select02"></ul>
+                  	<ul class="select03" id="select03"></ul>
+				</div>
+				<div id="searchBox">
+					<p class="keywords"></p>
+					<p class="reset"><a href="#none" title="초기화">초기화</a></p>
+					<p class="goBtn"><input id="search_btn" type="button" value="선택된 조건 검색하기"/></p>
+				</div>
+			</div>
+		</div>
 		<div id="rec_listPart01">
 			<div id="rec_titleArea01">
-				<h4>추천채용정보</h4>
+				<h4>채용정보</h4>
 				<ul class="rec_align">
-					<li><a href="#none" title="등록일순">등록일순&nbsp;&nbsp;|&nbsp;</a></li>
-					<li><a href="#none" title="등록일순">수정일순&nbsp;&nbsp;|&nbsp;</a></li>
-					<li><a href="#none" title="등록일순">마감일순</a></li>
+					<li><a href="#" title="등록일순">등록일순&nbsp;&nbsp;|&nbsp;</a></li>
+					<li><a href="#" title="등록일순">수정일순&nbsp;&nbsp;|&nbsp;</a></li>
+					<li><a href="#" title="등록일순">마감일순</a></li>
 				</ul>
 			</div>
-			<ul class="rec_title">
-				<li class="desc01">업체명</li>
-				<li class="desc02">채용정보</li>
-				<li class="desc03">경력</li>
-				<li class="desc04">학력</li>
-				<li class="desc05">등록/수정</li>
-				<li class="desc06">마감</li>
-			</ul>
-			<ul class="rec_list">
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline00">상시채용</p>
-				</a></li>
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline01">채용시 마감</p>
-				</a></li>
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline02">~10/15</p>
-				</a></li>
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline00">상시채용</p>
-				</a></li>
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline00">상시채용</p>
-				</a></li>
-			</ul>
+			<table class="list">
+				<thead>
+					<tr class="list_title">
+						<th class="t_desc01">회사명</th>
+						<th colspan="3" class="t_desc02">채용정보</th>
+						<th class="t_desc03">마감일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:choose>
+						<c:when test="${recruitList.size() > 0 }">
+							<c:forEach var="result" items="${recruitList}" varStatus="status">
+								<tr class="margin"></tr>
+								<tr>
+									<td rowspan="3" class="desc01">${result.bizName }</td>
+									<td colspan="3" class="desc02">
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
+											${convert:compByte(result.bizTitle, 100, "...")}
+										</a>
+									</td>
+									<td rowspan="3" class="desc03">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
+									</tr>
+									<tr>
+									<td><span class="desc_title">급여</span><span class="desc_desc00">${result.bizPayName }</span></td>
+									<td><span class="desc_title">경력</span><span class="desc_desc00">${codeConvert:getBizCareer(result.bizCareer) }</span></td>
+									<td><span class="desc_title">나이</span><span class="desc_desc00">${codeConvert:getBizAge(result.bizAge) }</span></td>
+									</tr>
+									<tr>
+									<td><span class="desc_title">지역</span>
+										<span class="desc_desc00">${result.bizArea1Name }${convert:checkNull(result.bizArea2Name) eq '' ? '' : '>'.concat(result.bizArea2Name) }</span>
+									</td>
+									<td><span class="desc_title">학력</span><span class="desc_desc00">${result.bizAbility }<%-- ${codeConvert:getBizAbilityShort(result.bizAbility) } --%></span></td>
+									<td><span class="desc_title">성별</span><span class="desc_desc00">${codeConvert:getBizSex(result.bizSex) }</span></td>
+								</tr>
+								<tr class="margin"></tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr class="desc"><td colspan="8" style="text-align:center;height:80px;">내역이 없습니다.</td></tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
 			<div class="numareaWrap">
 				<ul class="numArea">
-					<li><a href="#" title="prev"><i
-							class="fas fa-chevron-left"></i></a></li>
-					<li class="p01"><a href="#" title="page1">1</a></li>
-					<li><a href="#" title="page2">2</a></li>
-					<li><a href="#" title="page3">3</a></li>
-					<li><a href="#" title="page4">4</a></li>
-					<li><a href="#" title="page5">5</a></li>
-					<li><a href="#" title="page6">6</a></li>
-					<li><a href="#" title="page7">7</a></li>
-					<li><a href="#" title="page8">8</a></li>
-					<li><a href="#" title="page9">9</a></li>
-					<li><a href="#" title="page10">10</a></li>
-					<li><a href="#" title="next"><i
-							class="fas fa-chevron-right"></i></a></li>
-				</ul>
-			</div>
-		</div>
-		<div id="rec_listPart02">
-			<div id="rec_titleArea02">
-				<h4>
-					채용정보 I<span>올워크에서 등록한 채용정보</span>
-				</h4>
-				<ul class="rec_align">
-					<li><a href="#none" title="등록일순">등록일순&nbsp;&nbsp;|&nbsp;</a></li>
-					<li><a href="#none" title="등록일순">수정일순&nbsp;&nbsp;|&nbsp;</a></li>
-					<li><a href="#none" title="등록일순">마감일순</a></li>
-				</ul>
-			</div>
-			<ul class="rec_title">
-				<li class="desc01">업체명</li>
-				<li class="desc02">채용정보</li>
-				<li class="desc03">경력</li>
-				<li class="desc04">학력</li>
-				<li class="desc05">등록/수정</li>
-				<li class="desc06">마감</li>
-			</ul>
-			<ul class="rec_list">
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline00">상시채용</p>
-				</a></li>
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline00">상시채용</p>
-				</a></li>
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline00">상시채용</p>
-				</a></li>
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline00">상시채용</p>
-				</a></li>
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline00">상시채용</p>
-				</a></li>
-			</ul>
-			<div class="numareaWrap">
-				<ul class="numArea">
-					<li><a href="#" title="prev"><i
-							class="fas fa-chevron-left"></i></a></li>
-					<li class="p01"><a href="#" title="page1">1</a></li>
-					<li><a href="#" title="page2">2</a></li>
-					<li><a href="#" title="page3">3</a></li>
-					<li><a href="#" title="page4">4</a></li>
-					<li><a href="#" title="page5">5</a></li>
-					<li><a href="#" title="page6">6</a></li>
-					<li><a href="#" title="page7">7</a></li>
-					<li><a href="#" title="page8">8</a></li>
-					<li><a href="#" title="page9">9</a></li>
-					<li><a href="#" title="page10">10</a></li>
-					<li><a href="#" title="next"><i
-							class="fas fa-chevron-right"></i></a></li>
-				</ul>
-			</div>
-		</div>
-		<div id="rec_listPart03">
-			<div id="rec_titleArea03">
-				<h4>
-					채용정보 II<span>기업이 등록한 채용정보</span>
-				</h4>
-				<ul class="rec_align">
-					<li><a href="#none" title="등록일순">등록일순&nbsp;&nbsp;|&nbsp;</a></li>
-					<li><a href="#none" title="등록일순">수정일순&nbsp;&nbsp;|&nbsp;</a></li>
-					<li><a href="#none" title="등록일순">마감일순</a></li>
-				</ul>
-			</div>
-			<ul class="rec_title">
-				<li class="desc01">업체명</li>
-				<li class="desc02">채용정보</li>
-				<li class="desc03">경력</li>
-				<li class="desc04">학력</li>
-				<li class="desc05">등록/수정</li>
-				<li class="desc06">마감</li>
-			</ul>
-			<ul class="rec_list">
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline00">상시채용</p>
-				</a></li>
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline00">상시채용</p>
-				</a></li>
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline00">상시채용</p>
-				</a></li>
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline00">상시채용</p>
-				</a></li>
-				<li><a href="#none" title="맞춤채용공고">
-						<p class="list_title">(주)파인스태프</p>
-						<div class="desc1">
-							<p class="desc11">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc12">
-								<strong>급여 </strong>3000-3500만원
-							</p>
-							<p class="desc12">
-								<strong>지역 </strong>경기 광주시
-							</p>
-						</div>
-						<div class="desc2">
-							<p class="desc21">무관</p>
-							<p class="desc22">무관</p>
-						</div>
-						<div class="desc3">
-							<p class="desc31">
-								<strong>등록 </strong>09/12
-							</p>
-							<p class="desc32">
-								<strong>수정 </strong>09/12
-							</p>
-						</div>
-						<p class="deadline deadline00">상시채용</p>
-				</a></li>
-			</ul>
-			<div class="numareaWrap">
-				<ul class="numArea">
-					<li><a href="#" title="prev"><i
-							class="fas fa-chevron-left"></i></a></li>
-					<li class="p01"><a href="#" title="page1">1</a></li>
-					<li><a href="#" title="page2">2</a></li>
-					<li><a href="#" title="page3">3</a></li>
-					<li><a href="#" title="page4">4</a></li>
-					<li><a href="#" title="page5">5</a></li>
-					<li><a href="#" title="page6">6</a></li>
-					<li><a href="#" title="page7">7</a></li>
-					<li><a href="#" title="page8">8</a></li>
-					<li><a href="#" title="page9">9</a></li>
-					<li><a href="#" title="page10">10</a></li>
-					<li><a href="#" title="next"><i
-							class="fas fa-chevron-right"></i></a></li>
+					${pageMap.pageHtml }
 				</ul>
 			</div>
 		</div>
@@ -660,3 +120,214 @@
 </div>
 
 <jsp:include page="/footer.do" />
+
+<form name="searchForm" id="searchForm" method="post" action="/recruitSearchByDuty.do">
+	<input type="hidden" name="no" id="no" value=""/>
+	<input type="hidden" name="uid" id="uid" value=""/>
+	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo }"/>
+	<input type="hidden" name="orderField" id="orderField" value="${map.orderField }"/>
+	<input type="hidden" name="orderRule" id="orderRule" value="${map.orderRule }"/>
+	<input type="hidden" name="orderRuleWdate" id="orderRuleWdate" value="${map.orderRuleWdate }"/>
+	<input type="hidden" name="orderRuleUwdate" id="orderRuleUwdate" value="${map.orderRuleUwdate }"/>
+	<input type="hidden" name="orderRuleBizEndDay" id="orderRuleBizEndDay" value="${map.orderRuleBizEndDay }"/>
+	
+	<input type="hidden" name="personUid" id="personUid" value="" />
+	<input type="hidden" name="companyUid" id="companyUid" value="" />
+	<input type="hidden" name="recruitNo" id="recruitNo" value="" />
+	<input type="hidden" name="resumeNo" id="resumeNo" value="" />
+	<input type="hidden" name="leftMenuUrl" id="leftMenuUrl" value="/recruitInfoSubMenu.do" />
+	
+	<input type="hidden" name="searchKind" id="searchKind" value="job" />
+	<input type="hidden" name="bizType3" id="bizType3" value="${map.bizType3 }" />
+	<input type="hidden" name="areaJob3" id="areaJob3" value="${map.areaJob3 }" />
+	<input type="hidden" name="bizArea2" id="bizArea2" value="${map.bizArea2 }" />
+	<input type="hidden" name="keywordsHtml" id="keywordsHtml" value="${map.keywordsHtml }" />
+</form>
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		loadingOff();
+		
+		$("#keyword_search_btn").on("click", function(e){
+			
+			$("#keywordCondition").val($("input[name=keywordR]:checked").val());
+			
+			if(checkNull($("#keywordCondition").val())){
+				alert("검색 조건을 선택하세요.");
+				return;
+			}
+			
+			if(checkNull($("#keyword1").val())){
+				alertAndFocus("검색 키워드를 입력하세요.", $("#keyword1"));
+				return;
+			}
+			
+			if(checkNull($("#keyword1").val()) && checkNull($("#keyword2").val()) && checkNull($("#keyword3").val())){
+				alert("검색 키워드를 입력하세요.");
+				return;
+			}
+			loadingOn();
+			$("#keyworkSearchForm").submit();
+		});
+		
+		// 검색 항목 click
+		$(document).on("click", "#cateOn input:button", function(e){
+			
+			//alert("UL Class : "+$(this).closest("ul").attr("class")+" || ID : "+$(this).attr("id")+" || VALUE : "+$(this).attr("value")+" || NAME : "+$(this).attr("name")+" || SEARCH_KIND : "+$("#searchKind").val());
+			
+			var ulClass = $(this).closest("ul").attr("class");
+			var selectedId = $(this).attr("id");
+			var selectedValue = $(this).attr("value");
+			var selectedName = $(this).attr("name");
+				
+			if("select01" == ulClass){
+				$(".select02, .select03").empty();
+				getNetfuCateListForUl($("#searchKind").val(), $(this).attr("name"), "select02", $("#searchKind").val()+"2", true);
+			}
+			
+			if("select02" == ulClass){
+				$(".select03").empty();
+				getNetfuCateListForUl($("#searchKind").val(), $(this).attr("name"), "select03", $("#searchKind").val()+"3", true);
+			}
+			
+			if("select03" == ulClass){
+				if($(".keywords span").length >= 10){
+					alert("겸색 조건은 10까지만 등록가능합니다.");
+				}else{
+					if(!chkSearchConditionExist(selectedName)){
+						$(".keywords").append("<span><input id='"+selectedId+"' type='button' name='"+selectedName+"' value='"+selectedValue+"' /><i class='fas fa-times'></i></span>");	
+					}
+				}
+			}
+		});
+		
+		
+		$(document).on("click", ".keywords .fas", function(e){
+			$(this).parents(".keywords").find("span").eq($(this).parents("span").index()).remove();
+		});
+		
+		
+		$(".reset").on("click", function(e){
+			$(".keywords").empty();
+		});
+		
+		
+		$("#search_btn").on("click", function(e){
+			//e.prevantDefault();
+			recruitSearch();
+		});
+		
+		
+		$(".rec_align a").on("click", function(e){
+			
+			var idx = $(this).parent().index();
+			var orderRuleWdate = $("#orderRuleWdate").val();
+			var orderRuleUwdate = $("#orderRuleUwdate").val();
+			var orderRuleBizEndDay = $("#orderRuleBizEndDay").val();
+			
+			switch(idx){
+				case 0 : 
+					$("#orderField").val("wdate");
+					orderRuleWdate = (orderRuleWdate == "desc") ? "" : "desc";
+					$("#orderRuleWdate").val(orderRuleWdate);
+					$("#orderRule").val(orderRuleWdate);
+					break;
+				case 1 : 
+					$("#orderField").val("u_wdate");
+					orderRuleUwdate = (orderRuleUwdate == "desc") ? "" : "desc";
+					$("#orderRuleUwdate").val(orderRuleUwdate);
+					$("#orderRule").val(orderRuleUwdate);
+					break;
+				case 2 : 
+					$("#orderField").val("biz_end_day");
+					orderRuleBizEndDay = (orderRuleBizEndDay == "desc") ? "" : "desc";
+					$("#orderRuleBizEndDay").val(orderRuleBizEndDay);
+					$("#orderRule").val(orderRuleBizEndDay);
+					break;
+				default : 
+					$("#orderField").val("wdate");
+					$("#orderRule").val("desc");
+					break;
+			}
+			loadingOn();
+			$("#searchForm").submit();
+		});
+	});	
+	
+	
+	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
+		
+		loadingOn();
+		if("open" != open){
+			alert("현재 비공개 상태로 설정되어 있습니다.");
+			loadingOff();
+
+		}else{
+			var callback = function(data){
+				//if(data.rstCnt <= 0){
+				//	alert("이력서를 먼저 작성해 주세요");
+				//	loadingOff();
+				//}else{
+					$("#companyUid").val(companyUid);
+					$("#personUid").val(personUid);
+					$("#no").val(no);
+					$("#recruitNo").val(recruitNo);
+					$("#resumeNo").val(resumeNo);
+					$("#searchForm").attr("action", "/recruitDetail.do");
+					$("#searchForm").submit();
+				//}
+			};
+			var param = {
+					
+			};
+			
+			ajax('post', '/selectNetfuItemResumeCnt.ajax', param, callback);
+		}
+	}
+	
+	function chkSearchConditionExist(code){
+		
+		var rtnBoo = false;
+		$(".keywords span input:button").each(function(index, item){
+			if($(this).attr("name") == code){
+				rtnBoo = true;
+			}	
+		});
+		return rtnBoo;
+	}
+	
+	
+	function recruitSearch(){
+		
+		var spanId = "", bizType = "", areaJob = "", bizArea = "";
+		
+		$(".keywords span input:button").each(function(index, item){
+			spanId = $(this).attr("id");
+			if(spanId == "job3"){
+				bizType += $(this).attr("name")+","
+			}
+			if(spanId == "areaJob3"){
+				areaJob += $(this).attr("name")+","
+			}
+			if(spanId == "area2"){
+				bizArea += $(this).attr("name")+","
+			}
+		});
+		bizType = bizType.length > 0 ? bizType.substring(0, bizType.length - 1) : "";
+		areaJob = areaJob.length > 0 ? areaJob.substring(0, areaJob.length - 1) : "";
+		bizArea = bizArea.length > 0 ? bizArea.substring(0, bizArea.length - 1) : "";
+		
+		$("#bizType3").val(bizType);
+		$("#areaJob3").val(areaJob);
+		$("#bizArea2").val(bizArea);
+		$("#keywordsHtml").val($(".keywords").html());
+		
+		if(bizType.length <= 0 && areaJob.length <= 0 && bizArea.length <= 0){
+			alert("검색 조건을 확인하세요.");
+		}else{
+			$("#searchForm").submit();	
+		}
+	}
+</script>

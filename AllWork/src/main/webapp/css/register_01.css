@@ -80,8 +80,8 @@ input[type="radio"]{width:20px;height:20px;vertical-align:middle;}
 .descBtn{text-align: right;font-size: 14px;color:#4F60E3;line-height:50px;vertical-align:middle;}
 
 .agree_ok{width:100%;height:50px;margin-top:50px;margin-bottom:100px;}
-.agree_ok ul{width:405px;height:50px;margin:0 auto;}
-.agree_ok ul li{width:198px;height:48px;margin-right:5px;float: left;line-height:50px;text-align: center;background-color:#eee;border:1px solid #ccc;}
-.agree_ok ul li:last-child{width:200px;height:50px;margin-right:0;background-color:#4F60E3;border: none;}
+.agree_ok ul{width:100%;height:50px;text-align: center;}
+.agree_ok ul li{display:inline-block;width:200px;height:50px;margin-right:5px;line-height:50px;text-align: center;background-color:#eee;border:1px solid #ccc;}
+.agree_ok ul li:last-child{width:200px;height:50px;margin-right:0;background-color:#4F60E3;border:1px solid #4F60E3;}
 .agree_ok ul li a{width: 100%;height: 100%;}
 .agree_ok ul li:last-child a{color:#fff;}

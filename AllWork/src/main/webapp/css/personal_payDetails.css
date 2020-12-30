@@ -1,0 +1,54 @@
+body{background: #EDF0F5;}
+
+/*###################################   containerWrap  ###################################*/
+    #containerWrap{width:100%;overflow: hidden;margin:20px 0 100px;}
+    #container{width:1000px;margin:0 auto;}
+
+    /*###################################   leftpart   ###################################*/
+    /*###################################   좌측메뉴는 common.css   ###################################*/
+        #menuTree ul .menu06 .subMenu06_01{text-decoration: underline;}
+
+/*###################################   reg_rightPart   ###################################*/
+    #rightPart{width:790px;height:100%;margin-left:10px;float:left;padding:40px;overflow:hidden;background-color:#fff;
+      border:1px solid #ccc;}
+    #rightPart h4{width:100%;height:40px;font-size:18px;border-bottom:1px solid #000;}
+
+    #listPart{width:100%;margin-top:20px;margin-bottom: 10px;overflow: hidden;font-size: 14px;}
+    #listPart .tab{width:100%;height:40px;border-bottom: 1px solid #ccc;}
+    #listPart .tab li{width:220px;height:40px;line-height:40px;text-align:center; background-color: #eee;float:left;border:1px solid #ccc;}
+    #listPart .tab li a{display: block;width: 100%;height: 100%;color:#666;}
+
+            #listPart .tab li:hover{border: 1px solid #999;}
+            #listPart .tab li:hover a{color: #999;}
+
+    #listPart .tab li a.selected{background-color:#4F60E3;color:#fff;}
+
+    #listPart .part01{width:100%;overflow: hidden;}
+    #listPart .part01 .date{width:100%;}
+    #listPart .part01 .date form{width:100%;}
+    #listPart .part01 .date form fieldset{border:none;}
+    #listPart .part01 .date form legend{display:none;}
+    #listPart .part01 .date form p{width:100%;height:100px;line-height:100px;}
+    #listPart .part01 .date form p span{padding:0 5px;}
+    input[type="date"]{display: inline-block;width:160px;height:40px;padding:0 10px;}
+    input[type="submit"]{display: inline-block;width:160px;height:40px;padding:0 10px;border:none;background-color:#4F60E3;color:#fff;}
+
+
+    #listPart .list{width:100%;border-top:1px solid #999;overflow: hidden;}
+
+    #listPart .list .list_title{width:100%;height:50px;background-color:#EDF0F5;}
+    #listPart .list .list_title div{float:left;line-height:50px;text-align: center;}
+    #listPart .list .list_title .desc01{width:170px;height:100%;}
+    #listPart .list .list_title .desc02{width:240px;height:50px;text-align:center;line-height:50px;padding-top:0px;}
+    #listPart .list .list_title .desc03{width:170px;height:100%;}
+    #listPart .list .list_title .desc04{width:120px;height:100%;}
+
+    #listPart .list .desc{width:100%;height:50px;border-bottom:1px solid #ccc;}
+      #listPart .list .desc p{height:50px;line-height:50px;float:left;text-align: center;font-size:14px;}
+      #listPart .list .desc .desc01{width:170px;}
+      #listPart .list .desc .desc02{width:240px;}
+      #listPart .list .desc .desc03{width:170px;}
+      #listPart .list .desc .desc04{width:120px;}
+
+    #listPart .part02{display:none;}
+    #listPart .part03{display:none;}

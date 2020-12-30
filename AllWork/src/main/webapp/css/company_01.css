@@ -1,7 +1,7 @@
 body{background: #EDF0F5;}
 
 /*###################################   containerWrap  ###################################*/
-    #containerWrap{width:100%;margin:0 auto 80px;overflow: hidden;}
+    #containerWrap{width:100%;overflow: hidden;margin:20px 0 100px;}
     #container{width:1000px;margin:0 auto;}
 
     /*###################################   leftpart   ###################################*/
@@ -9,64 +9,24 @@ body{background: #EDF0F5;}
         #menuTree ul .gnb01 .subMenu01_01{text-decoration: underline;}
 
     /*###################################   등록완료 버튼 reg_leftPart   ###################################*/
-    #leftPart_buttom{width:200px;margin-top:20px;}
+    #leftPart_buttom{width:200px;margin-top:10px;}
     #leftPart_buttom ul{width:100%;}
-    #leftPart_buttom ul li{width:200px;height:50px;margin-bottom:5px;text-align:center;line-height:50px;background-color:#fff;
-      border:1px solid #ccc;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;}
+    #leftPart_buttom ul li{width:200px;height:50px;margin-bottom:5px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;}
     #leftPart_buttom ul li a{display:block;width:100%;height:100%;color:#666;}
-    #leftPart_buttom ul li.reg_ok{background-color:#4F60E3;
-      border:1px solid #4F60E3;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;}
+    #leftPart_buttom ul li.reg_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
     #leftPart_buttom ul li.reg_ok a{color:#fff;}
 
 /*###################################   reg_rightPart   ###################################*/
-    #rightPart{width:790px;height:100%;margin-top:20px;margin-left:10px;float:left;}
-
-    /*###############################   regist00   ###############################*/
-    #regist00{width:790px;margin-bottom:10px;}
-    #company_detail{width:790px;overflow:hidden;background-color:#fff;
-      border:1px solid #ccc;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      margin-bottom:10px;}
-    #company_detail p{float:left;height: 126px;line-height:126px;}
-    #company_detail .company_name{width:180px;padding-left:40px;font-size:32px;}
-    #company_detail .company_hp{width:434px;}
-    #company_detail .company_logo{width:126px;height:126px;overflow: hidden;line-height:124px;text-align: center;
-      border-left:1px solid #ccc;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;}
-    #company_detail .company_logo img{width:100%;}
-
-    #detailArea{width:790px;padding:40px;background-color:#fff;
-      border:1px solid #ccc;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;}
-    #detailArea .detail_title{width:100%;height:30px;font-size:24px;font-family:"NotoSansKR-Thin";}
-    #detailArea .company_setting{width:110px;height:28px;line-height:28px;font-size:14px;margin-bottom:10px;margin-left:600px;text-align:center;border:1px solid #808495;}
-    #detailArea .tabelArea{width:100%;text-indent:20px;overflow: hidden;border-top:1px solid #808495;}
-    #detailArea .tabelArea p{float: left;font-size:14px;}
-    #detailArea .tabelArea .table_title{width:120px;height:39px;line-height:40px;border-bottom:1px solid #ccc;background-color:#808495;color:#fff;}
-    #detailArea .tabelArea .table_desc{width:234px;height:39px;line-height:40px;border-bottom:1px solid #808495;}
-    #detailArea .tabelArea .table_desc01{width:588px;height:39px;line-height:40px;border-bottom:1px solid #808495;}
-
-                  #detailArea .company_setting:hover{background-color:#eee;}
+    #rightPart{width:790px;height:100%;margin-left:10px;float:left;}
 
 /*#########채용공고 등록하기 이후 테이블 전체 설정#########*/
       fieldset{border:none;}
       legend{font-size:24px;padding-bottom:20px;font-family:"NotoSansKR-Thin";}
       #regForm01 div{width:100%;}
+      table{width:100%;}
       caption{display:none;}
-      tbody{width:100%;text-align:left;}
-      tr{width:100%;height:60px;font-size:16px;height:100px;}
+      tbody{width:100%;text-align:left;border-collapse: collapse;}
+      tr{width:100%;font-size:16px;}
       th{width:140px;font-family:"NotoSansKR-Medium";}
       td{width:570px;font-size:14px;}
       td label{font-family:"NotoSansKR-Regular";}
@@ -79,11 +39,32 @@ body{background: #EDF0F5;}
       td input[type="radio"]{width:16px;height:16px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}
 
       td span{display:inline-block;margin-right:10px;}
-      td select{width:160px;height:40px;border:1px solid #999;font-size:16px;text-indent:10px;color:#666;}
+      td select{width:130px;height:40px;border:1px solid #999;font-size:16px;padding:10px;color:#666;}
       td textarea{width:100%;height:200px;}
       td input[type="date"]{width:140px;height:40px;border:1px solid #999;font-size:14px;padding:0 10px;color:#666;}
       .comment{color:red;font-size:12px;padding-top:5px;}
       .necessary{padding-right:0;}
+
+      /*###############################   regist00   ###############################*/
+      #regist00{width:790px;margin-bottom:10px;}
+      #company_detail{width:790px;overflow:hidden;background-color:#fff;border:1px solid #ccc;margin-bottom:10px;}
+      #company_detail p{float:left;height: 110px;line-height:110px;}
+      #company_detail .company_name{width:678px;padding-left:40px;font-size:32px;}
+      #company_detail .company_logo{width:110px;height:110px;overflow: hidden;line-height:110px;text-align: center;border-left:1px solid #ccc;}
+      #company_detail .company_logo img{width:100%;}
+
+      #detailArea{width:790px;padding:40px;background-color:#fff;border:1px solid #ccc;}
+      #detailArea .detail_title{width:100%;height:30px;font-size:24px;font-family:"NotoSansKR-Thin";}
+      #detailArea .company_setting{width:110px;height:30px;line-height:28px;font-size:14px;margin-bottom:10px;margin-left:600px;text-align:center;border:1px solid #808495;}
+
+      #detailArea table{border-top:2px solid #000;border-bottom:1px solid #000;border-collapse:collapse;}
+      #detailArea .tabelArea{width:100%;overflow: hidden;}
+      #detailArea .tabelArea tr{line-height:30px;float:left;font-size:14px;border-bottom:1px solid #ccc;overflow:hidden;}
+      #detailArea .tabelArea .table_title{width:120px;padding-left:20px;background-color:#808495;color:#fff;}
+      #detailArea .tabelArea .table_desc{width:588px;padding-left:20px;}
+
+                    #detailArea .company_setting:hover{background-color:#eee;}
+                    #detailArea .tabelArea tr:last-child{border-bottom:none;}
 
       /*###############################  채용공고 등록하기 regist01   ###############################*/
       #regist01{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
@@ -92,6 +73,7 @@ body{background: #EDF0F5;}
       /*###############################  모집요강 regist02   ###############################*/
       #regist02{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
       #regForm02{width:790px;background-color:#fff;padding:40px;}
+      #regForm02 tr{height:100px;}
       #regForm02 input[type="checkbox"]{margin-top:3px;}
       #reg02_desc08_1{width:50px; height:20px;vertical-align:top;}
       #reg02_desc12_2, #reg02_desc12_3{width:50px; height:20px;vertical-align:top;}
@@ -159,18 +141,9 @@ body{background: #EDF0F5;}
       #regForm06 select{width:162px;height:42px;}
 
 /*###############################   입사지원 버튼   ###############################*/
-      #rightPart ul{width:405px;margin:0 auto;}
-      #rightPart ul li{width:198px;height:48px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;
-        border:1px solid #ccc;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        float:left;}
+      #rightPart ul{width:100%;height:50px;text-align: center;}
+      #rightPart ul li{display:inline-block;width:200px;height:50px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;}
       #rightPart ul li:last-child{margin-right:0px;}
       #rightPart ul li a{display:block;width:100%;height:100%;color:#666;}
-      #rightPart ul li.reg_ok{background-color:#4F60E3;
-        border:1px solid #4F60E3;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;}
+      #rightPart ul li.reg_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
       #rightPart ul li.reg_ok a{color:#fff;}

@@ -41,58 +41,61 @@
 				</div>
 				<div id="head">
 					<div id="header">
-						<p><a href="/companyHome.do" title="기업홈">${SE_USER_NM }</a></p>
 						<ul class="nav">
 							<li class="link02"><a href="#none" title="전체메뉴보기"><i class="fas fa-bars"></i></a></li>
-							<!-- <li><a href="/recruitSearch.do" title="채용정보">채용정보</a></li> -->
 							<li><a href="/resumeSearch.do" title="인재정보">인재정보</a></li>
 							<li><a href="#" title="헤드헌팅">헤드헌팅</a></li>
 							<li><a href="#" title="채용진행현황">채용진행현황</a></li>
 							<li><a href="/boardList.do" title="커뮤니티">커뮤니티</a></li>
 						</ul>
+              			<p class="company_name"><a href="/companyHome.do" title="기업홈">${SE_USER_NM }</a></p>
 						<p class="link01"><a href="/companyHome.do" title="기업회원 홈">기업회원 홈</a></p>
 					</div>
 				</div>
 				<div id="allMenuWrap">
 					<div id="allMenu">
-						<p><a href="#"><i class="far fa-times-circle"></i></a></p>
+						<p class="close"><a href="/resumeSearch.do" title="채용정보"><i class="fas fa-times"></i></a></p>
 						<div class="sitemapArea">
-							<div class="sitemap">
+							<div>
 								<h4>인재검색</h4>
 								<ul>
-									<li class="sitemap_depth01"><a href="/resumeSearch.do" title="인재검색">인재검색</a>
-									<li class="sitemap_depth02"><a href="/resumeSearch.do" title="상세검색">상세검색</a></li>
-									<li class="sitemap_depth02"><a href="/resumeSearchByDuty.do" title="직무별">직무별</a></li>
-									<li class="sitemap_depth02"><a href="#" title="산업별">산업별</a></li>
-									<li class="sitemap_depth02"><a href="#" title="지역별">지역별</a></li>
-									<li class="sitemap_depth02"><a href="#" title="기업별">기업별</a></li>
-									<li class="sitemap_depth02"><a href="#" title="프리랜서">프리랜서</a></li>
-									<li class="sitemap_depth02"><a href="#" title="알바">알바</a></li>
-									<li class="sitemap_depth01"><a href="/resumeScrapList.do" title="스크랩인재">스크랩인재</a></li>
-									<li class="sitemap_depth01"><a href="#" title="우수추천인재">우수추천인재</a></li>
+									<li>
+										<a href="#" title="인재검색">인재검색</a>
+										<ul class="sub">
+											<li><a href="/resumeSearch.do" title="">상세검색</a></li>
+											<li><a href="/resumeSearchByDuty.do" title="">직무별</a></li>
+											<li><a href="/resumeSearchByIndustry.do" title="">산업별</a></li>
+											<li><a href="/resumeSearchByArea.do" title="">지역별</a></li>
+											<li><a href="/resumeSearchForFree.do" title="프리랜서">프리랜서</a></li>
+											<li><a href="/resumeSearchForAlba.do" title="알바">알바</a></li>
+										</ul>
+									</li>
+									<li><a href="/resumeScrapList.do" title="스크랩인재">스크랩인재</a></li>
+									<li><a href="#" title="우수추천인재">우수추천인재</a></li>
+									</ul>
+								</div>
+							<div>
+								<h4>헤드헌팅</h4>
+								<ul>
+									<li class="sitemap_depth01"><a href="#" title="채용정보">채용정보</a></li>
+									<li class="sitemap_depth01"><a href="#" title="화상면접">화상면접</a></li>
 								</ul>
 							</div>
-							<div class="sitemap">
-							<h4>헤드헌팅</h4>
-							<ul>
-								<li class="sitemap_depth01"><a href="#" title="채용정보">채용정보</a>
-							</ul>
-							</div>
-							<div class="sitemap">
+							<div>
 								<h4>채용진행현황</h4>
 								<ul>
-									<li class="sitemap_depth01"><a href="#" title="면접진행">면접진행</a>
-									<li class="sitemap_depth01"><a href="#" title="기업방문">기업방문</a></li>
-									<li class="sitemap_depth01"><a href="#" title="이력서제공">이력서제공</a></li>
-									<li class="sitemap_depth01"><a href="#" title="재취업성공">재취업성공</a></li>
-									<li class="sitemap_depth01"><a href="#" title="사전면접">사전면접</a></li>
+									<li><a href="#" title="면접진행">면접진행</a></li>
+									<li><a href="#" title="기업방문">기업방문</a></li>
+									<li><a href="#" title="이력서제공">이력서제공</a></li>
+									<li><a href="#" title="재취업성공">재취업성공</a></li>
+									<li><a href="#" title="사전면접">사전면접</a></li>
 								</ul>
 							</div>
 						</div>
-						<div id="allMenu_ect">
-							<span><a href="#" title="고객센터">고객센터</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+						<p class="allMenu_ect">
+							<span><a href="/noticeList.do" title="고객센터">고객센터</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
 							<span><a href="/introAbout.do" title="회사소개">회사소개</a></span>
-						</div>
+						</p>
 					</div>
 				</div>
 			</div>

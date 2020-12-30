@@ -29,18 +29,50 @@
 <script type="text/javascript" src="/js/process.js"></script>
 <style>
 </style>
-<script></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#search_btn00").click(function(e){
+			if("${SE_LOGIN_STATUS}" != "true"){
+				alert("로그인 후 이용가능합니다.");
+			}else{
+				if(checkNull($("#searchText").val())){
+					alertAndFocus("검색어를 입력하세요.", $("#searchText"));
+					return;
+				}else{
+					alert("${SE_USER_TYPE}");
+					if("${SE_USER_TYPE}" == "person"){
+						$("#aiSearchForm").attr("action", "/indexRecruitSearchList.do");
+					}else{
+						$("#aiSearchForm").attr("action", "/indexResumeSearchList.do");
+					}
+					$("#aiSearchForm").submit();
+				}	
+			}	
+		});
+	});	
+</script>
 </head>
 <body>
+	
+		
+	</form>
 	<div id="progress_barWrap" style="display:none;">
 		<p id="progress_bar">
 			<img src="/img/main/loading_circle.gif" alt="로딩이미지"/>
 		</p>
     </div>
 	<div id="allworkWrap">
+		<div id="popupWrap" style="display:none;">
+	        <p class="imgArea"><img src="/img/main/popup.jpg" alt="이미지00"/></p>
+	        <div class="buttonArea">
+	          	<p class="today_close"><span><input id="todayClose" type="checkbox"/></span><span>오늘 하루 보지 않기</span></p>
+	          	<p class="popup_close"><span><input id="popupClose" type="checkbox"/></span><span>닫기</span></p>
+			</div>
+		</div>	
 		<div id="headerWrap">
 			<div id="topWrap">
 				<ul class="topMenu">
+					<li><a href="#" title="화상면접"><i class="fas fa-desktop"></i>&nbsp;화상면접&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 					<c:choose>
 						<c:when test="${SE_LOGIN_STATUS}">
 							<li><a href="/logout.do" title="로그아웃">로그아웃&nbsp;|&nbsp;</a></li>
@@ -99,12 +131,11 @@
 							<li class="sitemap_depth01"><a href="/recruitSearch.do" title="채용정보">채용정보</a>
 							<li class="sitemap_depth02"><a href="/recruitSearch.do" title="상세검색">상세검색</a></li>
 							<li class="sitemap_depth02"><a href="/recruitSearchByDuty.do" title="직무별">직무별</a></li>
-							<li class="sitemap_depth02"><a href="#" title="산업별">산업별</a></li>
-							<li class="sitemap_depth02"><a href="#" title="지역별">지역별</a></li>
-							<li class="sitemap_depth02"><a href="#" title="기업별">기업별</a></li>
-							<li class="sitemap_depth01"><a href="#" title="프리랜서">프리랜서</a></li>
-							<li class="sitemap_depth01"><a href="#" title="알바채용">알바채용</a></li>
-							<li class="sitemap_depth01"><a href="#" title="기타채용정보">기타채용정보</a></li>
+							<li class="sitemap_depth02"><a href="/recruitSearchByIndustry.do" title="산업별">산업별</a></li>
+							<li class="sitemap_depth02"><a href="/recruitSearchByArea.do" title="지역별">지역별</a></li>
+							<li class="sitemap_depth01"><a href="/recruitSearchForFree.do" title="프리랜서">프리랜서</a></li>
+							<li class="sitemap_depth01"><a href="/recruitSearchForAlba.do" title="알바채용">알바채용</a></li>
+							<li class="sitemap_depth01"><a href="/recruitOther.do" title="기타채용정보">기타채용정보</a></li>
 							<li class="sitemap_depth01"><a href="#" title="모바일채용정보">모바일채용정보</a></li>
 						</ul>
 					</div>
@@ -113,12 +144,11 @@
 						<ul>
 							<li class="sitemap_depth01"><a href="/resumeSearch.do" title="인재검색">인재검색</a>
 							<li class="sitemap_depth02"><a href="/resumeSearch.do" title="상세검색">상세검색</a></li>
-							<li class="sitemap_depth02"><a href="#" title="직무별">직무별</a></li>
-							<li class="sitemap_depth02"><a href="#" title="산업별">산업별</a></li>
-							<li class="sitemap_depth02"><a href="#" title="지역별">지역별</a></li>
-							<li class="sitemap_depth02"><a href="#" title="기업별">기업별</a></li>
-							<li class="sitemap_depth02"><a href="#" title="프리랜서">프리랜서</a></li>
-							<li class="sitemap_depth02"><a href="#" title="알바">알바</a></li>
+							<li class="sitemap_depth02"><a href="/resumeSearchByDuty.do" title="직무별">직무별</a></li>
+							<li class="sitemap_depth02"><a href="/resumeSearchByIndustry.do" title="산업별">산업별</a></li>
+							<li class="sitemap_depth02"><a href="/resumeSearchByArea.do" title="지역별">지역별</a></li>
+							<li class="sitemap_depth02"><a href="/resumeSearchForFree.do" title="프리랜서">프리랜서</a></li>
+							<li class="sitemap_depth02"><a href="/resumeSearchForAlba.do" title="알바">알바</a></li>
 							<li class="sitemap_depth01"><a href="/resumeScrapList.do" title="스크랩인재">스크랩인재</a></li>
 							<li class="sitemap_depth01"><a href="#" title="우수추천인재">우수추천인재</a></li>
 						</ul>
@@ -141,7 +171,7 @@
 					</div>
 				</div>
 				<div id="allMenu_ect">
-					<span><a href="#" title="고객센터">고객센터</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+					<span><a href="/noticeList.do" title="고객센터">고객센터</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
 					<span><a href="/introAbout.do" title="회사소개">회사소개</a></span>
 				</div>
 			</div>
@@ -156,7 +186,7 @@
 							<span class="bold">올워크</span>
 						</p>
 						<div id="searchArea">
-							<form action="https://www.mmca.co.kr/search" method="get" name="searchForm">
+							<form name="aiSearchForm" id="aiSearchForm" method="post">
 								<fieldset>
 									<legend>검색</legend>
 									<p class="textBox">

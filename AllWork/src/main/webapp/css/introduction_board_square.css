@@ -1,0 +1,21 @@
+#allworkWrap{width:100%;font-family:"NotoSansKR-Regular";}
+
+/*
+바디에 직접달았음
+#containerWrap{width:1920px;height:2000px;margin:0 auto;
+background-image:url("img/introduction_background.jpg");
+background-repeat: no-repeat;}*/
+#container{width: 1000px;margin:0 auto;overflow: hidden;padding-bottom:500px;}
+#intro_menuTree ul .subMenu02{text-decoration: underline;}
+
+#rightPart{width:800px;overflow: hidden;}
+
+/*###################################   content06 기타채용공고 ###################################*/
+#boardPart{width:800px;overflow: hidden;margin-top:20px;}
+#boardPart .boardBoxWrap{width:100%;overflow:hidden;}
+#boardPart .boardBox{width:730px;overflow:hidden;margin:0 auto;}
+#boardPart .boardBox li{width:223px;height:223px;border:1px solid #ddd;margin-right:20px;margin-bottom:20px;float:left;}
+#boardPart .boardBox li a{width:100%;}
+#boardPart .boardBox li a img{width:100%;}
+
+.intro_numareaWrap{padding-bottom:30px;}

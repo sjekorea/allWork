@@ -15,18 +15,10 @@ jQuery(document).ready(function(){
   		jQuery("#allMenuWrap").css({"display":"none"});
 
   		jQuery("#headerWrap #head .nav").first().click(function(){
-  		jQuery("#allMenuWrap").show();
+  			jQuery("#allMenuWrap").show();
   		});
 
       jQuery(".fa-times-circle").first().click(function(){
   		jQuery("#allMenuWrap").css({"display":"none"});
   		});
-
-      //팝업창 닫기
-  		jQuery("#popupClose").click(function(){
-  		jQuery("#popupWrap").hide();
-  		});
-
-
-
 });

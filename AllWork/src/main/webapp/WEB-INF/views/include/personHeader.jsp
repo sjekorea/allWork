@@ -68,34 +68,36 @@
 			</div>
 			<div id="allMenuWrap">
 				<div id="allMenu">
-					<p>
-						<a href="#" title="채용정보"><i class="far fa-times-circle"></i></a>
-					</p>
+					<p class="close"><a href="#" title="채용정보"><i class="fas fa-times"></i></a></p>
 					<div class="sitemapArea">
-						<div class="sitemap">
+						<div>
 							<h4>채용정보</h4>
 							<ul>
-								<li class="sitemap_depth01"><a href="/recruitSearch.do" title="채용정보">채용정보</a>
-								<li class="sitemap_depth02"><a href="/recruitSearch.do" title="상세검색">상세검색</a></li>
-								<li class="sitemap_depth02"><a href="/recruitSearchByDuty.do" title="직무별">직무별</a></li>
-								<li class="sitemap_depth02"><a href="#" title="산업별">산업별</a></li>
-								<li class="sitemap_depth02"><a href="#" title="지역별">지역별</a></li>
-								<li class="sitemap_depth02"><a href="#" title="기업별">기업별</a></li>
-								<li class="sitemap_depth01"><a href="#" title="프리랜서">프리랜서</a></li>
-								<li class="sitemap_depth01"><a href="#" title="알바채용">알바채용</a></li>
-								<li class="sitemap_depth01"><a href="#" title="기타채용정보">기타채용정보</a></li>
+								<li class="sitemap_depth01">
+									<a href="#" title="채용정보">채용정보</a>
+									<ul class="sub">
+										<li class="sitemap_depth02"><a href="/recruitSearch.do" title="상세검색">상세검색</a></li>
+										<li class="sitemap_depth02"><a href="/recruitSearchByDuty.do" title="직무별">직무별</a></li>
+										<li class="sitemap_depth02"><a href="/recruitSearchByIndustry.do" title="산업별">산업별</a></li>
+										<li class="sitemap_depth02"><a href="/recruitSearchByArea.do" title="지역별">지역별</a></li>
+									</ul>
+								</li>
+								<li class="sitemap_depth01"><a href="/recruitSearchForFree.do" title="프리랜서">프리랜서</a></li>
+								<li class="sitemap_depth01"><a href="/recruitSearchForAlba.do" title="알바채용">알바채용</a></li>
+								<li class="sitemap_depth01"><a href="/recruitOther.do" title="기타채용정보">기타채용정보</a></li>
 							</ul>
 						</div>
-						<div class="sitemap">
+						<div>
 							<h4>헤드헌팅</h4>
 							<ul>
-								<li class="sitemap_depth01"><a href="#" title="채용정보">채용정보</a>
+							<li class="sitemap_depth01"><a href="#" title="채용정보">채용정보</a></li>
+							<li class="sitemap_depth01"><a href="#" title="채용정보">화상면접</a></li>
 							</ul>
 						</div>
-						<div class="sitemap">
+						<div>
 							<h4>채용진행현황</h4>
 							<ul>
-								<li class="sitemap_depth01"><a href="#" title="면접진행">면접진행</a>
+								<li class="sitemap_depth01"><a href="#" title="면접진행">면접진행</a></li>
 								<li class="sitemap_depth01"><a href="#" title="기업방문">기업방문</a></li>
 								<li class="sitemap_depth01"><a href="#" title="이력서제공">이력서제공</a></li>
 								<li class="sitemap_depth01"><a href="#" title="재취업성공">재취업성공</a></li>
@@ -103,11 +105,12 @@
 							</ul>
 						</div>
 					</div>
-					<div id="allMenu_ect">
-						<span><a href="#" title="고객센터">고객센터</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-						<span><a href="/introAbout.do" title="회사소개">회사소개</a></span>
-					</div>
+					<p class="allMenu_ect">
+					<span><a href="/noticeList.do" title="고객센터">고객센터</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+					<span><a href="/introAbout.do" title="회사소개">회사소개</a></span>
+					</p>
 				</div>
 			</div>
+			
 		</div>
 	

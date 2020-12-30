@@ -7,6 +7,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -14,10 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import allwork.common.CommandMap;
+import allwork.common.util.FileUtils;
 import allwork.service.NetfuCateService;
 
 @Controller
 public class CommonController {
+	
+	@Resource(name="fileUtils") 
+	private FileUtils fileUtils;
 	
 	@RequestMapping(value="/commonHeader.do")
 	public ModelAndView commonHeader(CommandMap commandMap) {
@@ -149,6 +155,30 @@ public class CommonController {
 		
 		ModelAndView mv = new ModelAndView("/include/footer");
 		
+		return mv;
+	}
+	
+
+	/*
+	 * 파일 upload & getFileName
+	 */
+	@RequestMapping(value="/fileUplad.ajax")
+	public ModelAndView fileUplad(CommandMap commandMap, HttpSession session, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String attachFileName = "";
+		try{
+			
+			attachFileName = fileUtils.uploadFile(commandMap.getMap(), request);
+			
+			System.out.println(this.getClass().getName()+" ====> attachFileName : "+attachFileName);
+			
+			mv.addObject("attachFileName", attachFileName);
+			mv.setViewName("jsonView");
+			
+		}catch(Exception e){
+			System.out.println(this.getClass().getName()+".fileUplad() Exception!!!!!\n"+e.toString());
+		}
+			
 		return mv;
 	}
 

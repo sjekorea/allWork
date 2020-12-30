@@ -17,122 +17,57 @@
 	</div>
 	<div id="rightPart">
 		<div id="recruitment">
-			<h4>채용정보 상세검색</h4>
-			<div id="rec_row01_1">
+			<h5>채용정보 상세검색</h5>
+			<div id="part02">
+				<form id="keyworkSearchForm" name="keyworkSearchForm" method="post" action="/recruitSearch.do" >
+					<fieldset>
+						<legend>검색</legend>
+						<div>
+							<span><input type="radio" id="keywordR" name="keywordR" value="and" checked /></span>&nbsp;‘그리고’(and) 검색
+							<span><input type="radio" id="keywordR" name="keywordR" value="or" <c:if test="${map.keywordCondition eq 'or' }">checked</c:if> /></span>&nbsp;‘또는’(or) 검색 
+						</div>
+						<p><input type="text" id="keyword1" name="keyword1" value="${map.keyword1 }" placeholder="전체(직무, 산업, 이력서내용, 이력서 번호 등)" /></p>
+						<p><input type="text" id="keyword2" name="keyword2" value="${map.keyword2 }" placeholder="회사명" /></p>
+						<p><input type="text" id="keyword3" name="keyword3" value="${map.keyword3 }" placeholder="학교명, 전공명" /></p>
+						<p class="btnBox"><input id="keyword_search_btn" type="button" name="keyword_search_btn" value="검색" style="cursor:pointer;"/></p>
+						<input type="hidden" name="keywordCondition" id="keywordCondition" value="${map.keywordCondition }"/>
+						<input type="hidden" name="searchFlag" id="searchFlag" value="keyword"/>
+					</fieldset>
+				</form>
+			</div>	
+			<div id="rec_row01_1" style="display:block;">
                 <ul class="tab">
-                  <li><a href="#" title="직무별">직무별</a></li>
-                  <li><a href="#" title="산업별">산업별</a></li>
-                  <li><a href="#" title="지역별">지역별</a></li>
-                  <li><a href="#" title="상세조건별">상세조건별</a></li>
+                  	<li id="job"><a href="#" title="직무별">직무별</a></li>
+                 	<li id="area_job"><a href="#" title="산업별">산업별</a></li>
+                  	<li id="area"><a href="#" title="지역별">지역별</a></li>
+                  	<li id="others"><a href="#" title="상세조건별"></a></li>
                 </ul>
-                <div class="descArea">
-                  <ul class="cate_job">
-                    <li><input id="column02_btn01" class="on" type="button" name="column02_btn01" value="경영·사무"/></li>
-                    <li><input id="column02_btn02" class="on" type="button" name="column02_btn02" value="마케팅·광고·홍보"/></li>
-                    <li><input id="column02_btn03" class="on" type="button" name="column02_btn03" value="IT·인터넷"/></li>
-                    <li><input id="column02_btn04" class="on" type="button" name="column02_btn04" value="디자인"/></li>
-                    <li><input id="column02_btn05" class="on" type="button" name="column02_btn05" value="무역·유통"/></li>
-                    <li><input id="column02_btn06" class="on" type="button" name="column02_btn06" value="영업·고객상담"/></li>
-                    <li><input id="column02_btn07" class="on" type="button" name="column02_btn07" value="서비스"/></li>
-                    <li><input id="column02_btn08" class="on" type="button" name="column02_btn08" value="연구개발·설계"/></li>
-                    <li><input id="column02_btn09" class="on" type="button" name="column02_btn09" value="생산·제조"/></li>
-                    <li><input id="column02_btn10" class="on" type="button" name="column02_btn10" value="교육"/></li>
-                    <li><input id="column02_btn11" class="on" type="button" name="column02_btn11" value="건설"/></li>
-                    <li><input id="column02_btn12" class="on" type="button" name="column02_btn12" value="의료"/></li>
-                    <li><input id="column02_btn13" class="on" type="button" name="column02_btn13" value="미디어"/></li>
-                    <li><input id="column02_btn14" class="on" type="button" name="column02_btn14" value="전문·특수직"/></li>
-                  </ul>
-                  <ul class="cate_industry">
-                    <li><input id="column03_btn01" class="on" type="button" name="column03_btn01" value="서비스업"/></li>
-                    <li><input id="column03_btn02" class="on" type="button" name="column03_btn02" value="금융·은행업"/></li>
-                    <li><input id="column03_btn03" class="on" type="button" name="column03_btn03" value="IT·정보통신업"/></li>
-                    <li><input id="column03_btn04" class="on" type="button" name="column03_btn04" value="판매·유통업"/></li>
-                    <li><input id="column03_btn05" class="on" type="button" name="column03_btn05" value="교육업"/></li>
-                    <li><input id="column03_btn06" class="on" type="button" name="column03_btn06" value="건설업"/></li>
-                    <li><input id="column03_btn07" class="on" type="button" name="column03_btn07" value="의료·제약업"/></li>
-                    <li><input id="column03_btn08" class="on" type="button" name="column03_btn08" value="미디어·광고업"/></li>
-                    <li><input id="column03_btn09" class="on" type="button" name="column03_btn09" value="문화·예술·디자인업"/></li>
-                    <li><input id="column03_btn10" class="on" type="button" name="column03_btn10" value="기관·협회"/></li>
-                  </ul>
-                  <ul class="cate_location">
-                    <li><input id="column01_btn01" class="on" type="button" name="column01_btn01" value="서울특별시"/></li>
-                    <li><input id="column01_btn02" class="on" type="button" name="column01_btn02" value="경기도"/></li>
-                    <li><input id="column01_btn03" class="on" type="button" name="column01_btn03" value="인천광역시"/></li>
-                    <li><input id="column01_btn04" class="on" type="button" name="column01_btn04" value="대전광역시"/></li>
-                    <li><input id="column01_btn05" class="on" type="button" name="column01_btn05" value="세종특별자치시"/></li>
-                    <li><input id="column01_btn06" class="on" type="button" name="column01_btn06" value="충청남도"/></li>
-                    <li><input id="column01_btn07" class="on" type="button" name="column01_btn07" value="충청북도"/></li>
-                    <li><input id="column01_btn08" class="on" type="button" name="column01_btn08" value="광주광역시"/></li>
-                    <li><input id="column01_btn09" class="on" type="button" name="column01_btn09" value="전라남도"/></li>
-                    <li><input id="column01_btn10" class="on" type="button" name="column01_btn10" value="전라북도"/></li>
-                    <li><input id="column01_btn11" class="on" type="button" name="column01_btn11" value="대구광역시"/></li>
-                    <li><input id="column01_btn12" class="on" type="button" name="column01_btn12" value="경상북도"/></li>
-                    <li><input id="column01_btn13" class="on" type="button" name="column01_btn13" value="부산광역시"/></li>
-                    <li><input id="column01_btn14" class="on" type="button" name="column01_btn14" value="울산광역시"/></li>
-                    <li><input id="column01_btn15" class="on" type="button" name="column01_btn15" value="경상남도"/></li>
-                    <li><input id="column01_btn16" class="on" type="button" name="column01_btn16" value="강원도"/></li>
-                    <li><input id="column01_btn17" class="on" type="button" name="column01_btn17" value="제주특별자치도"/></li>
-                    <li><input id="column01_btn18" class="on" type="button" name="column01_btn18" value="전국"/></li>
-                    <li><input id="column01_btn19" class="on" type="button" name="column01_btn19" value="해외"/></li>
-                  </ul>
-                <ul class="cate_ect">
-                  <li><input id="column06_btn01" class="on" type="button" name="column06_btn01" value="해외지역"/></li>
-                  <li><input id="column06_btn02" class="on" type="button" name="column06_btn02" value="직급/직책별"/></li>
-                  <li><input id="column06_btn03" class="on" type="button" name="column06_btn03" value="전공계열별"/></li>
-                  <li><input id="column06_btn04" class="on" type="button" name="column06_btn04" value="우대조건별"/></li>
-                  <li><input id="column06_btn05" class="on" type="button" name="column06_btn05" value="자격증별"/></li>
-                  <li><input id="column06_btn06" class="on" type="button" name="column06_btn06" value="복리후생별"/></li>
-                </ul>
+                <div class="descArea" style="display:block;">
+                  	<ul class="cate_job">
+	                    <c:forEach var="result" items="${jobList}" varStatus="status">
+							<li><input id="bizType1" class="on" type="button" name="${result.code}" value="${result.name}"/></li>
+						</c:forEach>
+                  	</ul>
+                  	<ul class="cate_industry">
+	                    <c:forEach var="result" items="${areaJobList}" varStatus="status">
+							<li><input id="areaJob1" class="on" type="button" name="${result.code}" value="${result.name}"/></li>
+						</c:forEach>
+                  	</ul>
+                  	<ul class="cate_location">
+	                    <c:forEach var="result" items="${areaList}" varStatus="status">
+							<li><input id="bizArea1" class="on" type="button" name="${result.code}" value="${result.name}"/></li>
+						</c:forEach>
+                  	</ul>
+                	<ul class="cate_ect"></ul>
                 </div>
-                <div id="cateOn">
-                  <ul class="select01">
-                    <li><input id="column02_btn01" class="on" type="button" name="column02_btn01" value="경영·사무"/></li>
-                    <li><input id="column02_btn02" class="on" type="button" name="column02_btn02" value="마케팅·광고·홍보"/></li>
-                    <li><input id="column02_btn03" class="on" type="button" name="column02_btn03" value="IT·인터넷"/></li>
-                    <li><input id="column02_btn04" class="on" type="button" name="column02_btn04" value="디자인"/></li>
-                    <li><input id="column02_btn05" class="on" type="button" name="column02_btn05" value="무역·유통"/></li>
-                    <li><input id="column02_btn06" class="on" type="button" name="column02_btn06" value="영업·고객상담"/></li>
-                    <li><input id="column02_btn07" class="on" type="button" name="column02_btn07" value="서비스"/></li>
-                    <li><input id="column02_btn08" class="on" type="button" name="column02_btn08" value="연구개발·설계"/></li>
-                    <li><input id="column02_btn09" class="on" type="button" name="column02_btn09" value="생산·제조"/></li>
-                    <li><input id="column02_btn10" class="on" type="button" name="column02_btn10" value="교육"/></li>
-                    <li><input id="column02_btn11" class="on" type="button" name="column02_btn11" value="건설"/></li>
-                    <li><input id="column02_btn12" class="on" type="button" name="column02_btn12" value="의료"/></li>
-                    <li><input id="column02_btn13" class="on" type="button" name="column02_btn13" value="미디어"/></li>
-                    <li><input id="column02_btn14" class="on" type="button" name="column02_btn14" value="전문·특수직"/></li>
-                  </ul>
-                  <ul class="select02">
-                    <li><input id="column02_btn011" class="on" type="button" name="column02_btn011" value="자동차·조선·기계"/></li>
-                    <li><input id="column02_btn021" class="on" type="button" name="column02_btn021" value="반도체·디스플레이"/></li>
-                    <li><input id="column02_btn031" class="on" type="button" name="column02_btn031" value="화학·에너지·환경"/></li>
-                    <li><input id="column02_btn041" class="on" type="button" name="column02_btn041" value="전기·전자·제어"/></li>
-                    <li><input id="column02_btn051" class="on" type="button" name="column02_btn051" value="기계설계·CAD·CAM"/></li>
-                    <li><input id="column02_btn061" class="on" type="button" name="column02_btn061" value="통신기술·네트워크구축"/></li>
-                    <li><input id="column02_btn071" class="on" type="button" name="column02_btn071" value="바이오·제약·식품"/></li>
-                  </ul>
-                  <ul class="select03">
-                    <li><input id="column02_btn012" class="on" type="button" name="column02_btn012" value="기계"/></li>
-                    <li><input id="column02_btn022" class="on" type="button" name="column02_btn022" value="기구설계"/></li>
-                    <li><input id="column02_btn032" class="on" type="button" name="column02_btn032" value="생산기술"/></li>
-                    <li><input id="column02_btn042" class="on" type="button" name="column02_btn042" value="제품개발"/></li>
-                    <li><input id="column02_btn052" class="on" type="button" name="column02_btn052" value="금형설계"/></li>
-                    <li><input id="column02_btn062" class="on" type="button" name="column02_btn062" value="R&D"/></li>
-                    <li><input id="column02_btn072" class="on" type="button" name="column02_btn072" value="메카트로닉스"/></li>
-                    <li><input id="column02_btn042" class="on" type="button" name="column02_btn042" value="금속"/></li>
-                    <li><input id="column02_btn052" class="on" type="button" name="column02_btn052" value="조선/플랜트"/></li>
-                    <li><input id="column02_btn062" class="on" type="button" name="column02_btn062" value="건설/건축"/></li>
-                    <li><input id="column02_btn072" class="on" type="button" name="column02_btn072" value="철강"/></li>
-                  </ul>
+                <div id="cateOn" style="display:none;">
+                  	<ul class="select01" id="select01"></ul>
+                  	<ul class="select02" id="select02"></ul>
+                  	<ul class="select03" id="select03"></ul>
                 </div>
-              </div>
+			</div>
 			<div id="searchBox">
-				<p class="keywords">
-					<span><input type="button" value="서울특별시"/><i class="fas fa-times"></i></span>
-					<span><input type="button" value="서울특별시"/><i class="fas fa-times"></i></span>
-					<span><input type="button" value="서울특별시"/><i class="fas fa-times"></i></span>
-					<span><input type="button" value="서울특별시"/><i class="fas fa-times"></i></span>
-					<span><input type="button" value="서울특별시"/><i class="fas fa-times"></i></span>
-				</p>
+				<p class="keywords">${map.keywordsHtml }</p>
 				<p class="reset"><a href="#none" title="초기화">초기화</a></p>
 				<p class="goBtn"><input id="search_btn" type="button" value="선택된 조건 검색하기"/></p>
 			</div>
@@ -146,49 +81,49 @@
 					<li><a href="#" title="등록일순">마감일순</a></li>
 				</ul>
 			</div>
-			<ul class="rec_title">
-				<li class="desc01">업체명</li>
-				<li class="desc02">채용정보</li>
-				<li class="desc03">경력</li>
-				<li class="desc04">학력</li>
-				<li class="desc05">등록/수정</li>
-				<li class="desc06">마감</li>
-			</ul>
-			
-			<ul class="rec_list">
-				<c:choose>
-					<c:when test="${recruitList.size() > 0 }">
-						<c:forEach var="result" items="${recruitList}" varStatus="status">
-							<li>
-								<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
-									<p class="list_title">${result.bizName }</p>
-									<div class="desc1">
-										<p class="desc11">${convert:compByte(result.bizTitle, 100, "...")}</p>
-										<p class="desc12"><strong>급여 </strong>${result.bizPayName }</p>
-										<p class="desc12">
-											<strong>지역 </strong>
-												${result.bizArea1Name }
-												${convert:checkNull(result.bizArea2Name) eq '' ? '' : '>'.concat(result.bizArea2Name) }
-										</p>
-									</div>
-									<div class="desc2">
-										<p class="desc21">${codeConvert:getBizCareer(result.bizCareer) }</p>
-										<p class="desc22">${codeConvert:getBizAbilityShort(result.bizAbility) }</p>
-									</div>
-									<div class="desc3">
-										<p class="desc31"><strong>등록 </strong>${result.wdate }</p>
-										<p class="desc32"><strong>수정 </strong>${result.uWdate }</p>
-									</div>
-									${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }
-								</a>
-							</li>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<li style="width:100%;"><div class="desc01">내역이 없습니다.</div></li>
-					</c:otherwise>
-				</c:choose>
-			</ul>
+			<table class="list">
+				<thead>
+					<tr class="list_title">
+						<th class="t_desc01">회사명</th>
+						<th colspan="3" class="t_desc02">채용정보</th>
+						<th class="t_desc03">마감일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:choose>
+						<c:when test="${recruitList.size() > 0 }">
+							<c:forEach var="result" items="${recruitList}" varStatus="status">
+								<tr class="margin"></tr>
+								<tr>
+									<td rowspan="3" class="desc01">${result.bizName }</td>
+									<td colspan="3" class="desc02">
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
+											${convert:compByte(result.bizTitle, 100, "...")}
+										</a>
+									</td>
+									<td rowspan="3" class="desc03">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
+									</tr>
+									<tr>
+									<td><span class="desc_title">급여</span><span class="desc_desc00">${result.bizPayName }</span></td>
+									<td><span class="desc_title">경력</span><span class="desc_desc00">${codeConvert:getBizCareer(result.bizCareer) }</span></td>
+									<td><span class="desc_title">나이</span><span class="desc_desc00">${codeConvert:getBizAge(result.bizAge) }</span></td>
+									</tr>
+									<tr>
+									<td><span class="desc_title">지역</span>
+										<span class="desc_desc00">${result.bizArea1Name }${convert:checkNull(result.bizArea2Name) eq '' ? '' : '>'.concat(result.bizArea2Name) }</span>
+									</td>
+									<td><span class="desc_title">학력</span><span class="desc_desc00">${result.bizAbility }<%-- ${codeConvert:getBizAbilityShort(result.bizAbility) } --%></span></td>
+									<td><span class="desc_title">성별</span><span class="desc_desc00">${codeConvert:getBizSex(result.bizSex) }</span></td>
+								</tr>
+								<tr class="margin"></tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr class="desc"><td colspan="8" style="text-align:center;height:80px;">내역이 없습니다.</td></tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
 			<div class="numareaWrap">
 				<ul class="numArea">
 					${pageMap.pageHtml }
@@ -214,11 +149,161 @@
 	<input type="hidden" name="recruitNo" id="recruitNo" value="" />
 	<input type="hidden" name="resumeNo" id="resumeNo" value="" />
 	<input type="hidden" name="leftMenuUrl" id="leftMenuUrl" value="/recruitInfoSubMenu.do" />
+	
+	<input type="hidden" name="searchKind" id="searchKind" value="${map.searchKind }" />
+	<input type="hidden" name="bizType3" id="bizType3" value="${map.bizType3 }" />
+	<input type="hidden" name="areaJob3" id="areaJob3" value="${map.areaJob3 }" />
+	<input type="hidden" name="bizArea2" id="bizArea2" value="${map.bizArea2 }" />
+	<input type="hidden" name="keywordsHtml" id="keywordsHtml" value="${map.keywordsHtml }" />
 </form>
 
 <script type="text/javascript">
 	
 	$(document).ready(function(){
+		
+		loadingOff();
+		
+		$("#keyword_search_btn").on("click", function(e){
+			
+			$("#keywordCondition").val($("input[name=keywordR]:checked").val());
+			
+			if(checkNull($("#keywordCondition").val())){
+				alert("검색 조건을 선택하세요.");
+				return;
+			}
+			
+			if(checkNull($("#keyword1").val())){
+				alertAndFocus("검색 키워드를 입력하세요.", $("#keyword1"));
+				return;
+			}
+			
+			if(checkNull($("#keyword1").val()) && checkNull($("#keyword2").val()) && checkNull($("#keyword3").val())){
+				alert("검색 키워드를 입력하세요.");
+				return;
+			}
+			loadingOn();
+			$("#keyworkSearchForm").submit();
+		});
+		
+		
+		// 상단 직무별, 산업별, 지역별, 상세조건별 Tab click
+		$(".tab li a").on("click", function(e){
+			
+			var idx = $(this).parent("li").index();
+			$(".tab").find("li").eq(idx).css("background-color", "#000").siblings("li").css("background-color", "#ddd");
+			
+			var selectedId = $(this).parent("li").attr("id");
+			
+			if(selectedId == $("#searchKind").val() && $(".descArea").css("display") == "none"){
+				$(".descArea").css("display", "block");
+				$("#cateOn").css("display", "none");	
+			
+			}else{
+				
+				if(idx != 3){
+					$(".select01, .select02, .select03").empty();
+					switch(idx){
+						case 0 : $(".select01").html($(".cate_job").html()); break;
+						case 1 : $(".select01").html($(".cate_industry").html()); break;
+						case 2 : $(".select01").html($(".cate_location").html()); break;
+						default : break;
+					}
+					$("#searchKind").val(selectedId);
+					$(".descArea").css("display", "none");
+					$("#cateOn").css("display", "block");	
+				}else{
+					$(".descArea").css("display", "block");
+					$("#cateOn").css("display", "none");
+				}
+				
+			}
+		});
+		
+		// 검색 항목 click
+		$(document).on("click", "#rec_row01_1 input:button", function(e){
+			
+			//alert("UL Class : "+$(this).closest("ul").attr("class")+" || ID : "+$(this).attr("id")+" || VALUE : "+$(this).attr("value")+" || NAME : "+$(this).attr("name")+" || SEARCH_KIND : "+$("#searchKind").val());
+			
+			var ulClass = $(this).closest("ul").attr("class");
+			var selectedId = $(this).attr("id");
+			var selectedValue = $(this).attr("value");
+			var selectedName = $(this).attr("name");
+			
+			if("cate_job" == ulClass || "cate_industry" == ulClass || "cate_location" == ulClass){
+				
+				$(".descArea").css("display", "none");
+				$("#cateOn").css("display", "block");
+				$(".select01, .select02, .select03").empty();
+				
+				if("cate_job" == ulClass){ // 직무별
+					$("#searchKind").val("job");
+					$(".tab").find("li").eq(0).css("background-color", "#000").siblings("li").css("background-color", "#ddd");
+					$(".select01").html($(".cate_job").html());
+				}
+				
+				if("cate_industry" == ulClass){ // 산업별
+					$("#searchKind").val("areaJob");
+					$(".tab").find("li").eq(1).css("background-color", "#000").siblings("li").css("background-color", "#ddd");
+					$(".select01").html($(".cate_industry").html());
+				}
+
+				if("cate_location" == ulClass){ // 지역별
+					$("#searchKind").val("area");
+					$(".tab").find("li").eq(2).css("background-color", "#000").siblings("li").css("background-color", "#ddd");
+					$(".select01").html($(".cate_location").html());
+				}
+
+				getNetfuCateListForUl($("#searchKind").val(), $(this).attr("name"), "select02", $("#searchKind").val()+"2", true);
+				
+			}else{
+				
+				if("cate_ect" == ulClass){
+					$("#searchKind").val("cate_ect");
+					$(".tab").find("li").eq(3).css("background-color", "#000").siblings("li").css("background-color", "#ddd");
+				}
+				
+				if("select01" == ulClass){
+					getNetfuCateListForUl($("#searchKind").val(), $(this).attr("name"), "select02", $("#searchKind").val()+"2", true);
+				}
+				
+				if("select02" == ulClass){
+					getNetfuCateListForUl($("#searchKind").val(), $(this).attr("name"), "select03", $("#searchKind").val()+"3", true);
+				}
+				
+				$(".descArea").css("display", "none");
+				$("#cateOn").css("display", "block");
+			}
+			
+			if($(".keywords span").length >= 10){
+				alert("겸색 조건은 10까지만 등록가능합니다.");
+			}else{
+				if(($("#searchKind").val() == "area" && ulClass == "select02") || ($("#searchKind").val() != "area" && ulClass == "select03")){
+					if(!chkSearchConditionExist(selectedName)){
+						$(".keywords").append("<span><input id='"+selectedId+"' type='button' name='"+selectedName+"' value='"+selectedValue+"' /><i class='fas fa-times'></i></span>");	
+					}	
+				}	
+			}
+		});
+		
+		
+		$(document).on("click", ".keywords .fas", function(e){
+			$(this).parents(".keywords").find("span").eq($(this).parents("span").index()).remove();
+		});
+		
+		
+		$(".reset").on("click", function(e){
+			$(".tab").find("li").css("background-color", "#ddd");
+			$(".descArea").css("display", "block");
+			$("#cateOn").css("display", "none");
+			$(".keywords").empty();
+		});
+		
+		
+		$("#search_btn").on("click", function(e){
+			//e.prevantDefault();
+			recruitSearch();
+		});
+		
 		
 		$(".rec_align a").on("click", function(e){
 			
@@ -287,6 +372,51 @@
 		}
 	}
 	
-
+	function chkSearchConditionExist(code){
+		
+		var rtnBoo = false;
+		$(".keywords span input:button").each(function(index, item){
+			if($(this).attr("name") == code){
+				rtnBoo = true;
+			}	
+		});
+		return rtnBoo;
+	}
+	
+	
+	function recruitSearch(){
+		
+		loadingOn();
+		
+		var spanId = "", bizType = "", areaJob = "", bizArea = "";
+		
+		$(".keywords span input:button").each(function(index, item){
+			spanId = $(this).attr("id");
+			if(spanId == "job3"){
+				bizType += $(this).attr("name")+","
+			}
+			if(spanId == "areaJob3"){
+				areaJob += $(this).attr("name")+","
+			}
+			if(spanId == "area2"){
+				bizArea += $(this).attr("name")+","
+			}
+		});
+		bizType = bizType.length > 0 ? bizType.substring(0, bizType.length - 1) : "";
+		areaJob = areaJob.length > 0 ? areaJob.substring(0, areaJob.length - 1) : "";
+		bizArea = bizArea.length > 0 ? bizArea.substring(0, bizArea.length - 1) : "";
+		
+		$("#bizType3").val(bizType);
+		$("#areaJob3").val(areaJob);
+		$("#bizArea2").val(bizArea);
+		$("#keywordsHtml").val($(".keywords").html());
+		
+		if(bizType.length <= 0 && areaJob.length <= 0 && bizArea.length <= 0){
+			loadingOff();
+			alert("검색 조건을 확인하세요.");
+		}else{
+			$("#searchForm").submit();	
+		}
+	}
 </script>
 

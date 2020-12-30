@@ -26,6 +26,7 @@
 <script type="text/javascript" src="/js/moment.min.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>
 <script type="text/javascript" src="/js/process.js"></script>
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 </head>
 
 <body>
@@ -51,8 +52,8 @@
 					<fieldset>
 						<legend>회원가입</legend>
 						<div class="tab">
-							<span class="btn_persnal"><input id="persnal_register" type="radio" name="persnal_register" onClick="location.href='/personJoin.do'" checked="checked"/><label for="persnal_register">&nbsp;개인회원</label></span>
-							<span class="btn_company"><input id="company_register" type="radio" name="company_register"/><label for="company_register">&nbsp;기업회원</label></span>
+							<span class="btn_persnal"><input id="memberJoin" type="radio" name="memberJoin" onClick="location.href='/personJoin.do'" checked="checked"/>&nbsp;개인회원</span>
+							<span class="btn_company"><input id="memberJoin" type="radio" name="memberJoin" onClick="location.href='/companyJoin.do'"/>&nbsp;기업회원</span>
 						</div>
 						<div class="descBox">
 							<p class="title">일반 개인회원<br/>혜택</p>
@@ -84,7 +85,7 @@
 								<tbody>
 									<tr>
 										<th>이름<span class="necessary">*</span></th>
-										<td><input id="name" type="text" name="name" title="이름" value="테스트"/></td>
+										<td><input id="name" type="text" name="name" title="이름" value=""/></td>
 									</tr>
 									<tr>
 										<th>아이디<span class="necessary">*</span></th>
@@ -97,14 +98,14 @@
 									<tr>
 										<th>비밀번호<span class="necessary">*</span></th>
 										<td>
-											<input id="passwd" type="password" name="passwd" value="1111" title="비밀번호"/>
+											<input id="passwd" type="password" name="passwd" value="" title="비밀번호"/>
 											<span class="comment">비밀번호는 6~16자 영문, 숫자를 조합하여 사용할 수 있습니다.</span>
 										</td>
 									</tr>
 									<tr>
 										<th>비밀번호 확인<span class="necessary">*</span></th>
 										<td>
-											<input id="passwdConfirm" type="password" name="passwdConfirm" value="1111" title="비밀번호확"/>
+											<input id="passwdConfirm" type="password" name="passwdConfirm" value="" title="비밀번호확"/>
 											<span class="comment">비밀번호 확인을 위해 다시 한 번 입력해 주시기 바랍니다.</span>
 										</td>
 									</tr>
@@ -121,8 +122,8 @@
 									<tr>
 										<th>성별<span class="necessary">*</span></th>
 										<td>
-											<span>&nbsp;<input id="sex" type="radio" name="sex" value="man" checked="checked"/>남자</span>
-											<span>&nbsp;<input id="sex" type="radio" name="sex" value="woman" />여자</span>
+											<span>&nbsp;<input id="man" type="radio" name="sex" value="man" checked="checked"/>남자</span>
+											<span>&nbsp;<input id="woman" type="radio" name="sex" value="woman" />여자</span>
 										</td>
 									</tr>
 									<tr class="email">
@@ -142,12 +143,33 @@
 										</td>
 										<input type="hidden" name="email" id="email" value="" />
 									</tr>
+									<tr>
+										<th>이메일 수신여부<span class="necessary">*</span></th>
+										<td>
+											<span><input type="radio" id="useMail" name="useMail" value="yes" checked="checked"/>예</span>
+											<span><input type="radio" id="useMail" name="useMail" value="no"/>아니오</span>
+										</td>
+									</tr>
+									<tr class="address">
+										<th>주소<span class="necessary">*</span></th>
+										<td>
+											<p class="postNumber">
+												<input id="post" type="text" name="post" title="우편번호01" readonly />&nbsp;<input type="submit" id="searchAddress" value="주소찾기" title="주소찾기" />
+											</p>
+											<p>
+												<input id="address1" type="text" name="address1" title="주소01" readonly />
+											</p>
+											<p>
+												<input id="address2" type="text" name="address2" title="주소02" />
+											</p>
+										</td>
+									</tr>
 									<tr class="phone">
 										<th>휴대폰 인증<span class="necessary">*</span></th>
 										<td>
 											<p>
 												<label for="phoneNum">휴대폰 번호</label>
-												<input id="hphone" type="text" name="hphone" value="010-1111-1111" title="휴대폰번호"/>
+												<input id="hphone" type="text" name="hphone" value="" title="휴대폰번호"/>
 												<input type="submit" value="인증번호 전송" title="인증번호 전송"/>
 											</p>
 											<p>
@@ -156,6 +178,13 @@
 												<input class="ok" type="submit" value="확인" title="확인"/>
 												<input type="submit" value="재전송" title="재전송"/>
 											</p>
+										</td>
+									</tr>
+									<tr>
+										<th>SMS 수신여부<span class="necessary">*</span></th>
+										<td>
+											<span><input type="radio" id="useSms" name="useSms" value="yes" checked="checked"/>예</span>
+											<span><input type="radio" id="useSms" name="useSms" value="no"/>아니오</span>
 										</td>
 									</tr>
 								</tbody>
@@ -169,12 +198,12 @@
 									</li>
 									<li class="descArea">
 										<span class="desc"><input id="agree01" type="checkbox" name="agree01"/>&nbsp;<label for="agree01">[필수] 이용약관 동의</label></span>
-										<span class="descBtn"><input id="desc_Btn" type="button" name="desc_Btn" value="내용보기 ∨"/></span>
+										<span class="descBtn"><input id="desc_Btn01" type="button" name="desc_Btn01" value="내용보기 ∨"/></span>
 										<span class="agreeDesc01"><jsp:include page="/memberAgree1.do" /></span>
 									</li>
 									<li class="descArea">
 										<span class="desc"><input id="agree02" type="checkbox" name="agree02"/>&nbsp;<label for="agree02">[필수] 개인정보 수집 및 이용 동의</label></span>
-										<span class="descBtn"><input id="desc_Btn" type="button" name="desc_Btn" value="내용보기 ∨"/></span>
+										<span class="descBtn"><input id="desc_Btn02" type="button" name="desc_Btn02" value="내용보기 ∨"/></span>
 										<span class="agreeDesc02"><jsp:include page="/memberAgree2.do" /></span>
 									</li>
 									<li><span><input id="agree03" type="checkbox" name="agree03"/>&nbsp;<label for="agree03">[선택] 마케팅 정보 이메일 수신 동의</label></span></li>
@@ -224,12 +253,27 @@
 			}
 			$("#emailHost").val($(this).val());
 		});
+
+		$("#searchAddress").on("click", function(e){
+			e.preventDefault();
+			execDaumPostcode();
+		});
 				
 		$("#agree00").on("click", function(e){
 			$("#agree01").prop("checked", $("#agree00").is(":checked"));
 			$("#agree02").prop("checked", $("#agree00").is(":checked"));
 			$("#agree03").prop("checked", $("#agree00").is(":checked"));
 			$("#agree04").prop("checked", $("#agree00").is(":checked"));
+		});
+		
+		$("#desc_Btn01").on("click", function(e){
+			$(".agreeDesc01").toggle();
+			$(".agreeDesc02").css("display", "none");
+		});
+		
+		$("#desc_Btn02").on("click", function(e){
+			$(".agreeDesc01").css("display", "none");
+			$(".agreeDesc02").toggle();
 		});
 		
 				$(".agree_ok").find("a:eq(0)").on("click", function(e){
@@ -246,7 +290,7 @@
 	
 	// 아이디 중복 확인
 	function chkDupUid(){
-		
+
 		if(checkNull($("#uid").val())){
 			alertAndFocus("아이디를 입력하세요.", $("#uid"));
 			return;
@@ -296,10 +340,10 @@
 			return;
 		}
 		
-		if(!chkPwd($("#passwd").val())){
+		/* if(!chkPwd($("#passwd").val())){
 			alertAndFocus("비밀번호는 6~16자 영문, 숫자를 조합하여 사용할 수 있습니다.\n비밀번호를 확인하세요.", $("#passwd"));
 			return;
-		}
+		} */
 		
 		if($("#passwd").val() != $("#passwdConfirm").val()){
 			alertAndFocus("비밀번호와 비밀번호 확인정보가 일치하지 않습니다.", $("#passwdConfirm"));
@@ -359,10 +403,16 @@
 			return;
 		}
 		
+		var useMail = $("input[name=useMail]:checked").val();
+		useMail = (isEmpty(useMail) ? "yes" : useMail);
+		
 		if(checkNull($("#hphone").val())){
 			alertAndFocus("휴대폰 번호를 입력하세요.", $("#hphone"));
 			return;
 		}
+		
+		var useSms = $("input[name=useSms]:checked").val();
+		useSms = (isEmpty(useSms) ? "yes" : useSms);
 				
 		if(!$("#agree01").is(":checked")){
 			alert("[필수]이용약관에 동의 하셔야 합니다.");
@@ -388,20 +438,54 @@
 					, hphone : $("#hphone").val()
 					, birth : $("#year").val()+"-"+$("#month").val()+"-"+$("#day").val()
 					, sex : sex
-					, useMail : "no"
-					, useSms : "no"
+					, useMail : useMail
+					, useSms : useSms
 					, email : $("#email").val()+"@"+$("#emailHost").val()
 					, pChk : "yes"
 					, type : "1"
 					, hit : 0
-					, useMail : "yes"
-					, useSms : "yes"
 					, memo : ""
 					, addrCoord : ""
 					, memoCoord : ""
 					, typeR2 : ""
 					, aInsert : "no"
+					, post : $("#post").val()
+					, address1 : $("#address1").val()
+					, address2 : $("#address2").val()
 				};
 		ajax('post', '/registNetfuMember.ajax', param, callback);
+	}
+	
+
+	function execDaumPostcode() {
+	    new daum.Postcode({
+	        oncomplete: function(data) {
+	            var addr = ''; // 주소 변수
+	            var extraAddr = ''; // 참고항목 변수
+
+	            if (data.userSelectedType === 'R') {
+	                addr = data.roadAddress;
+	            } else {
+	                addr = data.jibunAddress;
+	            }
+
+	            if(data.userSelectedType === 'R'){
+	                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                    extraAddr += data.bname;
+	                }
+	                if(data.buildingName !== '' && data.apartment === 'Y'){
+	                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                }
+	                if(extraAddr !== ''){
+	                    extraAddr = ' (' + extraAddr + ')';
+	                }
+	            } else {
+	                //document.getElementById("sample6_extraAddress").value = '';
+	            }
+	            $("#post").val(data.zonecode);
+	            $("#address1").val(addr);
+	            $("#address2").focus();
+	        }
+	    }).open();
 	}
 </script>

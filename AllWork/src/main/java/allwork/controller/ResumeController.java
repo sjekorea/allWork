@@ -1,6 +1,7 @@
 package allwork.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -15,7 +16,10 @@ import com.google.gson.Gson;
 
 import allwork.common.CommandMap;
 import allwork.common.util.CodeConvertUtil;
+import allwork.common.util.CommonColumnUtil;
 import allwork.common.util.ConvertUtil;
+import allwork.common.util.PaginationUtil;
+import allwork.service.NetfuCateService;
 import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuItemResumeService;
 import allwork.service.NetfuMemberService;
@@ -44,15 +48,92 @@ public class ResumeController {
 
 	@Resource(name="netfuOnlineRecruitService")
 	private NetfuOnlineRecruitService netfuOnlineRecruitService;
+
+	@Resource(name="netfuCateService")
+	private NetfuCateService netfuCateService;
 	
 	
 	/*
 	 * 인재정보 검색
 	 */
 	@RequestMapping(value="/resumeSearch.do")
-	public ModelAndView personSearch(CommandMap commandMap) {
+	public ModelAndView resumeSearch(CommandMap commandMap, HttpSession session) {
 		
 		ModelAndView mv = new ModelAndView("/resume/resumeSearch");
+		
+		int pageSize = 10;
+		int totalSize = 0;
+		
+		try{
+				
+			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
+				commandMap.put("pageNo", "1");
+				commandMap.put("orderField", "nir.wdate");
+				commandMap.put("orderRule", "desc");
+			}
+			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
+			commandMap.put("pageSize", pageSize);
+			
+			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
+			
+			// 채용정보 검색 리스트
+			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			Map<String, Object> pageMap = new HashMap<String, Object>();
+			if(resumeList.size() > 0){
+				totalSize = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
+				pageMap = PaginationUtil.makePageInfo(totalSize, pageSize, (String)commandMap.get("pageNo"));
+				commandMap.put("totalSize", totalSize);
+			}
+			
+			commandMap.put("pCode", "");
+			
+			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
+			commandMap.put("type", "job");
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 산업별 목록  ( netfu_cate : type = 'area_job' )
+			commandMap.put("type", "area_job");
+			List<Map<String, Object>> areaJobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 지역별  ( netfu_cate : type ='area' )
+			commandMap.put("type", "area");
+			List<Map<String, Object>> areaList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 자격증  ( netfu_cate : type ='inid_mylskill' )
+			commandMap.put("type", "inid_mylskill");
+			List<Map<String, Object>> inidMySkillList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 경력별  ( netfu_cate : type ='job_career' )
+			commandMap.put("type", "job_career");
+			List<Map<String, Object>> jobCareerList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 학력별  ( netfu_cate : type ='job_school' )
+			commandMap.put("type", "job_school");
+			List<Map<String, Object>> jobSchoolList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 고용형태별  ( netfu_cate : type ='job_type' )
+			commandMap.put("type", "job_type");
+			List<Map<String, Object>> jobTypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 연봉별  ( netfu_cate : type ='job_pay' )
+			commandMap.put("type", "job_pay");
+			List<Map<String, Object>> jobPayList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("jobList", jobList);
+			mv.addObject("areaJobList", areaJobList);
+			mv.addObject("areaList", areaList);
+			mv.addObject("inidMySkillList", inidMySkillList);
+			mv.addObject("jobCareerList", jobCareerList);
+			mv.addObject("jobSchoolList", jobSchoolList);
+			mv.addObject("jobTypeList", jobTypeList);
+			mv.addObject("jobPayList", jobPayList);
+			mv.addObject("resumeList", resumeList);
+			mv.addObject("pageMap", pageMap);
+		
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".resumeSearch Exception !!!!! \n"+e.toString());
+		}
 		
 		return mv;
 	}
@@ -62,9 +143,324 @@ public class ResumeController {
 	 * 인재정보 검색 - 직무별
 	 */
 	@RequestMapping(value="/resumeSearchByDuty.do")
-	public ModelAndView personSearchByDuty(CommandMap commandMap) {
+	public ModelAndView resumeSearchByDuty(CommandMap commandMap, HttpSession session) {
 		
 		ModelAndView mv = new ModelAndView("/resume/resumeSearchByDuty");
+		
+		int pageSize = 10;
+		int totalSize = 0;
+		
+		try{
+				
+			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
+				commandMap.put("pageNo", "1");
+				commandMap.put("orderField", "nir.wdate");
+				commandMap.put("orderRule", "desc");
+			}
+			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
+			commandMap.put("pageSize", pageSize);
+			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
+			
+			// 채용정보 검색 리스트
+			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			Map<String, Object> pageMap = new HashMap<String, Object>();
+			if(resumeList.size() > 0){
+				totalSize = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
+				pageMap = PaginationUtil.makePageInfo(totalSize, pageSize, (String)commandMap.get("pageNo"));
+				commandMap.put("totalSize", totalSize);
+			}
+			
+			commandMap.put("pCode", "");
+			
+			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
+			commandMap.put("type", "job");
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("jobList", jobList);
+			mv.addObject("resumeList", resumeList);
+			mv.addObject("pageMap", pageMap);
+		
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".resumeSearchByDuty Exception !!!!! \n"+e.toString());
+		}
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 인재정보 검색 - 산업별
+	 */
+	@RequestMapping(value="/resumeSearchByIndustry.do")
+	public ModelAndView resumeSearchByIndustry(CommandMap commandMap, HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView("/resume/resumeSearchByIndustry");
+		
+		int pageSize = 10;
+		int totalSize = 0;
+		
+		try{
+				
+			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
+				commandMap.put("pageNo", "1");
+				commandMap.put("orderField", "nir.wdate");
+				commandMap.put("orderRule", "desc");
+			}
+			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
+			commandMap.put("pageSize", pageSize);
+			
+			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
+			
+			// 채용정보 검색 리스트
+			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			Map<String, Object> pageMap = new HashMap<String, Object>();
+			if(resumeList.size() > 0){
+				totalSize = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
+				pageMap = PaginationUtil.makePageInfo(totalSize, pageSize, (String)commandMap.get("pageNo"));
+				commandMap.put("totalSize", totalSize);
+			}
+			
+			commandMap.put("pCode", "");
+			
+			// 산업별 목록  ( netfu_cate : type = 'area_job' )
+			commandMap.put("type", "area_job");
+			List<Map<String, Object>> areaJobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("areaJobList", areaJobList);
+			mv.addObject("resumeList", resumeList);
+			mv.addObject("pageMap", pageMap);
+		
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".resumeSearchByIndustry Exception !!!!! \n"+e.toString());
+		}
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 인재정보 검색 - 지역별
+	 */
+	@RequestMapping(value="/resumeSearchByArea.do")
+	public ModelAndView resumeSearchByArea(CommandMap commandMap, HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView("/resume/resumeSearchByArea");
+		
+		int pageSize = 10;
+		int totalSize = 0;
+		
+		try{
+				
+			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
+				commandMap.put("pageNo", "1");
+				commandMap.put("orderField", "nir.wdate");
+				commandMap.put("orderRule", "desc");
+			}
+			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
+			commandMap.put("pageSize", pageSize);
+			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
+			
+			// 채용정보 검색 리스트
+			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			Map<String, Object> pageMap = new HashMap<String, Object>();
+			if(resumeList.size() > 0){
+				totalSize = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
+				pageMap = PaginationUtil.makePageInfo(totalSize, pageSize, (String)commandMap.get("pageNo"));
+				commandMap.put("totalSize", totalSize);
+			}
+			
+			commandMap.put("pCode", "");
+			
+			// 지역별  ( netfu_cate : type ='area' )
+			commandMap.put("type", "area");
+			List<Map<String, Object>> areaList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("areaList", areaList);
+			mv.addObject("resumeList", resumeList);
+			mv.addObject("pageMap", pageMap);
+		
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".resumeSearchByArea Exception !!!!! \n"+e.toString());
+		}
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 인재정보 검색 - 알바 지원
+	 */
+	@RequestMapping(value="/resumeSearchForAlba.do")
+	public ModelAndView resumeSearchForAlba(CommandMap commandMap, HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView("/resume/resumeSearchForAlba");
+		
+		int pageSize = 10;
+		int totalSize = 0;
+		
+		try{
+				
+			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
+				commandMap.put("pageNo", "1");
+				commandMap.put("orderField", "nir.wdate");
+				commandMap.put("orderRule", "desc");
+			}
+			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
+			commandMap.put("pageSize", pageSize);
+			
+			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
+			commandMap.put("infoType", "2");
+			
+			System.out.println("INFO_TYPE : "+(String)commandMap.get("infoType"));
+			
+			// 채용정보 검색 리스트
+			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			Map<String, Object> pageMap = new HashMap<String, Object>();
+			if(resumeList.size() > 0){
+				totalSize = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
+				pageMap = PaginationUtil.makePageInfo(totalSize, pageSize, (String)commandMap.get("pageNo"));
+				commandMap.put("totalSize", totalSize);
+			}
+			
+			commandMap.put("pCode", "");
+			
+			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
+			commandMap.put("type", "job");
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 산업별 목록  ( netfu_cate : type = 'area_job' )
+			commandMap.put("type", "area_job");
+			List<Map<String, Object>> areaJobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 지역별  ( netfu_cate : type ='area' )
+			commandMap.put("type", "area");
+			List<Map<String, Object>> areaList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 자격증  ( netfu_cate : type ='inid_mylskill' )
+			commandMap.put("type", "inid_mylskill");
+			List<Map<String, Object>> inidMySkillList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 경력별  ( netfu_cate : type ='job_career' )
+			commandMap.put("type", "job_career");
+			List<Map<String, Object>> jobCareerList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 학력별  ( netfu_cate : type ='job_school' )
+			commandMap.put("type", "job_school");
+			List<Map<String, Object>> jobSchoolList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 고용형태별  ( netfu_cate : type ='job_type' )
+			commandMap.put("type", "job_type");
+			List<Map<String, Object>> jobTypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 연봉별  ( netfu_cate : type ='job_pay' )
+			commandMap.put("type", "job_pay");
+			List<Map<String, Object>> jobPayList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("jobList", jobList);
+			mv.addObject("areaJobList", areaJobList);
+			mv.addObject("areaList", areaList);
+			mv.addObject("inidMySkillList", inidMySkillList);
+			mv.addObject("jobCareerList", jobCareerList);
+			mv.addObject("jobSchoolList", jobSchoolList);
+			mv.addObject("jobTypeList", jobTypeList);
+			mv.addObject("jobPayList", jobPayList);
+			mv.addObject("resumeList", resumeList);
+			mv.addObject("pageMap", pageMap);
+		
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".resumeSearchForAlba Exception !!!!! \n"+e.toString());
+		}
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 인재정보 검색 - 알바 지원
+	 */
+	@RequestMapping(value="/resumeSearchForFree.do")
+	public ModelAndView resumeSearchForFree(CommandMap commandMap, HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView("/resume/resumeSearchForFree");
+		
+		int pageSize = 10;
+		int totalSize = 0;
+		
+		try{
+				
+			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
+				commandMap.put("pageNo", "1");
+				commandMap.put("orderField", "nir.wdate");
+				commandMap.put("orderRule", "desc");
+			}
+			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
+			commandMap.put("pageSize", pageSize);
+			
+			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
+			commandMap.put("infoType", "4");
+			
+			// 채용정보 검색 리스트
+			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			Map<String, Object> pageMap = new HashMap<String, Object>();
+			if(resumeList.size() > 0){
+				totalSize = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
+				pageMap = PaginationUtil.makePageInfo(totalSize, pageSize, (String)commandMap.get("pageNo"));
+				commandMap.put("totalSize", totalSize);
+			}
+			
+			commandMap.put("pCode", "");
+			
+			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
+			commandMap.put("type", "job");
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 산업별 목록  ( netfu_cate : type = 'area_job' )
+			commandMap.put("type", "area_job");
+			List<Map<String, Object>> areaJobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 지역별  ( netfu_cate : type ='area' )
+			commandMap.put("type", "area");
+			List<Map<String, Object>> areaList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 자격증  ( netfu_cate : type ='inid_mylskill' )
+			commandMap.put("type", "inid_mylskill");
+			List<Map<String, Object>> inidMySkillList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 경력별  ( netfu_cate : type ='job_career' )
+			commandMap.put("type", "job_career");
+			List<Map<String, Object>> jobCareerList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 학력별  ( netfu_cate : type ='job_school' )
+			commandMap.put("type", "job_school");
+			List<Map<String, Object>> jobSchoolList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 고용형태별  ( netfu_cate : type ='job_type' )
+			commandMap.put("type", "job_type");
+			List<Map<String, Object>> jobTypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 연봉별  ( netfu_cate : type ='job_pay' )
+			commandMap.put("type", "job_pay");
+			List<Map<String, Object>> jobPayList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("jobList", jobList);
+			mv.addObject("areaJobList", areaJobList);
+			mv.addObject("areaList", areaList);
+			mv.addObject("inidMySkillList", inidMySkillList);
+			mv.addObject("jobCareerList", jobCareerList);
+			mv.addObject("jobSchoolList", jobSchoolList);
+			mv.addObject("jobTypeList", jobTypeList);
+			mv.addObject("jobPayList", jobPayList);
+			mv.addObject("resumeList", resumeList);
+			mv.addObject("pageMap", pageMap);
+		
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".resumeSearchForFree Exception !!!!! \n"+e.toString());
+		}
 		
 		return mv;
 	}
@@ -161,6 +557,17 @@ public class ResumeController {
 		}catch(Exception e){
 			log.debug(this.getClass().getName()+" selectNetfuItemResumeCnt.ajax Exception!!!!  "+e.toString());
 		}
+		return mv;
+	}
+	
+	
+	/*
+	 * 등록된 이력서 목록
+	 */
+	@RequestMapping(value="/resumeList.do")
+	public ModelAndView resumeList(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView("/resume/resumeList");
+		
 		return mv;
 	}
 

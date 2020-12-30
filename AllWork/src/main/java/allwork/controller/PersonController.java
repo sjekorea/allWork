@@ -135,4 +135,28 @@ public class PersonController {
 		return mv;
 	}
 	
+	
+	/*
+	 * 이력서 유료 게시 서비스 신청 
+	 */
+	@RequestMapping(value="/resumeApplyForPay.do")
+	public ModelAndView recruitApplyPayService(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/person/resumeApplyForPay");
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 결제 내역 조회 - 이력서 유료 게시
+	 */
+	@RequestMapping(value="/resumePaidList.do")
+	public ModelAndView recruitPaidServiceList(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/person/resumePaidList");
+		
+		return mv;
+	}
+	
 }

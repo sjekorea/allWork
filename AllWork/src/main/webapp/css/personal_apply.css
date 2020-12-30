@@ -31,37 +31,25 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 #listPart .apply_total{width:100%;height:30px;line-height:30px;font-size:12px;border-top:1px solid #000;}
 #listPart .apply_total span{font-family:"NotoSansKR-Bold";}
 
-/*###################################   리스트 내용먼저 잡음   ###################################*/
-#listPart .list{width:100%;border-top:1px solid #999;overflow: hidden;}
+/*###################################   리스트   ###################################*/
+#listPart .list{width:100%;border-top:1px solid #999;overflow: hidden;border-collapse:collapse;
+  table-layout: fixed;
+  word-wrap: break-word;}
+#listPart .list caption{display:none;}
+#listPart .list tbody{width:100%;border-collapse:collapse;}
+#listPart .list tr{width:100%;border-bottom:1px solid #ccc;text-align: center;font-size:14px;}
+/*체크박스*/input{width:16px; height: 16px;}
 
-#listPart .list li{width:100%;height:150px;border-bottom:1px solid #ccc;}
-#listPart .list li div{float:left;line-height:150px;text-align: center;}
-/*체크박스*/
-#listPart .list li div input{width:16px; height: 16px;}
-#listPart .list li .desc00{width:70px;}
-#listPart .list li .desc02, #listPart .list li .desc03, #listPart .list li .desc04{width:110px;height:100%;}
-#listPart .list li .desc01{width:310px;height:100px;text-align: left;line-height:24px;padding-top:37px;}
-#listPart .list li .desc01 .title{font-size:12px;font-family:"NotoSansKR-Bold";}
-#listPart .list li .desc01 .t_desc{width:100%;height:50px;overflow:hidden;}
+/*###################################   리스트 제목부분   ###################################*/
+  #listPart .list .list_title th{height:50px;line-height: 50px;margin:0;background-color:#EDF0F5;}
+  #listPart .list .desc td{padding: 20px 0;}
+  #listPart .list .desc00{width:30px;}
+  #listPart .list .desc01{width:120px;}
+  #listPart .list .desc02{width:300px;}
+  #listPart .list .desc03{width:100px;}
+  #listPart .list .desc04{width:80px;}
+  #listPart .list .desc05{width:80px;}
 
-          #listPart .list li .desc01 .title:hover{text-decoration:underline;}
-          #listPart .list li .desc01 .t_desc:hover{text-decoration:underline;}
-          #listPart .list li .desc02 .my_resume:hover{text-decoration:underline;}
+  #listPart .list td.desc02{text-align: left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
-/*###################################   리스트 타이틀  ###################################*/
-#listPart .list .list_title{width:100%;height:50px;background-color:#EDF0F5;}
-#listPart .list .list_title div{float:left;line-height:50px;text-align: center;}
-#listPart .list .list_title .desc00{width:70px;}
-#listPart .list .list_title .desc02, #listPart .list .list_title .desc03, #listPart .list .list_title .desc04{width:110px;height:100%;}
-#listPart .list .list_title .desc01{width:310px;height:50px;text-align:center;line-height:50px;padding-top:0px;}
-
-.numareaWrap{width:100%;overflow: hidden;background-color:#fff;}
-.numArea{width:360px;height:30px;line-height:28px;padding-top:30px;padding-bottom:30px;text-align: center;margin:0 auto;}
-.numArea li{width:30px;height:30px;border:1px solid #fff;float:left;}
-.numArea li a{color:#ccc;}
-
-              .numArea li:hover{border: 1px solid #ccc;}
-              .numArea li:hover a{color:#666;}
-
-.numArea .p01{border: 1px solid #666;}
-.numArea .p01 a{color:#666;}
+  #listPart .list td a:hover{text-decoration: underline;}

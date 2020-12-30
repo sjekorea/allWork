@@ -16,8 +16,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Component("fileUtils")
 public class FileUtils {
 	
-	//private static final String filePath = "D:\\workspace\\miCRM_New\\src\\main\\webapp\\contentsImg\\";
-	private static final String filePath = "/usr/local/tomcat/webapps/ROOT/contentsImg/";
+	private static final String filePath = "D:\\allWork\\allWork\\AllWork\\src\\main\\webapp\\peg\\";
+	//private static final String filePath = "/var/lib/tomcat8/webapps/ROOT/peg/";
 	private static final String fileUrl = "/contentsImg/";
 	
 	public List<Map<String,Object>> parseInsertFileInfo(Map<String,Object> map, HttpServletRequest request) throws Exception{
@@ -74,5 +74,56 @@ public class FileUtils {
 		}
 		
 		return list;
+	}
+	
+	
+	
+	public String uploadFile(Map<String,Object> map, HttpServletRequest request) throws Exception{
+		
+		System.out.println("#######  Start file upload!!!  #############");
+    	
+    	String attachFileName = "";
+    	
+		try{
+			
+			MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
+	    	Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
+	    	
+	    	MultipartFile multipartFile = null;
+	    	String originalFileName = null;
+	    	String originalFileExtension = null;
+	    	String storedFileName = null;
+	        
+	        File file = new File(filePath);
+	        if(file.exists() == false){
+	        	file.mkdirs();
+	        }
+			
+	        while(iterator.hasNext()){
+	        	System.out.println("1111");
+	        	multipartFile = multipartHttpServletRequest.getFile(iterator.next());
+	        	System.out.println("222");
+	        	if(multipartFile.isEmpty() == false){
+	        		System.out.println("3333");
+	        		originalFileName = new String(multipartFile.getOriginalFilename().getBytes("8859_1"), "UTF-8");
+	        		originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
+	        		attachFileName = CommonUtil.getRandomString() + originalFileExtension;
+	        		
+	        		System.out.println("originalFileName : " +originalFileName);
+	        		System.out.println("originalFileExtension : " +originalFileExtension);
+	        		System.out.println("originalFileName : " +originalFileName);
+	        		
+	        		file = new File(filePath + attachFileName);
+	        		multipartFile.transferTo(file);
+	        	}
+	        }
+			
+			System.out.println("#######  attachFileName  ############# ===> "+attachFileName);
+	        
+		}catch(Exception e){
+			System.out.println(this.getClass().getName()+".uploadFile Exception!!!!!    "+e.toString());
+		}
+		
+		return attachFileName;
 	}
 }

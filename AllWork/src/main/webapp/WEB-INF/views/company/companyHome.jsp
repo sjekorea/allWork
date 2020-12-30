@@ -13,11 +13,6 @@
 
 <div id="containerWrap">
 	<div id="leftPart">
-		<div id="mycompanyBox">
-			<p class="settingBtn"><a href="#" title="기업정보관리">기업정보관리  <i class="fas fa-cog"></i></a></p>
-			<p class="companyName">${SE_USER_NM }</p>
-			<p class="uploadApplication"><a href="/recruitInfoReg.do" title="채용공고 등록">채용공고 등록</a></p>
-		</div>
 		<div id="paymentBox">
 			<p>결제하실 금액 <strong>0</strong>원 <span class="payBtn"><a href="#" title="내역보기">내역보기</a></span></p>
 			<p>충전금 <strong>0</strong>원</p>
@@ -36,7 +31,6 @@
 					<h3>인재관리</h3>
 					<ol>
 						<li><a href="/resumeScrapList.do" title="스크랩인재">스크랩인재</a></li>
-						<li><a href="#" title="유료서비스 신청">유료서비스 신청</a></li>
 						<li><a href="/fitResumeSetting.do" title="맞춤서비스 설정">맞춤서비스 설정</a></li>
 						<li><a href="/fitResumeList.do" title="맞춤 인재정보">맞춤 인재정보</a></li>
 					</ol>
@@ -45,14 +39,15 @@
 					<h3>입사지원 관리</h3>
 					<ol>
 						<li><a href="/companyApplicantList.do" title="입사지원 관리">입사지원자 관리</a></li>
-						<li><a href="#" title="입사지원/면접제의 요청관리">면접제의 요청관리</a></li>
+						<li><a href="/interviewSuggestList.do" title="입사지원/면접제의 요청관리">면접제의 요청관리</a></li>
 					</ol>
 				</li>
-				<li class="gnb payService"><a href="#" title="유료서비스">유료서비스</a>
+				<li class="gnb payService"><a href="/resumeSearchApplyForPay.do" title="유료서비스">유료서비스</a>
 					<h3>유료서비스</h3>
 					<ol>
-						<li><a href="#" title="유료채용광고 서비스">유료채용광고 서비스</a></li>
-						<li><a href="#" title="인재검색서칭 서비스">인재검색서칭 서비스</a></li>
+						<li><a href="/recruitApplyForPay.do" title="인재 검색 서비스 신청">유료채용광고 서비스</a></li>
+						<li><a href="/resumeSearchApplyForPay.do" title="인재 검색 서비스 신청">인재검색서칭 서비스</a></li>
+						<li><a href="/resumeSearchPaidList.do" title="유료채용광고 서비스">결재 내역 조회</a></li>
 					</ol>
 				</li>
 			</ul>
@@ -100,18 +95,16 @@
 						<c:forEach var="result" items="${myServiceResumeList}" varStatus="status">
 							<c:if test="${status.index < 3 }">
 								<li>
-									<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">
-										<p class="img00"><img src="/img/company_home/img00.jpeg" alt="인재사진"/></p>
-										<p class="desc00">
-											<span class="name">${result.name }</span><br/>
-											<span class="age">${codeConvert:getBizSex(result.sex)} ${convert:calcAge(result.birth)}</span>
-										</p>
-										<p class="desc01">
-											<span class="detail">${result.inidTitle }</span><br/>
-											<span class="title01">${codeConvert:getCondition(result.indiCondition)}</span>
-										</p>
-										<p class="date">${result.wdate }</p>
-									</a>
+									<p class="img00"><img src="/img/company_home/img00.jpeg" alt="인재사진"/></p>
+									<p class="desc00">
+										<span class="name">${result.name }</span><br/>
+										<span class="age">${codeConvert:getBizSex(result.sex)} ${convert:calcAge(result.birth)}</span>
+									</p>
+									<p class="desc01">
+										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');"><span class="detail">${result.inidTitle }</span></a>
+										<span class="title01">${codeConvert:getCondition(result.indiCondition)}</span>
+									</p>
+									<p class="date">${result.wdate }</p>
 								</li>
 							</c:if> 
 						</c:forEach>
@@ -128,111 +121,119 @@
 				<li><a href="#" title="스크랩인재">스크랩인재</a></li>
 				<li><a href="#" title="최근 본 인재">최근 본 인재</a></li>
 			</ul>
-			<ul class="list" id="list01" >
-				<c:choose>
-					<c:when test="${myServiceResumeList.size() > 0 }">
-						<c:forEach var="result" items="${myServiceResumeList}" varStatus="status">
-							<li>
-								<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">
-									<p class="desc00">
-										<span class="desc00_00">${result.name }</span><br/>
-										<span class="desc00_01">${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span>
-									</p>
-									<p class="desc01">
-										<span class="desc00_02">${result.inidType1Name }</span><br/>
-										<span class="desc00_03">
-											${convert:checkNull(result.inidType2Name) eq '' ? '' : result.inidType2Name }
-											${convert:checkNull(result.inidType3Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType3Name) }
-											&nbsp;|&nbsp;${codeConvert:getLastSchool(result.inidLastSchool) }</span>
-									</p>
-									<p class="desc02">
-										<span class="desc00_04">
+			<table class="list" id="list01">
+				<tbody class="tabelArea">
+					<c:choose>
+						<c:when test="${myServiceResumeList.size() > 0 }">
+							<c:forEach var="result" items="${myServiceResumeList}" varStatus="status">
+								<tr>
+									<th></th>
+									<td class="desc00">
+										<span>${result.name }</span><br/>
+										<span>${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span><br/>
+										<span>${codeConvert:getLastSchool(result.inidLastSchool) }</span>
+									</td>
+									<td class="desc01">
+										<a href="#none">
+											<span class="desc01_01">
+												${result.inidType1Name }
+												${convert:checkNull(result.inidType2Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType2Name) }
+												${convert:checkNull(result.inidType3Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType3Name) }
+											</span>
+										</a>
+									</td>
+									<td class="desc02">
+										<span>
 											${result.inidArea1Name }
-									  		${convert:checkNull(result.inidArea2Name) eq '' ? '' : '&nbsp;>&nbsp;&nbsp;'.concat(result.inidArea2Name) }
-										</span><br/>
-										<span class="desc00_05">
-											${result.inidArea3Name }
-									  		${convert:checkNull(result.inidArea4Name) eq '' ? '' : '&nbsp;>&nbsp;&nbsp;'.concat(result.inidArea4Name) }
-										</span>
-									</p>
-									<p class="desc03">
-										<span class="desc00_06">${result.inidJobformName }</span><br/>
-										<span class="desc00_07">${result.inidPayName }</span>
-									</p>
-									<p class="date">${result.wdate }</p>
-								</a>
-							</li>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<li style="width:100%;"><div class="desc01">내역이 없습니다.</div></li>
-					</c:otherwise>
-				</c:choose>
-			</ul>
-			<ul class="list" id="list02" style="display:none;">
-				<c:choose>
-					<c:when test="${resumeScrapList.size() > 0 }">
-						<c:forEach var="result" items="${resumeScrapList}" varStatus="status">
-							<li>
-								<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">
-									<p class="desc00">
-										<span class="desc00_00">${result.name }</span><br/>
-										<span class="desc00_01">${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span>
-									</p>
-									<p class="desc01">
-										<span class="desc00_02">${result.inidType1Name }</span><br/>
-										<span class="desc00_03">
-											${convert:checkNull(result.inidType2Name) eq '' ? '' : result.inidType2Name }
-											${convert:checkNull(result.inidType3Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType3Name) }
-											&nbsp;|&nbsp;${codeConvert:getLastSchool(result.inidLastSchool) }</span>
-									</p>
-									<p class="desc02">
-										<span class="desc00_04">
+											${convert:checkNull(result.inidArea2Name) eq '' ? '</span>' : '&nbsp;>&nbsp;'.concat(result.inidArea2Name).concat('</span>') }
+											${convert:checkNull(result.inidArea3Name) eq '' ? '</span>' : '<br/><span>'.concat(result.inidArea3Name) }
+											${convert:checkNull(result.inidArea4Name) eq '' ? '</span>' : '&nbsp;>&nbsp;'.concat(result.inidArea4Name).concat('</span>') }
+											${convert:checkNull(result.inidArea5Name) eq '' ? '</span>' : '<br/><span>'.concat(result.inidArea5Name) }
+											${convert:checkNull(result.inidArea6Name) eq '' ? '</span>' : '&nbsp;>&nbsp;'.concat(result.inidArea6Name).concat('</span>') }
+									</td>
+									<td class="desc03">
+										<span>${result.inidJobformName }</span><br/>
+										<span>${result.inidPayName }</span>
+									</td>
+									<td class="date">${result.wdate }</td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr><td class="desc00" colspan="6">내역이 없습니다.</td></tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+			<table class="list" id="list02" style="display:none;">
+				<tbody class="tabelArea">
+					<c:choose>
+						<c:when test="${resumeScrapList.size() > 0 }">
+							<c:forEach var="result" items="${resumeScrapList}" varStatus="status">
+								<tr>
+									<th></th>
+									<td class="desc00">
+										<span>${result.name }</span><br/>
+										<span>${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span><br/>
+										<span>${codeConvert:getLastSchool(result.inidLastSchool) }</span>
+									</td>
+									<td class="desc01">
+										<a href="#none">
+											<span class="desc01_01">
+												${result.inidType1Name }
+												${convert:checkNull(result.inidType2Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType2Name) }
+												${convert:checkNull(result.inidType3Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType3Name) }
+											</span>
+										</a>
+									</td>
+									<td class="desc02">
+										<span>
 											${result.inidArea1Name }
-									  		${convert:checkNull(result.inidArea2Name) eq '' ? '' : '&nbsp;>&nbsp;&nbsp;'.concat(result.inidArea2Name) }
-										</span><br/>
-										<span class="desc00_05">
-											${result.inidArea3Name }
-									  		${convert:checkNull(result.inidArea4Name) eq '' ? '' : '&nbsp;>&nbsp;&nbsp;'.concat(result.inidArea4Name) }
-										</span>
-									</p>
-									<p class="desc03">
-										<span class="desc00_06">${result.inidJobformName }</span><br/>
-										<span class="desc00_07">${result.inidPayName }</span>
-									</p>
-									<p class="date">${result.wdate }</p>
-								</a>
-							</li>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<li style="width:100%;"><div class="desc01">내역이 없습니다.</div></li>
-					</c:otherwise>
-				</c:choose>
-			</ul>
-			<ul class="list" id="list03" style="display:none;">
-				<li>
-					<a href="#" title="맞춤채용인재정보">
-						<p class="desc00">
-							<span class="desc00_00">김oo</span><br/>
-							<span class="desc00_01">남/64년생</span>
-						</p>
-						<p class="desc01">
-							<span class="desc00_02">영업관리</span><br/>
-							<span class="desc00_03">영업.판매&nbsp;>&nbsp;영업기획.관리&nbsp;|&nbsp;대학교졸업(4년)</span>
-						</p>
-						<p class="desc02">
-							<span class="desc00_04">경기&nbsp;>&nbsp;수원시</span><br/>
-							<span class="desc00_05">서울&nbsp;>&nbsp;구로구</span>
-						</p>
-						<p class="desc03">
-							<span class="desc00_06">신입</span><br/>
-							<span class="desc00_07">회사내규에따</span>
-						</p>
-						<p class="date">2020.08.27</p>
+											${convert:checkNull(result.inidArea2Name) eq '' ? '</span>' : '&nbsp;>&nbsp;'.concat(result.inidArea2Name).concat('</span>') }
+											${convert:checkNull(result.inidArea3Name) eq '' ? '</span>' : '<br/><span>'.concat(result.inidArea3Name) }
+											${convert:checkNull(result.inidArea4Name) eq '' ? '</span>' : '&nbsp;>&nbsp;'.concat(result.inidArea4Name).concat('</span>') }
+											${convert:checkNull(result.inidArea5Name) eq '' ? '</span>' : '<br/><span>'.concat(result.inidArea5Name) }
+											${convert:checkNull(result.inidArea6Name) eq '' ? '</span>' : '&nbsp;>&nbsp;'.concat(result.inidArea6Name).concat('</span>') }
+									</td>
+									<td class="desc03">
+										<span>${result.inidJobformName }</span><br/>
+										<span>${result.inidPayName }</span>
+									</td>
+									<td class="date">${result.wdate }</td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr><td class="desc00" colspan="6">내역이 없습니다.</td></tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+			<table class="list"  id="list03" style="display:none;">
+				<tbody class="tabelArea">
+					<tr>
+					<th></th>
+					<td class="desc00">
+					<span>주oo</span><br/>
+					<span>남/64년생</span><br/>
+					<span>대학교졸업(2,3년)</span>
+					</td>
+					<td class="desc01">
+					<a href="#none"><span class="desc01_01">영업관리</span></a>
+					</td>
+					<td class="desc02">
+					<span>경기&nbsp;>&nbsp;수원시</span><br/>
+					<span>서울&nbsp;>&nbsp;구로구</span>
+					</td>
+					<td class="desc03">
+					<span>신입</span><br/>
+					<span>회사내규에따름</span>
+					</td>
+					<td class="date">2020.08.27</td>
 					</a>
-				</li>
-			</ul>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>

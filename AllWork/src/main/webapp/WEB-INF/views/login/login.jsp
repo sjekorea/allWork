@@ -11,23 +11,24 @@
 <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/js/moment.min.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>
-<script type="text/javascript" src="/js/process.js"></script>
+<script type="text/javascript" src="/js/process.js?v=<%=System.currentTimeMillis() %>"></script>
 <script type="text/javascript" src="/js/Cookie.js"></script>
+
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>로그인</title>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
-<link rel="stylesheet" type="text/css" href="/css/common.css"/>
-<link rel="stylesheet" type="text/css" href="/css/header_mini.css"/>
-<link rel="stylesheet" type="text/css" href="/css/login_01.css"/>
-<link rel="stylesheet" type="text/css" href="/css/footer_white.css"/>
-<link rel="stylesheet" type="text/css" href="/css/font.css"/>
-<link rel="stylesheet" type="text/css" href="/css/reset.css"/>
-<link  rel="stylesheet" type="text/css" href="/css/all.css"/>
-</head>
+	<title>로그인</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
+	<link rel="stylesheet" type="text/css" href="/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/header_mini.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/login_01.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/footer_white.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/font.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+	<link  rel="stylesheet" type="text/css" href="/css/all.css"/>
+	</head>
 
 <body>
 	<div id="progress_barWrap" style="display:none;">

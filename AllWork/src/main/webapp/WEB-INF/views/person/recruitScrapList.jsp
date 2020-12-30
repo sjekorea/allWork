@@ -18,46 +18,44 @@
 		</div>
 		<div id="rightPart">
 			<div id="listPart">
-				<h4>스크랩한 기업</h4>
+				<h4>스크랩</h4>
 				<p class="delete">
 					<a href="#" title="선택삭제">선택삭제</a>
 				</p>
-				<ul class="list">
-					<li class="list_title">
-						<div class="desc00"><input type="checkbox" name="all"/></div>
-						<div class="desc01">채용공고</div>
-						<div class="desc02">마감일</div>
-						<div class="desc03">스크랩일</div>
-					</li>
-					
-					<c:choose>
-						<c:when test="${recruitScrapList.size() > 0 }">
-							<c:forEach var="result" items="${recruitScrapList}" varStatus="status">
-								<li>
-									<div class="desc00"><input type="checkbox" name="chk" value="${result.noTo }" /></div>
-									<div class="desc01">
-										<p class="title">
-											${result.bizName }&nbsp;<a href="javascript:goConcernRegist('${result.uid }', '${result.no }');" title="관심기업체크"><i class="far fa-heart"></i></a>
-										</p>
-										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="채용공고">
-											<p class="t_desc01">${convert:compByte(result.bizTitle, 100, "...")}</p>
-										</a>
-										<p class="t_desc02">
-											${codeConvert:getBizCareer(result.bizCareer) }
-											 | ${codeConvert:getBizAbility(result.bizAbility) }
-											 | ${result.bizArea1Name }
-											 | ${result.bizJobfromName }</p>
-									</div>
-									<div class="desc02"><p class="d_day">${codeConvert:getRecruitStatusText(result.bizIng, result.bizEndType, result.bizEndDay) }</p></div>
-									<div class="desc03"><p class="scrap_day">${result.wdate }</p></div>
-								</li>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<li style="width:100%;"><div class="desc01">내역이 없습니다.</div></li>
-						</c:otherwise>
-					</c:choose>
-				</ul>
+				<table class="list">
+					<caption>리스트</caption>
+					<tbody>
+						<tr class="list_title">
+							<th class="desc00"><input type="checkbox" name="all"/></th>
+							<th class="desc01">회사명</th>
+							<th class="desc02">채용공고</th>
+							<th class="desc03">마감일</th>
+							<th class="desc04">스크랩일</th>
+						</tr>
+						<c:choose>
+							<c:when test="${recruitScrapList.size() > 0 }">
+								<c:forEach var="result" items="${recruitScrapList}" varStatus="status">
+									<tr class="desc">
+										<td class="desc00"><input type="checkbox" name="chk" value="${result.noTo }" /></td>
+										<td class="desc01">
+											${result.bizName }&nbsp;<a href="javascript:goConcernRegist('${result.uid }', '${result.no }');" title="관심기업체크"><i class="fas fa-heart"></i></a>
+										</td>
+										<td class="desc02">
+											<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="채용공고">
+												${convert:compByte(result.bizTitle, 100, "...")}
+											</a>
+										</td>
+										<td class="desc03">${codeConvert:getRecruitStatusText(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
+										<td class="desc04">${result.wdate }</td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr class="desc"><td colspan="5">내역이 없습니다.</tr></td>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
 				<div class="numareaWrap">
 					<ul class="numArea">
 		                ${pageMap.pageHtml }

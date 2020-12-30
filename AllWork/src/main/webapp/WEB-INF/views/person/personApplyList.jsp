@@ -26,40 +26,46 @@
 					<li><a href="#" title="선택삭제">선택삭제</a></li>
 				</ul>
 				<p class="apply_total">온라인 입사지원 총 <span>${totalSize }</span>건</p>
-				<ul class="list">
-					<li class="list_title">
-						<div class="desc00"><input type="checkbox" name="all"/></div>
-						<div class="desc01">지원내역</div>
-						<div class="desc02">이력서</div>
-						<div class="desc03">마감일</div>
-						<div class="desc04">지원일</div>
-					</li>
-					<c:choose>
-						<c:when test="${list.size() > 0 }">
-							<c:forEach var="result" items="${list}" varStatus="status">
-								<li>
-									<div class="desc00"><input type="checkbox" name="chk" value="${result.no }" /></div>
-									<div class="desc01">
-										<p class="title"><a href="javascript:goDetail('${result.companyUid }', '${result.personUid }', '${result.no }', '${result.recruitNo }', '${result.resumeNo }', '', 'recruit');">${result.bizName }</a></p>
-										<p class="t_desc"><a href="javascript:goDetail('${result.companyUid }', '${result.personUid }', '${result.no }', '${result.recruitNo }', '${result.resumeNo }', '', 'recruit');">${result.bizTitle }</a></p>
-									</div>
-									<div class="desc02">
-										<p class="my_resume"><a href="javascript:goDetail('${result.companyUid }', '${result.personUid }', '${result.no }', '${result.recruitNo }', '${result.resumeNo }', '', 'resume');">${result.inidTitle }</a></p>
-									</div>
-									<div class="desc03">
-										<p class="d_day">${result.bizEndDay }</p>
-									</div>
-									<div class="desc04">
-										<p class="apply_date">${result.wdate }</p>
-									</div>
-								</li>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<li style="width:100%;"><div class="descBox"><p class="desc02">내역이 없습니다.</p></li>
-						</c:otherwise>
-					</c:choose>
-				</ul>
+				<table class="list">
+					<caption>리스트</caption>
+					<tbody>
+						<tr class="list_title">
+							<th class="desc00"><input type="checkbox" name="all"/></th>
+							<th class="desc01">회사명</th>
+							<th class="desc02">지원내역</th>
+							<th class="desc03">이력서</th>
+							<th class="desc04">마감일</th>
+							<th class="desc05">지원일</th>
+						</tr>
+						<c:choose>
+							<c:when test="${list.size() > 0 }">
+								<c:forEach var="result" items="${list}" varStatus="status">	
+									<tr class="desc">
+										<td class="desc00"><input type="checkbox" name="chk" value="${result.no }" /></td>
+										<td class="desc01">
+											<a href="javascript:goDetail('${result.companyUid }', '${result.personUid }', '${result.no }', '${result.recruitNo }', '${result.resumeNo }', '', 'recruit');">${result.bizName }</a>
+										</td>
+										<td class="desc02">
+										<a href="#none" title="채용공고">
+											<a href="javascript:goDetail('${result.companyUid }', '${result.personUid }', '${result.no }', '${result.recruitNo }', '${result.resumeNo }', '', 'recruit');">${result.bizTitle }</a>
+										</a>
+										</td>
+										<td class="desc03">
+										<a href="#none" title="채용공고">
+											<a href="javascript:goDetail('${result.companyUid }', '${result.personUid }', '${result.no }', '${result.recruitNo }', '${result.resumeNo }', '', 'resume');">${result.inidTitle }</a>
+										</a>
+										</td>
+										<td class="desc04">${result.bizEndDay }</td>
+										<td class="desc05">${result.wdate }</td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr class="desc"><td colspan="6">내역이 없습니다.</td></tr>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
 				<ul class="numArea">
 					${pageMap.pageHtml }
 				</ul>

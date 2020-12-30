@@ -23,12 +23,42 @@
 	<!-- 이력서 갯수 -->
 	<select id="selectNetfuItemResumeCnt" parameterType="hashmap" resultType="int">
 		select 
-			count(no) cnt
-		from netfu_item_resume
+			count(nir.no) cnt
+		from netfu_item_resume nir
 		where 1=1
-			and inid_secret <![CDATA[<>]]> 'yes'
+			and nir.inid_secret <![CDATA[<>]]> 'yes'
 			<if test="loginId != null and loginId != ''">
-				and uid = #{loginId}
+				and nir.uid = #{loginId}
+			</if>
+			<if test='infoType == "4"'>
+				and nir.info_type = #{infoType}
+			</if>
+			<if test='infoType == "2"'>
+				and (nir.info_type = #{infoType} or nir.inid_jobform = 'netfu_34537_33276')
+			</if>
+			<if test="inidType != null and inidType != ''">
+				and (nir.inid_type3 in ('${inidType3}') or nir.inid_type6 in ('${inidType6}') or nir.inid_type9 in ('${inidType7}'))
+			</if>
+			<if test="inidAreaJob != null and inidAreaJob != ''">
+				and (nir.inid_area_job3 in ('${inidAreaJob}') or nir.inid_area_job3 in ('${inidAreaJob}') or nir.inid_area_job3 in ('${inidAreaJob}'))
+			</if>
+			<if test="inidArea != null and inidArea != ''">
+				and (nir.inid_area2 in ('${inidArea}') or nir.inid_area4 in ('${inidArea}') or nir.inid_area6 in ('${inidArea}'))
+			</if>
+			<if test="inidLicense != null and inidLicense != ''">
+				and (nir.inid_license in ('${inidLicense}') or nir.inid_license in ('${inidLicense}') or nir.inid_license in ('${inidLicense}'))
+			</if>
+			<if test="inidCareer != null and inidCareer != ''">
+				and (nir.inid_career in ('${inidCareer}'))
+			</if>
+			<if test="inidSchool != null and inidSchool != ''">
+				and (nir.inid_last_school in ('${inidSchool}'))
+			</if>
+			<if test="inidJobform != null and inidJobform != ''">
+				and (nir.inid_jobform in ('${inidJobform}'))
+			</if>
+			<if test="inidPay != null and inidPay != ''">
+				and (nir.inid_pay in ('${inidPay}'))
 			</if>
 	</select>
 	
@@ -36,38 +66,108 @@
 	<!-- 이력서 리스트 -->
 	<select id="selectNetfuItemResumeList" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
 		select 
-			no , uid , info_type , basic , name , inid_p_chk , inid_photo , inid_phone , inid_hphone , inid_email , inid_post
-			, inid_address1 , inid_address2 , inid_home , inid_title , indi_condition
-			, inid_area1 , getCodeName(inid_area1) inid_area1_name
-			, inid_area2 , getCodeName(inid_area2) inid_area2_name
-			, inid_area3 , getCodeName(inid_area3) inid_area3_name
-			, inid_area4 , getCodeName(inid_area4) inid_area4_name
-			, inid_area5 , getCodeName(inid_area5) inid_area5_name
-			, inid_area6 , getCodeName(inid_area6) inid_area6_name
-			, inid_type1 , getCodeName(inid_type1) inid_type1_name
-			, inid_type2 , getCodeName(inid_type2) inid_type2_name
-			, inid_type3 , getCodeName(inid_type3) inid_type3_name
-			, inid_type4 , getCodeName(inid_type4) inid_type4_name
-			, inid_type5 , getCodeName(inid_type5) inid_type5_name
-			, inid_type6 , getCodeName(inid_type6) inid_type6_name
-			, inid_type7 , getCodeName(inid_type7) inid_type7_name
-			, inid_type8 , getCodeName(inid_type8) inid_type8_name
-			, inid_type9 , getCodeName(inid_type9) inid_type9_name
-			, inid_mylskill
-			, inid_jobform , getCodeName(inid_jobform) inid_jobform_name
-			, inid_pay , getCodeName(inid_pay) inid_pay_name
-			, inid_last_school , inid_career , inid_license , inid_languages , inid_introduce , inid_secret
-			, DATE_FORMAT(wdate, '%m/%d') wdate
-			, DATE_FORMAT(u_wdate, '%m/%d') u_wdate
-			, DATE_FORMAT(j_wdate, '%m/%d') j_wdate
-			, hit , service11 , service12 , service13 , service101 , service14 , service15 , service16 , service17
-			, inid_sex , sms_send , a_insert
-		from netfu_item_resume
+			${resumeColumn}
+			, nm.sex, nm.birth
+		from netfu_item_resume nir left outer join netfu_member nm on nir.uid = nm.uid
 		where 1=1
-			and inid_secret <![CDATA[<>]]> 'yes'
+			and nir.inid_secret <![CDATA[<>]]> 'yes'
 			<if test="loginId != null and loginId != ''">
-				and uid = #{loginId}
+				and nir.uid = #{loginId}
 			</if>
+			<if test='infoType == "4"'>
+				and nir.info_type = #{infoType}
+			</if>
+			<if test='infoType == "2"'>
+				and (nir.info_type = #{infoType} or nir.inid_jobform = 'netfu_34537_33276')
+			</if>
+			<if test="inidType != null and inidType != ''">
+				and (nir.inid_type3 in ('${inidType}') or nir.inid_type6 in ('${inidType}') or nir.inid_type9 in ('${inidType}'))
+			</if>
+			<if test="inidAreaJob != null and inidAreaJob != ''">
+				and (nir.inid_area_job3 in ('${inidAreaJob}') or nir.inid_area_job3 in ('${inidAreaJob}') or nir.inid_area_job3 in ('${inidAreaJob}'))
+			</if>
+			<if test="inidArea != null and inidArea != ''">
+				and (nir.inid_area2 in ('${inidArea}') or nir.inid_area4 in ('${inidArea}') or nir.inid_area6 in ('${inidArea}'))
+			</if>
+			<if test="inidLicense != null and inidLicense != ''">
+				and (nir.inid_license in ('${inidLicense}') or nir.inid_license in ('${inidLicense}') or nir.inid_license in ('${inidLicense}'))
+			</if>
+			<if test="inidCareer != null and inidCareer != ''">
+				and (nir.inid_career in ('${inidCareer}'))
+			</if>
+			<if test="inidSchool != null and inidSchool != ''">
+				and (nir.inid_last_school in ('${inidSchool}'))
+			</if>
+			<if test="inidJobform != null and inidJobform != ''">
+				and (nir.inid_jobform in ('${inidJobform}'))
+			</if>
+			<if test="inidPay != null and inidPay != ''">
+				and (nir.inid_pay in ('${inidPay}'))
+			</if>
+		order by ${orderField} ${orderRule}
+		limit #{start}, #{pageSize}
+	</select>
+	
+	
+	<!-- keyword 검색 이력서 갯수 -->
+	<select id="selectKeywordNetfuItemResumeCnt" parameterType="hashmap" resultType="int">
+		select
+			count(aa.no) cnt
+		from
+		(
+				select
+					resume.no
+					, concat(ifnull(resume.name, ''), '|',ifnull(resume.inid_address1, ''), '|',ifnull(resume.inid_address2, ''), '|',ifnull(resume.inid_title, '')
+						, '|',ifnull(resume.inid_last_school, ''), '|',ifnull(resume.inid_career, '')
+						, '|',ifnull(resume.inid_license, ''), '|',ifnull(resume.inid_languages, '')) fullStr
+				from netfu_item_resume resume
+				where resume.inid_secret <![CDATA[<>]]> 'yes'
+		) aa
+		where 1=1
+			and (
+					aa.fullStr like '%${keyword1}%' 
+					<if test="keyword2 != '' and keyword2 != null">
+						${keywordCondition} aa.fullStr like '%${keyword2}%'
+					</if>
+					<if test="keyword3 != '' and keyword3 != null">
+						${keywordCondition} aa.fullStr like '%${keyword3}%'
+					</if>
+				)
+	</select>
+	
+	
+	<!-- keyword 검색 이력서 리스트 -->
+	<select id="selectKeywordNetfuItemResumeList" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
+		select 
+			${resumeColumn}
+			, nm.sex, nm.birth
+		from netfu_item_resume nir left outer join netfu_member nm on nir.uid = nm.uid
+			, (
+				select
+					aa.*
+				from
+				(
+						select
+							resume.no
+							, concat(ifnull(resume.name, ''), '|',ifnull(resume.inid_address1, ''), '|',ifnull(resume.inid_address2, ''), '|',ifnull(resume.inid_title, '')
+								, '|',ifnull(resume.inid_last_school, ''), '|',ifnull(resume.inid_career, '')
+								, '|',ifnull(resume.inid_license, ''), '|',ifnull(resume.inid_languages, '')) fullStr
+						from netfu_item_resume resume
+						where resume.inid_secret <![CDATA[<>]]> 'yes'
+				) aa
+				where 1=1
+					and (
+							aa.fullStr like '%${keyword1}%' 
+							<if test="keyword2 != '' and keyword2 != null">
+								${keywordCondition} aa.fullStr like '%${keyword2}%'
+							</if>
+							<if test="keyword3 != '' and keyword3 != null">
+								${keywordCondition} aa.fullStr like '%${keyword3}%'
+							</if>
+						)
+			) keyword
+		where 1=1
+			and nir.no = keyword.no
 		order by ${orderField} ${orderRule}
 		limit #{start}, #{pageSize}
 	</select>
@@ -76,44 +176,19 @@
 	<!-- 이력서 정보 -->
 	<select id="selectNetfuItemResumeMap" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
 		select 
-			no , uid , info_type , basic , name , inid_p_chk , inid_photo , inid_phone , inid_hphone , inid_email , inid_post
-			, inid_address1 , inid_address2 , inid_home , inid_title , indi_condition
-			, inid_area1 , getCodeName(inid_area1) inid_area1_name
-			, inid_area2 , getCodeName(inid_area2) inid_area2_name
-			, inid_area3 , getCodeName(inid_area3) inid_area3_name
-			, inid_area4 , getCodeName(inid_area4) inid_area4_name
-			, inid_area5 , getCodeName(inid_area5) inid_area5_name
-			, inid_area6 , getCodeName(inid_area6) inid_area6_name
-			, inid_type1 , getCodeName(inid_type1) inid_type1_name
-			, inid_type2 , getCodeName(inid_type2) inid_type2_name
-			, inid_type3 , getCodeName(inid_type3) inid_type3_name
-			, inid_type4 , getCodeName(inid_type4) inid_type4_name
-			, inid_type5 , getCodeName(inid_type5) inid_type5_name
-			, inid_type6 , getCodeName(inid_type6) inid_type6_name
-			, inid_type7 , getCodeName(inid_type7) inid_type7_name
-			, inid_type8 , getCodeName(inid_type8) inid_type8_name
-			, inid_type9 , getCodeName(inid_type9) inid_type9_name
-			, inid_mylskill
-			, inid_jobform , getCodeName(inid_jobform) inid_jobform_name
-			, inid_pay , getCodeName(inid_pay) inid_pay_name
-			, inid_last_school , inid_career , inid_license , inid_languages , inid_introduce , inid_secret
-			, DATE_FORMAT(wdate, '%m/%d') wdate
-			, DATE_FORMAT(u_wdate, '%m/%d') u_wdate
-			, DATE_FORMAT(j_wdate, '%m/%d') j_wdate
-			, hit , service11 , service12 , service13 , service101 , service14 , service15 , service16 , service17
-			, inid_sex , sms_send , a_insert
-		from netfu_item_resume
+			${resumeColumn}
+		from netfu_item_resume nic
 		where 1=1
 			<choose>
 				<when test="personUid != null and personUid != ''">
-					and uid = #{personUid}
+					and nic.uid = #{personUid}
 				</when>
 				<otherwise>
-					and uid = #{loginId}
+					and nic.uid = #{loginId}
 				</otherwise>
 			</choose>
 			<if test="no != null and no != ''">
-				and no = #{no}
+				and nic.no = #{no}
 			</if>
 	</select>
 

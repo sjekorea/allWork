@@ -13,33 +13,41 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 /*###################################   res_rightPart   ###################################*/
 #rightPart{width:790px;overflow:hidden;margin-left:10px;float:left;}
 
+
+table{border-collapse: collapse;border-top:2px solid #000;}
+caption{text-align:left;font-size:24px;padding-bottom:20px;font-family:"NotoSansKR-Thin";}
+tbody{width:100%;text-align:left;border-collapse: collapse;}
+tr{width:100%;font-size:16px;border-bottom:1px solid #ccc;}
+th{width:140px;font-family:"NotoSansKR-Medium";background-color:#eee;padding:5px 20px;}
+td{width:570px;font-size:14px;padding:5px 20px;}
+
 /*###############################   resume00 기본정보  ###############################*/
 #resume00{width:790px;margin-bottom:10px;padding:40px;overflow: hidden;background-color:#fff;border:1px solid #ccc;}
-#resume00 #imgArea{width:130px;height:160px;float: left;border:1px solid #ccc;}
-#resume00 #imgArea p{width:100%;height:100%;overflow: hidden;}
+
+#resume00 #detailArea{width:710px;float: left;}
+#resume00 #detailArea .detail_title{width:100%;height:32px;margin-bottom:10px;font-size:18px;float:left;}
+
+#resume00 #imgArea{width:120px;margin-right:10px;height:140px;float: left;border:1px solid #ccc;overflow: hidden;}
+#resume00 #imgArea p{width:100%;background-color:#ccc;}
 #resume00 #imgArea p img{width:100%;}
 
-#resume00 #detailArea{width:570px;float: left;margin-left:8px;}
-#resume00 #detailArea .detail_title{width:100%;height:42px;text-indent:10px;font-size:18px;font-family:"NotoSansKR-Thin";}
-#resume00 #detailArea .tabelArea{width:100%;text-indent:10px;overflow: hidden;border-top:1px solid #808495;}
-#resume00 #detailArea .tabelArea p{float: left;}
-#resume00 #detailArea .tabelArea .table_title{width:90px;height:39px;line-height:40px;border-bottom:1px solid #ccc;background-color:#808495;color:#fff;}
-#resume00 #detailArea .tabelArea .table_desc{width:195px;height:39px;line-height:40px;border-bottom:1px solid #808495;color:#333;}
-#resume00 #detailArea .tabelArea .table_desc01{width:480px;height:39px;line-height:40px;border-bottom:1px solid #808495;color:#333;}
+#detailArea table{width:580px;border-bottom:1px solid #000;}
+#detailArea caption{display:none;}
+#detailArea .tabelArea{width:100%;overflow: hidden;}
+#detailArea .tabelArea tr{line-height:30px;float:left;font-size:14px;overflow:hidden;border-bottom:1px solid #ccc;}
+#detailArea .tabelArea .table_title{width:120px;background-color:#808495;color:#fff;}
+#detailArea .tabelArea .table_desc{width:460px;line-height:20px;}
 
-table{border-collapse: collapse;}
-caption{text-align:left;font-size:24px;padding-bottom:20px;font-family:"NotoSansKR-Thin";}
-tbody{width:100%;text-align:left;border-top:2px solid #000;}
-tr{width:100%;font-size:16px;height:60px;}
-th{width:140px;font-family:"NotoSansKR-Medium";background-color:#eee;text-indent:20px;border-bottom:1px solid #fff;}
-
-td{width:570px;font-size:14px;padding-top:10px;text-indent:20px;border-bottom:1px solid #ccc;}
+              #detailArea .personal_setting:hover{background-color:#eee;}
+              #detailArea .tabelArea tr:last-child{border-bottom:none;}
 
     /*###############################   resume02  희망구직 정보 ###############################*/
     #resume02{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
     #resForm02{width:790px;background-color:#fff;padding:40px;}
-    #resForm02 .workPlace p{width:160px;float:left;}
-    #resForm02 .workPlace p span{display: inline;}
+    #resForm02 tr{height:60px;}
+
+    #resForm02 .workPlace p{width:160px;}
+
 
     /*###############################   resume03  학력사항   ###############################*/
     #resume03{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
@@ -113,12 +121,12 @@ td{width:570px;font-size:14px;padding-top:10px;text-indent:20px;border-bottom:1p
     #resForm08 p{width:100%;overflow: hidden;}
 
     /*###############################   면접제의 버튼   ###############################*/
-    #rightPart .buttons{width:100%;margin:20px auto 0;}
-    #rightPart .buttons li{width:160px;height:50px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;float:left;}
-    #rightPart .buttons li:first-child{width:180px;margin-right:120px;background-color:#43425D}
+    #rightPart .buttons{width:100%;margin-top:20px;text-align:center;}
+    #rightPart .buttons li{display:inline-block;width:160px;height:50px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;}
+    #rightPart .buttons li:first-child{width:180px;margin-right:20px;background-color:#43425D;}
     #rightPart .buttons li:first-child a{color:#fff;}
     #rightPart .buttons li:last-child{margin-right:0px;}
-    #rightPart .buttons li a{display:block;width:100%;height:100%;color:#666;}
+    #rightPart .buttons li a{display: block;width:100%;height:100%;color:#666;}
     #rightPart .buttons li.res_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
     #rightPart .buttons li.res_ok a{color:#fff;}
 

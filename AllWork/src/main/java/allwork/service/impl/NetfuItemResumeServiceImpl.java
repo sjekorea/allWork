@@ -1,5 +1,6 @@
 package allwork.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,16 +25,27 @@ public class NetfuItemResumeServiceImpl implements NetfuItemResumeService{
 	public int selectRecentlyResumeNo(Map<String, Object> map) throws Exception {
 		return netfuItemResumeDao.selectRecentlyResumeNo(map);
 	}
-
 	
 	@Override
 	public int selectNetfuItemResumeCnt(Map<String, Object> map) throws Exception {
-		return netfuItemResumeDao.selectNetfuItemResumeCnt(map);
+		int rtnCnt = 0;
+		if("keyword".equals((String)map.get("searchFlag"))){
+			rtnCnt = netfuItemResumeDao.selectKeywordNetfuItemResumeCnt(map);
+		}else{
+			rtnCnt = netfuItemResumeDao.selectNetfuItemResumeCnt(map);
+		}
+		return rtnCnt;
 	}
 
 	@Override
 	public List<Map<String, Object>> selectNetfuItemResumeList(Map<String, Object> map) throws Exception {
-		return netfuItemResumeDao.selectNetfuItemResumeList(map);
+		List<Map<String, Object>> rtnList = new ArrayList<Map<String, Object>>();
+		if("keyword".equals((String)map.get("searchFlag"))){
+			rtnList = netfuItemResumeDao.selectKeywordNetfuItemResumeList(map);
+		}else{
+			rtnList = netfuItemResumeDao.selectNetfuItemResumeList(map);
+		}
+		return rtnList;
 	}
 	
 	@Override

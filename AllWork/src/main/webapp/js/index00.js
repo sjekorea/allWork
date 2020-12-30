@@ -11,7 +11,7 @@
 
 jQuery(document).ready(function(){
 
-  		jQuery("#allMenuWrap").css({"display":"none"});
+  		//jQuery("#allMenuWrap").css({"display":"none"});
 
   		jQuery("#headerWrap #header .nav").first().click(function(){
   		jQuery("#allMenuWrap").show();

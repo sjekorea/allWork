@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="recruitOther">
+	
+	<!-- 기타 채용 정보 검색 Count -->
+	<select id="selectRecruitOtherCnt" parameterType="hashmap" resultType="int">
+		select 
+			count(ser) cnt
+		from recruit_other
+		where 1=1
+			and prs='P'
+		ORDER BY wdate DESC, ser DESC 
+	</select>
+	
+	
+	<!-- 기타 채용 정보 검색 리스트 -->
+	<select id="selectRecruitOtherList" parameterType="hashmap" resultType="allwork.vo.RecruitOtherVo">
+		select 
+			ser
+			, DATE_FORMAT(reg, '%m/%d') reg
+			, prs
+			, DATE_FORMAT(beg, '%m/%d') beg
+			, company_title
+			, phone
+			, recruit_item
+			, whereis
+			, men
+			, DATE_FORMAT(wdate, '%m/%d') wdate
+			, DATE_FORMAT(edate, '%m/%d') edate
+			, order_view
+			, memo
+			, job_type
+			, wantedAuthNo
+			, salary
+			, preference
+			, strEdate
+		from recruit_other
+		where 1=1
+			and prs='P'
+		ORDER BY wdate DESC, ser DESC 
+		limit #{start}, #{pageSize}
+	</select>
+
+</mapper>

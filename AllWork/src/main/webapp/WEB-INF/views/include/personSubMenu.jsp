@@ -12,11 +12,11 @@
 		<a href="/personHome.do" title="개인회원 홈">개인회원 홈</a>
 	</p>
 	<ul>
-		<li class="menu menu01"><a href="#" title="이력서관리">이력서관리</a>
+		<li class="menu menu01"><a href="/resumeList.do" title="이력서관리">이력서관리</a>
 			<h3>이력서관리</h3>
 			<ol class="subMenu subMenu01">
+				<li class="subMenu01_02"><a href="/resumeList.do" title="이력서목록">이력서목록</a></li>
 				<li class="subMenu01_01"><a href="/resumeInfoReg.do" title="이력서등록">이력서등록</a></li>
-				<li class="subMenu01_02"><a href="#" title="이력서수정">이력서수정</a></li>
 			</ol>
 		</li>
 		<li class="menu menu02"><a href="/personApplyList.do" title="입사지원관리">입사지원관리</a>
@@ -39,13 +39,13 @@
 				<li class="subMenu05_01"><a href="/fitRecruitList.do" title="맞춤채용정보">맞춤채용정보</a></li>
 				<li class="subMenu05_02"><a href="/fitRecruitSetting.do" title="맞춤서비스설정">맞춤서비스설정</a></li>
 			</ol></li>
-		<li class="menu menu06"><a href="#" title="유료서비스">유료서비스</a>
+		<li class="menu menu06"><a href="/resumeApplyForPay.do" title="유료서비스">유료서비스</a>
 			<h3>유료서비스</h3>
 			<ol class="subMenu subMenu06">
-				<li class="subMenu06_01"><a href="#" title="결제내역조회">결제내역조회</a></li>
-				<li class="subMenu06_02"><a href="#" title="유료옵션서비스 신청">유료옵션서비스 신청</a></li>
+				<li class="subMenu06_02"><a href="/resumeApplyForPay.do" title="유료옵션서비스 신청">유료 옵션 서비스 신청</a></li>
+				<li class="subMenu06_01"><a href="/resumePaidList.do" title="결제내역조회">결제내역조회</a></li>
 			</ol></li>
-		<li class="menu menu07"><a href="#" title="회원정보관리">회원정보관리</a></li>
+		<li class="menu menu07"><a href="/personModify.do" title="회원정보관리">회원정보관리</a></li>
 	</ul>
 </div>
 

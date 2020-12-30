@@ -92,12 +92,12 @@
 								<li class="sitemap_depth01"><a href="/recruitSearch.do" title="채용정보">채용정보</a>
 								<li class="sitemap_depth02"><a href="/recruitSearch.do" title="상세검색">상세검색</a></li>
 								<li class="sitemap_depth02"><a href="/recruitSearchByDuty.do" title="직무별">직무별</a></li>
-								<li class="sitemap_depth02"><a href="#" title="산업별">산업별</a></li>
-								<li class="sitemap_depth02"><a href="#" title="지역별">지역별</a></li>
-								<li class="sitemap_depth02"><a href="#" title="기업별">기업별</a></li>
-								<li class="sitemap_depth01"><a href="#" title="프리랜서">프리랜서</a></li>
-								<li class="sitemap_depth01"><a href="#" title="알바채용">알바채용</a></li>
-								<li class="sitemap_depth01"><a href="#" title="기타채용정보">기타채용정보</a></li>
+								<li class="sitemap_depth02"><a href="/recruitSearchByIndustry.do" title="산업별">산업별</a></li>
+								<li class="sitemap_depth02"><a href="/recruitSearchByArea.do" title="지역별">지역별</a></li>
+								<li class="sitemap_depth01"><a href="/recruitSearchForFree.do" title="프리랜서">프리랜서</a></li>
+								<li class="sitemap_depth01"><a href="/recruitSearchForAlba.do" title="알바채용">알바채용</a></li>
+								<li class="sitemap_depth01"><a href="/recruitOther.do" title="기타채용정보">기타채용정보</a></li>
+								<li class="sitemap_depth01"><a href="#" title="모바일채용정보">모바일채용정보</a></li>
 							</ul>
 						</div>
 						<div class="sitemap">
@@ -105,12 +105,11 @@
 							<ul>
 								<li class="sitemap_depth01"><a href="/resumeSearch.do" title="인재검색">인재검색</a>
 								<li class="sitemap_depth02"><a href="/resumeSearch.do" title="상세검색">상세검색</a></li>
-								<li class="sitemap_depth02"><a href="#" title="직무별">직무별</a></li>
-								<li class="sitemap_depth02"><a href="#" title="산업별">산업별</a></li>
-								<li class="sitemap_depth02"><a href="#" title="지역별">지역별</a></li>
-								<li class="sitemap_depth02"><a href="#" title="기업별">기업별</a></li>
-								<li class="sitemap_depth02"><a href="#" title="프리랜서">프리랜서</a></li>
-								<li class="sitemap_depth02"><a href="#" title="알바">알바</a></li>
+								<li class="sitemap_depth02"><a href="/resumeSearchByDuty.do" title="직무별">직무별</a></li>
+								<li class="sitemap_depth02"><a href="/resumeSearchByIndustry.do" title="산업별">산업별</a></li>
+								<li class="sitemap_depth02"><a href="/resumeSearchByArea.do" title="지역별">지역별</a></li>
+								<li class="sitemap_depth02"><a href="/resumeSearchForFree.do" title="프리랜서">프리랜서</a></li>
+								<li class="sitemap_depth02"><a href="/resumeSearchForAlba.do" title="알바">알바</a></li>
 								<li class="sitemap_depth01"><a href="/resumeScrapList.do" title="스크랩인재">스크랩인재</a></li>
 								<li class="sitemap_depth01"><a href="#" title="우수추천인재">우수추천인재</a></li>
 							</ul>
@@ -133,7 +132,7 @@
 						</div>
 					</div>
 					<div id="allMenu_ect">
-						<span><a href="#" title="고객센터">고객센터</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+						<span><a href="/noticeList.do" title="고객센터">고객센터</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
 						<span><a href="/introAbout.do" title="회사소개">회사소개</a></span>
 					</div>
 				</div>

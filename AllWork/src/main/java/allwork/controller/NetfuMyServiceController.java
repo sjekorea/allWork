@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import allwork.common.CommandMap;
+import allwork.common.util.CommonColumnUtil;
 import allwork.common.util.CommonUtil;
 import allwork.common.util.ConvertUtil;
 import allwork.common.util.PaginationUtil;
@@ -44,7 +45,7 @@ public class NetfuMyServiceController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderRule", "wdate desc");
+				commandMap.put("orderRule", "nic.wdate desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);
@@ -146,11 +147,12 @@ public class NetfuMyServiceController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderRule", "wdate desc");
+				commandMap.put("orderRule", "nir.wdate desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
 			
 			// 맞춤 인재 정보 목록
 			List<Map<String, Object>> myServiceResumeList = netfuMyServiceService.selectMyServiceResumeList(commandMap.getMap());

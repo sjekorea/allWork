@@ -18,8 +18,8 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 #part01 ul.adPart li a div .star{text-align: right;color:#eee;font-size:16px;}
 #part01 ul.adPart li a div .desc01{font-size:14px;}
 #part01 ul.adPart li a div .desc02{font-size:10px;color:#4F60E3;}
-#part01 ul.adPart li a div .desc03{font-size:14px;font-family:"NotoSansKR-Bold";}
-#part01 ul.adPart li a div .desc04{font-size:10px;color:#999;}
+#part01 ul.adPart li a div .desc03{font-size:14px;height:44px;font-family:"NotoSansKR-Bold";overflow: hidden;text-overflow: ellipsis;}
+#part01 ul.adPart li a div .desc04{font-size:10px;height:34px;color:#999;overflow: hidden;text-overflow: ellipsis;}
 
               #part01 ul li:hover{border: 1px solid #4F60E3;}
 
@@ -40,85 +40,131 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 /*###################################   part03/상세검색  ###################################*/
 /*############  1열  ########################*/
 #part03{width:790px;margin-top:10px;overflow: hidden;}
+
+input{outline:none;}
 #row01{width:790px;text-indent:20px;line-height:50px;background-color:#fff;border-top:1px solid #ccc;border-left:1px solid #ccc;float:left;}
 #row01 .tab{width:100%;height:50px;background-color:#43425D;border-bottom:1px solid #ccc;}
-#row01 .tab li{width:160px;height:100%;border-right:1px solid #ccc;float:left;}
+#row01 .tab li{width:200px;height:100%;border-right:1px solid #ccc;float:left;}
 #row01 .tab li a{display:block;width:100%;height:100%;color:#fff;}
-#row01 .tab li:last-child{width:149px;}
+#row01 .tab li:last-child{width:189px;}
 
 #row01 .descArea{width:100%;height:200px;}
-#row01 .descArea ul{width:160px;height:100%;border-right:1px solid #ccc;float:left;overflow:scroll;}
+#row01 .descArea ul{width:200px;height:100%;border-right:1px solid #ccc;float:left;overflow:scroll;}
 #row01 .descArea ul li{width:100%;height:30px;}
-#row01 .descArea ul li input{display: block;width: 100%;height:30px;line-height: 30px;border:none;background-color:#fff;
+#row01 .descArea ul li input{display: block;width:200px;height:30px;line-height: 30px;border:none;background-color:#fff;
                              text-align:left;text-indent:20px;font-size:14px;}
 
-            #row01 .descArea ul:last-child{width:149px;}
+            #row01 .descArea ul:last-child{width:189px;}
             #row01 .tab li:hover{background-color:#000;}
 
             #row01 .descArea ul li input:hover{color:#4F60E3;}
 /*### 버튼 on
             #row01 .descArea ul li input.on{background-color:#eee;}*/
+
+    /*###################################   상세검색_직무별  ###################################*/
+      #row01_1{width:790px;overflow: hidden;text-indent:20px;line-height:50px;background-color:#fff;border:1px solid #ccc;}
+      /*###################################   part03/상세검색 탭  ###################################*/
+      /*#####  1열 상세검색 안보이게  #####*/
+      #row01_1 .tab{display:none;}
+      #row01_1 .tab{width:100%;height:50px;}
+      #row01_1 .tab li{width:200px;height:50px;border-right:1px solid #ccc;float:left;background-color:#ddd;border-bottom:2px solid #000;}
+                /* 직무별 탭 활성화 */#row01_1 .tab li:first-child{background-color:#000;}
+                                  #row01_1 .tab li:last-child{width:188px;}
+      #row01_1 .tab a{display:block;width:100%;height:100%;color:#fff;}
+
+
+                      /*###################################   서브항목 레이어  cateOn   ###################################*/
+                      #row01_1 #cateOn{display:none;}
+                      #cateOn{width:790px;height:288px;float:left;background-color:#fff;}
+                      #cateOn ul{width:200px;height:100%;border-right:1px solid #ccc;float:left;overflow:scroll;}
+                      #cateOn ul li{width:100%;height:30px;}
+                      #cateOn ul li input{display: block;width:100%;height:30px;line-height: 30px;border:none;background-color:#fff;
+                                                   text-align:left;text-indent:20px;font-size:14px;}
+
+                      #cateOn .select03{width:388px;}
+                      #cateOn .select03 li{width:129px;float:left;}
+
+                      /*### 버튼 on
+                      #recruitment #rec_row01 div ul li input.on{background-color:#eee;color:#4F60E3;}
 /*############  2열  ########################*/
+
 #row02{width:790px;text-indent:20px;line-height:50px;background-color:#fff;border-top:1px solid #ccc;border-left:1px solid #ccc;float:left;}
 #row02 .tab{width:100%;height:50px;background-color:#43425D;border-bottom:1px solid #ccc;}
-#row02 .tab li{width:160px;height:100%;border-right:1px solid #ccc;float:left;}
+#row02 .tab li{width:200px;height:100%;border-right:1px solid #ccc;float:left;}
 #row02 .tab li a{display:block;width:100%;height:100%;color:#fff;}
-#row02 .tab li:last-child{width:149px;}
+#row02 .tab li:last-child{width:189px;}
 
 #row02 .descArea{width:100%;height:200px;}
-#row02 .descArea ul{width:160px;height:100%;border-right:1px solid #ccc;float:left;overflow:scroll;}
+#row02 .descArea ul{width:200px;height:100%;border-right:1px solid #ccc;float:left;overflow:scroll;}
 #row02 .descArea ul li{width:100%;height:30px;}
 #row02 .descArea ul li input{display: block;width: 100%;height:30px;line-height: 30px;border:none;background-color:#fff;
                             text-align:left;text-indent:20px;font-size:14px;}
 
-            #row02 .descArea ul:last-child{width:149px;}
+            #row02 .descArea ul:last-child{width:189px;}
             #row02 .tab li:hover{background-color:#000;}
             #row02 .tab li:last-child:hover{background-color:#eee;}
-/*#####  2열 안보이게  ######row02 .descArea{display:none;}*/ 
+/*#####  2열 안보이게  #####*/ #row02 .descArea{display:none;}
+/*###################################   상세검색_직무별  ###################################*/
+  #row02_1{width:790px;overflow: hidden;text-indent:20px;line-height:50px;background-color:#fff;border:1px solid #ccc;}
+  /*###################################   part03/상세검색 탭  ###################################*/
+  #row02_1 .tab{display:none;}
+  #row02_1 .tab{width:100%;height:50px;}
+  #row02_1 .tab li{width:200px;height:50px;border-right:1px solid #ccc;float:left;background-color:#ddd;border-bottom:2px solid #000;}
+            /* 직무별 탭 활성화 */#row02_1 .tab li:first-child{background-color:#000;}
+                              #row02_1 .tab li:last-child{width:188px;}
+  #row02_1 .tab a{display:block;width:100%;height:100%;color:#fff;}
+
+
+          /*###################################   서브항목 레이어  cateOn   ###################################*/
+          #row02_1 #cateOn{display:none;}
+          #cateOn{width:790px;height:200px;float:left;background-color:#fff;}
+          #cateOn ul{width:200px;height:100%;border-right:1px solid #ccc;float:left;overflow:scroll;}
+          #cateOn ul li{width:100%;height:30px;}
+          #cateOn ul li input{display: block;width:100%;height:30px;line-height: 30px;border:none;background-color:#fff;
+                                       text-align:left;text-indent:20px;font-size:14px;}
+
+          #cateOn .select03{width:389px;}
+          #cateOn .select03 li{width:129px;float:left;}
+
+          /*### 버튼 on
+          #recruitment #rec_row01 div ul li input.on{background-color:#eee;color:#4F60E3;}
 
 /*###################################   상세검색버튼 searchBox   ###################################*/
 #searchBox{width:790px;padding:20px;overflow: hidden;border:1px solid #ccc;background-color:#fff;}
-#searchBox p{float:left;height:30px;line-height: 30px;}
-#searchBox p.keywords{width:540px;}
-#searchBox p.keywords span{padding-right:10px;}
+#searchBox p{float:left;line-height:30px;}
+#searchBox p.keywords{width:540px;overflow:hidden;}
+#searchBox p.keywords span{display:inline-block;height:30px;line-height:30px;padding-right:10px;}
 #searchBox p.keywords .fa-times{margin-left:2px;vertical-align: middle;font-size:12px;color:#666;}
 #searchBox p.keywords input{display:inline-block;border:none;background-color:#fff;}
-#searchBox p.reset{width:50px;}
+#searchBox p.reset{width:50px;line-height:30px;}
 #searchBox p.reset a{font-size:12px;font-family:"NotoSansKR-Bold";color:#999;}
 #searchBox p.goBtn{width:158px;}
 #searchBox p.goBtn input{display:block;width:160px;height: 30px;border:none;background-color:#4F60E3;color:#fff;}
 
 /*###################################   listpart 인재정보   ###################################*/
-#listPart{width:100%;margin-top: 40px;overflow: hidden;font-size: 14px;}
-#listPart h4{width:100%;font-size:18px;text-indent:40px;margin-bottom: 10px;}
-#listPart .title{width:790px;height:40px;line-height: 40px;background-color:#fff;color:#333;text-align: center;border-bottom:1px solid #000;}
-#listPart .title li{float:left;}
-#listPart .title li.desc01{width:120px;}
-#listPart .title li.desc02{width:350px;}
-#listPart .title li.desc03{width:100px;}
-#listPart .title li.desc04{width:120px;}
-#listPart .title li.desc05{width:80px;}
+#listPart{width:790px;margin-top: 40px;overflow: hidden;font-size: 14px;}
+#listPart h4{width:50%;font-size:18px;margin-bottom: 10px;float: left;}
+#listPart .rec_align{width:50%;text-align: right;float: left;padding-top:10px;}
+#listPart .rec_align li{display:inline-block;margin-bottom:10px;}
+#listPart .rec_align li a{font-size:11px;}
 
-#listPart .list{width:100%;overflow: hidden;background-color:#fff;text-align: center;}
-#listPart .list li{width:790px;height:150px;border:1px solid #fff;border-bottom:1px solid #ccc;}
-#listPart .list li a{display: block;width: 100%;height: 100%;overflow: hidden;}
+#listPart .list{width:100%;overflow: hidden;border-collapse:collapse;}
+#listPart .list caption{display:none;}
+#listPart .list tbody{width:100%;border-collapse:collapse;}
+#listPart .list tr{width:100%;border-bottom:1px solid #ccc;text-align: center;font-size:14px;background-color: #fff;}
 
-        #listPart .list li:hover{border:1px solid #4F60E3;}
 
-#listPart .list li a p{height:100px;float:left;font-size:14px;padding-top:50px;line-height: 24px;}
-#listPart .list li a .desc00{width:120px;text-align: center;}
-#listPart .list li a .desc01{width:350px;text-align: left;}
-#listPart .list li a .desc02{width:100px;}
-#listPart .list li a .desc03{width:120px;}
-#listPart .list li a .date{width:80px;line-height:58px;}
+/*###################################   리스트 제목부분   ###################################*/
+  #listPart .list .list_title th{height:50px;line-height: 50px;border-bottom:1px solid #000;}
+  #listPart .list .desc td{padding:30px 0;}
+  #listPart .list .desc00{width:130px;}
+  #listPart .list .desc01{width:320px;}
+  #listPart .list .desc02{width:120px;}
+  #listPart .list .desc03{width:120px;}
+  #listPart .list .desc04{width:100px;}
 
-#listPart .numareaWrap{width:100%;padding-bottom:30px;overflow: hidden;background-color:#fff;}
-#listPart .numArea{width:360px;height:30px;line-height:28px;padding-top:30px;padding-bottom:30px;text-align: center;margin:0 auto;}
-#listPart .numArea li{width:28px;height:28px;border:1px solid #fff;float:left;}
-#listPart .numArea li a{color:#ccc;}
+  #listPart .list .desc .desc01{text-align: left;}
+  #listPart .list td a:hover{text-decoration: underline;}
 
-                #listPart .numArea li:hover{border: 1px solid #ccc;}
-                #listPart .numArea li:hover a{color:#666;}
 
-#listPart .numArea .p01{border: 1px solid #666;}
-#listPart .numArea .p01 a{color:#666;}
+.numareaWrap{padding-bottom:30px;}

@@ -11,13 +11,14 @@
 
   #head{width:100%;height:60px;border-bottom:1px solid #ccc;background-color: #fff;}
     #header{width:1000px;height:100%;margin:0 auto;}
-    #header p{width:80px;height:100%;line-height:60px;font-size:24px;float:left;}
-    #header .nav{width:800px;height:100%;float:left;}
+    #header .nav{width:640px;height:100%;float:left;}
     #header .nav li{display: inline-block;text-align: center;font-size:18px;line-height: 60px;padding: 0 20px;}
 
             #header .nav li:hover{background-color:#4F60E3;}
             #header .nav li:hover a{color:#fff;}
 
+    #header .company_name{width:240px;height:100%;line-height:60px;font-size:14px;font-family:"NotoSansKR-Bold";text-align: right;padding-right:20px;float:left;}
+    #header .company_name a{color:#666;}
     #header .link01{width:120px;height:59px;font-size:14px;text-align: center;line-height:60px;background-color:#fff;float:left;
       border-left:1px solid #ccc;border-right:1px solid #ccc;}
     #header .link01 a{color:#333;}
@@ -25,19 +26,17 @@
     #header .link01:hover{background-color:#4F60E3;}
     #header .link01:hover a{color:#fff;}
 
-    /*전체메뉴 보기  ###################################*/
-    #allMenuWrap{width:100%;height:480px;background-color:#fff;position:absolute;top:100px;left:0px;z-index:20;border-bottom:1px solid #ccc;}
-    #allMenu{width:1000px;height:480px;margin:0 auto;}
-    #allMenu p{text-align: right;font-size:40px;}
-    #allMenu .sitemapArea{width:1001px;border-left:1px solid #eee;overflow: hidden;}
-    #allMenu .sitemap{width:250px;height:360px;border-right:1px solid #eee;border-bottom:1px solid #eee;float:left;}
-    #allMenu h4{width:100%;height:40px;line-height:40px;text-indent:20px;color:#aaa;font-size:18px;border-top:1px solid #eee;border-bottom:1px solid #eee;font-family:"NotoSansKR-Medium";}
-    #allMenu ul{width:100%;}
-    #allMenu ul li{width:100%;text-indent:20px;}
-    #allMenu ul .sitemap_depth01{width:250px;height:40px;line-height:40PX;font-size:14px;}
-    #allMenu ul .sitemap_depth02{margin-left:40px;width:210px;line-height:30px;font-size:14px;text-indent:55px;font-family:"NotoSansKR-Thin";}
-
-    #allMenu #allMenu_ect{width:1000px;height:30px;margin-top:10px;text-align: right;font-family:"NotoSansKR-Medium";}
-    #allMenu #allMenu_ect span{font-size:14px;}
-
-    #allMenu ul li:hover a{color:#aaa;}
+    /*전체메뉴 보기 */
+    #allMenuWrap{width:100%;overflow:hidden;background-color:#fff;position:absolute;top:100px;left:0px;z-index:20;border-bottom:1px solid #ccc;}
+    #allMenu{width:1000px;height:400px;margin:0 auto;}
+    #allMenu .close{width:40px;height:40px;margin-left:960px;text-align:center;line-height:40px;font-size:20px;background-color:#eee;}
+    #allMenu .sitemapArea{width:1000px;height:300px;border:1px solid #eee;}
+    #allMenu .sitemapArea::after{content:"";display:block;clear:both;}
+    #allMenu div{width:249px;height:300px;border-right:1px solid #eee;float:left;}
+    #allMenu div:last-child{border-right:0;}
+    #allMenu h4{width:250px;height:40px;line-height:40px;text-indent:20px;color:#aaa;font-size:18px;border-bottom:1px solid #eee;}
+    #allMenu div ul{width:100%;}
+    #allMenu div ul li{width:100%;line-height:36px;text-indent:30px;}
+    #allMenu div .sub{width:100%;}
+    #allMenu div .sub li{width:100%;line-height:24px;text-indent:100px;font-family:"NotoSansKR-Light";font-size: 14px;}
+    #allMenu .allMenu_ect{width:1000px;height:30px;line-height:30px;font-size:12px;text-align: right;}

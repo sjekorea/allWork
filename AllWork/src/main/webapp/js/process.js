@@ -333,3 +333,37 @@ function goPage(targetPage){
 	$("#pageNo").val(targetPage);
 	$("#searchForm").submit();
 }
+
+
+function execDaumPostcode(postObj, addr1Obj, addr2Obj) {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            var addr = ''; // 주소 변수
+            var extraAddr = ''; // 참고항목 변수
+
+            if (data.userSelectedType === 'R') {
+                addr = data.roadAddress;
+            } else {
+                addr = data.jibunAddress;
+            }
+
+            if(data.userSelectedType === 'R'){
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraAddr += data.bname;
+                }
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                if(extraAddr !== ''){
+                    extraAddr = ' (' + extraAddr + ')';
+                }
+            } else {
+                //document.getElementById("sample6_extraAddress").value = '';
+            }
+            $(postObj).val(data.zonecode);
+            $(addr1Obj).val(addr);
+            $(addr2Obj).focus();
+        }
+    }).open();
+}
+

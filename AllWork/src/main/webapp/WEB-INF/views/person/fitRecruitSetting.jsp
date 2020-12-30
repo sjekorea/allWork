@@ -111,7 +111,7 @@
 								<tr>
 									<th>급여정도</th>
 									<td>
-										<select id="jobPay1" name="jobPay1" title="연봉/시급선택" onchange="javascript:getNetfuCateListForSelect('job_pay', this, '', 'jobPay2', true, false);">
+										<select id="jobPay1" name="jobPay1" title="연봉/시급선택" onchange="javascript:getNetfuCateListForSelect('inid_pay', this, '', 'jobPay2', true, false);">
 										</select>
 										<select id="jobPay2" name="jobPay2" title="연봉선택">
 											<option value="">선택</option>

@@ -19,16 +19,15 @@
 				<p class="myImg"><img src="/img/person.jpg" alt="본인사진"/></p>
 			</div>
 			<p class="myName"><strong>${SE_USER_NM }</strong>님</p>
-			<p class="myDetail"><a href="#" title="이력서보기버튼">이력서보기</a></p>
+			<p class="myDetail"><a href="/resumeList.do" title="이력서보기버튼">이력서보기</a></p>
 		</div>
 		<div id="menuTree">
 			<ul>
-				<li class="gnb"><a href="#" title="이력서관리">이력서관리</a>
+				<li class="gnb"><a href="/resumeList.do" title="이력서관리">이력서관리</a>
 					<h3>이력서관리</h3>
 					<ol>
+						<li><a href="/resumeList.do" title="">이력서목록</a></li>
 						<li><a href="/resumeInfoReg.do" title="이력서등록">이력서등록</a></li>
-						<li><a href="#" title="이력서수정">이력서수정</a></li>
-						<li><a href="#" title="첨부파일관리">첨부파일관리</a></li>
 					</ol>
 				</li>
 				<li class="gnb"><a href="/personApplicationList.do" title="입사지원관리">입사지원관리</a>
@@ -52,14 +51,14 @@
 						<li><a href="/fitRecruitSetting.do" title="맞춤서비스설정">맞춤서비스설정</a></li>
 					</ol>
 				</li>
-				<li class="gnb payService"><a href="#" title="유료서비스">유료서비스</a>
+				<li class="gnb payService"><a href="/resumeApplyForPay.do" title="유료서비스">유료서비스</a>
 					<h3>유료서비스</h3>
 					<ol>
-						<li><a href="#" title="결재내역 조회">결재내역 조회</a></li>
-						<li><a href="#" title="유료옵션서비스 신청">유료옵션서비스 신청</a></li>
+						<li><a href="/resumeApplyForPay.do" title="이력서 유료 게시 서비스 신청">유료옵션서비스 신청</a></li>
+						<li><a href="/resumePaidList.do" title="결재내역 조회">결재내역 조회</a></li>
 					</ol>
 				</li>
-				<li class="gnb"><a href="#" title="회원정보관리">회원정보관리</a></li>
+				<li class="gnb"><a href="/personModify.do" title="회원정보관리">회원정보관리</a></li>
 			</ul>
 		</div>
 	</div>
@@ -103,75 +102,103 @@
 				<li><a href="#" title="스크랩공고">스크랩공고</a></li>
 				<li><a href="#" title="최근 본 공고">최근 본 공고</a></li>
 			</ul>
-			<ul class="list" id="list01">
-				<c:choose>
-					<c:when test="${myServiceRecruitList.size() > 0 }">
-						<c:forEach var="result" items="${myServiceRecruitList}" varStatus="status">
-							<li>
-								<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
-									<p class="title">${result.bizName }</p>
-									<div class="desc">
-										<p class="desc0">${convert:compByte(result.bizTitle, 100, "...")}</p>
-										<p class="desc1"><strong>급여 </strong>${result.bizPayName }</p>
-										<p class="desc2"><strong>경력 </strong>${codeConvert:getBizCareer(result.bizCareer) }</p>
-										<p class="desc3"><strong>나이 </strong>${result.bizAge }</p>
-										<p class="desc1"><strong>지역 </strong>${result.bizArea1Name }</p>
-										<p class="desc2"><strong>학력 </strong>${codeConvert:getBizAbility(result.bizAbility) }</p>
-										<p class="desc3"><strong>성별 </strong>${codeConvert:getBizSex(result.bizSex) }</p>
-									</div>
-									${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }
-								</a>
-							</li>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<li style="width:100%;"><p class="title">내역이 없습니다.</p></li>
-					</c:otherwise>
-				</c:choose>
-			</ul>
-			<ul class="list" id="list02" style="display:none;">
-				<c:choose>
-					<c:when test="${recruitScrapList.size() > 0 }">
-						<c:forEach var="result" items="${recruitScrapList}" varStatus="status">
-							<li>
-								<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
-									<p class="title">${result.bizName }</p>
-									<div class="desc">
-										<p class="desc0">${convert:compByte(result.bizTitle, 100, "...")}</p>
-										<p class="desc1"><strong>급여 </strong>${result.bizPayName }</p>
-										<p class="desc2"><strong>경력 </strong>${codeConvert:getBizCareer(result.bizCareer) }</p>
-										<p class="desc3"><strong>나이 </strong>${result.bizAge }</p>
-										<p class="desc1"><strong>지역 </strong>${result.bizArea1Name }</p>
-										<p class="desc2"><strong>학력 </strong>${codeConvert:getBizAbility(result.bizAbility) }</p>
-										<p class="desc3"><strong>성별 </strong>${codeConvert:getBizSex(result.bizSex) }</p>
-									</div>
-									${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }
-								</a>
-							</li>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<li style="width:100%;"><p class="title">내역이 없습니다.</p></li>
-					</c:otherwise>
-				</c:choose>
-			</ul>
-			<ul class="list" id="list03" style="display:none;">
-				<li>
-					<a href="#none" title="최근 본 공고">
-						<p class="title">(주)최근 본 공고</p>
-						<div class="desc">
-							<p class="desc0">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진</p>
-							<p class="desc1"><strong>급여 </strong>3000-3500만원</p>
-							<p class="desc2"><strong>경력 </strong>무관</p>
-							<p class="desc3"><strong>나이 </strong>무관</p>
-							<p class="desc1"><strong>지역 </strong>경기 광주시</p>
-							<p class="desc2"><strong>학력 </strong>무관</p>
-							<p class="desc3"><strong>성별 </strong>무관</p>
-						</div>
-						<p class="deadline deadline00">상시채용</p>
-					</a>
-				</li>
-			</ul>
+			<table class="list" id="list01">
+				<tbody>
+					<c:choose>
+						<c:when test="${myServiceRecruitList.size() > 0 }">
+							<c:forEach var="result" items="${myServiceRecruitList}" varStatus="status">
+								<tr class="desc desc0">
+									<td rowspan="3" class="desc01">(주)파인스태프</td>
+									<td colspan="6" class="desc02">
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
+											${result.bizName }
+										</a>
+									</td>
+									<td rowspan="3" class="desc05">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
+								</tr>
+								<tr class="desc desc1">
+									<td class="desc03">급여</td>
+									<td class="desc04">${result.bizPayName }</td>
+									<td class="desc03">경력</td>
+									<td class="desc04">${codeConvert:getBizCareer(result.bizCareer) }</td>
+									<td class="desc03">나이</td>
+									<td class="desc04">${result.bizAge }</td>
+								</tr>
+								<tr class="desc desc2">
+									<td class="desc03">지역</td>
+									<td class="desc04">${result.bizArea1Name }</td>
+									<td class="desc03">학력</td>
+									<td class="desc04">${codeConvert:getBizAbility(result.bizAbility) }</td>
+									<td class="desc03">성별</td>
+									<td class="desc04">${codeConvert:getBizSex(result.bizSex) }</td>
+								</tr>
+							</c:forEach>
+						</c:when>
+					</c:choose>
+				</tbody>
+			</table>
+			<table class="list" id="list02" style="display:none;">
+				<tbody>
+					<c:choose>
+						<c:when test="${recruitScrapList.size() > 0 }">
+							<c:forEach var="result" items="${recruitScrapList}" varStatus="status">
+								<tr class="desc desc0">
+									<td rowspan="3" class="desc01">(주)파인스태프</td>
+									<td colspan="6" class="desc02">
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
+											${result.bizName }
+										</a>
+									</td>
+									<td rowspan="3" class="desc05">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
+								</tr>
+								<tr class="desc desc1">
+									<td class="desc03">급여</td>
+									<td class="desc04">${result.bizPayName }</td>
+									<td class="desc03">경력</td>
+									<td class="desc04">${codeConvert:getBizCareer(result.bizCareer) }</td>
+									<td class="desc03">나이</td>
+									<td class="desc04">${result.bizAge }</td>
+								</tr>
+								<tr class="desc desc2">
+									<td class="desc03">지역</td>
+									<td class="desc04">${result.bizArea1Name }</td>
+									<td class="desc03">학력</td>
+									<td class="desc04">${codeConvert:getBizAbility(result.bizAbility) }</td>
+									<td class="desc03">성별</td>
+									<td class="desc04">${codeConvert:getBizSex(result.bizSex) }</td>
+								</tr>
+							</c:forEach>
+						</c:when>
+					</c:choose>
+				</tbody>
+			</table>
+			<table class="list" id="list03" style="display:none;">
+				<tbody>
+					<tr class="desc desc0">
+						<td rowspan="3" class="desc01">(주)최근 본 공고</td>
+						<td colspan="6" class="desc02">
+							[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진
+						</td>
+						<td rowspan="3" class="desc05">상시채용</td>
+					</tr>
+					<tr class="desc desc1">
+						<td class="desc03">급여</td>
+						<td class="desc04">3000-3500만원</td>
+						<td class="desc03">경력</td>
+						<td class="desc04">무관</td>
+						<td class="desc03">나이</td>
+						<td class="desc04">무관</td>
+					</tr>
+					<tr class="desc desc2">
+						<td class="desc03">지역</td>
+						<td class="desc04">경기 광주시</td>
+						<td class="desc03">학력</td>
+						<td class="desc04">무관</td>
+						<td class="desc03">성별</td>
+						<td class="desc04">무관</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>

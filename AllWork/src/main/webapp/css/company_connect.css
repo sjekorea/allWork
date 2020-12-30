@@ -1,19 +1,33 @@
 body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 
 /*###################################   containerWrap  ###################################*/
-  #containerWrap{width:100%;margin-bottom:40px;overflow: hidden;}
+  #containerWrap{width:100%;margin:20px 0 100px;overflow: hidden;}
 
 #container{width:1000px;margin:0 auto;}
 
 #menuTree ul .gnb02 .subMenu02_04{text-decoration: underline;}
 
 /*###################################   res_rightPart   ###################################*/
-#rightPart{width:790px;height:100%;margin:20px 0 100px 10px;overflow: hidden;background-color:#fff;border:1px solid #ccc;float:left;}
+#rightPart{width:790px;height:100%;margin-left:10px;float: left;background-color:#fff;border:1px solid #ccc;padding:40px;}
 
-  #detailArea{width:730px;margin:30px auto;font-size: 14px;}
-  #detailArea h4{width:100%;height:50px;font-size:18px;}
-  #detailArea .delete{margin-left:610px;width:120px;height:40px;margin-top:10px;line-height:38px;text-align:center;
+  #detailArea{width:710px;margin:0 auto;font-size: 14px;}
+  #detailArea h4{width:100%;height:50px;line-height:50px;font-size:18px;}
+  #detailArea .delete{margin-left:590px;width:120px;height:40px;margin-top:10px;line-height:38px;text-align:center;
    margin-bottom:5px;border:1px solid #000;float: left;}
+
+
+   #detailArea table{width:100%;border-bottom:1px solid #000;border-collapse: collapse;}
+   #detailArea caption{display:none;}
+   #detailArea .tabelArea{width:100%;overflow: hidden;border-top:1px solid #000;}
+   #detailArea .tabelArea tr{line-height:30px;float:left;font-size:14px;overflow:hidden;border-bottom:1px solid #ccc;}
+   #detailArea .tabelArea .table_title{width:125px;background-color:#EDF0F5;color:#333;padding:0 20px;text-align: left;}
+   #detailArea .tabelArea .table_desc01{width:585px;padding:5px 20px;line-height:18px;text-align: left;}
+   #detailArea .tabelArea .table_desc{width:230px;padding:5px 20px;line-height:18px;}
+
+                 #detailArea .personal_setting:hover{background-color:#eee;}
+                 #detailArea .tabelArea tr:last-child{border-bottom:none;}
+
+/*
     #detailArea .tableArea{width:100%;text-indent:20px;overflow: hidden;border-top:1px solid #999;}
     #detailArea .tableArea p{float: left;}
     #detailArea .tableArea .table_title{width:120px;height:39px;line-height:40px;border-bottom:1px solid #999;background-color:#EDF0F5;color:#000;}
@@ -21,35 +35,26 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
     #detailArea .tableArea .table_desc01{width:610px;}
 
     /*###################################   listpart   ###################################*/
-    #listPart{width:730px;margin: 30px auto 0;overflow: hidden;font-size: 14px;}
+    #listPart .list{width:100%;border-top:1px solid #999;overflow: hidden;border-collapse:collapse;
+      table-layout: fixed;
+      word-wrap: break-word;}
+    #listPart .list caption{display:none;}
+    #listPart .list tbody{width:100%;border-collapse:collapse;}
+    #listPart .list tr{width:100%;border-bottom:1px solid #ccc;text-align: center;font-size:14px;}
+
+    #listPart{width:710px;margin: 30px auto 0;overflow: hidden;font-size: 14px;}
     #listPart .listTitle{width:140px;height:40px;line-height:60px;font-size:12px;float: left;}
-    #align{margin-left:470px;width:120px;height:40px;text-indent:10px;float: left;margin-bottom:5px;}
+    #align{margin-left:450px;width:120px;height:40px;text-indent:10px;float: left;margin-bottom:5px;}
 
-    #listPart .list{width:100%;border-top:1px solid #999;overflow: hidden;}
+    #listPart .list .list_title th{height:50px;line-height: 50px;margin:0;background-color:#EDF0F5;}
+    #listPart .list .desc td{padding: 20px 0;}
+    #listPart .list .desc01{width:120px;}
+    #listPart .list .desc02{width:310px;}
+    #listPart .list .desc03{width:140px;}
+    #listPart .list .desc04{width:140px;}
 
-    #listPart .list .list_title{width:100%;height:50px;background-color:#EDF0F5;}
-    #listPart .list .list_title div{float:left;line-height:50px;text-align: center;}
-    #listPart .list .list_title .desc01{width:90px;height:100%;}
-    #listPart .list .list_title .desc02{width:400px;height:50px;text-align:center;line-height:50px;padding-top:0px;}
-    #listPart .list .list_title .desc03{width:110px;height:100%;}
-    #listPart .list .list_title .desc04{width:130px;height:100%;}
+    #listPart .list td.desc02{text-align: left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
-    #listPart .list .desc{width:100%;height:100px;border-bottom:1px solid #ccc;}
-      #listPart .list .desc p{height:100px;line-height:100px;float:left;text-align: center;font-size:14px;}
-      #listPart .list .desc .desc01{width:90px;}
-      #listPart .list .desc .desc02{width:400px;text-align: left;}
-      #listPart .list .desc .desc03{width:110px;}
-      #listPart .list .desc .desc04{width:130px;}
+    #listPart .list td a:hover{text-decoration: underline;}
 
-      #listPart .list li a:hover{text-decoration: underline;}
-
-      .numareaWrap{width:100%;padding-bottom:30px;overflow: hidden;background-color:#fff;}
-      .numArea{width:360px;height:30px;line-height:28px;padding-top:30px;padding-bottom:30px;text-align: center;margin:0 auto;}
-      .numArea li{width:30px;height:30px;border:1px solid #fff;float:left;}
-      .numArea li a{color:#ccc;}
-
-                    .numArea li:hover{border: 1px solid #ccc;}
-                    .numArea li:hover a{color:#666;}
-
-      .numArea .p01{border: 1px solid #666;}
-      .numArea .p01 a{color:#666;}
+    .numareaWrap{padding-bottom: 30px;border-top:1px solid #ccc;}

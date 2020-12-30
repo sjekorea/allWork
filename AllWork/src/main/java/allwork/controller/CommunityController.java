@@ -12,6 +12,41 @@ public class CommunityController {
 	
 	Logger log = Logger.getLogger(this.getClass());
 	
+	/*
+	 * 공지사항 목록
+	 */
+	@RequestMapping(value="/noticeList.do")
+	public ModelAndView noticeList(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/community/noticeList");
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 공지사항 보기
+	 */
+	@RequestMapping(value="/noticeView.do")
+	public ModelAndView noticeView(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/community/noticeView");
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 공지사항 등록
+	 */
+	@RequestMapping(value="/noticeReg")
+	public ModelAndView noticeReg(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/community/noticeReg");
+		
+		return mv;
+	}
+	
 
 	/*
 	 * 게시판 목록
@@ -47,5 +82,7 @@ public class CommunityController {
 		
 		return mv;
 	}
+	
+	
 
 }

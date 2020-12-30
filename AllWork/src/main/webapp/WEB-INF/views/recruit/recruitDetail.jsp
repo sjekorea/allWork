@@ -17,6 +17,7 @@
 
 <link rel="stylesheet" type="text/css" href="/css/company_01_view.css"/>
 
+<div id="popupWrap_applyWrap" style="display:none;">
 <div id="popupWrap_apply">
 <div class="topArea">
 <p class="close_btn"><i class="fas fa-times"></i></p>
@@ -54,8 +55,9 @@
 </form>
 </div>
 <div class="btnArea">
-<p class="a01"><a href="#" title="지원하기">지원하기</a></p>
-<p class="a02"><a href="#" title="취소">취소</a></p>
+<p class="a01"><a href="#" title="취소">취소</a></p>
+<p class="a02"><a href="#" title="지원하기">지원하기</a></p>
+</div>
 </div>
 </div>
 
@@ -79,24 +81,20 @@
 						</c:if>
 						<span><a href="#none" title="기업정보 상세보기"><i class="fas fa-cog"></i>&nbsp;기업정보 상세보기</a></span>
 					</p>
-					<div class="tabelArea">
-						<p class="table_title">대표자</p>
-						<p class="table_desc">${companyMap.bizRecharger }</p>
-						<p class="table_title">기업형태</p>
-						<p class="table_desc">${companyMap.bizFormName }</p>
-						<p class="table_title">자본금</p>
-						<p class="table_desc">${companyMap.bizCapital }</p>
-						<p class="table_title">설립년도</p>
-						<p class="table_desc">${companyMap.bizFonundation }년</p>
-						<p class="table_title">사원수</p>
-						<p class="table_desc">${companyMap.bizMen }명</p>
-						<p class="table_title">상장여부</p>
-						<p class="table_desc">${companyMap.bizListName }</p>
-						<p class="table_title">업종</p>
-						<p class="table_desc01">${companyMap.bizCategoryName }</p>
-						<p class="table_title">사업내용</p>
-						<p class="table_desc01">${companyMap.bizSubject }</p>
-					</div>
+					<table>
+						<caption>채용공고 등록하기</caption>
+						<tbody class="tabelArea">
+							<tr><th class="table_title">대표자</th><td class="table_desc">${companyMap.bizRecharger }</td></tr>
+							<tr><th class="table_title">기업형태</th><td class="table_desc">${companyMap.bizFormName }</td></tr>
+							<tr><th class="table_title">자본금</th><td class="table_desc">${companyMap.bizCapital }</td></tr>
+							<tr><th class="table_title">설립년도</th><td class="table_desc">${companyMap.bizFonundation }년</td></tr>
+							<tr><th class="table_title">사원수</th><td class="table_desc">${companyMap.bizMen }명</td></tr>
+							<tr><th class="table_title">상장여부</th><td class="table_desc">${companyMap.bizListName }</td></tr>
+							<tr><th class="table_title">홈페이지</th><td class="table_desc">${companyMap.bizHome }</td></tr>
+							<tr><th class="table_title">업종</th><td class="table_desc">${companyMap.bizCategoryName }</td></tr>
+							<tr><th class="table_title">사업내용</th><td class="table_desc">${companyMap.bizSubject }</td></tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 			<div id="regist02">
@@ -263,8 +261,9 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
-		
-		
+		$(".close_btn").on("click", function(e){
+			$("#popupWrap_applyWrap").css("display", "none");
+		});
 	});	
 
 	// 스크랩 등록
@@ -319,30 +318,31 @@
 	// 입사지원 popup
 	function applyPopup(applyType){
 		
-		if($("#resumeCnt").val() <= 0){
-			alert("이력서를 먼저 작성해 주세요");
-			return;
+		//if($("#resumeCnt").val() <= 0){
+		//	alert("이력서를 먼저 작성해 주세요");
+		//	return;
 		
-		}else{
-			var callback = function(data){
-				if(data.rstCnt > 0){
-					alert("이미 지원 하셨습니다.");
-					loadingOff();
-				}else{
-					// 입사 지원 popup];
-				}
-			};
+		//}else{
+		//	var callback = function(data){
+		//		if(data.rstCnt > 0){
+		//			alert("이미 지원 하셨습니다.");
+		//			loadingOff();
+		//		}else{
+					$("html").scrollTop(0);
+					$("#popupWrap_applyWrap").css("display", "inline-block");
+		//		}
+		//	};
 			
-			var param = {
-						toType : applyType
-						, type : "job"
-						, subType : "company"
-						, uid : $("#uid").val()
-						, toUid : $("#rUid").val()
-						, toNo : $("#no").val()
-					}; 
-			ajax('post', '/selectNetfuOnlineRecruitRegistCnt.ajax', param, callback);
-		}		
+		//	var param = {
+		//				toType : applyType
+		//				, type : "job"
+		//				, subType : "company"
+		//				, uid : $("#uid").val()
+		//				, toUid : $("#rUid").val()
+		//				, toNo : $("#no").val()
+		//			}; 
+		//	ajax('post', '/selectNetfuOnlineRecruitRegistCnt.ajax', param, callback);
+		//}		
 	}
 	
 	// 입사지원 등록

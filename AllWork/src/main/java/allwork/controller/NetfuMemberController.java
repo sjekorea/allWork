@@ -1,5 +1,8 @@
 package allwork.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import allwork.common.CommandMap;
+import allwork.service.NetfuCateService;
+import allwork.service.NetfuCompanyService;
 import allwork.service.NetfuMemberService;
 
 
@@ -20,6 +25,12 @@ public class NetfuMemberController {
 	@Resource(name="netfuMemberService")
 	private NetfuMemberService netfuMemberService;
 	
+	@Resource(name="netfuCompanyService")
+	private NetfuCompanyService netfuCompanyService;
+
+	@Resource(name="netfuCateService")
+	private NetfuCateService netfuCateService;
+	
 	
 	@RequestMapping(value="/memberAgree1.do")
 	public ModelAndView memberAgree1(CommandMap commandMap) {
@@ -29,6 +40,7 @@ public class NetfuMemberController {
 		return mv;
 	}
 	
+	
 	@RequestMapping(value="/memberAgree2.do")
 	public ModelAndView memberAgree2(CommandMap commandMap) {
 		
@@ -36,6 +48,7 @@ public class NetfuMemberController {
 		
 		return mv;
 	}
+	
 	
 	@RequestMapping(value="/memberAgree3.do")
 	public ModelAndView memberAgree3(CommandMap commandMap) {
@@ -60,6 +73,30 @@ public class NetfuMemberController {
 		
 		ModelAndView mv = new ModelAndView("/company/companyJoin");
 		
+		try{
+			
+			// 기업회원 가입  - 업종 ( netfu_cate : type = 'job')
+			commandMap.put("type", "businesstype");
+			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 기업회원 가입  - 상장여부 ( netfu_cate : type = 'biz_list')
+			commandMap.put("type", "biz_list");
+			List<Map<String, Object>> bizList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 기업회원 가입  - 기업 형태( netfu_cate : type = 'biz_form')
+			commandMap.put("type", "biz_form");
+			List<Map<String, Object>> bizFormList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("businesstypeList", businesstypeList);
+			mv.addObject("bizList", bizList);
+			mv.addObject("bizFormList", bizFormList);
+			
+		}catch(Exception e){
+			System.out.println(this.getClass().getName()+".companyJoin.do Exception!!! \n"+e.toString());
+		}
+		
+		
 		return mv;
 	}
 
@@ -83,6 +120,24 @@ public class NetfuMemberController {
 
 	
 	/*
+	 * 사업자 번호 중복 확인
+	 */
+	@RequestMapping(value="/chkDupBizNo.ajax")
+	public ModelAndView chkDupBizNo(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		try{
+			int rstCnt = netfuCompanyService.selectBizNoCnt(commandMap.getMap());
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("rstCnt", rstCnt);
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".chkDupBizNo Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+
+	
+	/*
 	 * 회원가입(회원정보 등록)
 	 */
 	@RequestMapping(value="/registNetfuMember.ajax")
@@ -98,5 +153,29 @@ public class NetfuMemberController {
 		}
 		return mv;
 	}
+
+	
+	/*
+	 * 개인 회원정보 수정 페이지 이동
+	 */
+	@RequestMapping(value="/personModify.do")
+	public ModelAndView personModify(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView("/person/personModify");
+			
+		return mv;
+	}
+	
+
+	/*
+	 * 기업 회원정보 수정 페이지 이동
+	 */
+	@RequestMapping(value="/companyModify.do")
+	public ModelAndView companyModify(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView("/company/companyModify");
+			
+		return mv;
+	}
+	
+	
 	
 }

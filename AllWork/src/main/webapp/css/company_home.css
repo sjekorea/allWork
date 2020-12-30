@@ -4,12 +4,11 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #containerWrap{width:1000px;margin:20px auto 100px;overflow: hidden;}
 /*###################################   leftpart   ###################################*/
       #leftPart{width:200px;height:100%;float: left;}
-      #mycompanyBox{width:200px;height:200px;background-color:#fff;padding:30px 20px 20px;}
+      #mycompanyBox{width:200px;background-color:#fff;padding:30px 20px 20px;}
 
       #mycompanyBox p{text-align: center;}
       #mycompanyBox .settingBtn{width:100%;text-align: right;font-size: 12px;}
-      #mycompanyBox .companyName{width: 100%;font-size:32px;padding-top:30px;}
-      #mycompanyBox .uploadApplication{width:120px;height:30px;line-height: 30px;margin: 0 auto;font-size:14px;margin-top:10px;border: 1px solid #4F60E3;}
+      #mycompanyBox .uploadApplication{width:120px;height:30px;line-height: 30px;margin: 0 auto;font-size:14px;margin-top:20px;border: 1px solid #4F60E3;}
       #mycompanyBox .uploadApplication a{width: 100%;height:100%;color:#4F60E3;}
 
             #mycompanyBox .uploadApplication:hover{border:1px solid #333;}
@@ -33,14 +32,13 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 #part00{width:100%;overflow: hidden;margin-bottom: 20px;}
 #part00 h4{width:100%; height:40px;line-height: 50px;font-size: 12px;}
 #part00 h4 a{color:#999;}
-#part00 ul{width:790px;}
+#part00 ul{width:790px;overflow:hidden;}
 #part00 .list00 li{width:790px;height:100px;background-color: #fff;border: 1px solid #fff;border-bottom: 1px solid #ccc;}
-
-      #part00 .list00 li:hover{border: 1px solid #4F60E3;}
 
 #part00 .list00 li p{width:90px;height:100%;line-height: 100px;text-align: center;float: left;}
 #part00 .list00 li div{width: 698px;height:100%;float: left;}
-#part00 .list00 .desc .desc0{width:688px;height:60px;text-align: left;line-height:80px;float: left;}
+#part00 .list00 .desc .desc0{width:688px;height:60px;text-align: left;line-height:80px;float: left;
+white-space: nowrap;text-overflow:ellipsis;overflow:hidden;}
 
         #part00 .list00 .desc .desc0 a:hover{text-decoration: underline;}
 
@@ -53,31 +51,33 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 
       #part00 .list00 .desc .desc2 a:hover{text-decoration: underline;}
 
-
-
 /*###################################   part01/맞춤인재 관리    ###################################*/
 #part01{width:100%;overflow: hidden;}
 #part01 h4{width:100%; height:40px;line-height: 50px;font-size: 12px;}
 #part01 h4 a{color:#999;}
 #part01 ul{width:100%;}
-#part01 ul li{width:790px;height:100px;background-color: #fff;border: 1px solid #fff;border-bottom: 1px solid #ccc;}
+#part01 ul li{width:790px;padding:10px;overflow: hidden;background-color:#fff;border: 1px solid #fff;border-bottom: 1px solid #ccc;}
 #part01 ul li p{float:left;}
-#part01 ul li .img00{width:80px;height: 80px;margin:10px 10px;overflow: hidden;}
-#part01 ul li .img00 img{width:100%;}
-#part01 ul li .desc00{width:150px;height:70px;padding-top:26px;text-align: center;}
-#part01 ul li .desc00 .name{font-size:14px;}
-#part01 ul li .desc00 .age{font-size:12px;}
-#part01 ul li .desc01{width:380px;height:70px;padding-top:26px;line-height:24px;}
-#part01 ul li .desc01 .detail{font-size:16px;}
-#part01 ul li .desc01 .title01{font-size:14px;}
-#part01 ul li .date{width:150px;line-height:100px;font-size:14px;text-align: center;}
+#part01 ul li p span{display:block;}
 
-#part01 ul li:hover{border: 1px solid #4F60E3;}
+#part01 ul li .img00{width:80px;height:100px;overflow: hidden;}
+#part01 ul li .img00 img{width:100%;}
+
+#part01 ul li .desc00{width:150px;padding:25px 0;text-align:center;}
+#part01 ul li .desc00 .name{font-size:14px;}
+#part01 ul li .desc00 .age{font-size:14px;}
+
+#part01 ul li .desc01{width:380px;padding:25px 0;line-height:24px;}
+#part01 ul li .desc01 a:hover{text-decoration:underline;}
+#part01 ul li .desc01 .detail{font-size:16px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+#part01 ul li .desc01 .title01{font-size:14px;color:#999;}
+
+#part01 ul li .date{width:140px;padding:40px 0;font-size:14px;text-align: center;}
 
 /*###################################   listpart   ###################################*/
 #listPart{width:100%;margin-top: 30px;margin-bottom: 10px;overflow: hidden;font-size: 14px;}
-#listPart .tab{width:540px;height:40px;}
-#listPart .tab li{width:180px;height:40px;line-height:38px;text-align:center; background-color: #eee;float:left;border:1px solid #ccc;}
+#listPart .tab{width:100%;height:40px;border-bottom:1px solid #000;}
+#listPart .tab li{width:180px;height:39px;line-height:38px;text-align:center; background-color: #eee;float:left;border:1px solid #ccc;}
 #listPart .tab li a{display: block;width: 100%;height: 100%;color:#ccc;}
 
         #listPart .tab li:hover{border: 1px solid #999;}
@@ -85,15 +85,20 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 
 #listPart .tab li a.selected{background-color: #fff;color:#000;}
 
-#listPart .list{width:790px;border-top:1px solid #999;overflow: hidden;background-color: #fff;}
-#listPart .list li{width:100%;height:120px;border-bottom:1px solid #ccc;}
-#listPart .list li a{display: block;width: 100%;height: 100%;}
+#listPart .list{width:790px;font-size:13px;overflow: hidden;border-collapse: collapse;
+  table-layout: fixed;
+word-wrap: break-word;}
+#listPart .list caption{display:none;}
+#listPart .list tbody{width:100%;border-collapse: collapse;background-color:#fff;}
+#listPart .list tr{width:790px;border:1px solid #fff;border-bottom:1px solid #ccc;background-color: #fff;}
+#listPart .list th{display:none;}
+#listPart .list td{padding:20px 10px;}
 
-        #listPart .list li a:hover{background-color: #F7FAFF;}
 
-#listPart .list li a p{height:100%;float:left;font-size:14px;padding-top:36px;line-height: 24px;}
-#listPart .list li a .desc00{width:120px;text-align: center;}
-#listPart .list li a .desc01{width:350px;}
-#listPart .list li a .desc02{width:110px;}
-#listPart .list li a .desc03{width:110px;}
-#listPart .list li a .date{width:100px;line-height:56px;}
+#listPart .list tr .desc00{width:130px;text-indent:10px;text-align: center;}
+#listPart .list tr .desc01{width:330px;color:#666;}
+#listPart .list tr .desc01 a:hover{text-decoration:underline;}
+#listPart .list tr .desc01 .desc01_01{font-size:15px;}
+#listPart .list tr .desc02{width:120px;}
+#listPart .list tr .desc03{width:120px;}
+#listPart .list tr .date{width:80px;padding:20px 10px 20px 0px;}

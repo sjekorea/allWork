@@ -13,10 +13,8 @@ public class PaginationUtil {
 		if(totalSize > 0){			
 			
 			if(Integer.parseInt(pageNo) <= 1){
-				//pageHtml += "<li class='prev_first'></li>";
 				pageHtml += "<li><a href=\"javascript:"+functionName+"('1')\" title='prev'><i class='fas fa-chevron-left'></i></a></li>";
 			}else{
-				//pageHtml += "<li class='prev_first on' onclick=\"javascript:"+functionName+"('1')\"></li>";
 				pageHtml += "<li class='prev on' onclick=\"javascript:"+functionName+"('"+(Integer.parseInt(pageNo)-1)+"')\"></li>";
 			}
 			
@@ -42,10 +40,8 @@ public class PaginationUtil {
 			
 			if(Integer.parseInt(pageNo) >= totalPage){
 				pageHtml += "<li><a href=\"javascript:"+functionName+"('"+totalPage+"')\" title='next'><i class='fas fa-chevron-right'></i></a></li>";
-				//pageHtml += "<li class='next_last'></a>";
 			}else{
 				pageHtml += "<li><a href=\"javascript:"+functionName+"('"+(Integer.parseInt(pageNo)+1)+"')\" title='next'><i class='fas fa-chevron-right'></i></a></li>";
-				//pageHtml += "<li class='next_last on' onclick=\"javascript:"+functionName+"('"+totalPage+"')\"></a>";
 			}
 		}
 		

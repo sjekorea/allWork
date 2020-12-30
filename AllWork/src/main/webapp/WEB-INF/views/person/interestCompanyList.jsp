@@ -20,31 +20,36 @@
 				<p class="delete">
 					<a href="#none" title="선택삭제">선택삭제</a>
 				</p>
-				<ul class="list">
-					<li class="list_title">
-						<div class="desc00">
-							<input type="checkbox" />
-						</div>
-						<div class="desc01">회사명</div>
-						<div class="desc02">진행중인 공고</div>
-						<div class="desc03">채용소식 알람</div>
-					</li>
-					<c:choose>
-						<c:when test="${netfuConcernList.size() > 0 }">
-							<c:forEach var="result" items="${netfuConcernList}" varStatus="status">
-								<li>
-									<div class="desc00"><input type="checkbox" name="chk" value="${result.rUid }" /></div>
-									<div class="desc01"><a href="javascript:goRecruitList('${result.rUid }', '');"><p>${result.bizName }</p></a></div>
-									<div class="desc02"><a href="javascript:goRecruitList('${result.rUid }', 'no');"><p>채용중 <span>${result.bizIngCnt }</span>건</p></a></div>
-									<div class="desc03"><p><input type="radio" /></p></div>
-								</li>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<li style="width:100%;"><div class="desc01">내역이 없습니다.</div></li>
-						</c:otherwise>
-					</c:choose>
-				</ul>
+				<table class="list">
+					<caption>리스트</caption>
+					<tbody>
+						<tr class="list_title">
+							<th class="desc00"><input type="checkbox" name="all"/></th>
+							<th class="desc01">회사명</th>
+							<th class="desc02">진행중인 공고</th>
+							<th class="desc03">채용소식 알람</th>
+						</tr>
+						<c:choose>
+							<c:when test="${netfuConcernList.size() > 0 }">
+								<c:forEach var="result" items="${netfuConcernList}" varStatus="status">
+									<tr class="desc">
+										<td class="desc00"><input type="checkbox" name="chk" value="${result.rUid }" /></td>
+										<td class="desc01">
+											<a href="javascript:goRecruitList('${result.rUid }', '');">${result.bizName }</a>
+										</td>
+										<td class="desc02">
+											<a href="javascript:goRecruitList('${result.rUid }', 'no');">채용중 <span>${result.bizIngCnt }</span>건</a>
+										</td>
+										<td class="desc03"><input type="radio"/></td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr class="desc"><td colspan="4">내역이 없습니다.</td></tr>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
 				<ul class="numArea">
 					${pageMap.pageHtml }
 				</ul>

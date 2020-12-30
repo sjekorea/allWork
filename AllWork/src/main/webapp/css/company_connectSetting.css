@@ -11,29 +11,29 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 #rightPart{width:790px;height:100%;margin-left:10px;float: left;}
 
   /*###############################   resume02  ###############################*/
-  #resume02{width:100%;overflow:hidden;background-color:#fff;border:1px solid #ccc;}
-  #resForm02{width:790px;background-color:#fff;padding:40px;}
+  #resume02{width:790px;overflow:hidden;background-color:#fff;padding:40px;border:1px solid #ccc;}
+  #resForm02{width:100%;}
 
     fieldset{border:none;}
-    legend{width:100%;height:56px;line-height:50px;font-size:18px;margin-bottom:20px;border-bottom:2px solid #999;font-family:"NotoSansKR-Regular";}
+    legend{width:100%;height:50px;line-height:50px;font-size:19px;margin-bottom:20px;border-bottom:2px solid #999;font-family:"NotoSansKR-Regular";}
     caption{display:none;}
     tbody{width:100%;text-align:left;border-collapse: collapse;}
     tr{width:100%;font-size:16px;height:70px;}
     th{width:120px;text-indent:20px;font-family:"NotoSansKR-Medium";}
 
     td{width:590px;font-size:14px;padding-top:10px;}
-    td input[type="button"]{width:95px;height:42px;text-align:center;font-size:16px;
-                            background-color:#fff;
+    td input[type="button"]{width:90px;height:42px;text-align:center;font-size:16px;
+                            background-color:#ddd;
                             border:1px solid #999;vertical-align:middle;}
     td input::placeholder{color:#ccc;font-size:16px;}
     td input[type="checkbox"]{width:16px;height:16px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}
     td input[type="radio"]{width:16px;height:16px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}
 
     td span{display:inline-block;padding-right:20px;padding-bottom:10px;}
-    td select{width:160px;height:42px;border:1px solid #999;font-size:16px;text-indent:10px;color:#666;vertical-align:middle;}
+    td select{width:130px;height:42px;border:1px solid #999;font-size:16px;text-indent:10px;color:#666;vertical-align:middle;}
 
-    #rightPart ul{width:405px;margin:10px auto 0;}
-    #rightPart ul li{width:200px;height:50px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;float:left;}
+    #rightPart ul{width:100%;margin-top:10px;text-align:center;}
+    #rightPart ul li{display:inline-block;width:200px;height:50px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;}
     #rightPart ul li:last-child{margin-right:0px;}
     #rightPart ul li a{display:block;width:100%;height:100%;color:#666;}
     #rightPart ul li.reg_ok{background-color:#4F60E3;border:1px solid #4F60E3;}

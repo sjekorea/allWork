@@ -1,0 +1,52 @@
+body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
+
+/*###################################   containerWrap  ###################################*/
+#containerWrap{width:100%;overflow: hidden;margin:20px 0 30px;}
+#container{width:1000px;margin:0 auto;}
+
+/*현재메뉴 언더라인*/
+#menuTree ul .menu07{text-decoration: underline;}
+
+/*###################################   rightpart   ###################################*/
+#rightPart{width:790px;overflow:hidden;margin-left:10px;float: left;background-color:#fff;border:1px solid #ccc;padding:40px;}
+
+#rightPart h4{width:100%;height:50px;line-height:50px;font-size:18px;}
+#rightPart h4 span{padding-left:10px;font-size: 11px;color:#666;}
+
+#rightPart form{width:100%;overflow: hidden;}
+#rightPart fieldset{border:none;}
+#rightPart legend{display:none;}
+
+#rightPart .registerBox{width:100%;overflow: hidden;border-top:2px solid #000;}
+#rightPart .registerBox table{width:100%;table-layout: fixed;word-wrap: break-word;}
+#rightPart .registerBox caption{display:none;}
+#rightPart .registerBox tbody{width:100%;overflow:hidden;}
+#rightPart .registerBox tr{width:100%;height:60px;}
+#rightPart .registerBox tr th{width:160px;height:60px;line-height:60px;background-color:#EDF0F5;color:#666;}
+#rightPart .registerBox tr td{text-indent: 20px;width:550px;height:60px;border-bottom:1px solid #eee;}
+.necessary{color:red;padding-left:5px;}
+.comment{padding-left:10px;font-size:12px;color:#4F60E3;vertical-align:bottom;}
+
+select{border:1px solid #999;text-indent:10px;color:#666;vertical-align:top;width:120px;height:40px;}
+input[type="text"]{width:180px;height:40px;}
+input[type="submit"]{width:100px;height:42px;background-color:#43425D;color:#fff;border:none;}
+input[type="password"]{width:180px;height:40px;}
+#year, #month, #day{width:120px;vertical-align: bottom;}
+input[type="radio"]{width:20px;height:20px;vertical-align:middle;}
+#rightPart .registerBox .male{padding-right: 20px;}
+#rightPart .registerBox .male label{padding-left:5px;vertical-align:middle;}
+#rightPart .registerBox .female{padding-right: 20px;}
+#rightPart .registerBox .female label{padding-left:5px;vertical-align:middle;}
+#rightPart .registerBox .email input{width:120px;}
+#rightPart .registerBox .email select{width:160px;height:42px;}
+#rightPart .registerBox .phone{height:200px;}
+#rightPart .registerBox .phone p{margin-bottom:5px;}
+#rightPart .registerBox .phone label{display: inline-block;width:110px;}
+#rightPart .registerBox .phone .ok{width:88px;border: 1px solid #aaa;background-color: #ccc;color:#000;margin-right:5px;}
+
+.agree_ok{width:100%;height:50px;margin-top:30px;margin-bottom:20px;}
+.agree_ok ul{width:100%;height:50px;text-align: center;}
+.agree_ok ul li{display:inline-block;width:200px;height:50px;margin-right:5px;line-height:50px;text-align: center;background-color:#eee;border:1px solid #ccc;}
+.agree_ok ul li:last-child{width:200px;height:50px;margin-right:0;background-color:#4F60E3;border:1px solid #4F60E3;}
+.agree_ok ul li a{width: 100%;height: 100%;}
+.agree_ok ul li:last-child a{color:#fff;}

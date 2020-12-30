@@ -33,38 +33,38 @@
 					</c:choose>
 				</select>
 				<p class="delete"><a href="#" title="선택삭제">선택삭제</a></p>
-				<ul class="list">
-					<li class="list_title">
-						<div class="desc00"><input type="checkbox" name="all"/></div>
-						<div class="desc01"></div>
-						<div class="desc02">이름</div>
-						<div class="desc03">이력서</div>
-						<div class="desc04">스크랩일</div>
-					</li>
-					<c:choose>
-						<c:when test="${list.size() > 0 }">
-							<c:forEach var="result" items="${list}" varStatus="status">
-								<li>
-									<div class="desc00"><input type="checkbox" name="chk" value="${result.no }" /></div>
-									<div class="desc01"><img src="/img/company_home/img00.jpeg" alt="인재사진"/></div>
-									<div class="desc02">${result.name }</div>
-									<div class="desc03">
-										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">
-											<p class="t_desc01">${result.inidTitle}</p>
-										</a>
-									</div>
-									<div class="desc04">
-										<p class="scrap_day">${result.wdate }</p>
-									</div>
-								</li>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<li style="width:100%;"><div class="descBox"><p class="desc02">내역이 없습니다.</p></li>
-						</c:otherwise>
-					</c:choose>
-					
-				</ul>
+				<table class="list">
+					<caption>리스트</caption>
+					<tbody>
+						<tr class="list_title">
+							<th class="desc00"><input type="checkbox" name="all"/></th>
+							<th class="desc01"></th>
+							<th class="desc02">이름</th>
+							<th class="desc03">이력서</th>
+							<th class="desc04">스크랩일</th>
+						</tr>
+						<c:choose>
+							<c:when test="${list.size() > 0 }">
+								<c:forEach var="result" items="${list}" varStatus="status">
+									<tr class="desc">
+										<td class="desc00"><input type="checkbox" name="chk" value="${result.no }" /></td>
+										<td class="desc01"><img src="/img/company_home/img00.jpeg" alt="인재사진"/></td>
+										<td class="desc02">${result.name }</td>
+										<td class="desc03">
+											<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">
+												<p class="t_desc01">${result.inidTitle}</p>
+											</a>
+										</td>
+										<td class="desc04">${result.wdate }</td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr class="desc"><td colspan="5">내역이 없습니다.</div></li>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
 				<ul class="numArea">
 					${pageMap.pageHtml }
 				</ul>

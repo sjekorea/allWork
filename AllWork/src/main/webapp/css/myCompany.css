@@ -1,0 +1,86 @@
+body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
+
+/*###################################   containerWrap  ###################################*/
+#containerWrap{width:100%;margin:20px 0 30px;overflow: hidden;}
+#container{width:1000px;margin:0 auto;}
+
+/*현재메뉴 언더라인*/
+#menuTree ul .gnb05{text-decoration: underline;}
+
+/*###################################   rightpart   ###################################*/
+#rightPart{width:790px;height:100%;margin-left:10px;float: left;background-color:#fff;border:1px solid #ccc;padding:40px;}
+#rightPart h4{width:100%;height:50px;line-height:50px;font-size:18px;}
+
+#rightPart form{width:710px;overflow: hidden;}
+#rightPart fieldset{border:none;}
+#rightPart legend{display:none;}
+
+#rightPart .myCompanyBox01, #rightPart .myCompanyBox02{width:100%;overflow: hidden;}
+#rightPart .myCompanyBox01 table, #rightPart .myCompanyBox02 table{width:710px;border-top:2px solid #000;table-layout: fixed;word-wrap: break-word;}
+#rightPart .myCompanyBox01 caption, #rightPart .myCompanyBox02 caption{width:100%;height:40px;line-height:50px;font-size:16px;text-align: left;}
+#rightPart .myCompanyBox01 caption span, #rightPart .myCompanyBox02 caption span{padding-left:10px;font-size: 11px;color:#666;}
+#rightPart .myCompanyBox01 tbody, #rightPart .myCompanyBox02 tbody{width:100%;overflow:hidden;}
+tr{width:710px;height:40px;}
+th{width:160px;height:60px;line-height:60px;background-color:#EDF0F5;color:#666;}
+td{text-indent: 20px;width:550px;height:60px;border-bottom:1px solid #eee;}
+.necessary{color:red;padding-left:5px;}
+.comment{padding-left:10px;font-size:12px;color:#4F60E3;vertical-align:bottom;}
+
+select{border:1px solid #999;text-indent:10px;color:#666;vertical-align:top;width:120px;height:40px;}
+input[type="text"]{width:200px;height:40px;}
+input[type="submit"]{width:100px;height:40px;background-color:#43425D;color:#fff;border:none;vertical-align: middle;}
+input[type="password"]{width:200px;height:40px;}
+input[type="radio"]{width:20px;height:20px;vertical-align:middle;}
+
+#rightPart .myCompanyBox01 .companyPhone input, #rightPart .registerBox01 .companyPhone input{width:120px;}
+#rightPart .myCompanyBox01 .businessDesc{height:100px;}
+#rightPart .myCompanyBox01 .businessDesc input{width:520px;}
+#rightPart .myCompanyBox01 .companyPhone input, #rightPart .myCompanyBox01 .companyFax input{width:120px;}
+#rightPart .myCompanyBox01 .email input, #rightPart .myCompanyBox02 .email input{width:120px;}
+#rightPart .myCompanyBox01 .email select, #rightPart .myCompanyBox02 .email select{width:200px;height:40px;}
+#rightPart .myCompanyBox01 .address{height:200px;}
+#rightPart .myCompanyBox01 .address p{width:100%;float: left;margin:2px 0;}
+#rightPart .myCompanyBox01 .address p input{width:520px;}
+#rightPart .myCompanyBox01 .address .postNumber input{width:120px;}
+#rightPart .myCompanyBox01 .logoArea .imgPart{background-color:#eee;width:120px;height:120px;text-align: center;line-height:120px;text-indent:0;margin-left:20px;}
+#rightPart .myCompanyBox01 .logoArea .imgPart img{width:100%;}
+#rightPart .myCompanyBox01 .logoArea .descPart{width:500px;height:100px;line-height:20px;padding-top: 20px;text-indent:0;margin-left:20px;font-size:12px;}
+#rightPart .myCompanyBox01 .comPhoto td{font-size:12px;}
+#rightPart .myCompanyBox01 .comPhoto .imgArea{width:100%;height:120px;margin-left:20px;}
+#rightPart .myCompanyBox01 .comPhoto .imgArea li{width:120px;height:120px;background-color:#eee;margin-right:2px;text-align: center;line-height:120px;text-indent: 0;float: left;}
+#rightPart .myCompanyBox01 .comPhoto .imgArea li img{width:100%;}
+.upLoadArea{width:100%;overflow:hidden;padding-top: 10px;margin-left:20px;}
+.upLoadArea li{text-indent: 0;line-height:30px;}
+.upLoadArea li span{padding-left:5px;}
+textarea{width:520px;height:100px;}
+.history span{display:inline-block;font-size:14px;line-height: 24px;margin-left: 20px;text-indent:0;}
+
+.mobile input, .phone input{width:120px;}
+
+#rightPart .myCompanyBox02 .birthday input{width:120px;}
+#rightPart .myCompanyBox02 .address{height:200px;}
+#rightPart .myCompanyBox02 .address p{width:100%;float: left;margin:2px 0;}
+#rightPart .myCompanyBox02 .address p input{width:520px;}
+#rightPart .myCompanyBox02 .address .postNumber input{width:120px;}
+
+#rightPart .agreement{margin-top:50px;color:#666;}
+#rightPart .agreement .comment01{width:100%;height:40px;color:#666;border-bottom:2px solid #000;}
+#rightPart .agreement ol{margin-top: 10px;width:1000px;padding-bottom:10px;overflow:hidden;border-bottom:2px solid #000;}
+#rightPart .agreement ol li{width:100%;line-height:40px;height:40px;}
+#rightPart .agreement ol li .agreeDesc01, #registerArea .agreement ol li .agreeDesc02{display:none;padding-top:10px;font-size:14px;line-height:20px;color:#666;}
+#rightPart .agreement ol li span{display:block;padding-left:10px;}
+#rightPart .agreement ol li.descArea{width:1000px;height: 40px;}
+#rightPart .agreement ol li.descArea .desc{width:640px;height: 40px;float:left;}
+#rightPart .agreement ol li.descArea .descBtn{width:360px;height: 40px;float: left;padding-right:20px;}
+#rightPart .agreement ol li input[type="checkbox"]{width:20px;height: 20px;height: 40px;vertical-align:middle;}
+#rightPart .agreement ol li input[type="button"]{cursor: pointer;outline:0;width:60px;height:40px;line-height:40px;background-color:#fff;border:none;color:#4F60E3;}
+#rightPart .agreement ol li label{vertical-align:middle;}
+#rightPart .agreement ol li:first-child{border-bottom:1px solid #ccc;line-height:50px;height:60px;}
+.descBtn{text-align: right;font-size: 14px;color:#4F60E3;line-height:50px;vertical-align:middle;}
+
+.agree_ok{width:100%;height:50px;margin-top:30px;margin-bottom:20px;}
+.agree_ok ul{width:100%;height:50px;text-align: center;}
+.agree_ok ul li{display:inline-block;width:200px;height:50px;margin-right:5px;line-height:50px;text-align: center;background-color:#eee;border:1px solid #ccc;}
+.agree_ok ul li:last-child{width:200px;height:50px;margin-right:0;background-color:#4F60E3;border:1px solid #4F60E3;}
+.agree_ok ul li a{width: 100%;height: 100%;}
+.agree_ok ul li:last-child a{color:#fff;}

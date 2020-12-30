@@ -39,13 +39,4 @@ background-repeat: no-repeat;}*/
   #boardPart .delete{margin-left:960px;width:120px;height:40px;margin-top:10px;line-height:38px;text-align:center;margin-bottom:5px;background-color:#4F60E3;float: left;}
   #boardPart .delete a{color:#fff;}
 
-.numareaWrap{width:100%;overflow: hidden;}
-.numArea{width:360px;height:30px;line-height:28px;padding-top:30px;padding-bottom:50px;text-align: center;margin:0 auto;}
-.numArea li{width:30px;height:30px;border:1px solid rgba(255,255,255,0);float:left;}
-.numArea li a{color:#ccc;}
-
-              .numArea li:hover{border: 1px solid #ccc}
-              .numArea li:hover a{color:#666;}
-
-.numArea .p01{border: 1px solid #666;}
-.numArea .p01 a{color:#666;}
+.intro_numareaWrap{padding-bottom:30px;}

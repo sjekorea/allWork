@@ -2,8 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="netfuCompany">
 
-	 <!-- 기업 정보 -->
-	 <select id="selectNetfuCompanyMap" parameterType="hashmap" resultType="allwork.vo.NetfuCompanyVo">
+
+	<!-- 사업자번호 중복 확인 -->
+	<select id="selectBizNoCnt" parameterType="hashmap" resultType="int">
+		select count(biz_no) cnt from netfu_company
+		where 1=1
+			and biz_no = #{bizNo}
+	</select>
+
+
+	<!-- 기업 정보 -->
+	<select id="selectNetfuCompanyMap" parameterType="hashmap" resultType="allwork.vo.NetfuCompanyVo">
 		select 
 			no,
 			uid,
@@ -46,5 +55,51 @@
 		WHERE 1=1
 			AND uid = #{uid}
 	</select>
+
+
+	<!-- 회원가입 정보 등록 -->
+	<insert id="insertNetfuCompany" parameterType="hashmap">
+		<![CDATA[
+			insert into netfu_company
+			(uid, biz_no, biz_copy, biz_name, biz_recharger, biz_subject, biz_fonundation, biz_men, biz_list, biz_form, biz_category, biz_capital, biz_selling, biz_vision, biz_history, biz_phone, biz_fax, biz_post, biz_address1, biz_address2, biz_email, biz_home, biz_logo, photo1, photo2, photo3, photo4, manager, lat, lng, admit, order_view, kind, biz_manager)
+			values
+			(
+				#{uid}
+				, #{bizNo}
+				, #{bizCopy}
+				, #{bizName}
+				, #{bizRecharger}
+				, #{bizSubject}
+				, #{bizFonundation}
+				, #{bizMen}
+				, #{bizList}
+				, #{bizForm}
+				, #{bizCategory}
+				, #{bizCapital}
+				, #{bizSelling}
+				, #{bizVision}
+				, #{bizHistory}
+				, #{bizPhone}
+				, #{bizFax}
+				, #{bizPost}
+				, #{bizAddress1}
+				, #{bizAddress2}
+				, #{bizEmail}
+				, #{bizHome}
+				, #{bizLogo}
+				, #{photo1}
+				, #{photo2}
+				, #{photo3}
+				, #{photo4}
+				, #{manager}
+				, #{lat}
+				, #{lng}
+				, #{admit}
+				, #{orderView}
+				, #{kind}
+				, #{bizManager}
+			)
+		]]>
+	</insert>
 
 </mapper>

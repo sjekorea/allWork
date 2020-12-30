@@ -24,5 +24,21 @@ public class OthersController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(value="/privacyPolicy.do")
+	public ModelAndView privacyPolicy(CommandMap commandMap, Locale locale) {
+		
+		ModelAndView mv = new ModelAndView("/others/privacyPolicy");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/termsOfService.do")
+	public ModelAndView termsOfService(CommandMap commandMap, Locale locale) {
+		
+		ModelAndView mv = new ModelAndView("/others/termsOfService");
+		
+		return mv;
+	}
 
 }

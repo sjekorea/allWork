@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import allwork.common.CommandMap;
+import allwork.common.util.CommonColumnUtil;
+import allwork.service.NetfuCateService;
 import allwork.service.NetfuCompanyService;
 import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuItemResumeService;
@@ -31,6 +33,9 @@ public class CompanyController {
 	@Resource(name="netfuMemberService")
 	private NetfuMemberService netfuMemberService;
 	
+	@Resource(name="netfuCompanyService")
+	private NetfuCompanyService netfuCompanyService;
+	
 	@Resource(name="netfuOnlineRecruitService")
 	private NetfuOnlineRecruitService netfuOnlineRecruitService;
 	
@@ -42,6 +47,9 @@ public class CompanyController {
 
 	@Resource(name="netfuItemCompanyService")
 	private NetfuItemCompanyService netfuItemCompanyService;
+
+	@Resource(name="netfuCateService")
+	private NetfuCateService netfuCateService;		
 	
 	/*
 	 * 기업회원 홈
@@ -56,6 +64,8 @@ public class CompanyController {
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			commandMap.put("searchType", (String)session.getAttribute("SE_USER_TYPE"));
 			commandMap.put("orderRule", "nic.wdate desc");
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
 			
 			// 개인정보 조회
 			Map<String, Object> memberMap = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
@@ -66,16 +76,14 @@ public class CompanyController {
 			commandMap.put("bizIng", "no");
 			// 진행중인 채용정보
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyListByCompany(commandMap.getMap());
-		
 			
 			commandMap.put("pageSize", 10);
-			commandMap.put("orderRule", "wdate desc");
+			commandMap.put("orderRule", "nir.wdate desc");
 			// 맞춤 인재 정보 목록
 			List<Map<String, Object>> myServiceResumeList = netfuMyServiceService.selectMyServiceResumeList(commandMap.getMap());
 			
 			// 스크랩 이력서 정보
 			List<Map<String, Object>> resumeScrapList = netfuScrapService.selectResumeScrapList(commandMap.getMap());
-			
 			
 			mv.addObject("memberMap", memberMap);
 			mv.addObject("recruitList", recruitList);
@@ -96,9 +104,121 @@ public class CompanyController {
 	 * 채용정보 등록
 	 */
 	@RequestMapping(value="/recruitInfoReg.do")
-	public ModelAndView recruitInfoReg(CommandMap commandMap) {
+	public ModelAndView recruitInfoReg(CommandMap commandMap, HttpSession session) {
 		
 		ModelAndView mv = new ModelAndView("/company/recruitInfoReg");
+		
+		try{
+			
+			commandMap.put("personUid", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
+			
+			// 회원정보 조회
+			Map<String, Object> memberMap = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
+			
+			// 기업정보 조회
+			Map<String, Object> companyMap = netfuCompanyService.selectNetfuCompanyMap(commandMap.getMap());
+			
+			commandMap.put("pCode", "");
+			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
+			commandMap.put("type", "job");
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 산업별 목록  ( netfu_cate : type = 'area_job' )
+			commandMap.put("type", "area_job");
+			List<Map<String, Object>> areaJobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 지역별  ( netfu_cate : type ='area' )
+			commandMap.put("type", "area");
+			List<Map<String, Object>> areaList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 고용형태  ( netfu_cate : type ='job_type' )
+			commandMap.put("type", "job_type");
+			List<Map<String, Object>> jobTypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 급여종류  ( netfu_cate : type ='inid_pay' )
+			commandMap.put("type", "inid_pay");
+			List<Map<String, Object>> inidPayList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 급여종류  ( netfu_cate : type ='job_school' )
+			commandMap.put("type", "job_school");
+			List<Map<String, Object>> jobSchoolList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 우대조건  ( netfu_cate : type ='preferential' )
+			commandMap.put("type", "preferential");
+			List<Map<String, Object>> preferentialList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 제출서류  ( netfu_cate : type ='job_paper' )
+			commandMap.put("type", "job_paper");
+			List<Map<String, Object>> jobPaperList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 접수방법  ( netfu_cate : type ='job_recipient' )
+			commandMap.put("type", "job_recipient");
+			List<Map<String, Object>> jobRecipientList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			mv.addObject("memberMap", memberMap);
+			mv.addObject("companyMap", companyMap);
+			mv.addObject("jobList", jobList);
+			mv.addObject("areaJobList", areaJobList);
+			mv.addObject("areaList", areaList);
+			mv.addObject("jobTypeList", jobTypeList);
+			mv.addObject("inidPayList", inidPayList);
+			mv.addObject("jobSchoolList", jobSchoolList);
+			mv.addObject("preferentialList", preferentialList);
+			mv.addObject("jobPaperList", jobPaperList);
+			mv.addObject("jobRecipientList", jobRecipientList);
+			
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".recruitInfoReg Exception !!!!! \n"+e.toString());
+		}
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 면접제의 요청관리
+	 */
+	@RequestMapping(value="/interviewSuggestList.do")
+	public ModelAndView interviewSuggestList(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/company/interviewSuggestList");
+		
+		return mv;
+	}
+	
+	
+	/*
+	 *  유료 채용광고 서비스 신청
+	 */
+	@RequestMapping(value="/recruitApplyForPay.do")
+	public ModelAndView recruitApplyForPay(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/company/recruitApplyForPay");
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 채용검색 서비스 신청
+	 */
+	@RequestMapping(value="/resumeSearchApplyForPay.do")
+	public ModelAndView resumeApplyPayService(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/company/resumeSearchApplyForPay");
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 결제 내역 조회 - 채용공고 검색
+	 */
+	@RequestMapping(value="/resumeSearchPaidList.do")
+	public ModelAndView resumePaidServiceList(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/company/resumeSearchPaidList");
 		
 		return mv;
 	}

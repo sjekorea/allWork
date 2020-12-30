@@ -10,7 +10,7 @@
 #registerArea .registertext p{width:100%;font-size:18px;}
 #registerArea .registertext p .bold{font-family:"NotoSansKR-Bold";}
 
-#registerArea form{width:100%;overflow: hidden;margin-top:70px;}
+#registerArea form{width:100%;overflow: hidden;}
 #registerArea fieldset{border:none;}
 #registerArea legend{display:none;}
 #registerArea form .tab{width:100%;height:79px;line-height:80px;background-color:#eee;border-bottom:1px solid #000;
@@ -26,37 +26,58 @@
 #registerArea form .descBox .desc span{display: inline-block;width:100%;line-height:40px;}
 
 #registerArea .registerBox01, #registerArea .registerBox02{width:100%;overflow: hidden;}
-#registerArea .registerBox01 table, #registerArea .registerBox02 table{width:100%;margin-top:60px;border-top:2px solid #000;}
-#registerArea .registerBox01 caption, #registerArea .registerBox02 caption{width:100%;height:50px;line-height:50px;font-size:18px;text-align: left;}
-#registerArea .registerBox01 tbody, #registerArea .registerBox02 tbody{width:100%;height:900px;}
-#registerArea .registerBox01 tr, #registerArea .registerBox02 tr{width:100%;height:100px;}
-#registerArea .registerBox01 tr th, #registerArea .registerBox02 tr th{width:200px;height:100px;line-height:100px;background-color:#EDF0F5;
+#registerArea .registerBox01 table, #registerArea .registerBox02 table{width:100%;border-top:2px solid #000;table-layout: fixed;word-wrap: break-word;}
+#registerArea .registerBox01 caption, #registerArea .registerBox02 caption{width:100%;height:40px;line-height:50px;font-size:16px;text-align: left;}
+#registerArea .registerBox01 caption span, #registerArea .registerBox02 caption span{padding-left:10px;font-size: 11px;color:#666;}
+#registerArea .registerBox01 tbody, #registerArea .registerBox02 tbody{width:100%;overflow:hidden;}
+tr{width:800px;height:40px;}
+th{width:200px;height:100px;line-height:100px;background-color:#EDF0F5;
                                               text-align: right;padding-right:40px;font-family:"NotoSansKR-Thin";font-size:20px;color:#666;}
-#registerArea .registerBox01 tr td, #registerArea .registerBox02 tr td{width:800px;height:100px;padding-left:20px;border-bottom:1px solid #eee;}
+td{width:800px;height:100px;padding-left:20px;border-bottom:1px solid #eee;}
 .necessary{color:red;padding-left:5px;}
 .comment{padding-left:10px;font-size:12px;color:#4F60E3;vertical-align:bottom;}
 
-select{border:1px solid #999;text-indent:10px;color:#666;vertical-align:top;width:300px;height:40px;}
+select{border:1px solid #999;text-indent:10px;color:#666;vertical-align:top;width:200px;height:40px;}
 input[type="text"]{width:300px;height:40px;}
 input[type="submit"]{width:120px;height:40px;background-color:#43425D;color:#fff;border:none;vertical-align: middle;}
 input[type="password"]{width:300px;height:40px;}
 input[type="radio"]{width:20px;height:20px;vertical-align:middle;}
 
 
-#registerArea .registerBox01 .companyNum input, #registerArea .registerBox01 .companyPhone input{width:120px;}
-#registerArea .registerBox01 .businessDesc input{width:460px;}
-#registerArea .registerBox01 .email input, #registerArea .registerBox02 .email input{width:200px;}
+#registerArea .registerBox01 .companyPhone input, #registerArea .registerBox01 .companyPhone input{width:120px;}
+#registerArea .registerBox01 .businessDesc{height:100px;}
+#registerArea .registerBox01 .businessDesc input{width:520px;}
+#registerArea .registerBox01 .companyPhone input, #registerArea .registerBox01 .companyFax input{width:120px;}
+#registerArea .registerBox01 .email input, #registerArea .registerBox02 .email input{width:120px;}
 #registerArea .registerBox01 .email select, #registerArea .registerBox02 .email select{width:200px;height:40px;}
 #registerArea .registerBox01 .address{height:200px;}
 #registerArea .registerBox01 .address p{width:100%;float: left;margin:2px 0;}
-#registerArea .registerBox01 .address p input{width:700px;}
+#registerArea .registerBox01 .address p input{width:760px;}
 #registerArea .registerBox01 .address .postNumber input{width:120px;}
+#registerArea .registerBox01 .logoArea .imgPart{background-color:#eee;width:120px;height:120px;text-align: center;line-height:120px;text-indent:0;margin-left:20px;}
+#registerArea .registerBox01 .logoArea .imgPart img{width:100%;}
+#registerArea .registerBox01 .logoArea .descPart{width:500px;line-height:20px;padding-top: 20px;text-indent:0;margin-left:20px;font-size:12px;}
+#registerArea .registerBox01 .comPhoto td{font-size:12px;}
+#registerArea .registerBox01 .comPhoto .imgArea{width:100%;height:120px;margin-left:20px;}
+#registerArea .registerBox01 .comPhoto .imgArea li{width:120px;height:120px;background-color:#eee;margin-right:2px;text-align: center;line-height:120px;text-indent: 0;float: left;}
+#registerArea .registerBox01 .comPhoto .imgArea li img{width:100%;}
+.upLoadArea{width:100%;overflow:hidden;padding-top: 10px;margin-left:20px;}
+.upLoadArea li{text-indent: 0;line-height:30px;}
+.upLoadArea li span{padding-left:5px;}
+textarea{width:760px;height:100px;}
+.history span{display:inline-block;font-size:14px;line-height: 24px;margin-left: 20px;text-indent:0;}
 
-#registerArea .registerBox02 .birthday input{width:120px;vertical-align: bottom;}
-#registerArea .registerBox02 .male{padding-right: 20px;}
-#registerArea .registerBox02 .male label{padding-left:5px;vertical-align:middle;}
-#registerArea .registerBox02 .female{padding-right: 20px;}
-#registerArea .registerBox02 .female label{padding-left:5px;vertical-align:middle;}
+.mobile input, .phone input{width:120px;}
+
+#registerArea .registerBox02 .birthday input{width:120px;}
+#registerArea .registerBox02 .address{height:200px;}
+#registerArea .registerBox02 .address p{width:100%;float: left;margin:2px 0;}
+#registerArea .registerBox02 .address p input{width:760px;}
+#registerArea .registerBox02 .address .postNumber input{width:120px;}
+#registerArea .registerBox02 .phoneConfirm{height:200px;}
+#registerArea .registerBox02 .phoneConfirm p{margin-bottom:5px;}
+#registerArea .registerBox02 .phoneConfirm label{display: inline-block;width:110px;}
+#registerArea .registerBox02 .phoneConfirm .ok{width:88px;border: 1px solid #aaa;background-color: #ccc;color:#000;margin-right:5px;}
 
 
 #registerArea .confirm{width:100%;overflow: hidden;margin:10px 0;}
@@ -86,8 +107,8 @@ input[type="radio"]{width:20px;height:20px;vertical-align:middle;}
 .descBtn{text-align: right;font-size: 14px;color:#4F60E3;line-height:50px;vertical-align:middle;}
 
 .agree_ok{width:100%;height:50px;margin-top:50px;margin-bottom:100px;}
-.agree_ok ul{width:405px;height:50px;margin:0 auto;}
-.agree_ok ul li{width:198px;height:48px;margin-right:5px;float: left;line-height:50px;text-align: center;background-color:#eee;border:1px solid #ccc;}
-.agree_ok ul li:last-child{width:200px;height:50px;margin-right:0;background-color:#4F60E3;border: none;}
+.agree_ok ul{width:100%;height:50px;text-align: center;}
+.agree_ok ul li{display:inline-block;width:200px;height:50px;margin-right:5px;line-height:50px;text-align: center;background-color:#eee;border:1px solid #ccc;}
+.agree_ok ul li:last-child{width:200px;height:50px;margin-right:0;background-color:#4F60E3;border:1px solid #4F60E3;}
 .agree_ok ul li a{width: 100%;height: 100%;}
 .agree_ok ul li:last-child a{color:#fff;}

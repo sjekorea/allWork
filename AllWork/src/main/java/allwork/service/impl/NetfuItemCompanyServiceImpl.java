@@ -1,5 +1,6 @@
 package allwork.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,13 +25,25 @@ public class NetfuItemCompanyServiceImpl implements NetfuItemCompanyService{
 	// 채용 정보 상세 검색 Count
 	@Override
 	public int selectNetfuItemCompanyCnt(Map<String, Object> map) throws Exception {
-		return netfuItemCompanyDao.selectNetfuItemCompanyCnt(map);
+		int rtnCnt = 0;
+		if("keyword".equals((String)map.get("searchFlag"))){
+			rtnCnt = netfuItemCompanyDao.selectKeywordNetfuItemCompanyCnt(map);
+		}else{
+			rtnCnt = netfuItemCompanyDao.selectNetfuItemCompanyCnt(map);
+		}
+		return rtnCnt;
 	}
 	
 	// 채용 정보 상세 검색  목록 
 	@Override
 	public List<Map<String, Object>> selectNetfuItemCompanyList(Map<String, Object> map) throws Exception {
-		return netfuItemCompanyDao.selectNetfuItemCompanyList(map);
+		List<Map<String, Object>> rtnList = new ArrayList<Map<String, Object>>();
+		if("keyword".equals((String)map.get("searchFlag"))){
+			rtnList = netfuItemCompanyDao.selectKeywordNetfuItemCompanyList(map);
+		}else{
+			rtnList = netfuItemCompanyDao.selectNetfuItemCompanyList(map);
+		}
+		return rtnList;
 	}
 	
 	// 기업별 채용공고  Count

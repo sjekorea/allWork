@@ -4,6 +4,7 @@
   #topWrap{width:100%;height:40px;background-color:#eee;overflow:hidden;}
   #topWrap .topMenu{width:1000px;height:40px;line-height:40px;text-align: right;margin:0 auto;}
   #topWrap .topMenu li{display:inline-block;font-size: 12px;}
+  #topWrap .topMenu li:first-child{font-family:"NotoSansKR-Bold";}
 
   #head{width:100%;height:60px;background-color: #fff;border-bottom:1px solid #999;}
   #header{width:1000px;height:100%;margin:0 auto;background-color: #fff;}

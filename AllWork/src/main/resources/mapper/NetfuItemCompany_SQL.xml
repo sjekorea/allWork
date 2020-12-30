@@ -2,21 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="netfuItemCompany">
 
-	
 	<!-- 채용정보 검색 Count -->
 	<select id="selectNetfuItemCompanyCnt" parameterType="hashmap" resultType="int">
 		select count(no) cnt
-		from netfu_item_company
+		from netfu_item_company nic
 		where 1=1
-			and biz_ing <![CDATA[<>]]> 'yes'
-			and biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()
+			and nic.biz_ing <![CDATA[<>]]> 'yes'
+			and ((nic.biz_end_type ='input' and nic.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
 			<if test="uid != null and uid != ''">
-				and uid = #{uid}
+				and nic.uid = #{uid}
+			</if>
+			<if test='infoType == "4"'>
+				and nic.info_type = #{infoType}
+			</if>
+			<if test='infoType == "2"'>
+				and (nic.info_type = #{infoType} or nic.inid_jobform = 'netfu_34537_33276')
+			</if>
+			<if test="bizType3 != null and bizType3 != ''">
+				and (nic.biz_type3 in ('${bizType3}') or nic.biz_type6 in ('${bizType3}') or nic.biz_type9 in ('${bizType3}'))
+			</if>
+			<if test="areaJob3 != null and areaJob3 != ''">
+				and (nic.area_job3 in ('${areaJob3}') or nic.area_job6 in ('${areaJob3}') or nic.area_job9 in ('${areaJob3}'))
+			</if>
+			<if test="bizArea2 != null and bizArea2 != ''">
+				and (nic.biz_area2 in ('${bizArea2}') or nic.iz_area4 in ('${bizArea2}') or nic.biz_area6 in ('${bizArea2}'))
 			</if>
 	</select>
 	
 	
-	<!-- 채용정보 상세 -->
+	<!-- 채용정보 리스트 -->
 	<!-- 
 		- 기업 정보 : select * from netfu_company where uid = '$uid'
 		- 모집요강 : select * from netfu_item_company where `no` ='$no'
@@ -28,13 +42,96 @@
 		from netfu_item_company nic
 		where 1=1
 			and nic.biz_ing <![CDATA[<>]]> 'yes'
-			and nic.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()
+			and ((nic.biz_end_type ='input' and nic.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
 			<if test="uid != null and uid != ''">
 				and nic.uid = #{uid}
 			</if>
+			<if test='infoType == "4"'>
+				and nic.info_type = #{infoType}
+			</if>
+			<if test='infoType == "2"'>
+				and (nic.info_type = #{infoType} or nic.inid_jobform = 'netfu_34537_33276')
+			</if>
+			<if test="bizType3 != null and bizType3 != ''">
+				and (nic.biz_type3 in ('${bizType3}') or nic.biz_type6 in ('${bizType3}') or nic.biz_type9 in ('${bizType3}'))
+			</if>
+			<if test="areaJob3 != null and areaJob3 != ''">
+				and (nic.area_job3 in ('${areaJob3}') or nic.area_job6 in ('${areaJob3}') or nic.area_job9 in ('${areaJob3}'))
+			</if>
+			<if test="bizArea2 != null and bizArea2 != ''">
+				and (nic.biz_area2 in ('${bizArea2}') or nic.biz_area4 in ('${bizArea2}') or nic.biz_area6 in ('${bizArea2}'))
+			</if>
 		order by ${orderField} ${orderRule}
 		limit #{start}, #{pageSize}
-		
+	</select>
+	
+	
+	<!-- 키워드 검색 채용정보  Count -->
+	<select id="selectKeywordNetfuItemCompanyCnt" parameterType="hashmap" resultType="int">
+		select 
+			count(aa.no) cnt
+		from
+		(
+			select 
+				recruit.no
+				, concat(
+					ifnull(recruit.biz_name, ''), '|' , ifnull(recruit.biz_title, ''), '|' , ifnull(recruit.biz_address1, ''), '|'
+					, ifnull(recruit.biz_business, ''), '|' , ifnull(recruit.biz_detail, ''), '|' , ifnull(recruit.biz_pemail, ''), '|'
+				) fullStr
+			from netfu_item_company recruit
+			where 1=1
+				and recruit.biz_ing <![CDATA[<>]]> 'yes'
+				and ((recruit.biz_end_type ='input' and recruit.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or recruit.biz_end_type ='get' or recruit.biz_end_type ='often')
+		) aa
+		where 1=1
+			and (
+					aa.fullStr like '%${keyword1}%' 
+					<if test="keyword2 != '' and keyword2 != null">
+						${keywordCondition} aa.fullStr like '%${keyword2}%'
+					</if>
+					<if test="keyword3 != '' and keyword3 != null">
+						${keywordCondition} aa.fullStr like '%${keyword3}%'
+					</if>
+				)
+	</select>
+	
+	
+	<!-- 키워드 검색 채용정보 list -->
+	<select id="selectKeywordNetfuItemCompanyList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
+		select 
+			${recruitColumn}
+		from netfu_item_company nic
+			, (
+				select 
+					aa.*
+				from
+				(
+					select 
+						recruit.no
+						, concat(
+							ifnull(recruit.biz_name, ''), '|' , ifnull(recruit.biz_title, ''), '|' , ifnull(recruit.biz_address1, ''), '|'
+							, ifnull(recruit.biz_business, ''), '|' , ifnull(recruit.biz_detail, ''), '|' , ifnull(recruit.biz_pemail, ''), '|'
+						) fullStr
+					from netfu_item_company recruit
+					where 1=1
+						and recruit.biz_ing <![CDATA[<>]]> 'yes'
+						and ((recruit.biz_end_type ='input' and recruit.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or recruit.biz_end_type ='get' or recruit.biz_end_type ='often')
+				) aa
+				where 1=1
+					and (
+							aa.fullStr like '%${keyword1}%' 
+							<if test="keyword2 != '' and keyword2 != null">
+								${keywordCondition} aa.fullStr like '%${keyword2}%'
+							</if>
+							<if test="keyword3 != '' and keyword3 != null">
+								${keywordCondition} aa.fullStr like '%${keyword3}%'
+							</if>
+						)
+			) keyword
+		where 1=1
+			and nic.no = keyword.no
+		order by ${orderField} ${orderRule}
+		limit #{start}, #{pageSize}
 	</select>
 	
 	

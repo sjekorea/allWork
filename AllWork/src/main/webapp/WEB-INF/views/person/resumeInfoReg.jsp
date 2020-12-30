@@ -9,6 +9,7 @@
 
 <link rel="stylesheet" type="text/css" href="/css/resume.css"/>
 
+
 <div id="containerWrap">
 <div id="container">
 <div id="leftPart">
@@ -23,19 +24,22 @@
 </div>
 <div id="rightPart">
 <div id="resume00">
-<div id="imgArea">
-<p><img src="img/company_home/img00.jpeg" alt="본인사진"/></p>
-</div>
 <div id="detailArea">
 <p class="detail_title">기본정보</p>
 <p class="personal_setting"><a href="#none" title="기본정보수정"><i class="fas fa-cog"></i>&nbsp;기본정보수정</a></p>
-<div class="tabelArea">
-<p class="table_title">이름</p><p class="table_desc">홍길동</p>
-<p class="table_title">이메일</p><p class="table_desc">asdf@naver.com</p>
-<p class="table_title">휴대폰</p><p class="table_desc">010-000-0000</p>
-<p class="table_title">연락처</p><p class="table_desc">-</p>
-<p class="table_title">주소</p><p class="table_desc01">[463-869] 경기 성남시 분당구 정자일로 156</p>
+<div id="imgArea">
+<p><img src="img/company_home/img00.jpeg" alt="본인사진"/></p>
 </div>
+<table>
+<caption>이력 등록하기</caption>
+<tbody class="tabelArea">
+<tr><th class="table_title">이름</th><td class="table_desc">홍길동</td></tr>
+<tr><th class="table_title">이메일</th><td class="table_desc">asdf@naver.com</td></tr>
+<tr><th class="table_title">휴대폰</th><td class="table_desc">010-000-0000</td></tr>
+<tr><th class="table_title">연락처</th><td class="table_desc">-</td></tr>
+<tr><th class="table_title">주소</th><td class="table_desc">[463-869] 경기 성남시 분당구 정자일로 156</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="resume01">
@@ -51,15 +55,6 @@
 <td>
 <span><input id="res01_desc01" type="radio" name="res01_desc01"/><label for="res01_desc01">&nbsp;공개</label></span>
 <span><input id="res01_desc01_1" type="radio" name="res01_desc01_1"/><label for="res01_desc01_1">&nbsp;비공개</label></span>
-</td>
-</tr>
-<tr>
-<th>이력서 유형<span class="necessary">*</span></th>
-<td>
-<span><input id="res01_desc02" type="radio" name="res01_desc02"/><label for="res01_desc02">&nbsp;모두</label></span>
-<span><input id="res01_desc02_1" type="radio" name="res01_desc02_1"/><label for="res01_desc02_1">&nbsp;일반</label></span>
-<span><input id="res01_desc02_2" type="radio" name="res01_desc02_2"/><label for="res01_desc02_2">&nbsp;아르바이트</label></span>
-<span><input id="res01_desc02_3" type="radio" name="res01_desc02_3"/><label for="res01_desc02_3">&nbsp;프리랜서</label></span>
 </td>
 </tr>
 </tbody>
@@ -81,6 +76,10 @@
 <span><input id="res02_desc01" type="text" name="res02_desc01" placeholder="(예 : ASP, SQL, MT 웹프로그래밍)"/></span>
 <span>이력서 제목은 이력서 열람여부를 결정짓는 중요한 부분이므로 희망직무 또는 구체적인 지원분야를 쓰시는 것이 좋습니다.</span>
 </td>
+</tr>
+<tr>
+<th>보유기술</th>
+<td><textarea id="res02_desc09" name="res02_desc09"></textarea></td>
 </tr>
 <tr>
 <th>현재상태</th>
@@ -194,15 +193,6 @@
 </td>
 </tr>
 <tr>
-<th>선택적 직무</th>
-<td>
-<span><input id="res02_desc06" type="radio" name="res02_desc06"/><label for="res02_desc06">&nbsp;운전전문직군</label></span>
-<span><input id="res02_desc06_1" type="radio" name="res02_desc06_1"/><label for="res02_desc06_1">&nbsp;경비직군</label></span>
-<span><input id="res02_desc06_2" type="radio" name="res02_desc06_2"/><label for="res02_desc06_2">&nbsp;일반관리직</label></span>
-<span class="comment">위 직무분야 외 선택적 직무</span>
-</td>
-</tr>
-<tr>
 <th>희망근무형태<span class="necessary">*</span></th>
 <td>
 <span><input id="res02_desc07" type="checkbox" name="res02_desc07"/><label for="res02_desc07">정규직</label></span>
@@ -240,10 +230,6 @@
 </select>
 </td>
 </tr>
-<tr>
-<th>보유기술</th>
-<td><textarea id="res02_desc09" name="res02_desc09"></textarea></td>
-</tr>
 </tbody>
 </table>
 </fieldset>
@@ -273,8 +259,8 @@
 <th>학력</th>
 <td>
 <span>
-<input id="res03_desc02" type="date" placeholder="yyyy-mm-dd" name="res03_desc02"/><!--
---><select id="res03_desc02_1" name="res03_desc02_1" title="학교구분">
+<input id="res03_desc02" type="date" placeholder="yyyy-mm-dd" name="res03_desc02"/>
+<select id="res03_desc02_1" name="res03_desc02_1" title="학교구분">
 <option value="학교구분">학교구분</option>
 <option value="학력 무관">학력 무관</option>
 <option value="고등학교졸업">고등학교졸업</option>
@@ -282,13 +268,12 @@
 <option value="대학졸업(4년)">대학졸업(4년)</option>
 <option value="대학원 석사졸업">대학원 석사졸업</option>
 <option value="대학원 박사졸업">대학원 박사졸업</option>
-</select><!--
---><input id="res03_desc02_2" type="text" name="res03_desc02_2" placeholder="학교명"/><!--
---><input id="res03_desc02_3" type="button" name="res03_desc02_3" value="삭제"/>
+</select>
+<input id="res03_desc02_2" type="text" name="res03_desc02_2" placeholder="학교명"/>
 </span>
 <span>
-<input id="res03_desc03" type="date" placeholder="yyyy-mm-dd" name="res03_desc03"/><!--
---><select id="res03_desc03_1" name="res03_desc03_1" title="졸업상태">
+<input id="res03_desc03" type="date" placeholder="yyyy-mm-dd" name="res03_desc03"/>
+<select id="res03_desc03_1" name="res03_desc03_1" title="졸업상태">
 <option value="졸업상태">졸업상태</option>
 <option value="졸업">졸업</option>
 <option value="재학">재학</option>
@@ -296,9 +281,9 @@
 <option value="휴학">휴학</option>
 <option value="졸업예정">졸업예정</option>
 <option value="수료">수료</option>
-</select><!--
---><input id="res03_desc03_2" type="text" name="res03_desc03_2" placeholder="학교명"/><!--
---><input id="res03_desc03_3" type="text" name="res03_desc03_3" placeholder="전공명"/>
+</select>
+<input id="res03_desc03_2" type="text" name="res03_desc03_2" placeholder="학교명"/>
+<input id="res03_desc03_3" type="text" name="res03_desc03_3" placeholder="전공명"/>
 </span>
 <span class="comment"> 다중 경력자는 [추가]를 클릭하면 현재 입력폼에서 추가 경력을 작성할 수 있습니다.</span>
 </td>
@@ -307,7 +292,10 @@
 </table>
 </fieldset>
 </form>
-<p class="moreTab"><input id="more_btn" type="button" name="more_btn" value="+ 추가"/></p>
+<p class="moreTab">
+<input id="more_btn" type="button" name="more_btn" value="+ 추가"/>
+<input id="res03_desc02_3" type="button" name="res03_desc02_3" value="-  삭제"/>
+</p>
 </div>
 <div id="resume04">
 <form id="resForm04" action="#none" method="post">
@@ -374,13 +362,12 @@
 <th>경력</th>
 <td>
 <span>
-<input id="res04_desc02" type="date" placeholder="yyyy-mm-dd" name="res04_desc02"/><!--
---><input id="res04_desc02_1" type="text" name="res04_desc02_1" placeholder="회사명"/><!--
---><input id="res04_desc02_2" type="button" name="res04_desc02_2" value="삭제"/>
+<input id="res04_desc02" type="date" placeholder="yyyy-mm-dd" name="res04_desc02"/>
+<input id="res04_desc02_1" type="text" name="res04_desc02_1" placeholder="회사명"/>
 </span>
 <span>
-<input id="res04_desc03" type="date" placeholder="yyyy-mm-dd" name="res04_desc03"/><!--
---><input id="res04_desc03_1" type="text" name="res04_desc03_1" placeholder="담당업무"/>
+<input id="res04_desc03" type="date" placeholder="yyyy-mm-dd" name="res04_desc03"/>
+<input id="res04_desc03_1" type="text" name="res04_desc03_1" placeholder="담당업무"/>
 </span>
 <span class="comment"> 다중 경력자는 [추가]를 클릭하면 현재 입력폼에서 추가 경력을 작성할 수 있습니다.</span>
 </td>
@@ -389,7 +376,10 @@
 </table>
 </fieldset>
 </form>
-<p class="moreTab"><input id="more_btn01" type="button" name="more_btn01" value="+ 추가"/></p>
+<p class="moreTab">
+<input id="more_btn01" type="button" name="more_btn01" value="+ 추가"/>
+<input id="res04_desc02_2" type="button" name="res04_desc02_2" value="삭제"/>
+</p>
 </div>
 <div id="resume06">
 <form id="resForm06" action="#none" method="post">
@@ -411,13 +401,13 @@
 <option value="경제·경영·금융·무역">경제·경영·금융·무역</option>
 <option value="산업·안전·환경">산업·안전·환경</option>
 <option value="IT·정보통신	보건·복지·위생">IT·정보통신	보건·복지·위생</option>
-</select><!--
---><select id="res06_desc01_2" name="res06_desc01_2" title="자격증2차선택">
+</select>
+<select id="res06_desc01_2" name="res06_desc01_2" title="자격증2차선택">
 <option value="hidden">자격증 2차선택</option>
 <option value="기계">기계</option>
 <option value="전자">전자</option>
-</select><!--
---><select id="res06_desc01_3" name="res06_desc01_3" title="자격증2차선택">
+</select>
+<select id="res06_desc01_3" name="res06_desc01_3" title="자격증2차선택">
 <option value="hidden">자격증 3차선택</option>
 <option value="건설기계기술사">건설기계기술사</option>
 <option value="건설기계설비기사">건설기계설비기사</option>
@@ -452,14 +442,16 @@
 </select>
 </p>
 <p class="part03"><span>발행처</span><br/><input id="res06_desc01_4" type="text" name="res06_desc01_4"/></p>
-<p class="part04"><input id="res06_desc01_5" type="button" name="res06_desc01_5" value="삭제"/></p>
 </td>
 </tr>
 </tbody>
 </table>
 </fieldset>
 </form>
-<p class="moreTab"><input id="more_btn03" type="button" name="more_btn03" value="+ 추가"/></p>
+<p class="moreTab">
+<input id="more_btn03" type="button" name="more_btn03" value="+ 추가"/>
+<input id="res04_desc02_2" type="button" name="res04_desc02_2" value="삭제"/>
+</p>
 </div>
 <div id="resume07">
 <form id="resForm07" action="#none" method="post">
@@ -493,14 +485,16 @@
 <option value="하">하</option>
 </select>
 </p>
-<p class="part08"><input id="res07_desc01_6" type="button" name="res07_desc01_6" value="삭제"/></p>
 </td>
 </tr>
 </tbody>
 </table>
 </fieldset>
 </form>
-<p class="moreTab"><input id="more_btn02" type="button" name="more_btn02" value="+ 추가"/></p>
+<p class="moreTab">
+<input id="more_btn02" type="button" name="more_btn02" value="+ 추가"/>
+<input id="res04_desc02_2" type="button" name="res04_desc02_2" value="삭제"/>
+</p>
 </div>
 <div id="resume08">
 <form id="resForm08" action="#none" method="post">
@@ -547,6 +541,5 @@
 </div>
 </div>
 </div>
-
 
 <jsp:include page="/footer.do" />

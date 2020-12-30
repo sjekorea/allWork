@@ -19,36 +19,41 @@
 		<div id="rightPart">
 			<div id="listPart">
 				<h4>면접요청기업</h4>
-				<p class="comment"></p>
-				<ul class="list">
-					<li class="list_title">
-						<div class="desc01">회사명</div>
-						<div class="desc02">채용정보</div>
-						<div class="desc03">마감일</div>
-					</li>
-					<c:choose>
-						<c:when test="${list.size() > 0 }">
-							<c:forEach var="result" items="${list}" varStatus="status">
-								<li>
-									<div class="desc01">
-										<a href="#none" title="회사명"><p>${result.bizName }</p></a>
-									</div>
-									<div class="desc02">
-										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="채용공고">
-											<p>${convert:compByte(result.bizTitle, 100, "...")}</p>
-										</a>
-									</div>
-									<div class="desc03">
-										<p>${codeConvert:getRecruitStatusTextShort(result.bizIng, result.bizEndType, result.bizEndDay) }</p>
-									</div>
-								</li>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<li style="width:100%;"><div class="desc01">내역이 없습니다.</div></li>
-						</c:otherwise>
-					</c:choose>
-				</ul>
+				<p class="comment">* 회사명을 클릭하면 회사정보와 함께 현재 진행중이거나 마감된 모든 채용공고를 보실 수 있습니다.</p>
+				<table class="list">
+					<caption>리스트</caption>
+					<tbody>
+						<tr class="list_title">
+							<th class="desc01">회사명</th>
+							<th class="desc02">사업내용</th>
+							<th class="desc03">열람일</th>
+						</tr>
+						<c:choose>
+							<c:when test="${list.size() > 0 }">
+								<c:forEach var="result" items="${list}" varStatus="status">
+									<tr class="desc">
+										<td class="desc01">
+											<a href="#none" title="회사명">
+												${result.bizName }
+											</a>
+										</td>
+										<td class="desc02">
+											<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="채용공고">
+												${convert:compByte(result.bizTitle, 100, "...")}
+											</a>
+										</td>
+										<td class="desc03">
+											${codeConvert:getRecruitStatusTextShort(result.bizIng, result.bizEndType, result.bizEndDay) }
+										</td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr class="desc"><td colspan="3">내역이 없습니다.</td></tr>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
 				<ul class="numArea">
 					${pageMap.pageHtml }
 				</ul>

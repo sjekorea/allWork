@@ -11,38 +11,29 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 #rightPart{width:790px;height:100%;margin-left:10px;float: left;background-color:#fff;border:1px solid #ccc;padding:40px;}
 
 /*###################################   listpart   ###################################*/
-#listPart{width:710px;margin:0 auto;overflow: hidden;font-size: 14px;}
-#listPart h4{width:200px;height:50px;line-height:50px;font-size:18px;float: left;}
-#listPart .delete{margin-left:390px;width:120px;height:40px;margin-top:10px;line-height:38px;text-align:center;margin-bottom:5px;border:1px solid #000;float: left;}
+#rightPart h4{width:200px;height:50px;line-height:50px;font-size:18px;float: left;}
+#rightPart .delete{margin-left:388px;width:120px;height:40px;margin-top:10px;line-height:38px;text-align:center;margin-bottom:5px;border:1px solid #000;float: left;}
 
-/*###################################   listpart   ###################################*/
-#listPart .list{width:100%;border-top:1px solid #999;overflow: hidden;}
-#listPart .list li{width:100%;height:150px;border-bottom:1px solid #ccc;}
-input{width:16px; height: 16px;}
+#rightPart .list{width:100%;border-top:1px solid #999;overflow: hidden;border-collapse:collapse;
+  table-layout: fixed;
+  word-wrap: break-word;}
+#rightPart .list caption{display:none;}
+#rightPart .list tbody{width:100%;border-collapse:collapse;}
+#rightPart .list tr{width:100%;border-bottom:1px solid #ccc;text-align: center;font-size:14px;}
+/*체크박스*/input{width:16px; height: 16px;}
 
-#listPart .list li div{float:left;line-height:50px;text-align: center;line-height:150px;font-size:14px;}
-#listPart .list li .desc00{width:100px;height:100%;}
-#listPart .list li .desc01{width:410px;height:110px;text-align: left;line-height:28px;padding-top:36px;}
-#listPart .list li .desc01 .title{width:100%;height:30px;font-size:16px;font-family:"NotoSansKR-Medium";}
-#listPart .list li .desc01 .fa-heart{color:#ccc;}
-#listPart .list li .desc01 .t_desc02{color:#999;}
-#listPart .list li .desc02{width:100px;height:100%;}
-#listPart .list li .desc03{width:100px;height:100%;}
+/*###################################   리스트 제목부분   ###################################*/
+  #rightPart .list .list_title th{height:50px;line-height: 50px;margin:0;background-color:#EDF0F5;}
+  #rightPart .list .desc td{padding:20px 0;}
+  #rightPart .list .desc00{width:30px;}
+  #rightPart .list .desc01{width:140px;}
+  #rightPart .list .desc01 .fa-heart{color:#ddd;}
+  #rightPart .list .desc02{width:340px;}
+  #rightPart .list .desc03{width:100px;}
+  #rightPart .list .desc04{width:100px;}
 
-  #listPart .list .list_title{width:100%;height:50px;background-color:#EDF0F5;}
-  #listPart .list .list_title div{float:left;line-height:50px;text-align: center;}
-  #listPart .list .list_title .desc00{width:100px;height:100%;}
-  #listPart .list .list_title .desc01{width:410px;height:50px;text-align:center;line-height:50px;padding-top:0px;}
-  #listPart .list .list_title .desc02{width:100px;height:100%;}
-  #listPart .list .list_title .desc03{width:100px;height:100%;}
+  #rightPart .list td.desc02{text-align: left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
-.numareaWrap{width:100%;overflow: hidden;background-color:#fff;}
-.numArea{width:360px;height:30px;line-height:28px;padding-top:30px;padding-bottom:30px;text-align: center;margin:0 auto;}
-.numArea li{width:30px;height:30px;border:1px solid #fff;float:left;}
-.numArea li a{color:#ccc;}
+  #rightPart .list td a:hover{text-decoration: underline;}
 
-              .numArea li:hover{border: 1px solid #ccc;}
-              .numArea li:hover a{color:#666;}
-
-.numArea .p01{border: 1px solid #666;}
-.numArea .p01 a{color:#666;}
+  .numareaWrap{padding-bottom:30px;}

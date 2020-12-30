@@ -30,39 +30,21 @@
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
 					<p class="company_setting"><a href="#none" title="기본정보수정"><i class="fas fa-cog"></i>&nbsp;기본정보수정</a></p>
-					<div class="tabelArea">
-						<p class="table_title">대표자</p><p class="table_desc">홍길동</p>
-						<p class="table_title">기업형태</p><p class="table_desc">벤처기업</p>
-						<p class="table_title">자본금</p><p class="table_desc">4천만원</p>
-						<p class="table_title">설립년도</p><p class="table_desc">2019년</p>
-						<p class="table_title">사원수</p><p class="table_desc">6명</p>
-						<p class="table_title">상장여부</p><p class="table_desc">비상장</p>
-						<p class="table_title">업종</p><p class="table_desc01">IT.웹.통신</p>
-						<p class="table_title">사업내용</p><p class="table_desc01">AI S/W 개발</p>
-					</div>
+					<table>
+						<caption>채용공고 등록하기</caption>
+						<tbody class="tabelArea">
+							<tr><th class="table_title">대표자</th><td class="table_desc">홍길동</td></tr>
+							<tr><th class="table_title">기업형태</th><td class="table_desc">벤처기업</td></tr>
+							<tr><th class="table_title">자본금</th><td class="table_desc">4천만원</td></tr>
+							<tr><th class="table_title">설립년도</th><td class="table_desc">2019년</td></tr>
+							<tr><th class="table_title">사원수</th><td class="table_desc">6명</td></tr>
+							<tr><th class="table_title">상장여부</th><td class="table_desc">비상장</td></tr>
+							<tr><th class="table_title">홈페이지</th><td class="table_desc">www.asdf.com</td></tr>
+							<tr><th class="table_title">업종</th><td class="table_desc">IT.웹.통신</td></tr>
+							<tr><th class="table_title">사업내용</th><td class="table_desc">AI S/W 개발</td></tr>
+						</tbody>
+					</table>
 				</div>
-			</div>
-			<div id="regist01">
-				<form id="regForm01" action="#none" method="post">
-					<fieldset>
-						<legend>채용공고 등록하기</legend>
-						<div>
-							<table>
-								<caption>채용공고 등록하기</caption>
-								<tbody>
-									<tr>
-										<th>채용유형<span class="necessary">*</span></th>
-										<td>
-											<span><input id="reg01_desc01" type="radio" name="reg01_desc01"/><label for="reg01_desc01">일반</label></span>
-											<span><input id="reg01_desc01_1" type="radio" name="reg01_desc01_1"/><label for="reg01_desc01_1">아르바이트</label></span>
-											<span><input id="reg01_desc01_2" type="radio" name="reg01_desc01_2"/><label for="reg01_desc01_2">프리랜서</label></span>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</fieldset>
-				</form>
 			</div>
 			<div id="regist02">
 				<form id="regForm02" action="#none" method="post">
@@ -123,15 +105,6 @@
 										<option value="3차산업선택">3차산업선택</option>
 									</select>
 									<input id="res02_desc03_3" type="button" name="res02_desc03_3" value="+ 추가"/>
-								</td>
-							</tr>
-							<tr>
-								<th>빠른선택</th>
-								<td>
-									<span><input id="reg02_desc04" type="radio" name="reg02_desc04"/><label for="reg02_desc04">&nbsp;운전전문직군</label></span>
-									<span><input id="reg02_desc04_1" type="radio" name="reg02_desc04_1"/><label for="reg02_desc04_1">&nbsp;경비직군</label></span>
-									<span><input id="reg02_desc04_2" type="radio" name="reg02_desc04_2"/><label for="reg02_desc04_2">&nbsp;일반관리직</label></span>&nbsp;&nbsp;
-									<span class="comment">빠른선택 진행시 모집업종은 선택할 수 없습니다.</span>
 								</td>
 							</tr>
 							<tr>
@@ -288,31 +261,6 @@
 										<option value="석사">석사 이상</option>
 										<option value="박사">박사 이상</option>
 									</select>
-								</td>
-							</tr>
-							<tr>
-								<th>나이제한<span class="necessary">*</span></th>
-								<td>
-									<span><input id="reg02_desc12" type="radio" name="reg02_desc12"/><label for="reg02_desc12">연령무관</label></span>
-									<span><input id="reg02_desc12_1" type="radio" name="reg02_desc12_1"/><label for="reg02_desc12_1">연령제한</label></span>
-									<span>
-									<input id="reg02_desc12_2" type="text" name="reg02_desc12_2"/>&nbsp;세 이상
-									<span>~</span>
-									<input id="reg02_desc12_3" type="text" name="reg02_desc12_3"/>&nbsp;세 이하
-									</span>
-									<span class="comment">모집·채용에서 합리적인 이유 없이 연령제한을 하는 경우는 연령차별금지법 위반에 따른 500만원 이하의 벌금이 부과될 수 있습니다.</span>
-								</td>
-							</tr>
-							<tr>
-								<th>성별</th>
-								<td>
-									<span><input id="reg02_desc13" type="radio" name="reg02_desc13"/><label for="reg02_desc13">성별무관</label></span>
-									<span><input id="reg02_desc13_1" type="radio" name="reg02_desc13_1"/><label for="reg02_desc13_1">남자</label></span>
-									<span><input id="reg02_desc13_2" type="radio" name="reg02_desc13_2"/><label for="reg02_desc13_2">여자</label></span>
-									<span class="comment">
-									채용에서 남녀를 차별하거나, 여성근로자를 채용할 때 직무수행에 불필요한 용모, 키, 체중 등의 신체조건, 미혼조건을 제시 또는 요구하는 경우
-									남녀고용평등법 위반에 따른 500만원이하의 벌금이 부과될 수 있습니다.
-									</span>
 								</td>
 							</tr>
 							</tbody>
@@ -492,6 +440,4 @@
 		</div>
 	</div>
 </div>
-
-
 <jsp:include page="/footer.do" />

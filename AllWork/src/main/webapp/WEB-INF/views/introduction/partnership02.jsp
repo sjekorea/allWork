@@ -142,8 +142,8 @@
 				<p class="delete">
 					<a href="#none" title="등록">등록</a>
 				</p>
-				<div class="numareaWrap">
-					<ul class="numArea">
+				<div class="intro_numareaWrap">
+					<ul class="intro_numArea">
 						<li><a href="#" title="prev"><i class="fas fa-chevron-left"></i></a></li>
 						<li class="p01"><a href="#" title="page1">1</a></li>
 						<li><a href="#" title="page2">2</a></li>

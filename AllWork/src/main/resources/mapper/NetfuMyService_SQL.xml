@@ -102,42 +102,19 @@
 	<!-- 맞춤 인재 정보 목록 -->
 	<select id="selectMyServiceResumeList" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
 		select 
-			no , uid , info_type , basic , name , inid_p_chk , inid_photo , inid_phone , inid_hphone , inid_email , inid_post
-			, inid_address1 , inid_address2 , inid_home , inid_title , indi_condition
-			, inid_area1 , getCodeName(inid_area1) inid_area1_name
-			, inid_area2 , getCodeName(inid_area2) inid_area2_name
-			, inid_area3 , getCodeName(inid_area3) inid_area3_name
-			, inid_area4 , getCodeName(inid_area4) inid_area4_name
-			, inid_area5 , getCodeName(inid_area5) inid_area5_name
-			, inid_area6 , getCodeName(inid_area6) inid_area6_name
-			, inid_type1 , getCodeName(inid_type1) inid_type1_name
-			, inid_type2 , getCodeName(inid_type2) inid_type2_name
-			, inid_type3 , getCodeName(inid_type3) inid_type3_name
-			, inid_type4 , getCodeName(inid_type4) inid_type4_name
-			, inid_type5 , getCodeName(inid_type5) inid_type5_name
-			, inid_type6 , getCodeName(inid_type6) inid_type6_name
-			, inid_type7 , getCodeName(inid_type7) inid_type7_name
-			, inid_type8 , getCodeName(inid_type8) inid_type8_name
-			, inid_type9 , getCodeName(inid_type9) inid_type9_name
-			, inid_mylskill
-			, inid_jobform , getCodeName(inid_jobform) inid_jobform_name
-			, inid_pay , getCodeName(inid_pay) inid_pay_name
-			, inid_last_school , inid_career , inid_license , inid_languages , inid_introduce , inid_secret
-			, DATE_FORMAT(wdate, '%Y-%m-%d') wdate
-			, DATE_FORMAT(u_wdate, '%Y-%m-%d') u_wdate
-			, DATE_FORMAT(j_wdate, '%Y-%m-%d') j_wdate
-			, hit , service11 , service12 , service13 , service101 , service14 , service15 , service16 , service17
-			, inid_sex , sms_send , a_insert
-		from netfu_item_resume
+			${resumeColumn}
+			, nm.sex, nm.birth
+		from netfu_item_resume nir left outer join netfu_member nm on nir.uid = nm.uid
 		where 1=1
-			and inid_secret <![CDATA[<>]]> 'yes'
+			and nir.inid_secret <![CDATA[<>]]> 'yes'
+			<if test="loginId != null and loginId != ''">
+				and nir.uid = #{loginId}
+			</if>
 			<if test="orderRule != null and orderRule != ''">
-				order by ${orderRule}	
+				order by ${orderField} ${orderRule}
 			</if>
 		limit #{start}, #{pageSize}
 	</select>
-	
-	
 	
 
 	<!-- 맞춤 채용정보 설정 저장 -->

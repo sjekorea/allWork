@@ -9,10 +9,10 @@
     xmlns:task="http://www.springframework.org/schema/task"
 	xmlns:tx="http://www.springframework.org/schema/tx"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-       	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
-       	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
-       	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd" >
+       	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+       	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+       	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+       	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd" >
 
 
 	<mvc:annotation-driven>
@@ -34,33 +34,31 @@
  	<mvc:resources location="/img/" mapping="/img/**" />  
  	<mvc:resources location="/js/" mapping="/js/**" /> 
 	<mvc:resources location="/css/" mapping="/css/**" />
-	<mvc:resources location="/forms/" mapping="/forms/**" />
-	<mvc:resources location="/contentsImg/" mapping="/contentsImg/**" />
+	<mvc:resources location="/peg/" mapping="/peg/**" />
 	
-	<!-- <mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/*"/>
+			<mvc:mapping path="/**"/>
             <mvc:exclude-mapping path="/"/>
-            <mvc:exclude-mapping path="/home.do"/>
+            <mvc:exclude-mapping path="/index.do"/>
             <mvc:exclude-mapping path="/login.do"/>
             <mvc:exclude-mapping path="/logout.do"/>
-            <mvc:exclude-mapping path="/clickDetector.do"/>
-            <mvc:exclude-mapping path="/showContents.do"/>
-            <mvc:exclude-mapping path="/cdect.do"/>
+            <mvc:exclude-mapping path="/personJoin.do"/>
+            <mvc:exclude-mapping path="/companyJoin.do"/>
+            <mvc:exclude-mapping path="/*Header.do"/>
+            <mvc:exclude-mapping path="/*SubMenu.do"/>
+            <mvc:exclude-mapping path="/footer.do"/>
+            <mvc:exclude-mapping path="/memberAgree*.do"/>
+            <mvc:exclude-mapping path="/intro*.do"/>
+            <mvc:exclude-mapping path="/partnership*.do"/>
+            <mvc:exclude-mapping path="/sitemap.do"/>
+            <mvc:exclude-mapping path="/privatePolicy.do"/>
+            <mvc:exclude-mapping path="/termsOfService.do"/>
             <mvc:exclude-mapping path="/*.ajax"/>
-			<bean id="loginCheckInterceptor" class="micrm.common.interceptor.LoginCheckInterceptor" />
+			<bean id="loginCheckInterceptor" class="allwork.common.interceptor.LoginCheckInterceptor" />
 		</mvc:interceptor>
-		<mvc:interceptor>
-			<mvc:mapping path="/*"/>
-            <mvc:exclude-mapping path="/login.do"/>
-            <mvc:exclude-mapping path="/clickDetector.do"/>
-            <mvc:exclude-mapping path="/showContents.do"/>
-            <mvc:exclude-mapping path="/cdect.do"/>
-            <mvc:exclude-mapping path="/*.ajax"/>
-			<bean id="accessControlInterceptor" class="micrm.common.interceptor.AccessControlInterceptor" />
-		</mvc:interceptor>
-	</mvc:interceptors> -->
-	
+	</mvc:interceptors>
+
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" p:maxUploadSize="1000000000" />
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />

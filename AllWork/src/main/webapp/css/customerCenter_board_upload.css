@@ -56,9 +56,9 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 #boardPart form .writePart{width:100%;height:300px;margin:10px 0;border:1px solid #ccc;}
 #boardPart form .writePart textarea{width:100%;height:100%;border:none;padding:2%;}
 
-#boardPart .buttonPart{width:205px;margin:10px auto;}
-#boardPart .buttonPart li{width:100px;height:30px;line-height:30px;text-align: center;font-size:14px;float: left;}
-#boardPart .buttonPart li:first-child{background-color:#4F60E3;margin-right:5px;}
+#boardPart .buttonPart{width:100%;margin-top:10px;text-align: center;}
+#boardPart .buttonPart li{display: inline-block;width:100px;height:30px;line-height:30px;text-align: center;font-size:14px;}
+#boardPart .buttonPart li:first-child{background-color:#4F60E3;}
 #boardPart .buttonPart li:first-child a{color:#fff;}
 #boardPart .buttonPart li:last-child{background-color:#eee;border:1px solid #999;}
 #boardPart .buttonPart li:last-child a{color:#333;}

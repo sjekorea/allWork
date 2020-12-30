@@ -11,65 +11,64 @@ body{background: #EDF0F5;}
 /*###################################   reg_rightPart   ###################################*/
     #rightPart{width:790px;height:100%;margin-left:10px;float:left;}
 
+    /*#########모집요강 이후 테이블 전체 설정#########*/
+    table{border-collapse: collapse;}
+    caption{text-align:left;font-size:24px;padding-bottom:20px;font-family:"NotoSansKR-Thin";}
+    tbody{width:100%;text-align:left;border-top:2px solid #000;border-collapse: collapse;}
+    tr{width:100%;font-size:16px;border-bottom:1px solid #ccc;}
+    th{padding-left:20px;width:140px;font-family:"NotoSansKR-Medium";background-color:#eee;}
+    td{padding-left:20px;width:570px;}
+
     /*###############################   regist00   ###############################*/
     #regist00{width:790px;margin-bottom:10px;}
-    #company_detail{width:790px;overflow:hidden;background-color:#fff;
-      border:1px solid #ccc;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;margin-bottom:10px;}
-    #company_detail p{float:left;height: 126px;line-height:126px;}
-    #company_detail .company_name{width:180px;padding-left:40px;font-size:32px;}
-    #company_detail .company_hp{width:434px;}
-    #company_detail .company_logo{width:126px;height:126px;overflow: hidden;line-height:124px;text-align: center;border-left:1px solid #ccc;}
+    #company_detail{width:790px;overflow:hidden;background-color:#fff;border:1px solid #ccc;margin-bottom:10px;}
+    #company_detail p{float:left;height: 110px;line-height:110px;}
+    #company_detail .company_name{width:678px;padding-left:40px;font-size:32px;}
+    #company_detail .company_logo{width:110px;height:110px;overflow: hidden;line-height:110px;text-align: center;border-left:1px solid #ccc;}
     #company_detail .company_logo img{width:100%;}
 
-    /*#########기본정보 테이블#########*/
     #detailArea{width:790px;padding:40px;background-color:#fff;border:1px solid #ccc;}
     #detailArea .detail_title{width:100%;height:30px;font-size:24px;font-family:"NotoSansKR-Thin";}
     #detailArea .company_setting{width:100%;height:30px;line-height:30px;font-size:14px;margin-bottom:10px;text-align:right;}
     #detailArea .company_setting span{display: inline-block;padding:0 20px;border:1px solid #808495;text-align: center;margin-left:10px;}
-    #detailArea .tabelArea{width:100%;text-indent:20px;overflow: hidden;border-top:1px solid #808495;}
-    #detailArea .tabelArea p{float: left;font-size:14px;}
-    #detailArea .tabelArea .table_title{width:120px;height:39px;line-height:40px;border-bottom:1px solid #ccc;background-color:#808495;color:#fff;}
-    #detailArea .tabelArea .table_desc{width:234px;height:39px;line-height:40px;border-bottom:1px solid #808495;}
-    #detailArea .tabelArea .table_desc01{width:588px;height:39px;line-height:40px;border-bottom:1px solid #808495;}
 
-                    #detailArea .company_setting span:hover{background-color:#eee;}
+    #detailArea table{border-top:1px solid #000;border-bottom:1px solid #000;}
+    #detailArea caption{display:none;}
+    #detailArea .tabelArea{width:100%;overflow: hidden;}
+    #detailArea .tabelArea tr{line-height:30px;float:left;font-size:14px;overflow:hidden;}
+    #detailArea .tabelArea .table_title{width:120px;background-color:#808495;color:#fff;}
+    #detailArea .tabelArea .table_desc{width:588px;}
 
-
-    /*#########모집요강 이후 테이블 전체 설정#########*/
-    table{border-collapse: collapse;}
-    caption{text-align:left;font-size:24px;padding-bottom:20px;font-family:"NotoSansKR-Thin";}
-    tbody{width:100%;text-align:left;border-top:2px solid #000;}
-    tr{width:100%;font-size:16px;height:60px;font-size:14px;}
-    th{width:140px;font-family:"NotoSansKR-Medium";background-color:#eee;text-indent:20px;border-bottom:1px solid #fff;}
-
-    td{width:570px;padding-top:10px;text-indent:20px;border-bottom:1px solid #ccc;}
+                  #detailArea .company_setting:hover{background-color:#eee;}
+                  #detailArea .tabelArea tr:last-child{border-bottom:none;}
 
       /*###############################  모집요강 regist02   ###############################*/
       #regist02{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
       #regForm02{width:790px;background-color:#fff;padding:40px;}
+      #regForm02 tr{width:100%;font-size:16px;height:60px;font-size:14px;}
 
       /*###############################  상세요강 regist03   ###############################*/
       #regist03{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
       #regForm03{width:790px;background-color:#fff;padding:40px;}
       #regForm03 h4{width:100%;text-align:left;font-size:24px;padding-bottom:20px;font-family:"NotoSansKR-Thin";}
       #regForm03 p{width:100%;overflow: hidden;}
+      #regForm03 tr{width:100%;font-size:16px;height:60px;font-size:14px;}
 
       /*###############################  접수기간/방법 regist04   ###############################*/
       #regist04{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
       #regForm04{width:790px;background-color:#fff;padding:40px;}
       #regForm04 h4{width:100%;text-align:left;font-size:24px;padding-bottom:20px;font-family:"NotoSansKR-Thin";}
+      #regForm04 tr{width:100%;font-size:16px;height:60px;font-size:14px;}
 
       /*###############################  담당자정보 regist05   ###############################*/
       #regist05{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
       #regForm05{width:790px;background-color:#fff;padding:40px;}
       #regForm05 h4{width:100%;text-align:left;font-size:24px;padding-bottom:20px;font-family:"NotoSansKR-Thin";}
+      #regForm05 tr{width:100%;font-size:16px;height:60px;font-size:14px;}
 
       /*###############################   입사지원 버튼   ###############################*/
-      #rightPart ul{width:405px;margin:0 auto;}
-      #rightPart ul li{width:198px;height:48px;margin-bottom:5px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;float:left;}
+      #rightPart ul{width:100%;height:50px;text-align: center;}
+      #rightPart ul li{display:inline-block;width:200px;height:50px;margin-right:5px;text-align:center;line-height:50px;background-color:#fff;border:1px solid #ccc;}
       #rightPart ul li:last-child{margin-right:0px;}
       #rightPart ul li a{display:block;width:100%;height:100%;color:#666;}
       #rightPart ul li.reg_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
