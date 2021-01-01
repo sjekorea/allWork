@@ -179,7 +179,7 @@ public class CompanyController {
 	/*
 	 * 채용정보 등록 처리
 	 */
-	@RequestMapping(value="/registRecruit.ajax")
+	@RequestMapping(value="/registRecruit.do")
 	public ModelAndView registRecruit(CommandMap commandMap, HttpSession session) {
 		
 		ModelAndView mv = new ModelAndView();

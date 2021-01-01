@@ -46,7 +46,7 @@
 				</div>
 			</div>
 			<div id="regist02">
-				<form id="regForm02" action="#none" method="post">
+				<form id="registForm" name="registForm" action="/registRecruit.do" method="post">
 				<fieldset>
 					<legend>모집요강</legend>
 					<div>
@@ -362,7 +362,7 @@
 	$(document).ready(function(){
 		
 		nhn.husky.EZCreator.createInIFrame({
-	        oAppRef: bizVision_object,
+	        oAppRef: bizDetail_object,
 	        elPlaceHolder: "bizDetail",
 	        sSkinURI: "/smartEditor/SmartEditor2Skin.html",
 	        htParams : {

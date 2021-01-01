@@ -21,6 +21,7 @@ import allwork.service.NetfuMyServiceService;
 import allwork.service.NetfuOnlineRecruitService;
 import allwork.service.NetfuOpenResumeService;
 import allwork.service.NetfuItemResumeService;
+import allwork.service.NetfuCateService;
 import allwork.service.NetfuConcernService;
 import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuScrapService;
@@ -60,6 +61,9 @@ public class PersonController {
 	
 	@Resource(name="netfuMyServiceService")
 	private NetfuMyServiceService netfuMyServiceService;
+
+	@Resource(name="netfuCateService")
+	private NetfuCateService netfuCateService;		
 	
 	
 	/*
@@ -128,9 +132,46 @@ public class PersonController {
 	 * 이력서 등록 페이지 이동
 	 */
 	@RequestMapping(value="/resumeInfoReg.do")
-	public ModelAndView resumeInfoReg(CommandMap commandMap) {
+	public ModelAndView resumeInfoReg(CommandMap commandMap, HttpSession session) {
 		
 		ModelAndView mv = new ModelAndView("/person/resumeInfoReg");
+		
+		try{
+			
+			commandMap.put("personUid", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
+			
+			// 회원정보 조회
+			Map<String, Object> memberMap = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
+
+			commandMap.put("pCode", "");
+			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
+			commandMap.put("type", "job");
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 산업별 목록  ( netfu_cate : type = 'area_job' )
+			commandMap.put("type", "area_job");
+			List<Map<String, Object>> areaJobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 지역별  ( netfu_cate : type ='area' )
+			commandMap.put("type", "area");
+			List<Map<String, Object>> areaList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 고용형태  ( netfu_cate : type ='job_type' )
+			commandMap.put("type", "job_type");
+			List<Map<String, Object>> jobTypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 급여종류  ( netfu_cate : type ='inid_pay' )
+			commandMap.put("type", "inid_pay");
+			List<Map<String, Object>> inidPayList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 최종학력  ( netfu_cate : type ='job_school' )
+			commandMap.put("type", "job_school");
+			List<Map<String, Object>> jobSchoolList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+		}catch(Exception e){
+			System.out.println(this.getClass().getName()+".resumeInfoReg Exception!!!! \n"+e.toString());
+		}
 		
 		return mv;
 	}
@@ -139,7 +180,7 @@ public class PersonController {
 	/*
 	 * 이력서 등록 처리
 	 */
-	@RequestMapping(value="/registResume.ajax")
+	@RequestMapping(value="/registResume.do")
 	public ModelAndView registResume(CommandMap commandMap) {
 		
 		ModelAndView mv = new ModelAndView();

@@ -33,11 +33,11 @@
 <table>
 <caption>이력 등록하기</caption>
 <tbody class="tabelArea">
-<tr><th class="table_title">이름</th><td class="table_desc">홍길동</td></tr>
-<tr><th class="table_title">이메일</th><td class="table_desc">asdf@naver.com</td></tr>
-<tr><th class="table_title">휴대폰</th><td class="table_desc">010-000-0000</td></tr>
-<tr><th class="table_title">연락처</th><td class="table_desc">-</td></tr>
-<tr><th class="table_title">주소</th><td class="table_desc">[463-869] 경기 성남시 분당구 정자일로 156</td></tr>
+<tr><th class="table_title">이름</th><td class="table_desc">${memberMap.name }</td></tr>
+<tr><th class="table_title">이메일</th><td class="table_desc">${memberMap.email }</td></tr>
+<tr><th class="table_title">휴대폰</th><td class="table_desc">${memberMap.hphone }</td></tr>
+<tr><th class="table_title">연락처</th><td class="table_desc">${memberMap.phone }</td></tr>
+<tr><th class="table_title">주소</th><td class="table_desc">[${memberMap.post }] ${memberMap.address1 } ${memberMap.address2 }</td></tr>
 </tbody>
 </table>
 </div>
@@ -53,8 +53,8 @@
 <tr>
 <th>이력서 공개<span class="necessary">*</span></th>
 <td>
-<span><input id="res01_desc01" type="radio" name="res01_desc01"/><label for="res01_desc01">&nbsp;공개</label></span>
-<span><input id="res01_desc01_1" type="radio" name="res01_desc01_1"/><label for="res01_desc01_1">&nbsp;비공개</label></span>
+<span><input id="inidTitle" type="radio" name="inidTitle"/><label for="res01_desc01">&nbsp;공개</label></span>
+<span><input id="inidTitle" type="radio" name="inidTitle"/><label for="res01_desc01_1">&nbsp;비공개</label></span>
 </td>
 </tr>
 </tbody>
