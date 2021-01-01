@@ -42,5 +42,10 @@ public class NetfuItemResumeDao extends AbstractDAO{
 	public Map<String, Object> selectNetfuItemResumeMap(Map<String, Object> map) throws Exception{
 		return (Map<String, Object>) selectOne("netfuItemResume.selectNetfuItemResumeMap", map);
 	}
+	
+	// 이력서 등록
+	public int insertNetfuItemResume(Map<String, Object> map) throws Exception{ 
+		return insert("netfuItemResume.insertNetfuItemResume", map);
+	}
 
 }

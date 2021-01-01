@@ -7,6 +7,7 @@
 
 <jsp:include page="/companyHeader.do" />
 
+<script type="text/javascript" src="/smartEditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="/css/company_01.css"/>
 
 <div id="containerWrap">
@@ -15,7 +16,6 @@
 			<jsp:include page="/companySubMenu.do" />
 			<div id="leftPart_buttom">
 				<ul>
-					<li><a href="#none" title="임시저장">취소</a></li>
 					<li class="reg_ok"><a href="#none" title="등록완료">등록완료</a></li>
 				</ul>
 			</div>
@@ -23,9 +23,9 @@
 		<div id="rightPart">
 			<div id="regist00">
 				<div id="company_detail">
-					<p class="company_name">일마그나</p>
-					<p class="company_hp"><a href="#none" title="기업홈페이지">www.ilmagna.com</a></p>
-					<p class="company_logo"><img src="#" alt="로고"/></p>
+					<p class="company_name">${companyMap.bizName}</p>
+					<p class="company_hp"><a href="#none" title="기업홈페이지">${companyMap.bizHome}</a></p>
+					<p class="company_logo"><img src="/peg/"+${companyMap.biz} alt="로고"/></p>
 				</div>
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
@@ -33,15 +33,14 @@
 					<table>
 						<caption>채용공고 등록하기</caption>
 						<tbody class="tabelArea">
-							<tr><th class="table_title">대표자</th><td class="table_desc">홍길동</td></tr>
-							<tr><th class="table_title">기업형태</th><td class="table_desc">벤처기업</td></tr>
-							<tr><th class="table_title">자본금</th><td class="table_desc">4천만원</td></tr>
-							<tr><th class="table_title">설립년도</th><td class="table_desc">2019년</td></tr>
-							<tr><th class="table_title">사원수</th><td class="table_desc">6명</td></tr>
-							<tr><th class="table_title">상장여부</th><td class="table_desc">비상장</td></tr>
-							<tr><th class="table_title">홈페이지</th><td class="table_desc">www.asdf.com</td></tr>
-							<tr><th class="table_title">업종</th><td class="table_desc">IT.웹.통신</td></tr>
-							<tr><th class="table_title">사업내용</th><td class="table_desc">AI S/W 개발</td></tr>
+							<tr><th class="table_title">대표자</th><td class="table_desc">${companyMap.bizRecharger}</td></tr>
+							<tr><th class="table_title">기업형태</th><td class="table_desc">${companyMap.bizFormName}</td></tr>
+							<tr><th class="table_title">자본금</th><td class="table_desc">${companyMap.bizCapital}</td></tr>
+							<tr><th class="table_title">설립년도</th><td class="table_desc">${companyMap.bizFonundation}년</td></tr>
+							<tr><th class="table_title">사원수</th><td class="table_desc">${companyMap.bizMen}명</td></tr>
+							<tr><th class="table_title">상장여부</th><td class="table_desc">${companyMap.bizListName}</td></tr>
+							<tr><th class="table_title">업종</th><td class="table_desc">${companyMap.bizCategoryName}</td></tr>
+							<tr><th class="table_title">사업내용</th><td class="table_desc">${companyMap.bizSubject}</td></tr>
 						</tbody>
 					</table>
 				</div>
@@ -57,136 +56,79 @@
 							<tr>
 								<th>공고제목<span class="necessary">*</span></th>
 								<td>
-									<span><input class="reg_text" id="reg02_desc01" type="text" name="reg02_desc01" placeholder="ex)웹기획 경력직 채용"/></span>
-									<span><input id="reg02_desc01_1" type="checkbox" name="reg02_desc01_1"/><label for="reg02_desc01_1">담당업무와 동일</label>&nbsp;&nbsp;&nbsp;</span><span class="comment">공고제목은 구체적인 담당업무를 포함하여 입력하여 주시기 바랍니다.</span>
+									<span><input class="reg_text" id="bizTitle" type="text" name="bizTitle" placeholder="ex)웹기획 경력직 채용" value="공고제목"/></span>
 								</td>
 							</tr>
 							<tr>
 								<th>모집업종<span class="necessary">*</span></th>
 								<td>
-									<select id="reg02_desc02" name="reg02_desc02" title="1차직무선택">
-										<option value="1차직무선택">1차직무선택</option>
-										<option value="IT.인터넷.게임.모바일">IT.인터넷.게임.모바일</option>
-										<option value="전문직.금융.세무.법무">전문직.금융.세무.법무</option>
-										<option value="생산.제조.기계.산업">생산.제조.기계.산업</option>
-										<option value="건설.인테리어.부동산">건설.인테리어.부동산</option>
-										<option value="유통.무역.운수">유통.무역.운수</option>
-										<option value="경영.기획.사무">경영.기획.사무</option>
-										<option value="영업.판매">영업.판매</option>
-										<option value="교육.서비스">교육.서비스</option>
+									<select id="job11" name="job11" title="1차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'job12', true, true);">
+										<option value="">1차직무선택</option>
+										<c:forEach var="result" items="${jobList}" varStatus="status">
+											<option value="${result.code}">${result.name}</option>
+										</c:forEach>
 									</select>
-									<select id="reg02_desc02_1" name="reg02_desc02_1" title="2차직무선택">
-										<option value="2차직무선택">2차직무선택</option>
-									</select>
-									<select id="reg02_desc02_2" name="reg02_desc02_2" title="3차직무선택">
+									<select id="job12" name="job12" title="2차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'job13', true, true);">
+											<option value="">2차직무선택</option>
+										</select>
+									<select id="job13" name="job13" title="3차직무선택">
 										<option value="3차직무선택">3차직무선택</option>
 									</select>
 									<input id="reg02_desc02_3" type="button" name="reg02_desc02_3" value="+ 추가"/>
+									<input id="reg02_desc02_3" type="button" name="reg02_desc02_3" value="- 삭제"/>
 								</td>
 							</tr>
 							<tr>
 								<th>산업분야<span class="necessary">*</span></th>
 								<td>
-									<select id="res02_desc03" name="res02_desc03" title="1차산업선택">
-										<option value="1차산업선택">1차산업선택</option>
-										<option value="IT.인터넷.게임.모바일">IT.인터넷.게임.모바일</option>
-										<option value="전문직.금융.세무.법무">전문직.금융.세무.법무</option>
-										<option value="생산.제조.기계.산업">생산.제조.기계.산업</option>
-										<option value="건설.인테리어.부동산">건설.인테리어.부동산</option>
-										<option value="유통.무역.운수">유통.무역.운수</option>
-										<option value="경영.기획.사무">경영.기획.사무</option>
-										<option value="영업.판매">영업.판매</option>
-										<option value="교육.서비스">교육.서비스</option>
+									<select id="areaJob11" name="areaJob11" title="1차산업선택" onchange="javascript:getNetfuCateListForSelect('area_job', this, '2차산업선택', 'areaJob12', true, true);">
+										<option value="">1차산업선택</option>
+										<c:forEach var="result" items="${jobList}" varStatus="status">
+											<option value="${result.code}">${result.name}</option>
+										</c:forEach>
 									</select>
-									<select id="res02_desc03_1" name="res02_desc03_1" title="2차산업선택">
-										<option value="2차산업선택">2차산업선택</option>
-									</select>
-									<select id="res02_desc03_2" name="res02_desc03_2" title="3차산업선택">
-										<option value="3차산업선택">3차산업선택</option>
+									<select id="areaJob12" name="areaJob12" title="2차산업선택" onchange="javascript:getNetfuCateListForSelect('area_job', this, '3차산업선택', 'areaJob13', true, true);">
+											<option value="">2차산업선택</option>
+										</select>
+									<select id="areaJob13" name="areaJob13" title="3차산업선택">
+										<option value="3차직무선택">3차산업선택</option>
 									</select>
 									<input id="res02_desc03_3" type="button" name="res02_desc03_3" value="+ 추가"/>
+									<input id="reg02_desc02_3" type="button" name="reg02_desc02_3" value="- 삭제"/>
 								</td>
 							</tr>
 							<tr>
 								<th>근무지역<span class="necessary">*</span></th>
 								<td>
-									<select id="reg02_desc05" name="reg02_desc05" title="시도선택">
-										<option value="시도선택">시도선택</option>
-										<option value="전체">전국</option>
-										<option value="서울">서울</option>
-										<option value="인천">인천</option>
-										<option value="경기">경기</option>
-										<option value="광주">광주</option>
-										<option value="대전">대전</option>
-										<option value="대구">대구</option>
-										<option value="부산">부산</option>
-										<option value="세종">세종</option>
-										<option value="울산">울산</option>
-										<option value="강원">강원</option>
-										<option value="경북">경북</option>
-										<option value="경남">경남</option>
-										<option value="전남">전남</option>
-										<option value="전북">전북</option>
-										<option value="충남">충남</option>
-										<option value="충북">충북</option>
-										<option value="제주">제주</option>
-										<option value="해외">해외</option>
+									<select id="area11" name="area1" onchange="javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'area12', true, true);">
+										<c:forEach var="result" items="${areaList}" varStatus="status">
+											<option value="${result.code}">${result.name}</option>
+										</c:forEach>
 									</select>
-									<select id="reg02_desc05_1" name="reg02_desc05_1" title="시군선택">
-										<option value="시군선택">시구군선택</option>
-										<option value="서울전체">서울전체</option>
-										<option value="강남구">강남구</option>
-										<option value="강동구">강동구</option>
-										<option value="강북구">강북구</option>
-										<option value="강서구">강서구</option>
-										<option value="관악구">관악구</option>
-										<option value="광진구">광진구</option>
-										<option value="구로구">구로구</option>
-										<option value="금천구">금천구</option>
-										<option value="노원구">노원구</option>
-										<option value="도봉구">도봉구</option>
-										<option value="동대문구">동대문구</option>
-										<option value="동작구">동작구</option>
-										<option value="마포구">마포구</option>
-										<option value="서대문구">서대문구</option>
-										<option value="서초구">서초구</option>
-										<option value="성동구">성동구</option>
-										<option value="성북구">성북구</option>
-										<option value="송파구">송파구</option>
-										<option value="양천구">양천구</option>
-										<option value="영등포구">영등포구</option>
-										<option value="용산구">용산구</option>
-										<option value="은평구">은평구</option>
-										<option value="종로구">종로구</option>
-										<option value="중구">중구</option>
-										<option value="중랑구">중랑구</option>
+									<select id="area12" name="area2">
+										<option value="">시구군선택</option>
 									</select>
 									<input id="reg02_desc05_3" type="button" name="reg02_desc05_3" value="+ 추가"/>
+									<input id="reg02_desc02_3" type="button" name="reg02_desc02_3" value="- 삭제"/>
 									<span class="comment">최대 3개까지 선택 가능</span>
 								</td>
 							</tr>
 							<tr>
 								<th>담당업무<span class="necessary">*</span></th>
-								<td><input id="reg02_desc06" type="text" name="reg02_desc06"/></td>
+								<td><input id=bizBusiness type="text" name="bizBusiness"/></td>
 							</tr>
 							<tr>
 								<th>고용형태<span class="necessary">*</span></th>
 								<td>
-									<span><input id="reg02_desc07" type="checkbox" name="reg02_desc07"/><label for="reg02_desc07">정규직</label></span>
-									<span><input id="reg02_desc07_1" type="checkbox" name="reg02_desc07_1"/><label for="reg02_desc07_1">계약직</label></span>
-									<span><input id="reg02_desc07_2" type="checkbox" name="reg02_desc07_2"/><label for="reg02_desc07_2">프리랜서</label></span>
-									<span><input id="reg02_desc07_3" type="checkbox" name="reg02_desc07_3"/><label for="reg02_desc07_3">아르바이트</label></span>
-									<span><input id="reg02_desc07_4" type="checkbox" name="reg02_desc07_4"/><label for="reg02_desc07_4">추후협의</label></span>
+									<c:forEach var="result" items="${jobTypeList}" varStatus="status">
+										<span><input id="bizJobfromChk" type="checkbox" name="bizJobfromChk" value="${result.code}"/><label for="reg02_desc07">${result.name}</label></span>
+									</c:forEach>
 								</td>
 							</tr>
 							<tr>
 								<th>모집인원<span class="necessary">*</span></th>
 								<td>
-									<span><input id="reg02_desc08" type="checkbox" name="reg02_desc08"/><label for="reg02_desc08">직접입력</label></span>
-									<span><input id="reg02_desc08_1" type="text" name="reg02_desc08_1"/><label for="reg02_desc08_1">&nbsp;명</label></span>
-									<span><input id="reg02_desc08_2" type="checkbox" name="reg02_desc08_2"/><label for="reg02_desc08_2">0명</label></span>
-									<span><input id="reg02_desc08_3" type="checkbox" name="reg02_desc08_3"/><label for="reg02_desc08_3">00명</label></span>
-									<span><input id="reg02_desc08_4" type="checkbox" name="reg02_desc08_4"/><label for="reg02_desc08_4">000명</label></span>
+									<span><input id="bizMen" type="text" name="bizMen"/><label for="reg02_desc08_1">&nbsp;명</label></span>
 								</td>
 							</tr>
 							<tr>
@@ -225,28 +167,12 @@
 							<tr>
 								<th>급여조건<span class="necessary">*</span></th>
 								<td>
-									<select id="res02_desc10" name="res02_desc10" title="연봉/시급선택">
-										<option value="연봉">연봉</option>
-										<option value="시급">월급</option>
-										<option value="시급">주급</option>
-										<option value="시급">일급</option>
-										<option value="시급">시급</option>
+									<select id="inidPay1" name="inidPay1" onchange="javascript:getNetfuCateListForSelect('inid_pay', this, '', 'inidPay2', true, false);">
+										<c:forEach var="result" items="${inidPayList}" varStatus="status">
+											<option value="${result.code}">${result.name}</option>
+										</c:forEach>
 									</select>
-									<select id="reg02_desc10_1" name="reg02_desc10_1" title="연봉선택">
-										<option value="2,600만원 이하">2,600만원 이하</option>
-										<option value="2,600~2,800만원">2,600~2,800만원</option>
-										<option value="2,800~3,000만원">2,800~3,000만원</option>
-										<option value="3,000~3,500만원">3,000~3,500만원</option>
-										<option value="3,500~4,000만원">3,500~4,000만원</option>
-										<option value="4,000~4,500만원">4,000~4,500만원</option>
-										<option value="4,500~5,000만원">4,500~5,000만원</option>
-										<option value="5,000~6,000만원">5,000~6,000만원</option>
-										<option value="6,000~7,000만원">6,000~7,000만원</option>
-										<option value="7,000~8,000만원">7,000~8,000만원</option>
-										<option value="8,000~9,000만원">8,000~9,000만원</option>
-										<option value="1억 이상">1억 이상</option>
-										<option value="회사 내규에 따름">회사내규에 따름</option>
-										<option value="면접후 결정">면접후 결정</option>
+									<select id="inidPay2" name="inidPay2">
 									</select>
 								</td>
 							</tr>
@@ -255,11 +181,9 @@
 								<td>
 									<select id="reg02_desc11" name="reg02_desc11" title="학력 선택">
 										<option value="학력 선택">학력 선택</option>
-										<option value="고등학교졸업">고등학교졸업 이상</option>
-										<option value="대학졸업(2,3년)">대학졸업(2,3년) 이상</option>
-										<option value="대학졸업(4년)">대학졸업(4년) 이상</option>
-										<option value="석사">석사 이상</option>
-										<option value="박사">박사 이상</option>
+										<c:forEach var="result" items="${jobSchoolList}" varStatus="status">
+											<option value="${result.code}">${result.name}</option>
+										</c:forEach>
 									</select>
 								</td>
 							</tr>
@@ -284,7 +208,7 @@
 										ㆍ모집직종 및 담당업무에 관련된 상세한 정보, 모집내용에 관련된자격요건, 제출서류, 전형방법, 근무조건, 회사위치 등을 입력해 주십시오.<br/>
 										ㆍ상세모집요강 작성에 많은 시간이 필요할 경우 메모장이나 워드프로그램에서 작성한 다음 붙여넣기를 하시기 바랍니다.
 										</p>
-										<textarea id="reg03_desc01" name="reg03_desc01"></textarea>
+										<textarea id="bizDetail" name="bizDetail"></textarea>
 									</td>
 								</tr>
 							</tbody>
@@ -301,18 +225,13 @@
 						<table>
 							<caption>근무환경</caption>
 							<tbody>
-							<tr>
-								<th>우대조건</th>
-								<td>
-									<span><input id="reg04_desc01" type="checkbox" name="reg04_desc01"/><label for="reg04_desc01">국가유공자</label></span>
-									<span><input id="reg04_desc01_1" type="checkbox" name="reg04_desc01_1"/><label for="reg04_desc01_1">보훈대상자</label></span>
-									<span><input id="reg04_desc01_2" type="checkbox" name="reg04_desc01_2"/><label for="reg04_desc01_2">고용촉진장려금 대상자</label></span>
-									<span><input id="reg04_desc01_3" type="checkbox" name="reg04_desc01_3"/><label for="reg04_desc01_3">장애인</label></span>
-									<span><input id="reg04_desc01_4" type="checkbox" name="reg04_desc01_4"/><label for="reg04_desc01_4">취업보호대상자</label></span>
-									<span><input id="reg04_desc01_5" type="checkbox" name="reg04_desc01_5"/><label for="reg04_desc01_5">영어가능자</label></span>
-									<span><input id="reg04_desc01_6" type="checkbox" name="reg04_desc01_6"/><label for="reg04_desc01_6">일본어가능자</label></span>
-									<span><input id="reg04_desc01_7" type="checkbox" name="reg04_desc01_7"/><label for="reg04_desc01_7">주부우대</label></span>
-								</td>
+								<tr>
+									<th>우대조건</th>
+									<td>
+										<c:forEach var="result" items="${preferentialList}" varStatus="status">
+											<span><input id="bizPreferentialChk" type="checkbox" name="bizPreferentialChk" value="${result.code}"/><label for="reg02_desc07">${result.name}</label></span>
+										</c:forEach>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -339,19 +258,17 @@
 								<tr>
 									<th>제출서류</th>
 									<td>
-										<span><input id="reg05_desc02" type="checkbox" name="reg05_desc02"/><label for="reg05_desc02">이력서</label></span>
-										<span><input id="reg05_desc02_1" type="checkbox" name="reg05_desc02_1"/><label for="reg05_desc02_1">자기소개서</label></span>
-										<span><input id="reg05_desc02_2" type="checkbox" name="reg05_desc02_2"/><label for="reg05_desc02_2">졸업증명서</label></span>
-										<span><input id="reg05_desc02_3" type="checkbox" name="reg05_desc02_3"/><label for="reg05_desc02_3">주민등록등본</label></span>
-										<span><input id="reg05_desc02_4" type="checkbox" name="reg05_desc02_4"/><label for="reg05_desc02_4">성적증명서</label></span>
+										<c:forEach var="result" items="${jobPaperList}" varStatus="status">
+											<span><input id="bizPaperChk" type="checkbox" name="bizPaperChk" value="${result.code}"/><label for="reg02_desc07">${result.name}</label></span>
+										</c:forEach>
 									</td>
 								</tr>
 								<tr>
 									<th>접수방법<span class="necessary">*</span></th>
 									<td>
-										<span><input id="reg05_desc03" type="checkbox" name="reg05_desc03"/><label for="reg05_desc03">이메일 입사지원</label></span>
-										<span><input id="reg05_desc03_1" type="checkbox" name="reg05_desc03_1"/><label for="reg05_desc03_1">온라인 입사지원</label></span>
-										<span><input id="reg05_desc03_1" type="checkbox" name="reg05_desc03_1"/><label for="reg05_desc03_1">모바일 입사지원</label></span>
+										<c:forEach var="result" items="${jobRecipientList}" varStatus="status">
+											<span><input id="bizFormChk" type="checkbox" name="bizFormChk" value="${result.code}"/><label for="reg02_desc07">${result.name}</label></span>
+										</c:forEach>
 									</td>
 								</tr>
 								<tr>
@@ -383,41 +300,36 @@
 							<tbody>
 								<tr>
 									<th>담당자명<span class="necessary">*</span></th>
-									<td><input id="reg06_desc01" type="text" name="reg06_desc01" title="담당자명"/></td>
+									<td><input id="bizPerson" type="text" name="bizPerson" title="담당자명"/></td>
 								</tr>
 								<tr>
 									<th>전화번호<span class="necessary">*</span></th>
 									<td>
-										<span>
-										<select id="reg06_desc02" name="reg06_desc02" title="전화번호 앞자리 선택">
-											<option value="010">010</option>
-											<option value="011">011</option>
-											<option value="016">016</option>
-											<option value="help">문의</option>
-										</select>
-										</span>
+										<span><input id="bizPphone1" type="text" name="bizPphone1" title=""/></span>
 										<span>-</span>
-										<span><input id="reg06_desc02_1" type="text" name="reg06_desc02_1" title="전화번호 가운데 자리 선택"/></span>
+										<span><input id="bizPphone2" type="text" name="bizPphone2" title=""/></span>
 										<span>-</span>
-										<span><input id="reg06_desc02_3" type="text" name="reg06_desc02_3" title="전화번호 마지막 자리 선택"/></span>
+										<span><input id="bizPphone3" type="text" name="bizPphone3" title=""/></span>
+										<input type="hidden" name="bizPphone" id="bizPphone" value="" />
 									</td>
 								</tr>
 								<tr>
 									<th>팩스<span class="necessary">*</span></th>
 									<td>
-										<span><input id="reg06_desc03" type="text" name="reg06_desc03" title="전화번호 가운데 자리 선택"/></span>
+										<span><input id="bizPfax1" type="text" name="bizPfax1" title=""/></span>
 										<span>-</span>
-										<span><input id="reg06_desc03_1" type="text" name="reg06_desc03_1" title="전화번호 가운데 자리 선택"/></span>
+										<span><input id="bizPfax2" type="text" name="bizPfax2" title=""/></span>
 										<span>-</span>
-										<span><input id="reg06_desc03_2" type="text" name="reg06_desc03_2" title="전화번호 마지막 자리 선택"/></span>
+										<span><input id="bizPfax3" type="text" name="bizPfax3" title=""/></span>
+										<input type="hidden" name="bizPfax" id="bizPfax" value="" />
 									</td>
 								</tr>
 								<tr>
 									<th>이메일<span class="necessary">*</span></th>
 									<td>
-										<span><input id="reg06_desc04" type="text" name="reg06_desc04" title="아이디만 입력"/></span><span>@</span><span><input id="reg06_desc04_1" type="text" name="reg06_desc04_1" title="이메일 주소 선택"/></span>
+										<span><input id="bizPemailId" type="text" name="bizPemailId" title=""/></span><span>@</span><span><input id="reg06_desc04_1" type="text" name="reg06_desc04_1" title="이메일 주소 선택"/></span>
 										<span>
-											<select id="reg06_desc04_2" name="reg06_desc04_2" title="이메일 선택">
+											<select id="selBizPemailHost" name="selBizPemailHost" title="">
 												<option value="direct">직접입력</option>
 												<option value="gmail.com">gmail.com</option>
 												<option value="naver.com">naver.com</option>
@@ -425,6 +337,7 @@
 												<option value="nate.com">nate.com</option>
 											</select>
 										</span>
+										<input type="hidden" name="bizPemail" id="bizPemail" value="" />
 									</td>
 								</tr>
 							</tbody>
@@ -434,7 +347,7 @@
 				</form>
 			</div>
 			<ul>
-				<li><a href="#none" title="임시저장">취소</a></li>
+				<li><a href="" title="">취소</a></li>
 				<li class="reg_ok"><a href="#none" title="등록완료">등록완료</a></li>
 			</ul>
 		</div>
@@ -444,15 +357,39 @@
 
 <script type="text/javascript">
 
+	var bizDetail_object = [];	
+
 	$(document).ready(function(){
+		
+		nhn.husky.EZCreator.createInIFrame({
+	        oAppRef: bizVision_object,
+	        elPlaceHolder: "bizDetail",
+	        sSkinURI: "/smartEditor/SmartEditor2Skin.html",
+	        htParams : {
+	            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseToolbar : true,            
+	            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseVerticalResizer : true,    
+	            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseModeChanger : true,
+	        }
+	    });
+		
 		$(".reg_ok").on("click", function(e){
-			alert("regist!");
+			registRecruit();
 		});
 	});	
 	
 	
-	function recruitInfoRegist(){
-		alert("recruitInfoRegist");
+	function registRecruit(){
+		var callback = function(data){
+			alert("저장 되었습니다.");
+		};
+		
+		var param = {
+					
+				};
+		ajax('post', '/registRecruit.ajax', param, callback);
 	}
 	
 </script>

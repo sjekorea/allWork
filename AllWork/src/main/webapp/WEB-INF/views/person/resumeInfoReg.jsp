@@ -144,6 +144,7 @@
 <option value="중랑구">중랑구</option>
 </select>
 <input id="res02_desc03_3" type="button" name="res02_desc03_3" value="+ 추가"/>
+<input id="res02_desc03_3" type="button" name="res02_desc03_3" value="+ 삭제"/>
 </td>
 </tr>
 <tr>
@@ -167,6 +168,7 @@
 <option value="hidden">3차직무선택</option>
 </select>
 <input id="res02_desc04_3" type="button" name="res02_desc04_3" value="+ 추가"/>
+<input id="res02_desc03_3" type="button" name="res02_desc03_3" value="+ 삭제"/>
 </td>
 </tr>
 <tr>
@@ -190,6 +192,7 @@
 <option value="hidden">3차산업선택</option>
 </select>
 <input id="res02_desc05_3" type="button" name="res02_desc05_3" value="+ 추가"/>
+<input id="res02_desc03_3" type="button" name="res02_desc03_3" value="+ 삭제"/>
 </td>
 </tr>
 <tr>
@@ -543,3 +546,43 @@
 </div>
 
 <jsp:include page="/footer.do" />
+
+
+<script type="text/javascript">
+
+	var bizDetail_object = [];	
+
+	$(document).ready(function(){
+		
+		nhn.husky.EZCreator.createInIFrame({
+	        oAppRef: bizVision_object,
+	        elPlaceHolder: "bizDetail",
+	        sSkinURI: "/smartEditor/SmartEditor2Skin.html",
+	        htParams : {
+	            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseToolbar : true,            
+	            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseVerticalResizer : true,    
+	            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseModeChanger : true,
+	        }
+	    });
+		
+		$(".reg_ok").on("click", function(e){
+			registResume();
+		});
+	});	
+	
+	
+	function registResume(){
+		var callback = function(data){
+			alert("저장 되었습니다.");
+		};
+		
+		var param = {
+					
+				};
+		ajax('post', '/registResume.ajax', param, callback);
+	}
+	
+</script>

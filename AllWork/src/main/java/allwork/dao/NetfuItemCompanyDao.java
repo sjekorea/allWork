@@ -54,5 +54,10 @@ public class NetfuItemCompanyDao extends AbstractDAO{
 	public Map<String, Object> selectNetfuItemCompanyMap(Map<String, Object> map) throws Exception{
 		return (Map<String, Object>) selectOne("netfuItemCompany.selectNetfuItemCompanyMap", map);
 	}
+	
+	// 채용공고 등록
+	public int insertNetfuItemCompany(Map<String, Object> map) throws Exception{ 
+		return insert("netfuItemCompany.insertNetfuItemCompany", map);
+	}
 
 }

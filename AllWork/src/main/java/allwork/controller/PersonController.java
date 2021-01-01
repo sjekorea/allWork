@@ -125,13 +125,32 @@ public class PersonController {
 	
 	
 	/*
-	 * 이력서 등록
+	 * 이력서 등록 페이지 이동
 	 */
 	@RequestMapping(value="/resumeInfoReg.do")
 	public ModelAndView resumeInfoReg(CommandMap commandMap) {
 		
 		ModelAndView mv = new ModelAndView("/person/resumeInfoReg");
 		
+		return mv;
+	}
+	
+	
+	/*
+	 * 이력서 등록 처리
+	 */
+	@RequestMapping(value="/registResume.ajax")
+	public ModelAndView registResume(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView();
+		try{
+			int rstCnt = netfuItemResumeService.insertNetfuItemResume(commandMap.getMap());
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("rstCnt", rstCnt);
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".registResume Exception !!!!! \n"+e.toString());
+		}
 		return mv;
 	}
 	

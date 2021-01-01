@@ -101,7 +101,7 @@ public class CompanyController {
 	
 	
 	/*
-	 * 채용정보 등록
+	 * 채용정보 등록 페이지 이동
 	 */
 	@RequestMapping(value="/recruitInfoReg.do")
 	public ModelAndView recruitInfoReg(CommandMap commandMap, HttpSession session) {
@@ -140,7 +140,7 @@ public class CompanyController {
 			commandMap.put("type", "inid_pay");
 			List<Map<String, Object>> inidPayList = netfuCateService.selectNetfuCateList(commandMap.getMap());
 			
-			// 급여종류  ( netfu_cate : type ='job_school' )
+			// 최종학력  ( netfu_cate : type ='job_school' )
 			commandMap.put("type", "job_school");
 			List<Map<String, Object>> jobSchoolList = netfuCateService.selectNetfuCateList(commandMap.getMap());
 			
@@ -172,6 +172,25 @@ public class CompanyController {
 			log.info(this.getClass().getName()+".recruitInfoReg Exception !!!!! \n"+e.toString());
 		}
 		
+		return mv;
+	}
+	
+	
+	/*
+	 * 채용정보 등록 처리
+	 */
+	@RequestMapping(value="/registRecruit.ajax")
+	public ModelAndView registRecruit(CommandMap commandMap, HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView();
+		try{
+			int rstCnt = netfuItemCompanyService.insertNetfuItemCompany(commandMap.getMap());
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("rstCnt", rstCnt);
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".registRecruit Exception !!!!! \n"+e.toString());
+		}
 		return mv;
 	}
 	
