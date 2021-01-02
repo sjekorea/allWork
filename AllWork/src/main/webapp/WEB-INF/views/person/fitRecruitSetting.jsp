@@ -151,12 +151,12 @@
 		// 급여 종류 정보 select
 		getNetfuCateListForSelect("job_pay", "", "급여 종류 선택", "jobPay1", true, true);
 		
-		// 산업 정보 추가 Button
+		// 직무 정보 추가 Button
 		$("#appendJob").on("click", function(e){
 			appendItem("job");
 		});
 		
-		// 산업 정보 추가 Button
+		// 직무 정보 추가 Button
 		$("#deleteJob").on("click", function(e){
 			deleteItem("job");
 		});

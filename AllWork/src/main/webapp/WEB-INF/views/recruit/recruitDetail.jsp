@@ -178,10 +178,10 @@
 			<div id="regist04">
 				<div id="regForm04">
 					<table>
-						<caption>접수기간/방법</caption>
+						<caption>마감일/방법</caption>
 						<tbody>
 							<tr>
-								<th>접수기간</th>
+								<th>마감일</th>
 								<c:set var="finishedStatus" value="${codeConvert:getRecruitStatusText(recruitMap.bizIng, recruitMap.bizEndType, recruitMap.bizEndDay)}" />
 								<td><c:out value="${finishedStatus}" /></td>
 							</tr>

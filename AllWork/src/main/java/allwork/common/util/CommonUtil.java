@@ -1,5 +1,6 @@
 package allwork.common.util;
 
+import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.net.InetAddress;
 import java.text.SimpleDateFormat;
@@ -13,6 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class CommonUtil {
 	
@@ -141,4 +143,25 @@ public class CommonUtil {
 		return rtnList;
 	}
 
+	public static void Alert(String alertMsg, String redirectUrl, HttpServletRequest request, HttpServletResponse response){
+		
+		try{
+			
+			request.setCharacterEncoding("UTF-8");
+		    response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.print("<script type='text/javascript'>");
+			out.print("alert('"+alertMsg+"');");
+			out.print("location.href = '"+redirectUrl+"';");
+			out.print("</script>");
+			out.flush();
+			out.close();
+			
+		}catch(Exception e){
+			System.out.println("Alert Exception!!! \n"+e.toString());
+		}
+	}
+	
+	
+	
 }

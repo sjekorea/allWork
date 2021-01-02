@@ -77,9 +77,142 @@ public class NetfuItemResumeVo {
 	private String aInsert;
 	private String birth;
 	private String sex;
+	private String inidAreaJob1;
+	private String inidAreaJob1Name;
+	private String inidAreaJob2;
+	private String inidAreaJob2Name;
+	private String inidAreaJob3;
+	private String inidAreaJob3Name;
+	private String inidAreaJob4;
+	private String inidAreaJob4Name;
+	private String inidAreaJob5;
+	private String inidAreaJob5Name;
+	private String inidAreaJob6;
+	private String inidAreaJob6Name;
+	private String inidAreaJob7;
+	private String inidAreaJob7Name;
+	private String inidAreaJob8;
+	private String inidAreaJob8Name;
+	private String inidAreaJob9;
+	private String inidAreaJob9Name;
+	private String portfolioFile;
 	
 	
 	
+	public String getInidAreaJob1() {
+		return inidAreaJob1;
+	}
+	public String getInidAreaJob1Name() {
+		return inidAreaJob1Name;
+	}
+	public String getInidAreaJob2() {
+		return inidAreaJob2;
+	}
+	public String getInidAreaJob2Name() {
+		return inidAreaJob2Name;
+	}
+	public String getInidAreaJob3() {
+		return inidAreaJob3;
+	}
+	public String getInidAreaJob3Name() {
+		return inidAreaJob3Name;
+	}
+	public String getInidAreaJob4() {
+		return inidAreaJob4;
+	}
+	public String getInidAreaJob4Name() {
+		return inidAreaJob4Name;
+	}
+	public String getInidAreaJob5() {
+		return inidAreaJob5;
+	}
+	public String getInidAreaJob5Name() {
+		return inidAreaJob5Name;
+	}
+	public String getInidAreaJob6() {
+		return inidAreaJob6;
+	}
+	public String getInidAreaJob6Name() {
+		return inidAreaJob6Name;
+	}
+	public String getInidAreaJob7() {
+		return inidAreaJob7;
+	}
+	public String getInidAreaJob7Name() {
+		return inidAreaJob7Name;
+	}
+	public String getInidAreaJob8() {
+		return inidAreaJob8;
+	}
+	public String getInidAreaJob8Name() {
+		return inidAreaJob8Name;
+	}
+	public String getInidAreaJob9() {
+		return inidAreaJob9;
+	}
+	public String getInidAreaJob9Name() {
+		return inidAreaJob9Name;
+	}
+	public String getPortfolioFile() {
+		return portfolioFile;
+	}
+	public void setInidAreaJob1(String inidAreaJob1) {
+		this.inidAreaJob1 = inidAreaJob1;
+	}
+	public void setInidAreaJob1Name(String inidAreaJob1Name) {
+		this.inidAreaJob1Name = inidAreaJob1Name;
+	}
+	public void setInidAreaJob2(String inidAreaJob2) {
+		this.inidAreaJob2 = inidAreaJob2;
+	}
+	public void setInidAreaJob2Name(String inidAreaJob2Name) {
+		this.inidAreaJob2Name = inidAreaJob2Name;
+	}
+	public void setInidAreaJob3(String inidAreaJob3) {
+		this.inidAreaJob3 = inidAreaJob3;
+	}
+	public void setInidAreaJob3Name(String inidAreaJob3Name) {
+		this.inidAreaJob3Name = inidAreaJob3Name;
+	}
+	public void setInidAreaJob4(String inidAreaJob4) {
+		this.inidAreaJob4 = inidAreaJob4;
+	}
+	public void setInidAreaJob4Name(String inidAreaJob4Name) {
+		this.inidAreaJob4Name = inidAreaJob4Name;
+	}
+	public void setInidAreaJob5(String inidAreaJob5) {
+		this.inidAreaJob5 = inidAreaJob5;
+	}
+	public void setInidAreaJob5Name(String inidAreaJob5Name) {
+		this.inidAreaJob5Name = inidAreaJob5Name;
+	}
+	public void setInidAreaJob6(String inidAreaJob6) {
+		this.inidAreaJob6 = inidAreaJob6;
+	}
+	public void setInidAreaJob6Name(String inidAreaJob6Name) {
+		this.inidAreaJob6Name = inidAreaJob6Name;
+	}
+	public void setInidAreaJob7(String inidAreaJob7) {
+		this.inidAreaJob7 = inidAreaJob7;
+	}
+	public void setInidAreaJob7Name(String inidAreaJob7Name) {
+		this.inidAreaJob7Name = inidAreaJob7Name;
+	}
+	public void setInidAreaJob8(String inidAreaJob8) {
+		this.inidAreaJob8 = inidAreaJob8;
+	}
+	public void setInidAreaJob8Name(String inidAreaJob8Name) {
+		this.inidAreaJob8Name = inidAreaJob8Name;
+	}
+	public void setInidAreaJob9(String inidAreaJob9) {
+		this.inidAreaJob9 = inidAreaJob9;
+	}
+	public void setInidAreaJob9Name(String inidAreaJob9Name) {
+		this.inidAreaJob9Name = inidAreaJob9Name;
+	}
+	public void setPortfolioFile(String portfolioFile) {
+		this.portfolioFile = portfolioFile;
+	}
 	public String getSex() {
 		return sex;
 	}

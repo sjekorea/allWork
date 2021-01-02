@@ -16,8 +16,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Component("fileUtils")
 public class FileUtils {
 	
-	//private static final String filePath = "D:\\allWork\\allWork\\AllWork\\src\\main\\webapp\\peg\\";
-	private static final String filePath = "/var/lib/tomcat8/webapps/ROOT/peg/";
+	private static final String filePath = "D:\\allWork\\allWork\\AllWork\\src\\main\\webapp\\peg\\";
+	//private static final String filePath = "/var/lib/tomcat8/webapps/ROOT/peg/";
 	private static final String fileUrl = "/contentsImg/";
 	
 	public List<Map<String,Object>> parseInsertFileInfo(Map<String,Object> map, HttpServletRequest request) throws Exception{
@@ -100,18 +100,15 @@ public class FileUtils {
 	        }
 			
 	        while(iterator.hasNext()){
-	        	System.out.println("1111");
 	        	multipartFile = multipartHttpServletRequest.getFile(iterator.next());
-	        	System.out.println("222");
 	        	if(multipartFile.isEmpty() == false){
-	        		System.out.println("3333");
 	        		originalFileName = new String(multipartFile.getOriginalFilename().getBytes("8859_1"), "UTF-8");
 	        		originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
 	        		attachFileName = CommonUtil.getRandomString() + originalFileExtension;
 	        		
-	        		System.out.println("originalFileName : " +originalFileName);
-	        		System.out.println("originalFileExtension : " +originalFileExtension);
-	        		System.out.println("originalFileName : " +originalFileName);
+	        		//System.out.println("originalFileName : " +originalFileName);
+	        		//System.out.println("originalFileExtension : " +originalFileExtension);
+	        		//System.out.println("originalFileName : " +originalFileName);
 	        		
 	        		file = new File(filePath + attachFileName);
 	        		multipartFile.transferTo(file);

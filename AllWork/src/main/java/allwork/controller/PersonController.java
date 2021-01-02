@@ -169,6 +169,24 @@ public class PersonController {
 			commandMap.put("type", "job_school");
 			List<Map<String, Object>> jobSchoolList = netfuCateService.selectNetfuCateList(commandMap.getMap());
 			
+			// 학력-상태  ( netfu_cate : type ='job_state' )
+			commandMap.put("type", "job_state");
+			List<Map<String, Object>> jobStateList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 자격증  ( netfu_cate : type ='inid_mylskill' )
+			commandMap.put("type", "inid_mylskill");
+			List<Map<String, Object>> inidMylskillList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			mv.addObject("memberMap", memberMap);
+			mv.addObject("jobList", jobList);
+			mv.addObject("areaJobList", areaJobList);
+			mv.addObject("areaList", areaList);
+			mv.addObject("jobTypeList", jobTypeList);
+			mv.addObject("inidPayList", inidPayList);
+			mv.addObject("jobSchoolList", jobSchoolList);
+			mv.addObject("jobStateList", jobStateList);
+			mv.addObject("inidMylskillList", inidMylskillList);
+			
 		}catch(Exception e){
 			System.out.println(this.getClass().getName()+".resumeInfoReg Exception!!!! \n"+e.toString());
 		}

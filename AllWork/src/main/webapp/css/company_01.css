@@ -94,7 +94,7 @@ body{background: #EDF0F5;}
       #regist05{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
       #regForm05{width:790px;background-color:#fff;padding:40px;}
       #regForm05 tr{height:60px;}
-
+/*
       #regForm05 .file_btn{border:none;}
       #regForm05 input[type="file"]{position: absolute;
                                     width: 0;
@@ -130,7 +130,7 @@ body{background: #EDF0F5;}
 
 
                       }
-
+*/
       /*############################### 담당자정보  regist06   ###############################*/
       #regist06{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
       #regForm06{width:790px;background-color:#fff;padding:40px;}

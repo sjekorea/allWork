@@ -1,5 +1,6 @@
 package allwork.controller;
 
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
@@ -7,6 +8,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -16,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
+import allwork.common.util.CommonUtil;
+import allwork.common.util.FileUtils;
 import allwork.service.NetfuCateService;
 import allwork.service.NetfuCompanyService;
 import allwork.service.NetfuItemCompanyService;
@@ -49,7 +54,10 @@ public class CompanyController {
 	private NetfuItemCompanyService netfuItemCompanyService;
 
 	@Resource(name="netfuCateService")
-	private NetfuCateService netfuCateService;		
+	private NetfuCateService netfuCateService;	
+	
+	@Resource(name="fileUtils") 
+	private FileUtils fileUtils;	
 	
 	/*
 	 * 기업회원 홈
@@ -180,18 +188,26 @@ public class CompanyController {
 	 * 채용정보 등록 처리
 	 */
 	@RequestMapping(value="/registRecruit.do")
-	public ModelAndView registRecruit(CommandMap commandMap, HttpSession session) {
+	public void registRecruit(CommandMap commandMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		
 		ModelAndView mv = new ModelAndView();
+		String attachFileName = "";
+		String alertMsg = "";
+		String redirectUrl = "";
 		try{
-			int rstCnt = netfuItemCompanyService.insertNetfuItemCompany(commandMap.getMap());
-			mv.addObject("map", commandMap.getMap());
-			mv.addObject("rstCnt", rstCnt);
-			mv.setViewName("jsonView");
+			
+			
+			attachFileName = fileUtils.uploadFile(commandMap.getMap(), request); // 첨부파일 업로드
+
+			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("bizFormFile", attachFileName);
+			netfuItemCompanyService.insertNetfuItemCompany(commandMap.getMap()); // 채용공고 저장
+			CommonUtil.Alert("등록되었습니다.", "/recruitListProgress.do", request, response);
+			
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".registRecruit Exception !!!!! \n"+e.toString());
+			CommonUtil.Alert("등록에 실패 하였습니다.", "/companyHome.do", request, response);
 		}
-		return mv;
 	}
 	
 	

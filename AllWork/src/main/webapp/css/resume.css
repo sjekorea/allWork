@@ -176,6 +176,7 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resForm09 th{display:none;}
     #resForm09 td{width:710px;}
 
+/*
     #resForm09 .file_btn{border:none;margin:0;padding:0;}
     #resForm09 input[type="file"]{position: absolute;
                                   width: 0;
@@ -210,3 +211,4 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 
 
                     }
+*/

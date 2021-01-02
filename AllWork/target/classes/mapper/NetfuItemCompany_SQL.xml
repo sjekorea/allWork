@@ -213,37 +213,37 @@
 	</select>
 	
 	
-	<!-- 회원가입 정보 등록 -->
+	<!-- 채용공고 정보 등록 -->
 	<insert id="insertNetfuItemCompany" parameterType="hashmap">
 		<![CDATA[
 			insert into netfu_item_company
-			(uid, passwd, name, hphone, birth, sex, use_mail, use_sms, email, wdate, login_date, memo, addr_coord, memo_coord
-			, type_r2, p_chk, type, hit, a_insert, tosa180422_date, post, address1, address2)
+			(
+				uid, info_type, biz_name, biz_title, biz_post, biz_address1, biz_address2
+				, biz_type1, biz_type2, biz_type3, biz_type4, biz_type5, biz_type6
+				, biz_position, biz_area1, biz_area2, biz_area3, biz_area4, biz_area5, biz_area6
+				, biz_subway, biz_business, biz_men, biz_jobfrom, biz_pay, pay_type, biz_welfare
+				, biz_sex, biz_age, biz_ability, biz_preferential, biz_career, biz_detail
+				, biz_end_day, biz_end_type, biz_method, biz_person, biz_pemail, biz_pphone, biz_pfax
+				, wdate, service1, service2, service3, service4, service5
+				, service100, service6, service7, service8, service9, service10, service11
+				, biz_paper, biz_form, biz_form_file, biz_type7, biz_type8, biz_type9
+				, sms_send, biz_page, hit, type_r, memo
+				, biz_area_job1, biz_area_job2, biz_area_job3, biz_area_job4, biz_area_job5, biz_area_job6, biz_area_job7, biz_area_job8, biz_area_job9
+			)
 			values
 			(
-				#{uid}
-				, #{passwd}
-				, #{name}
-				, #{hphone}
-				, #{birth}
-				, #{sex}
-				, #{useMail}
-				, #{useSms}
-				, #{email}
+				#{uid}, #{infoType}, #{bizName}, #{bizTitle}, #{bizPost}, #{bizAddress1}, #{bizAddress2}
+				, #{bizType1}, #{bizType2}, #{bizType3}, #{bizType4}, #{bizType5}, #{bizType6}
+				, #{bizPosition}, #{bizArea1}, #{bizArea2}, #{bizArea3}, #{bizArea4}, #{bizArea5}, #{bizArea6}
+				, #{bizSubway}, #{bizBusiness}, #{bizMen}, #{bizJobfrom}, #{bizPay}, #{payType}, #{bizWelfare}
+				, #{bizSex}, #{bizAge}, #{bizAbility}, #{bizPreferential}, #{bizCareer}, #{bizDetail}
+				, #{bizEndDay}, #{bizEndType}, #{bizMethod}, #{bizPerson}, #{bizPemail}, #{bizPphone}, #{bizPfax}
 				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
-				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s') 
-				, #{memo}
-				, #{addrCoord}
-				, #{memoCoord}
-				, #{typeR2}
-				, #{pChk}
-				, #{type}
-				, #{hit}
-				, #{aInsert}
-				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s') 
-				, #{post}
-				, #{address1}
-				, #{address2}
+				, #{service1}, #{service2}, #{service3}, #{service4}, #{service5}
+				, #{service100}, #{service6}, #{service7}, #{service8}, #{service9}, #{service10}, #{service11}
+				, #{bizPaper}, #{bizForm}, #{bizFormFile}, #{bizType7}, #{bizType8}, #{bizType9}
+				, #{smsSend}, #{bizPage}, 0, #{typeR}, #{memo}
+				, #{bizAreaJob1}, #{bizAreaJob2}, #{bizAreaJob3}, #{bizAreaJob4}, #{bizAreaJob5}, #{bizAreaJob6}, #{bizAreaJob7}, #{bizAreaJob8}, #{bizAreaJob9}
 			)
 		]]>
 	</insert>

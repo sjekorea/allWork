@@ -222,7 +222,7 @@
 											<p class="imgPart"><img id="logoImg" name="logoImg" src="/img/myCompany/noimage.jpg" alt="회사로고"/></p>
 											<p class="descPart">
 												<form name="fileUploadForm0" id="fileUploadForm0" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
-													<span><input type="file" id="attachFile0" name="attachFile0" accept="image/gif, image/png, image/jpg" onchange="javascript:fileUpload('bizLogo', 'logoImg', 'fileUploadForm0');"></span>
+													<span><input type="file" id="attachFile0" name="attachFile0" accept="image/gif, image/png, image/jpeg" onchange="javascript:fileUpload('bizLogo', 'logoImg', 'fileUploadForm0');"></span>
 												</form>
 												<input type="hidden" name="bizLogo" id="bizLogo" value=""/>
 												<br/>
@@ -246,7 +246,7 @@
 												<li>회사사진1
 													<span>
 														<form name="fileUploadForm1" id="fileUploadForm1" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
-															<span><input type="file" id="attachFile1" name="attachFile1" accept="image/gif, image/png, image/jpg" onchange="javascript:fileUpload('photo1', 'photoImg1', 'fileUploadForm1');"></span>
+															<span><input type="file" id="attachFile1" name="attachFile1" accept="image/gif, image/png, image/jpeg" onchange="javascript:fileUpload('photo1', 'photoImg1', 'fileUploadForm1');"></span>
 														</form>
 														<input type="hidden" name="photo1" id="photo1" value=""/>
 													</span>
@@ -254,7 +254,7 @@
 												<li>회사사진2
 													<span>
 														<form name="fileUploadForm2" id="fileUploadForm2" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
-															<span><input type="file" id="attachFile2" name="attachFile2" accept="image/gif, image/png, image/jpg" onchange="javascript:fileUpload('photo2', 'photoImg2', 'fileUploadForm2');"></span>
+															<span><input type="file" id="attachFile2" name="attachFile2" accept="image/gif, image/png, image/jpeg" onchange="javascript:fileUpload('photo2', 'photoImg2', 'fileUploadForm2');"></span>
 														</form>
 														<input type="hidden" name="photo2" id="photo2" value=""/>
 													</span>
@@ -262,7 +262,7 @@
 												<li>회사사진3
 													<span>
 														<form name="fileUploadForm3" id="fileUploadForm3" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
-															<span><input type="file" id="attachFile3" name="attachFile3" accept="image/gif, image/png, image/jpg" onchange="javascript:fileUpload('photo3', 'photoImg3', 'fileUploadForm3');"></span>
+															<span><input type="file" id="attachFile3" name="attachFile3" accept="image/gif, image/png, image/jpeg" onchange="javascript:fileUpload('photo3', 'photoImg3', 'fileUploadForm3');"></span>
 														</form>
 														<input type="hidden" name="photo3" id="photo3" value=""/>
 													</span>
@@ -270,7 +270,7 @@
 												<li>회사사진4
 													<span>
 														<form name="fileUploadForm4" id="fileUploadForm4" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
-															<span><input type="file" id="attachFile4" name="attachFile4" accept="image/gif, image/png, image/jpg" onchange="javascript:fileUpload('photo4', 'photoImg4', 'fileUploadForm4');"></span>
+															<span><input type="file" id="attachFile4" name="attachFile4" accept="image/gif, image/png, image/jpeg" onchange="javascript:fileUpload('photo4', 'photoImg4', 'fileUploadForm4');"></span>
 														</form>
 														<input type="hidden" name="photo4" id="photo4" value=""/>
 													</span>

@@ -50,7 +50,7 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<li style="width:100%;"><div class="desc01">내역이 없습니다.</div></li>
+							<li><div class="desc01" style="width:100%;text-align:center;text-valign:middle;">내역이 없습니다.</div></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>
