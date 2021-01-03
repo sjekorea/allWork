@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.daos.ApiSiteBasicDAO">
+
+	<select id="getSiteBasic"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiSiteBasicModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiSiteBasicModel">
+		SELECT
+			  A.email AS email
+			, A.call_center AS callCenter
+			, A.hphone AS hphone
+			, A.agreement AS agreement
+			, A.agreement3 AS agreement3
+			, A.privacy AS privacy
+			, A.privacy3 AS privacy3
+			, A.mobile_service AS mobileService
+			, A.mobile_payment_guide AS mobilePaymentGuide
+		FROM
+			netfu_site_basic A 
+		LIMIT 1
+	</select>
+
+	<update id="updateSiteBasic" parameterType="com.ilmagna.allworkadmin.api.domains.ApiSiteBasicModel">
+		UPDATE
+			netfu_site_basic
+		SET
+			email = #{email}
+			, call_center = #{callCenter}
+			, hphone = #{hphone}
+			, agreement = #{agreement}
+			, agreement3 = #{agreement3}
+			, privacy = #{privacy}
+			, privacy3 = #{privacy3}
+			, mobile_service = #{mobileService}
+			, mobile_payment_guide = #{mobilePaymentGuide}
+
+		<!-- 
+		UPDATE
+			netfu_site_basic
+		SET
+			email = #{email}
+			, call_center = #{callCenter}
+			, hphone = #{hphone}
+			, mobile_service = #{mobileService}
+			, mobile_payment_guide = #{mobilePaymentGuide}
+		 -->
+	</update>
+
+</mapper>

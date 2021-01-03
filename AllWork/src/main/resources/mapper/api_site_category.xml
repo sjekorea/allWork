@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.daos.ApiCategoryDAO">
+
+	<select id="getCategoryList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel">
+		SELECT
+			A.code AS id
+			, A.type AS type
+			, A.code AS code
+			, A.p_code AS p_code
+			, A.name AS name
+			, A.view AS view
+			, A.rank AS rank
+			, A.board_type AS board_type
+		FROM
+			netfu_cate A
+		<where>
+			1=1
+			<if test='showAll == ""'>
+				AND A.view = 'yes'
+			</if>
+			<if test='showAll == "N"'>
+				AND A.view = 'no'
+			</if>
+			<if test='type != null &amp;&amp; type != ""'>
+				AND A.type = #{type}
+			</if>
+			<if test='code != null &amp;&amp; code != ""'>
+				AND A.code LIKE CONCAT('%', #{code}, '%')
+			</if>
+			<if test='p_code != null &amp;&amp; p_code != ""'>
+				AND A.p_code = #{p_code}
+			</if>
+			<if test='name != null &amp;&amp; name != ""'>
+				AND A.name LIKE CONCAT('%', #{name}, '%')
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.name LIKE CONCAT('%', #{keyword}, '%')
+					OR A.type LIKE CONCAT('%', #{keyword}, '%')
+					OR A.p_code LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.type ASC, A.p_code ASC, A.code ASC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getCategory"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel">
+		SELECT
+			A.code AS id
+			, A.type AS type
+			, A.code AS code
+			, A.p_code AS p_code
+			, A.name AS name
+			, A.view AS view
+			, A.rank AS rank
+			, A.board_type AS board_type
+		FROM
+			netfu_cate A
+		<where>
+			A.code = #{code}
+		</where>
+	</select>
+
+	<select id="getCategoryTotalCnt" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.code), 0)
+		FROM
+			netfu_cate A
+		<where>
+			1=1
+			<if test='showAll == ""'>
+				AND A.view = 'yes'
+			</if>
+			<if test='showAll == "N"'>
+				AND A.view = 'no'
+			</if>
+			<if test='type != null &amp;&amp; type != ""'>
+				AND A.type = #{type}
+			</if>
+			<if test='code != null &amp;&amp; code != ""'>
+				AND A.code LIKE CONCAT('%', #{code}, '%')
+			</if>
+			<if test='p_code != null &amp;&amp; p_code != ""'>
+				AND A.p_code = #{p_code}
+			</if>
+			<if test='name != null &amp;&amp; name != ""'>
+				AND A.name LIKE CONCAT('%', #{name}, '%')
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.name LIKE CONCAT('%', #{keyword}, '%')
+					OR A.type LIKE CONCAT('%', #{keyword}, '%')
+					OR A.p_code LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+	</select>
+
+	<select id="getCategoryDuplicatedCount" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel" resultType="Integer">
+		SELECT IFNULL(COUNT(code), 0) FROM netfu_cate WHERE code = #{code}
+	</select>
+
+
+	<select id="findCategoryWithCode" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel" resultType="String">
+		SELECT
+			IFNULL(A.code, '')
+		FROM
+			netfu_cate A
+		WHERE
+			A.code LIKE #{code}
+	</select>
+
+	<select id="findCategoryWithName" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel" resultType="String">
+		SELECT
+			IFNULL(A.code, '')
+		FROM
+			netfu_cate A
+		WHERE
+			A.name = #{name}
+	</select>
+
+	<select id="getCategoryCodeList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel">
+		SELECT
+			A.type AS type
+			, A.code AS code
+			, A.p_code AS p_code
+			, A.name AS name
+			, A.view AS view
+			, A.rank AS rank
+			, A.board_type AS board_type
+		FROM
+			netfu_cate A
+		<where>
+			A.view = 'yes' AND A.code IN 
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.code}
+			</foreach>
+		</where>
+	</select>
+
+	<select id="getCategoryTypeList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel" 
+			resultType="String">
+		SELECT
+			A.type
+		FROM
+			netfu_cate A
+		<where>
+			A.view = 'yes'
+		</where>
+		GROUP BY A.type
+		ORDER BY A.type ASC
+	</select>
+
+
+	<insert id="insertCategory" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel">
+		INSERT INTO netfu_cate (
+			type
+			, code
+			, p_code
+			, name
+			, view
+			, rank
+			, board_type
+		) VALUES (
+			#{type}
+			, #{code}
+			, #{p_code}
+			, #{name}
+			, #{view}
+			, #{rank}
+			, #{board_type}
+		)
+	</insert>
+
+	<update id="updateCategory" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel">
+		UPDATE
+			netfu_cate
+		SET
+			type = #{type}
+			, p_code = #{p_code}
+			, name = #{name}
+			, view = #{view}
+			, rank = #{rank}
+			, board_type = #{board_type}
+		WHERE
+			code = #{id}
+	</update>
+
+	<delete id="deleteCategory" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel">
+		DELETE FROM netfu_cate WHERE code = #{id}
+	</delete>
+	<!-- update id="deleteCategory" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel">
+		UPDATE netfu_cate SET view = 'no' WHERE code = #{id}
+	</update -->
+
+	<delete id="deleteCategoryList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel">
+		DELETE FROM netfu_cate WHERE code IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+	<!-- update id="deleteCategoryList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel">
+		<foreach item="item" index="index" collection="list" separator=";">
+		UPDATE netfu_cate SET delete_flag = 'Y', update_at = UTC_TIMESTAMP(), update_by = #{item.update_by} WHERE code = #{code}
+		</foreach>
+	</update -->
+
+	<insert id="insertExcelCategory" parameterType="java.util.List">
+		INSERT INTO netfu_cate(
+			type
+			, code
+			, p_code
+			, name
+			, view
+			, rank
+			, board_type
+		) VALUES
+		<foreach collection="list" item="item" index="index" open="(" separator="),("  close=")">
+			#{item.type}
+			, #{item.code}
+			, #{item.p_code}
+			, #{item.name}
+			, #{item.view}
+			, #{item.rank}
+			, #{item.board_type}
+		</foreach>
+ 	</insert>
+
+
+
+
+	<select id="getArea1stList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiCategoryModel">
+		SELECT
+			A.code AS id
+			, A.type AS type
+			, A.code AS code
+			, A.p_code AS p_code
+			, A.name AS name
+			, A.view AS view
+			, A.rank AS rank
+			, A.board_type AS board_type
+		FROM
+			netfu_cate A
+		<where>
+			A.p_code = ''
+			<if test='showAll == ""'>
+				AND A.view = 'yes'
+			</if>
+			<if test='showAll == "N"'>
+				AND A.view = 'no'
+			</if>
+			<if test='type != null &amp;&amp; type != ""'>
+				AND A.type = #{type}
+			</if>
+			<if test='code != null &amp;&amp; code != ""'>
+				AND A.code LIKE CONCAT('%', #{code}, '%')
+			</if>
+			<if test='name != null &amp;&amp; name != ""'>
+				AND A.name LIKE CONCAT('%', #{name}, '%')
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.name LIKE CONCAT('%', #{keyword}, '%')
+					OR A.type LIKE CONCAT('%', #{keyword}, '%')
+					OR A.p_code LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.type ASC, A.p_code ASC, A.code ASC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+</mapper>

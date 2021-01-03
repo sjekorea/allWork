@@ -40,7 +40,7 @@
 		<div id="topmenuWrap">
 			<ul class="topMenu">
 				<li class="allworkHome"><a href="/index.do" title="allwork사이트">Allwork&nbsp;&nbsp;|&nbsp;</a></li>
-				<li><a href="#none" title="고객센터">고객센터</a></li>
+				<li><a href="/noticeList.do" title="고객센터">고객센터</a></li>
 			</ul>
 		</div>
 		<div id="loginWrap">
@@ -78,6 +78,8 @@
 		</div>
 		
 		<jsp:include page="/footer.do" />
+	</div>
+</body>
 	
 	
 <script type="text/javascript">

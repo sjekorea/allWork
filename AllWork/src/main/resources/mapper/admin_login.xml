@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.admin.daos.AdminLoginDAO">
+
+	<!--  웹 관리자 계정 검사. -->
+	<select id="getMember" parameterType="com.ilmagna.allworkadmin.api.authentication.security.domains.ApiLoginAccount" resultType="com.ilmagna.allworkadmin.api.authentication.security.domains.ApiLoginAccount">
+		SELECT
+			1004 AS id
+			, 3 AS user_type
+			, uid AS user_id
+			, passwd AS user_pw
+			, name AS user_name
+			, '관리자' AS role_name
+		FROM
+			netfu_admin
+		<where>
+			uid = #{user_id}
+			<if test='user_pw != null &amp;&amp; user_pw != ""'>
+				AND passwd = #{user_pw}
+			</if>
+		</where>
+	</select>
+
+</mapper>

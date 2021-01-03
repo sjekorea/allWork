@@ -32,6 +32,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#search_btn00").click(function(e){
+	       	//(begin) 2020.12.30 by s.yoo
+	       	/*
 			if("${SE_LOGIN_STATUS}" != "true"){
 				alert("로그인 후 이용가능합니다.");
 			}else{
@@ -46,8 +48,23 @@
 						$("#aiSearchForm").attr("action", "/indexResumeSearchList.do");
 					}
 					$("#aiSearchForm").submit();
-				}	
+				}
 			}	
+	       	*/
+	       	if (!$("#searchText").val()) {
+	       		alert('검색할 키워드를 입력하세요.');
+	       		return false;
+	       	}
+			//alert("${SE_USER_TYPE}");
+			if("${SE_USER_TYPE}" == "company") {
+				//기업회원은 인재검색.
+				$("#aiSearchForm").attr("action", "/indexResumeSearchList.do");
+			}else{
+				//개인회원 또는 Login을 하지 않았다면, 채용정보 검색.
+				$("#aiSearchForm").attr("action", "/indexRecruitSearchList.do");
+			}
+			$("#aiSearchForm").submit();
+	       	//(end) 2020.12.30 by s.yoo
 		});
 	});	
 </script>
@@ -94,9 +111,9 @@
 						<li><a href="#none" title="전체메뉴보기"><i class="fas fa-bars"></i></a></li>
 						<li><a href="/recruitSearch.do" title="채용정보">채용정보</a></li>
 						<li><a href="/resumeSearch.do" title="인재검색">인재검색</a></li>
-						<li><a href="#none" title="헤드헌팅">헤드헌팅</a></li>
-						<li><a href="#none" title="채용진행현황">채용진행현황</a></li>
-						<li><a href="/boardList.do" title="커뮤니티">커뮤니티</a></li>
+						<li><a href="/headhuntList.do" title="헤드헌팅">헤드헌팅</a></li>
+						<li><a href="/progressList.do" title="채용진행현황">채용진행현황</a></li>
+						<li><a href="/noticeList.do" title="커뮤니티">커뮤니티</a></li>
 					</ul>
 					<ul class="linkArea">
 						<c:choose>

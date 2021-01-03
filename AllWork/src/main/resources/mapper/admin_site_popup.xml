@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.admin.daos.AdminPopupDAO">
+
+	<select id="getPopupList"
+			parameterType="com.ilmagna.allworkadmin.admin.domains.AdminPopupModel" 
+			resultType="com.ilmagna.allworkadmin.admin.domains.AdminPopupModel">
+		SELECT
+			A.code AS id
+			, A.code AS code
+			, A.subject AS subject
+			, DATE_FORMAT(A.start_day, '%Y-%m-%d %H:%i:%s') AS strStartDay
+			, DATE_FORMAT(A.end_day, '%Y-%m-%d %H:%i:%s') AS strEndDay
+			, A.left AS `left`
+			, A.top AS `top`
+			, A.width AS width
+			, A.height AS height
+			, A.type AS type
+			, A.contents AS contents
+			, A.view AS view
+		FROM
+			netfu_popup A
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id != ""'>
+				AND A.code = #{id}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND (
+					   A.subject LIKE CONCAT('%', #{keyword}, '%')
+					OR A.contents LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.end_day DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.code DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getPopup"
+			parameterType="com.ilmagna.allworkadmin.admin.domains.AdminPopupModel" 
+			resultType="com.ilmagna.allworkadmin.admin.domains.AdminPopupModel">
+		SELECT
+			A.code AS id
+			, A.code AS code
+			, A.subject AS subject
+			, DATE_FORMAT(A.start_day, '%Y-%m-%d %H:%i:%s') AS strStartDay
+			, DATE_FORMAT(A.end_day, '%Y-%m-%d %H:%i:%s') AS strEndDay
+			, A.left AS `left`
+			, A.top AS `top`
+			, A.width AS width
+			, A.height AS height
+			, A.type AS type
+			, A.contents AS contents
+			, A.view AS view
+		FROM
+			netfu_popup A
+		<where>
+			A.code = #{id}
+		</where>
+	</select>
+
+	<select id="getPopupTotalCnt" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminPopupModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.code), 0)
+		FROM
+			netfu_popup A 
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id != ""'>
+				AND A.code = #{id}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND (
+					   A.subject LIKE CONCAT('%', #{keyword}, '%')
+					OR A.contents LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+	</select>
+
+	<select id="getPopupDuplicatedCount" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminPopupModel" resultType="Integer">
+		SELECT IFNULL(COUNT(code), 0) FROM netfu_popup A WHERE code = #{code} 
+	</select>
+
+	<select id="findPopup" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminPopupModel" resultType="Integer">
+		SELECT IFNULL(COUNT(code), 0) FROM netfu_popup WHERE code = #{id}
+	</select>
+
+	<insert id="insertPopup" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminPopupModel">
+		INSERT INTO netfu_popup (
+			  code
+			, subject
+			, start_day
+			, end_day
+			, `left`
+			, `top`
+			, width
+			, height
+			, type
+			, contents
+			, view
+		) VALUES (
+			  #{code}
+			, #{subject}
+			, #{strStartDay}
+			, #{strEndDay}
+			, #{left}
+			, #{top}
+			, #{width}
+			, #{height}
+			, #{type}
+			, #{contents}
+			, #{view}
+		)
+	</insert>
+
+	<update id="updatePopup" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminPopupModel">
+		UPDATE
+			netfu_popup
+		SET
+			 subject = #{subject}
+			, `left` = #{left}
+			, `top` = #{top}
+			, width = #{width}
+			, height = #{height}
+			, start_day = #{strStartDay}
+			, end_day = #{strEndDay}
+			, type = #{type}
+			, contents = #{contents}
+			, view = #{view}
+		WHERE
+			code = #{id}
+	</update>
+
+	<delete id="deletePopup" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminPopupModel">
+		DELETE FROM netfu_popup WHERE code = #{id} 
+	</delete>
+
+	<delete id="deletePopupList" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminPopupModel">
+		DELETE FROM netfu_popup WHERE  code IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+	<insert id="insertExcelPopup" parameterType="java.util.List">
+		INSERT INTO netfu_popup(
+			  code
+			, subject
+			, start_day
+			, end_day
+			, `left`
+			, ``top``
+			, width
+			, height
+			, type
+			, contents
+			, view
+		) VALUES
+		<foreach collection="list" item="item" index="index" open="(" separator="),("  close=")">
+			  #{item.code}
+			, #{item.subject}
+			, #{item.strStartDay}
+			, #{item.strEndDay}
+			, #{item.left}
+			, #{item.top}
+			, #{item.width}
+			, #{item.height}
+			, #{item.type}
+			, #{item.contents}
+			, #{item.view}
+		</foreach>
+ 	</insert>
+
+</mapper>

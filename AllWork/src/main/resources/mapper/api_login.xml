@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.authentication.security.daos.ApiLoginAccountDAO">
+
+	<!--  웹 사용자 계정 검사. -->
+	<select id="getMember" parameterType="com.ilmagna.allworkadmin.api.authentication.security.domains.ApiLoginAccount" resultType="com.ilmagna.allworkadmin.api.authentication.security.domains.ApiLoginAccount">
+		SELECT
+			no AS id
+			, type AS user_type
+			, uid AS user_id
+			, passwd AS user_pw
+			, name AS user_name
+			, IFNULL(token, '') AS token
+			, login_date AS last_login_at
+
+			, CASE
+				 WHEN type = 1 THEN '개인회원'
+				 WHEN type = 2 THEN '기업회원'
+				 ELSE '회원'
+			  END AS role_name
+		FROM
+			netfu_member A
+		<where>
+			uid = #{user_id}
+			<if test='user_pw != null &amp;&amp; user_pw != ""'>
+				AND passwd = #{user_pw}
+			</if>
+			AND A.left <![CDATA[ <> ]]> 'yes'
+		</where>
+	</select>
+
+	<update id="updateUserLoginTime" parameterType="com.ilmagna.allworkadmin.api.authentication.security.domains.ApiLoginAccount">
+	<!-- 
+		UPDATE
+			tbl_users
+		SET
+			last_login_at = UTC_TIMESTAMP()
+			, token = #{token}
+		WHERE
+			user_id = #{user_id} AND delete_flag <![CDATA[ <> ]]> 'Y'
+	 -->
+		UPDATE
+			netfu_member A
+		SET
+			login_date = CURRENT_TIMESTAMP()
+			<if test='push_token != null &amp;&amp; push_token != ""'>
+			, push_token = #{push_token}
+			</if>
+		WHERE
+			uid = #{user_id} AND A.left <![CDATA[ <> ]]> 'yes'
+	</update>
+
+	<update id="updateLogoutUserToken" parameterType="String">
+	<!-- 
+		UPDATE tbl_users SET token = '' WHERE user_id = #{user_id} AND delete_flag <![CDATA[ <> ]]> 'Y'
+	 -->
+		UPDATE netfu_member A SET token = '' WHERE uid = #{user_id} AND A.left <![CDATA[ <> ]]> 'yes'
+	</update>
+
+</mapper>

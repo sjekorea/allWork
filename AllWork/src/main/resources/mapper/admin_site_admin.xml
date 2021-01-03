@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.admin.daos.AdminAdminDAO">
+
+	<select id="getAdminList"
+			parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel" 
+			resultType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel">
+		SELECT
+			A.uid AS id
+			, A.uid AS user_id
+			, A.passwd AS user_pw
+			, A.name AS user_name
+			, A.level AS level
+			, A.codes AS codes
+		FROM
+			netfu_admin A 
+		<where>
+			1=1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.uid = #{id}
+			</if>
+			<if test='user_id != null &amp;&amp; user_id != ""'>
+				AND A.uid LIKE CONCAT('%', #{user_id}, '%')
+			</if>
+			<if test='user_name != null &amp;&amp; user_name != ""'>
+				AND A.name LIKE CONCAT('%', #{user_name}, '%')
+			</if>
+			<if test='level != null &amp;&amp; level != ""'>
+				AND A.level = #{level}
+			</if>
+			<if test='codes != null &amp;&amp; codes != ""'>
+				AND A.codes LIKE CONCAT('%', #{codes}, '%')
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.uid ASC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getAdmin"
+			parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel" 
+			resultType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel">
+		SELECT
+			A.uid AS id
+			, A.uid AS user_id
+			, A.passwd AS user_pw
+			, A.name AS user_name
+			, A.level AS level
+			, A.codes AS codes
+		FROM
+			netfu_admin A 
+		<where>
+			A.uid = #{id}
+		</where>
+	</select>
+
+	<select id="getAdminTotalCnt" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.uid), 0)
+		FROM
+			netfu_admin A 
+		<where>
+			1=1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.uid = #{id}
+			</if>
+			<if test='user_id != null &amp;&amp; user_id != ""'>
+				AND A.uid LIKE CONCAT('%', #{user_id}, '%')
+			</if>
+			<if test='user_name != null &amp;&amp; user_name != ""'>
+				AND A.name LIKE CONCAT('%', #{user_name}, '%')
+			</if>
+			<if test='level != null &amp;&amp; level != ""'>
+				AND A.level = #{level}
+			</if>
+			<if test='codes != null &amp;&amp; codes != ""'>
+				AND A.codes LIKE CONCAT('%', #{codes}, '%')
+			</if>
+		</where>
+	</select>
+
+	<select id="getAdminDuplicatedCount" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel" resultType="Integer">
+		SELECT IFNULL(COUNT(uid), 0) FROM netfu_admin A WHERE uid <![CDATA[ <> ]]> #{id} AND uid = #{user_id} 
+	</select>
+
+	<select id="findAdmin" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel" resultType="Integer">
+		SELECT IFNULL(COUNT(uid), 0) FROM netfu_admin WHERE uid = #{id}
+	</select>
+
+	<select id="findAdminWithUserID" parameterType="String" resultType="Integer">
+		SELECT IFNULL(COUNT(uid), 0) FROM netfu_admin A WHERE uid = #{user_id} 
+	</select>
+
+	<select id="findAdminWithUserIDPw" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel" resultType="Integer">
+		SELECT IFNULL(COUNT(uid), 0) FROM netfu_admin A WHERE uid = #{user_id} AND passwd = #{user_pw}  ORDER BY uid DESC LIMIT 1
+	</select>
+
+	<insert id="insertAdmin" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel">
+		INSERT INTO netfu_admin (
+			uid
+			, passwd
+			, name
+			, level
+			, codes
+		) VALUES (
+			#{user_id}
+			, #{user_pw}
+			, #{user_name}
+			, #{level}
+			, ''
+		)
+	</insert>
+
+	<insert id="registerAdmin" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel">
+		INSERT INTO netfu_admin (
+			uid
+			, passwd
+			, level
+			, name
+			, codes
+		) VALUES (
+			#{user_id}
+			, #{user_pw}
+			, #{level}
+			, #{user_name}
+			, ''
+		)
+	</insert>
+
+	<update id="updateAdmin" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel">
+		UPDATE
+			netfu_admin
+		SET
+			name = #{user_name}
+			<if test='user_pw != null &amp;&amp; user_pw != ""'>
+				, passwd = #{user_pw}
+			</if>
+			, level = #{level}
+		WHERE
+			uid = #{id}
+	</update>
+
+	<delete id="deleteAdmin" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel">
+		DELETE FROM netfu_admin WHERE uid = #{id} 
+	</delete>
+
+	<delete id="deleteAdminList" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel">
+		DELETE FROM netfu_admin WHERE  uid IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+	<insert id="insertExcelAdmin" parameterType="java.util.List">
+		INSERT INTO netfu_admin(
+			uid
+			, passwd
+			, level
+			, name
+			, codes
+		) VALUES
+		<foreach collection="list" item="item" index="index" open="(" separator="),("  close=")">
+			#{item.user_id}
+			, #{item.user_pw}
+			, #{item.level}
+			, #{item.user_name}
+			, ''
+		</foreach>
+ 	</insert>
+
+	<select id="getAdminIdList"
+			parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel" 
+			resultType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel">
+		SELECT
+			A.uid AS id
+		FROM
+			netfu_admin A
+		ORDER BY A.uid ASC
+	</select>
+
+	<update id="resetAdminPw" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel">
+		UPDATE
+			netfu_admin A
+		SET
+			passwd = #{user_pw}
+		WHERE
+			uid = #{user_id} 
+	</update>
+
+	<update id="changeAdminPw" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel">
+		UPDATE
+			netfu_admin A
+		SET
+			passwd = #{new_pw}
+		WHERE
+			uid = #{user_id} AND passwd = #{user_pw} 
+	</update>
+
+	<update id="updateAdminInfo" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminAdminModel">
+		UPDATE
+			netfu_admin
+		SET
+			name = #{user_name}
+			<if test='user_pw != null &amp;&amp; user_pw != ""'>
+				, passwd = #{user_pw}
+			</if>
+			, level = #{level}
+		WHERE
+			uid = #{id}
+	</update>
+
+</mapper>

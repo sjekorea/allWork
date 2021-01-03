@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.daos.ApiMemberDAO">
+
+	<select id="getMemberList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		SELECT
+			A.no AS id
+			, A.uid AS user_id
+			, A.passwd AS user_pw
+			, A.password_que AS password_que
+			, A.password_chk AS password_chk
+			, A.name AS user_name
+			, A.phone AS phone
+			, A.hphone AS hphone
+			, A.birth AS birth
+			, A.sex AS sex
+			, A.email AS email
+			, A.token AS token
+			, A.push_token AS push_token
+			, A.use_mail AS use_mail
+			, A.use_sms AS use_sms
+			, A.use_push AS use_push
+			, A.post AS post
+			, A.address1 AS address1
+			, A.address2 AS address2
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d %H:%i:%s') AS strWdate
+			, A.login_date AS last_login_at
+			, DATE_FORMAT(A.login_date, '%Y-%m-%d %H:%i:%s') AS strLastLogin
+			, A.home AS home
+			, A.photo AS photo
+			, A.p_chk AS p_chk
+			, A.memo AS memo
+			, A.hit AS hit
+			, A.tosa180422 AS tosa180422
+			, DATE_FORMAT(A.tosa180422_date, '%Y-%m-%d %H:%i:%s') AS strTosa180422Date
+			, A.secession AS secession
+			, A.left AS `left`
+			, DATE_FORMAT(A.l_date, '%Y-%m-%d %H:%i:%s') AS strLdate
+			, A.type AS user_type
+			, CASE
+				 WHEN A.type = 1 THEN '개인회원'
+				 WHEN A.type = 2 THEN '기업회원'
+				 ELSE '회원'
+			  END AS role_name
+		FROM
+			netfu_member A 
+		<where>
+			1=1
+			<if test='showAll != "Y"'>
+				AND A.left <![CDATA[ <> ]]> 'yes'
+			</if>
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='user_id != null &amp;&amp; user_id != ""'>
+				AND A.uid = #{user_id}
+			</if>
+			<if test='user_name != null &amp;&amp; user_name != ""'>
+				AND A.name LIKE CONCAT('%', #{user_name}, '%')
+			</if>
+			<if test='phone != null &amp;&amp; phone != ""'>
+				AND (A.phone LIKE CONCAT('%', #{phone}, '%') OR A.hphone LIKE CONCAT('%', #{phone}, '%'))
+			</if>
+			<if test='user_type != null &amp;&amp; user_type != ""'>
+				AND A.type = #{user_type}
+			</if>
+			<if test='left != null &amp;&amp; left != ""'>
+				AND A.left = #{left}
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.no DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.no DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getMember"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		SELECT
+			A.no AS id
+			, A.uid AS user_id
+			, A.passwd AS user_pw
+			, A.password_que AS password_que
+			, A.password_chk AS password_chk
+			, A.name AS user_name
+			, A.phone AS phone
+			, A.hphone AS hphone
+			, A.birth AS birth
+			, A.sex AS sex
+			, A.email AS email
+			, A.token AS token
+			, A.push_token AS push_token
+			, A.use_mail AS use_mail
+			, A.use_sms AS use_sms
+			, A.use_push AS use_push
+			, A.post AS post
+			, A.address1 AS address1
+			, A.address2 AS address2
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d %H:%i:%s') AS strWdate
+			, A.login_date AS last_login_at
+			, DATE_FORMAT(A.login_date, '%Y-%m-%d %H:%i:%s') AS strLastLogin
+			, A.home AS home
+			, A.photo AS photo
+			, A.p_chk AS p_chk
+			, A.memo AS memo
+			, A.hit AS hit
+			, A.tosa180422 AS tosa180422
+			, DATE_FORMAT(A.tosa180422_date, '%Y-%m-%d %H:%i:%s') AS strTosa180422Date
+			, A.secession AS secession
+			, A.left AS `left`
+			, DATE_FORMAT(A.l_date, '%Y-%m-%d %H:%i:%s') AS strLdate
+			, A.type AS user_type
+			, CASE
+				 WHEN A.type = 1 THEN '개인회원'
+				 WHEN A.type = 2 THEN '기업회원'
+				 ELSE '회원'
+			  END AS role_name
+		FROM
+			netfu_member A 
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='user_id != null &amp;&amp; user_id != ""'>
+				AND A.uid = #{user_id}
+			</if>
+		</where>
+		ORDER BY A.no DESC
+	</select>
+
+	<select id="getMemberTotalCnt" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.no), 0)
+		FROM
+			netfu_member A 
+		<where>
+			1=1
+			<if test='showAll != "Y"'>
+				AND A.left <![CDATA[ <> ]]> 'yes'
+			</if>
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='user_id != null &amp;&amp; user_id != ""'>
+				AND A.uid = #{user_id}
+			</if>
+			<if test='user_name != null &amp;&amp; user_name != ""'>
+				AND A.name LIKE CONCAT('%', #{user_name}, '%')
+			</if>
+			<if test='phone != null &amp;&amp; phone != ""'>
+				AND (A.phone LIKE CONCAT('%', #{phone}, '%') OR A.hphone LIKE CONCAT('%', #{phone}, '%'))
+			</if>
+			<if test='user_type != null &amp;&amp; user_type != ""'>
+				AND A.type = #{user_type}
+			</if>
+			<if test='left != null &amp;&amp; left != ""'>
+				AND A.left = #{left}
+			</if>
+		</where>
+	</select>
+
+	<select id="getMemberMaxId" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel" resultType="Integer">
+		SELECT IFNULL(MAX(no), 0) FROM netfu_member
+	</select>
+
+	<select id="getMemberDuplicatedCount" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel" resultType="Integer">
+		SELECT IFNULL(COUNT(A.no), 0)
+		FROM netfu_member A
+		<where>
+			A.uid = #{user_id}
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no <![CDATA[ <> ]]> #{id}
+			</if>
+		</where>
+	</select>
+
+	<select id="findMember" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel" resultType="Integer">
+		SELECT IFNULL(no, 0) FROM netfu_member WHERE no = #{id}
+	</select>
+
+	<select id="findMemberWithUserID" parameterType="String" resultType="Integer">
+		SELECT IFNULL(no, 0) FROM netfu_member A WHERE uid = #{user_id} AND A.left <![CDATA[ <> ]]> 'yes'
+	</select>
+
+	<select id="findMemberWithUserIDPw" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel" resultType="Integer">
+		SELECT IFNULL(no, 0) FROM netfu_member A WHERE uid = #{user_id} AND passwd = #{user_pw} AND A.left <![CDATA[ <> ]]> 'yes' ORDER BY no DESC LIMIT 1
+	</select>
+
+	<select id="findMemberID"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		SELECT
+			A.uid AS user_id
+		FROM
+			netfu_member A
+		<where>
+			A.type = #{user_type} AND A.name = #{user_name}
+			<if test='find_type eq "1"'>
+				AND A.email = #{email}
+			</if>
+			<if test='find_type eq "2"'>
+				AND A.hphone = #{phone}
+			</if>
+			AND A.left <![CDATA[ <> ]]> 'yes'
+		</where>
+	</select>
+
+	<select id="findMemberPw"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel" 
+			resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.no), 0) AS count
+		FROM
+			netfu_member A
+		<where>
+			A.type = #{user_type} AND A.uid = #{user_id} AND A.name = #{user_name}
+			<if test='find_type eq "1"'>
+				AND A.email = #{email}
+			</if>
+			<if test='find_type eq "2"'>
+				AND A.hphone = #{hphone}
+			</if>
+			AND A.left <![CDATA[ <> ]]> 'yes'
+		</where>
+	</select>
+
+	<insert id="insertMember" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		INSERT INTO netfu_member (
+			uid
+			, passwd
+			, password_que
+			, password_chk
+			, name
+			, phone
+			, hphone
+			, birth
+			, sex
+			, email
+			, token
+			, push_token
+			, use_mail
+			, use_sms
+			, use_push
+			, post
+			, address1
+			, address2
+			, wdate
+			, login_date
+			, home
+			, photo
+			, p_chk
+			, type
+			, `left`
+			, secession
+			, l_date
+			, memo
+			, hit
+			, tosa180422
+			, tosa180422_date
+		) VALUES (
+			#{user_id}
+			, #{user_pw}
+			, #{password_que}
+			, #{password_que}
+			, #{user_name}
+			, #{phone}
+			, #{hphone}
+			, #{birth}
+			, #{sex}
+			, #{email}
+			, ''
+			, ''
+			, #{use_mail}
+			, #{use_sms}
+			, #{use_push}
+			, #{post}
+			, #{address1}
+			, #{address2}
+			, CURRENT_TIMESTAMP()
+			, null
+			, #{home}
+			, ''
+			, 'no'
+			, #{user_type}
+			, 'no'
+			, ''
+			, '0000-00-00 00:00:00'
+			, ''
+			, 0
+			, 1
+			, '0000-00-00 00:00:00'
+		)
+	</insert>
+
+	<insert id="registerMember" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		INSERT INTO netfu_member (
+			type
+			, name
+			, uid
+			, passwd
+			, password_que
+			, password_chk
+			, birth
+			, sex
+			, hphone
+			, post
+			, address1
+			, address2
+			, use_mail
+			, use_sms
+			, use_push
+			, token
+			, push_token
+			, wdate
+			, login_date
+			, memo
+		) VALUES (
+			#{user_type}
+			, #{user_name}
+			, #{user_id}
+			, #{user_pw}
+			, ''
+			, ''
+			, #{birth}
+			, #{sex}
+			, #{hphone}
+			, #{post}
+			, #{address1}
+			, #{address2}
+			, 'yes'
+			, 'yes'
+			, #{use_push}
+			, ''
+			, ''
+			, CURRENT_TIMESTAMP()
+			, null
+			, ''
+		)
+	</insert>
+
+	<update id="unregisterMember" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		UPDATE
+			netfu_member A
+		SET
+			secession = #{secession}
+			, A.left = 'yes'
+			, l_date = CURRENT_TIMESTAMP()
+		WHERE
+			uid = #{user_id} AND A.left <![CDATA[ <> ]]> 'yes'
+	</update>
+
+	<update id="updateMember" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		UPDATE
+			netfu_member
+		SET
+			memo = #{memo}
+		WHERE
+			no = #{id}
+	</update>
+
+	<delete id="deleteMember" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		DELETE FROM netfu_member WHERE no = #{id} 
+	</delete>
+	<!-- update id="deleteMember" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		UPDATE netfu_member A SET A.left = 'yes', A.l_date = CURRENT_TIMESTAMP() WHERE A.no = #{id} 
+	</update -->
+
+	<delete id="deleteMemberList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		DELETE FROM netfu_member WHERE  no IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+	<!-- update id="deleteMemberList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		<foreach item="item" index="index" collection="list" separator=";">
+		UPDATE netfu_member A SET A.left = 'yes', A.l_date = CURRENT_TIMESTAMP() WHERE A.no = #{item.id} 
+		</foreach>
+	</update -->
+
+
+
+
+	<insert id="insertExcelMember" parameterType="java.util.List">
+		INSERT INTO netfu_member(
+			uid
+			, passwd
+			, password_que
+			, password_chk
+			, name
+			, phone
+			, hphone
+			, birth
+			, sex
+			, email
+			, token
+			, push_token
+			, use_mail
+			, use_sms
+			, use_push
+			, post
+			, address1
+			, address2
+			, wdate
+			, login_date
+			, home
+			, photo
+			, p_chk
+			, tosa180422
+			, tosa180422_date
+			, secession
+			, `left`
+			, l_date
+		) VALUES
+		<foreach collection="list" item="item" index="index" open="(" separator="),("  close=")">
+			#{item.user_id}
+			, #{item.user_pw}
+			, ''
+			, ''
+			, #{item.user_name}
+			, #{item.phone}
+			, #{item.hphone}
+			, #{item.birth}
+			, #{item.sex}
+			, #{item.email}
+			, ''
+			, ''
+			, #{item.use_mail}
+			, #{item.use_sms}
+			, #{item.use_push}
+			, #{item.post}
+			, #{item.address1}
+			, #{item.address2}
+			, CURRENT_TIMESTAMP()
+			, null
+			, #{item.home}
+			, #{item.photo}
+			, #{item.p_chk}
+			, #{item.secession}
+			, #{item.left}
+			, null
+		</foreach>
+ 	</insert>
+
+	<select id="getMemberIdList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		SELECT
+			A.no AS id
+			, A.uid AS user_id
+		FROM
+			netfu_member A
+		<where>
+			A.left <![CDATA[ <> ]]> 'yes'
+		</where>
+		ORDER BY A.uid ASC
+	</select>
+
+	<update id="resetMemberPw" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		UPDATE
+			netfu_member A
+		SET
+			passwd = #{user_pw}
+		WHERE
+			uid = #{user_id} AND A.left <![CDATA[ <> ]]> 'yes'
+	</update>
+
+	<update id="changeMemberPw" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		UPDATE
+			netfu_member A
+		SET
+			passwd = #{new_pw}
+		WHERE
+			uid = #{user_id} AND passwd = #{user_pw} AND A.left <![CDATA[ <> ]]> 'yes'
+	</update>
+
+	<update id="updateMemberInfo" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		UPDATE
+			netfu_member
+		SET
+			name = #{user_name}
+			<if test='user_pw != null &amp;&amp; user_pw != ""'>
+				, passwd = #{user_pw}
+			</if>
+			, phone = #{hphone}
+			, hphone = #{hphone}
+			, birth = #{birth}
+			, sex = #{sex}
+			, use_push = #{use_push}
+			, post = #{post}
+			, address1 = #{address1}
+			, address2 = #{address2}
+		WHERE
+			no = #{id}
+	</update>
+
+
+
+	<update id="updatePushToken" parameterType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		UPDATE
+			netfu_member A
+		SET
+			push_token = #{push_token}
+		WHERE
+			uid = #{user_id} AND A.left <![CDATA[ <> ]]> 'yes'
+	</update>
+
+	<select id="getPushMemberList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		SELECT
+			A.push_token AS push_token
+		FROM
+			netfu_member A LEFT JOIN netfu_item_resume B ON A.uid = B.uid
+		<where>
+			A.left <![CDATA[ <> ]]> 'yes' AND A.use_push = 'yes' AND A.push_token is not null AND A.push_token <![CDATA[ <> ]]> ''
+			<if test='biz_area1 != null &amp;&amp; biz_area1 != "" &amp;&amp; biz_area1 != "netfu_78942_85121"'>
+				AND ( (B.inid_area1 = #{biz_area1} AND B.inid_area2 = #{biz_area2})
+					OR (B.inid_area3 = #{biz_area1} AND B.inid_area4 = #{biz_area2})
+					OR (B.inid_area5 = #{biz_area1} AND B.inid_area6 = #{biz_area2}) )
+			</if>
+			<if test='biz_type1 != null &amp;&amp; biz_type1 != ""'>
+				AND ( B.inid_type1 = #{biz_type1} OR B.inid_type3 = #{biz_type1} OR B.inid_type5 = #{biz_type1} )
+			</if>
+		</where>
+	</select>
+
+	<select id="getPushCompanyList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		SELECT
+			A.push_token AS push_token
+		FROM
+			netfu_member A LEFT JOIN netfu_item_company B ON A.uid = B.uid
+		<where>
+			A.left <![CDATA[ <> ]]> 'yes' AND A.use_push = 'yes' AND A.push_token is not null AND A.push_token <![CDATA[ <> ]]> ''
+			<if test='inid_area1 != null &amp;&amp; inid_area1 != "" &amp;&amp; inid_area1 != "netfu_78942_85121"'>
+				AND ( (B.biz_area1 = #{inid_area1} AND B.biz_area2 = #{inid_area2})
+					OR (B.biz_area3 = #{inid_area1} AND B.biz_area4 = #{inid_area2})
+					OR (B.biz_area5 = #{inid_area1} AND B.biz_area6 = #{inid_area2}) )
+			</if>
+			<if test='inid_type1 != null &amp;&amp; inid_type1 != ""'>
+				AND ( B.biz_type1 = #{inid_type1} OR B.biz_type3 = #{inid_type1} OR B.biz_type5 = #{inid_type1} )
+			</if>
+		</where>
+	</select>
+
+
+</mapper>

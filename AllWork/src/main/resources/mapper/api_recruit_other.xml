@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.daos.ApiRecruitOtherDAO">
+
+	<select id="getRecruitOtherList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitOtherModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecruitOtherModel">
+		SELECT
+			A.ser AS id
+			, DATE_FORMAT(A.reg, '%Y-%m-%d %H:%i:%s') AS strReg
+			, A.prs AS prs
+			, DATE_FORMAT(A.beg, '%Y-%m-%d %H:%i:%s') AS strBeg
+			, A.company_title AS company_title
+			, A.phone AS phone
+			, A.recruit_item AS recruit_item
+			, A.whereis AS whereis
+			, A.job_type AS job_type
+			, A.men AS men
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strWdate
+			, A.strEdate AS strEdate
+			, A.order_view AS order_view
+			, A.memo AS memo
+			, A.wantedAuthNo AS wantedAuthNo
+			, A.salary AS salary
+			, A.preference AS preference
+		FROM
+			recruit_other A
+		<where>
+			A.prs = 'P'
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.ser = #{id}
+			</if>
+			<if test='fromWDate != null &amp;&amp; fromWDate != ""'>
+				AND A.wdate <![CDATA[ >= ]]> #{fromWDate}
+			</if>
+			<if test='toWDate != null &amp;&amp; toWDate != ""'>
+				AND A.wdate <![CDATA[ <= ]]> #{toWDate}
+			</if>
+			<if test='fromEDate != null &amp;&amp; fromEDate != ""'>
+				AND A.edate <![CDATA[ >= ]]> #{fromEDate}
+			</if>
+			<if test='toEDate != null &amp;&amp; toEDate != ""'>
+				AND A.edate <![CDATA[ <= ]]> #{toEDate}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND (
+					   A.prs LIKE CONCAT('%', #{keyword}, '%')
+					OR A.company_title LIKE CONCAT('%', #{keyword}, '%')
+					OR A.recruit_item LIKE CONCAT('%', #{keyword}, '%')
+					OR A.whereis LIKE CONCAT('%', #{keyword}, '%')
+					OR A.job_type LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					OR A.salary LIKE CONCAT('%', #{keyword}, '%')
+					OR A.preference LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.order_view ASC, A.ser DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.ser DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getRecruitOther"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitOtherModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecruitOtherModel">
+		SELECT
+			A.ser AS id
+			, DATE_FORMAT(A.reg, '%Y-%m-%d %H:%i:%s') AS strReg
+			, A.prs AS prs
+			, DATE_FORMAT(A.beg, '%Y-%m-%d %H:%i:%s') AS strBeg
+			, A.company_title AS company_title
+			, A.phone AS phone
+			, A.recruit_item AS recruit_item
+			, A.whereis AS whereis
+			, A.job_type AS job_type
+			, A.men AS men
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strWdate
+			, A.strEdate AS strEdate
+			, A.order_view AS order_view
+			, A.memo AS memo
+			, A.wantedAuthNo AS wantedAuthNo
+			, A.salary AS salary
+			, A.preference AS preference
+		FROM
+			recruit_other A
+		<where>
+			A.ser = #{id}
+		</where>
+	</select>
+
+	<select id="getRecruitOtherTotalCnt" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitOtherModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.ser), 0)
+		FROM
+			recruit_other A 
+		<where>
+			A.prs = 'P'
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.ser = #{id}
+			</if>
+			<if test='fromWDate != null &amp;&amp; fromWDate != ""'>
+				AND A.wdate <![CDATA[ >= ]]> #{fromWDate}
+			</if>
+			<if test='toWDate != null &amp;&amp; toWDate != ""'>
+				AND A.wdate <![CDATA[ <= ]]> #{toWDate}
+			</if>
+			<if test='fromEDate != null &amp;&amp; fromEDate != ""'>
+				AND A.edate <![CDATA[ >= ]]> #{fromEDate}
+			</if>
+			<if test='toEDate != null &amp;&amp; toEDate != ""'>
+				AND A.edate <![CDATA[ <= ]]> #{toEDate}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND (
+					   A.prs LIKE CONCAT('%', #{keyword}, '%')
+					OR A.company_title LIKE CONCAT('%', #{keyword}, '%')
+					OR A.recruit_item LIKE CONCAT('%', #{keyword}, '%')
+					OR A.whereis LIKE CONCAT('%', #{keyword}, '%')
+					OR A.job_type LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					OR A.salary LIKE CONCAT('%', #{keyword}, '%')
+					OR A.preference LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+	</select>
+
+	<select id="getRecruitOtherDuplicatedCount" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitOtherModel" resultType="Integer">
+		SELECT IFNULL(COUNT(ser), 0) FROM recruit_other A WHERE ser <![CDATA[ <> ]]> #{id} AND company_title = #{company_title} 
+	</select>
+
+	<select id="findRecruitOther" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitOtherModel" resultType="Integer">
+		SELECT IFNULL(ser, 0) FROM recruit_other WHERE ser = #{id}
+	</select>
+
+	<insert id="insertRecruitOther" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitOtherModel">
+		INSERT INTO recruit_other (
+			  reg
+			, prs
+			, beg
+			, company_title
+			, phone
+			, recruit_item
+			, whereis
+			, job_type
+			, men
+			, wdate
+			, edate
+			, strEdate
+			, order_view
+			, memo
+			, wantedAuthNo
+			, salary
+			, preference
+		) VALUES (
+			CURRENT_TIMESTAMP()
+			, 'P'
+			, CURRENT_TIMESTAMP()
+			, #{company_title}
+			, #{phone}
+			, #{recruit_item}
+			, #{whereis}
+			, #{job_type}
+			, #{men}
+			, #{strWdate}
+			, #{edate}
+			, #{strEdate}
+			, #{order_view}
+			, #{memo}
+			, #{wantedAuthNo}
+			, #{salary}
+			, #{preference}
+		)
+	</insert>
+
+	<update id="updateRecruitOther" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitOtherModel">
+		UPDATE
+			recruit_other
+		SET
+			reg = CURRENT_TIMESTAMP()
+			, company_title = #{company_title}
+			, phone = #{phone}
+			, recruit_item = #{recruit_item}
+			, whereis = #{whereis}
+			, job_type = #{job_type}
+			, men = #{men}
+			, wdate = #{strWdate}
+			, edate = #{edate}
+			, strEdate = #{strEdate}
+			, order_view = #{order_view}
+			, memo = #{memo}
+			, wantedAuthNo = #{wantedAuthNo}
+			, salary = #{salary}
+			, preference = #{preference}
+		WHERE
+			ser = #{id}
+	</update>
+
+	<delete id="deleteRecruitOther" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitOtherModel">
+		DELETE FROM recruit_other WHERE ser = #{id} 
+	</delete>
+
+	<delete id="deleteRecruitOtherList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitOtherModel">
+		DELETE FROM recruit_other WHERE  ser IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+	<insert id="insertExcelRecruitOther" parameterType="java.util.List">
+		INSERT INTO recruit_other(
+			  reg
+			, prs
+			, beg
+			, company_title
+			, phone
+			, recruit_item
+			, whereis
+			, job_type
+			, men
+			, wdate
+			, edate
+			, strEdate
+			, order_view
+			, memo
+			, wantedAuthNo
+			, salary
+			, preference
+		) VALUES
+		<foreach collection="list" item="item" index="index" open="(" separator="),("  close=")">
+			CURRENT_TIMESTAMP()
+			, 'P'
+			, CURRENT_TIMESTAMP()
+			, #{item.company_title}
+			, #{item.phone}
+			, #{item.recruit_item}
+			, #{item.whereis}
+			, #{item.job_type}
+			, #{item.men}
+			, #{item.strWdate}
+			, #{item.edate}
+			, #{item.strEdate}
+			, #{item.order_view}
+			, #{item.memo}
+			, #{item.wantedAuthNo}
+			, #{item.salary}
+			, #{item.preference}
+		</foreach>
+ 	</insert>
+
+</mapper>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.admin.daos.AdminBbsVocDAO">
+
+	<select id="getBbsVocList"
+			parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsVocModel" 
+			resultType="com.ilmagna.allworkadmin.admin.domains.AdminBbsVocModel">
+		SELECT
+			A.no AS id
+			, A.name AS name
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d %H:%i:%s') AS strWdate
+			, A.subject AS subject
+			, A.content AS content
+			, A.cate AS cate
+			, IFNULL(A.phone,'') AS phone
+			, IFNULL(A.email, '') AS email
+			, A.a_name AS a_name
+			, DATE_FORMAT(A.a_date, '%Y-%m-%d %H:%i:%s') AS strAdate
+			, A.a_subject AS a_subject
+			, A.a_content AS a_content
+		FROM
+			netfu_cs A
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.subject LIKE CONCAT('%', #{keyword}, '%')
+					OR A.content LIKE CONCAT('%', #{keyword}, '%')
+					OR A.name LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.no DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.no DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getBbsVoc"
+			parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsVocModel" 
+			resultType="com.ilmagna.allworkadmin.admin.domains.AdminBbsVocModel">
+		SELECT
+			A.no AS id
+			, A.name AS name
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d %H:%i:%s') AS strWdate
+			, A.subject AS subject
+			, A.content AS content
+			, A.cate AS cate
+			, IFNULL(A.phone,'') AS phone
+			, IFNULL(A.email, '') AS email
+			, A.a_name AS a_name
+			, DATE_FORMAT(A.a_date, '%Y-%m-%d %H:%i:%s') AS strAdate
+			, A.a_subject AS a_subject
+			, A.a_content AS a_content
+		FROM
+			netfu_cs A
+		<where>
+			A.no = #{id}
+		</where>
+	</select>
+
+	<select id="getBbsVocTotalCnt" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsVocModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.no), 0)
+		FROM
+			netfu_cs A 
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.subject LIKE CONCAT('%', #{keyword}, '%')
+					OR A.content LIKE CONCAT('%', #{keyword}, '%')
+					OR A.name LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+	</select>
+
+	<select id="findBbsVoc" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsVocModel" resultType="Integer">
+		SELECT IFNULL(no, 0) FROM netfu_cs WHERE no = #{id}
+	</select>
+
+	<insert id="insertBbsVoc" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsVocModel">
+		INSERT INTO netfu_cs (
+			board_code
+			, type
+			, sub_type
+			, uid
+			, wdate
+			, subject
+			, content
+			, cate
+		) VALUES (
+			#{board_code}
+			, #{type}
+			, #{sub_type}
+			, #{uid}
+			, CURRENT_TIMESTAMP()
+			, #{subject}
+			, #{content}
+			, 0
+		)
+	</insert>
+
+	<update id="updateBbsVoc" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsVocModel">
+		UPDATE
+			netfu_cs
+		SET
+			a_subject = #{a_subject}
+			, a_content = #{a_content}
+			, a_date = CURRENT_TIMESTAMP()
+			, a_name = #{a_name}
+		WHERE
+			no = #{id}
+	</update>
+
+	<delete id="deleteBbsVoc" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsVocModel">
+		DELETE FROM netfu_cs WHERE no = #{id} 
+	</delete>
+
+	<delete id="deleteBbsVocList" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsVocModel">
+		DELETE FROM netfu_cs WHERE  no IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+	<insert id="insertExcelBbsVoc" parameterType="java.util.List">
+		INSERT INTO netfu_cs (
+			board_code
+			, type
+			, sub_type
+			, uid
+			, wdate
+			, subject
+			, content
+			, cate
+		) VALUES
+		<foreach collection="list" item="item" index="index" open="(" separator="),("  close=")">
+			#{item.board_code}
+			, #{item.type}
+			, #{item.sub_type}
+			, #{item.uid}
+			, #{item.wdate}
+			, #{item.subject}
+			, #{item.content}
+			, #{item.cate}
+		</foreach>
+ 	</insert>
+
+</mapper>

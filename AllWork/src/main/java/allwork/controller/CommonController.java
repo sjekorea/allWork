@@ -112,7 +112,41 @@ public class CommonController {
 		
 		return mv;
 	}
+
+	//(begin) 2020.12.30 by s.yoo
+	@RequestMapping(value="/indexHeaderCompany.do")
+	public ModelAndView indexHeaderCompany(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/include/indexHeaderCompany");
+		
+		return mv;
+	}
+	@RequestMapping(value="/indexHeaderPerson.do")
+	public ModelAndView indexHeaderPerson(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/include/indexHeaderPerson");
+		
+		return mv;
+	}
+
 	
+	@RequestMapping(value="/headhuntSubMenu.do")
+	public ModelAndView headhuntSubMenu(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/include/headhuntSubMenu");
+		
+		return mv;
+	}
+
+	@RequestMapping(value="/progressSubMenu.do")
+	public ModelAndView progressSubMenu(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView("/include/progressSubMenu");
+		
+		return mv;
+	}
+	//(end) 2020.12.30 by s.yoo
+
 	
 	@RequestMapping(value="/recruitStatusSubMenu.do")
 	public ModelAndView recruitStatusSubMenu(CommandMap commandMap) {

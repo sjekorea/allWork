@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.admin.daos.AdminBbsSetupDAO">
+
+	<select id="getBbsSetupList"
+			parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel" 
+			resultType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel">
+		SELECT
+			A.no AS id
+			, A.board_code AS boardCode
+			, A.code AS code
+			, A.p_code AS pCode
+			, A.board_name AS boardName
+			, A.type AS type
+			, A.view AS view
+		FROM
+			netfu_board_admin A 
+		<where>
+			1=1
+			<if test='showAll != "Y"'>
+				AND A.view <![CDATA[ <> ]]> 'no'
+			</if>
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='code != null &amp;&amp; code != ""'>
+				AND A.code LIKE CONCAT('%', #{code}, '%')
+			</if>
+			<if test='board_name != null &amp;&amp; board_name != ""'>
+				AND A.board_name LIKE CONCAT('%', #{boardName}, '%')
+			</if>
+			<if test='board_code != null &amp;&amp; board_code != ""'>
+				AND A.board_code LIKE CONCAT('%', #{boardCode}, '%')
+			</if>
+			<if test='p_code != null &amp;&amp; p_code != ""'>
+				AND A.p_code LIKE CONCAT('%', #{pCode}, '%')
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.board_code ASC, A.no DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getBbsSetup"
+			parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel" 
+			resultType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel">
+		SELECT
+			A.no AS id
+			, A.board_code AS boardCode
+			, A.code AS code
+			, A.p_code AS pCode
+			, A.board_name AS boardName
+			, A.type AS type
+			, A.view AS view
+		FROM
+			netfu_board_admin A 
+		<where>
+			1=1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='boardCode != null &amp;&amp; boardCode != ""'>
+				AND A.board_code LIKE CONCAT('%', #{boardCode}, '%')
+			</if>
+		</where>
+	</select>
+
+	<select id="getBbsSetupTotalCnt" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.no), 0)
+		FROM
+			netfu_board_admin A 
+		<where>
+			1=1
+			<if test='showAll != "Y"'>
+				AND A.view <![CDATA[ <> ]]> 'no'
+			</if>
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='code != null &amp;&amp; code != ""'>
+				AND A.code LIKE CONCAT('%', #{code}, '%')
+			</if>
+			<if test='board_name != null &amp;&amp; board_name != ""'>
+				AND A.board_name LIKE CONCAT('%', #{boardName}, '%')
+			</if>
+			<if test='boardCode != null &amp;&amp; boardCode != ""'>
+				AND A.board_code LIKE CONCAT('%', #{boardCode}, '%')
+			</if>
+			<if test='p_code != null &amp;&amp; p_code != ""'>
+				AND A.p_code LIKE CONCAT('%', #{pCode}, '%')
+			</if>
+		</where>
+	</select>
+
+	<select id="getBbsSetupDuplicatedCount" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel" resultType="Integer">
+		SELECT IFNULL(COUNT(no), 0) FROM netfu_board_admin A WHERE no <![CDATA[ <> ]]> #{id} AND board_code = #{boardCode} 
+	</select>
+
+	<select id="findBbsSetup" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel" resultType="Integer">
+		SELECT IFNULL(no, 0) FROM netfu_board_admin WHERE no = #{id}
+	</select>
+
+	<select id="findBbsSetupWithCode" parameterType="String" resultType="Integer">
+		SELECT IFNULL(no, 0) FROM netfu_board_admin A WHERE board_code = #{boardCode} 
+	</select>
+
+	<select id="findBbsSetupWithName" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel" resultType="Integer">
+		SELECT IFNULL(no, 0) FROM netfu_board_admin A WHERE board_name = #{boardName} ORDER BY no DESC LIMIT 1
+	</select>
+
+	<insert id="insertBbsSetup" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel">
+		INSERT INTO netfu_board_admin (
+			board_code
+			, code
+			, p_code
+			, board_name
+			, type
+			, view
+		) VALUES (
+			#{boardCode}
+			, #{code}
+			, #{pCode}
+			, #{boardName}
+			, #{type}
+			, #{view}
+		)
+	</insert>
+
+	<update id="updateBbsSetup" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel">
+		UPDATE
+			netfu_board_admin
+		SET
+			board_code = #{boardCode}
+			, code = #{code}
+			, p_code = #{pCode}
+			, board_name = #{boardName}
+			, type = #{type}
+			, view = #{view}
+		WHERE
+			no = #{id}
+	</update>
+
+	<delete id="deleteBbsSetup" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel">
+		DELETE FROM netfu_board_admin WHERE no = #{id} 
+	</delete>
+
+	<delete id="deleteBbsSetupList" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel">
+		DELETE FROM netfu_board_admin WHERE  no IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+	<insert id="insertExcelBbsSetup" parameterType="java.util.List">
+		INSERT INTO netfu_board_admin(
+			board_code
+			, code
+			, p_code
+			, board_name
+			, type
+			, view
+		) VALUES
+		<foreach collection="list" item="item" index="index" open="(" separator="),("  close=")">
+			#{item.boardCode}
+			, #{item.code}
+			, #{item.pCode}
+			, #{item.boardName}
+			, #{item.type}
+			, #{item.view}
+		</foreach>
+ 	</insert>
+
+	<select id="getBbsSetupCodeList"
+			parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel" 
+			resultType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel">
+		SELECT
+			A.board_code AS boardCode,
+			A.board_name AS boardName
+		FROM
+			netfu_board_admin A
+		<where>
+			view = 'yes'
+			<if test='code != null &amp;&amp; code != ""'>
+				AND A.code = #{code}
+			</if>
+			<if test='p_code != null &amp;&amp; p_code != ""'>
+			AND A.p_code = #{pCode}
+			</if>
+		</where>
+		GROUP BY A.board_code
+		ORDER BY A.board_code ASC
+	</select>
+
+	<select id="getBbsSubGroupSetupCodeList"
+			parameterType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel" 
+			resultType="com.ilmagna.allworkadmin.admin.domains.AdminBbsSetupModel">
+		SELECT
+			A.p_code AS pCode,
+			A.board_name AS boardName
+		FROM
+			netfu_board_admin A
+		<where>
+			A.code = #{code}
+		</where>
+		GROUP BY A.p_code
+		ORDER BY A.p_code ASC
+	</select>
+
+</mapper>

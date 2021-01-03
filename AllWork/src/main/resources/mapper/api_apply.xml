@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.daos.ApiApplyDAO">
+
+	<select id="getApplyList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiApplyModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiApplyModel">
+		SELECT
+			A.no AS id
+			, A.to_type AS to_type
+			, A.type AS type
+			, A.sub_type AS sub_type
+			, A.uid AS uid
+			, A.to_uid AS to_uid
+			, A.from_no AS from_no
+			, A.to_no AS to_no
+			, A.opened AS opened
+			, A.job_detail AS job_detail
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strWdate
+		FROM
+			netfu_online_recruit A 
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='to_type != null &amp;&amp; to_type != ""'>
+				AND A.to_type = #{to_type}
+			</if>
+			<if test='apply_type == "apply"'>
+				AND ( A.to_type = 'email' OR A.to_type = 'online' OR A.to_type = 'mobile' )
+			</if>
+			<if test='apply_type != null &amp;&amp; apply_type != "" &amp;&amp; apply_type != "apply"'>
+				AND A.to_type = #{apply_type}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+			<if test='to_uid != null &amp;&amp; to_uid != ""'>
+				AND A.to_uid = #{to_uid}
+			</if>
+			<if test='fromDate != null &amp;&amp; fromDate != ""'>
+				AND A.wdate <![CDATA[ >= ]]> #{fromDate}
+			</if>
+			<if test='toDate != null &amp;&amp; toDate != ""'>
+				AND A.wdate <![CDATA[ <= ]]> #{toDate}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.job_detail LIKE CONCAT('%', #{keyword}, '%') )
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.no DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.no DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getApply"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiApplyModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiApplyModel">
+		SELECT
+			A.no AS id
+			, A.to_type AS to_type
+			, A.type AS type
+			, A.sub_type AS sub_type
+			, A.uid AS uid
+			, A.to_uid AS to_uid
+			, A.from_no AS from_no
+			, A.to_no AS to_no
+			, A.opened AS opened
+			, A.job_detail AS job_detail
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strWdate
+		FROM
+			netfu_online_recruit A 
+		<where>
+			A.no = #{id}
+		</where>
+	</select>
+
+	<select id="getApplyTotalCnt" parameterType="com.ilmagna.allworkadmin.api.domains.ApiApplyModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.no), 0)
+		FROM
+			netfu_online_recruit A 
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='to_type != null &amp;&amp; to_type != ""'>
+				AND A.to_type = #{to_type}
+			</if>
+			<if test='apply_type == "apply"'>
+				AND ( A.to_type = 'email' OR A.to_type = 'online' OR A.to_type = 'mobile' )
+			</if>
+			<if test='apply_type != null &amp;&amp; apply_type != "" &amp;&amp; apply_type != "apply"'>
+				AND A.to_type = #{apply_type}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+			<if test='to_uid != null &amp;&amp; to_uid != ""'>
+				AND A.to_uid = #{to_uid}
+			</if>
+			<if test='fromDate != null &amp;&amp; fromDate != ""'>
+				AND A.wdate <![CDATA[ >= ]]> #{fromDate}
+			</if>
+			<if test='toDate != null &amp;&amp; toDate != ""'>
+				AND A.wdate <![CDATA[ <= ]]> #{toDate}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.job_detail LIKE CONCAT('%', #{keyword}, '%') )
+			</if>
+		</where>
+	</select>
+
+	<select id="getApplyDuplicatedCount" parameterType="com.ilmagna.allworkadmin.api.domains.ApiApplyModel" resultType="Integer">
+		SELECT IFNULL(COUNT(A.to_no), 0)
+		FROM netfu_online_recruit A
+		<where>
+			A.uid = #{uid} AND A.to_uid = #{to_uid}
+			<if test='to_type == "email" or to_type == "online" or to_type == "mobile"'>
+				AND ( A.to_type = 'email' OR A.to_type = 'online' OR A.to_type = 'mobile' )
+			</if>
+			<if test='to_type != null &amp;&amp; to_type == "interview"'>
+				AND A.to_type = #{to_type}
+			</if>
+		</where>
+	</select>
+
+	<select id="findApply" parameterType="com.ilmagna.allworkadmin.api.domains.ApiApplyModel" resultType="Integer">
+		SELECT IFNULL(no, 0) FROM netfu_online_recruit WHERE no = #{id}
+	</select>
+
+	<insert id="insertApply" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.api.domains.ApiApplyModel">
+		INSERT INTO netfu_online_recruit (
+			to_type
+			, type
+			, sub_type
+			, uid
+			, to_uid
+			, from_no
+			, to_no
+			, opened
+			, job_detail
+			, wdate
+		) VALUES (
+			#{to_type}
+			, 'job'
+			, 'company'
+			, #{uid}
+			, #{to_uid}
+			, #{from_no}
+			, #{to_no}
+			, 'no'
+			, #{job_detail}
+			, CURRENT_TIMESTAMP()
+		)
+	</insert>
+
+	<delete id="deleteApply" parameterType="com.ilmagna.allworkadmin.api.domains.ApiApplyModel">
+		DELETE FROM netfu_online_recruit WHERE no = #{id} 
+	</delete>
+
+	<delete id="deleteApplyList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiApplyModel">
+		DELETE FROM ${list[0].job_detail} WHERE  no IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+</mapper>

@@ -87,41 +87,92 @@
 				</c:choose>
 			</ul>
 		</div>
+		<!-- (begin) 2020.12.30 by s.yoo -->
 		<div id="part01">
-			<h4><a href="#" title="맞춤인재 관리">맞춤인재 관리<span><i class="fas fa-chevron-right"></i></span></a></h4>
+			<a href="#" title="AI 추천 인재정보">AI 추천 맞춤 인재정보</a>
 			<ul class="list00">
 				<c:choose>
-					<c:when test="${myServiceResumeList.size() > 0 }">
-						<c:forEach var="result" items="${myServiceResumeList}" varStatus="status">
+					<c:when test="${recommandResumeList.size() > 0 }">
+						<c:forEach var="result" items="${recommandResumeList}" varStatus="status">
 							<c:if test="${status.index < 3 }">
 								<li>
 									<p class="img00"><img src="/img/company_home/img00.jpeg" alt="인재사진"/></p>
 									<p class="desc00">
 										<span class="name">${result.name }</span><br/>
-										<span class="age">${codeConvert:getBizSex(result.sex)} ${convert:calcAge(result.birth)}</span>
 									</p>
 									<p class="desc01">
-										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');"><span class="detail">${result.inidTitle }</span></a>
-										<span class="title01">${codeConvert:getCondition(result.indiCondition)}</span>
+										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.recommend_id }', 'open', 'resume');"><span class="detail">${result.title }</span></a>
+										<span class="title01">${result.loc }</span>
 									</p>
-									<p class="date">${result.wdate }</p>
+									<p class="date">${result.strWdate }</p>
 								</li>
 							</c:if> 
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
-						<li style="width:100%;"><div class="desc01">내역이 없습니다.</div></li>
+								<li>
+									<!-- p class="img00"><img src="/img/company_home/img00.jpeg" alt="인재사진"/></p -->
+									<p class="desc00">
+										<span class="name">추천인재 </span><br/>
+										<span class="age">**</span>
+									</p>
+									<p class="desc01">
+										<a href=""><span class="detail">추천 이력서</span></a>
+										<span class="title01">내용이 충실한 채용공고를 등록하면, AI가 맞춤형 인재를 추천해 드립니다.</span>
+									</p>
+									<p class="date">OOOO-OO-OO</p>
+								</li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
 		</div>
+		<!-- (end) 2020.12.30 by s.yoo -->
 		<div id="listPart">
 			<ul class="tab">
-				<li><a class="selected" href="#" title="맞춤채용인재">맞춤채용인재</a></li>
+				<!-- (begin) 2020.12.30 by s.yoo -->
+				<li><a class="selected" href="#" title="AI 추천 인재">AI 추천 인재</a></li>
+				<li><a href="#" title="맞춤인재정보">맞춤인재정보</a></li>
+				<!-- (end) 2020.12.30 by s.yoo -->
 				<li><a href="#" title="스크랩인재">스크랩인재</a></li>
 				<li><a href="#" title="최근 본 인재">최근 본 인재</a></li>
 			</ul>
-			<table class="list" id="list01">
+			<!-- (begin) 2020.12.30 by s.yoo -->
+			<table class="list" id="list00">
+				<tbody class="tabelAI">
+					<c:choose>
+						<c:when test="${recommandResumeList.size() > 0 }">
+							<c:forEach var="result" items="${recommandResumeList}" varStatus="status">
+								<tr>
+									<th></th>
+									<td class="desc00">
+										<span>${result.name }</span><br/>
+									</td>
+									<td class="desc01" colspan=3>
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', 'open', '');" title="AI 추천 인재정보">
+											<span class="desc01_01">
+												${result.title }
+											</span>
+										</a>
+										<br /><span>${result.loc }</span>
+									</td>
+									<!-- 
+									<td class="desc02">
+									</td>
+									<td class="desc03">
+									</td>
+									<td class="date">${result.strWdate }</td>
+									 -->
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr><td class="desc00" colspan="6">내역이 없습니다.</td></tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+			<table class="list" id="list01" style="display:none;">
+			<!-- (end) 2020.12.30 by s.yoo -->
 				<tbody class="tabelArea">
 					<c:choose>
 						<c:when test="${myServiceResumeList.size() > 0 }">

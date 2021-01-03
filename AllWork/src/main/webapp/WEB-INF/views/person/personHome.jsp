@@ -71,38 +71,99 @@
 				<li class="review03"><a href="#" title="관심기업공고"><strong>${netfuConcernCnt }</strong><span>관심기업공고</span></a></li>
 			</ul>
 		</div>
+		<!-- (begin) 2020.12.30 by s.yoo -->
 		<div id="recommendPart">
-			<h4>추천채용정보</h4>
+			<h4>AI 추천 채용정보</h4>
 			<ul>
 				<c:choose>
 					<c:when test="${recommandRecruitList.size() > 0 }">
 						<c:forEach var="result" items="${recommandRecruitList}" varStatus="status">
 							<c:if test="${status.index < 4 }">
 								<li>
-				                	<a href="#" title="추천채용정보">
-				                    	<div class="descBox">
-				                      		<p class="desc01">${result.companyTitle }</p>
-				                      		<p class="desc02">${convert:compByte(result.recruitItemContents, 30, "...")}</p>
-				                     		<span class="desc03">${result.men }</span>
-				                    	</div>
-				                  	</a>
+									<c:if test="${result.type == 1 }">
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', 'open', '');">
+					                    	<div class="descBox">
+					                      		<p class="desc01">${result.name }</p>
+					                      		<p class="desc02">${convert:compByte(result.title, 30, "...")}</p>
+					                     		<span class="desc03">${result.loc }</span>
+					                    	</div>
+					                  	</a>
+									</c:if>
+									<c:if test="${result.type == 2 }">
+										<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.recommend_id }" target="_blank">
+					                    	<div class="descBox">
+					                      		<p class="desc01">${result.name }</p>
+					                      		<p class="desc02">${convert:compByte(result.title, 30, "...")}</p>
+					                     		<span class="desc03">${result.loc }</span>
+					                    	</div>
+					                  	</a>
+									</c:if>
 				                </li>
 							</c:if>
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
-						<li style="width:100%;"><div class="descBox"><p class="desc02">내역이 없습니다.</p></li>
+								<li style="width:100%; padding:10px">
+				                	<a href="#" title="추천채용정보">
+				                    	<div>
+				                      		<p class="desc01">추천 업체명</p>
+				                      		<p class="desc02">추천 채용공고</p>
+				                     		<span class="desc03">근무지</span>
+				                     		<span class="desc03">내용이 충실한 이력서를 등록하면, AI가 맞춤형 채용정보를 추천해 드립니다.</span>
+				                    	</div>
+				                  	</a>
+				                </li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
 		</div>
+		<!-- (end) 2020.12.30 by s.yoo -->
 		<div id="listPart">
 			<ul class="tab">
-				<li><a class="selected" href="#" title="맞춤채용공고">맞춤채용공고</a></li>
+				<!-- (begin) 2020.12.30 by s.yoo -->
+				<li><a class="selected" href="#" title="AI 추천 채용정보">AI 추천 채용정보</a></li>
+				<li><a href="#" title="맞춤채용공고">맞춤채용공고</a></li>
+				<!-- (end) 2020.12.30 by s.yoo -->
 				<li><a href="#" title="스크랩공고">스크랩공고</a></li>
 				<li><a href="#" title="최근 본 공고">최근 본 공고</a></li>
 			</ul>
-			<table class="list" id="list01">
+			<!-- (begin) 2020.12.30 by s.yoo -->
+			<table class="list" id="list00">
+				<tbody>
+					<c:choose>
+						<c:when test="${recommandRecruitList.size() > 0 }">
+							<c:forEach var="result" items="${recommandRecruitList}" varStatus="status">
+								<tr class="desc desc0">
+									<td rowspan="3" class="desc01">${result.name }</td>
+									<td colspan="6" class="desc02">
+										<c:if test="${result.type == 1 }">
+											<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', 'open', '');">
+												${result.title }
+											</a>
+										</c:if>
+										<c:if test="${result.type == 2 }">
+											<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.recommend_id }" target="_blank">
+												${result.title }
+											</a>
+										</c:if>
+									</td>
+									<td rowspan="3" class="desc05">${result.strEdate }</td>
+								</tr>
+								<tr class="desc desc1">
+									<td class="desc03">급여</td>
+									<td class="desc04">${result.salary }</td>
+								</tr>
+								<tr class="desc desc2">
+									<td class="desc03">지역</td>
+									<td class="desc04">${result.loc }</td>
+								</tr>
+							</c:forEach>
+						</c:when>
+					</c:choose>
+				</tbody>
+			</table>
+			<table class="list" id="list01" style="display:none;">
+			<!-- (end) 2020.12.30 by s.yoo -->
 				<tbody>
 					<c:choose>
 						<c:when test="${myServiceRecruitList.size() > 0 }">

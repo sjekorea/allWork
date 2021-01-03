@@ -17,49 +17,42 @@
 			<ul class="tab">
 				<li><a class="selected" href="#" title="">AI 통합 검색 인재 정보</a></li>
 			</ul>
+	       	<!-- (begin) 2020.12.30 by s.yoo -->
 			<table class="list" id="list01" style="width:100%;">
 				<tbody class="tabelArea">
 					<c:choose>
-						<c:when test="${myServiceResumeList.size() > 0 }">
-							<c:forEach var="result" items="${myServiceResumeList}" varStatus="status">
+						<c:when test="${item.resumeDataAllwork.size() > 0 }">
+							<c:forEach var="result" items="${item.resumeDataAllwork}" varStatus="status">
 								<tr>
 									<td class="desc00">
 										<span>${result.name }</span><br/>
-										<span>${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span><br/>
-										<span>${codeConvert:getLastSchool(result.inidLastSchool) }</span>
 									</td>
-									<td class="desc01">
-										<a href="#none">
+									<td class="desc01" colspan=2>
+										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.recommend_id }', 'no', 'resume');">
 											<span class="desc01_01">
-												${result.inidType1Name }
-												${convert:checkNull(result.inidType2Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType2Name) }
-												${convert:checkNull(result.inidType3Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType3Name) }
+												${result.title }
 											</span>
 										</a>
+										<br />
+										<span>
+											${result.job_type }
+										</span>
 									</td>
 									<td class="desc02">
 										<span>
-											${result.inidArea1Name }
-											${convert:checkNull(result.inidArea2Name) eq '' ? '</span>' : '&nbsp;>&nbsp;'.concat(result.inidArea2Name).concat('</span>') }
-											${convert:checkNull(result.inidArea3Name) eq '' ? '</span>' : '<br/><span>'.concat(result.inidArea3Name) }
-											${convert:checkNull(result.inidArea4Name) eq '' ? '</span>' : '&nbsp;>&nbsp;'.concat(result.inidArea4Name).concat('</span>') }
-											${convert:checkNull(result.inidArea5Name) eq '' ? '</span>' : '<br/><span>'.concat(result.inidArea5Name) }
-											${convert:checkNull(result.inidArea6Name) eq '' ? '</span>' : '&nbsp;>&nbsp;'.concat(result.inidArea6Name).concat('</span>') }
+											${result.loc }
+										</span>
 									</td>
-									<td class="desc03">
-										<span>${result.inidJobformName }</span><br/>
-										<span>${result.inidPayName }</span>
-									</td>
-									<td class="date">${result.wdate }</td>
 								</tr>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<tr><td class="desc00" colspan="5">내역이 없습니다.</td></tr>
+							<tr><td class="desc00" colspan="5">주어진 조건을 만족하는 인재정보를 찾을 수 없습니다.</td></tr>
 						</c:otherwise>
 					</c:choose>
 				</tbody>
 			</table>
+	       	<!-- (end) 2020.12.30 by s.yoo -->
 		</div>
 	</div>
 </div>
@@ -107,22 +100,6 @@
 				$("#searchForm").attr("action", "/resumeDetail.do");
 				$("#searchForm").submit();
 			} 
-		}else{
-			
-			if("open" != open){
-				alert("현재 비공개 상태로 설정되어 있습니다.");
-				loadingOff();
-		
-			}else{
-				
-				$("#companyUid").val(companyUid);
-				$("#personUid").val(personUid);
-				$("#no").val(no);
-				$("#recruitNo").val(recruitNo);
-				$("#resumeNo").val(resumeNo);
-				$("#searchForm").attr("action", "/recruitDetail.do");
-				$("#searchForm").submit();
-			}
 		}
 	}
 </script>

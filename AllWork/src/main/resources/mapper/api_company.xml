@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.daos.ApiCompanyDAO">
+
+	<select id="getCompanyList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiCompanyModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiCompanyModel">
+		SELECT
+			A.no AS id
+			, A.uid AS uid
+			, A.biz_no AS biz_no
+			, A.biz_copy AS biz_copy
+			, A.biz_name AS biz_name
+			, A.biz_recharger AS biz_recharger
+			, A.biz_subject AS biz_subject
+			, A.biz_fonundation AS biz_fonundation
+			, A.biz_men AS biz_men
+			, A.biz_list AS biz_list
+			, A.biz_form AS biz_form
+			, A.biz_category AS biz_category
+			, A.biz_capital AS biz_capital
+			, A.biz_selling AS biz_selling
+			, A.biz_vision AS biz_vision
+			, A.biz_history AS biz_history
+			, A.biz_phone AS biz_phone
+			, A.biz_fax AS biz_fax
+			, A.biz_post AS biz_post
+			, A.biz_address1 AS biz_address1
+			, A.biz_address2 AS biz_address2
+			, A.biz_email AS biz_email
+			, A.biz_home AS biz_home
+			, A.biz_logo AS biz_logo
+			, A.photo1 AS photo1
+			, A.photo2 AS photo2
+			, A.photo3 AS photo3
+			, A.photo4 AS photo4
+			, A.biz_manager AS biz_manager
+			, A.admit AS admit
+			, A.order_view AS order_view
+			, A.kind AS kind
+			, A.memo AS memo
+		FROM
+			netfu_company A
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+			<if test='biz_category != null &amp;&amp; biz_category != ""'>
+				AND A.biz_category = #{biz_category}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.uid LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_no LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_name LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_recharger LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_subject LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_fonundation LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_list LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_form LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_category LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_vision LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_history LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_address1 LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_address2 LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_manager LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.order_view ASC, A.no DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sidx != "hphone" &amp;&amp; sidx != "email" &amp;&amp; sidx != "board_name" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.no DESC
+		</if>
+		<if test=' sidx == "hphone" || sidx == "email" '>
+			ORDER BY B.${sidx} ${sord}, A.no DESC
+		</if>
+		<if test=' sidx == "board_name" '>
+			ORDER BY B.${sidx} ${sord}, A.no DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getCompany"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiCompanyModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiCompanyModel">
+		SELECT
+			A.no AS id
+			, A.uid AS uid
+			, A.biz_no AS biz_no
+			, A.biz_copy AS biz_copy
+			, A.biz_name AS biz_name
+			, A.biz_recharger AS biz_recharger
+			, A.biz_subject AS biz_subject
+			, A.biz_fonundation AS biz_fonundation
+			, A.biz_men AS biz_men
+			, A.biz_list AS biz_list
+			, A.biz_form AS biz_form
+			, A.biz_category AS biz_category
+			, A.biz_capital AS biz_capital
+			, A.biz_selling AS biz_selling
+			, A.biz_vision AS biz_vision
+			, A.biz_history AS biz_history
+			, A.biz_phone AS biz_phone
+			, A.biz_fax AS biz_fax
+			, A.biz_post AS biz_post
+			, A.biz_address1 AS biz_address1
+			, A.biz_address2 AS biz_address2
+			, A.biz_email AS biz_email
+			, A.biz_home AS biz_home
+			, A.biz_logo AS biz_logo
+			, A.photo1 AS photo1
+			, A.photo2 AS photo2
+			, A.photo3 AS photo3
+			, A.photo4 AS photo4
+			, A.biz_manager AS biz_manager
+			, A.admit AS admit
+			, A.order_view AS order_view
+			, A.kind AS kind
+			, A.memo AS memo
+		FROM
+			netfu_company A 
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+		</where>
+		ORDER BY A.no DESC
+	</select>
+
+	<select id="getCompanyTotalCnt" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCompanyModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.no), 0)
+		FROM
+			netfu_company A 
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+			<if test='biz_category != null &amp;&amp; biz_category != ""'>
+				AND A.biz_category = #{biz_category}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.uid LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_no LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_name LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_recharger LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_subject LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_fonundation LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_list LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_form LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_category LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_vision LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_history LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_address1 LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_address2 LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_manager LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+	</select>
+
+	<select id="findCompany" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCompanyModel" resultType="Integer">
+		SELECT IFNULL(no, 0) FROM netfu_company WHERE no = #{id}
+	</select>
+
+	<insert id="insertCompany" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCompanyModel">
+		INSERT INTO netfu_company (
+			uid
+			, biz_copy
+			, biz_name
+			, biz_recharger
+			, biz_manager
+			, biz_category
+			, biz_phone
+			, biz_post
+			, biz_address1
+			, biz_address2
+		) VALUES (
+			#{uid}
+			, #{biz_copy}
+			, #{biz_name}
+			, #{biz_recharger}
+			, #{biz_manager}
+			, #{biz_category}
+			, #{biz_phone}
+			, #{biz_post}
+			, #{biz_address1}
+			, #{biz_address2}
+		)
+	</insert>
+
+	<update id="updateCompany" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCompanyModel">
+		UPDATE
+			netfu_company
+		SET
+			memo = #{memo}
+			, order_view = #{order_view}
+		WHERE
+			no = #{id}
+	</update>
+
+	<update id="updateMobileCompany" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCompanyModel">
+		UPDATE
+			netfu_company
+		SET
+			biz_copy = #{biz_copy}
+			, biz_name = #{biz_name}
+			, biz_recharger = #{biz_recharger}
+			, biz_manager = #{biz_manager}
+			, biz_category = #{biz_category}
+			, biz_phone = #{biz_phone}
+			, biz_post = #{biz_post}
+			, biz_address1 = #{biz_address1}
+			, biz_address2 = #{biz_address2}
+		WHERE
+			no = #{id}
+	</update>
+
+	<delete id="deleteCompany" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCompanyModel">
+		DELETE FROM netfu_company WHERE no = #{id} 
+	</delete>
+
+	<delete id="deleteCompanyList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiCompanyModel">
+		DELETE FROM netfu_company WHERE  no IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+</mapper>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.daos.ApiRecommendPersonDAO">
+
+	<select id="getRecommendPersonList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel">
+		SELECT
+			A.ser AS id
+			, DATE_FORMAT(A.reg, '%Y-%m-%d %H:%i:%s') AS strReg
+			, A.prs AS prs
+			, DATE_FORMAT(A.beg, '%Y-%m-%d %H:%i:%s') AS strBeg
+			, A.uid AS uid
+			, A.uno AS uno
+			, A.name AS name
+			, A.birth_year AS birth_year
+			, A.sex AS sex
+			, A.schooling AS schooling
+			, A.career_main AS career_main
+			, A.work_area AS work_area
+			, DATE_FORMAT(A.reg_date, '%Y-%m-%d') AS strRegDate
+			, A.memo AS memo
+		FROM
+			recommend_person A
+		<where>
+			A.prs = 'P'
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.ser = #{id}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND (
+					   A.uid LIKE CONCAT('%', #{keyword}, '%')
+					OR A.name LIKE CONCAT('%', #{keyword}, '%')
+					OR A.birth_year LIKE CONCAT('%', #{keyword}, '%')
+					OR A.schooling LIKE CONCAT('%', #{keyword}, '%')
+					OR A.career_main LIKE CONCAT('%', #{keyword}, '%')
+					OR A.work_area LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.ser DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.ser DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getRecommendPerson"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel">
+		SELECT
+			A.ser AS id
+			, DATE_FORMAT(A.reg, '%Y-%m-%d %H:%i:%s') AS strReg
+			, A.prs AS prs
+			, DATE_FORMAT(A.beg, '%Y-%m-%d %H:%i:%s') AS strBeg
+			, A.uid AS uid
+			, A.uno AS uno
+			, A.name AS name
+			, A.birth_year AS birth_year
+			, A.sex AS sex
+			, A.schooling AS schooling
+			, A.career_main AS career_main
+			, A.work_area AS work_area
+			, DATE_FORMAT(A.reg_date, '%Y-%m-%d') AS strRegDate
+			, A.memo AS memo
+		FROM
+			recommend_person A
+		<where>
+			A.ser = #{id}
+		</where>
+	</select>
+
+	<select id="loadRecommendPerson"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel">
+		SELECT
+			A.ser AS id
+			, DATE_FORMAT(A.reg, '%Y-%m-%d %H:%i:%s') AS strReg
+			, A.prs AS prs
+			, DATE_FORMAT(A.beg, '%Y-%m-%d %H:%i:%s') AS strBeg
+			, A.uid AS uid
+			, A.uno AS uno
+			, A.name AS name
+			, A.birth_year AS birth_year
+			, A.sex AS sex
+			, A.schooling AS schooling
+			, A.career_main AS career_main
+			, A.work_area AS work_area
+			, DATE_FORMAT(A.reg_date, '%Y-%m-%d') AS strRegDate
+			, A.memo AS memo
+		FROM
+			recommend_person A
+		<where>
+			A.uid = #{uid}
+		</where>
+	</select>
+
+	<select id="getRecommendPersonTotalCnt" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.ser), 0)
+		FROM
+			recommend_person A 
+		<where>
+			A.prs = 'P'
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.ser = #{id}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND (
+					   A.uid LIKE CONCAT('%', #{keyword}, '%')
+					OR A.name LIKE CONCAT('%', #{keyword}, '%')
+					OR A.birth_year LIKE CONCAT('%', #{keyword}, '%')
+					OR A.schooling LIKE CONCAT('%', #{keyword}, '%')
+					OR A.career_main LIKE CONCAT('%', #{keyword}, '%')
+					OR A.work_area LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+	</select>
+
+	<select id="getRecommendPersonDuplicatedCount" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel" resultType="Integer">
+		SELECT IFNULL(COUNT(ser), 0) FROM recommend_person A WHERE ser <![CDATA[ <> ]]> #{id} AND uid = #{uid} 
+	</select>
+
+	<select id="findRecommendPerson" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel" resultType="Integer">
+		SELECT IFNULL(ser, 0) FROM recommend_person WHERE ser = #{id}
+	</select>
+
+	<select id="findRecommendPersonWithUserID" parameterType="String" resultType="Integer">
+		SELECT IFNULL(ser, 0) FROM recommend_person A WHERE uid = #{uid} 
+	</select>
+
+	<insert id="insertRecommendPerson" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel">
+		INSERT INTO recommend_person (
+			  reg
+			, prs
+			, beg
+			, uid
+			, uno
+			, name
+			, birth_year
+			, sex
+			, schooling
+			, career_main
+			, work_area
+			, reg_date
+			, memo
+		) VALUES (
+			CURRENT_TIMESTAMP()
+			, 'P'
+			, CURRENT_TIMESTAMP()
+			, #{uid}
+			, 0
+			, #{name}
+			, #{birth_year}
+			, #{sex}
+			, #{schooling}
+			, #{career_main}
+			, #{work_area}
+			, CURRENT_TIMESTAMP()
+			, #{memo}
+		)
+	</insert>
+
+	<update id="updateRecommendPerson" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel">
+		UPDATE
+			recommend_person
+		SET
+			name = #{name}
+			, reg = CURRENT_TIMESTAMP()
+			, birth_year = #{birth_year}
+			, sex = #{sex}
+			, schooling = #{schooling}
+			, career_main = #{career_main}
+			, work_area = #{work_area}
+			, memo = #{memo}
+		WHERE
+			ser = #{id}
+	</update>
+
+	<delete id="deleteRecommendPerson" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel">
+		DELETE FROM recommend_person WHERE ser = #{id} 
+	</delete>
+
+	<delete id="deleteRecommendPersonList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel">
+		DELETE FROM recommend_person WHERE  ser IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+	<insert id="insertExcelRecommendPerson" parameterType="java.util.List">
+		INSERT INTO recommend_person(
+			  reg
+			, prs
+			, beg
+			, uid
+			, uno
+			, name
+			, birth_year
+			, sex
+			, schooling
+			, career_main
+			, work_area
+			, reg_date
+			, memo
+		) VALUES
+		<foreach collection="list" item="item" index="index" open="(" separator="),("  close=")">
+			CURRENT_TIMESTAMP()
+			, #{item.prs}
+			, #{item.beg}
+			, #{item.uid}
+			, #{item.uno}
+			, #{item.name}
+			, #{item.birth_year}
+			, #{item.sex}
+			, #{item.schooling}
+			, #{item.career_main}
+			, #{item.work_area}
+			, CURRENT_TIMESTAMP()
+			, #{item.memo}
+		</foreach>
+ 	</insert>
+
+</mapper>

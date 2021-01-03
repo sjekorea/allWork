@@ -35,7 +35,7 @@
 				<div id="topWrap">
 					<h1><a href="/index.do" title="올워크홈">Allwork</a></h1>
 					<ul class="topMenu">
-						<li><a href="#" title="고객센터">고객센터&nbsp;&nbsp;|&nbsp;&nbsp;</a></li>
+						<li><a href="/noticeList.do" title="고객센터">고객센터&nbsp;&nbsp;|&nbsp;&nbsp;</a></li>
 						<li><a href="/logout.do" title="로그아웃">로그아웃</a></li>
 					</ul>
 				</div>
@@ -44,9 +44,9 @@
 						<ul class="nav">
 							<li class="link02"><a href="#none" title="전체메뉴보기"><i class="fas fa-bars"></i></a></li>
 							<li><a href="/resumeSearch.do" title="인재정보">인재정보</a></li>
-							<li><a href="#" title="헤드헌팅">헤드헌팅</a></li>
-							<li><a href="#" title="채용진행현황">채용진행현황</a></li>
-							<li><a href="/boardList.do" title="커뮤니티">커뮤니티</a></li>
+							<li><a href="/headhuntList.do" title="헤드헌팅">헤드헌팅</a></li>
+							<li><a href="/progressList.do" title="채용진행현황">채용진행현황</a></li>
+							<li><a href="/noticeList.do" title="커뮤니티">커뮤니티</a></li>
 						</ul>
               			<p class="company_name"><a href="/companyHome.do" title="기업홈">${SE_USER_NM }</a></p>
 						<p class="link01"><a href="/companyHome.do" title="기업회원 홈">기업회원 홈</a></p>

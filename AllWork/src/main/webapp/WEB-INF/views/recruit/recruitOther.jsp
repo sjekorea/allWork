@@ -36,7 +36,11 @@
 									<tr>
 										<td rowspan="3" class="desc01">${result.companyTitle }</td>
 										<td colspan="3" class="desc02">
-											<a href="" title="맞춤채용공고">${result.recruitItem }</a>
+									       	<!-- (begin) 2020.12.30 by s.yoo -->
+											<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.wantedAuthNo }" target="_blank">
+												${result.recruitItem }
+											</a>
+									       	<!-- (end) 2020.12.30 by s.yoo -->
 										</td>
 										<td rowspan="3" class="desc03">${result.strEdate }</td>
 									</tr>

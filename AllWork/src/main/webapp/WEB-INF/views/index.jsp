@@ -4,7 +4,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+
+<!-- (begin) 2020.12.30 by s.yoo	-->
+<!-- 
 <jsp:include page="/indexHeader.do" />
+ -->
+<c:choose>
+	<c:when test="${SE_LOGIN_STATUS}">
+		<c:if test="${SE_USER_TYPE == 'company' }">
+			<jsp:include page="/indexHeaderCompany.do"/>
+		</c:if>
+
+		<c:if test="${SE_USER_TYPE == 'person' }">
+			<jsp:include page="/indexHeaderPerson.do" />
+		</c:if>
+	</c:when>
+	<c:otherwise>
+			<jsp:include page="/indexHeader.do" />
+	</c:otherwise>
+</c:choose>
+<!-- (end) 2020.12.30 by s.yoo	-->
 
 <div id="content01Wrap">
 	<div id="content01">

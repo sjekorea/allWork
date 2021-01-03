@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.daos.ApiResumeDAO">
+
+	<select id="getResumeList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel">
+		SELECT
+			A.no AS id
+			, A.info_type AS info_type
+			, A.uid AS uid
+			, IFNULL(B.name, '') AS name
+			, IFNULL(B.birth, '') AS birth
+			, IFNULL(B.sex, '') AS inid_sex
+			, IFNULL(B.post, '') AS inid_post
+			, IFNULL(B.address1, '') AS inid_address1
+			, IFNULL(B.address2, '') AS inid_address2
+			, A.inid_photo AS inid_photo
+			, A.inid_hphone AS inid_hphone
+			, A.inid_phone AS inid_phone
+			, A.inid_email AS inid_email
+			, A.inid_home AS inid_home
+			, A.inid_title AS inid_title
+			, A.indi_condition AS indi_condition
+			, A.inid_area1 AS inid_area1
+			, A.inid_area2 AS inid_area2
+			, A.inid_area3 AS inid_area3
+			, A.inid_area4 AS inid_area4
+			, A.inid_area5 AS inid_area5
+			, A.inid_area6 AS inid_area6
+			, A.inid_type1 AS inid_type1
+			, A.inid_type2 AS inid_type2
+			, A.inid_type3 AS inid_type3
+			, A.inid_type4 AS inid_type4
+			, A.inid_type5 AS inid_type5
+			, A.inid_type6 AS inid_type6
+			, A.inid_type7 AS inid_type7
+			, A.inid_type8 AS inid_type8
+			, A.inid_type9 AS inid_type9
+			, A.inid_mylskill AS inid_mylskill
+			, A.inid_jobform AS inid_jobform
+			, A.pay_type AS pay_type
+			, A.inid_pay AS inid_pay
+			, A.inid_last_school AS inid_last_school
+			, A.inid_career AS inid_career
+			, A.inid_license AS inid_license
+			, A.inid_languages AS inid_languages
+			, A.inid_introduce AS inid_introduce
+			, A.inid_secret AS inid_secret
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strWdate
+			, DATE_FORMAT(A.u_wdate, '%Y-%m-%d') AS strUwdate
+			, A.hit AS hit
+			, A.sms_send AS sms_send
+			, A.a_insert AS a_insert
+			, A.memo AS memo
+			, A.education2 AS education2
+			, A.career2 AS career2
+			, A.license2 AS license2
+			, A.language2 AS language2
+		FROM
+			netfu_item_resume A LEFT JOIN netfu_member B ON A.uid = B.uid
+		<where>
+			1 = 1
+			<if test='showAll != "Y"'>
+				AND A.inid_secret <![CDATA[ <> ]]> 'yes'
+			</if>
+			<if test='info_type == 1'>
+				AND (A.inid_jobform LIKE '%netfu_34537_33276%'
+					OR A.inid_jobform LIKE '%netfu_48782_57525%'
+					OR A.inid_jobform LIKE '%netfu_85884_14481%')
+			</if>
+			<if test='info_type == 2'>
+				AND (A.inid_jobform LIKE '%netfu_34537_33276%'
+					OR A.inid_jobform LIKE '%arbeit%')
+			</if>
+			<if test='info_type == 4'>
+				AND (A.inid_jobform LIKE '%netfu_34537_33276%'
+					OR A.inid_jobform LIKE '%freelancer%')
+			</if>
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+			<if test='search_loc != null &amp;&amp; search_loc != ""'>
+				AND ( (A.inid_area1 = '' AND A.inid_area3 = '' AND A.inid_area5 = '')
+					 OR A.inid_area1 = #{search_loc} OR A.inid_area3 = #{search_loc} OR A.inid_area5 = #{search_loc} )
+			</if>
+			<if test='search_biz_type != null &amp;&amp; search_biz_type != ""'>
+				AND ( A.inid_type1 = #{search_biz_type} OR A.inid_type2 = #{search_biz_type} OR A.inid_type3 = #{search_biz_type}
+						OR A.inid_type4 = #{search_biz_type} OR A.inid_type5 = #{search_biz_type} OR A.inid_type6 = #{search_biz_type} )
+			</if>
+			<if test='fromDate != null &amp;&amp; fromDate != ""'>
+				AND A.wdate <![CDATA[ >= ]]> #{fromDate}
+			</if>
+			<if test='toDate != null &amp;&amp; toDate != ""'>
+				AND A.wdate <![CDATA[ <= ]]> #{toDate}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.inid_title LIKE CONCAT('%', #{keyword}, '%')
+					OR A.uid LIKE CONCAT('%', #{keyword}, '%')
+					OR A.name LIKE CONCAT('%', #{keyword}, '%')
+					OR A.inid_mylskill LIKE CONCAT('%', #{keyword}, '%')
+					OR A.inid_career LIKE CONCAT('%', #{keyword}, '%')
+					OR A.inid_license LIKE CONCAT('%', #{keyword}, '%')
+					OR A.inid_languages LIKE CONCAT('%', #{keyword}, '%')
+					OR A.inid_introduce LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					OR A.education2 LIKE CONCAT('%', #{keyword}, '%')
+					OR A.career2 LIKE CONCAT('%', #{keyword}, '%')
+					OR A.license2 LIKE CONCAT('%', #{keyword}, '%')
+					OR A.language2 LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.u_wdate DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sidx != "hphone" &amp;&amp; sidx != "email" &amp;&amp; sidx != "board_name" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.no DESC
+		</if>
+		<if test=' sidx == "hphone" || sidx == "email" '>
+			ORDER BY B.${sidx} ${sord}, A.no DESC
+		</if>
+		<if test=' sidx == "board_name" '>
+			ORDER BY B.${sidx} ${sord}, A.no DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getResume"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel">
+		SELECT
+			A.no AS id
+			, A.info_type AS info_type
+			, A.uid AS uid
+			, IFNULL(B.name, '') AS name
+			, IFNULL(B.birth, '') AS birth
+			, IFNULL(B.sex, '') AS inid_sex
+			, IFNULL(B.post, '') AS inid_post
+			, IFNULL(B.address1, '') AS inid_address1
+			, IFNULL(B.address2, '') AS inid_address2
+			, A.inid_photo AS inid_photo
+			, A.inid_hphone AS inid_hphone
+			, A.inid_phone AS inid_phone
+			, A.inid_email AS inid_email
+			, A.inid_home AS inid_home
+			, A.inid_title AS inid_title
+			, A.indi_condition AS indi_condition
+			, A.inid_area1 AS inid_area1
+			, A.inid_area2 AS inid_area2
+			, A.inid_area3 AS inid_area3
+			, A.inid_area4 AS inid_area4
+			, A.inid_area5 AS inid_area5
+			, A.inid_area6 AS inid_area6
+			, A.inid_type1 AS inid_type1
+			, A.inid_type2 AS inid_type2
+			, A.inid_type3 AS inid_type3
+			, A.inid_type4 AS inid_type4
+			, A.inid_type5 AS inid_type5
+			, A.inid_type6 AS inid_type6
+			, A.inid_type7 AS inid_type7
+			, A.inid_type8 AS inid_type8
+			, A.inid_type9 AS inid_type9
+			, A.inid_mylskill AS inid_mylskill
+			, A.inid_jobform AS inid_jobform
+			, A.pay_type AS pay_type
+			, A.inid_pay AS inid_pay
+			, A.inid_last_school AS inid_last_school
+			, A.inid_career AS inid_career
+			, A.inid_license AS inid_license
+			, A.inid_languages AS inid_languages
+			, A.inid_introduce AS inid_introduce
+			, A.inid_secret AS inid_secret
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strWdate
+			, DATE_FORMAT(A.u_wdate, '%Y-%m-%d') AS strUwdate
+			, A.hit AS hit
+			, A.sms_send AS sms_send
+			, A.a_insert AS a_insert
+			, A.memo AS memo
+			, A.education2 AS education2
+			, A.career2 AS career2
+			, A.license2 AS license2
+			, A.language2 AS language2
+		FROM
+			netfu_item_resume A LEFT JOIN netfu_member B ON A.uid = B.uid
+		<where>
+			1 = 1
+			<if test='info_type == 1'>
+				AND (A.inid_jobform LIKE '%netfu_34537_33276%'
+					OR A.inid_jobform LIKE '%netfu_48782_57525%'
+					OR A.inid_jobform LIKE '%netfu_85884_14481%')
+			</if>
+			<if test='info_type == 2'>
+				AND (A.inid_jobform LIKE '%netfu_34537_33276%'
+					OR A.inid_jobform LIKE '%arbeit%')
+			</if>
+			<if test='info_type == 4'>
+				AND (A.inid_jobform LIKE '%netfu_34537_33276%'
+					OR A.inid_jobform LIKE '%freelancer%')
+			</if>
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+		</where>
+			ORDER BY A.no DESC
+			LIMIT 1
+	</select>
+
+	<select id="getResumeTotalCnt" parameterType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.no), 0)
+		FROM
+			netfu_item_resume A 
+		<where>
+			1 = 1
+			<if test='showAll != "Y"'>
+				AND A.inid_secret <![CDATA[ <> ]]> 'yes'
+			</if>
+			<if test='info_type != null &amp;&amp; info_type > 0'>
+				AND A.info_type = #{info_type}
+			</if>
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+			<if test='search_loc != null &amp;&amp; search_loc != ""'>
+				AND ( (A.inid_area1 = '' AND A.inid_area3 = '' AND A.inid_area5 = '')
+					 OR A.inid_area1 = #{search_loc} OR A.inid_area3 = #{search_loc} OR A.inid_area5 = #{search_loc} )
+			</if>
+			<if test='search_biz_type != null &amp;&amp; search_biz_type != ""'>
+				AND ( A.inid_type1 = #{search_biz_type} OR A.inid_type2 = #{search_biz_type} OR A.inid_type3 = #{search_biz_type}
+						OR A.inid_type4 = #{search_biz_type} OR A.inid_type5 = #{search_biz_type} OR A.inid_type6 = #{search_biz_type} )
+			</if>
+			<if test='fromDate != null &amp;&amp; fromDate != ""'>
+				AND A.wdate <![CDATA[ >= ]]> #{fromDate}
+			</if>
+			<if test='toDate != null &amp;&amp; toDate != ""'>
+				AND A.wdate <![CDATA[ <= ]]> #{toDate}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.inid_title LIKE CONCAT('%', #{keyword}, '%')
+					OR A.uid LIKE CONCAT('%', #{keyword}, '%')
+					OR A.name LIKE CONCAT('%', #{keyword}, '%')
+					OR A.inid_mylskill LIKE CONCAT('%', #{keyword}, '%')
+					OR A.inid_career LIKE CONCAT('%', #{keyword}, '%')
+					OR A.inid_license LIKE CONCAT('%', #{keyword}, '%')
+					OR A.inid_languages LIKE CONCAT('%', #{keyword}, '%')
+					OR A.inid_introduce LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					OR A.education2 LIKE CONCAT('%', #{keyword}, '%')
+					OR A.career2 LIKE CONCAT('%', #{keyword}, '%')
+					OR A.license2 LIKE CONCAT('%', #{keyword}, '%')
+					OR A.language2 LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+	</select>
+
+	<select id="findResume" parameterType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel" resultType="Integer">
+		SELECT IFNULL(no, 0) FROM netfu_item_resume WHERE no = #{id}
+	</select>
+
+	<update id="incRefCount" parameterType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel">
+		UPDATE netfu_item_resume SET hit = hit + 1 WHERE no = #{id}
+	</update>
+
+	<insert id="insertResume" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel">
+		INSERT INTO netfu_item_resume (
+			uid
+			, name
+			, inid_hphone
+			, inid_email
+			, inid_secret
+			, inid_title
+			, inid_type1
+			, inid_area1
+			, inid_area2
+			, inid_mylskill
+			, indi_condition
+			, inid_jobform
+			, pay_type
+			, inid_pay
+			, inid_introduce
+			, wdate
+			, u_wdate
+			, inid_last_school
+			, inid_career
+			, inid_license
+			, inid_languages
+		) VALUES (
+			#{uid}
+			, #{name}
+			, #{inid_hphone}
+			, #{inid_email}
+			, #{inid_secret}
+			, #{inid_title}
+			, #{inid_type1}
+			, #{inid_area1}
+			, #{inid_area2}
+			, #{inid_mylskill}
+			, #{indi_condition}
+			, #{inid_jobform}
+			, #{pay_type}
+			, #{inid_pay}
+			, #{inid_introduce}
+			, CURRENT_TIMESTAMP()
+			, CURRENT_TIMESTAMP()
+			, ''
+			, ''
+			, ''
+			, ''
+		)
+	</insert>
+
+	<update id="updateResume" parameterType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel">
+		UPDATE
+			netfu_item_resume
+		SET
+			memo = #{memo}
+		WHERE
+			no = #{id}
+	</update>
+
+	<update id="updateSecretResume" parameterType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel">
+		UPDATE
+			netfu_item_resume
+		SET
+			inid_secret = #{inid_secret}
+			, u_wdate = CURRENT_TIMESTAMP()
+		WHERE
+			no = #{id}
+	</update>
+
+	<update id="updateMobileResume" parameterType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel">
+		UPDATE
+			netfu_item_resume
+		SET
+			  inid_secret = #{inid_secret}
+			, name = #{name}
+			, inid_hphone = #{inid_hphone}
+			, inid_email = #{inid_email}
+			, inid_title = #{inid_title}
+			, inid_type1 = #{inid_type1}
+			, inid_area1 = #{inid_area1}
+			, inid_area2 = #{inid_area2}
+			, inid_mylskill = #{inid_mylskill}
+			, indi_condition = #{indi_condition}
+			, inid_jobform = #{inid_jobform}
+			, pay_type = #{pay_type}
+			, inid_pay = #{inid_pay}
+			, inid_introduce = #{inid_introduce}
+			, u_wdate = CURRENT_TIMESTAMP()
+		WHERE
+			no = #{id}
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND uid = #{uid}
+			</if>
+	</update>
+
+	<delete id="deleteResume" parameterType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel">
+		DELETE FROM netfu_item_resume
+		WHERE no = #{id} 
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND uid = #{uid}
+			</if>
+	</delete>
+
+	<delete id="deleteResumeList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel">
+		DELETE FROM netfu_item_resume WHERE  no IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+</mapper>

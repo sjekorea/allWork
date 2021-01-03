@@ -5,7 +5,25 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<!-- (begin) 2020.12.30 by s.yoo	-->
+<!-- 
 <jsp:include page="/indexHeader.do" />
+ -->
+<c:choose>
+	<c:when test="${SE_LOGIN_STATUS}">
+		<c:if test="${SE_USER_TYPE == 'company' }">
+			<jsp:include page="/companyHeader.do"/>
+		</c:if>
+
+		<c:if test="${SE_USER_TYPE == 'person' }">
+			<jsp:include page="/personHeader.do" />
+		</c:if>
+	</c:when>
+	<c:otherwise>
+			<jsp:include page="/indexHeader.do" />
+	</c:otherwise>
+</c:choose>
+<!-- (end) 2020.12.30 by s.yoo	-->
 
 <link rel="stylesheet" type="text/css" href="/css/header_main.css"/>
 <link rel="stylesheet" type="text/css" href="/css/sitemap.css"/>
@@ -95,51 +113,51 @@
 		<div class="sitemap">
 			<h4>헤드헌팅</h4>
 			<ul>
-				<li class="sitemap_depth01"><a href="#" title="채용정보">채용정보</a>
+				<li class="sitemap_depth01"><a href="/headhuntList.do" title="채용정보">채용정보</a>
+				<li class="sitemap_depth01"><a href="#" title="화상면접">채용정보</a>
 			</ul>
 		</div>
 		<div class="sitemap">
 			<h4>채용진행현황</h4>
 			<ul>
-				<li class="sitemap_depth01"><a href="#" title="면접진행">면접진행</a>
-				<li class="sitemap_depth01"><a href="#" title="기업방문">기업방문</a></li>
-				<li class="sitemap_depth01"><a href="#" title="이력서제공">이력서제공</a></li>
-				<li class="sitemap_depth01"><a href="#" title="재취업성공">재취업성공</a></li>
-				<li class="sitemap_depth01"><a href="#" title="사전면접">사전면접</a></li>
+				<li class="sitemap_depth01"><a href="javascript:goProgressList('netfu_52508_48920', 1);" title="면접진행">면접진행</a>
+				<li class="sitemap_depth01"><a href="javascript:goProgressList('netfu_52508_50000', 1);" title="기업방문">기업방문</a></li>
+				<li class="sitemap_depth01"><a href="javascript:goProgressList('netfu_52508_60000', 1);" title="이력서제공">이력서제공</a></li>
+				<li class="sitemap_depth01"><a href="javascript:goProgressList('netfu_52508_70000', 1);" title="재취업성공">재취업성공</a></li>
+				<li class="sitemap_depth01"><a href="javascript:goProgressList('netfu_52508_80000', 1);" title="사전면접">사전면접</a></li>
+				<li class="sitemap_depth01"><a href="javascript:goProgressList('netfu_52508_90000', 1);" title="적응컨설팅">적응컨설팅</a></li>
 			</ul>
 		</div>
 		<div class="sitemap">
 			<h4>고객센터</h4>
 			<ul>
-				<li class="sitemap_depth01"><a href="#" title="공지사항">공지사항</a>
-				<li class="sitemap_depth01"><a href="#" title="게시판">게시판</a></li>
-				<li class="sitemap_depth01"><a href="#" title="FAQ">FAQ</a></li>
-				<li class="sitemap_depth01"><a href="#" title="이용안내">이용안내</a></li>
-				<li class="sitemap_depth01"><a href="#" title="이용약관">이용약관</a></li>
-				<li class="sitemap_depth02"><a href="#" title="유료채용광고 문의">유료채용광고
-						문의</a></li>
-				<li class="sitemap_depth01"><a href="#" title="개인정보취급방침">개인정보취급방침</a></li>
-				<li class="sitemap_depth01"><a href="#" title="불편 및 신고사항 접수">불편
-						및 신고사항 접수</a></li>
-				<li class="sitemap_depth01"><a href="#" title="모바일 서비스">모바일
-						서비스</a></li>
-				<li class="sitemap_depth01"><a href="#" title="자료실">자료실</a></li>
+				<li class="sitemap_depth01"><a href="/noticeList.do" title="공지사항">공지사항</a>
+				<li class="sitemap_depth01"><a href="javascript:goBoardList('netfu_41549_84812', 1);" title="게시판">게시판</a></li>
+				<li class="sitemap_depth01"><a href="/faqList.do" title="FAQ">FAQ</a></li>
+				<li class="sitemap_depth01"><a href="/paymentGuide.do" title="이용안내">이용안내</a></li>
+				<li class="sitemap_depth02"><a href="/paymentGuide.do" title="유료채용광고 문의">유료채용광고 문의</a></li>
+				<li class="sitemap_depth01"><a href="/termsOfService.do" title="이용약관">이용약관</a></li>
+				<li class="sitemap_depth01"><a href="/privacyPolicy.do" title="개인정보취급방침">개인정보취급방침</a></li>
+				<li class="sitemap_depth01"><a href="javascript:goBoardEdit('netfu_44304_38055', 0, 1);" title="불편 및 신고사항 접수">불편 및 신고사항 접수</a></li>
+				<li class="sitemap_depth01"><a href="/mobileGuide.do" title="모바일 서비스">모바일 서비스</a></li>
+				<li class="sitemap_depth01"><a href="/libraryList.do" title="자료실">자료실</a></li>
 			</ul>
 		</div>
 		<div class="sitemap">
 			<h4>회사소개</h4>
 			<ul>
-				<li class="sitemap_depth01"><a href="#" title="인사말">인사말</a>
-				<li class="sitemap_depth01"><a href="#" title="사업내역">사업내역</a></li>
-				<li class="sitemap_depth01"><a href="#" title="기술개발전문용역현황">기술개발전문용역현황</a></li>
-				<li class="sitemap_depth01"><a href="#" title="R&D컨설팅서비스">R&D컨설팅서비스</a></li>
-				<li class="sitemap_depth01"><a href="#" title="제휴서비스">제휴서비스</a></li>
-				<li class="sitemap_depth02"><a href="#" title="제휴단체">제휴단체</a></li>
-				<li class="sitemap_depth02"><a href="#" title="제휴치과">제휴치과</a></li>
-				<li class="sitemap_depth02"><a href="#" title="제휴상조회사">제휴상조회사</a></li>
-				<li class="sitemap_depth02"><a href="#" title="우대혜택 치과보험">우대혜택
-						치과보험</a></li>
-				<li class="sitemap_depth01"><a href="#" title="찾아오시는길">찾아오시는길</a></li>
+				<li class="sitemap_depth01"><a href="/introAbout.do" title="인사말">인사말</a>
+				<li class="sitemap_depth01"><a href="/introBusiness.do" title="사업내역">사업내역</a></li>
+				<li class="sitemap_depth01"><a href="/partnership01.do" title="제휴서비스">제휴서비스</a></li>
+				<li class="sitemap_depth02"><a href="/partnership01.do" title="제휴단체">제휴단체</a></li>
+				<li class="sitemap_depth02"><a href="/partnership02.do" title="기술개발매칭서비스">기술개발매칭서비스</a></li>
+				<li class="sitemap_depth02"><a href="/partnership03.do" title="R&D컨설팅서비스">R&D컨설팅서비스</a></li>
+				<li class="sitemap_depth02"><a href="/partnership04.do" title="창업컨설팅">창업컨설팅</a></li>
+				<li class="sitemap_depth02"><a href="/partnership05.do" title="제휴치과">제휴치과</a></li>
+				<li class="sitemap_depth02"><a href="/partnership06.do" title="제휴병원">제휴병원</a></li>
+				<li class="sitemap_depth02"><a href="/partnership07.do" title="보험서비스">보험서비스</a></li>
+				<li class="sitemap_depth02"><a href="/partnership08.do" title="제휴상조회사">제휴상조회사</a></li>
+				<li class="sitemap_depth01"><a href="/introLocation.do" title="찾아오시는길">찾아오시는길</a></li>
 			</ul>
 		</div>
 	</div>
@@ -147,3 +165,61 @@
 
 
 <jsp:include page="/footer.do" />
+
+
+<!-- (begin) 2020.12.30 by s.yoo	-->
+<form id="progressForm" name="progressForm" method="post" action="/progressList">
+	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
+	<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />
+</form>
+
+<form id="communityForm" name="communityForm" method="post" action="/boardList.do">
+	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
+	<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />
+	<input type="hidden" name="no" id="no" value="" />
+</form>
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+	});	
+
+	//채용진행현황 관련.
+	function goProgressList(boardCode, pageNo){
+		$("#progressForm>#pageNo").val(pageNo);
+		$("#progressForm>#boardCode").val(boardCode);
+		$("#progressForm").attr("action", "/progressList.do");
+		$("#progressForm").submit();
+	}
+
+
+	//커뮤니티 & 고객센터 관련.
+	function goBoardList(boardCode, pageNo){
+		$("#communityForm>#pageNo").val(pageNo);
+		//$("#communityForm>#boardType").val(boardType);
+		$("#communityForm>#boardCode").val(boardCode);
+		$("#communityForm").attr("action", "/boardList.do");
+		$("#communityForm").submit();
+	}
+
+	function goBoardEdit(boardCode, id, pageNo){
+		$("#communityForm>#pageNo").val(pageNo);
+		//$("#communityForm>#boardType").val(boardType);
+		$("#communityForm>#boardCode").val(boardCode);
+		$("#communityForm>#no").val(id);
+		$("#communityForm").attr("action", "/boardEdit.do");
+		$("#communityForm").submit();
+	}
+
+	function goBoardView(boardCode, id, pageNo){
+		$("#communityForm>#pageNo").val(pageNo);
+		//$("#communityForm>#boardType").val(boardType);
+		$("#communityForm>#boardCode").val(boardCode);
+		$("#communityForm>#no").val(id);
+		$("#communityForm").attr("action", "/boardView.do");
+		$("#communityForm").submit();
+	}
+	
+</script>
+<!-- (end) 2020.12.30 by s.yoo	-->
+

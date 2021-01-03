@@ -30,6 +30,17 @@
     	<context:include-filter type="regex" expression="(service|controller|dao)\..*"/>
     </context:component-scan>
 	
+    <!-- (begin) 2020.12.30 by s.yoo -->
+	<context:component-scan base-package="com.ilmagna.allworkadmin">
+    	<context:include-filter type="annotation" expression="org.springframework.context.annotation.Configuration"/>
+    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+    	<context:include-filter type="regex" expression="(services|controllers|daos)\..*"/>
+	</context:component-scan>
+    <!-- (end) 2020.12.30 by s.yoo -->
+
 	<mvc:resources location="/font/" mapping="/font/**" /> 
  	<mvc:resources location="/img/" mapping="/img/**" />  
  	<mvc:resources location="/js/" mapping="/js/**" /> 
@@ -54,9 +65,22 @@
             <mvc:exclude-mapping path="/intro*.do"/>
             <mvc:exclude-mapping path="/partnership*.do"/>
             <mvc:exclude-mapping path="/sitemap.do"/>
+    	<!-- (begin) 2020.12.30 by s.yoo -->
+    	<!-- 
             <mvc:exclude-mapping path="/privatePolicy.do"/>
+    	 -->
+    	<!-- (end) 2020.12.30 by s.yoo -->
             <mvc:exclude-mapping path="/termsOfService.do"/>
             <mvc:exclude-mapping path="/*.ajax"/>
+    	<!-- (begin) 2020.12.30 by s.yoo -->
+            <mvc:exclude-mapping path="/privacyPolicy.do"/>
+            <mvc:exclude-mapping path="/mobileGuide.do"/>
+            <mvc:exclude-mapping path="/paymentGuide.do"/>
+            <mvc:exclude-mapping path="/noticeList.do"/>
+            <mvc:exclude-mapping path="/faqList.do"/>
+            <mvc:exclude-mapping path="/libraryList.do"/>
+            <mvc:exclude-mapping path="/indexRecruitSearchList.do"/>
+    	<!-- (end) 2020.12.30 by s.yoo -->
 			<bean id="loginCheckInterceptor" class="allwork.common.interceptor.LoginCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
@@ -74,7 +98,131 @@
 			p:contentType="text/html;charset=UTF-8" />
 			
 			
-			
+	
+    <!-- (begin) 2020.12.30 by s.yoo -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="/WEB-INF/config/config.properties"/>
+		<property name="fileEncoding" value="UTF-8" />
+	</bean>
+	
+	<bean id="apiLoginAccountDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+				  value="com.ilmagna.allworkadmin.api.authentication.security.daos.ApiLoginAccountDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+
+	<bean id="apiApplyDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiApplyDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<!-- 
+	<bean id="apiBbsDataDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiBbsDataDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean id="apiCategoryDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiCategoryDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	 -->
+	<bean id="apiCompanyDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiCompanyDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean id="apiMemberDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiMemberDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean id="apiRecommendPersonDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiRecommendPersonDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean id="apiRecruitCompanyDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiRecruitCompanyDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean id="apiRecruitDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiRecruitDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<!-- 
+	<bean id="apiRecruitItemDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiRecruitItemDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	 -->
+	<bean id="apiRecruitOtherDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiRecruitOtherDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean id="apiRecruitProgressDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiRecruitProgressDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean id="apiResumeDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiResumeDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean id="apiScrapDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiScrapDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<!-- 
+	<bean id="apiSiteBasicDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiSiteBasicDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	 -->
+
+
+	<bean id="adminAdminDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.admin.daos.AdminAdminDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean id="adminBbsGroupSetupDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.admin.daos.AdminBbsGroupSetupDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<!-- 
+	<bean id="adminBbsSetupDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.admin.daos.AdminBbsSetupDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	 -->
+	<bean id="adminBbsVocDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.admin.daos.AdminBbsVocDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean id="adminHomeDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.admin.daos.AdminHomeDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean id="adminLoginDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.admin.daos.AdminLoginDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean id="adminPopupDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.admin.daos.AdminPopupDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+
+	<!-- 
+	<bean id="aiMatchingRecruitDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.ai.daos.AiMatchingRecruitDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean id="aiMatchingResumeDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.ai.daos.AiMatchingResumeDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	 -->
+
+	<bean id="migResumeDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ilmagna.allworkadmin.migration.daos.MigResumeDAO"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+    <!-- (end) 2020.12.30 by s.yoo -->
+
 	<context:annotation-config />
 	<!-- <task:annotation-driven scheduler="scheduler" />
 	<task:scheduler id="scheduler" pool-size="10" /> -->

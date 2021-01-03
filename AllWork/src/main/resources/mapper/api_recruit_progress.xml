@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.daos.ApiRecruitProgressDAO">
+
+	<select id="getRecruitProgressList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitProgressModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecruitProgressModel">
+		SELECT
+			A.ser AS id
+			, DATE_FORMAT(A.reg, '%Y-%m-%d %H:%i:%s') AS strReg
+			, A.prs AS prs
+			, A.target_ser AS item_id
+			, A.target_corp AS company_id
+			, A.recruit_progress_contents AS recruit_progress_contents
+			, DATE_FORMAT(A.date_work, '%Y-%m-%d') AS strDateWork
+			, A.memo AS memo
+		FROM
+			recruit_progress A
+		<where>
+			A.prs = 'P'
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.ser = #{id}
+			</if>
+			<if test='company_id != null &amp;&amp; company_id > 0'>
+				AND A.target_corp = #{company_id}
+			</if>
+			<if test='item_id != null &amp;&amp; item_id > 0'>
+				AND A.target_ser = #{item_id}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND (
+					   A.recruit_progress_contents LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.ser DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.ser DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getRecruitProgress"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitProgressModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecruitProgressModel">
+		SELECT
+			A.ser AS id
+			, DATE_FORMAT(A.reg, '%Y-%m-%d %H:%i:%s') AS strReg
+			, A.prs AS prs
+			, A.target_ser AS item_id
+			, A.target_corp AS company_id
+			, A.recruit_progress_contents AS recruit_progress_contents
+			, DATE_FORMAT(A.date_work, '%Y-%m-%d') AS strDateWork
+			, A.memo AS memo
+		FROM
+			recruit_progress A
+		<where>
+			A.ser = #{id}
+		</where>
+	</select>
+
+	<select id="getRecruitProgressTotalCnt" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitProgressModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.ser), 0)
+		FROM
+			recruit_progress A 
+		<where>
+			A.prs = 'P'
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.ser = #{id}
+			<if test='company_id != null &amp;&amp; company_id > 0'>
+				AND A.target_corp = #{company_id}
+			</if>
+			<if test='item_id != null &amp;&amp; item_id > 0'>
+				AND A.target_ser = #{item_id}
+			</if>
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND (
+					   A.recruit_progress_contents LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+	</select>
+
+	<select id="getRecruitProgressDuplicatedCount" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitProgressModel" resultType="Integer">
+		SELECT IFNULL(COUNT(ser), 0) FROM recruit_progress A WHERE ser <![CDATA[ <> ]]> #{id} AND ser = #{id} 
+	</select>
+
+	<select id="findRecruitProgress" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitProgressModel" resultType="Integer">
+		SELECT IFNULL(ser, 0) FROM recruit_progress WHERE ser = #{id}
+	</select>
+
+	<insert id="insertRecruitProgress" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitProgressModel">
+		INSERT INTO recruit_progress (
+			  reg
+			, prs
+			, target_ser
+			, target_corp
+			, recruit_progress_contents
+			, date_work
+			, memo
+		) VALUES (
+			CURRENT_TIMESTAMP()
+			, 'P'
+			, #{item_id}
+			, #{company_id}
+			, #{recruit_progress_contents}
+			, CURRENT_TIMESTAMP()
+			, #{memo}
+		)
+	</insert>
+
+	<update id="updateRecruitProgress" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitProgressModel">
+		UPDATE
+			recruit_progress
+		SET
+			  reg = CURRENT_TIMESTAMP()
+			, recruit_progress_contents = #{recruit_progress_contents}
+			, memo = #{memo}
+		WHERE
+			ser = #{id}
+	</update>
+
+	<delete id="deleteRecruitProgress" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitProgressModel">
+		DELETE FROM recruit_progress WHERE ser = #{id} 
+	</delete>
+
+	<delete id="deleteRecruitProgressList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitProgressModel">
+		DELETE FROM recruit_progress WHERE  ser IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+	<insert id="insertExcelRecruitProgress" parameterType="java.util.List">
+		INSERT INTO recruit_progress(
+			  reg
+			, prs
+			, target_ser
+			, target_corp
+			, recruit_progress_contents
+			, date_work
+			, memo
+		) VALUES
+		<foreach collection="list" item="item" index="index" open="(" separator="),("  close=")">
+			CURRENT_TIMESTAMP()
+			, #{item.prs}
+			, #{item.item_id}
+			, #{item.company_id}
+			, #{item.recruit_progress_contents}
+			, CURRENT_TIMESTAMP()
+			, #{item.memo}
+		</foreach>
+ 	</insert>
+
+</mapper>

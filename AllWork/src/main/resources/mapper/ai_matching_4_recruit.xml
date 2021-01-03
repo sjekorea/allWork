@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.ai.daos.AiMatchingRecruitDAO">
+
+	<select id="getRecruitList"
+			parameterType="com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel" 
+			resultType="com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel">
+		SELECT
+			A.no AS id
+			, A.recruit_id AS recruitId
+			, A.uid AS uid
+			, DATE_FORMAT(A.time, '%Y-%m-%d %H:%i:%s') AS strWdate
+			, A.recommend_list_01 AS recommendList01
+			, A.recommend_list_02 AS recommendList02
+			, IFNULL(B.biz_name,'') AS bizName
+			, IFNULL(B.biz_title,'') AS bizTitle
+		FROM
+			ai_matching_4_recruit A LEFT JOIN netfu_item_company B ON A.recruit_id = B.no
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='recruit_id != null &amp;&amp; recruit_id > 0'>
+				AND A.recruit_id = #{recruit_id}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.uid LIKE CONCAT('%', #{keyword}, '%')
+					OR A.recommend_list_01 LIKE CONCAT('%', #{keyword}, '%')
+					OR A.recommend_list_02 LIKE CONCAT('%', #{keyword}, '%')
+					OR B.biz_name LIKE CONCAT('%', #{keyword}, '%')
+					OR B.biz_title LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.no DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.no DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getRecruit"
+			parameterType="com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel" 
+			resultType="com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel">
+		SELECT
+			A.no AS id
+			, A.recruit_id AS recruitId
+			, A.uid AS uid
+			, DATE_FORMAT(A.time, '%Y-%m-%d %H:%i:%s') AS strWdate
+			, A.recommend_list_01 AS recommendList01
+			, A.recommend_list_02 AS recommendList02
+			, IFNULL(B.biz_name,'') AS bizName
+			, IFNULL(B.biz_title,'') AS bizTitle
+		FROM
+			ai_matching_4_recruit A LEFT JOIN netfu_item_company B ON A.recruit_id = B.no
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='recruit_id != null &amp;&amp; recruit_id > 0'>
+				AND A.recruit_id = #{recruit_id}
+			</if>
+		</where>
+	</select>
+
+	<select id="getRecruitByCompany"
+			parameterType="com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel" 
+			resultType="com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel">
+		SELECT
+			A.no AS id
+			, A.recruit_id AS recruitId
+			, A.uid AS uid
+			, DATE_FORMAT(A.time, '%Y-%m-%d %H:%i:%s') AS strWdate
+			, A.recommend_list_01 AS recommendList01
+			, A.recommend_list_02 AS recommendList02
+			, IFNULL(B.biz_name,'') AS bizName
+			, IFNULL(B.biz_title,'') AS bizTitle
+		FROM
+			ai_matching_4_recruit A LEFT JOIN netfu_item_company B ON A.recruit_id = B.no
+		<where>
+			A.uid = #{uid}
+		</where>
+		ORDER BY A.time DESC
+		LIMIT 1
+	</select>
+
+	<select id="getRecruitTotalCnt" parameterType="com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.no), 0)
+		FROM
+			ai_matching_4_recruit A LEFT JOIN netfu_item_company B ON A.recruit_id = B.no
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='recruit_id != null &amp;&amp; recruit_id > 0'>
+				AND A.recruit_id = #{recruit_id}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.uid LIKE CONCAT('%', #{keyword}, '%')
+					OR A.recommend_list_01 LIKE CONCAT('%', #{keyword}, '%')
+					OR A.recommend_list_02 LIKE CONCAT('%', #{keyword}, '%')
+					OR B.biz_name LIKE CONCAT('%', #{keyword}, '%')
+					OR B.biz_title LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+	</select>
+
+	<select id="findRecruit" parameterType="com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel" resultType="Integer">
+		SELECT IFNULL(no, 0) FROM ai_matching_4_recruit WHERE no = #{id}
+	</select>
+
+	<delete id="deleteRecruit" parameterType="com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel">
+		DELETE FROM ai_matching_4_recruit WHERE no = #{id} 
+	</delete>
+
+	<delete id="deleteRecruitList" parameterType="com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel">
+		DELETE FROM ai_matching_4_recruit WHERE  no IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+</mapper>

@@ -58,9 +58,9 @@
 						<li><a href="#none" title="전체메뉴보기"><i class="fas fa-bars"></i></a></li>
 						<li><a href="/recruitSearch.do" title="채용정보">채용정보</a></li>
 						<li><a href="/resumeSearch.do" title="인재검색">인재검색</a></li>
-						<li><a href="#" title="헤드헌팅">헤드헌팅</a></li>
-						<li><a href="#" title="채용진행현황">채용진행현황</a></li>
-						<li><a href="/boardList.do" title="커뮤니티">커뮤니티</a></li>
+						<li><a href="/headhuntList.do" title="헤드헌팅">헤드헌팅</a></li>
+						<li><a href="/progressList.do" title="채용진행현황">채용진행현황</a></li>
+						<li><a href="/noticeList.do" title="커뮤니티">커뮤니티</a></li>
 					</ul>
 					<ul class="linkArea">
 						<c:choose>

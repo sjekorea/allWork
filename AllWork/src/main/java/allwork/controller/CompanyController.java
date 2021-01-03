@@ -2,6 +2,7 @@ package allwork.controller;
 
 import java.io.PrintWriter;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -16,6 +17,11 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ilmagna.allworkadmin.ai.domains.AiMatchingRecommendationModel;
+import com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel;
+import com.ilmagna.allworkadmin.ai.services.AiMatchingRecruitService;
+import com.ilmagna.allworkadmin.ai.services.AiMatchingResumeService;
 
 import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
@@ -55,9 +61,17 @@ public class CompanyController {
 
 	@Resource(name="netfuCateService")
 	private NetfuCateService netfuCateService;	
-	
+
 	@Resource(name="fileUtils") 
 	private FileUtils fileUtils;	
+
+	//(begin) 2020.12.30 by s.yoo
+	@Resource(name="aiMatchingRecruitService")
+	protected AiMatchingRecruitService matchingRecruitService;
+	@Resource(name="aiMatchingResumeService")
+	protected AiMatchingResumeService matchingResumeService;
+	//(end) 2020.12.30 by s.yoo
+
 	
 	/*
 	 * 기업회원 홈
@@ -87,6 +101,18 @@ public class CompanyController {
 			
 			commandMap.put("pageSize", 10);
 			commandMap.put("orderRule", "nir.wdate desc");
+			
+			//(begin) 2020.12.30 by s.yoo
+			// AI 추천 맞춤 인재 정보 목록
+			AiMatchingRecruitModel modelRecruit = new AiMatchingRecruitModel();
+			modelRecruit.setUid((String) commandMap.get("loginId"));
+			AiMatchingRecruitModel item = matchingRecruitService.getRecruitByCompany(modelRecruit);
+			
+			List<AiMatchingRecommendationModel> recommandResumeList = new ArrayList<AiMatchingRecommendationModel>();
+			if (item != null && item.getData() != null)
+				recommandResumeList = item.getData();
+			//(end) 2020.12.30 by s.yoo
+
 			// 맞춤 인재 정보 목록
 			List<Map<String, Object>> myServiceResumeList = netfuMyServiceService.selectMyServiceResumeList(commandMap.getMap());
 			
@@ -95,6 +121,7 @@ public class CompanyController {
 			
 			mv.addObject("memberMap", memberMap);
 			mv.addObject("recruitList", recruitList);
+			mv.addObject("recommandResumeList", recommandResumeList);	//++2020.12.30 by s.yoo
 			mv.addObject("myServiceResumeList", myServiceResumeList);
 			mv.addObject("resumeScrapList", resumeScrapList);
 			mv.addObject("map", commandMap.getMap());

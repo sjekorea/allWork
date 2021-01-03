@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.daos.ApiRecruitCompanyDAO">
+
+	<select id="getRecruitCompanyList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitCompanyModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecruitCompanyModel">
+		SELECT
+			A.ser AS id
+			, DATE_FORMAT(A.reg, '%Y-%m-%d %H:%i:%s') AS strReg
+			, A.prs AS prs
+			, A.company_title AS company_title
+			, A.company_initial AS company_initial
+			, A.contact_point AS contact_point
+			, A.phone AS phone
+			, A.email AS email
+			, A.business_type AS business_type
+			, A.whereis AS whereis
+			, A.order_view AS order_view
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strRegDate
+			, A.memo AS memo
+		FROM
+			recruit_company A
+		<where>
+			A.prs = 'P'
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.ser = #{id}
+			</if>
+			<if test='loc != null &amp;&amp; loc != ""'>
+				AND A.whereis LIKE CONCAT('%', #{loc}, '%')
+			</if>
+			<if test='jobForm != null &amp;&amp; jobForm != ""'>
+				AND A.business_type LIKE CONCAT('%', #{jobForm}, '%')
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND (
+					   A.company_title LIKE CONCAT('%', #{keyword}, '%')
+					OR A.company_initial LIKE CONCAT('%', #{keyword}, '%')
+					OR A.contact_point LIKE CONCAT('%', #{keyword}, '%')
+					OR A.phone LIKE CONCAT('%', #{keyword}, '%')
+					OR A.email LIKE CONCAT('%', #{keyword}, '%')
+					OR A.business_type LIKE CONCAT('%', #{keyword}, '%')
+					OR A.whereis LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.order_view ASC, A.ser DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.ser DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getRecruitCompany"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitCompanyModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecruitCompanyModel">
+		SELECT
+			A.ser AS id
+			, DATE_FORMAT(A.reg, '%Y-%m-%d %H:%i:%s') AS strReg
+			, A.prs AS prs
+			, A.company_title AS company_title
+			, A.company_initial AS company_initial
+			, A.contact_point AS contact_point
+			, A.phone AS phone
+			, A.email AS email
+			, A.business_type AS business_type
+			, A.whereis AS whereis
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strRegDate
+			, A.order_view AS order_view
+			, A.memo AS memo
+		FROM
+			recruit_company A
+		<where>
+			A.ser = #{id}
+		</where>
+	</select>
+
+	<select id="getRecruitCompanyTotalCnt" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitCompanyModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.ser), 0)
+		FROM
+			recruit_company A 
+		<where>
+			A.prs = 'P'
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.ser = #{id}
+			</if>
+			<if test='loc != null &amp;&amp; loc != ""'>
+				AND A.whereis LIKE CONCAT('%', #{loc}, '%')
+			</if>
+			<if test='jobForm != null &amp;&amp; jobForm != ""'>
+				AND A.business_type LIKE CONCAT('%', #{jobForm}, '%')
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND (
+					   A.company_title LIKE CONCAT('%', #{keyword}, '%')
+					OR A.company_initial LIKE CONCAT('%', #{keyword}, '%')
+					OR A.contact_point LIKE CONCAT('%', #{keyword}, '%')
+					OR A.phone LIKE CONCAT('%', #{keyword}, '%')
+					OR A.email LIKE CONCAT('%', #{keyword}, '%')
+					OR A.business_type LIKE CONCAT('%', #{keyword}, '%')
+					OR A.whereis LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+	</select>
+
+	<select id="getRecruitCompanyDuplicatedCount" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitCompanyModel" resultType="Integer">
+		SELECT IFNULL(COUNT(ser), 0) FROM recruit_company A WHERE ser <![CDATA[ <> ]]> #{id} AND company_title = #{company_title} 
+	</select>
+
+	<select id="findRecruitCompany" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitCompanyModel" resultType="Integer">
+		SELECT IFNULL(ser, 0) FROM recruit_company WHERE ser = #{id}
+	</select>
+
+	<insert id="insertRecruitCompany" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitCompanyModel">
+		INSERT INTO recruit_company (
+			  reg
+			, prs
+			, company_title
+			, company_initial
+			, contact_point
+			, phone
+			, email
+			, business_type
+			, whereis
+			, wdate
+			, order_view
+			, memo
+		) VALUES (
+			CURRENT_TIMESTAMP()
+			, 'P'
+			, #{company_title}
+			, #{company_initial}
+			, #{contact_point}
+			, #{phone}
+			, #{email}
+			, #{business_type}
+			, #{whereis}
+			, CURRENT_TIMESTAMP()
+			, #{order_view}
+			, #{memo}
+		)
+	</insert>
+
+	<update id="updateRecruitCompany" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitCompanyModel">
+		UPDATE
+			recruit_company
+		SET
+			company_title = #{company_title}
+			, company_initial = #{company_initial}
+			, contact_point = #{contact_point}
+			, reg = CURRENT_TIMESTAMP()
+			, phone = #{phone}
+			, email = #{email}
+			, business_type = #{business_type}
+			, whereis = #{whereis}
+			, order_view = #{order_view}
+			, memo = #{memo}
+		WHERE
+			ser = #{id}
+	</update>
+
+	<delete id="deleteRecruitCompany" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitCompanyModel">
+		DELETE FROM recruit_company WHERE ser = #{id} 
+	</delete>
+
+	<delete id="deleteRecruitCompanyList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitCompanyModel">
+		DELETE FROM recruit_company WHERE  ser IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+	<insert id="insertExcelRecruitCompany" parameterType="java.util.List">
+		INSERT INTO recruit_company(
+			  reg
+			, prs
+			, company_title
+			, company_initial
+			, contact_point
+			, phone
+			, email
+			, business_type
+			, whereis
+			, wdate
+			, order_view
+			, memo
+		) VALUES
+		<foreach collection="list" item="item" index="index" open="(" separator="),("  close=")">
+			CURRENT_TIMESTAMP()
+			, #{item.prs}
+			, #{item.company_title}
+			, #{item.company_initial}
+			, #{item.contact_point}
+			, #{item.phone}
+			, #{item.email}
+			, #{item.business_type}
+			, #{item.whereis}
+			, CURRENT_TIMESTAMP()
+			, #{item.order_view}
+			, #{item.memo}
+		</foreach>
+ 	</insert>
+
+	<select id="getRecruitCompanyCodeList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitCompanyModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecruitCompanyModel">
+		SELECT
+			A.ser AS id,
+			A.company_title AS company_title
+		FROM
+			recruit_company A
+		<where>
+			A.prs = 'P'
+		</where>
+		ORDER BY A.company_title ASC
+	</select>
+
+</mapper>

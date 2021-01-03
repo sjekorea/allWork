@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.daos.ApiRecruitDAO">
+
+	<select id="getRecruitList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel">
+		SELECT
+			A.no AS id
+			, A.info_type AS info_type
+			, A.uid AS uid
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strWdate
+			, A.biz_name AS biz_name
+			, A.biz_title AS biz_title
+			, A.biz_business AS biz_business
+			, A.biz_detail AS biz_detail
+			, A.biz_men AS biz_men
+			, A.biz_type1 AS biz_type1
+			, A.biz_type2 AS biz_type2
+			, A.biz_type3 AS biz_type3
+			, A.biz_type4 AS biz_type4
+			, A.biz_type5 AS biz_type5
+			, A.biz_type6 AS biz_type6
+			, A.biz_area1 AS biz_area1
+			, A.biz_area2 AS biz_area2
+			, A.biz_area3 AS biz_area3
+			, A.biz_area4 AS biz_area4
+			, A.biz_area5 AS biz_area5
+			, A.biz_area6 AS biz_area6
+			, A.biz_end_type AS biz_end_type
+			, DATE_FORMAT(A.biz_end_day, '%Y-%m-%d') AS biz_end_day
+			, A.biz_ing AS biz_ing
+			, A.biz_jobfrom AS biz_jobfrom
+			, A.pay_type AS pay_type
+			, A.biz_pay AS biz_pay
+			, A.biz_welfare AS biz_welfare
+			, A.biz_sex AS biz_sex
+			, A.biz_age AS biz_age
+			, A.biz_preferential AS biz_preferential
+			, A.biz_career AS biz_career
+			, A.biz_method AS biz_method
+			, A.biz_paper AS biz_paper
+			, A.biz_form AS biz_form
+			, A.biz_person AS biz_person
+			, A.biz_pphone AS biz_pphone
+			, A.biz_pemail AS biz_pemail
+			, A.memo AS memo
+			, A.order_view AS order_view
+		FROM
+			netfu_item_company A
+		<where>
+			1 = 1
+			<if test='showAll == "N"'>
+				AND A.biz_ing <![CDATA[ <> ]]> 'no'
+			</if>
+			<if test='info_type == 1'>
+				AND (A.biz_jobfrom LIKE '%netfu_34537_33276%'
+					OR A.biz_jobfrom LIKE '%netfu_48782_57525%'
+					OR A.biz_jobfrom LIKE '%netfu_85884_14481%')
+			</if>
+			<if test='info_type == 2'>
+				AND (A.biz_jobfrom LIKE '%netfu_34537_33276%'
+					OR A.biz_jobfrom LIKE '%arbeit%')
+			</if>
+			<if test='info_type == 4'>
+				AND (A.biz_jobfrom LIKE '%netfu_34537_33276%'
+					OR A.biz_jobfrom LIKE '%freelancer%')
+			</if>
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+			<if test='search_loc != null &amp;&amp; search_loc != ""'>
+				AND ( (A.biz_area1 = '' AND A.biz_area3 = '' AND A.biz_area5 = '')
+					 OR A.biz_area1 = #{search_loc} OR A.biz_area3 = #{search_loc} OR A.biz_area5 = #{search_loc} )
+			</if>
+			<if test='search_biz_type != null &amp;&amp; search_biz_type != ""'>
+				AND ( A.biz_type1 = #{search_biz_type} OR A.biz_type2 = #{search_biz_type} OR A.biz_type3 = #{search_biz_type}
+						OR A.biz_type4 = #{search_biz_type} OR A.biz_type5 = #{search_biz_type} OR A.biz_type6 = #{search_biz_type} )
+			</if>
+			<if test='fromDate != null &amp;&amp; fromDate != ""'>
+				AND (A.biz_end_day <![CDATA[ >= ]]> #{fromDate})
+			</if>
+			<if test='toDate != null &amp;&amp; toDate != ""'>
+				AND (A.biz_end_day <![CDATA[ <= ]]> #{toDate})
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.biz_title LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_business LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_detail LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_name LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_person LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY order_view ASC, A.u_wdate DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.no DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getRecruit"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel">
+		SELECT
+			A.no AS id
+			, A.info_type AS info_type
+			, A.uid AS uid
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strWdate
+			, A.biz_name AS biz_name
+			, A.biz_title AS biz_title
+			, A.biz_business AS biz_business
+			, A.biz_detail AS biz_detail
+			, A.biz_men AS biz_men
+			, A.biz_type1 AS biz_type1
+			, A.biz_type2 AS biz_type2
+			, A.biz_type3 AS biz_type3
+			, A.biz_type4 AS biz_type4
+			, A.biz_type5 AS biz_type5
+			, A.biz_type6 AS biz_type6
+			, A.biz_area1 AS biz_area1
+			, A.biz_area2 AS biz_area2
+			, A.biz_area3 AS biz_area3
+			, A.biz_area4 AS biz_area4
+			, A.biz_area5 AS biz_area5
+			, A.biz_area6 AS biz_area6
+			, A.biz_end_type AS biz_end_type
+			, DATE_FORMAT(A.biz_end_day, '%Y-%m-%d') AS biz_end_day
+			, A.biz_ing AS biz_ing
+			, A.biz_jobfrom AS biz_jobfrom
+			, A.pay_type AS pay_type
+			, A.biz_pay AS biz_pay
+			, A.biz_welfare AS biz_welfare
+			, A.biz_sex AS biz_sex
+			, A.biz_age AS biz_age
+			, A.biz_preferential AS biz_preferential
+			, A.biz_career AS biz_career
+			, A.biz_method AS biz_method
+			, A.biz_paper AS biz_paper
+			, A.biz_form AS biz_form
+			, A.biz_person AS biz_person
+			, A.biz_pphone AS biz_pphone
+			, A.biz_pemail AS biz_pemail
+			, A.memo AS memo
+			, A.order_view AS order_view
+		FROM
+			netfu_item_company A
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+		</where>
+	</select>
+
+	<select id="getRecruitTotalCnt" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.no), 0)
+		FROM
+			netfu_item_company A
+		<where>
+			1 = 1
+			<if test='showAll == "N"'>
+				AND A.biz_ing <![CDATA[ <> ]]> 'no'
+			</if>
+			<if test='info_type == 1'>
+				AND (A.biz_jobfrom LIKE '%netfu_34537_33276%'
+					OR A.biz_jobfrom LIKE '%netfu_48782_57525%'
+					OR A.biz_jobfrom LIKE '%netfu_85884_14481%')
+			</if>
+			<if test='info_type == 2'>
+				AND (A.biz_jobfrom LIKE '%netfu_34537_33276%'
+					OR A.biz_jobfrom LIKE '%arbeit%')
+			</if>
+			<if test='info_type == 4'>
+				AND (A.biz_jobfrom LIKE '%netfu_34537_33276%'
+					OR A.biz_jobfrom LIKE '%freelancer%')
+			</if>
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+			<if test='search_loc != null &amp;&amp; search_loc != ""'>
+				AND ( (A.biz_area1 = '' AND A.biz_area3 = '' AND A.biz_area5 = '')
+					 OR A.biz_area1 = #{search_loc} OR A.biz_area3 = #{search_loc} OR A.biz_area5 = #{search_loc} )
+			</if>
+			<if test='search_biz_type != null &amp;&amp; search_biz_type != ""'>
+				AND ( A.biz_type1 = #{search_biz_type} OR A.biz_type2 = #{search_biz_type} OR A.biz_type3 = #{search_biz_type}
+						OR A.biz_type4 = #{search_biz_type} OR A.biz_type5 = #{search_biz_type} OR A.biz_type6 = #{search_biz_type} )
+			</if>
+			<if test='fromDate != null &amp;&amp; fromDate != ""'>
+				AND (A.biz_end_day <![CDATA[ >= ]]> #{fromDate})
+			</if>
+			<if test='toDate != null &amp;&amp; toDate != ""'>
+				AND (A.biz_end_day <![CDATA[ <= ]]> #{toDate})
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.biz_title LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_business LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_detail LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_name LIKE CONCAT('%', #{keyword}, '%')
+					OR A.biz_person LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+	</select>
+
+	<select id="findRecruit" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel" resultType="Integer">
+		SELECT IFNULL(no, 0) FROM netfu_item_company WHERE no = #{id}
+	</select>
+
+	<update id="incRefCount" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel">
+		UPDATE netfu_item_company SET hit = hit + 1 WHERE no = #{id}
+	</update>
+
+	<insert id="insertRecruit" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel">
+		INSERT INTO netfu_item_company (
+			uid
+			, biz_name
+			, biz_title
+			, biz_type1
+			, biz_area1
+			, biz_area2
+			, biz_business
+			, biz_men
+			, biz_jobfrom
+			, pay_type
+			, biz_pay
+			, biz_career
+			, biz_detail
+			, biz_end_type
+			, biz_end_day
+			, biz_person
+			, biz_pemail
+			, biz_pphone
+			, wdate
+			, biz_ing
+			, order_view
+			, type_r
+		) VALUES (
+			#{uid}
+			, #{biz_name}
+			, #{biz_title}
+			, #{biz_type1}
+			, #{biz_area1}
+			, #{biz_area2}
+			, #{biz_business}
+			, #{biz_men}
+			, #{biz_jobfrom}
+			, #{pay_type}
+			, #{biz_pay}
+			, #{biz_career}
+			, #{biz_detail}
+			, #{biz_end_type}
+			, #{biz_end_day}
+			, #{biz_person}
+			, #{biz_pemail}
+			, #{biz_pphone}
+			, CURRENT_TIMESTAMP()
+			, 'yes'
+			, 128
+			, ''
+		)
+	</insert>
+
+	<update id="updateRecruit" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel">
+		UPDATE
+			netfu_item_company
+		SET
+			memo = #{memo}
+			, order_view = #{order_view}
+		WHERE
+			no = #{id}
+	</update>
+
+	<update id="updateMobileRecruit" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel">
+		UPDATE
+			netfu_item_company
+		SET
+			biz_title = #{biz_title}
+			, biz_ing = #{biz_ing}
+			, biz_type1 = #{biz_type1}
+			, biz_area1 = #{biz_area1}
+			, biz_area2 = #{biz_area2}
+			, biz_business = #{biz_business}
+			, biz_men = #{biz_men}
+			, biz_jobfrom = #{biz_jobfrom}
+			, pay_type = #{pay_type}
+			, biz_pay = #{biz_pay}
+			, biz_career = #{biz_career}
+			, biz_detail = #{biz_detail}
+			, biz_end_type = #{biz_end_type}
+			, biz_end_day = #{biz_end_day}
+			, biz_person = #{biz_person}
+			, biz_pemail = #{biz_pemail}
+			, biz_pphone = #{biz_pphone}
+			, u_wdate = CURRENT_TIMESTAMP()
+		WHERE
+			no = #{id}
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND uid = #{uid}
+			</if>
+	</update>
+
+	<update id="updateCloseRecruit" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel">
+		UPDATE
+			netfu_item_company
+		SET
+			biz_ing = 'no'
+		WHERE
+			no = #{id}
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND uid = #{uid}
+			</if>
+	</update>
+
+	<delete id="deleteRecruit" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel">
+		DELETE FROM netfu_item_company
+		WHERE no = #{id} 
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND uid = #{uid}
+			</if>
+	</delete>
+
+	<delete id="deleteRecruitList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel">
+		DELETE FROM netfu_item_company WHERE  no IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+</mapper>

@@ -1,6 +1,7 @@
 package allwork.controller;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -11,9 +12,15 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ilmagna.allworkadmin.ai.domains.AiMatchingRecommendationModel;
+import com.ilmagna.allworkadmin.ai.domains.AiMatchingResumeModel;
+import com.ilmagna.allworkadmin.ai.services.AiMatchingRecruitService;
+import com.ilmagna.allworkadmin.ai.services.AiMatchingResumeService;
 
 import allwork.common.CommandMap;
 import allwork.service.NetfuMemberService;
@@ -65,6 +72,13 @@ public class PersonController {
 	@Resource(name="netfuCateService")
 	private NetfuCateService netfuCateService;		
 	
+	//(begin) 2020.12.30 by s.yoo
+	@Resource(name="aiMatchingRecruitService")
+	protected AiMatchingRecruitService matchingRecruitService;
+	@Resource(name="aiMatchingResumeService")
+	protected AiMatchingResumeService matchingResumeService;
+	//(end) 2020.12.30 by s.yoo
+
 	
 	/*
 	 * 개인 회원 홈
@@ -102,8 +116,20 @@ public class PersonController {
 			// 관심기업 공고
 			int netfuConcernCnt = netfuConcernService.selectNetfuConcernRegistCnt(commandMap.getMap());
 			
+			//(begin) 2020.12.30 by s.yoo
+			/*
 			// 추천 채용정보
 			List<Map<String, Object>> recommandRecruitList = recruitItemService.selectRecommandRecruitList(commandMap.getMap());
+			*/
+			// AI 추천 맞춤 채용정보 목록
+			AiMatchingResumeModel modelResume = new AiMatchingResumeModel();
+			modelResume.setUid((String) commandMap.get("loginId"));
+			AiMatchingResumeModel item = matchingResumeService.getResumeByMember(modelResume);
+			
+			List<AiMatchingRecommendationModel> recommandRecruitList = new ArrayList<AiMatchingRecommendationModel>();
+			if (item != null && item.getData() != null)
+				recommandRecruitList = item.getData();
+			//(end) 2020.12.30 by s.yoo
 			
 			// 맞춤 채용 정보
 			List<Map<String, Object>> myServiceRecruitList = netfuMyServiceService.selectMyServiceRecruitList(commandMap.getMap());

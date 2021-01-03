@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.daos.ApiScrapDAO">
+
+	<select id="getScrapList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiScrapModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiScrapModel">
+		SELECT
+			A.no_to AS id
+			, A.type AS type
+			, A.sub_type AS sub_type
+			, A.uid AS uid
+			, A.no AS no
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strWdate
+		FROM
+			netfu_scrap A
+		<where>
+			1 = 1
+			<if test='sub_type != null &amp;&amp; sub_type != ""'>
+				AND A.sub_type = #{sub_type}
+			</if>
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no_to = #{id}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.no_to DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.no_to DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getScrap"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiScrapModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiScrapModel">
+		SELECT
+			A.no_to AS id
+			, A.type AS type
+			, A.sub_type AS sub_type
+			, A.uid AS uid
+			, A.no AS no
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strWdate
+		FROM
+			netfu_scrap A
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no_to = #{id}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+		</where>
+	</select>
+
+	<select id="getScrapTotalCnt" parameterType="com.ilmagna.allworkadmin.api.domains.ApiScrapModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.no_to), 0)
+		FROM
+			netfu_scrap A
+		<where>
+			1 = 1
+			<if test='sub_type != null &amp;&amp; sub_type != ""'>
+				AND A.sub_type = #{sub_type}
+			</if>
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no_to = #{id}
+			</if>
+			<if test='uid != null &amp;&amp; uid != ""'>
+				AND A.uid = #{uid}
+			</if>
+		</where>
+	</select>
+
+	<select id="getScrapDuplicatedCount" parameterType="com.ilmagna.allworkadmin.api.domains.ApiScrapModel" resultType="Integer">
+		SELECT IFNULL(COUNT(A.no_to), 0)
+		FROM netfu_scrap A
+		<where>
+			A.uid = #{uid} AND A.no = #{no}
+		</where>
+	</select>
+
+	<select id="findScrap" parameterType="com.ilmagna.allworkadmin.api.domains.ApiScrapModel" resultType="Integer">
+		SELECT IFNULL(no_to, 0) FROM netfu_scrap WHERE no_to = #{id}
+	</select>
+
+	<insert id="insertScrap" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.api.domains.ApiScrapModel">
+		INSERT INTO netfu_scrap (
+			uid
+			, type
+			, sub_type
+			, no
+			, r_uid
+			, wdate
+		) VALUES (
+			#{uid}
+			, 'job'
+			, #{sub_type}
+			, #{no}
+			, ''
+			, CURRENT_TIMESTAMP()
+		)
+	</insert>
+
+	<update id="updateScrap" parameterType="com.ilmagna.allworkadmin.api.domains.ApiScrapModel">
+		UPDATE
+			netfu_scrap
+		SET
+			uid = #{uid}
+			, no = #{no}
+		WHERE
+			no_to = #{id}
+	</update>
+
+	<delete id="deleteScrap" parameterType="com.ilmagna.allworkadmin.api.domains.ApiScrapModel">
+		DELETE FROM netfu_scrap WHERE no_to = #{id} 
+	</delete>
+
+	<delete id="deleteScrapList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiScrapModel">
+		DELETE FROM netfu_scrap WHERE  no_to IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+</mapper>

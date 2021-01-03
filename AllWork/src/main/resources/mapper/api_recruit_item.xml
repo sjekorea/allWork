@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.daos.ApiRecruitItemDAO">
+
+	<select id="getRecruitItemList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel">
+		SELECT
+			A.ser AS id
+			, DATE_FORMAT(A.reg, '%Y-%m-%d %H:%i:%s') AS strReg
+			, A.prs AS prs
+			, A.target_ser AS companyId
+			, A.men AS men
+			, A.place_work AS placeWork
+			, A.recruit_item_contents AS recruitContents
+			, DATE_FORMAT(A.date_req, '%Y-%m-%d') AS strReqDate
+			, A.memo AS memo
+			, A.recruit_progress_contents AS progressContents
+			, DATE_FORMAT(A.date_work, '%Y-%m-%d') AS strDateWork
+			, IFNULL(B.company_title, '') AS companyTitle
+			, IFNULL(B.company_initial, '') AS companyInitial
+		FROM
+			recruit_item A LEFT JOIN recruit_company B ON A.target_ser = B.ser
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.ser = #{id}
+			</if>
+			<if test='companyId != null &amp;&amp; companyId > 0'>
+				AND A.target_ser = #{companyId}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND (
+					   A.place_work LIKE CONCAT('%', #{keyword}, '%')
+					OR A.recruit_item_contents LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.ser DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.ser DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getRecruitItem"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel">
+		SELECT
+			A.ser AS id
+			, DATE_FORMAT(A.reg, '%Y-%m-%d %H:%i:%s') AS strReg
+			, A.prs AS prs
+			, A.target_ser AS companyId
+			, A.men AS men
+			, A.place_work AS placeWork
+			, A.recruit_item_contents AS recruitContents
+			, DATE_FORMAT(A.date_req, '%Y-%m-%d') AS strReqDate
+			, A.memo AS memo
+			, A.recruit_progress_contents AS progressContents
+			, DATE_FORMAT(A.date_work, '%Y-%m-%d') AS strDateWork
+			, IFNULL(B.company_title, '') AS companyTitle
+			, IFNULL(B.company_initial, '') AS companyInitial
+		FROM
+			recruit_item A LEFT JOIN recruit_company B ON A.target_ser = B.ser
+		<where>
+			A.ser = #{id}
+		</where>
+	</select>
+
+	<select id="getRecruitItemTotalCnt" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.ser), 0)
+		FROM
+			recruit_item A 
+		<where>
+			1 = 1
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.ser = #{id}
+			</if>
+			<if test='companyId != null &amp;&amp; companyId > 0'>
+				AND A.target_ser = #{companyId}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND (
+					   A.place_work LIKE CONCAT('%', #{keyword}, '%')
+					OR A.recruit_item_contents LIKE CONCAT('%', #{keyword}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+	</select>
+
+	<select id="getRecruitItemDuplicatedCount" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel" resultType="Integer">
+		SELECT IFNULL(COUNT(ser), 0) FROM recruit_item A WHERE ser <![CDATA[ <> ]]> #{id} AND company_id = #{companyId} 
+	</select>
+
+	<select id="findRecruitItem" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel" resultType="Integer">
+		SELECT IFNULL(ser, 0) FROM recruit_item WHERE ser = #{id}
+	</select>
+
+	<insert id="insertRecruitItem" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel">
+		INSERT INTO recruit_item (
+			  reg
+			, prs
+			, target_ser
+			, men
+			, place_work
+			, recruit_item_contents
+			, date_req
+			, memo
+			, date_work
+			, recruit_progress_contents
+		) VALUES (
+			CURRENT_TIMESTAMP()
+			, 'P'
+			, #{companyId}
+			, #{men}
+			, #{place_work}
+			, #{recruitContents}
+			, CURRENT_TIMESTAMP()
+			, #{memo}
+			, #{strDateWork}
+			, #{progressContents}
+		)
+	</insert>
+
+	<update id="updateRecruitItem" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel">
+		UPDATE
+			recruit_item
+		SET
+			place_work = #{place_work}
+			, men = #{men}
+			, recruit_item_contents = #{recruitContents}
+			, prs = #{prs}
+			, memo = #{memo}
+			, date_work = #{strDateWork}
+			, recruit_progress_contents = #{progressContents}
+		WHERE
+			ser = #{id}
+	</update>
+
+	<delete id="deleteRecruitItem" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel">
+		DELETE FROM recruit_item WHERE ser = #{id} 
+	</delete>
+
+	<delete id="deleteRecruitItemList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel">
+		DELETE FROM recruit_item WHERE  ser IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+	<insert id="insertExcelRecruitItem" parameterType="java.util.List">
+		INSERT INTO recruit_item(
+			  reg
+			, prs
+			, target_ser
+			, men
+			, place_work
+			, recruit_item_contents
+			, date_req
+			, memo
+			, date_work
+			, recruit_progress_contents
+		) VALUES
+		<foreach collection="list" item="item" index="index" open="(" separator="),("  close=")">
+			CURRENT_TIMESTAMP()
+			, #{item.prs}
+			, #{item.companyId}
+			, #{item.men}
+			, #{item.place_work}
+			, #{item.recruitContents}
+			, CURRENT_TIMESTAMP()
+			, #{item.memo}
+			, #{item.strDateWork}
+			, #{item.progressContents}
+		</foreach>
+ 	</insert>
+
+	<select id="getRecruitItemCodeList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel">
+		SELECT
+			A.ser AS id,
+			A.recruit_item_contents AS recruitContents
+		FROM
+			recruit_item A
+		<where>
+			A.target_ser = #{companyId}
+		</where>
+		ORDER BY A.ser DESC
+	</select>
+
+</mapper>

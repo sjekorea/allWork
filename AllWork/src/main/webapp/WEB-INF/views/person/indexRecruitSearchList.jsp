@@ -17,41 +17,69 @@
 			<ul class="tab">
 				<li><a class="selected" href="#" title="">AI 통합 검색 채용 공고</a></li>
 			</ul>
+	       	<!-- (begin) 2020.12.30 by s.yoo -->
 			<table class="list" id="list01">
 				<tbody>
 					<c:choose>
-						<c:when test="${myServiceRecruitList.size() > 0 }">
-							<c:forEach var="result" items="${myServiceRecruitList}" varStatus="status">
+						<c:when test="${item.recruitDataAllwork.size() > 0 }">
+							<c:forEach var="result" items="${item.recruitDataAllwork}" varStatus="status">
 								<tr class="desc desc0">
-									<td rowspan="3" class="desc01">(주)파인스태프</td>
+									<td rowspan="3" class="desc01">${result.name }</td>
 									<td colspan="6" class="desc02">
-										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
-											${result.bizName }
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', 'open', '');">
+											${result.title }
 										</a>
 									</td>
-									<td rowspan="3" class="desc05">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
+									<td rowspan="3" class="desc05">채용마감: ${result.strEdate }</td>
 								</tr>
 								<tr class="desc desc1">
 									<td class="desc03">급여</td>
-									<td class="desc04">${result.bizPayName }</td>
-									<td class="desc03">경력</td>
-									<td class="desc04">${codeConvert:getBizCareer(result.bizCareer) }</td>
-									<td class="desc03">나이</td>
-									<td class="desc04">${result.bizAge }</td>
+									<td class="desc04">${result.salary }</td>
 								</tr>
 								<tr class="desc desc2">
-									<td class="desc03">지역</td>
-									<td class="desc04">${result.bizArea1Name }</td>
-									<td class="desc03">학력</td>
-									<td class="desc04">${codeConvert:getBizAbility(result.bizAbility) }</td>
-									<td class="desc03">성별</td>
-									<td class="desc04">${codeConvert:getBizSex(result.bizSex) }</td>
+									<td class="desc03">근무지</td>
+									<td class="desc04">${result.loc }</td>
 								</tr>
 							</c:forEach>
 						</c:when>
+						<c:otherwise>
+							<tr><td class="desc00" colspan="5">주어진 조건을 만족하는 기업회원 등록 채용정보를 찾을 수 없습니다.</td></tr>
+						</c:otherwise>
 					</c:choose>
 				</tbody>
 			</table>
+
+			<table class="list" id="list02">
+				<tbody>
+					<c:choose>
+						<c:when test="${item.recruitDataWorknet.size() > 0 }">
+							<c:forEach var="result" items="${item.recruitDataWorknet}" varStatus="status">
+								<tr class="desc desc0">
+									<td rowspan="3" class="desc01">${result.name }</td>
+									<td colspan="6" class="desc02">
+										<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.recommend_id }" target="_blank">
+											${result.title }
+										</a>
+									</td>
+									<td rowspan="3" class="desc05">채용마감: ${result.strEdate }</td>
+								</tr>
+								<tr class="desc desc1">
+									<td class="desc03">급여</td>
+									<td class="desc04">${result.salary }</td>
+								</tr>
+								<tr class="desc desc2">
+									<td class="desc03">근무지</td>
+									<td class="desc04">${result.loc }</td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr><td class="desc00" colspan="5">주어진 조건을 만족하는 기타 채용정보를 찾을 수 없습니다.</td></tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+	       	<!-- (end) 2020.12.30 by s.yoo -->
 		</div>
 	</div>
 </div>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.api.daos.ApiBbsDataDAO">
+
+	<select id="getBbsDataList"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel">
+		SELECT
+			A.no AS id
+			, A.type AS type
+			, A.sub_type AS subType
+			, A.board_code AS boardCode
+			, A.uid AS uid
+			, A.nick_name AS nickName
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strWdate
+			, A.subject AS subject
+			, A.content AS content
+			, A.link AS link
+			, A.hit AS hit
+			, A.thumbnail AS thumbnail
+			, IFNULL(B.hphone,'') AS hphone
+			, IFNULL(B.email, '') AS email
+			, IFNULL(C.board_name, '') AS boardName
+			, IFNULL(C.type, '') AS boardType
+		FROM
+			${type} A LEFT JOIN netfu_member B ON A.uid = B.uid
+					  LEFT JOIN netfu_board_admin C ON A.board_code = C.board_code
+		<where>
+			A.board_code = #{boardCode}
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='fromDate != null &amp;&amp; fromDate != ""'>
+				AND A.wdate <![CDATA[ >= ]]> #{fromDate}
+			</if>
+			<if test='toDate != null &amp;&amp; toDate != ""'>
+				AND A.wdate <![CDATA[ <= ]]> #{toDate}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.subject LIKE CONCAT('%', #{keyword}, '%')
+					OR A.content LIKE CONCAT('%', #{keyword}, '%')
+					OR A.uid LIKE CONCAT('%', #{keyword}, '%')
+					OR A.link LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
+			ORDER BY A.no DESC
+		</if>
+		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sidx != "hphone" &amp;&amp; sidx != "email" &amp;&amp; sidx != "board_name" &amp;&amp; sord != null &amp;&amp; sord != ""'>
+			ORDER BY A.${sidx} ${sord}, A.no DESC
+		</if>
+		<if test=' sidx == "hphone" || sidx == "email" '>
+			ORDER BY B.${sidx} ${sord}, A.no DESC
+		</if>
+		<if test=' sidx == "board_name" '>
+			ORDER BY B.${sidx} ${sord}, A.no DESC
+		</if>
+		<if test='pagerEnableYn eq "Y"'>
+			LIMIT #{startIdx}, #{endIdx}
+		</if>
+	</select>
+
+	<select id="getBbsData"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel">
+		SELECT
+			A.no AS id
+			, A.type AS type
+			, A.sub_type AS subType
+			, A.board_code AS boardCode
+			, A.uid AS uid
+			, A.nick_name AS nickName
+			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strWdate
+			, A.subject AS subject
+			, A.content AS content
+			, A.link AS link
+			, A.hit AS hit
+			, A.thumbnail AS thumbnail
+			, IFNULL(B.hphone,'') AS hphone
+			, IFNULL(B.email, '') AS email
+			, IFNULL(C.board_name, '') AS boardName
+			, IFNULL(C.type, '') AS boardType
+		FROM
+			${type} A LEFT JOIN netfu_member B ON A.uid = B.uid
+					  LEFT JOIN netfu_board_admin C ON A.board_code = C.board_code
+		<where>
+			A.no = #{id}
+		</where>
+	</select>
+
+	<select id="getBbsBoardType"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel">
+		SELECT
+			IFNULL(A.type, '') AS boardType
+			, IFNULL(A.board_code, '') AS boardCode
+		FROM
+			netfu_board_admin A 
+		<where>
+			A.board_code = #{boardCode}
+		</where>
+	</select>
+
+	<select id="getBbsDataTotalCnt" parameterType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel" resultType="Integer">
+		SELECT
+			IFNULL(COUNT(A.no), 0)
+		FROM
+			${type} A 
+		<where>
+			A.board_code = #{boardCode}
+			<if test='id != null &amp;&amp; id > 0'>
+				AND A.no = #{id}
+			</if>
+			<if test='fromDate != null &amp;&amp; fromDate != ""'>
+				AND A.wdate <![CDATA[ >= ]]> #{fromDate}
+			</if>
+			<if test='toDate != null &amp;&amp; toDate != ""'>
+				AND A.wdate <![CDATA[ <= ]]> #{toDate}
+			</if>
+			<if test='keyword != null &amp;&amp; keyword != ""'>
+				AND ( A.subject LIKE CONCAT('%', #{keyword}, '%')
+					OR A.content LIKE CONCAT('%', #{keyword}, '%')
+					OR A.uid LIKE CONCAT('%', #{keyword}, '%')
+					OR A.link LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+		</where>
+	</select>
+
+	<select id="findBbsData" parameterType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel" resultType="Integer">
+		SELECT IFNULL(no, 0) FROM ${type} WHERE no = #{id}
+	</select>
+
+	<select id="findBbsDataWithCode" parameterType="String" resultType="Integer">
+		SELECT IFNULL(no, 0) FROM ${type} A WHERE board_code = #{boardCode} 
+	</select>
+
+	<insert id="insertBbsData" useGeneratedKeys="true" keyProperty="id" parameterType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel">
+		INSERT INTO ${type} (
+			board_code
+			, type
+			, sub_type
+			, uid
+			, wdate
+			, subject
+			, content
+			, link
+			, hit
+			, thumbnail
+		) VALUES (
+			#{boardCode}
+			, #{type}
+			, #{subType}
+			, #{uid}
+			, CURRENT_TIMESTAMP()
+			, #{subject}
+			, #{content}
+			, #{link}
+			, 0
+			, #{thumbnail}
+		)
+	</insert>
+
+	<update id="updateBbsData" parameterType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel">
+		UPDATE
+			${type}
+		SET
+			subject = #{subject}
+			, content = #{content}
+			, link = #{link}
+			, thumbnail = #{thumbnail}
+		WHERE
+			no = #{id}
+	</update>
+
+	<delete id="deleteBbsData" parameterType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel">
+		DELETE FROM ${type} WHERE no = #{id} 
+	</delete>
+
+	<delete id="deleteBbsDataList" parameterType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel">
+		DELETE FROM ${list[0].type} WHERE  no IN
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+	</delete>
+
+	<insert id="insertExcelBbsData" parameterType="java.util.List">
+		INSERT INTO ${list[0].type} (
+			board_code
+			, type
+			, sub_type
+			, uid
+			, wdate
+			, subject
+			, content
+			, link
+			, hit
+			, thumbnail
+		) VALUES
+		<foreach collection="list" item="item" index="index" open="(" separator="),("  close=")">
+			#{item.boardCode}
+			, #{item.type}
+			, #{item.subType}
+			, #{item.uid}
+			, #{item.wdate}
+			, #{item.subject}
+			, #{item.content}
+			, #{item.link}
+			, #{item.hit}
+			, #{item.thumbnail}
+		</foreach>
+ 	</insert>
+
+	<update id="incRefCount" parameterType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel">
+		UPDATE ${type} SET hit = hit + 1 WHERE board_code = #{boardCode} AND no = #{id}
+	</update>
+
+</mapper>

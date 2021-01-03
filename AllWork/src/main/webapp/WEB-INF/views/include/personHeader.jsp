@@ -56,9 +56,9 @@
 					<ul class="nav">
 						<li><a href="#none" title="전체메뉴보기"><i class="fas fa-bars"></i></a></li>
 						<li><a href="/recruitSearch.do" title="채용정보">채용정보</a></li>
-						<li><a href="#none" title="헤드헌팅">헤드헌팅</a></li>
-						<li><a href="#none" title="채용진행현황">채용진행현황</a></li>
-						<li><a href="/boardList.do" title="커뮤니티">커뮤니티</a></li>
+						<li><a href="/headhuntList.do" title="헤드헌팅">헤드헌팅</a></li>
+						<li><a href="/progressList.do" title="채용진행현황">채용진행현황</a></li>
+						<li><a href="/noticeList.do" title="커뮤니티">커뮤니티</a></li>
 					</ul>
 					<ul class="linkArea">
 						<li class="a01"><span>${SE_USER_NM }&nbsp;&nbsp;&nbsp;</span><a href="#" title="이력서 관리>">이력서 관리></a></li>

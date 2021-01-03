@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ilmagna.allworkadmin.admin.daos.AdminHomeDAO">
+
+	<select id="getRecruitCount" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminDashboardModel" resultType="Integer">
+		SELECT IFNULL(COUNT(A.no), 0)
+		FROM netfu_item_company A
+		<where>
+			1 = 1
+			<if test='fromDate != null &amp;&amp; fromDate != ""'>
+				AND A.wdate <![CDATA[ >= ]]> #{fromDate}
+			</if>
+			<if test='toDate != null &amp;&amp; toDate != ""'>
+				AND A.wdate <![CDATA[ <= ]]> #{toDate}
+			</if>
+		</where>
+	</select>
+
+	<select id="getResumeCount" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminDashboardModel" resultType="Integer">
+		SELECT IFNULL(COUNT(A.no), 0)
+		FROM netfu_item_resume A
+		<where>
+			1 = 1
+			<if test='fromDate != null &amp;&amp; fromDate != ""'>
+				AND A.wdate <![CDATA[ >= ]]> #{fromDate}
+			</if>
+			<if test='toDate != null &amp;&amp; toDate != ""'>
+				AND A.wdate <![CDATA[ <= ]]> #{toDate}
+			</if>
+		</where>
+	</select>
+
+	<select id="getMemberCount" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminDashboardModel" resultType="Integer">
+		SELECT IFNULL(COUNT(A.no), 0)
+		FROM netfu_member A
+		<where>
+			A.left <![CDATA[ <> ]]> 'yes'
+			<if test='fromDate != null &amp;&amp; fromDate != ""'>
+				AND A.wdate <![CDATA[ >= ]]> #{fromDate}
+			</if>
+			<if test='toDate != null &amp;&amp; toDate != ""'>
+				AND A.wdate <![CDATA[ <= ]]> #{toDate}
+			</if>
+		</where>
+	</select>
+
+	<select id="getBbsCount" parameterType="com.ilmagna.allworkadmin.admin.domains.AdminDashboardModel" resultType="Integer">
+		SELECT IFNULL(COUNT(A.no), 0)
+		FROM netfu_58558_26593 A
+		<where>
+			1 = 1
+			<if test='fromDate != null &amp;&amp; fromDate != ""'>
+				AND A.wdate <![CDATA[ >= ]]> #{fromDate}
+			</if>
+			<if test='toDate != null &amp;&amp; toDate != ""'>
+				AND A.wdate <![CDATA[ <= ]]> #{toDate}
+			</if>
+		</where>
+	</select>
+
+</mapper>
