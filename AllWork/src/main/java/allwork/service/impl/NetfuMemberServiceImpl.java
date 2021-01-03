@@ -38,5 +38,10 @@ public class NetfuMemberServiceImpl implements NetfuMemberService{
 	public int insertNetfuMember(Map<String, Object> map) throws Exception {
 		return netfuMemberDao.insertNetfuMember(map);
 	}
+	
+	@Override
+	public int updatePw(Map<String, Object> map) throws Exception {
+		return netfuMemberDao.updatePw(map);
+	}
 
 }

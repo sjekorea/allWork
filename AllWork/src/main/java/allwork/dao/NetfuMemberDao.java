@@ -31,5 +31,10 @@ public class NetfuMemberDao extends AbstractDAO{
 		}	
 		return rtnCnt;
 	}
+	
+	// 비밀번호 찾기 - 비밀번호 수정
+	public int updatePw(Map<String, Object> map) throws Exception{ 
+		return update("netfuMember.updatePw", map);
+	}
 
 }

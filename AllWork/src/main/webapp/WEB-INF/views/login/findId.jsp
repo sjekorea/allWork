@@ -81,7 +81,8 @@
 
 		var callback = function(data){
 			if(data.rstCnt > 0){
-				location.href = "";
+				alert("회원님의 ID는 "+data.memberInfoMap.uid+" 입니다.");
+				location.href = "/";
 			}else{
 				alert("이름, 이메일을 확인하세요.");
 				loadingOff();

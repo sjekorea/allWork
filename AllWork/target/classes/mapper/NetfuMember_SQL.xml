@@ -29,11 +29,22 @@
 	</select>
 	
 	
-	<!-- ID 중복 확인 -->
+	<!-- ID 중복 확인, ID 찾기, PW 찾기 -->
 	<select id="selectUidExistCnt" parameterType="hashmap" resultType="int">
 		select count(uid) cnt from netfu_member
 		where 1=1
-			and uid = #{uid}
+			<if test="uid != null and uid != ''">
+				and uid = #{uid}
+			</if>
+			<if test="name != null and name != ''">
+				and name = #{name}
+			</if>
+			<if test="email != null and email != ''">
+				and email = #{email}
+			</if>
+			<if test="type != null and type != ''">
+				and type = #{type}
+			</if>
 	</select>
 
 
@@ -71,6 +82,14 @@
 			)
 		]]>
 	</insert>
+	
+	<update id="updatePw" parameterType="hashmap">
+		<![CDATA[ 
+			update netfu_member
+			set passwd = #{passwd}
+			where uid = #{uid}
+		]]>
+	</update>
 
 </mapper>
 

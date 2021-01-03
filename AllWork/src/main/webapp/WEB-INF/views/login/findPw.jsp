@@ -23,7 +23,7 @@
   <div id="allworkWrap">
     <div id="topmenuWrap">
       <ul class="topMenu">
-        <li class="allworkHome"><a href="index.html" title="allwork사이트">Allwork&nbsp;&nbsp;|&nbsp;</a></li>
+        <li class="allworkHome"><a href="/index.do" title="allwork사이트">Allwork&nbsp;&nbsp;|&nbsp;</a></li>
         <li><a href="#none" title="고객센터">고객센터</a></li>
       </ul>
     </div>
@@ -90,7 +90,7 @@
 
 		var callback = function(data){
 			if(data.rstCnt > 0){
-				location.href = "";
+				alert("비밀번호가 수정되었습니다.\n수정된 비밀번호를 이욯하여 로그인 하세요.");
 			}else{
 				alert("이름, 이메일을 확인하세요.");
 				loadingOff();

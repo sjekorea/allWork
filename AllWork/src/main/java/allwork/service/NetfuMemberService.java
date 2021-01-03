@@ -8,5 +8,6 @@ public interface NetfuMemberService {
 	int selectNetfuMemberLoginCnt(Map<String, Object> map) throws Exception; 
 	int selectUidExistCnt(Map<String, Object> map) throws Exception; 
 	int insertNetfuMember(Map<String, Object> map) throws Exception;
+	int updatePw(Map<String, Object> map) throws Exception;
 
 }

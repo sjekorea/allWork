@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import allwork.common.CommandMap;
+import allwork.common.util.CommonUtil;
 import allwork.service.NetfuCateService;
 import allwork.service.NetfuCompanyService;
 import allwork.service.NetfuMemberService;
@@ -178,12 +179,11 @@ public class NetfuMemberController {
 	public ModelAndView findIdProcess(CommandMap commandMap, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		try{
-			int rstCnt = netfuMemberService.selectNetfuMemberLoginCnt(commandMap.getMap());
+			int rstCnt = netfuMemberService.selectUidExistCnt(commandMap.getMap());
 			Map<String, Object> memberInfoMap = new HashMap<String, Object>();
 			
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("memberInfoMap", memberInfoMap);
-			mv.addObject("map", commandMap.getMap());
 			mv.addObject("rstCnt", rstCnt);
 			mv.setViewName("jsonView");
 		}catch(Exception e){
@@ -207,6 +207,7 @@ public class NetfuMemberController {
 		return mv;
 	}
 	
+	
 	/*
 	 * 비밀번호 찾기 - ajax
 	 */
@@ -214,11 +215,13 @@ public class NetfuMemberController {
 	public ModelAndView findPwProcess(CommandMap commandMap, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		try{
-			int rstCnt = netfuMemberService.selectNetfuMemberLoginCnt(commandMap.getMap());
-			Map<String, Object> memberInfoMap = new HashMap<String, Object>();
+			int rstCnt = netfuMemberService.selectUidExistCnt(commandMap.getMap());
 			
-			mv.addObject("map", commandMap.getMap());
-			mv.addObject("memberInfoMap", memberInfoMap);
+			if(rstCnt > 0){
+				commandMap.put("passwd", CommonUtil.getShortRandomString());
+				netfuMemberService.updatePw(commandMap.getMap());
+			}
+			
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("rstCnt", rstCnt);
 			mv.setViewName("jsonView");
