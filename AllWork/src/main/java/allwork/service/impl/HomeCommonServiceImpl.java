@@ -32,5 +32,11 @@ public class HomeCommonServiceImpl implements HomeCommonService{
 	public List<Map<String, Object>> selectMainBannerList(Map<String, Object> map) throws Exception {
 		return homeCommonDao.selectMainBannerList(map);
 	}
+	
+	// 메인 채용공고 리스트
+	@Override
+	public List<Map<String, Object>> selectMainRecruitList(Map<String, Object> map) throws Exception {
+		return homeCommonDao.selectMainRecruitList(map);
+	}
 
 }

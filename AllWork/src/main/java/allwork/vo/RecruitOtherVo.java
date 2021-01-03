@@ -22,6 +22,7 @@ public class RecruitOtherVo {
 	private String strEdate;
 	
 	
+	
 	public int getSer() {
 		return ser;
 	}

@@ -15,6 +15,23 @@ public class NetfuBannerVo {
 	private String heightOpt;
 	private String domain;
 	private String random;
+	private String link;
+	private String thumbnail;
+	
+	
+	
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
 	public String getCode() {
 		return code;
 	}

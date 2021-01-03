@@ -13,10 +13,10 @@
 				and nic.uid = #{uid}
 			</if>
 			<if test='infoType == "4"'>
-				and nic.info_type = #{infoType} or nic.inid_jobform = 'netfu_34537_33276')
+				and (nic.info_type = #{infoType} or nic.biz_jobfrom = 'netfu_34537_33276')
 			</if>
 			<if test='infoType == "2"'>
-				and (nic.info_type = #{infoType} or nic.inid_jobform = 'netfu_34537_33276')
+				and (nic.info_type = #{infoType} or nic.biz_jobfrom = 'netfu_34537_33276')
 			</if>
 			<if test="bizType3 != null and bizType3 != ''">
 				and (nic.biz_type3 in ('${bizType3}') or nic.biz_type6 in ('${bizType3}') or nic.biz_type9 in ('${bizType3}'))
@@ -47,7 +47,7 @@
 				and nic.uid = #{uid}
 			</if>
 			<if test='infoType == "4"'>
-				and nic.info_type = #{infoType}
+				and (nic.info_type = #{infoType} or nic.biz_jobfrom = 'netfu_34537_33276')
 			</if>
 			<if test='infoType == "2"'>
 				and (nic.info_type = #{infoType} or nic.biz_jobfrom = 'netfu_34537_33276')

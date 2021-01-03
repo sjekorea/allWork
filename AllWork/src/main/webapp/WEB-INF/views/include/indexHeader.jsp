@@ -69,11 +69,6 @@
 	       	//(end) 2020.12.30 by s.yoo
 		});
 	});
-	
-	
-	function closePop(obj){
-		$(obj).parent().parent().parent().parent().css("display", "none");
-	}
 </script>
 </head>
 <body>
@@ -83,23 +78,6 @@
 		</p>
     </div>
 	<div id="allworkWrap">
-		<div id="popupWrap"  style="width:50px; height:100px;">
-			<c:forEach var="result" items="${popupList}" varStatus="status">
-				<div class="popup popup0${status.count }">
-					<c:if test="${result.type != 'image'}">
-						${result.contents}
-					</c:if>
-					<c:if test="${result.type == 'image'}">
-						${result.contentsImage}
-					</c:if>
-					<div class="buttonArea">
-						<p class="today_close"><span><input id="todayClose01" type="checkbox"/></span><span>오늘 하루 보지 않기</span></p>
-						<p class="popup_close"><span><input id="popup0${status.count}" type="checkbox" onclick="javascript:closePop(this);"/></span><span>닫기</span></p>
-					</div>
-				</div>
-			</c:forEach>
-		</div>
-		
 		<div id="headerWrap">
 			<div id="topWrap">
 				<ul class="topMenu">

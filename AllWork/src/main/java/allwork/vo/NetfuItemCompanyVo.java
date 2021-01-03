@@ -93,9 +93,24 @@ public class NetfuItemCompanyVo {
 	private int orderView;
 	private String open;
 	private int totalApplianceCnt;
+	private String type;
+	private String bizManiMen;
 	
 	
 	
+	
+	public String getBizManiMen() {
+		return bizManiMen;
+	}
+	public void setBizManiMen(String bizManiMen) {
+		this.bizManiMen = bizManiMen;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public int getTotalApplianceCnt() {
 		return totalApplianceCnt;
 	}

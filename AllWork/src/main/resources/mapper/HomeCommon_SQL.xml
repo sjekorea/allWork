@@ -9,7 +9,51 @@
 
 	<!-- 메인 페이지 banner 리스트 -->
 	<select id="selectMainBannerList" parameterType="hashmap" resultType="allwork.vo.NetfuBannerVo">
-		select * from netfu_banner where view = 'yes' order by random desc
+		select link, thumbnail from netfu_58558_26593 where board_code = 'netfu_90000_90001' order by no desc limit 4
+	</select>
+	
+	<!-- 메인 페이지 채용공고 리스트 -->
+	<select id="selectMainRecruitList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
+		select aa.*
+		from 
+		(
+				SELECT 'head' type, a.ser no, '' uid, a.company_title biz_title, b.recruit_item_contents biz_name, b.men biz_main_men, b.place_work biz_area1_name
+						, DATE_FORMAT(b.date_work, '%y-%m-%d') wdate
+						FROM recruit_company AS a, recruit_item AS b
+				WHERE 1=1
+					and a.prs='P' AND b.prs='P' AND a.ser=b.target_ser 
+					and b.date_work BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+				UNION ALL
+				select 'recruit' type , nic.no, nic.uid,  nic.biz_name, nic.biz_title, nic.biz_men biz_main_men
+						, concat(getCodeName(nic.biz_area1),' ', ifnull(getCodeName(nic.biz_area2), '')) biz_area1_name
+						, DATE_FORMAT(nic.wdate, '%y-%m-%d') wdate
+				from netfu_item_company nic
+				where 1=1
+					and nic.biz_ing <![CDATA[<>]]> 'yes'
+					and ((nic.biz_end_type ='input' and nic.biz_end_day >= CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+				UNION ALL
+				select 'free' type , nic.no, nic.uid,  nic.biz_name, nic.biz_title, nic.biz_men biz_main_men
+						, concat(getCodeName(nic.biz_area1),' ', ifnull(getCodeName(nic.biz_area2), '')) biz_area1_name 
+						, DATE_FORMAT(nic.wdate, '%y-%m-%d') wdate
+				from netfu_item_company nic
+				where 1=1
+					and nic.biz_ing <![CDATA[<>]]> 'yes'
+					and ((nic.biz_end_type ='input' and nic.biz_end_day >= CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+					and (nic.info_type = '4' or nic.biz_jobfrom = 'netfu_34537_33276')
+					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+				UNION ALL
+				select 'alba' type , nic.no, nic.uid,  nic.biz_name, nic.biz_title, nic.biz_men biz_main_men
+						, concat(getCodeName(nic.biz_area1),' ', ifnull(getCodeName(nic.biz_area2), '')) biz_area1_name
+						, DATE_FORMAT(nic.wdate, '%y-%m-%d') wdate
+				from netfu_item_company nic
+				where 1=1
+					and nic.biz_ing <![CDATA[<>]]> 'yes'
+					and ((nic.biz_end_type ='input' and nic.biz_end_day >= CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+					and (nic.info_type = '2' or nic.biz_jobfrom = 'netfu_34537_33276')
+					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+		) aa
+		order by rand() limit 6
 	</select>
 
 </mapper>

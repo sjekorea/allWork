@@ -31,54 +31,33 @@
 	<div id="content01">
 		<div id="content01_offer">
 			<ul>
-				<li class="headhunting">
-					<a href="01_aboutMMCA.html" title="유료공고00">
-						<span class="desc00">헤드헌팅</span><span class="desc01">1명</span>
-						<p class="desc02">(주)다우리종합건설</p>
-						<p class="desc03">텔레마케팅 아웃바운드 사원 및 관리자 모집</p>
-						<span class="desc04">경기 고양시</span><span class="desc05">등록일:20-09-23</span>
-					</a>
-				</li>
-				<li class="headhunting">
-					<a href="01_aboutMMCA.html" title="유료공고00">
-						<span class="desc00">헤드헌팅</span><span class="desc01">1명</span>
-						<p class="desc02">(주)다우리종합건설</p>
-						<p class="desc03">텔레마케팅 아웃바운드 사원 및 관리자 모집</p>
-						<span class="desc04">경기 고양시</span><span class="desc05">등록일:20-09-23</span>
-					</a>
-				</li>
-				<li class="regular">
-					<a href="01_aboutMMCA.html" title="유료공고00">
-						<span class="desc00">헤드헌팅</span><span class="desc01">1명</span>
-						<p class="desc02">(주)다우리종합건설</p>
-						<p class="desc03">텔레마케팅 아웃바운드 사원 및 관리자 모집</p>
-						<span class="desc04">경기 고양시</span><span class="desc05">등록일:20-09-23</span>
-					</a>
-				</li>
-				<li class="regular">
-					<a href="01_aboutMMCA.html" title="유료공고00">
-						<span class="desc00">정규직</span><span class="desc01">1명</span>
-						<p class="desc02">(주)다우리종합건설</p>
-						<p class="desc03">텔레마케팅 아웃바운드 사원 및 관리자 모집</p>
-						<span class="desc04">경기 고양시</span><span class="desc05">등록일:20-09-23</span>
-					</a>
-				</li>
-				<li class="freelance">
-					<a href="01_aboutMMCA.html" title="유료공고00">
-						<span class="desc00">프리랜서</span><span class="desc01">1명</span>
-						<p class="desc02">(주)다우리종합건설</p>
-						<p class="desc03">텔레마케팅 아웃바운드 사원 및 관리자 모집</p>
-						<span class="desc04">경기 고양시</span><span class="desc05">등록일:20-09-23</span>
-					</a>
-				</li>
-				<li class="partT">
-					<a href="01_aboutMMCA.html" title="유료공고00">
-						<span class="desc00">알바</span><span class="desc01">1명</span>
-						<p class="desc02">(주)다우리종합건설</p>
-						<p class="desc03">텔레마케팅 아웃바운드 사원 및 관리자 모집</p>
-						<span class="desc04">경기 고양시</span><span class="desc05">등록일:20-09-23</span>
-					</a>
-				</li>
+				<c:forEach var="result" items="${mainRecruitList}" varStatus="status">
+					<c:if test="${result.type == 'head' }">
+						<li class="headhunting">
+							<a href="" title="기업회원등록공고">
+							<span class="desc00">헤드헌팅</span><span class="desc01">${result.bizMen}명</span>
+					</c:if>
+					<c:if test="${result.type == 'recruit' }">
+						<li class="regular">
+							<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', 'open', '');" title="기업회원등록공고">
+							<span class="desc00">정규직</span><span class="desc01">${result.bizMen}명</span>
+					</c:if>
+					<c:if test="${result.type == 'free' }">
+						<li class="freelance">
+							<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', 'open', '');" title="기업회원등록공고">
+							<span class="desc00">프리랜서</span><span class="desc01">${result.bizMen}명</span>
+					</c:if>
+					<c:if test="${result.type == 'alba' }">
+						<li class="partT">
+							<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', 'open', '');" title="기업회원등록공고">
+							<span class="desc00">알바</span><span class="desc01">${result.bizMen}명</span>
+					</c:if>
+							<p class="desc02">(주)다우리종합건설</p>
+							<p class="desc03">텔레마케팅 아웃바운드 사원 및 관리자 모집</p>
+							<span class="desc04">경기 고양시</span><span class="desc05">등록일:20-09-23</span>
+							</a>
+						</li>
+				</c:forEach>
 			</ul>
 		</div>
 		<div id="content01_ad">
@@ -88,7 +67,7 @@
 						<li class="headhunting">
 							<c:choose>
 								<c:when test="${result.type == 'image' }">
-									<a href="location.href='${result.domain }'" title="유료공고00"><img src="/img/ban/${result.contents }" alt="이미지00" /></a>
+									<a href="location.href='${result.link }'" title="유료공고00"><div>${result.thumbnail}</div></a>
 								</c:when>
 								<c:otherwise>
 									${result.contents }
@@ -243,13 +222,21 @@
 				</thead>
 				<tbody>
 					<c:forEach var="result" items="${recruitOtherList}" varStatus="status">
-						<tr onclick="location.href='https://www.daum.net/'" style="cursor: pointer">
-							<th>${result.companyTitle }</th>
-							<td class="jPart">${result.recruitItem }</td>
+						<tr style="cursor: pointer">
+							<th>
+								<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.wantedAuthNo }" target="_blank">
+                                ${result.companyTitle }
+                           		</a>
+                           	</th>
+							<td class="jPart">
+								<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.wantedAuthNo }" target="_blank">
+								${result.recruitItem }
+								</a>
+							</td>
 							<td class="jPerson">${result.men }</td>
 							<td class="jadd">${result.whereis }</td>
 							<td class="jcontact">${result.phone }</td>
-							<td class="jDate">${result.beg }</td>
+							<td class="jDate">${result.strEdate }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -259,6 +246,15 @@
 </div>
 
 <jsp:include page="/footer.do" />
+
+<form id="searchForm" name="searchForm" method="post" action="/recruitDetail.do">
+	<input type="hidden" name="no" id="no" value="" />
+	<input type="hidden" name="personUid" id="personUid" value="${map.personUid}" />
+	<input type="hidden" name="companyUid" id="companyUid" value="${map.companyUid}" />
+	<input type="hidden" name="recruitNo" id="recruitNo" value="" />
+	<input type="hidden" name="resumeNo" id="resumeNo" value="" />
+	<input type="hidden" name="leftMenuUrl" id="leftMenuUrl" value="/personSubMenu.do" />
+</form>
 
 <script type="text/javascript">
 	
@@ -275,6 +271,11 @@
 				//	alert("이력서를 먼저 작성해 주세요");
 				//	loadingOff();
 				//}else{
+					if("${SE_USER_TYPE}" == "person"){
+						$("#leftMenuUrl").val("/personSubMenu.do");
+					}else{
+						$("#leftMenuUrl").val("/companySubMenu.do");
+					}
 					$("#companyUid").val(companyUid);
 					$("#personUid").val(personUid);
 					$("#no").val(no);
