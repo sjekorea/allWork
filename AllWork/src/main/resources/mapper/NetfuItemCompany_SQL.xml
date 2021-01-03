@@ -13,7 +13,7 @@
 				and nic.uid = #{uid}
 			</if>
 			<if test='infoType == "4"'>
-				and nic.info_type = #{infoType}
+				and nic.info_type = #{infoType} or nic.inid_jobform = 'netfu_34537_33276')
 			</if>
 			<if test='infoType == "2"'>
 				and (nic.info_type = #{infoType} or nic.inid_jobform = 'netfu_34537_33276')
