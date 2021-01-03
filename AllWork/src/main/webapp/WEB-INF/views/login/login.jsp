@@ -62,8 +62,8 @@
 							<p class="button"><input type="submit" value="로그인" title="로그인"/></p>
 							<p class="checkbox"><input id="idSaveCheck" type="checkbox" name="idSaveCheck"/><label for="loginOn"><span>아이디 저장</span></label></p>
 							<p class="findArea">
-								<span><a href="#none" title="아이디찾기">아이디찾기&nbsp;&nbsp;|&nbsp;</a></span>
-								<span><a href="#none" title="비밀번호찾기">비밀번호찾기&nbsp;&nbsp;|&nbsp;</a></span>
+								<span><a href="javascript:findId();" title="아이디찾기">아이디찾기&nbsp;&nbsp;|&nbsp;</a></span>
+								<span><a href="javascript:findPw();" title="비밀번호찾기">비밀번호찾기&nbsp;&nbsp;|&nbsp;</a></span>
 								<span class="register"><a href="javascript:memberJoin();" title="회원가입">회원가입</a></span>
 							</p>
 						</div>
@@ -78,8 +78,6 @@
 		</div>
 		
 		<jsp:include page="/footer.do" />
-	</div>
-</body>
 	
 	
 <script type="text/javascript">
@@ -140,8 +138,6 @@
 	
 	function goLogin(){
 		
-		loadingOn();
-		
 		if(checkNull($("#loginId").val())){
 			alertAndFocus("로그인 ID를 입력하세요.", $("#loginId"));
 			return;
@@ -151,6 +147,8 @@
 			alertAndFocus("비밀번호를 입력하세요.", $("#loginPw"));
 			return;
 		}
+		
+		loadingOn();
 		
 		var type = $("input[name=loginType]:checked").val();
 		
@@ -180,7 +178,14 @@
 		ajax('post', '/loginProcess.ajax', param, callback);
 	}
 	
+	function findId(){
+		location.href = "/findId.do";
+	}
 	
+	function findPw(){
+		location.href = "/findPw.do";
+	}
+
 	function memberJoin(){
 		 if($("input:radio[id='company_login']").is(':checked')){
 			 location.href = "/companyJoin.do";

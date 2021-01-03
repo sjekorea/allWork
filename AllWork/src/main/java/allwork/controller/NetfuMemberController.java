@@ -1,5 +1,6 @@
 package allwork.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -153,7 +154,81 @@ public class NetfuMemberController {
 		}
 		return mv;
 	}
+	
+	
+	/*
+	 * ID 찾기
+	 */
+	@RequestMapping(value="/findId.do")
+	public ModelAndView findId(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView("/login/findId");
+		try{
+			mv.addObject("map", commandMap.getMap());
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".findId Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
 
+	
+	/*
+	 * ID 찾기 - ajax
+	 */
+	@RequestMapping(value="/findIdProcess.ajax")
+	public ModelAndView findIdProcess(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		try{
+			int rstCnt = netfuMemberService.selectNetfuMemberLoginCnt(commandMap.getMap());
+			Map<String, Object> memberInfoMap = new HashMap<String, Object>();
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("memberInfoMap", memberInfoMap);
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("rstCnt", rstCnt);
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".findIdProcess Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+	
+	
+	/*
+	 * 비밀번호 찾기
+	 */
+	@RequestMapping(value="/findPw.do")
+	public ModelAndView findPw(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView("/login/findPw");
+		try{
+			mv.addObject("map", commandMap.getMap());
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".findPw Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+	
+	/*
+	 * 비밀번호 찾기 - ajax
+	 */
+	@RequestMapping(value="/findPwProcess.ajax")
+	public ModelAndView findPwProcess(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		try{
+			int rstCnt = netfuMemberService.selectNetfuMemberLoginCnt(commandMap.getMap());
+			Map<String, Object> memberInfoMap = new HashMap<String, Object>();
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("memberInfoMap", memberInfoMap);
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("rstCnt", rstCnt);
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".findPwProcess Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+	
+	
 	
 	/*
 	 * 개인 회원정보 수정 페이지 이동
