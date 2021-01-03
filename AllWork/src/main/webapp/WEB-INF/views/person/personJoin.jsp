@@ -199,12 +199,12 @@
 									<li class="descArea">
 										<span class="desc"><input id="agree01" type="checkbox" name="agree01"/>&nbsp;<label for="agree01">[필수] 이용약관 동의</label></span>
 										<span class="descBtn"><input id="desc_Btn01" type="button" name="desc_Btn01" value="내용보기 ∨"/></span>
-										<span class="agreeDesc01"><jsp:include page="/memberAgree1.do" /></span>
+										<span class="agreeDesc agreeDesc01"><jsp:include page="/memberAgree1.do" /></span>
 									</li>
 									<li class="descArea">
 										<span class="desc"><input id="agree02" type="checkbox" name="agree02"/>&nbsp;<label for="agree02">[필수] 개인정보 수집 및 이용 동의</label></span>
 										<span class="descBtn"><input id="desc_Btn02" type="button" name="desc_Btn02" value="내용보기 ∨"/></span>
-										<span class="agreeDesc02"><jsp:include page="/memberAgree2.do" /></span>
+										<span class="agreeDesc agreeDesc02"><jsp:include page="/memberAgree2.do" /></span>
 									</li>
 									<li><span><input id="agree03" type="checkbox" name="agree03"/>&nbsp;<label for="agree03">[선택] 마케팅 정보 이메일 수신 동의</label></span></li>
 									<li><span><input id="agree04" type="checkbox" name="agree04"/>&nbsp;<label for="agree04">[선택] 마케팅 정보 SMS 수신 동의</label></span></li>

@@ -255,5 +255,44 @@ public class NetfuMemberController {
 	}
 	
 	
+	/*
+	 * 퇴원 탈퇴 화면 이동
+	 */
+	@RequestMapping(value="/withdrawal.do")
+	public ModelAndView withdrawal(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView("/login/withdrawal");
+		try{
+			mv.addObject("map", commandMap.getMap());
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".withdrawal Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+	
+	
+	/*
+	 * 퇴원 탈퇴 처리
+	 */
+	@RequestMapping(value="/withdrawalProcess.ajax")
+	public ModelAndView withdrawalProcess(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		try{
+			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
+			int rstCnt = netfuMemberService.selectUidExistCnt(commandMap.getMap());
+			
+			if(rstCnt > 0){
+				netfuMemberService.updateMemberStatus(commandMap.getMap());
+			}
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("rstCnt", rstCnt);
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".withdrawalProcess Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+	
+	
 	
 }

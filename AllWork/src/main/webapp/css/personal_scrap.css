@@ -13,6 +13,7 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 /*###################################   listpart   ###################################*/
 #rightPart h4{width:200px;height:50px;line-height:50px;font-size:18px;float: left;}
 #rightPart .delete{margin-left:388px;width:120px;height:40px;margin-top:10px;line-height:38px;text-align:center;margin-bottom:5px;border:1px solid #000;float: left;}
+#rightPart .delete a{display: block;width:100%;height:100%;}
 
 #rightPart .list{width:100%;border-top:1px solid #999;overflow: hidden;border-collapse:collapse;
   table-layout: fixed;

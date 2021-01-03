@@ -58,7 +58,13 @@
 						<li><a href="/resumePaidList.do" title="결재내역 조회">결재내역 조회</a></li>
 					</ol>
 				</li>
-				<li class="gnb"><a href="/personModify.do" title="회원정보관리">회원정보관리</a></li>
+				<li class="gnb"><a href="/personModify.do" title="회원정보관리">회원정보관리</a>
+					<h3>회원정보관리</h3>
+					<ol>
+						<li><a href="/personModify.do" title="회원정보수정">회원정보수정</a></li>
+						<li><a href="/withdrawal.do" title="회원탈퇴">회원탈퇴</a></li>
+					</ol>
+				</li>
 			</ul>
 		</div>
 	</div>

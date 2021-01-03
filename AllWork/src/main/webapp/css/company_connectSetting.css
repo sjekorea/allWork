@@ -24,7 +24,7 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
     td{width:590px;font-size:14px;padding-top:10px;}
     td input[type="button"]{width:90px;height:42px;text-align:center;font-size:16px;
                             background-color:#ddd;
-                            border:1px solid #999;vertical-align:middle;}
+                            border:1px solid #999;vertical-align:middle;cursor:pointer;}
     td input::placeholder{color:#ccc;font-size:16px;}
     td input[type="checkbox"]{width:16px;height:16px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}
     td input[type="radio"]{width:16px;height:16px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}

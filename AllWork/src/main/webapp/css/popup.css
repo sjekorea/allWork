@@ -1,14 +1,23 @@
 body{font-family:"NotoSansKR-Regular";}
 /* 메인페이지 팝업 */
-#popupWrap{width:502px;height:542px;border:1px solid #999;position: absolute;top:0;left:0;z-index:200;background-color:#eee;}
-#popupWrap .imgArea{width:100%;height:500px;}
-#popupWrap .imgArea img{width:100%;}
+#popupWrap{width:100%;height:100%;position: relative;}
+#popupWrap .popup .imgArea{overflow: hidden;border:1px solid #999;background-color:#fff;}
+#popupWrap .popup .imgArea img{width:100%;}
 
-#popupWrap .buttonArea{width:100%;height:40px;line-height:44px;}
-#popupWrap .buttonArea p{display: inline-block;width:48%;height:40px;float: left;font-size:14px;}
-#popupWrap .buttonArea span{padding:0 2px;}
-#popupWrap .buttonArea .today_close{padding-left:2%;}
-#popupWrap .buttonArea .popup_close{text-align:right;padding-right:2%;}
+#popupWrap .popup .buttonArea{width:100%;height:40px;line-height:44px;background-color:#eee;border:1px solid #999;border-top:none;}
+#popupWrap .popup .buttonArea p{display: inline-block;width:48%;height:40px;float: left;font-size:14px;}
+#popupWrap .popup .buttonArea span{padding:0 2px;}
+#popupWrap .popup .buttonArea .today_close{padding-left:2%;}
+#popupWrap .popup .buttonArea .popup_close{text-align:right;padding-right:2%;}
+
+/* 팝업사이즈 변경 */
+#popupWrap .popup .imgArea01{width:300px;height:500px;}
+#popupWrap .popup .imgArea02{width:500px;height:500px;}
+
+/* 팝업 위치 변경 */
+#popupWrap .popup01{z-index:200;position: absolute;top:0;left:0;}
+#popupWrap .popup02{z-index:300;position: absolute;top:0;left:550px;}
+
 
 /* 유료옵션서비스 신청 팝업 */
 #popupWrap_payService{width:400px;height:440px;border:1px solid #999;position: absolute;top:0;left:0;z-index:200;background-color:#fff;}
@@ -77,4 +86,4 @@ body{font-family:"NotoSansKR-Regular";}
 #popupWrap_apply .btnArea{width:100%;overflow: hidden;margin-top:40px;text-align: center;}
 #popupWrap_apply .btnArea p{display:inline-block;width:180px;height:40px;line-height:40px;text-align: center;background-color:#eee;}
 #popupWrap_apply .btnArea p:last-child{background-color:#4F60E3;margin-right: 5px;}
-#popupWrap_apply .btnArea p:last-child a{color:#fff;}
+#popupWrap_apply .btnArea p:last-child a{display:block;width:100%;height:100%;color:#fff;}

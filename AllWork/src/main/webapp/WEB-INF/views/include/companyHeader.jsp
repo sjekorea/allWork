@@ -77,7 +77,7 @@
 							<div>
 								<h4>헤드헌팅</h4>
 								<ul>
-									<li class="sitemap_depth01"><a href="#" title="채용정보">채용정보</a></li>
+									<li class="sitemap_depth01"><a href="/headhuntList.do" title="채용정보">채용정보</a></li>
 									<li class="sitemap_depth01"><a href="#" title="화상면접">화상면접</a></li>
 								</ul>
 							</div>
@@ -89,6 +89,24 @@
 									<li><a href="#" title="이력서제공">이력서제공</a></li>
 									<li><a href="#" title="재취업성공">재취업성공</a></li>
 									<li><a href="#" title="사전면접">사전면접</a></li>
+								</ul>
+							</div>
+							<div>
+								<h4>커뮤니티</h4>
+								<ul>
+									<li class="menu menu01"><a href="/noticeList.do" title="공지사항">공지사항</a></li>
+									<li class="menu menu02"><a href="/boardList.do" title="게시판">게시판</a></li>
+									<li class="menu menu03"><a href="#" title="FAQ">FAQ</a></li>
+									<li class="menu menu04"><a href="#" title="이용안내">이용안내</a>
+									<ul class="sub">
+										<li><a href="#" title="유료채용광고 문의">유료채용광고 문의</a></li>
+									</ul>
+									</li>
+									<li class="menu menu05"><a href="#" title="이용약관">이용약관</a></li>
+									<li class="menu menu06"><a href="#" title="개인정보 취급방침">개인정보 취급방침</a></li>
+									<li class="menu menu07"><a href="#" title="불편 및 신고상황 접수">불편 및 신고상황 접수</a></li>
+									<li class="menu menu08"><a href="#" title="모바일 서비스">모바일 서비스</a></li>
+									<li class="menu menu09"><a href="#" title="자료실">자료실</a></li>
 								</ul>
 							</div>
 						</div>

@@ -72,9 +72,10 @@
 						<span><input type="radio" id="keywordR" name="keywordR" value="and" checked /></span>&nbsp;‘그리고’(and) 검색
 						<span><input type="radio" id="keywordR" name="keywordR" value="or" <c:if test="${map.keywordCondition eq 'or' }">checked</c:if> /></span>&nbsp;‘또는’(or) 검색 
 					</div>
-					<p><input type="text" id="keyword1" name="keyword1" value="${map.keyword1 }" placeholder="전체(직무, 산업, 이력서내용, 이력서 번호 등)" /></p>
-					<p><input type="text" id="keyword2" name="keyword2" value="${map.keyword2 }" placeholder="회사명" /></p>
-					<p><input type="text" id="keyword3" name="keyword3" value="${map.keyword3 }" placeholder="학교명, 전공명" /></p>
+					
+					<p><input type="text" id="keyword1" name="keyword1" value="${map.keyword1 }" placeholder="키워드" /></p>
+					<p><input type="text" id="keyword2" name="keyword2" value="${map.keyword2 }" placeholder="키워드" /></p>
+					<p><input type="text" id="keyword3" name="keyword3" value="${map.keyword3 }" placeholder="키워드" /></p>
 					<p class="btnBox"><input id="search_btn" type="button" name="search_btn" value="검색" style="cursor:pointer;"/></p>
 					<input type="hidden" name="keywordCondition" id="keywordCondition" value="${map.keywordCondition }"/>
 					<input type="hidden" name="searchFlag" id="searchFlag" value="keyword"/>

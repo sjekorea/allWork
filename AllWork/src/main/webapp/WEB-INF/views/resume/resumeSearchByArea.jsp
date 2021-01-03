@@ -72,9 +72,9 @@
 						<span><input id="checkBox_01" type="radio" name="q" title="체크박스01" /></span><label for="checkBox_01">‘그리고’(and) 검색</label>
 						<span><input id="checkBox_02" type="radio" name="q" title="체크박스02" /></span><label for="checkBox_02">‘또는’(or) 검색</label> 
 					</div>
-					<p><input id="searchText01" type="text" name="q" title="allwork 검색" placeholder="전체(직무, 산업, 이력서내용, 이력서 번호 등)" /></p>
-					<p><input id="searchText02" type="text" name="q" title="allwork 검색" placeholder="회사명" /></p>
-					<p><input id="searchText03" type="text" name="q" title="allwork 검색" placeholder="학교명, 전공명" /></p>
+					<p><input type="text" id="keyword1" name="keyword1" value="${map.keyword1 }" placeholder="키워드" /></p>
+					<p><input type="text" id="keyword2" name="keyword2" value="${map.keyword2 }" placeholder="키워드" /></p>
+					<p><input type="text" id="keyword3" name="keyword3" value="${map.keyword3 }" placeholder="키워드" /></p>
 					<p class="btnBox"><input id="search_btn" type="button" name="searchBtn" value="검색" /></p>
 				</fieldset>
 			</form>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="homeCommon">
+
+	<!-- 메인 페이지 popup 리스트 -->
+	<select id="selectMainPopupList" parameterType="hashmap" resultType="allwork.vo.NetfuPopupVo">
+		select * from netfu_popup where view = 'yes' AND end_day >= curdate() order by end_day
+	</select>
+
+	<!-- 메인 페이지 banner 리스트 -->
+	<select id="selectMainBannerList" parameterType="hashmap" resultType="allwork.vo.NetfuBannerVo">
+		select * from netfu_banner where view = 'yes' order by random desc
+	</select>
+
+</mapper>

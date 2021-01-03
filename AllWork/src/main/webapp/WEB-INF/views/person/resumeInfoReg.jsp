@@ -27,8 +27,11 @@
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
 					<p class="personal_setting"><a href="#none" title="기본정보수정"><i class="fas fa-cog"></i>&nbsp;기본정보수정</a></p>
-					<div id="imgArea">
-						<p><img src="img/company_home/img00.jpeg" alt="본인사진"/></p>
+					<div id="imgPart">
+						<div class="imgArea">
+							<p><img src="/img/company_home/img00.jpeg" alt="본인사진"/></p>
+						</div>
+						<p class="btnArea"><label for="myImg">사진선택</label><input id="myImg" type="file"/></p>
 					</div>
 					<table>
 						<caption>이력 등록하기</caption>

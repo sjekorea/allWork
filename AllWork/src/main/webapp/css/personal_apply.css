@@ -18,7 +18,7 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 #listPart .tab li a{display: block;width: 100%;height: 100%;color:#ccc;}
 
   #listPart .tab li:last-child{width:100px;margin-left:190px;border:1px solid #000;}
-  #listPart .tab li:last-child a{background-color: #fff;color:#000;}
+  #listPart .tab li:last-child a{display:block;width:100%;height:100%;background-color: #fff;color:#000;}
 
         #listPart .tab li:hover{border: 1px solid #999;}
         #listPart .tab li:hover a{color: #999;}

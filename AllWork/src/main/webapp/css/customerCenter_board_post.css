@@ -5,7 +5,7 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 #container{width:1000px;margin:0 auto;}
 
 /*현재메뉴 언더라인*/
-/*	#menuTree ul .menu02{text-decoration: underline;}	*/
+#menuTree ul .menu02{text-decoration: underline;}
 
 /*###################################   rightpart   ###################################*/
 #rightPart{width:790px;height:100%;margin-left:10px;float: left;background-color:#fff;border:1px solid #ccc;padding:40px;}
@@ -29,9 +29,9 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 #boardPart .buttonPart{width:100%;margin-top:5px;text-align: right;}
 #boardPart .buttonPart li{display:inline-block;width:100px;height:30px;line-height:30px;text-align: center;font-size:14px;}
 #boardPart .buttonPart li:first-child{background-color:#4F60E3;}
-#boardPart .buttonPart li:first-child a{color:#fff;}
+#boardPart .buttonPart li:first-child a{display:block;width:100%;height:100%;color:#fff;}
 #boardPart .buttonPart li:last-child{background-color:#eee;border:1px solid #999;}
-#boardPart .buttonPart li:last-child a{color:#333;}
+#boardPart .buttonPart li:last-child a{display:block;width:100%;height:100%;color:#333;}
 
 #boardPart .replyPart{width:100%;overflow: hidden;}
 #boardPart .replyPart h4{width:100%;height:30px;}
@@ -40,8 +40,8 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 fieldset{border:none;}
 legend{display: none;}
 #boardPart .replyPart form textarea{width:608px;height:100px;padding:20px;border:none;float:left;}
-#boardPart .replyPart .reply_btn{width:100px;height:100px;line-height:20px;padding-top:30px;float:left;background-color:#4F60E3;text-align:center;}
-#boardPart .replyPart .reply_btn a{color:#fff;}
+#boardPart .replyPart .reply_btn{width:100px;height:100px;line-height:20px;float:left;background-color:#4F60E3;text-align:center;}
+#boardPart .replyPart .reply_btn a{display:block;width:100%;height:100%;padding-top:30px;color:#fff;}
 
 #boardPart .replyPart .ok_btn{margin-top:10px;width:100px;height:30px;line-height:30px;text-align: center;font-size:14px;background-color:#4F60E3;}
-#boardPart .replyPart .ok_btn a{color:#fff;}
+#boardPart .replyPart .ok_btn a{display:block;width:100%;height:100%;color:#fff;}

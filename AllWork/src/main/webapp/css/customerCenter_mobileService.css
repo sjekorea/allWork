@@ -1,0 +1,27 @@
+body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
+
+/*###################################   containerWrap  ###################################*/
+#containerWrap{width:100%;margin:20px 0 100px;overflow: hidden;}
+#container{width:1000px;margin:0 auto;}
+
+/*현재메뉴 언더라인*/
+#menuTree ul .menu08{text-decoration: underline;}
+
+/*###################################   rightpart   ###################################*/
+#rightPart{width:790px;height:100%;margin-left:10px;float: left;background-color:#fff;border:1px solid #ccc;padding:40px;}
+#rightPart h4{width:100%;height:50px;line-height:50px;font-size:18px;margin-bottom:20px;}
+.p_img00{width:512px;margin:0 auto;}
+.p_img00 img{width:100%;}
+
+.p_title{width:100%;text-align:center;padding-top:20px;color:#4F60E3;font-size:20px;padding-bottom:100px;}
+.m_title{width:100%;font-size:22px;padding-bottom:40px;}
+#rightPart .Wrap{width:670px;overflow:hidden;margin:0 auto;}
+#rightPart ul{width:690px;margin:0 auto;overflow:hidden;}
+#rightPart ul li{width:210px;overflow: hidden;float:left;text-align: center;margin-bottom:80px;margin-right:20px;}
+
+.p_img{width:88px;height:120px;margin:0 auto;}
+.p_img img{width:100%;}
+
+.p_text{width:100%;line-height:26px;height:26px;background-color:#eee;font-size:15px;margin-bottom:10px;letter-spacing:-1px;}
+.p_subText{font-size:13px;color:#666;text-align: left;line-height:22px;}
+.p_subText span{width:100%;font-size:12px;display:inline-block;border:1px solid #ccc;letter-spacing:-1px;text-align: center;margin-bottom:15px;}

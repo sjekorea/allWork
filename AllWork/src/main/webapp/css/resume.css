@@ -36,7 +36,7 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     td{width:570px;font-size:14px;}
     td input[type="button"]{width:100px;height:42px;padding:0 10px;text-align:center;font-size:16px;
                             background-color:#fff;
-                            border:1px solid #999;vertical-align:top;}
+                            border:1px solid #999;vertical-align:top;cursor:pointer;}
     td input[type="text"]{width:570px;height:40px;background-color:#fff;border:1px solid #999;text-indent:10px;}
     td input::placeholder{color:#ccc;text-indent:10px;}
     td input[type="checkbox"]{width:16px;height:16px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}
@@ -49,18 +49,43 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     .comment{color:red;font-size:12px;}
 
     .moreTab{width:100%;height:80px;text-align:center;background-color:#fff;padding-right: 40px;padding-bottom:40px;}
-    .moreTab input{width:20%;height:100%;border:1px solid #ccc;background-color:#fff;font-size:14px;}
+    .moreTab input{width:20%;height:100%;border:1px solid #ccc;background-color:#fff;font-size:14px;cursor:pointer;}
 
     /*###############################   resume00 기본정보  ###############################*/
     #resume00{width:790px;margin-bottom:10px;padding:40px;overflow: hidden;background-color:#fff;border:1px solid #ccc;}
 
     #resume00 #detailArea{width:710px;float: left;}
     #resume00 #detailArea .detail_title{width:340px;height:32px;font-size:18px;float:left;}
-    #resume00 #detailArea .personal_setting{width:110px;height:32px;line-height:28px;font-size:14px;margin-bottom:10px;margin-left:260px;text-align:center;border:1px solid #808495;float:left;}
+    #resume00 #detailArea .personal_setting{width:110px;height:32px;line-height:28px;font-size:14px;margin-bottom:10px;margin-left:260px;text-align:center;border:1px solid #333;float:left;}
 
-    #resume00 #imgArea{width:120px;margin-right:10px;height:140px;float: left;border:1px solid #ccc;overflow: hidden;}
-    #resume00 #imgArea p{width:100%;background-color:#ccc;}
-    #resume00 #imgArea p img{width:100%;}
+    #resume00 #imgPart{width:120px;margin-right:10px;height:200px;float: left;overflow:hidden;}
+    #resume00 .imgArea{width:120px;margin-right:10px;height:140px;border:1px solid #ccc;overflow: hidden;}
+    #resume00 .imgArea p{width:100%;background-color:#ccc;}
+    #resume00 .imgArea p img{width:100%;}
+    #resume00 .btnArea{width:100%;height:30px;font-size:14px;line-height:30px;text-align: center;margin-top:10px;}
+
+    #resume00 input[type="file"]{position: absolute;
+                                  width: 0;
+                                  height: 0;
+                                  padding: 0;
+                                  overflow: hidden;
+                                  border: 0;
+                              }
+  #resume00 label{
+                      display: inline-block;
+                      height:30px;
+                      line-height:28px;
+                      width:100%;
+                      text-align: center;
+                      color: #333;
+                      vertical-align: top;
+                      background-color: #fff;
+                      cursor: pointer;
+                      border: 1px solid #ccc;
+
+                  }
+
+    #resume00 label:hover{border:1px solid #000;color:#000;}
 
     #detailArea table{width:580px;border-bottom:1px solid #000;border-collapse: collapse;border-top:2px solid #000;}
     #detailArea caption{display:none;}
@@ -176,7 +201,6 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resForm09 th{display:none;}
     #resForm09 td{width:710px;}
 
-/*
     #resForm09 .file_btn{border:none;margin:0;padding:0;}
     #resForm09 input[type="file"]{position: absolute;
                                   width: 0;
@@ -211,4 +235,3 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 
 
                     }
-*/

@@ -53,6 +53,7 @@
 		<div id="rightPart">
 			<div id="boardPart">
 				<h4>${boardName }</h4>
+				<p>아래 채용분야에 해당하시는 분은 <span>mail@allwork.co.kr</span>로 경력 위주의 상세이력서(지원회사 명기)를 보내주시기 바랍니다.</p>
 				<table title="${boardName } 테이블">
 					<caption>${boardName }</caption>
 					<thead id="boardTitle">

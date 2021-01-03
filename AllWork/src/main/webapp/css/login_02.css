@@ -23,7 +23,7 @@
   #loginArea .loginBox p input{display:block;width:100%;height:100%;border:none;background-color:#fff;text-indent:10px;}
   #loginArea .loginBox p input::placeholder{color:#ccc;}
   #loginArea .loginBox p.button{border:none;margin-bottom:0;}
-  #loginArea .loginBox p.button input{display:inline;;width:500px;height:50px;background-color:#4F60E3;color:#fff;font-size:18px;}
+  #loginArea .loginBox p.button input{display:inline;;width:500px;height:50px;background-color:#4F60E3;color:#fff;font-size:18px;cursor:pointer;}
 
   #loginArea .loginBox p.checkbox{width:50%;height:50px;text-align:left;border:none;float:left;}
   #loginArea .loginBox p.checkbox input{display:inline;;width:20px;height:20px;vertical-align:bottom;}

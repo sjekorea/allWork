@@ -83,10 +83,20 @@
 		]]>
 	</insert>
 	
+	<!--  비밀 번호 변경 -->
 	<update id="updatePw" parameterType="hashmap">
 		<![CDATA[ 
 			update netfu_member
 			set passwd = #{passwd}
+			where uid = #{uid}
+		]]>
+	</update>
+	
+	<!--  회원 탈퇴 처리 -->
+	<update id="updateMemberStatus" parameterType="hashmap">
+		<![CDATA[ 
+			update netfu_member
+			set `left` = 'yes'
 			where uid = #{uid}
 		]]>
 	</update>

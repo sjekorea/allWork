@@ -23,8 +23,11 @@ import com.ilmagna.allworkadmin.ai.services.AiSearchService;
 import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
 import allwork.common.util.ConvertUtil;
+import allwork.service.HomeCommonService;
+import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuItemResumeService;
 import allwork.service.NetfuMyServiceService;
+import allwork.service.RecruitOtherService;
 
 /**
  * Handles requests for the application home page.
@@ -33,6 +36,15 @@ import allwork.service.NetfuMyServiceService;
 public class HomeController {
 	
 	Logger log = Logger.getLogger(this.getClass());
+
+	@Resource(name="homeCommonService")
+	private HomeCommonService homeCommonService;	
+
+	@Resource(name="netfuItemCompanyService")
+	private NetfuItemCompanyService netfuItemCompanyService;	
+
+	@Resource(name="recruitOtherService")
+	private RecruitOtherService recruitOtherService;	
 	
 
    	//(begin) 2020.12.30 by s.yoo
@@ -58,16 +70,50 @@ public class HomeController {
 	@RequestMapping(value={"/", "/index.do"})
 	public ModelAndView home(CommandMap commandMap, Locale locale) {
 		
-		log.info("Welcome home! The client locale is {}.");
-		
 		ModelAndView mv = new ModelAndView("/index");
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		mv.addObject("serverTime", formattedDate );
+		try{
+			
+			commandMap.put("start", 0);
+			commandMap.put("pageSize", 8);
+			commandMap.put("orderField", "nic.wdate");
+			commandMap.put("orderRule", "desc");
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+			
+			// banner 정보
+			List<Map<String, Object>> bannerList = homeCommonService.selectMainBannerList(commandMap.getMap());
+			
+			// 채용정보 1
+			
+			
+			// 광고사 정보
+			
+			
+			// 기업회원 등록 채용공고
+			commandMap.put("infoType", "1");
+			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
+			
+			// 프리랜서 채용공고
+			commandMap.put("infoType", "4");
+			List<Map<String, Object>> recruitFreeList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
+			
+			// 알바 채용공고
+			commandMap.put("infoType", "2");
+			List<Map<String, Object>> recruitAlbaList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
+			
+			// 기타 채용정보
+			commandMap.put("pageSize", 10);
+			List<Map<String, Object>> recruitOtherList = recruitOtherService.selectRecruitOtherList(commandMap.getMap());
+			
+			mv.addObject("bannerList", bannerList);
+			mv.addObject("recruitList", recruitList);
+			mv.addObject("recruitFreeList", recruitFreeList);
+			mv.addObject("recruitAlbaList", recruitAlbaList);
+			mv.addObject("recruitOtherList", recruitOtherList);
+			
+		}catch(Exception e){
+			System.out.println(this.getClass().getName()+".home Exception!!! \n"+e.toString());
+		}
 		
 		return mv;
 	}
