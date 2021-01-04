@@ -102,7 +102,7 @@ public class HomeController {
 			List<Map<String, Object>> recruitAlbaList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			
 			// 기타 채용정보
-			commandMap.put("pageSize", 10);
+			commandMap.put("pageSize", 8);
 			List<Map<String, Object>> recruitOtherList = recruitOtherService.selectRecruitOtherList(commandMap.getMap());
 			
 			mv.addObject("bannerList", bannerList);

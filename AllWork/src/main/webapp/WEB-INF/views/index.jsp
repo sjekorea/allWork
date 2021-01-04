@@ -34,7 +34,7 @@
 				<c:forEach var="result" items="${mainRecruitList}" varStatus="status">
 					<c:if test="${result.type == 'head' }">
 						<li class="headhunting">
-							<a href="" title="기업회원등록공고">
+							<a href="/headhuntList.do" title="기업회원등록공고">
 							<span class="desc00">헤드헌팅</span><span class="desc01">${result.bizMen}명</span>
 					</c:if>
 					<c:if test="${result.type == 'recruit' }">
@@ -52,9 +52,9 @@
 							<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', 'open', '');" title="기업회원등록공고">
 							<span class="desc00">알바</span><span class="desc01">${result.bizMen}명</span>
 					</c:if>
-							<p class="desc02">(주)다우리종합건설</p>
-							<p class="desc03">텔레마케팅 아웃바운드 사원 및 관리자 모집</p>
-							<span class="desc04">경기 고양시</span><span class="desc05">등록일:20-09-23</span>
+							<p class="desc02">${convert:compByte(result.bizTitle, 70, "...")}</p>
+							<p class="desc03">${result.bizName}</p>
+							<span class="desc04">${result.bizArea1Name}</span><span class="desc05">등록일:${result.wdate}</span>
 							</a>
 						</li>
 				</c:forEach>
@@ -65,14 +65,12 @@
 				<c:forEach var="result" items="${bannerList}" varStatus="status">
 					<c:if test="${status.index < 4 }">
 						<li class="headhunting">
-							<c:choose>
-								<c:when test="${result.type == 'image' }">
-									<a href="location.href='${result.link }'" title="유료공고00"><div>${result.thumbnail}</div></a>
-								</c:when>
-								<c:otherwise>
-									${result.contents }
-								</c:otherwise> 
-							</c:choose>
+							<c:if test="${result.link == null || result.link == '' }">
+								<div>${result.thumbnail}</div>
+							</c:if>
+							<c:if test="${result.link != null && result.link != '' }">
+								<a href="${result.link }" target="_blank" title="광고"><div>${result.thumbnail}</div></a>
+							</c:if>
 						</li>
 					</c:if>
 				</c:forEach>
@@ -80,6 +78,9 @@
 		</div>
 	</div>
 </div>
+
+<!-- 
+ -->
 <div id="content02Wrap">
 	<div id="content02">
 		<div id="adArea">
@@ -126,6 +127,7 @@
 			<p class="btn btn_prev"><a href="01_aboutMMCA.html" title="다음보기"><img src="img/main/btn_next.jpg" alt="다음버튼" /></a></p>
 		</div>
 	</div>
+
 	<div id="content03Wrap">
 		<div id="content03">
 			<h4>기업회원 등록 채용공고</h4>
