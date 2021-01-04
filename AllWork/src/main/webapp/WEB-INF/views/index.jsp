@@ -52,8 +52,8 @@
 							<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', 'open', '');" title="기업회원등록공고">
 							<span class="desc00">알바</span><span class="desc01">${result.bizMen}명</span>
 					</c:if>
-							<p class="desc02">${convert:compByte(result.bizTitle, 70, "...")}</p>
-							<p class="desc03">${result.bizName}</p>
+							<p class="desc02">${result.bizName}</p>
+							<p class="desc03">${convert:compByte(result.bizTitle, 95, "...")}</p>
 							<span class="desc04">${result.bizArea1Name}</span><span class="desc05">등록일:${result.wdate}</span>
 							</a>
 						</li>
