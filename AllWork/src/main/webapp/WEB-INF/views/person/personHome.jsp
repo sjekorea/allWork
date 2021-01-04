@@ -44,6 +44,7 @@
 						<li><a href="/interviewRequestCompany.do" title="면접요청기업">면접요청기업</a></li>
 					</ol>
 				</li>
+				<li class="gnb"><a href="#" title="내가 확인한 채용정보">내가 확인한 채용정보</a></li>
 				<li class="gnb"><a href="/fitRecruitList.do" title="맞춤서비스 관리">맞춤서비스 관리</a>
 					<h3>맞춤서비스 관리</h3>
 					<ol>
