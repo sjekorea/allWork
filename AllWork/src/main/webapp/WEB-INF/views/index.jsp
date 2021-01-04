@@ -219,7 +219,7 @@
 						<td class="jPerson">채용인원</td>
 						<td class="jadd">근무처</td>
 						<td class="jcontact">연락처</td>
-						<td class="jDate">등록일</td>
+						<td class="jDate">채용마감</td>
 					</tr>
 				</thead>
 				<tbody>
