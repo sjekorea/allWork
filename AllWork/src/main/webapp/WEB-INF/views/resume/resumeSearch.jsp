@@ -10,6 +10,12 @@
 <jsp:include page="/companyHeader.do" />
 
 <link rel="stylesheet" type="text/css" href="/css/company_03_1.css" />
+<!-- (begin) 2020.12.30 by s.yoo	-->
+<style type="text/css">
+	/*현재메뉴 언더라인*/
+	#menuTree ul .subMenu01{text-decoration: underline;}
+</style>
+<!-- (end) 2020.12.30 by s.yoo	-->
 
 <div id="containerWrap">
 	<div id="leftPart">

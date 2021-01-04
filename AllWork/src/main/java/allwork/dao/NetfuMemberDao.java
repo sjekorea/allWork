@@ -22,6 +22,30 @@ public class NetfuMemberDao extends AbstractDAO{
 		return selectCnt("netfuMember.selectUidExistCnt", map);
 	}
 	
+	//(begin) 2021.01.03 by s.yoo
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> findId(Map<String, Object> map) throws Exception{
+		return (Map<String, Object>) selectOne("netfuMember.findId", map);
+	}
+
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> findPw(Map<String, Object> map) throws Exception{
+		return (Map<String, Object>) selectOne("netfuMember.findPw", map);
+	}
+
+	public int resetPw(Map<String, Object> map) throws Exception{ 
+		return update("netfuMember.resetPw", map);
+	}
+
+	public int memberUnregister(Map<String, Object> map) throws Exception{ 
+		return update("netfuMember.memberUnregister", map);
+	}
+
+	public int updateLoginInfo(Map<String, Object> map) throws Exception{ 
+		return update("netfuMember.updateLoginInfo", map);
+	}
+	//(end) 2021.01.03 by s.yoo
+
 	// 회원 가입
 	public int insertNetfuMember(Map<String, Object> map) throws Exception{ 
 		int rtnCnt = 0;
@@ -35,11 +59,6 @@ public class NetfuMemberDao extends AbstractDAO{
 	// 비밀번호 찾기 - 비밀번호 수정
 	public int updatePw(Map<String, Object> map) throws Exception{ 
 		return update("netfuMember.updatePw", map);
-	}
-	
-	// 회원 탈퇴 처리
-	public int updateMemberStatus(Map<String, Object> map) throws Exception{ 
-		return update("netfuMember.updateMemberStatus", map);
 	}
 
 }

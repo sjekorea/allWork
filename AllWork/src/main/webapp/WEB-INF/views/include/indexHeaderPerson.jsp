@@ -93,7 +93,7 @@
 					<c:choose>
 						<c:when test="${SE_LOGIN_STATUS}">
 							<li><a href="/logout.do" title="로그아웃">로그아웃&nbsp;|&nbsp;</a></li>
-							<li><a href="#" title="mypage">mypage</a></li>
+							<li><a href="/personModify.do" title="마이페이지">마이페이지</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a href="/login.do" title="로그인">로그인&nbsp;|&nbsp;</a></li>
@@ -138,7 +138,7 @@
 		<div id="allMenuWrap">
 			<div id="allMenu">
 				<p>
-					<a href="#" title="채용정보"><i class="far fa-times-circle"></i></a>
+					<a href="#" title="닫기"><i class="far fa-times-circle"></i></a>
 				</p>
 				<div class="sitemapArea">
 					<div class="sitemap">

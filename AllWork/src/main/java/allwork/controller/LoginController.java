@@ -2,10 +2,7 @@ package allwork.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -58,6 +55,11 @@ public class LoginController {
 				memberInfoMap = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
 				LoginSuccessProcess loginSuccessProcess = new LoginSuccessProcess();
 				loginSuccessProcess.loginSuccessMakeSession(req, memberInfoMap);
+				
+				//(begin) 2021.01.03 by s.yoo
+				//가장 최근의 login 시각 등록.
+				netfuMemberService.updateLoginInfo(commandMap.getMap());
+				//(end) 2021.01.03 by s.yoo
 			}
 			
 			mv.addObject("rstCnt", userInfoCnt);

@@ -25,11 +25,16 @@
 				<div id="company_detail">
 					<p class="company_name">${companyMap.bizName}</p>
 					<p class="company_hp"><a href="#none" title="기업홈페이지">${companyMap.bizHome}</a></p>
-					<p class="company_logo"><img src="/peg/"+${companyMap.biz} alt="로고"/></p>
+		<c:if test="${companyMap.biz == null || companyMap.biz == '' }">
+					<p class="company_logo"><img src="img/logoNo.jpg" alt="로고"/></p>
+		</c:if>
+		<c:if test="${companyMap.biz != null && companyMap.biz != '' }">
+					<p class="company_logo"><img src="/allwork/peg/"+${companyMap.biz} alt="로고"/></p>
+		</c:if>
 				</div>
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
-					<p class="company_setting"><a href="#none" title="기본정보수정"><i class="fas fa-cog"></i>&nbsp;기본정보수정</a></p>
+					<p class="company_setting"><a href="/companyModify.do" title="기본정보수정"><i class="fas fa-cog"></i>&nbsp;기본정보수정</a></p>
 					<table>
 						<caption>채용공고 등록하기</caption>
 						<tbody class="tabelArea">

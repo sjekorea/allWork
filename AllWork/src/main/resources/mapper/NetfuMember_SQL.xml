@@ -8,6 +8,9 @@
 			*
 		from netfu_member
 		where 1=1
+			<!-- (begin) 2021.01.03 by s.yoo	-->
+			AND `left` <![CDATA[ <> ]]> 'yes'
+			<!-- (end) 2021.01.03 by s.yoo	-->
 			<choose>
 				<when test="personUid != null and personUid != ''">
 					and uid = BINARY(#{personUid})	
@@ -26,6 +29,9 @@
 			and uid = #{loginId}
 			and passwd = #{loginPw}
 			and type = #{type}
+			<!-- (begin) 2021.01.03 by s.yoo	-->
+			AND `left` <![CDATA[ <> ]]> 'yes'
+			<!-- (end) 2021.01.03 by s.yoo	-->
 	</select>
 	
 	
@@ -33,9 +39,17 @@
 	<select id="selectUidExistCnt" parameterType="hashmap" resultType="int">
 		select count(uid) cnt from netfu_member
 		where 1=1
+			<!-- (begin) 2021.01.03 by s.yoo	-->
+			AND `left` <![CDATA[ <> ]]> 'yes'
+			<!-- (end) 2021.01.03 by s.yoo	-->
 			<if test="uid != null and uid != ''">
 				and uid = #{uid}
 			</if>
+			<!-- (begin) 2021.01.03 by s.yoo	-->
+			<if test="passwd != null and passwd != ''">
+				and passwd = #{passwd}
+			</if>
+			<!-- (end) 2021.01.03 by s.yoo	-->
 			<if test="name != null and name != ''">
 				and name = #{name}
 			</if>
@@ -46,6 +60,77 @@
 				and type = #{type}
 			</if>
 	</select>
+
+	<!-- (begin) 2021.01.03 by s.yoo	-->
+	<!-- 사용자 ID 찾기 -->
+	<select id="findId" parameterType="hashmap" resultType="allwork.vo.NetfuMemberVo">
+		select 
+			*
+		from netfu_member
+		where name = #{name}
+			<if test="type == 1">
+				and email = #{email}
+			</if>
+			<if test="type == 2">
+				and (phone = #{email} OR hphone = #{email})
+			</if>
+			AND `left` <![CDATA[ <> ]]> 'yes'
+		order by no desc
+		limit 1
+	</select>
+
+	<!-- 사용자 비밀번호 찾기 -->
+	<select id="findPw" parameterType="hashmap" resultType="allwork.vo.NetfuMemberVo">
+		select 
+			*
+		from netfu_member
+		where name = #{name} AND uid = #{uid}
+			<if test="type == 1">
+				and email = #{email}
+			</if>
+			<if test="type == 2">
+				and (phone = #{email} OR hphone = #{email})
+			</if>
+			AND `left` <![CDATA[ <> ]]> 'yes'
+		order by no desc
+		limit 1
+	</select>
+
+	<!-- 사용자 비밀번호 초기화 -->
+	<update id="resetPw" parameterType="hashmap">
+		update netfu_member
+		set passwd = #{passwd}
+		where name = #{name} AND uid = #{uid}
+			<if test="type == 1">
+				and email = #{email}
+			</if>
+			<if test="type == 2">
+				and (phone = #{email} OR hphone = #{email})
+			</if>
+			AND `left` <![CDATA[ <> ]]> 'yes'
+	</update>
+
+
+	<!--  회원 탈퇴. -->
+	<update id="memberUnregister" parameterType="hashmap">
+		update netfu_member
+		set
+			secession = #{secession}
+			, `left` = 'yes'
+			, l_date = CURRENT_TIMESTAMP()
+		where uid = #{uid} AND passwd = #{passwd} 
+			AND `left` <![CDATA[ <> ]]> 'yes'
+	</update>
+	
+	<!--  사용자 Login 정보 등록 -->
+	<update id="updateLoginInfo" parameterType="hashmap">
+		update netfu_member
+		set
+			login_date = CURRENT_TIMESTAMP()
+		where uid = #{loginId}
+			AND `left` <![CDATA[ <> ]]> 'yes'
+	</update>
+	<!-- (end) 2021.01.03 by s.yoo	-->
 
 
 	<!-- 회원가입 정보 등록 -->
@@ -89,15 +174,7 @@
 			update netfu_member
 			set passwd = #{passwd}
 			where uid = #{uid}
-		]]>
-	</update>
-	
-	<!--  회원 탈퇴 처리 -->
-	<update id="updateMemberStatus" parameterType="hashmap">
-		<![CDATA[ 
-			update netfu_member
-			set `left` = 'yes'
-			where uid = #{uid}
+			AND `left` <> 'yes'
 		]]>
 	</update>
 

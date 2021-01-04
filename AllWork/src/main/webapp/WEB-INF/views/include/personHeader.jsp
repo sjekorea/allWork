@@ -39,7 +39,7 @@
 					<c:choose>
 						<c:when test="${SE_LOGIN_STATUS}">
 							<li><a href="/logout.do" title="로그아웃">로그아웃&nbsp;|&nbsp;</a></li>
-							<li><a href="#" title="mypage">mypage</a></li>
+							<li><a href="/personModify.do" title="마이페이지">마이페이지</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a href="/login.do" title="로그인">로그인&nbsp;|&nbsp;</a></li>
@@ -61,14 +61,14 @@
 						<li><a href="/noticeList.do" title="커뮤니티">커뮤니티</a></li>
 					</ul>
 					<ul class="linkArea">
-						<li class="a01"><span>${SE_USER_NM }&nbsp;&nbsp;&nbsp;</span><a href="#" title="이력서 관리>">이력서 관리></a></li>
+						<li class="a01"><span>${SE_USER_NM }&nbsp;&nbsp;&nbsp;</span><a href="/resumeList.do" title="이력서 관리">이력서 관리</a></li>
 						<li class="a02"><a href="/personHome.do"><span class="fas fa-user-check"></span></a></li>
 					</ul>
 				</div>
 			</div>
 			<div id="allMenuWrap">
 				<div id="allMenu">
-					<p class="close"><a href="#" title="채용정보"><i class="fas fa-times"></i></a></p>
+					<p class="close"><a href="#" title="닫기"><i class="fas fa-times"></i></a></p>
 					<div class="sitemapArea">
 						<div>
 							<h4>채용정보</h4>

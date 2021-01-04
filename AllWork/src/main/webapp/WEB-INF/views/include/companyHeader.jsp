@@ -54,7 +54,7 @@
 				</div>
 				<div id="allMenuWrap">
 					<div id="allMenu">
-						<p class="close"><a href="/resumeSearch.do" title="채용정보"><i class="fas fa-times"></i></a></p>
+						<p class="close"><a href="/resumeSearch.do" title="메뉴창 닫기"><i class="fas fa-times"></i></a></p>
 						<div class="sitemapArea">
 							<div>
 								<h4>인재검색</h4>

@@ -3,7 +3,7 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 #containerWrap{width:1000px;margin: 20px auto 100px;overflow: hidden;}
 
 /*현재페이지 언더라인  ###################################*/
-#menuTree ul .subMenu .subMenu01{text-decoration: underline;}
+/*	#menuTree ul .subMenu .subMenu01{text-decoration: underline;}	*/
 
 /*###################################   rightpart   ###################################*/
 #rightPart{width:790px;margin-left:10px;float: left;}

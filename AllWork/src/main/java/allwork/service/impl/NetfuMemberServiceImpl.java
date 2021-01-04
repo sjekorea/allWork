@@ -33,6 +33,33 @@ public class NetfuMemberServiceImpl implements NetfuMemberService{
 		return netfuMemberDao.selectUidExistCnt(map);
 	}
 	
+	//(begin) 2021.01.03 by s.yoo
+	@Override
+	public Map<String, Object> findId(Map<String, Object> map) throws Exception {
+		return netfuMemberDao.findId(map);
+	}
+
+	@Override
+	public Map<String, Object> findPw(Map<String, Object> map) throws Exception {
+		return netfuMemberDao.findPw(map);
+	}
+
+	@Override
+	public int resetPw(Map<String, Object> map) throws Exception {
+		return netfuMemberDao.resetPw(map);
+	}
+
+	@Override
+	public int memberUnregister(Map<String, Object> map) throws Exception {
+		return netfuMemberDao.memberUnregister(map);
+	}
+
+	@Override
+	public int updateLoginInfo(Map<String, Object> map) throws Exception {
+		return netfuMemberDao.updateLoginInfo(map);
+	}
+	//(end) 2021.01.03 by s.yoo
+
 	// 회원가입(회원정보 등록)
 	@Override
 	public int insertNetfuMember(Map<String, Object> map) throws Exception {
@@ -42,11 +69,6 @@ public class NetfuMemberServiceImpl implements NetfuMemberService{
 	@Override
 	public int updatePw(Map<String, Object> map) throws Exception {
 		return netfuMemberDao.updatePw(map);
-	}
-	
-	@Override
-	public int updateMemberStatus(Map<String, Object> map) throws Exception {
-		return netfuMemberDao.updateMemberStatus(map);
 	}
 
 }

@@ -5,8 +5,8 @@ body{background-color:#EDF0F5;font-family:"NotoSansKR-Regular";}
 /*###################################   containerWrap  ###################################*/
   #containerWrap{width:1000px;margin:20px auto 100px;overflow: hidden;}
 
-  /*현재페이지 언더라인  ###################################*/
-  #menuTree ul .subMenu01{text-decoration: underline;}
+/*현재페이지 언더라인  ###################################*/
+/*	#menuTree ul .subMenu01{text-decoration: underline;}	*/
 
 /*###################################   part03/상세검색  ###################################*/
 #rightPart{width:790px;overflow: hidden;margin-left:10px;float:left;}

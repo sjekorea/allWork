@@ -175,23 +175,30 @@ public class NetfuMemberController {
 	/*
 	 * ID 찾기 - ajax
 	 */
+	//(begin) 2021.01.03 by s.yoo
 	@RequestMapping(value="/findIdProcess.ajax")
 	public ModelAndView findIdProcess(CommandMap commandMap, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		try{
-			int rstCnt = netfuMemberService.selectUidExistCnt(commandMap.getMap());
+			Map<String, Object> mapResult = netfuMemberService.findId(commandMap.getMap());
 			Map<String, Object> memberInfoMap = new HashMap<String, Object>();
+			int rstCnt = 0;
+			if (!mapResult.isEmpty()) {
+				rstCnt = 1;
+				commandMap.put("uid", mapResult.get("uid"));
+			}
 			
-			mv.addObject("map", commandMap.getMap());
-			mv.addObject("memberInfoMap", memberInfoMap);
 			mv.addObject("rstCnt", rstCnt);
+			mv.addObject("map", commandMap.getMap());
 			mv.setViewName("jsonView");
 		}catch(Exception e){
+			mv.addObject("rstCnt", 0);
 			log.info(this.getClass().getName()+".findIdProcess Exception !!!!! \n"+e.toString());
 		}
 		return mv;
 	}
-	
+	//(end) 2021.01.03 by s.yoo
+
 	
 	/*
 	 * 비밀번호 찾기
@@ -211,26 +218,31 @@ public class NetfuMemberController {
 	/*
 	 * 비밀번호 찾기 - ajax
 	 */
+	//(begin) 2021.01.03 by s.yoo
 	@RequestMapping(value="/findPwProcess.ajax")
 	public ModelAndView findPwProcess(CommandMap commandMap, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		try{
-			int rstCnt = netfuMemberService.selectUidExistCnt(commandMap.getMap());
+			int rstCnt = 0;
 			
-			if(rstCnt > 0){
+			Map<String, Object> mapResult = netfuMemberService.findPw(commandMap.getMap());
+			if (!mapResult.isEmpty()) {
 				commandMap.put("passwd", CommonUtil.getShortRandomString());
-				netfuMemberService.updatePw(commandMap.getMap());
+				netfuMemberService.resetPw(commandMap.getMap());
+				rstCnt = 1;
 			}
-			
+				
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("rstCnt", rstCnt);
 			mv.setViewName("jsonView");
 		}catch(Exception e){
+			mv.addObject("rstCnt", 0);
 			log.info(this.getClass().getName()+".findPwProcess Exception !!!!! \n"+e.toString());
 		}
 		return mv;
 	}
-	
+	//(end) 2021.01.03 by s.yoo
+
 	
 	
 	/*
@@ -254,45 +266,41 @@ public class NetfuMemberController {
 		return mv;
 	}
 	
-	
+
+	//(begin) 2021.01.03 by s.yoo
 	/*
-	 * 퇴원 탈퇴 화면 이동
+	 * 회원 탈퇴.
 	 */
-	@RequestMapping(value="/withdrawal.do")
-	public ModelAndView withdrawal(CommandMap commandMap, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView("/login/withdrawal");
+	@RequestMapping(value="/memberUnregister.do")
+	public ModelAndView memberUnregister(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView("/login/memberUnregister");
 		try{
 			mv.addObject("map", commandMap.getMap());
 		}catch(Exception e){
-			log.info(this.getClass().getName()+".withdrawal Exception !!!!! \n"+e.toString());
+			log.info(this.getClass().getName()+".memberUnregister Exception !!!!! \n"+e.toString());
 		}
 		return mv;
 	}
 	
-	
-	/*
-	 * 퇴원 탈퇴 처리
-	 */
-	@RequestMapping(value="/withdrawalProcess.ajax")
-	public ModelAndView withdrawalProcess(CommandMap commandMap, HttpSession session) throws Exception{
+	@RequestMapping(value="/memberUnregisterProcess.ajax")
+	public ModelAndView memberUnregisterProcess(CommandMap commandMap, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		try{
-			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
 			int rstCnt = netfuMemberService.selectUidExistCnt(commandMap.getMap());
-			
-			if(rstCnt > 0){
-				netfuMemberService.updateMemberStatus(commandMap.getMap());
+			if (rstCnt > 0) {
+				netfuMemberService.memberUnregister(commandMap.getMap());
 			}
-			
+				
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("rstCnt", rstCnt);
 			mv.setViewName("jsonView");
 		}catch(Exception e){
-			log.info(this.getClass().getName()+".withdrawalProcess Exception !!!!! \n"+e.toString());
+			mv.addObject("rstCnt", 0);
+			log.info(this.getClass().getName()+".memberUnregisterProcess Exception !!!!! \n"+e.toString());
 		}
 		return mv;
 	}
-	
-	
+	//(end) 2021.01.03 by s.yoo
+
 	
 }

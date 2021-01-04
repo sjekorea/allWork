@@ -7,7 +7,22 @@
 <%@ taglib uri="/WEB-INF/tlds/convertUtil.tld" prefix="convert" %>
 <%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert" %>
 
+
+<!-- (begin) 2020.12.30 by s.yoo	-->
+<!-- 
 <jsp:include page="/personHeader.do" />
+ -->
+<c:choose>
+	<c:when test="${SE_LOGIN_STATUS}">
+		<c:if test="${SE_USER_TYPE == 'person' }">
+			<jsp:include page="/indexHeaderPerson.do" />
+		</c:if>
+	</c:when>
+	<c:otherwise>
+			<jsp:include page="/indexHeader.do" />
+	</c:otherwise>
+</c:choose>
+<!-- (end) 2020.12.30 by s.yoo	-->
 
 <link rel="stylesheet" type="text/css" href="/css/personal_home.css"/>
 

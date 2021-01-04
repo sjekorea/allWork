@@ -36,10 +36,10 @@
 								<c:forEach var="result" items="${resumeScrapList}" varStatus="status">
 									<tr class="desc">
 										<td class="desc00"><input type="checkbox" name="chk" value="${result.noTo }" /></td>
-										<td class="desc01"><img src="/img/company_home/img00.jpeg" alt="인재사진"/></td>
+										<td class="desc01"><img src="img/userNo.png" alt="인재사진"/></td>
 										<td class="desc02">
 											${result.name }<br/>
-											${codeConvert:getBizSex(result.sex)}</span>&nbsp;<span>${convert:calcAge(result.birth)}</span>세
+											${codeConvert:getBizSex(result.sex)}</span>&nbsp;<span>${convert:calcAge(result.birth)}</span>
 										</td>
 										<td class="desc03">
 											${codeConvert:getLastSchool(result.inidLastSchool) }<br/>

@@ -37,7 +37,7 @@
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
 					<div id="imgArea">
-						<p><img src="img/company_home/img00.jpeg" alt="본인사진"/></p>
+						<p><img src="img/userNo.png" alt="본인사진"/></p>
 					</div>
 					<table>
 						<caption>이력 등록하기</caption>

@@ -10,6 +10,12 @@
 <jsp:include page="/personHeader.do" />
 
 <link rel="stylesheet" type="text/css" href="/css/personal_01_01.css"/>
+<!-- (begin) 2020.12.30 by s.yoo	-->
+<style type="text/css">
+	/*현재메뉴 언더라인*/
+	#menuTree ul .subMenu04{text-decoration: underline;}
+</style>
+<!-- (end) 2020.12.30 by s.yoo	-->
 
 <div id="containerWrap">
 	<div id="leftPart">

@@ -15,8 +15,8 @@
 		<li class="menu menu01"><a href="/resumeList.do" title="이력서관리">이력서관리</a>
 			<h3>이력서관리</h3>
 			<ol class="subMenu subMenu01">
-				<li class="subMenu01_02"><a href="/resumeList.do" title="이력서목록">이력서목록</a></li>
-				<li class="subMenu01_01"><a href="/resumeInfoReg.do" title="이력서등록">이력서등록</a></li>
+				<li class="subMenu01_01"><a href="/resumeList.do" title="이력서목록">이력서목록</a></li>
+				<li class="subMenu01_02"><a href="/resumeInfoReg.do" title="이력서등록">이력서등록</a></li>
 			</ol>
 		</li>
 		<li class="menu menu02"><a href="/personApplyList.do" title="입사지원관리">입사지원관리</a>
@@ -45,13 +45,18 @@
 				<li class="subMenu06_02"><a href="/resumeApplyForPay.do" title="유료옵션서비스 신청">유료 옵션 서비스 신청</a></li>
 				<li class="subMenu06_01"><a href="/resumePaidList.do" title="결제내역조회">결제내역조회</a></li>
 			</ol></li>
+		<!-- (begin) 2021.01.03 by s.yoo	-->
+		<!-- 
+		<li class="menu menu07"><a href="/personModify.do" title="회원정보관리">회원정보관리</a></li>
+		 -->
 		<li class="menu menu07"><a href="/personModify.do" title="회원정보관리">회원정보관리</a>
 			<h3>회원정보관리</h3>
 			<ol class="subMenu subMenu07">
-				<li class="subMenu07_01"><a href="/personModify.do" title="회원정보수정">회원정보수정</a></li>
-				<li class="subMenu07_02"><a href="/withdrawal.do" title="회원탈퇴">회원탈퇴</a></li>
+				<li class="subMenu07_01"><a href="/personModify.do" title="회원정보관리 ">회원정보관리</a></li>
+				<li class="subMenu07_02"><a href="/memberUnregister.do" title="회원탈퇴">회원탈퇴</a></li>
 			</ol>
 		</li>
+		<!-- (begin) 2021.01.03 by s.yoo	-->
 	</ul>
 </div>
 
