@@ -29,7 +29,7 @@
 					<p class="company_logo"><img src="img/logoNo.jpg" alt="로고"/></p>
 		</c:if>
 		<c:if test="${companyMap.biz != null && companyMap.biz != '' }">
-					<p class="company_logo"><img src="/allwork/peg/"+${companyMap.biz} alt="로고"/></p>
+					<p class="company_logo"><img src="/allwork/peg/"+${companyMap.biz} alt="로고" width=120 height=134/></p>
 		</c:if>
 				</div>
 				<div id="detailArea">

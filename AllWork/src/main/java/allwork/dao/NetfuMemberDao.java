@@ -44,15 +44,23 @@ public class NetfuMemberDao extends AbstractDAO{
 	public int updateLoginInfo(Map<String, Object> map) throws Exception{ 
 		return update("netfuMember.updateLoginInfo", map);
 	}
+
+	public int updateMyInfo(Map<String, Object> map) throws Exception{ 
+		return update("netfuMember.updateMyInfo", map);
+	}
 	//(end) 2021.01.03 by s.yoo
 
 	// 회원 가입
 	public int insertNetfuMember(Map<String, Object> map) throws Exception{ 
 		int rtnCnt = 0;
 		rtnCnt = insert("netfuMember.insertNetfuMember", map);
+		//(begin) 2021.01.05 by s.yoo
+		/*
 		if("2".equals((String)map.get("type"))){
 			rtnCnt = insert("netfuCompany.insertNetfuCompany", map);
-		}	
+		}
+		*/
+		//(end) 2021.01.05 by s.yoo
 		return rtnCnt;
 	}
 	

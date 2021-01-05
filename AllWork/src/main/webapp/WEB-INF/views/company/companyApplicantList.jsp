@@ -48,7 +48,7 @@
 								<c:forEach var="result" items="${list}" varStatus="status">
 									<tr class="desc">
 										<td class="desc00"><input type="checkbox" name="chk" value="${result.no }" /></td>
-										<td class="desc01"><img src="/img/userNo.png" alt="인재사진"/></td>
+										<td class="desc01"><img src="img/userNo.png" alt="인재사진"/></td>
 										<td class="desc02">${result.name }</td>
 										<td class="desc03">
 											<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">

@@ -137,42 +137,66 @@
 		where uid = #{loginId}
 			AND `left` <![CDATA[ <> ]]> 'yes'
 	</update>
+
+
+	<!-- 회원정보 수정. -->
+	<update id="updateMyInfo" parameterType="hashmap">
+		update netfu_member
+		set
+			 name = #{name}
+			<if test="passwd != null and passwd != ''">
+			, passwd = #{passwd}
+			</if>
+			, photo = #{photo}
+			, birth = #{birth}
+			, sex = #{sex}
+			, email = #{email}
+			, phone = #{hphone}
+			, hphone = #{hphone}
+			, post = #{post}
+			, address1 = #{address1}
+			, address2 = #{address2}
+			, use_mail = #{useMail}
+			, use_sms = #{useSms}
+			, use_push = #{usePush}
+		where uid = #{uid}
+			AND `left` <![CDATA[ <> ]]> 'yes'
+	</update>
+
 	<!-- (end) 2021.01.03 by s.yoo	-->
 
 
 	<!-- 회원가입 정보 등록 -->
 	<insert id="insertNetfuMember" parameterType="hashmap">
-		<![CDATA[
 			insert into netfu_member
-			(uid, passwd, name, hphone, birth, sex, use_mail, use_sms, email, wdate, login_date, memo, addr_coord, memo_coord
-			, type_r2, p_chk, type, hit, a_insert, tosa180422_date, post, address1, address2)
+			(uid, passwd, name, phone, hphone, birth,
+		<if test="photo != null and photo != ''">
+			 photo,
+		</if>
+			 sex, use_mail, use_sms, use_push, email, wdate, 
+			 type, post, address1, address2)
 			values
 			(
 				#{uid}
 				, #{passwd}
 				, #{name}
 				, #{hphone}
+				, #{hphone}
 				, #{birth}
+				<if test="photo != null and photo != ''">
+				, #{photo}
+				</if>
 				, #{sex}
 				, #{useMail}
 				, #{useSms}
+				, #{usePush}
 				, #{email}
 				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
-				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s') 
-				, #{memo}
-				, #{addrCoord}
-				, #{memoCoord}
-				, #{typeR2}
-				, #{pChk}
 				, #{type}
-				, #{hit}
-				, #{aInsert}
-				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s') 
 				, #{post}
 				, #{address1}
 				, #{address2}
 			)
-		]]>
 	</insert>
 	
 	<!--  비밀 번호 변경 -->

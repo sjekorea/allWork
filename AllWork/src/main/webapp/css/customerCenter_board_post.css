@@ -23,8 +23,8 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 #boardPart .titlePart .attachment{margin-left:30px;width:300px;line-height:30px;border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;float:left;}
 #boardPart .titlePart .attachment span{display:inline-block;text-indent:0;}
 #boardPart .titlePart .attachment span.attachment_title{width:80px;border-right:1px solid #ccc;}
-#boardPart .descPart{width:100%;overflow: hidden;border-bottom:1px solid #333;}
-#boardPart .descPart p{padding:20px;width:710px;height:360px;font-size: 14px;}
+#boardPart .descPart{width:100%;font-size: 14px;line-height:20px;overflow: hidden;border-bottom:1px solid #333;padding:20px;}
+
 
 #boardPart .buttonPart{width:100%;margin-top:5px;text-align: right;}
 #boardPart .buttonPart li{display:inline-block;width:100px;height:30px;line-height:30px;text-align: center;font-size:14px;}

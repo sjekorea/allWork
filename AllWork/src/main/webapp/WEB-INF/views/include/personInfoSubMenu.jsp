@@ -20,6 +20,6 @@
 				<li class="subMenu07"><a href="/resumeSearchForAlba.do" title="알바">알바</a></li>
 			</ol></li>
 		<li class="gnb gnb02"><a href="/resumeScrapList.do" title="스크랩인재">스크랩인재</a></li>
-		<li class="gnb gnb03"><a href="#" title="우수추천인재">우수추천인재</a></li>
+		<li class="gnb gnb03"><a href="/resumeRecommendList.do" title="우수추천인재">우수추천인재</a></li>
 	</ul>
 </div>

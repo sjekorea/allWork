@@ -36,6 +36,19 @@ public class ApiBbsDataDAO extends AbstractDAO {
 		return selectCnt("com.ilmagna.allworkadmin.api.daos.ApiBbsDataDAO.getBbsDataTotalCnt", model);
 	}
 
+
+	public void insertBbsData(ApiBbsDataModel model) throws Exception {
+		insert("com.ilmagna.allworkadmin.api.daos.ApiBbsDataDAO.insertBbsData", model);
+	}
+
+	public void updateBbsData(ApiBbsDataModel model) throws Exception {
+		update("com.ilmagna.allworkadmin.api.daos.ApiBbsDataDAO.updateBbsData", model);		
+	}
+	
+	public void deleteBbsData(ApiBbsDataModel model) throws Exception {
+		delete("com.ilmagna.allworkadmin.api.daos.ApiBbsDataDAO.deleteBbsData", model);		
+	}
+
 	
 	/*
 	List<ApiBbsDataModel> getBbsDataList(ApiBbsDataModel model) throws Exception;

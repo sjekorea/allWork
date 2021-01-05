@@ -97,6 +97,10 @@ function ajaxFileUpload(c_method, c_url, c_data, c_callback){
 
 
 function checkNull(targetVal){
+	//(begin) 2021.01.04 by s.yoo
+	if (targetVal == null || targetVal == undefined) return true;
+	//(end) 2021.01.04 by s.yoo
+
 	if(targetVal.replace(/\s/g,'') == "null" || targetVal.replace(/\s/g,'') == "" || targetVal.replace(/\s/g,'') == null || targetVal.replace(/\s/g,'') == "undefined" || targetVal.replace(/\s/g,'') == undefined){
 		return true;
 	}else{

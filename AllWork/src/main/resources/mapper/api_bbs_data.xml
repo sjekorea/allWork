@@ -143,6 +143,7 @@
 			, type
 			, sub_type
 			, uid
+			, nick_name
 			, wdate
 			, subject
 			, content
@@ -154,6 +155,7 @@
 			, #{type}
 			, #{subType}
 			, #{uid}
+			, #{nickName}
 			, CURRENT_TIMESTAMP()
 			, #{subject}
 			, #{content}

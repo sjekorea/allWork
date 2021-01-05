@@ -8,4 +8,9 @@ public interface NetfuCompanyService {
 	Map<String, Object> selectNetfuCompanyMap(Map<String, Object> map) throws Exception;
 	int insertNetfuCompany(Map<String, Object> map) throws Exception;
 
+	//(begin) 2021.01.04 by s.yoo
+	// 기업 정보 수정
+	int updateNetfuCompany(Map<String, Object> map) throws Exception;
+	//(end) 2021.01.04 by s.yoo
+
 }

@@ -35,8 +35,8 @@
 				<div id="topWrap">
 					<h1><a href="/index.do" title="올워크홈">Allwork</a></h1>
 					<ul class="topMenu">
-						<li><a href="/noticeList.do" title="고객센터">고객센터&nbsp;&nbsp;|&nbsp;&nbsp;</a></li>
-						<li><a href="/logout.do" title="로그아웃">로그아웃</a></li>
+							<li><a href="/logout.do" title="로그아웃">로그아웃&nbsp;|&nbsp;</a></li>
+						<li><a href="/updateMyInfo.do" title="마이페이지">마이페이지</a></li>
 					</ul>
 				</div>
 				<div id="head">
@@ -71,7 +71,7 @@
 										</ul>
 									</li>
 									<li><a href="/resumeScrapList.do" title="스크랩인재">스크랩인재</a></li>
-									<li><a href="#" title="우수추천인재">우수추천인재</a></li>
+									<li><a href="/resumeRecommendList.do" title="우수추천인재">우수추천인재</a></li>
 									</ul>
 								</div>
 							<div>

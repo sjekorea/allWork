@@ -24,4 +24,11 @@ public class NetfuCompanyDao extends AbstractDAO{
 		return insert("netfuCompany.insertNetfuCompany", map);
 	}
 
+	//(begin) 2021.01.04 by s.yoo
+	// 기업 정보 수정
+	public int updateNetfuCompany(Map<String, Object> map) throws Exception{ 
+		return insert("netfuCompany.updateNetfuCompany", map);
+	}
+	//(end) 2021.01.04 by s.yoo
+
 }

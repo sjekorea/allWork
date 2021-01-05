@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -16,7 +17,13 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Component("fileUtils")
 public class FileUtils {
 	
-	private static final String filePath = "D:\\allWork\\allWork\\AllWork\\src\\main\\webapp\\peg\\";
+   	//(begin) 2021.01.04 by s.yoo
+	//private static final String filePath = "D:\\allWork\\allWork\\AllWork\\src\\main\\webapp\\peg\\";
+
+	@Value("${upload.path.temp}")
+	private String filePath;
+   	//(end) 2021.01.04 by s.yoo
+
 	//private static final String filePath = "/var/lib/tomcat8/webapps/ROOT/peg/";
 	private static final String fileUrl = "/contentsImg/";
 	

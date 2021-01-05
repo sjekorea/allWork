@@ -45,6 +45,18 @@ public class ApiBbsDataService {
 		return bbsDAO.getBbsDataTotalCnt(model);
 	}
 
+	public void insertBbsData(ApiBbsDataModel model) throws Exception {
+		bbsDAO.insertBbsData(model);
+	}
+
+	public void updateBbsData(ApiBbsDataModel model) throws Exception {
+		bbsDAO.updateBbsData(model);
+	}
+	
+	public void deleteBbsData(ApiBbsDataModel model) throws Exception {
+		bbsDAO.deleteBbsData(model);
+	}
+
 	/*
 	public ApiBbsDataModel getBbsBoardType(ApiBbsDataModel model) throws Exception {
 		//return bbsDAO.getBbsBoardType(model);

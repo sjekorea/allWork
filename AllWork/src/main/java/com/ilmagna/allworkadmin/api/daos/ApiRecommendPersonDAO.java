@@ -6,10 +6,27 @@ import org.springframework.stereotype.Repository;
 
 import com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel;
 
+import allwork.common.dao.AbstractDAO;
 
-@Repository
-public interface ApiRecommendPersonDAO {
 
+@Repository("apiRecommendPersonDAO")
+public class ApiRecommendPersonDAO extends AbstractDAO {
+
+	@SuppressWarnings("unchecked")
+	public List<ApiRecommendPersonModel> getRecommendPersonList(ApiRecommendPersonModel model) throws Exception {
+		return (List<ApiRecommendPersonModel>) selectList("com.ilmagna.allworkadmin.api.daos.ApiRecommendPersonDAO.getRecommendPersonList", model);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<ApiRecommendPersonModel> getRecommendPerson(ApiRecommendPersonModel model) throws Exception {
+		return (List<ApiRecommendPersonModel>) selectList("com.ilmagna.allworkadmin.api.daos.ApiRecommendPersonDAO.getRecommendPerson", model);
+	}
+	
+	public Integer getRecommendPersonTotalCnt(ApiRecommendPersonModel model) throws Exception {
+		return selectCnt("com.ilmagna.allworkadmin.api.daos.ApiRecommendPersonDAO.getRecommendPersonTotalCnt", model);		
+	}
+
+	/*
 	List<ApiRecommendPersonModel> getRecommendPersonList(ApiRecommendPersonModel model) throws Exception;
 
 	List<ApiRecommendPersonModel> getRecommendPerson(ApiRecommendPersonModel model) throws Exception;
@@ -33,4 +50,5 @@ public interface ApiRecommendPersonDAO {
 	void deleteRecommendPersonList(List<ApiRecommendPersonModel> map) throws Exception;
 
 	void insertExcelRecommendPerson(List<ApiRecommendPersonModel> map) throws Exception;
+	*/
 }

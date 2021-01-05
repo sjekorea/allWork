@@ -47,10 +47,11 @@
 		<!-- 
         <li class="gnb gnb05"><a href="/companyModify.do" title="회원정보수정">회원정보수정</a></li>
 		 -->
-		<li class="gnb gnb05"><a href="/companyModify.do" title="회원정보관리">회원정보관리</a>
+		<li class="gnb gnb05"><a href="/updateMyInfo.do" title="회원정보관리">회원정보관리</a>
 			<h3>회원정보관리</h3>
 			<ol class="subMenu subMenu05">
-				<li class="subMenu05_01"><a href="/companyModify.do" title="회원정보관리 ">회원정보관리</a></li>
+				<li class="subMenu05_01"><a href="/updateMyInfo.do" title="회원정보관리 ">회원정보관리</a></li>
+				<li class="subMenu05_03"><a href="/companyModify.do" title="기업정보관리 ">기업정보관리</a></li>
 				<li class="subMenu05_02"><a href="/memberUnregister.do" title="회원탈퇴">회원탈퇴</a></li>
 			</ol>
 		</li>

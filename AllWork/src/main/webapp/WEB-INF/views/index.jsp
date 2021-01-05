@@ -69,7 +69,7 @@
 								<div>${result.thumbnail}</div>
 							</c:if>
 							<c:if test="${result.link != null && result.link != '' }">
-								<a href="${result.link }" target="_blank" title="광고"><div>${result.thumbnail}</div></a>
+								<a href="${result.link }" target="_blank" title="광고"><div style="width: 250px; height: 110px;">${result.thumbnail}</div></a>
 							</c:if>
 						</li>
 					</c:if>
@@ -80,7 +80,6 @@
 </div>
 
 <!-- 
- -->
 <div id="content02Wrap">
 	<div id="content02">
 		<div id="adArea">
@@ -127,6 +126,7 @@
 			<p class="btn btn_prev"><a href="01_aboutMMCA.html" title="다음보기"><img src="img/main/btn_next.jpg" alt="다음버튼" /></a></p>
 		</div>
 	</div>
+ -->
 
 	<div id="content03Wrap">
 		<div id="content03">

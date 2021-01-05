@@ -39,7 +39,7 @@
 					<c:choose>
 						<c:when test="${SE_LOGIN_STATUS}">
 							<li><a href="/logout.do" title="로그아웃">로그아웃&nbsp;|&nbsp;</a></li>
-							<li><a href="/personModify.do" title="마이페이지">마이페이지</a></li>
+							<li><a href="/updateMyInfo.do" title="마이페이지">마이페이지</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a href="/login.do" title="로그인">로그인&nbsp;|&nbsp;</a></li>

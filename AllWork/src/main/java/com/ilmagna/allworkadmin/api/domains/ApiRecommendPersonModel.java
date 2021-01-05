@@ -19,14 +19,18 @@ public class ApiRecommendPersonModel extends ApiJqGridParams implements Serializ
 	private String uid;
 	private Integer uno;				// 이력서 ID.
 	private String name;				// 이름
-	private Integer birth_year;			// 출생년도
+	private Integer birthYear;			// 출생년도
 	private String sex;					// 성별 - man, woman
 	private String strSex;
 	private String schooling;			// 최종학력.
-	private String career_main;			// 보유기술
-	private String work_area;			// 희망근무지.
+	private String careerMain;			// 보유기술
+	private String workArea;			// 희망근무지.
 	private String strRegDate;
 	private String memo;
+	private Integer resume_id;			//이력서 ID.
+
+	private String photo;				//사진.
+	private String inidSecret;			//이력서 비공개.
 
 	private List<Integer> ids;
 	private String sidx;	//sorting field.
@@ -118,16 +122,16 @@ public class ApiRecommendPersonModel extends ApiJqGridParams implements Serializ
 		this.name = name;
 	}
 	/**
-	 * @return the birth_year
+	 * @return the birthYear
 	 */
-	public Integer getBirth_year() {
-		return birth_year;
+	public Integer getBirthYear() {
+		return birthYear;
 	}
 	/**
-	 * @param birth_year the birth_year to set
+	 * @param birthYear the birthYear to set
 	 */
-	public void setBirth_year(Integer birth_year) {
-		this.birth_year = birth_year;
+	public void setBirthYear(Integer birthYear) {
+		this.birthYear = birthYear;
 	}
 	/**
 	 * @return the sex
@@ -166,28 +170,28 @@ public class ApiRecommendPersonModel extends ApiJqGridParams implements Serializ
 		this.schooling = schooling;
 	}
 	/**
-	 * @return the career_main
+	 * @return the careerMain
 	 */
-	public String getCareer_main() {
-		return career_main;
+	public String getCareerMain() {
+		return careerMain;
 	}
 	/**
-	 * @param career_main the career_main to set
+	 * @param careerMain the careerMain to set
 	 */
-	public void setCareer_main(String career_main) {
-		this.career_main = career_main;
+	public void setCareerMain(String careerMain) {
+		this.careerMain = careerMain;
 	}
 	/**
-	 * @return the work_area
+	 * @return the workArea
 	 */
-	public String getWork_area() {
-		return work_area;
+	public String getWorkArea() {
+		return workArea;
 	}
 	/**
-	 * @param work_area the work_area to set
+	 * @param workArea the workArea to set
 	 */
-	public void setWork_area(String work_area) {
-		this.work_area = work_area;
+	public void setWorkArea(String workArea) {
+		this.workArea = workArea;
 	}
 	/**
 	 * @return the strRegDate
@@ -212,6 +216,42 @@ public class ApiRecommendPersonModel extends ApiJqGridParams implements Serializ
 	 */
 	public void setMemo(String memo) {
 		this.memo = memo;
+	}
+	/**
+	 * @return the resume_id
+	 */
+	public Integer getResume_id() {
+		return resume_id;
+	}
+	/**
+	 * @param resume_id the resume_id to set
+	 */
+	public void setResume_id(Integer resume_id) {
+		this.resume_id = resume_id;
+	}
+	/**
+	 * @return the photo
+	 */
+	public String getPhoto() {
+		return photo;
+	}
+	/**
+	 * @param photo the photo to set
+	 */
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	/**
+	 * @return the inidSecret
+	 */
+	public String getInidSecret() {
+		return inidSecret;
+	}
+	/**
+	 * @param inidSecret the inidSecret to set
+	 */
+	public void setInidSecret(String inidSecret) {
+		this.inidSecret = inidSecret;
 	}
 	/**
 	 * @return the ids

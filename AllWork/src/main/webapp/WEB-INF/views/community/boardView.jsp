@@ -110,10 +110,27 @@
 	
 	function confirmDelete(id) {
 		var result = confirm("글을 삭제할까요?");
-		if(result){
-		    alert("글을 삭제하겠습니다.");
-		    //(ToDo)
+		if(result) {
+			procDelete(id);
 		}	
+	}
+	
+	function procDelete(id){
+	
+		var callback = function(data){
+			if(data.rstCnt > 0){
+				alert("고객님의 글을 삭제했습니다.");
+				goBoardList('${boardCode}', ${map.get("pageNo")});
+			}else{
+				alert("오류가 발생해서 글을 삭제하지 못했습니다.\n잠시후에 다시 이용해 주십시오.");
+				loadingOff();
+			}
+		};
+		var param = {
+				  boardCode : '${boardCode}'
+				, no: id
+			};
+		ajax('post', '/boardDeleteProcess.ajax', param, callback);
 	}
 
 </script>

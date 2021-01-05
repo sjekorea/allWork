@@ -119,7 +119,6 @@ public class NetfuConcernController {
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
-			
 			// 관심기업 목록
 			List<Map<String, Object>> recruitByCompanyList = netfuConcernService.selectNetfuConcernRecruitList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();

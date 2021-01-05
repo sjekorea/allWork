@@ -14,15 +14,18 @@
 			, A.uid AS uid
 			, A.uno AS uno
 			, A.name AS name
-			, A.birth_year AS birth_year
+			, A.birth_year AS birthYear
 			, A.sex AS sex
 			, A.schooling AS schooling
-			, A.career_main AS career_main
-			, A.work_area AS work_area
+			, A.career_main AS careerMain
+			, A.work_area AS workArea
 			, DATE_FORMAT(A.reg_date, '%Y-%m-%d') AS strRegDate
 			, A.memo AS memo
-		FROM
-			recommend_person A
+			, IFNULL(B.photo, "") AS photo
+			, IFNULL(C.inid_secret, "yes") AS inidSecret
+		FROM 
+			recommend_person A LEFT JOIN netfu_member B ON A.uid = B.uid
+								LEFT JOIN netfu_item_resume C ON A.resume_id = B.no
 		<where>
 			A.prs = 'P'
 			<if test='id != null &amp;&amp; id > 0'>
@@ -62,15 +65,18 @@
 			, A.uid AS uid
 			, A.uno AS uno
 			, A.name AS name
-			, A.birth_year AS birth_year
+			, A.birth_year AS birthYear
 			, A.sex AS sex
 			, A.schooling AS schooling
-			, A.career_main AS career_main
-			, A.work_area AS work_area
+			, A.career_main AS careerMain
+			, A.work_area AS workArea
 			, DATE_FORMAT(A.reg_date, '%Y-%m-%d') AS strRegDate
 			, A.memo AS memo
-		FROM
-			recommend_person A
+			, IFNULL(B.photo, "") AS photo
+			, IFNULL(C.inid_secret, "yes") AS inidSecret
+		FROM 
+			recommend_person A LEFT JOIN netfu_member B ON A.uid = B.uid
+								LEFT JOIN netfu_item_resume C ON A.resume_id = B.no
 		<where>
 			A.ser = #{id}
 		</where>
@@ -87,11 +93,11 @@
 			, A.uid AS uid
 			, A.uno AS uno
 			, A.name AS name
-			, A.birth_year AS birth_year
+			, A.birth_year AS birthYear
 			, A.sex AS sex
 			, A.schooling AS schooling
-			, A.career_main AS career_main
-			, A.work_area AS work_area
+			, A.career_main AS careerMain
+			, A.work_area AS workArea
 			, DATE_FORMAT(A.reg_date, '%Y-%m-%d') AS strRegDate
 			, A.memo AS memo
 		FROM
@@ -159,11 +165,11 @@
 			, #{uid}
 			, 0
 			, #{name}
-			, #{birth_year}
+			, #{birthYear}
 			, #{sex}
 			, #{schooling}
-			, #{career_main}
-			, #{work_area}
+			, #{careerMain}
+			, #{workArea}
 			, CURRENT_TIMESTAMP()
 			, #{memo}
 		)
@@ -175,11 +181,11 @@
 		SET
 			name = #{name}
 			, reg = CURRENT_TIMESTAMP()
-			, birth_year = #{birth_year}
+			, birth_year = #{birthYear}
 			, sex = #{sex}
 			, schooling = #{schooling}
-			, career_main = #{career_main}
-			, work_area = #{work_area}
+			, career_main = #{careerMain}
+			, work_area = #{workArea}
 			, memo = #{memo}
 		WHERE
 			ser = #{id}
@@ -219,11 +225,11 @@
 			, #{item.uid}
 			, #{item.uno}
 			, #{item.name}
-			, #{item.birth_year}
+			, #{item.birthYear}
 			, #{item.sex}
 			, #{item.schooling}
-			, #{item.career_main}
-			, #{item.work_area}
+			, #{item.careerMain}
+			, #{item.workArea}
 			, CURRENT_TIMESTAMP()
 			, #{item.memo}
 		</foreach>

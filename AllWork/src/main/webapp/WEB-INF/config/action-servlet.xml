@@ -74,6 +74,8 @@
             <mvc:exclude-mapping path="/termsOfService.do"/>
             <mvc:exclude-mapping path="/*.ajax"/>
     	<!-- (begin) 2020.12.30 by s.yoo -->
+            <mvc:exclude-mapping path="/registNetfuMemberProcess.do"/>
+            <mvc:exclude-mapping path="/registNetfuCompanyProcess.do"/>
             <mvc:exclude-mapping path="/privacyPolicy.do"/>
             <mvc:exclude-mapping path="/mobileGuide.do"/>
             <mvc:exclude-mapping path="/paymentGuide.do"/>
@@ -134,10 +136,12 @@
 		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiMemberDAO"/>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
+	<!-- 
 	<bean id="apiRecommendPersonDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiRecommendPersonDAO"/>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
+	 -->
 	<bean id="apiRecruitCompanyDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiRecruitCompanyDAO"/>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>

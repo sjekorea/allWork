@@ -40,7 +40,7 @@
 					<c:choose>
 						<c:when test="${SE_LOGIN_STATUS}">
 							<li><a href="/logout.do" title="로그아웃">로그아웃&nbsp;|&nbsp;</a></li>
-							<li><a href="" title="마이페이지">마이페이지</a></li>
+							<li><a href="/updateMyInfo.do" title="마이페이지">마이페이지</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a href="/login.do" title="로그인">로그인&nbsp;|&nbsp;</a></li>
@@ -111,7 +111,7 @@
 								<li class="sitemap_depth02"><a href="/resumeSearchForFree.do" title="프리랜서">프리랜서</a></li>
 								<li class="sitemap_depth02"><a href="/resumeSearchForAlba.do" title="알바">알바</a></li>
 								<li class="sitemap_depth01"><a href="/resumeScrapList.do" title="스크랩인재">스크랩인재</a></li>
-								<li class="sitemap_depth01"><a href="#" title="우수추천인재">우수추천인재</a></li>
+								<li class="sitemap_depth01"><a href="/resumeRecommendList.do" title="우수추천인재">우수추천인재</a></li>
 							</ul>
 						</div>
 						<div class="sitemap">

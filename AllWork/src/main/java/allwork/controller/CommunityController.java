@@ -217,12 +217,16 @@ public class CommunityController {
 			if (id > 0) {
 				model.setId(id);
 				model = bbsService.getBbsData(model);				
+				
+				//[Smart Editor 지원] content에 있는 쌍따옴표(")를 단일따옴표(')로 변환.
+				model.setContent(ApiCommonUtils.cnvtDoubleQuote2SingleQuote(model.getContent()));
 			} else {
 				model.setId(0);
 				model.setUid((String)session.getAttribute("SE_LOGIN_ID"));
 			}
 
 			//View에 데이터 전달.
+			mv.addObject("rstCnt", 2);
 			mv.addObject("boardType", boardType);
 			mv.addObject("boardCode", boardCode);
 			mv.addObject("boardName", boardName);
@@ -232,6 +236,113 @@ public class CommunityController {
 			log.info(this.getClass().getName()+".boardEdit Exception !!!!! \n"+e.toString());
 		}
 
+		return mv;
+	}
+
+	/*
+	 * 게시판 글 등록, 수정, 삭제 - ajax
+	 */
+	@RequestMapping(value="/boardWriteProcess.ajax")
+	public ModelAndView boardWriteProcess(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		try{
+			AdminBbsSetupModel modelSetup = getBoardInfo(commandMap);
+			String boardCode = (String) commandMap.get("boardCode");
+			String boardType = (String) commandMap.get("boardType");
+			String boardName = modelSetup.getBoardName();
+
+			//View 데이터 구성.
+			ApiBbsDataModel model = new ApiBbsDataModel();
+			model.setBoardCode(boardCode);
+			model.setType(strBbsType);
+			model.setSubType("");
+			model.setUid((String) commandMap.get("uid"));
+			model.setNickName((String) commandMap.get("nickName"));
+			model.setSubject((String) commandMap.get("subject"));
+			model.setContent((String) commandMap.get("content"));
+			model.setLink("");
+			model.setHit(0);
+			model.setThumbnail("");
+			bbsService.insertBbsData(model);
+			
+			//View에 데이터 전달.
+			mv.addObject("rstCnt", 1);
+			mv.addObject("boardType", boardType);
+			mv.addObject("boardCode", boardCode);
+			mv.addObject("boardName", boardName);
+			mv.addObject("item", model);
+			mv.addObject("map", commandMap.getMap());
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			mv.addObject("rstCnt", 0);
+			log.info(this.getClass().getName()+".boardWriteProcess Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+
+	@RequestMapping(value="/boardUpdateProcess.ajax")
+	public ModelAndView boardUpdateProcess(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		try{
+			AdminBbsSetupModel modelSetup = getBoardInfo(commandMap);
+			String boardCode = (String) commandMap.get("boardCode");
+			String boardType = (String) commandMap.get("boardType");
+			String boardName = modelSetup.getBoardName();
+
+			//View 데이터 구성.
+			ApiBbsDataModel model = new ApiBbsDataModel();
+			model.setBoardCode(boardCode);
+			model.setType(strBbsType);
+			model.setId(getItemId(commandMap));
+			model.setSubject((String) commandMap.get("subject"));
+			model.setContent((String) commandMap.get("content"));
+			model.setHit(0);
+			model.setThumbnail("");
+			bbsService.updateBbsData(model);
+			
+			//View에 데이터 전달.
+			mv.addObject("rstCnt", 1);
+			mv.addObject("boardType", boardType);
+			mv.addObject("boardCode", boardCode);
+			mv.addObject("boardName", boardName);
+			mv.addObject("item", model);
+			mv.addObject("map", commandMap.getMap());
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			mv.addObject("rstCnt", 0);
+			log.info(this.getClass().getName()+".boardUpdateProcess Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+
+	@RequestMapping(value="/boardDeleteProcess.ajax")
+	public ModelAndView boardDeleteProcess(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		try{
+			AdminBbsSetupModel modelSetup = getBoardInfo(commandMap);
+			String boardCode = (String) commandMap.get("boardCode");
+			String boardType = (String) commandMap.get("boardType");
+			String boardName = modelSetup.getBoardName();
+
+			//View 데이터 구성.
+			ApiBbsDataModel model = new ApiBbsDataModel();
+			model.setBoardCode(boardCode);
+			model.setType(strBbsType);
+			model.setId(getItemId(commandMap));
+			bbsService.deleteBbsData(model);
+			
+			//View에 데이터 전달.
+			mv.addObject("rstCnt", 1);
+			mv.addObject("boardType", boardType);
+			mv.addObject("boardCode", boardCode);
+			mv.addObject("boardName", boardName);
+			mv.addObject("item", model);
+			mv.addObject("map", commandMap.getMap());
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			mv.addObject("rstCnt", 0);
+			log.info(this.getClass().getName()+".boardDeleteProcess Exception !!!!! \n"+e.toString());
+		}
 		return mv;
 	}
 

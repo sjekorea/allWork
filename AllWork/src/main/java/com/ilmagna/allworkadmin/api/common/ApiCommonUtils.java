@@ -22,7 +22,8 @@ import com.ilmagna.allworkadmin.api.authentication.security.domains.ApiCustomLog
 import com.ilmagna.allworkadmin.api.authentication.security.domains.ApiLoginAccount;
 
 public class ApiCommonUtils {
-
+	
+	
 	/**
 	 * Login 사용자 정보.
 	 * @return
@@ -477,7 +478,39 @@ public class ApiCommonUtils {
 		return destFile;
 	}
 
-	
+	/**
+	 * 이미지 파일 Upload.
+	 */
+	public static String uploadPhotoFile(String uid, String prefix, MultipartFile photoFile, String filePathPhoto) {
+		String strFilename = "";
+		try {
+			//Upload 폴더 생성.
+	        File file = new File(filePathPhoto);
+	        if(file.exists() == false){
+	        	file.mkdirs();
+	        }
+
+	        //Target 파일이름 생성.
+			String strKey = encodeMD5(generateTimeId());
+			if (strKey.length() >= 4)
+				strKey = strKey.substring(0, 4);
+			strFilename = prefix + "_" + uid + "_" + strKey;
+			//System.out.println(strFilename);
+	        
+			//Target 파일 Path 설정.
+			File destFile = new File(filePathPhoto + strFilename);
+			//System.out.println(destFile.getAbsolutePath());
+			
+	        //Upload 폴더로 파일 이동.
+			photoFile.transferTo(destFile);
+		}
+		catch(Exception e) {
+			strFilename = "";
+			e.printStackTrace();			
+		}
+		return strFilename;
+	}
+
 	/**
 	 * Excel 파일 Upload
 	 */
@@ -753,5 +786,15 @@ public class ApiCommonUtils {
 		
 		String strResult = strPhone.trim().replaceAll("-", "");
 		return strResult;
+	}
+	
+	
+	/*
+	 * Smart Editor 지원.
+	 */
+	public static String cnvtDoubleQuote2SingleQuote(String data) {
+		if (data == null) return "";
+		return data.replaceAll("\"", "'");
+		
 	}
 }

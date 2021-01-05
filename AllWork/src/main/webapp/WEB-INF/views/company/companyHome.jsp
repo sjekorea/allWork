@@ -54,10 +54,11 @@
 				<!-- 
 				<li class="gnb myPage"><a href="/companyModify.do" title="회원정보관리">회원정보관리</a></li>
 				 -->
-				<li class="gnb myPage"><a href="/companyModify.do" title="회원정보관리">회원정보관리</a>
+				<li class="gnb myPage"><a href="/updateMyInfo.do" title="회원정보관리">회원정보관리</a>
 					<h3>회원정보관리</h3>
 					<ol>
-						<li><a href="/companyModify.do" title="회원정보관리 ">회원정보관리</a></li>
+						<li><a href="/updateMyInfo.do" title="회원정보관리 ">회원정보관리</a></li>
+						<li><a href="/companyModify.do" title="기업정보관리 ">기업정보관리</a></li>
 						<li><a href="/memberUnregister.do" title="회원탈퇴">회원탈퇴</a></li>
 					</ol>
 				</li>

@@ -46,7 +46,10 @@ public class NetfuMemberVo {
 	private String useAwnl;
 	private int tosa180422;
 	private String tosa180422Date;
-	
+	//(begin) 2021.01.04 by s.yoo
+	private String usePush;
+	//(end) 2021.01.04 by s.yoo
+
 	
 	
 	public int getNo() {

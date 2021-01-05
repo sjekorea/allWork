@@ -54,14 +54,31 @@
 		FROM netfu_company 
 		WHERE 1=1
 			AND uid = #{uid}
+		ORDER BY no DESC
+		LIMIT 1
 	</select>
 
 
 	<!-- 회원가입 정보 등록 -->
 	<insert id="insertNetfuCompany" parameterType="hashmap">
-		<![CDATA[
 			insert into netfu_company
-			(uid, biz_no, biz_copy, biz_name, biz_recharger, biz_subject, biz_fonundation, biz_men, biz_list, biz_form, biz_category, biz_capital, biz_selling, biz_vision, biz_history, biz_phone, biz_fax, biz_post, biz_address1, biz_address2, biz_email, biz_home, biz_logo, photo1, photo2, photo3, photo4, manager, lat, lng, admit, order_view, kind, biz_manager)
+			(uid, biz_no, biz_copy, biz_name, biz_recharger, biz_subject, biz_fonundation, biz_men, biz_list, biz_form, biz_category, biz_capital, biz_selling, biz_vision, biz_history, biz_phone, biz_fax, biz_post, biz_address1, biz_address2, biz_email, biz_home,
+			<if test="bizLogo != null and bizLogo != ''">
+				biz_logo, 
+			</if>
+			<if test="photo1 != null and photo1 != ''">
+				photo1, 
+			</if>
+			<if test="photo2 != null and photo2 != ''">
+				photo2, 
+			</if>
+			<if test="photo3 != null and photo3 != ''">
+				photo3, 
+			</if>
+			<if test="photo4 != null and photo4 != ''">
+				photo4, 
+			</if>
+				order_view)
 			values
 			(
 				#{uid}
@@ -86,20 +103,69 @@
 				, #{bizAddress2}
 				, #{bizEmail}
 				, #{bizHome}
+			<if test="bizLogo != null and bizLogo != ''">
 				, #{bizLogo}
+			</if>
+			<if test="photo1 != null and photo1 != ''">
 				, #{photo1}
+			</if>
+			<if test="photo2 != null and photo2 != ''">
 				, #{photo2}
+			</if>
+			<if test="photo3 != null and photo3 != ''">
 				, #{photo3}
+			</if>
+			<if test="photo4 != null and photo4 != ''">
 				, #{photo4}
-				, #{manager}
-				, #{lat}
-				, #{lng}
-				, #{admit}
-				, #{orderView}
-				, #{kind}
-				, #{bizManager}
+			</if>
+				, 128
 			)
-		]]>
 	</insert>
+
+
+	<!-- (begin) 2021.01.04 by s.yoo	-->
+	<!-- 	기업 정보 수정	-->
+	<update id="updateNetfuCompany" parameterType="hashmap">
+		update netfu_company
+		set
+			 biz_recharger = #{bizRecharger}
+			, biz_name = #{bizName}
+			, biz_copy = #{bizCopy}
+			, biz_no = #{bizNo}
+			, biz_category = #{bizCategory}
+			, biz_list = #{bizList}
+			, biz_form = #{bizForm}
+			, biz_subject = #{bizSubject}
+			, biz_phone = #{bizPhone}
+			, biz_fax = #{bizFax}
+			, biz_email = #{bizEmail}
+			, biz_home = #{bizHome}
+			, biz_post = #{bizPost}
+			, biz_address1 = #{bizAddress1}
+			, biz_address2 = #{bizAddress2}
+			, biz_fonundation = #{bizFonundation}
+			, biz_men = #{bizMen}
+			, biz_capital = #{bizCapital}
+			, biz_selling = #{bizSelling}
+			, biz_vision = #{bizVision}
+			, biz_history = #{bizHistory}
+			<if test="bizLogo != null and bizLogo != ''">
+			, biz_logo = #{bizLogo}
+			</if>
+			<if test="photo1 != null and photo1 != ''">
+			, photo1 = #{photo1}
+			</if>
+			<if test="photo2 != null and photo2 != ''">
+			, photo2 = #{photo2}
+			</if>
+			<if test="photo3 != null and photo3 != ''">
+			, photo3 = #{photo3}
+			</if>
+			<if test="photo4 != null and photo4 != ''">
+			, photo4 = #{photo4}
+			</if>
+		where uid = #{uid}
+	</update>
+	<!-- (end) 2021.01.04 by s.yoo	-->
 
 </mapper>

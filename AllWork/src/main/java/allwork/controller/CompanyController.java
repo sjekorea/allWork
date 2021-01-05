@@ -14,14 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ilmagna.allworkadmin.ai.domains.AiMatchingRecommendationModel;
 import com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel;
 import com.ilmagna.allworkadmin.ai.services.AiMatchingRecruitService;
 import com.ilmagna.allworkadmin.ai.services.AiMatchingResumeService;
+import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
 
 import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
@@ -76,6 +80,12 @@ public class CompanyController {
 	@Resource(name="aiMatchingResumeService")
 	protected AiMatchingResumeService matchingResumeService;
 	//(end) 2020.12.30 by s.yoo
+
+   	//(begin) 2021.01.04 by s.yoo
+	//회사 Logo 및 첨부파일의 Upload 경로명.
+	@Value("${upload.path.photo}")
+	private String filePathPhoto;
+   	//(end) 2021.01.04 by s.yoo
 
 	
 	/*
@@ -284,5 +294,111 @@ public class CompanyController {
 		return mv;
 	}
 
+
+
+	/*
+	 * 기업정보 수정 페이지 이동
+	 */
+	//(begin) 2021.01.04 by s.yoo
+	@RequestMapping(value="/companyModify.do")
+	public ModelAndView companyModify(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView("/company/companyModify");
+
+		try {
+			// 기업회원 가입  - 업종 ( netfu_cate : type = 'job')
+			commandMap.put("type", "businesstype");
+			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 기업회원 가입  - 상장여부 ( netfu_cate : type = 'biz_list')
+			commandMap.put("type", "biz_list");
+			List<Map<String, Object>> bizList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 기업회원 가입  - 기업 형태( netfu_cate : type = 'biz_form')
+			commandMap.put("type", "biz_form");
+			List<Map<String, Object>> bizFormList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+
+			//기업회원의 Company 정보 전달.
+			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
+			Map<String, Object> mapResult = netfuCompanyService.selectNetfuCompanyMap(commandMap.getMap());		
+			
+			//[Smart Editor 지원] bizVision과 bizHistory에 있는 쌍따옴표(")를 단일따옴표(')로 변환.
+			mapResult.put("bizVision", ApiCommonUtils.cnvtDoubleQuote2SingleQuote((String) mapResult.get("bizVision")));
+			mapResult.put("bizHistory", ApiCommonUtils.cnvtDoubleQuote2SingleQuote((String) mapResult.get("bizHistory")));
+
+			//View 표출.
+			mv.addObject("rstCnt", 2);
+			mv.addObject("map", mapResult);
+			mv.addObject("businesstypeList", businesstypeList);
+			mv.addObject("bizList", bizList);
+			mv.addObject("bizFormList", bizFormList);
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".companyModify Exception !!!!! \n"+e.toString());
+		}
+
+		return mv;
+	}
+	
+	@RequestMapping(value="/companyModifyProcess.do")
+	public ModelAndView companyModifyProcess(CommandMap commandMap, HttpSession session, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception{
+		ModelAndView mv = new ModelAndView("/company/companyModify");
+
+		try {
+			String uid = (String) commandMap.get("uid");
+			
+			//첨부파일 Upload.
+			String strFileLogo = "";
+			MultipartFile fileLogo = request.getFile("fileLogo");
+			if(fileLogo != null && !fileLogo.isEmpty()) {
+				strFileLogo = ApiCommonUtils.uploadPhotoFile("logo", uid, fileLogo, filePathPhoto);
+			}
+			String strFilePhoto1 = "";
+			MultipartFile filePhoto1 = request.getFile("filePhoto1");
+			if(filePhoto1 != null && !filePhoto1.isEmpty()) {
+				strFilePhoto1 = ApiCommonUtils.uploadPhotoFile("photo", uid, filePhoto1, filePathPhoto);
+			}
+			String strFilePhoto2 = "";
+			MultipartFile filePhoto2 = request.getFile("filePhoto2");
+			if(filePhoto2 != null && !filePhoto2.isEmpty()) {
+				strFilePhoto2 = ApiCommonUtils.uploadPhotoFile("photo", uid, filePhoto2, filePathPhoto);
+			}
+			String strFilePhoto3 = "";
+			MultipartFile filePhoto3 = request.getFile("filePhoto3");
+			if(filePhoto3 != null && !filePhoto3.isEmpty()) {
+				strFilePhoto3 = ApiCommonUtils.uploadPhotoFile("photo", uid, filePhoto3, filePathPhoto);
+			}
+			String strFilePhoto4 = "";
+			MultipartFile filePhoto4 = request.getFile("filePhoto4");
+			if(filePhoto4 != null && !filePhoto4.isEmpty()) {
+				strFilePhoto4 = ApiCommonUtils.uploadPhotoFile("photo", uid, filePhoto4, filePathPhoto);
+			}
+			
+			//[Smart Editor 지원] bizVision과 bizHistory에 있는 쌍따옴표(")를 단일따옴표(')로 변환.
+			commandMap.put("bizVision", ApiCommonUtils.cnvtDoubleQuote2SingleQuote((String) commandMap.get("bizVision")));
+			commandMap.put("bizHistory", ApiCommonUtils.cnvtDoubleQuote2SingleQuote((String) commandMap.get("bizHistory")));
+
+			//기업정보 등록.
+			int rstCnt = 0;
+			//commandMap.put("loginId", uid);
+			if (!ApiCommonUtils.isNullOrEmpty(strFileLogo))	commandMap.put("bizLogo", strFileLogo);
+			if (!ApiCommonUtils.isNullOrEmpty(strFilePhoto1))	commandMap.put("photo1", strFilePhoto1);
+			if (!ApiCommonUtils.isNullOrEmpty(strFilePhoto2))	commandMap.put("photo2", strFilePhoto2);
+			if (!ApiCommonUtils.isNullOrEmpty(strFilePhoto3))	commandMap.put("photo3", strFilePhoto3);
+			if (!ApiCommonUtils.isNullOrEmpty(strFilePhoto4))	commandMap.put("photo4", strFilePhoto4);
+			Map<String, Object> mapResult = netfuCompanyService.selectNetfuCompanyMap(commandMap.getMap());
+			if (!mapResult.isEmpty()) {
+				netfuCompanyService.updateNetfuCompany(commandMap.getMap());
+				rstCnt = 1;
+			}
+				
+			mv.addObject("rstCnt", rstCnt);
+			mv.addObject("map", commandMap.getMap());
+		}catch(Exception e){
+			mv.addObject("rstCnt", 0);
+			log.info(this.getClass().getName()+".companyModifyProcess Exception !!!!! \n"+e.toString());
+		}
+
+		return mv;
+	}
+	//(end) 2021.01.04 by s.yoo
 
 }

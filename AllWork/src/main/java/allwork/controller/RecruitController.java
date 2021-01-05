@@ -1,5 +1,6 @@
 package allwork.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,10 +9,14 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel;
+import com.ilmagna.allworkadmin.api.services.ApiRecommendPersonService;
 
 import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
@@ -58,7 +63,13 @@ public class RecruitController {
 
 	@Resource(name="recruitViewService")
 	private RecruitViewService recruitViewService;
-	
+
+	//(begin) 2021.01.05 by s.yoo
+	//@Autowired protected ApiRecommendPersonService recommendService;
+	@Resource(name="apiRecommendPersonService")
+	private ApiRecommendPersonService recommendService;	
+	//(end) 2021.01.05 by s.yoo
+
 	
 	/*
 	 * 채용정보 검색
@@ -600,6 +611,72 @@ public class RecruitController {
 	
 	
 	
+	//(begin) 2021.01.05 by s.yoo
+	/*
+	 * 우수추천 인재정보 목록
+	 */
+	@RequestMapping(value="/resumeRecommendList.do")
+	public ModelAndView resumeScrapList(CommandMap commandMap, HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView("/resume/resumeRecommendList");
+		
+		//int pageSize = 10;
+		try {
+			// 우수추천 인재 목록
+			List<ApiRecommendPersonModel> resumeScrapList = new ArrayList<ApiRecommendPersonModel>();
+
+			ApiRecommendPersonModel model = new ApiRecommendPersonModel();
+			int pageNo = getPageNo(commandMap);
+			int pageSize = model.getRows();
+			//model.setRows(pageSize);
+			commandMap.put("pageNo", pageNo);
+
+			model.setPagerEnableYn("Y");
+			//model.setRows(pageSize);
+			model.setPage(pageNo);
+
+			//(1) 전체 항목 개수.
+			int totalRows = recommendService.getRecommendPersonTotalCnt(model);
+			model.calOffsetValue(totalRows);
+			//commandMap.put("total", model.getTotalPage());
+			commandMap.put("pageSize", pageSize);
+
+			//(2) 이번 페이지의 데이터 목록.
+			resumeScrapList = recommendService.getRecommendPersonList(model);
+
+			//(4) Page 목록.
+			Map<String, Object> pageMap = new HashMap<String, Object>();
+			if(totalRows > 0){
+				pageMap = PaginationUtil.makePageInfo(totalRows, pageSize, ("" + pageNo));
+				commandMap.put("totalSize", totalRows);
+			}
+
+			//View에 결과 전달.
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("resumeRecommendList", resumeScrapList);
+			mv.addObject("pageMap", pageMap);
+		
+		} catch(Exception e) {
+			log.info(this.getClass().getName()+".resumeScrapList Exception !!!!! \n"+e.toString());
+		}
+		
+		return mv;
+	}
+
+	//Page No 획득.
+	protected int getPageNo(CommandMap commandMap) {
+		int pageNo = 1;
+		try {
+			if (commandMap.get("pageNo") == null) return pageNo;
+			pageNo = Integer.parseInt((String) commandMap.get("pageNo"));
+			if (pageNo < 1) pageNo = 1;
+		} catch(Exception e) {
+			log.info(this.getClass().getName()+".getPageNo Exception !!!!! \n"+e.toString());
+		}
+		return pageNo;
+	}
+	//(end) 2021.01.05 by s.yoo
+
 	
 
 }

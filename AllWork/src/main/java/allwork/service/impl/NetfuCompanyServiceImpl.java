@@ -30,6 +30,7 @@ public class NetfuCompanyServiceImpl implements NetfuCompanyService{
 	public Map<String, Object> selectNetfuCompanyMap(Map<String, Object> map) throws Exception {
 		return netfuCompanyDao.selectNetfuCompanyMap(map);
 	}
+
 	
 	// 기업 정보 등록
 	@Override
@@ -38,5 +39,13 @@ public class NetfuCompanyServiceImpl implements NetfuCompanyService{
 	}
 	
 	
+
+	//(begin) 2021.01.04 by s.yoo
+	// 기업 정보 수정
+	@Override
+	public int updateNetfuCompany(Map<String, Object> map) throws Exception {
+		return netfuCompanyDao.updateNetfuCompany(map);
+	}
+	//(end) 2021.01.04 by s.yoo
 
 }

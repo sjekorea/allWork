@@ -58,6 +58,11 @@ public class NetfuMemberServiceImpl implements NetfuMemberService{
 	public int updateLoginInfo(Map<String, Object> map) throws Exception {
 		return netfuMemberDao.updateLoginInfo(map);
 	}
+
+	@Override
+	public int updateMyInfo(Map<String, Object> map) throws Exception {
+		return netfuMemberDao.updateMyInfo(map);
+	}
 	//(end) 2021.01.03 by s.yoo
 
 	// 회원가입(회원정보 등록)

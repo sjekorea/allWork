@@ -5,12 +5,20 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
+import com.ilmagna.allworkadmin.api.domains.ApiSiteBasicModel;
+import com.ilmagna.allworkadmin.api.services.ApiSiteBasicService;
 
 import allwork.common.CommandMap;
 import allwork.common.util.CommonUtil;
@@ -32,7 +40,17 @@ public class NetfuMemberController {
 
 	@Resource(name="netfuCateService")
 	private NetfuCateService netfuCateService;
-	
+
+   	//(begin) 2021.01.04 by s.yoo
+	//@Autowired protected ApiSiteBasicService siteBasicService;
+	@Resource(name="apiSiteBasicService")
+	protected ApiSiteBasicService siteBasicService;
+
+	//이력서 사진의 Upload folder 경로명.
+	@Value("${upload.path.photo}")
+	private String filePathPhoto;
+   	//(end) 2021.01.04 by s.yoo
+
 	
 	@RequestMapping(value="/memberAgree1.do")
 	public ModelAndView memberAgree1(CommandMap commandMap) {
@@ -65,7 +83,23 @@ public class NetfuMemberController {
 	public ModelAndView personalJoin(CommandMap commandMap) {
 		
 		ModelAndView mv = new ModelAndView("/person/personJoin");
-		
+
+		//(begin) 2021.01.05 by s.yoo
+		try {
+			//이용약관과 개인정보 취급방침 전달.
+			ApiSiteBasicModel modeSiteBasic = new ApiSiteBasicModel();
+			ApiSiteBasicModel item = siteBasicService.getSiteBasic(modeSiteBasic);
+			if (item == null) {
+				item = new ApiSiteBasicModel(); 
+			}
+			
+			mv.addObject("item", item);
+			mv.addObject("rstCnt", 2);
+		}catch(Exception e){
+			System.out.println(this.getClass().getName()+".personalJoin.do Exception!!! \n"+e.toString());
+		}
+		//(end) 2021.01.05 by s.yoo
+
 		return mv;
 	}
 	
@@ -75,8 +109,7 @@ public class NetfuMemberController {
 		
 		ModelAndView mv = new ModelAndView("/company/companyJoin");
 		
-		try{
-			
+		try {
 			// 기업회원 가입  - 업종 ( netfu_cate : type = 'job')
 			commandMap.put("type", "businesstype");
 			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
@@ -88,7 +121,19 @@ public class NetfuMemberController {
 			// 기업회원 가입  - 기업 형태( netfu_cate : type = 'biz_form')
 			commandMap.put("type", "biz_form");
 			List<Map<String, Object>> bizFormList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+
+			//(begin) 2021.01.05 by s.yoo
+			//이용약관과 개인정보 취급방침 전달.
+			ApiSiteBasicModel modeSiteBasic = new ApiSiteBasicModel();
+			ApiSiteBasicModel item = siteBasicService.getSiteBasic(modeSiteBasic);
+			if (item == null) {
+				item = new ApiSiteBasicModel(); 
+			}
 			
+			mv.addObject("item", item);
+			mv.addObject("rstCnt", 2);
+			//(end) 2021.01.05 by s.yoo
+
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("businesstypeList", businesstypeList);
 			mv.addObject("bizList", bizList);
@@ -147,6 +192,7 @@ public class NetfuMemberController {
 		ModelAndView mv = new ModelAndView();
 		try{
 			int rstCnt = netfuMemberService.insertNetfuMember(commandMap.getMap());
+
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("rstCnt", rstCnt);
 			mv.setViewName("jsonView");
@@ -155,7 +201,111 @@ public class NetfuMemberController {
 		}
 		return mv;
 	}
-	
+
+	//(begin) 2021.01.05 by s.yoo
+	//개인회원 등록.
+	@RequestMapping(value="/registNetfuMemberProcess.do")
+	public ModelAndView registNetfuMemberProcess(CommandMap commandMap, HttpSession session, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception{
+		ModelAndView mv = new ModelAndView("/person/personJoin");
+
+		try{
+			String uid = (String) commandMap.get("uid");
+			
+			//첨부파일 Upload.
+			String strFilename = "";
+			MultipartFile photoFile = request.getFile("filePhoto");
+			if(photoFile != null && !photoFile.isEmpty()) {
+				strFilename = ApiCommonUtils.uploadPhotoFile("photo", uid, photoFile, filePathPhoto);
+			}
+
+			//회원 등록.
+			int rstCnt = 0;
+			if (!ApiCommonUtils.isNullOrEmpty(strFilename))
+				commandMap.put("photo", strFilename);
+			rstCnt = netfuMemberService.insertNetfuMember(commandMap.getMap());
+			rstCnt = 1;
+				
+			mv.addObject("rstCnt", rstCnt);
+			mv.addObject("map", commandMap.getMap());
+		}catch(Exception e){
+			mv.addObject("rstCnt", 0);
+			mv.addObject("map", commandMap.getMap());
+			log.info(this.getClass().getName()+".registNetfuMemberProcess Exception !!!!! \n"+e.toString());
+		}
+
+		return mv;
+	}
+
+	//기업회원 등록.
+	@RequestMapping(value="/registNetfuCompanyProcess.do")
+	public ModelAndView registNetfuCompanyProcess(CommandMap commandMap, HttpSession session, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception{
+		ModelAndView mv = new ModelAndView("/company/companyJoin");
+
+		try{
+			String uid = (String) commandMap.get("uid");
+
+			//첨부파일 Upload - 회사 Logo 및 회사 사진들.
+			String strFileLogo = "";
+			MultipartFile fileLogo = request.getFile("fileLogo");
+			if(fileLogo != null && !fileLogo.isEmpty()) {
+				strFileLogo = ApiCommonUtils.uploadPhotoFile("logo", uid, fileLogo, filePathPhoto);
+			}
+			String strFilePhoto1 = "";
+			MultipartFile filePhoto1 = request.getFile("filePhoto1");
+			if(filePhoto1 != null && !filePhoto1.isEmpty()) {
+				strFilePhoto1 = ApiCommonUtils.uploadPhotoFile("photo", uid, filePhoto1, filePathPhoto);
+			}
+			String strFilePhoto2 = "";
+			MultipartFile filePhoto2 = request.getFile("filePhoto2");
+			if(filePhoto2 != null && !filePhoto2.isEmpty()) {
+				strFilePhoto2 = ApiCommonUtils.uploadPhotoFile("photo", uid, filePhoto2, filePathPhoto);
+			}
+			String strFilePhoto3 = "";
+			MultipartFile filePhoto3 = request.getFile("filePhoto3");
+			if(filePhoto3 != null && !filePhoto3.isEmpty()) {
+				strFilePhoto3 = ApiCommonUtils.uploadPhotoFile("photo", uid, filePhoto3, filePathPhoto);
+			}
+			String strFilePhoto4 = "";
+			MultipartFile filePhoto4 = request.getFile("filePhoto4");
+			if(filePhoto4 != null && !filePhoto4.isEmpty()) {
+				strFilePhoto4 = ApiCommonUtils.uploadPhotoFile("photo", uid, filePhoto4, filePathPhoto);
+			}
+
+			//첨부파일 Upload - 담당자 사진.
+			String strFilename = "";
+			MultipartFile photoFile = request.getFile("filePhoto");
+			if(photoFile != null && !photoFile.isEmpty()) {
+				strFilename = ApiCommonUtils.uploadPhotoFile("photo", uid, photoFile, filePathPhoto);
+			}
+			
+			//회사정보 등록.
+			if (!ApiCommonUtils.isNullOrEmpty(strFileLogo))	commandMap.put("bizLogo", strFileLogo);
+			if (!ApiCommonUtils.isNullOrEmpty(strFilePhoto1))	commandMap.put("photo1", strFilePhoto1);
+			if (!ApiCommonUtils.isNullOrEmpty(strFilePhoto2))	commandMap.put("photo2", strFilePhoto2);
+			if (!ApiCommonUtils.isNullOrEmpty(strFilePhoto3))	commandMap.put("photo3", strFilePhoto3);
+			if (!ApiCommonUtils.isNullOrEmpty(strFilePhoto4))	commandMap.put("photo4", strFilePhoto4);
+			netfuCompanyService.insertNetfuCompany(commandMap.getMap());
+
+			//회원정보 등록.
+			int rstCnt = 0;
+			if (!ApiCommonUtils.isNullOrEmpty(strFilename))
+				commandMap.put("photo", strFilename);
+			rstCnt = netfuMemberService.insertNetfuMember(commandMap.getMap());
+			
+			rstCnt = 1;
+				
+			mv.addObject("rstCnt", rstCnt);
+			mv.addObject("map", commandMap.getMap());
+		}catch(Exception e){
+			mv.addObject("rstCnt", 0);
+			mv.addObject("map", commandMap.getMap());
+			log.info(this.getClass().getName()+".registNetfuCompanyProcess Exception !!!!! \n"+e.toString());
+		}
+
+		return mv;
+	}
+	//(end) 2021.01.05 by s.yoo
+
 	
 	/*
 	 * ID 찾기
@@ -248,24 +398,62 @@ public class NetfuMemberController {
 	/*
 	 * 개인 회원정보 수정 페이지 이동
 	 */
-	@RequestMapping(value="/personModify.do")
-	public ModelAndView personModify(CommandMap commandMap, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView("/person/personModify");
-			
-		return mv;
-	}
-	
+	@RequestMapping(value="/updateMyInfo.do")
+	public ModelAndView updateMyInfo(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView("/login/updateMyInfo");
 
-	/*
-	 * 기업 회원정보 수정 페이지 이동
-	 */
-	@RequestMapping(value="/companyModify.do")
-	public ModelAndView companyModify(CommandMap commandMap, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView("/company/companyModify");
-			
+		//(begin) 2021.01.04 by s.yoo
+		try {
+			//Login 사용자의 회원정보 전달.
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			Map<String, Object> mapResult = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
+		
+			mv.addObject("rstCnt", 2);
+			mv.addObject("map", mapResult);
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".updateMyInfo Exception !!!!! \n"+e.toString());
+		}
+		//(end) 2021.01.04 by s.yoo
+
 		return mv;
 	}
 	
+	//(begin) 2021.01.04 by s.yoo
+	@RequestMapping(value="/updateMyInfoProcess.do")
+	public ModelAndView updateMyInfoProcess(CommandMap commandMap, HttpSession session, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception{
+		ModelAndView mv = new ModelAndView("/login/updateMyInfo");
+
+		try{
+			String uid = (String) commandMap.get("uid");
+			
+			//첨부파일 Upload.
+			String strFilename = "";
+			MultipartFile photoFile = request.getFile("filePhoto");
+			if(photoFile != null && !photoFile.isEmpty()) {
+				strFilename = ApiCommonUtils.uploadPhotoFile("photo", uid, photoFile, filePathPhoto);
+			}
+
+			//회원정보 등록.
+			int rstCnt = 0;
+			commandMap.put("loginId", uid);
+			if (!ApiCommonUtils.isNullOrEmpty(strFilename))
+				commandMap.put("photo", strFilename);
+			Map<String, Object> mapResult = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
+			if (!mapResult.isEmpty()) {
+				netfuMemberService.updateMyInfo(commandMap.getMap());
+				rstCnt = 1;
+			}
+				
+			mv.addObject("rstCnt", rstCnt);
+			mv.addObject("map", commandMap.getMap());
+		}catch(Exception e){
+			mv.addObject("rstCnt", 0);
+			log.info(this.getClass().getName()+".updateMyInfoProcess Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+	//(end) 2021.01.04 by s.yoo
+
 
 	//(begin) 2021.01.03 by s.yoo
 	/*

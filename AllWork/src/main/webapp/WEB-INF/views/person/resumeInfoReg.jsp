@@ -26,7 +26,7 @@
 			<div id="resume00">
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
-					<p class="personal_setting"><a href="/personModify.do" title="기본정보수정"><i class="fas fa-cog"></i>&nbsp;기본정보수정</a></p>
+					<p class="personal_setting"><a href="/updateMyInfo.do" title="기본정보수정"><i class="fas fa-cog"></i>&nbsp;기본정보수정</a></p>
 					<div id="imgPart">
 						<div class="imgArea">
 							<p><img src="img/userNo.png" alt="본인사진"/></p>

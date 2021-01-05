@@ -64,7 +64,7 @@
 							<img src="img/personal_board_square/img00.jpg" alt="게시판이미지"/>
 						</c:if>
 						<c:if test="${result.thumbnail != null && result.thumbnail.length() >= 1000 }">
-							<div>
+							<div style="width: 240px; height: 240px;">
 								${result.thumbnail}
 							</div>
 						</c:if>

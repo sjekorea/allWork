@@ -13,6 +13,7 @@ public interface NetfuMemberService {
 	int resetPw(Map<String, Object> map) throws Exception;
 	int memberUnregister(Map<String, Object> map) throws Exception;
 	int updateLoginInfo(Map<String, Object> map) throws Exception;
+	int updateMyInfo(Map<String, Object> map) throws Exception;
 	//(end) 2021.01.03 by s.yoo
 	int insertNetfuMember(Map<String, Object> map) throws Exception;
 	int updatePw(Map<String, Object> map) throws Exception;

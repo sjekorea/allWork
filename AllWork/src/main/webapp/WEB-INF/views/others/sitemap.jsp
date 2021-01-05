@@ -107,7 +107,7 @@
 				<li class="sitemap_depth02"><a href="#" title="프리랜서">프리랜서</a></li>
 				<li class="sitemap_depth02"><a href="#" title="알바">알바</a></li>
 				<li class="sitemap_depth01"><a href="#" title="스크랩인재">스크랩인재</a></li>
-				<li class="sitemap_depth01"><a href="#" title="우수추천인재">우수추천인재</a></li>
+				<li class="sitemap_depth01"><a href="/resumeRecommendList.do" title="우수추천인재">우수추천인재</a></li>
 			</ul>
 		</div>
 		<div class="sitemap">

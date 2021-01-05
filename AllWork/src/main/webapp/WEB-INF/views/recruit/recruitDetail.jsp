@@ -73,7 +73,7 @@
 				<div id="company_detail">
 					<p class="company_name">${companyMap.bizName }</p>
 					<p class="company_hp"><a href="#none" title="기업홈페이지">${companyMap.bizHome }</a></p>
-					<p class="company_logo"><img src="${convert:checkNull(companyMap.bizLogo) eq '' ? 'img/logoNo.jpg' : '/allwork/peg/'.concat(companyMap.bizLogo) }" alt="로고" /></p>
+					<p class="company_logo"><img src="${convert:checkNull(companyMap.bizLogo) eq '' ? 'img/logoNo.jpg' : '/allwork/peg/'.concat(companyMap.bizLogo) }" alt="로고" width=120 height=134 /></p>
 				</div>
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
