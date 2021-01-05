@@ -17,8 +17,10 @@
 			<jsp:include page="/personSubMenu.do" />
 		</div>
 		<div id="rightPart">
+			<div id="detailArea">
+				<h4>기업별 채용정보</h4>
+			</div>
 			<div id="listPart">
-				<p class="listTitle">기업별 채용공고</p>
 				<select id="align">
 					<option value="">정렬방식선택</option>
 					<option value="wdate desc" <c:if test="${map.orderRule eq 'wdate desc'}">selected</c:if>>등록일순</option>
@@ -29,37 +31,49 @@
 					<option value="biz_ability" <c:if test="${map.orderRule eq 'biz_ability'}">selected</c:if>>학력높은순</option>
 					<option value="biz_ability desc" <c:if test="${map.orderRule eq 'biz_ability desc'}">selected</c:if>>학력낮은순</option>
 				</select>
-				<ul class="list">
-					<li class="list_title">
-						<div class="desc01">회사명</div>
-						<div class="desc02">채용정보</div>
-						<div class="desc03">마감일</div>
-					</li>
-					<c:choose>
-						<c:when test="${netfuConcernList.size() > 0 }">
-							<c:forEach var="result" items="${netfuConcernList}" varStatus="status">
-								<li>
-									<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
-										<p class="title">${result.bizName }</p>
-										<div class="desc">
-											<p class="desc0">${convert:compByte(result.bizTitle, 100, "...")}</p>
-											<p class="desc1"><strong>급여 </strong>${result.bizPayName }</p>
-											<p class="desc2"><strong>경력 </strong>${codeConvert:getBizCareer(result.bizCareer) }</p>
-											<p class="desc3"><strong>나이 </strong>${result.bizAge }</p>
-											<p class="desc1"><strong>지역 </strong>${result.bizArea1Name }</p>
-											<p class="desc2"><strong>학력 </strong>${codeConvert:getBizAbility(result.bizAbility) }</p>
-											<p class="desc3"><strong>성별 </strong>${codeConvert:getBizSex(result.bizSex) }</p>
-										</div>
-										${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }
-									</a>
-								</li>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<li style="width:100%;"><p class="title">내역이 없습니다.</p></li>
-						</c:otherwise>
-					</c:choose>
-				</ul>
+				<table class="list">
+					<caption>리스트</caption>
+					<thead>
+						<tr class="list_title">
+							<th class="t_desc01">회사명</th>
+							<th colspan="3" class="t_desc02">채용정보</th>
+							<th class="t_desc03">마감일</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:choose>
+							<c:when test="${netfuConcernList.size() > 0 }">
+								<c:forEach var="result" items="${netfuConcernList}" varStatus="status">
+									<tr class="margin"></tr>
+									<tr class="desc desc0">
+										<td rowspan="3" class="desc01">${result.bizName }</td>
+										<td colspan="3" class="desc02">
+											<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
+												${convert:compByte(result.bizTitle, 100, "...")}
+											</a>
+										</td>
+										<td rowspan="3" class="desc03">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
+									</tr>
+									
+									<tr>
+                      					<td><span class="desc_title">급여</span><span class="desc_desc00">${result.bizPayName }</span></td>
+                      					<td><span class="desc_title">경력</span><span class="desc_desc00">${codeConvert:getBizCareer(result.bizCareer) }</span></td>
+                      					<td><span class="desc_title">나이</span><span class="desc_desc00">${result.bizAge }</span></td>
+                    				</tr>
+                    				<tr>
+                      					<td><span class="desc_title">지역</span><span class="desc_desc00">${result.bizArea1Name }</span></td>
+                      					<td><span class="desc_title">학력</span><span class="desc_desc00">${codeConvert:getBizAbility(result.bizAbility) }</span></td>
+                      					<td><span class="desc_title">성별</span><span class="desc_desc00">${codeConvert:getBizSex(result.bizSex) }</span></td>
+                    				</tr>
+									<tr class="margin"></tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr class="desc" style="text-align:center;height:50px;"><td colspan="6">내역이 없습니다.</td></tr>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
 				<div class="numareaWrap">
 					<ul class="numArea">
 		                ${pageMap.pageHtml }
@@ -85,6 +99,10 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
+		
+		$(".delete a").click(function(e){
+			location.href = "/fitRecruitSetting.do";
+		});
 		
 		$("#align").on("change", function(e){
 			loadingOn();

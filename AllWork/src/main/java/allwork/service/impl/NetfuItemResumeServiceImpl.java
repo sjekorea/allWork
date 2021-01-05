@@ -47,6 +47,11 @@ public class NetfuItemResumeServiceImpl implements NetfuItemResumeService{
 		}
 		return rtnList;
 	}
+
+	@Override
+	public List<Map<String, Object>> selectNetfuItemResumeAllList(Map<String, Object> map) throws Exception {
+		return	netfuItemResumeDao.selectNetfuItemResumeAllList(map);
+	}
 	
 	@Override
 	public Map<String, Object> selectNetfuItemResumeMap(Map<String, Object> map) throws Exception {

@@ -193,10 +193,16 @@
 									<th>최종학력<span class="necessary">*</span></th>
 									<td>
 										<select id="bizAbility" name="bizAbility" title="학력 선택">
-											<option value="학력 선택">학력 선택</option>
-											<c:forEach var="result" items="${jobSchoolList}" varStatus="status">
+											<option value="">학력 선택</option>
+											<option value="100">학력무관</option>
+											<option value="1">고등학교졸업</option>
+											<option value="2">대학졸업(2~3년)</option>
+											<option value="3">대학교졸업(4년)</option>
+											<option value="4">석사</option>
+											<option value="5">박사</option>
+											<%-- <c:forEach var="result" items="${jobSchoolList}" varStatus="status">
 												<option value="${result.code}">${result.name}</option>
-											</c:forEach>
+											</c:forEach> --%>
 										</select>
 									</td>
 								</tr>

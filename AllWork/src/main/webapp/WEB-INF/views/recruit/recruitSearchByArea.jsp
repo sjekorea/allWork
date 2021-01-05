@@ -25,7 +25,7 @@
 		<div id="recruitment">
 			<h4>채용정보 지역별</h4>
 			<div id="part02">
-				<form id="keyworkSearchForm" name="keyworkSearchForm" method="post" action="/recruitSearch.do" >
+				<form id="keyworkSearchForm" name="keyworkSearchForm" method="post" action="/recruitSearchByArea.do" >
 					<fieldset>
 						<legend>검색</legend>
 						<div>
@@ -129,7 +129,7 @@
 
 <jsp:include page="/footer.do" />
 
-<form name="searchForm" id="searchForm" method="post" action="/recruitSearchByIndustry.do">
+<form name="searchForm" id="searchForm" method="post" action="/recruitSearchByArea.do">
 	<input type="hidden" name="no" id="no" value=""/>
 	<input type="hidden" name="uid" id="uid" value=""/>
 	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo }"/>

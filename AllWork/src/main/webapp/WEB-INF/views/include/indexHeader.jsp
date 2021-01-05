@@ -30,6 +30,7 @@
 <script type="text/javascript" src="/js/process.js"></script>
 <style>
 </style>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		
@@ -69,9 +70,42 @@
 	       	//(end) 2020.12.30 by s.yoo
 		});
 	});
+	
+	function openPop(code){
+		alert($("#code").val());
+		var openPop = window.open("","_blank","top=200,left=0,width=400,height=445,resizable=1,scrollbars=yes");
+		$("#code").val(code);
+		$("#openPopForm").action = "/mainWinPop.do" ;
+        $("#openPopForm").target = openPop ;
+        $("#openPopForm").submit() ;
+    }
+	
+	function openWindow(code){
+		var popupList = "${popupList}"[0];
+		console.log(JSON.stringify($(popupList)[0]));
+		alert("popupList.length : "+popupList.length);
+		for(var i = 0 ; i < popupList[0].length ; i++){
+			$("#code").val(popupList[0][i][code]);
+			alert($("#code").val()); 
+		}
+	}
+	 function openWindow(code){
+		// alert(code);
+        //window.open("/mainWinPop.do","_blank","top=200,left=0,width=400,height=445,resizable=1,scrollbars=yes");
+    }
 </script>
-</head>
-<body>
+
+  </head>
+  <body>
+
+	<form name="openPopForm" id="openPopForm" method="post">
+	    <input type="hidden" name="code" id="code" value="" />
+	</form>
+	
+	<c:forEach var="result" items="${popupList}" varStatus="status">
+		<script>openWindow("${result.code}");</script>
+	</c:forEach>
+
 	<div id="progress_barWrap" style="display:none;">
 		<p id="progress_bar">
 			<img src="/img/main/loading_circle.gif" alt="로딩이미지"/>

@@ -104,31 +104,29 @@
 								<li class="sitemap_depth01"><a href="#" title="사전면접">사전면접</a></li>
 							</ul>
 						</div>
+						<div>
+							<h4>커뮤니티</h4>
+							<ul>
+								<li class="menu menu01"><a href="/noticeList.do" title="공지사항">공지사항</a></li>
+								<li class="menu menu02"><a href="/boardList.do" title="게시판">게시판</a></li>
+								<li class="menu menu03"><a href="#" title="FAQ">FAQ</a></li>
+								<li class="menu menu04"><a href="#" title="이용안내">이용안내</a>
+								<ul class="sub">
+									<li><a href="#" title="유료채용광고 문의">유료채용광고 문의</a></li>
+								</ul>
+								</li>
+									<li class="menu menu05"><a href="#" title="이용약관">이용약관</a></li>
+									<li class="menu menu06"><a href="#" title="개인정보 취급방침">개인정보 취급방침</a></li>
+									<li class="menu menu07"><a href="#" title="불편 및 신고상황 접수">불편 및 신고상황 접수</a></li>
+									<li class="menu menu08"><a href="#" title="모바일 서비스">모바일 서비스</a></li>
+									<li class="menu menu09"><a href="#" title="자료실">자료실</a></li>
+								</ul>
+							</div>
+							<p class="allMenu_ect">
+								<span><a href="/noticeList.do" title="고객센터">고객센터</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+								<span><a href="/introAbout.do" title="회사소개">회사소개</a></span>
+							</p>
+						</div>
 					</div>
-					<div>
-						<h4>커뮤니티</h4>
-						<ul>
-							<li class="menu menu01"><a href="/noticeList.do" title="공지사항">공지사항</a></li>
-							<li class="menu menu02"><a href="/boardList.do" title="게시판">게시판</a></li>
-							<li class="menu menu03"><a href="#" title="FAQ">FAQ</a></li>
-							<li class="menu menu04"><a href="#" title="이용안내">이용안내</a>
-							<ul class="sub">
-								<li><a href="#" title="유료채용광고 문의">유료채용광고 문의</a></li>
-							</ul>
-							</li>
-							<li class="menu menu05"><a href="#" title="이용약관">이용약관</a></li>
-							<li class="menu menu06"><a href="#" title="개인정보 취급방침">개인정보 취급방침</a></li>
-							<li class="menu menu07"><a href="#" title="불편 및 신고상황 접수">불편 및 신고상황 접수</a></li>
-							<li class="menu menu08"><a href="#" title="모바일 서비스">모바일 서비스</a></li>
-							<li class="menu menu09"><a href="#" title="자료실">자료실</a></li>
-						</ul>
-					</div>
-					<p class="allMenu_ect">
-					<span><a href="/noticeList.do" title="고객센터">고객센터</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-					<span><a href="/introAbout.do" title="회사소개">회사소개</a></span>
-					</p>
 				</div>
-			</div>
-			
-		</div>
 	

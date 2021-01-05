@@ -6,10 +6,10 @@
 #registerArea{width:1000px;margin: 0 auto;}
 
 #registerArea .registertext{width:100%;text-align: center;margin-top:100px;}
+legend{display:none;}
 #registerArea .registertext h4{width:100%;font-size:34px;font-family:"NotoSansKR-Thin";}
 #registerArea .registertext p{width:100%;font-size:18px;}
 #registerArea .registertext p .bold{font-family:"NotoSansKR-Bold";}
-
 #registerArea .tab{margin-top:70px;width:100%;height:79px;line-height:80px;background-color:#eee;border-bottom:1px solid #000;
                           text-indent:20px;font-size:18px;}
 #registerArea .tab span{padding-right:30px;}

@@ -47,36 +47,28 @@
 		</div>
 		<div id="registerWrap">
 			<div id="registerArea">
-				<div class="registertext">
-					<h4>기업회원가입</h4>
-					<p>
-						올워크 모든회원의 가입은 <span class="bold">무료</span>입니다.
-					</p>
-				</div>
-					<fieldset>
-						<legend>회원가입</legend>
-						<div class="tab">
-							<span class="btn_persnal"><input id="memberJoin" type="radio" name="memberJoin" onClick="location.href='personJoin.do'" />&nbsp;개인회원</span>
-							<span class="btn_company"><input id="memberJoin" type="radio" name="memberJoin" checked="checked" />&nbsp;기업회원</label></span>
-						</div>
-						<div class="descBox">
-							<p class="title">
-								일반 기업회원<br />혜택
-							</p>
-							<p class="desc">
-								<span><i class="far fa-check-circle"></i>입사지원자 이력서 관리</span>
-								<span><i class="far fa-check-circle"></i>관심인재 스크랩 및 관리</span>
-								<span><i class="far fa-check-circle"></i>지원자 통계정보 제공</span>
-							</p>
-							<p class="title">
-								기업유료회원<br />혜택
-							</p>
-							<p class="desc">
-								<span><i class="far fa-check-circle"></i>올워크 구직정보 무제한 검색</span>
-								<span><i class="far fa-check-circle"></i>채용공고 최대노출, 효과극대화 혜택</span>
-								<span><i class="far fa-check-circle"></i>맞춤인재 추천</span>
-							</p>
-						</div>
+<div class="registertext">
+<h4>기업회원가입</h4>
+<p>올워크 모든회원의 가입은 <span class="bold">무료</span>입니다.</p>
+</div>
+<div class="tab">
+<span class="btn_persnal"><input id="persnal_register" type="radio" name="persnal_register" onClick="location.href='register_01_개인회원가입.html'" /><label for="persnal_register">&nbsp;개인회원</label></span>
+<span class="btn_company"><input id="company_register" type="radio" name="company_register" onClick="location.href='register_02_기업회원가입.html'" checked="checked"/><label for="company_register">&nbsp;기업회원</label></span>
+</div>
+<div class="descBox">
+<p class="title">일반 기업회원<br/>혜택</p>
+<p class="desc">
+<span><i class="far fa-check-circle"></i>입사지원자 이력서 관리</span>
+<span><i class="far fa-check-circle"></i>관심인재 스크랩 및 관리</span>
+<span><i class="far fa-check-circle"></i>지원자 통계정보 제공</span>
+</p>
+<p class="title">기업유료회원<br/>혜택</p>
+<p class="desc">
+<span><i class="far fa-check-circle"></i>올워크 구직정보 무제한 검색</span>
+<span><i class="far fa-check-circle"></i>채용공고 최대노출, 효과극대화 혜택</span>
+<span><i class="far fa-check-circle"></i>맞춤인재 추천</span>
+</p>
+</div>
 						<div class="registerBox01">
 							<table>
 								<caption>기업정보</caption>

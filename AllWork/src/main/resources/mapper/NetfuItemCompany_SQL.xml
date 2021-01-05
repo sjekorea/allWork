@@ -13,10 +13,10 @@
 				and nic.uid = #{uid}
 			</if>
 			<if test='infoType == "4"'>
-				and (nic.info_type = #{infoType} or nic.biz_jobfrom = 'netfu_34537_33276')
+				and (nic.biz_jobfrom like '%freelancer%' or nic.biz_jobfrom like '%netfu_34537_33276%')
 			</if>
 			<if test='infoType == "2"'>
-				and (nic.info_type = #{infoType} or nic.biz_jobfrom = 'netfu_34537_33276')
+				and (nic.biz_jobfrom like '%arbeit%' or nic.biz_jobfrom like '%netfu_34537_33276%')
 			</if>
 			<if test="bizType3 != null and bizType3 != ''">
 				and (nic.biz_type3 in ('${bizType3}') or nic.biz_type6 in ('${bizType3}') or nic.biz_type9 in ('${bizType3}'))
@@ -47,10 +47,10 @@
 				and nic.uid = #{uid}
 			</if>
 			<if test='infoType == "4"'>
-				and (nic.info_type = #{infoType} or nic.biz_jobfrom = 'netfu_34537_33276')
+				and (nic.biz_jobfrom like '%freelancer%' or nic.biz_jobfrom like '%netfu_34537_33276%')
 			</if>
 			<if test='infoType == "2"'>
-				and (nic.info_type = #{infoType} or nic.biz_jobfrom = 'netfu_34537_33276')
+				and (nic.biz_jobfrom like '%arbeit%' or nic.biz_jobfrom like '%netfu_34537_33276%')
 			</if>
 			<if test="bizType3 != null and bizType3 != ''">
 				and (nic.biz_type3 in ('${bizType3}') or nic.biz_type6 in ('${bizType3}') or nic.biz_type9 in ('${bizType3}'))
@@ -138,24 +138,19 @@
 	<!-- 기업별 채용공고 Count -->
 	<select id="selectNetfuItemCompanyCntByCompany" parameterType="hashmap" resultType="int">
 		select count(no) cnt
-		from netfu_item_company
+		from netfu_item_company nic
 		where 1=1
 			<if test="companyUid != null and companyUid != ''">
-				and uid = #{companyUid}
+				and nic.uid = #{companyUid}
 			</if>
-			<choose>
-				<when test = "bizIng != null and bizIng != ''">
-					and biz_ing = 'no'
-		            and ((biz_end_day >= curdate() and biz_end_type ='input') or biz_end_type !='input')
-		            and (service1 >= curdate() or service2 >= curdate() or service3 >= curdate() or service4 >= curdate() or service5 >= curdate() or service100 >= curdate())
-				</when>
-				<otherwise>
-					and ((biz_end_day <![CDATA[<]]> curdate() and biz_end_type ='input') or biz_ing='yes' 
-				            or (service1 <![CDATA[<]]> curdate() and service2 <![CDATA[<]]> curdate() and service3 <![CDATA[<]]> curdate() 
-				            	and service4 <![CDATA[<]]> curdate() and service5 <![CDATA[<]]> curdate() and service100 <![CDATA[<]]> curdate())
-				         )
-				</otherwise>
-			</choose>
+			<if test="bizIng == 'no'">
+				and nic.biz_ing <![CDATA[<>]]> 'yes'
+				and ((nic.biz_end_type ='input' and nic.biz_end_day  >=  CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+			</if>
+			<if test="bizIng == 'yes'">
+				and nic.biz_ing = 'yes'
+				and ((nic.biz_end_day <![CDATA[<]]> curdate() and nic.biz_end_type ='input') or nic.biz_ing='yes' )
+			</if>
 	</select>
 	
 	
@@ -164,27 +159,19 @@
 		select 
 			nic.no, 'open', nic.biz_name, nic.uid, nic.biz_title, nic.biz_ing, nic.biz_end_type, nic.biz_end_day
 			, count(nor.no) total_appliance_cnt
-		from netfu_item_company nic, netfu_online_recruit nor
+		from netfu_item_company nic left outer join netfu_online_recruit nor on nic.uid = nor.to_uid and nic.no = nor.to_no and nor.to_type in ('email', 'online')
 		where 1=1
 			<if test="companyUid != null and companyUid != ''">
 				and nic.uid = #{companyUid}
 			</if>
-			<choose>
-				<when test="bizIng != null and bizIng != ''">
-					and nic.biz_ing = 'no'
-		            and ((nic.biz_end_day >= curdate() and nic.biz_end_type ='input') or nic.biz_end_type !='input')
-		            and (nic.service1 >= curdate() or nic.service2 >= curdate() or nic.service3 >= curdate() or nic.service4 >= curdate() or nic.service5 >= curdate() or nic.service100 >= curdate())
-				</when>
-				<otherwise>
-					and ((nic.biz_end_day <![CDATA[<]]> curdate() and nic.biz_end_type ='input') or nic.biz_ing='yes' 
-				            or (nic.service1 <![CDATA[<]]> curdate() and nic.service2 <![CDATA[<]]> curdate() and nic.service3 <![CDATA[<]]> curdate() 
-				            	and nic.service4 <![CDATA[<]]> curdate() and nic.service5 <![CDATA[<]]> curdate() and nic.service100 <![CDATA[<]]> curdate())
-				         )
-				</otherwise>
-			</choose>
-		    and nic.uid = nor.to_uid
-    		and nic.no = nor.to_no 
-		    and nor.to_type in ('email', 'online')
+			<if test="bizIng == 'no'">
+				and nic.biz_ing <![CDATA[<>]]> 'yes'
+				and ((nic.biz_end_type ='input' and nic.biz_end_day  >=  CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+			</if>
+			<if test="bizIng == 'yes'">
+				and nic.biz_ing = 'yes'
+				and ((biz_end_day <![CDATA[<]]> curdate() and biz_end_type ='input') or biz_ing='yes' )
+			</if>
 		group by nic.no, nic.uid, nic.biz_title, nic.biz_ing, nic.biz_end_type, nic.biz_end_day
 		order by ${orderField} ${orderRule}
 		limit #{start}, #{pageSize}
@@ -193,13 +180,13 @@
 	
 	<!-- 진행중인 채용공고 - selectbox 용 -->
 	<select id="selectNetfuItemCompanyProceess" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
-		select no, biz_title
-		from netfu_item_company
+		select 
+			${recruitColumn}
+		from netfu_item_company nic
 		where 1=1
-			and uid = #{companyUid}
-			and biz_ing = 'no'
-            and ((biz_end_day >= curdate() and biz_end_type ='input') or biz_end_type !='input')
-            and (service1 >= curdate() or service2 >= curdate() or service3 >= curdate() or service4 >= curdate() or service5 >= curdate() or service100 >= curdate())
+			and nic.uid = #{companyUid}
+			and nic.biz_ing <![CDATA[<>]]> 'yes'
+            and ((nic.biz_end_day >= curdate() and nic.biz_end_type ='input') or nic.biz_end_type !='input')
 	</select>
 	
 	

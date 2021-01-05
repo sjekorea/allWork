@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="recruitView">
+
+	<!-- 열람 정보 검색 Count -->
+	<select id="selectRecruitViewCnt" parameterType="hashmap" resultType="int">
+		select count(*) cnt from recruit_view
+		where uid = #{loginId}
+	</select>
+	
+	
+	<!-- 채용공고 열람 정보 리스트 -->
+	<select id="selectRecruitViewList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
+		select 
+			${recruitColumn}, DATE_FORMAT(rv.view_date, '%m/%d') view_date
+		from netfu_item_company nic, recruit_view rv
+		where 1=1
+			and rv.uid = #{loginId}
+			and rv.view_type = 'recruit'
+			and nic.no = rv.to_no
+		order by rv.view_date desc
+		limit #{start}, #{pageSize}
+	</select>
+	
+	
+	<!-- 이력서 정보 열람 정보 리스트 -->
+	<select id="selectResumeViewList" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
+		select 
+			${resumeColumn}, DATE_FORMAT(rv.view_date, '%m/%d') view_date
+		from netfu_item_resume nir, recruit_view rv
+		where 1=1
+			and rv.uid = #{loginId}
+			and rv.view_type = 'resume'
+			and nir.no = rv.to_no
+		order by rv.view_date desc
+		limit #{start}, #{pageSize}
+	</select>
+	
+	
+	<!-- 열람 정보 저장 -->
+	<insert id="insertRecruitView" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO recruit_view 
+				(uid, to_no, view_type, view_date) VALUES (#{loginId}, #{no}, #{viewType}, current_timestamp()) 
+				ON DUPLICATE KEY UPDATE view_date = current_timestamp();
+		]]>
+	</insert>
+
+
+</mapper>

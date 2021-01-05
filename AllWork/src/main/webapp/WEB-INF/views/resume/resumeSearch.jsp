@@ -332,6 +332,7 @@
 			var selectedValue = $(this).attr("value");
 			var selectedName = $(this).attr("name");
 			
+			
 			if("cate_job" == ulClass || "cate_industry" == ulClass || "cate_location" == ulClass || "cate_license" == ulClass){
 				
 				$(".descArea:eq(0)").css("display", "none");
@@ -356,7 +357,7 @@
 					$(".select01").html($(".cate_location").html());
 				}
 
-				if("cate_license" == ulClass){ // 지역별
+				if("cate_license" == ulClass){ // 자격증
 					$("#searchKind").val("inid_mylskill");
 					$(".tab:eq(0)").find("li").eq(3).css("background-color", "#000").siblings("li").css("background-color", "#ddd");
 					$(".select01").html($(".cate_license").html());
@@ -364,9 +365,11 @@
 				$(".tab:eq(1)").find("li").css("background-color", "#ddd");
 				getNetfuCateListForUl($("#searchKind").val(), $(this).attr("name"), "select02", $("#searchKind").val()+"2", true);
 				
+			
 			}else{
 				
 				if("select01" == ulClass || "select02" == ulClass || "select03" == ulClass ){
+					
 					if("select01" == ulClass){
 						$(".select02, .select03").empty();
 						getNetfuCateListForUl($("#searchKind").val(), $(this).attr("name"), "select02", $("#searchKind").val()+"2", true);
@@ -375,11 +378,16 @@
 					if("select02" == ulClass){
 						$(".select03").empty();
 						getNetfuCateListForUl($("#searchKind").val(), $(this).attr("name"), "select03", $("#searchKind").val()+"3", true);
+						
+						if("area2" == selectedId){
+							setCondition(ulClass, selectedId, selectedValue, selectedName);
+						}
 					}
 					
 					if("select03" == ulClass){
 						setCondition(ulClass, selectedId, selectedValue, selectedName);
 					}	
+					
 			
 				}else{
 					

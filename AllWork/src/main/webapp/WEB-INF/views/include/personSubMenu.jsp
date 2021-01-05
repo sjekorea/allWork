@@ -32,7 +32,7 @@
 				<li class="subMenu03_02"><a href="/interestCompanyList.do" title="관심기업">관심기업</a></li>
 				<li class="subMenu03_03"><a href="/interviewRequestCompany.do" title="면접요청기업">면접요청기업</a></li>
 			</ol></li>
-		<li class="menu menu04"><a href="#" title="내가 확인한 채용정보">내가 확인한 채용정보</a></li>
+		<li class="menu menu04"><a href="/recruitViewList.do" title="내가 확인한 채용정보">내가 확인한 채용정보</a></li>
 		<li class="menu menu05"><a href="/fitRecruitList.do" title="맞춤서비스관리">맞춤서비스관리</a>
 			<h3>맞춤서비스관리</h3>
 			<ol class="subMenu subMenu05">

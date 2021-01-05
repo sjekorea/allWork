@@ -376,6 +376,10 @@
 					if("select02" == ulClass){
 						$(".select03").empty();
 						getNetfuCateListForUl($("#searchKind").val(), $(this).attr("name"), "select03", $("#searchKind").val()+"3", true);
+
+						if("area2" == selectedId){
+							setCondition(ulClass, selectedId, selectedValue, selectedName);
+						}
 					}
 					
 					if("select03" == ulClass){

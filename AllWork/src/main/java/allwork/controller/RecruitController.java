@@ -22,13 +22,18 @@ import allwork.service.NetfuCompanyService;
 import allwork.service.NetfuConcernService;
 import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuItemResumeService;
+import allwork.service.NetfuMemberService;
 import allwork.service.NetfuScrapService;
 import allwork.service.RecruitOtherService;
+import allwork.service.RecruitViewService;
 
 @Controller
 public class RecruitController {
 	  
 	Logger log = Logger.getLogger(this.getClass());
+	
+	@Resource(name="netfuMemberService")
+	private NetfuMemberService netfuMemberService;
 
 	@Resource(name="netfuItemCompanyService")
 	private NetfuItemCompanyService netfuItemCompanyService;
@@ -49,7 +54,10 @@ public class RecruitController {
 	private NetfuCateService netfuCateService;		
 
 	@Resource(name="recruitOtherService")
-	private RecruitOtherService recruitOtherService;	
+	private RecruitOtherService recruitOtherService;		
+
+	@Resource(name="recruitViewService")
+	private RecruitViewService recruitViewService;
 	
 	
 	/*
@@ -450,6 +458,18 @@ public class RecruitController {
 			
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
+			
+			// 열람 정보 저장
+			commandMap.put("no", commandMap.get("recruitNo"));
+			commandMap.put("viewType", "recruit");
+			recruitViewService.insertRecruitView(commandMap.getMap());
+			
+			// 개인회원 정보 select
+			Map<String, Object> personMap = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
+			
+			// 개인회원 이력서 정보 select 
+			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeAllList(commandMap.getMap());
 			
 			// 기업정보 select
 			commandMap.put("uid", commandMap.get("companyUid"));
@@ -475,6 +495,8 @@ public class RecruitController {
 			int resumeCnt = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
 			
 			mv.addObject("map", commandMap.getMap());
+			mv.addObject("personMap", personMap);
+			mv.addObject("resumeList", resumeList);
 			mv.addObject("companyMap", companyMap);
 			mv.addObject("recruitMap", recruitMap);
 			mv.addObject("scrapCnt", scrapCnt);
@@ -550,7 +572,7 @@ public class RecruitController {
 				commandMap.put("orderField", "nic.wdate");
 				commandMap.put("orderRule", "desc");
 				commandMap.put("companyUid", (String)session.getAttribute("SE_LOGIN_ID"));
-				commandMap.put("bizIng", "");
+				commandMap.put("bizIng", "yes");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);

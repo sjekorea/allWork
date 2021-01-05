@@ -68,12 +68,22 @@
 					</otherwise>
 				</choose>
 			) 
-		AND (nir.no = nor.from_no and nic.no = nor.to_no)
+		<if test="recruitNo != null and recruitNo != ''">
+			and nic.no = #{recruitNo}
+		</if>		
+		<choose>
+			<when test="applyType == 'interview'">
+				and (nir.no = nor.to_no and nic.no = nor.from_no)
+			</when>
+			<otherwise>
+				and (nir.no = nor.from_no and nic.no = nor.to_no)
+			</otherwise>
+		</choose>
 		and nor.uid = #{loginId}
 	</select>
 	
 	
-	<!-- 입사지원 현황(to_type:onlene:온라인 / to_type:email:이메일)  -->
+	<!-- 입사지원 현황(to_type:onlene:온라인 / to_type:email:이메일 / to_type:interview:면저제의")  -->
 	<select id="selectApplyList" parameterType="hashmap" resultType="allwork.vo.NetfuOnlineRecruitVo">
 	SELECT 
 		nic.no recruitNo
@@ -108,7 +118,17 @@
 					</otherwise>
 				</choose>
 			) 
-		and (nir.no = nor.from_no and nic.no = nor.to_no)
+		<if test="recruitNo != null and recruitNo != ''">
+			and nic.no = #{recruitNo}
+		</if>		
+		<choose>
+			<when test="applyType == 'interview'">
+				and (nir.no = nor.to_no and nic.no = nor.from_no)
+			</when>
+			<otherwise>
+				and (nir.no = nor.from_no and nic.no = nor.to_no)
+			</otherwise>
+		</choose>
 		and nor.uid = #{loginId}
     order by nor.no desc            
 	limit #{start}, #{pageSize}
@@ -188,6 +208,27 @@
     order by nor.no desc            
 	limit #{start}, #{pageSize}
 	</select>
+	
+
+	<insert id="insertNetfuOnlineRecruit" parameterType="hashmap">
+		<![CDATA[
+			insert into netfu_online_recruit
+			(to_type, type, sub_type, uid, to_uid, to_no, from_no, opened, job_detail, wdate)
+			values
+			(
+				#{toType}
+				, #{type}
+				, #{subType}
+				, #{uid}
+				, #{toUid}
+				, #{toNo}
+				, #{fromNo}
+				, #{opened}
+				, #{jobDetail}
+				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+			)
+		]]>
+	</insert>
 	
 	
 	<!-- 입사지원정보 삭제 -->

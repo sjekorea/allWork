@@ -14,5 +14,5 @@ public interface NetfuOnlineRecruitService {
 	int selectApplicantCnt(Map<String, Object> map) throws Exception;
 	List<Map<String, Object>> selectApplicantList(Map<String, Object> map) throws Exception;
 	int deleteNetfuOnlineRecruitMulti(Map<String, Object> map) throws Exception;
-	
+	int insertNetfuOnlineRecruit(Map<String, Object> map) throws Exception;
 }

@@ -95,10 +95,17 @@ public class NetfuItemCompanyVo {
 	private int totalApplianceCnt;
 	private String type;
 	private String bizManiMen;
+	private String viewDate;
 	
 	
 	
 	
+	public String getViewDate() {
+		return viewDate;
+	}
+	public void setViewDate(String viewDate) {
+		this.viewDate = viewDate;
+	}
 	public String getBizManiMen() {
 		return bizManiMen;
 	}

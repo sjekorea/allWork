@@ -41,5 +41,10 @@ public class NetfuMyServiceDao extends AbstractDAO{
 	public int insertNetfuMyService(Map<String, Object> map) throws Exception{
 		return insert("netfuMyService.insertNetfuMyService", map);
 	}
+	
+	// 맞춤 정보 수정
+	public int updateNetfuMyService(Map<String, Object> map) throws Exception{
+		return update("netfuMyService.updateNetfuMyService", map);
+	}
 
 }

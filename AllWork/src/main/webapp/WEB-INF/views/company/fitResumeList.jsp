@@ -1,4 +1,4 @@
-\<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
@@ -21,52 +21,55 @@
 			<div id="detailArea">
 				<h4>맞춤 인재정보</h4>
 				<p class="delete">
-					<a href="#none" title="맞춤설정">맞춤설정</a>
+					<a href="/fitResumeSetting.do" title="맞춤설정">맞춤설정</a>
 				</p>
-				<table>
-					<caption>이력 등록하기</caption>
-					<tbody class="tabelArea">
-						<tr>
-							<th class="table_title">직종</th>
-							<th colspan="3" class="table_desc01">
-								${myServiceMap.job1Name }
-								${convert:checkNull(myServiceMap.job2Name) eq '' ? '' : '>'.concat(myServiceMap.job2Name) }
-								${convert:checkNull(myServiceMap.job3Name) eq '' ? '' : '>'.concat(myServiceMap.job3Name) }
-								${convert:checkNull(myServiceMap.job4Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(myServiceMap.job4Name) }
-								${convert:checkNull(myServiceMap.job5Name) eq '' ? '' : '>'.concat(myServiceMap.job5Name) }
-								${convert:checkNull(myServiceMap.job6Name) eq '' ? '' : '>'.concat(myServiceMap.job6Name) }
-								${convert:checkNull(myServiceMap.job7Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(myServiceMap.job7Name) }
-								${convert:checkNull(myServiceMap.job8Name) eq '' ? '' : '>'.concat(myServiceMap.job8Name) }
-								${convert:checkNull(myServiceMap.job9Name) eq '' ? '' : '>'.concat(myServiceMap.job9Name) }
-							</th>
-						</tr>
-						<tr>
-							<td class="table_title">근무지역</td>
-							<td class="table_desc">${myServiceMap.areaName }
-								${convert:checkNull(myServiceMap.area2Name) eq '' ? '' : '>'.concat(myServiceMap.area2Name) }
-								${convert:checkNull(myServiceMap.area3Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(myServiceMap.area3Name) }
-								${convert:checkNull(myServiceMap.area4Name) eq '' ? '' : '>'.concat(myServiceMap.area4Name) }
-								${convert:checkNull(myServiceMap.area5Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(myServiceMap.area5Name) }
-								${convert:checkNull(myServiceMap.area6Name) eq '' ? '' : '>'.concat(myServiceMap.area6Name) }
-							</td>
-							<td class="table_title">성별</td>
-							<td class="table_desc">${codeConvert:getBizSex(myServiceMap.sex) }</td>
-						</tr>
-						<tr>
-							<td class="table_title">학력</td>
-							<td class="table_desc">${codeConvert:getBizAbility(myServiceMap.school) }</td>
-							<td class="table_title">고용형태</td>
-							<td class="table_desc">${myServiceMap.formName }</td>
-						</tr>
-						<tr>
-							<td class="table_title">급여정도</td>
-							<td class="table_desc">${myServiceMap.payTypeName }/
-								${myServiceMap.payName }</td>
-							<td class="table_title">경력</td>
-							<td class="table_desc">${codeConvert:getBizCareerSplit(myServiceMap.career) }</td>
-						</tr>
-					</tbody>
-				</table>
+				<c:if test="${!myServiceMap.isEmpty()}">
+					<table>
+						<caption>이력 등록하기</caption>
+						<tbody class="tabelArea">
+							<tr>
+								<th class="table_title">직종</th>
+								<th colspan="3" class="table_desc01">
+									${myServiceMap.job1Name }
+									${convert:checkNull(myServiceMap.job2Name) eq '' ? '' : '>'.concat(myServiceMap.job2Name) }
+									${convert:checkNull(myServiceMap.job3Name) eq '' ? '' : '>'.concat(myServiceMap.job3Name) }
+									${convert:checkNull(myServiceMap.job4Name) eq '' ? '' : '<br/>'.concat(myServiceMap.job4Name) }
+									${convert:checkNull(myServiceMap.job5Name) eq '' ? '' : '>'.concat(myServiceMap.job5Name) }
+									${convert:checkNull(myServiceMap.job6Name) eq '' ? '' : '>'.concat(myServiceMap.job6Name) }
+									${convert:checkNull(myServiceMap.job7Name) eq '' ? '' : '<br/>'.concat(myServiceMap.job7Name) }
+									${convert:checkNull(myServiceMap.job8Name) eq '' ? '' : '>'.concat(myServiceMap.job8Name) }
+									${convert:checkNull(myServiceMap.job9Name) eq '' ? '' : '>'.concat(myServiceMap.job9Name) }
+								</th>
+							</tr>
+							<tr>
+								<td class="table_title">근무지역</td>
+								<td class="table_desc">
+									${myServiceMap.areaName }
+									${convert:checkNull(myServiceMap.area2Name) eq '' ? '' : '>'.concat(myServiceMap.area2Name) }
+									${convert:checkNull(myServiceMap.area3Name) eq '' ? '' : '<br/>'.concat(myServiceMap.area3Name) }
+									${convert:checkNull(myServiceMap.area4Name) eq '' ? '' : '>'.concat(myServiceMap.area4Name) }
+									${convert:checkNull(myServiceMap.area5Name) eq '' ? '' : '<br/>'.concat(myServiceMap.area5Name) }
+									${convert:checkNull(myServiceMap.area6Name) eq '' ? '' : '>'.concat(myServiceMap.area6Name) }
+								</td>
+								<td class="table_title">성별</td>
+								<td class="table_desc">${codeConvert:getBizSex(myServiceMap.sex) }</td>
+							</tr>
+							<tr>
+								<td class="table_title">학력</td>
+								<td class="table_desc">${codeConvert:getBizAbility(myServiceMap.school) }</td>
+								<td class="table_title">고용형태</td>
+								<td class="table_desc">${myServiceMap.formName }</td>
+							</tr>
+							<tr>
+								<td class="table_title">급여정도</td>
+								<td class="table_desc">${myServiceMap.payTypeName }/
+									${myServiceMap.payName }</td>
+								<td class="table_title">경력</td>
+								<td class="table_desc">${codeConvert:getBizCareerSplit(myServiceMap.career) }</td>
+							</tr>
+						</tbody>
+					</table>
+				</c:if>
 			</div>
 			<div id="listPart">
 				<p class="listTitle">검색된 맞춤인재정보</p>
@@ -92,7 +95,7 @@
 						<tr class="list_title">
 							<th class="desc01">이름</th>
 							<th class="desc02">이력서</th>
-							<th class="desc03">최종학력</th>H
+							<th class="desc03">최종학력</th>
 							<th class="desc04">경력</th>
 						</tr>
 						<c:choose>
@@ -111,8 +114,7 @@
 							</c:when>
 							<c:otherwise>
 								<tr>
-									<td colspan="4" style="text-align: center; height: 80px;">내역이
-										없습니다.</td>
+									<td colspan="4" style="text-align: center; height: 80px;">내역이 없습니다.</td>
 								</tr>
 							</c:otherwise>
 						</c:choose>
@@ -141,10 +143,6 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-
-		$(".delete a").click(function(e) {
-			location.href = "/fitResumeSetting.do";
-		});
 
 		$("#align").on("change", function(e) {
 			loadingOn();

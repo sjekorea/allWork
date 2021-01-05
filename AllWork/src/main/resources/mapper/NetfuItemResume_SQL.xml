@@ -31,10 +31,10 @@
 				and nir.uid = #{loginId}
 			</if>
 			<if test='infoType == "4"'>
-				and nir.info_type = #{infoType}
+				and (nir.inid_jobform like '%freelancer%' or nir.inid_jobform like '%netfu_34537_33276%')
 			</if>
 			<if test='infoType == "2"'>
-				and (nir.info_type = #{infoType} or nir.inid_jobform = 'netfu_34537_33276')
+				and (nir.inid_jobform like '%arbeit%' or nir.inid_jobform like '%netfu_34537_33276%')
 			</if>
 			<if test="inidType != null and inidType != ''">
 				and (nir.inid_type3 in ('${inidType3}') or nir.inid_type6 in ('${inidType6}') or nir.inid_type9 in ('${inidType7}'))
@@ -75,10 +75,10 @@
 				and nir.uid = #{loginId}
 			</if>
 			<if test='infoType == "4"'>
-				and nir.info_type = #{infoType}
+				and (nir.inid_jobform like '%freelancer%' or nir.inid_jobform like '%netfu_34537_33276%')
 			</if>
 			<if test='infoType == "2"'>
-				and (nir.info_type = #{infoType} or nir.inid_jobform = 'netfu_34537_33276')
+				and (nir.inid_jobform like '%arbeit%' or nir.inid_jobform like '%netfu_34537_33276%')
 			</if>
 			<if test="inidType != null and inidType != ''">
 				and (nir.inid_type3 in ('${inidType}') or nir.inid_type6 in ('${inidType}') or nir.inid_type9 in ('${inidType}'))
@@ -106,6 +106,20 @@
 			</if>
 		order by ${orderField} ${orderRule}
 		limit #{start}, #{pageSize}
+	</select>
+	
+	
+	<!-- 이력서 리스트 -->
+	<select id="selectNetfuItemResumeAllList" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
+		select 
+			${resumeColumn}
+		from netfu_item_resume nir
+		where 1=1
+			and nir.inid_secret <![CDATA[<>]]> 'yes'
+			<if test="loginId != null and loginId != ''">
+				and nir.uid = #{loginId}
+			</if>
+		order by nir.wdate desc
 	</select>
 	
 	
@@ -177,18 +191,18 @@
 	<select id="selectNetfuItemResumeMap" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
 		select 
 			${resumeColumn}
-		from netfu_item_resume nic
+		from netfu_item_resume nir
 		where 1=1
 			<choose>
 				<when test="personUid != null and personUid != ''">
-					and nic.uid = #{personUid}
+					and nir.uid = #{personUid}
 				</when>
 				<otherwise>
-					and nic.uid = #{loginId}
+					and nir.uid = #{loginId}
 				</otherwise>
 			</choose>
 			<if test="no != null and no != ''">
-				and nic.no = #{no}
+				and nir.no = #{no}
 			</if>
 	</select>
 

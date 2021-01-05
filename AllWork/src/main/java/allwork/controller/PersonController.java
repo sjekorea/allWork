@@ -33,9 +33,11 @@ import allwork.service.NetfuConcernService;
 import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuScrapService;
 import allwork.service.RecruitItemService;
+import allwork.service.RecruitViewService;
 import allwork.common.util.PaginationUtil;
 import allwork.common.util.CommonColumnUtil;
 import allwork.common.util.ConvertUtil;
+import allwork.common.util.MakeQueryUtil;
 
 @Controller
 public class PersonController {
@@ -71,6 +73,9 @@ public class PersonController {
 
 	@Resource(name="netfuCateService")
 	private NetfuCateService netfuCateService;		
+
+	@Resource(name="recruitViewService")
+	private RecruitViewService recruitViewService;		
 	
 	//(begin) 2020.12.30 by s.yoo
 	@Resource(name="aiMatchingRecruitService")
@@ -132,6 +137,8 @@ public class PersonController {
 			//(end) 2020.12.30 by s.yoo
 			
 			// 맞춤 채용 정보
+			Map<String, Object> myServiceMap = netfuMyServiceService.selectNetfuMyServiceMap(commandMap.getMap());
+			commandMap = MakeQueryUtil.makeMyRecruitQuery(commandMap, myServiceMap);
 			List<Map<String, Object>> myServiceRecruitList = netfuMyServiceService.selectMyServiceRecruitList(commandMap.getMap());
 			
 			// 스크랩 공고
@@ -236,6 +243,48 @@ public class PersonController {
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".registResume Exception !!!!! \n"+e.toString());
 		}
+		return mv;
+	}
+	
+	
+	/*
+	 * 내가 열람한 기업 정보
+	 */
+	@RequestMapping(value="/recruitViewList.do")
+	public ModelAndView recruitViewList(CommandMap commandMap, HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView("/person/recruitViewList");
+		
+		int pageSize = 10;
+		int totalSize = 0;
+		
+		try{
+				
+			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
+				commandMap.put("pageNo", "1");
+			}
+			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
+			commandMap.put("pageSize", pageSize);
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+			
+			// 열람정보  검색 리스트
+			List<Map<String, Object>> recruitViewList = recruitViewService.selectRecruitViewList(commandMap.getMap());
+			Map<String, Object> pageMap = new HashMap<String, Object>();
+			if(recruitViewList.size() > 0){
+				totalSize = recruitViewService.selectRecruitViewCnt(commandMap.getMap());
+				pageMap = PaginationUtil.makePageInfo(totalSize, pageSize, (String)commandMap.get("pageNo"));
+				commandMap.put("totalSize", totalSize);
+			}
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("recruitViewList", recruitViewList);
+			mv.addObject("pageMap", pageMap);
+		
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".recruitViewList Exception !!!!! \n"+e.toString());
+		}
+		
 		return mv;
 	}
 	

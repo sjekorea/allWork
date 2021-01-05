@@ -10,7 +10,10 @@
 <jsp:include page="/personHeader.do" />
 
 <link rel="stylesheet" type="text/css" href="/css/personal_scrap.css"/>
-
+<style type="text/css">
+	#menuTree ul .subMenu03_01{text-decoration: none;}
+	#menuTree ul .menu04{text-decoration: underline;}
+</style>
 <div id="containerWrap">
 	<div id="container">
 		<div id="leftPart">
@@ -18,40 +21,35 @@
 		</div>
 		<div id="rightPart">
 			<div id="listPart">
-				<h4>스크랩</h4>
-				<p class="delete">
-					<a href="#" title="선택삭제">선택삭제</a>
-				</p>
+				<h4>내가 열람한 채용공고</h4>
 				<table class="list">
 					<caption>리스트</caption>
 					<tbody>
 						<tr class="list_title">
-							<th class="desc00"><input type="checkbox" name="all"/></th>
 							<th class="desc01">회사명</th>
 							<th class="desc02">채용공고</th>
 							<th class="desc03">마감일</th>
 							<th class="desc04">스크랩일</th>
 						</tr>
 						<c:choose>
-							<c:when test="${recruitScrapList.size() > 0 }">
-								<c:forEach var="result" items="${recruitScrapList}" varStatus="status">
+							<c:when test="${recruitViewList.size() > 0 }">
+								<c:forEach var="result" items="${recruitViewList}" varStatus="status">
 									<tr class="desc">
-										<td class="desc00"><input type="checkbox" name="chk" value="${result.noTo }" /></td>
 										<td class="desc01">
-											${result.bizName }&nbsp;<a href="javascript:goConcernRegist('${result.no }', '${result.uid }');" title="관심기업체크"><i class="fas fa-heart"></i></a>
+											${result.bizName }
 										</td>
 										<td class="desc02">
 											<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="채용공고">
 												${convert:compByte(result.bizTitle, 100, "...")}
 											</a>
 										</td>
-										<td class="desc03">${codeConvert:getRecruitStatusText(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
-										<td class="desc04">${result.wdate }</td>
+										<td class="desc03">${result.bizEndDay }</td>
+										<td class="desc04">${result.viewDate }</td>
 									</tr>
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<tr class="desc"><td colspan="5">내역이 없습니다.</tr></td>
+								<tr class="desc" style="text-align:center;height:20px;"><td colspan="4">내역이 없습니다.</tr></td>
 							</c:otherwise>
 						</c:choose>
 					</tbody>
@@ -67,7 +65,7 @@
 </div>
 <jsp:include page="/footer.do" />
 
-<form id="searchForm" name="searchForm" method="post" action="/recruitScrapList.do">
+<form id="searchForm" name="searchForm" method="post" action="/recruitViewList.do">
 	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
 	<input type="hidden" name="personUid" id="personUid" value="" />
 	<input type="hidden" name="companyUid" id="companyUid" value="" />
@@ -78,23 +76,6 @@
 </form>
 
 <script type="text/javascript">
-	
-	$(document).ready(function(){
-		
-		$(".list_title .desc00 input[type=checkbox]").click(function(e){
-			if($(this).prop("checked")) {  
-				$("input[type=checkbox]").prop("checked",true); 
-			} else { 
-				$("input[type=checkbox]").prop("checked",false); 
-			}
-		});
-		
-		$(".delete a").click(function(e){
-			deleteRecruitScrap();
-		});
-		
-	});	
-	
 	
 	function deleteRecruitScrap(){
 		
@@ -155,30 +136,6 @@
 			
 			ajax('post', '/selectNetfuItemResumeCnt.ajax', param, callback);
 		}
-	}
-	
-	// 관심기업 등록
-	function goConcernRegist(companyNo, companyUid){
-		//if($("#resumeCnt").val() <= 0){
-		//	alert("이력서를 먼저 작성해 주세요");
-		//	return;
-		//}else{
-			loadingOn();
-			var callback = function(data){
-				alert("저장 되었습니다.");
-				$("#concernCnt").val(data.rstCnt);
-				loadingOff();
-			};
-			
-			var param = {
-						no : companyNo
-						, type : "job"
-						, subType : "company"
-						, uid : "${SE_LOGIN_ID}"
-						, rUid : companyUid
-					};
-			ajax('post', '/registNetfuConcern.ajax', param, callback);
-		//}
 	}
 </script>
 

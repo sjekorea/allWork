@@ -25,13 +25,13 @@
 								<tr>
 									<th>모집업종</th>
 									<td>
-										<select id="job11" name="job1" title="1차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'job12', true, true);">
+										<select id="job1" name="job1" title="1차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'job2', true, true);">
 											<option value="">1차직무선택</option>
 										</select>
-										<select id="job12" name="job2" title="2차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'job13', true, true);">
+										<select id="job2" name="job2" title="2차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'job3', true, true);">
 											<option value="">2차직무선택</option>
 										</select>
-										<select id="job13" name="job3" title="3차직무선택">
+										<select id="job3" name="job3" title="3차직무선택">
 											<option value="">3차직무선택</option>
 										</select>
 										<input id="appendJob" type="button" name="appendJob" value="+ 추가" />
@@ -45,10 +45,10 @@
 								<tr>
 									<th>근무지역</th>
 									<td>
-										<select id="area11" name="area1" onchange="javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'area12', true, true);">
+										<select id="area1" name="area1" onchange="javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'area2', true, true);">
 											<option value="">시도선택</option>
 										</select>
-										<select id="area12" name="area2">
+										<select id="area1" name="area2">
 											<option value="">시구군선택</option>
 										</select>
 										<input id="appendArea" type="button" name="appendArea" value="+ 추가" />
@@ -59,14 +59,14 @@
 						</table>	
 						<table>
 							<tbody>
-								<tr>
+								<!-- <tr>
 									<th>성별</th>
 									<td>
 										<span><input id="sex" type="radio" name="sex" value="none" />성별무관</span>
 										<span><input id="sex" type="radio" name="sex" value="man" />남자</span>
 										<span><input id="sex" type="radio" name="sex" value="woman" />여자</span>
 									</td>
-								</tr>
+								</tr> -->
 								<tr>
 									<th>고용형태</th>
 									<td id="jobFormTr"></td>
@@ -111,7 +111,7 @@
 								<tr>
 									<th>급여정도</th>
 									<td>
-										<select id="jobPay1" name="jobPay1" title="연봉/시급선택" onchange="javascript:getNetfuCateListForSelect('job_pay', this, '', 'jobPay2', true, false);">
+										<select id="jobPay1" name="jobPay1" title="연봉/시급선택" onchange="javascript:getNetfuCateListForSelect('inid_pay', this, '', 'jobPay2', true, false);">
 										</select>
 										<select id="jobPay2" name="jobPay2" title="연봉선택">
 											<option value="">선택</option>
@@ -138,10 +138,10 @@
 	$(document).ready(function(){
 		
 		// 산업 정보 select
-		getNetfuCateListForSelect("job", "", "1차직무선택", "job11", true, true);
+		getNetfuCateListForSelect("job", "", "1차직무선택", "job1", true, true);
 		
 		// 지역 정보 select
-		getNetfuCateListForSelect("area", "", "시도 선택", "area11", true, true);
+		getNetfuCateListForSelect("area", "", "시도 선택", "area1", true, true);
 		
 		// 고용형태 select
 		getNetfuCateListForCheckbox("job_type", "jobFormTr", "jobForm", true);
@@ -150,7 +150,7 @@
 		//getNetfuCateListForSelect("job_school", "", "학력 선택", "jobSchool", true, true);
 		
 		// 급여 종류 정보 select
-		getNetfuCateListForSelect("job_pay", "", "급여 종류 선택", "jobPay1", true, true);
+		getNetfuCateListForSelect("inid_pay", "", "급여 종류 선택", "jobPay1", true, true);
 		
 		// 산업 정보 추가 Button
 		$("#appendJob").on("click", function(e){
@@ -177,6 +177,42 @@
 			getNetfuCateList("job", $("#job1 option:selected").val(), "2차직무선택", "job2", true);
 		});
 		
+				
+		//	-- 맞춤 서비스 정보가 있는 경우 component value setting
+		<c:if test="${!msMap.isEmpty()}">
+			
+			$("#job1").val("${msMap.job1}");console.log("jon1 : "+"${msMap.job1}");
+			
+			if(!checkNull("${msMap.job2}")){
+				getNetfuCateListForSelect('inid_pay', $("#job1"), '', 'job2', true, false);
+				$("#job2").val("${msMap.job2}");console.log("jon1 : "+"${msMap.job2}");
+			}
+			
+			if(!checkNull("${msMap.job3}")){
+				getNetfuCateListForSelect('inid_pay', $("#job2"), '', 'job3', true, false);
+				$("#job3").val("${msMap.job3}");console.log("jon1 : "+"${msMap.job3}");
+			}
+			
+			$("#area1").val("${msMap.area}");
+			
+			if(!checkNull("${msMap.area2}")){
+				getNetfuCateListForSelect('area', $("#area1"), '시구군선택', 'area2', true, true);
+				$("#area2").val("${msMap.area2}");console.log("jon1 : "+"${msMap.area2}");
+			}
+			
+			$("#jobSchool").val("${msMap.jobSchool}");
+			var career = "${msMap.career}".split(",");
+			console.log(career);
+			
+			$("#jobPay1").val("${msMap.payType}");
+			
+			if(!checkNull("${msMap.payType}")){
+				getNetfuCateListForSelect('inid_pay', $("#jobPay1"), '', 'jobPay2', true, false);
+				$("#jobPay2").val("${msMap.pay}");console.log("jon1 : "+"${msMap.pay}");
+			}
+			
+		</c:if>
+		
 	});	
 	
 	
@@ -194,13 +230,13 @@
 				trHtml += "<tr id='job'>";
 				trHtml += "<th></th>";
 				trHtml += "<td>";
-				trHtml += "<select id='job"+(appendNum+1)+"1' name='job"+(appendNum+1)+"1' title='1차직무선택' onchange=\"javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'job"+(appendNum+1)+"2', true, true);\">";
+				trHtml += "<select id='job"+((appendNum*3)+1)+"' name='job"+((appendNum*3)+1)+"' title='1차직무선택' onchange=\"javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'job"+((appendNum*3)+2)+"', true, true);\">";
 				trHtml += "		<option value=''>1차직무선택</option>";
 				trHtml += "</select>\n";
-				trHtml += "<select id='job"+(appendNum+1)+"2' name='job"+(appendNum+1)+"2' title='2차직무선택' onchange=\"javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'job"+(appendNum+1)+"3', true, true);\">";
+				trHtml += "<select id='job"+((appendNum*3)+2)+"' name='job"+((appendNum*3)+2)+"' title='2차직무선택' onchange=\"javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'job"+((appendNum*3)+3)+"', true, true);\">";
 				trHtml += "		<option value=''>2차직무선택</option>";
 				trHtml += "</select>\n";
-				trHtml += "<select id='job"+(appendNum+1)+"3' name='job"+(appendNum+1)+"3' title='3차직무선택'>";
+				trHtml += "<select id='job"+((appendNum*3)+3)+"' name='job"+((appendNum*3)+3)+"' title='3차직무선택'>";
 				trHtml += "		<option value=''>3차직무선택</option>";
 				trHtml += "</select>";
 				trHtml += "</td>";
@@ -219,10 +255,10 @@
 				trHtml += "<tr>";
 				trHtml += "	<th></th>";
 				trHtml += "	<td>";
-				trHtml += "		<select id='area"+(appendNum+1)+"1' name='area"+(appendNum+1)+"1' title='시도선택' onchange=\"javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'area"+(appendNum+1)+"2', true, true);\">";
+				trHtml += "		<select id='area"+((appendNum*2)+1)+"' name='area"+((appendNum*2)+1)+"' title='시도선택' onchange=\"javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'area"+((appendNum*2)+1)+"', true, true);\">";
 				trHtml += "			<option value=''>시도선택</option>";
 				trHtml += "		</select>";
-				trHtml += "		<select id='area"+(appendNum+1)+"2' name='area"+(appendNum+1)+"2' title='시구군선택'>";
+				trHtml += "		<select id='area"+((appendNum*2)+2)+"' name='area"+((appendNum*2)+1)+"' title='시구군선택'>";
 				trHtml += "			<option value=''>시구군선택</option>";
 				trHtml += "		</select>";
 				trHtml += "	</td>";
@@ -257,8 +293,8 @@
 		loadingOn();
 		
 		// 성별 Radio
-		var sex = $("input[name=sex]:checked").val();
-		sex = (isEmpty(sex) ? "" : sex);
+		//var sex = $("input[name=sex]:checked").val();
+		//sex = (isEmpty(sex) ? "" : sex);
 		
 		// 고용형태 Checkbox
 		var form = "";
@@ -303,22 +339,22 @@
 		
 		var param = {
 					uid : "${SE_LOGIN_ID}"
-					, job1 : (isEmpty($("#job11 option:selected").val()) ? "" : $("#job11 option:selected").val())
-					, job2 : (isEmpty($("#job12 option:selected").val()) ? "" : $("#job12 option:selected").val())
-					, job3 : (isEmpty($("#job13 option:selected").val()) ? "" : $("#job13 option:selected").val())
-					, job4 : (isEmpty($("#job21 option:selected").val()) ? "" : $("#job21 option:selected").val())
-					, job5 : (isEmpty($("#job22 option:selected").val()) ? "" : $("#job22 option:selected").val())
-					, job6 : (isEmpty($("#job23 option:selected").val()) ? "" : $("#job23 option:selected").val())
-					, job7 : (isEmpty($("#job31 option:selected").val()) ? "" : $("#job31 option:selected").val())
-					, job8 : (isEmpty($("#job32 option:selected").val()) ? "" : $("#job32 option:selected").val())
-					, job9 : (isEmpty($("#job33 option:selected").val()) ? "" : $("#job33 option:selected").val())
-					, area : (isEmpty($("#area11 option:selected").val()) ? "" : $("#area11 option:selected").val())
-					, area2 : (isEmpty($("#area12 option:selected").val()) ? "" : $("#area12 option:selected").val())
-					, area3 : (isEmpty($("#area21 option:selected").val()) ? "" : $("#area21 option:selected").val())
-					, area4 : (isEmpty($("#area22 option:selected").val()) ? "" : $("#area22 option:selected").val())
-					, area5 : (isEmpty($("#area31 option:selected").val()) ? "" : $("#area31 option:selected").val())
-					, area6 : (isEmpty($("#area32 option:selected").val()) ? "" : $("#area32 option:selected").val())
-					, sex : sex
+					, job1 : (isEmpty($("#job1 option:selected").val()) ? "" : $("#job1 option:selected").val())
+					, job2 : (isEmpty($("#job2 option:selected").val()) ? "" : $("#job2 option:selected").val())
+					, job3 : (isEmpty($("#job3 option:selected").val()) ? "" : $("#job3 option:selected").val())
+					, job4 : (isEmpty($("#job4 option:selected").val()) ? "" : $("#job4 option:selected").val())
+					, job5 : (isEmpty($("#job5 option:selected").val()) ? "" : $("#job5 option:selected").val())
+					, job6 : (isEmpty($("#job6 option:selected").val()) ? "" : $("#job6 option:selected").val())
+					, job7 : (isEmpty($("#job7 option:selected").val()) ? "" : $("#job7 option:selected").val())
+					, job8 : (isEmpty($("#job8 option:selected").val()) ? "" : $("#job8 option:selected").val())
+					, job9 : (isEmpty($("#job9 option:selected").val()) ? "" : $("#job9 option:selected").val())
+					, area : (isEmpty($("#area1 option:selected").val()) ? "" : $("#area1 option:selected").val())
+					, area2 : (isEmpty($("#area2 option:selected").val()) ? "" : $("#area2 option:selected").val())
+					, area3 : (isEmpty($("#area3 option:selected").val()) ? "" : $("#area3 option:selected").val())
+					, area4 : (isEmpty($("#area4 option:selected").val()) ? "" : $("#area4 option:selected").val())
+					, area5 : (isEmpty($("#area5 option:selected").val()) ? "" : $("#area5 option:selected").val())
+					, area6 : (isEmpty($("#area6 option:selected").val()) ? "" : $("#area6 option:selected").val())
+					, sex : ""
 					, age : ""
 					, form : form
 					, school : $("#jobSchool option:selected").val()

@@ -53,47 +53,41 @@
 			and nc.r_uid = nic.uid
 		group by nc.uid, nco.biz_name, nc.r_uid
 	</select>
-	
 
-	<!-- 관심기업 채용정보 수 -->
+
+	<!-- 관심기업 수 -->
 	<select id="selectNetfuConcernRecruitCnt" parameterType="hashmap" resultType="int">
-		select count(uid) cnt from netfu_concern
+		select
+			count(nc.no_to)
+		from netfu_concern nc, netfu_item_company nic
 		where 1=1
-			and type = 'job'
-			and sub_type in ('company')
-			and uid = #{loginId}
-			and r_uid = #{rUid}
+			and nc.uid = #{loginId}
+			and nic.uid = #{companyUid}
+			and nc.type = 'job'
+			and nc.sub_type = 'company'
+			<if test="bizIng == 'no'">
+				and nic.biz_ing <![CDATA[<>]]> 'yes'
+			</if>
+			and ((nic.biz_end_type ='input' and nic.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+			and nc.r_uid = nic.uid
 	</select>
 	
-	
-	
-	<!-- 관심기업 채용정보 -->
+
+	<!-- 관심기업 목록 -->
 	<select id="selectNetfuConcernRecruitList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
-		<![CDATA[
-		select 	
-			ns.no_to, nic.no, nic.uid, nic.biz_name, nic.biz_title
-			, nic.biz_pay, getCodeName(nic.biz_pay) biz_pay_name ### 급여정보
-			, nic.biz_career ## 경력
-			, nic.biz_age ## 나이
-			, nic.biz_area1, getCodeName(nic.biz_area1) biz_area1_name ## 근무지역
-			, nic.biz_ability	## 학력
-			, nic.biz_sex
-			, nic.biz_end_day, nic.biz_end_type, nic.biz_ing
-			, nic.biz_type1, getCodeName(nic.biz_type1) biz_type1_name
-			, nic.biz_area1, getCodeName(nic.biz_area1) biz_area1_name
-			, nic.biz_area2, getCodeName(nic.biz_area2) biz_area2_name
-			, nic.biz_jobfrom, getCodeName(nic.biz_jobfrom) biz_jobfrom_name
-			, DATE_FORMAT(nic.wdate, '%Y-%m-%d') wdate
-		from netfu_concern ns, netfu_item_company nic
+		select
+			${recruitColumn}
+		from netfu_concern nc, netfu_item_company nic
 		where 1=1
-			and ns.type = 'job'
-			and ns.uid = #{loginId}
-			and ns.r_uid = nic.uid
-			and ns.sub_type in ('company')
-			and date_add(ns.wdate, interval '3' month) > sysdate()
-		order by u_wdate desc 
-		LIMIT #{start}, #{pageSize}	
-		]]>
+			and nc.uid = #{loginId}
+			and nic.uid = #{companyUid}
+			and nc.type = 'job'
+			and nc.sub_type = 'company'
+			<if test="bizIng == 'no'">
+				and nic.biz_ing <![CDATA[<>]]> 'yes'
+			</if>
+			and ((nic.biz_end_type ='input' and nic.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+			and nc.r_uid = nic.uid
 	</select>
 	
 	

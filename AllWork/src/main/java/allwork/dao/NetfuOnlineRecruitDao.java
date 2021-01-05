@@ -57,5 +57,9 @@ public class NetfuOnlineRecruitDao extends AbstractDAO{
 	public int deleteNetfuOnlineRecruitMulti(Map<String, Object> map) throws Exception{ 
 		return delete("netfuOnlineRecruit.deleteNetfuOnlineRecruitMulti", map);
 	}
-
+	
+	// 입사 지원 정보 저장
+	public int insertNetfuOnlineRecruit(Map<String, Object> map) throws Exception{ 
+		return insert("netfuOnlineRecruit.insertNetfuOnlineRecruit", map);
+	}
 }

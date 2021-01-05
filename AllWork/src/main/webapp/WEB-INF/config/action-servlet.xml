@@ -56,6 +56,7 @@
             <mvc:exclude-mapping path="/logout.do"/>
             <mvc:exclude-mapping path="/findId.do"/>
             <mvc:exclude-mapping path="/findPw.do"/>
+            <mvc:exclude-mapping path="/mainWinPop.do"/>
             <mvc:exclude-mapping path="/personJoin.do"/>
             <mvc:exclude-mapping path="/companyJoin.do"/>
             <mvc:exclude-mapping path="/*Header.do"/>

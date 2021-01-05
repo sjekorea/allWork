@@ -25,7 +25,7 @@
 		<div id="recruitment">
 			<h4>채용정보 산업별</h4>
 			<div id="part02">
-				<form id="keyworkSearchForm" name="keyworkSearchForm" method="post" action="/recruitSearch.do" >
+				<form id="keyworkSearchForm" name="keyworkSearchForm" method="post" action="/recruitSearchByIndustry.do" >
 					<fieldset>
 						<legend>검색</legend>
 						<div>

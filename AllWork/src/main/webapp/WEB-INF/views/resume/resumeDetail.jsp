@@ -18,6 +18,52 @@
 
 <link rel="stylesheet" type="text/css" href="/css/resume_view.css" />
 
+<div id="popupWrap_applyWrap" style="display:none;">
+	<div id="popupWrap_apply">
+		<div class="topArea">
+			<p class="close_btn"><i class="fas fa-times"></i></p>
+			<p class="email_img"><i class="fas fa-envelope-open-text"></i></p>
+			<p>이메일 입사지원</p>
+		</div>
+		<div class="descArea">
+			<p>
+				구작자의 이메일로 ${SE_USER_NM }님의 채용공고가 전송됩니다.
+			</p>
+			<form>
+				<fieldset>
+					<legend>면접 제의</legend>
+					<ul class="title">
+						<li>보내는 사람</li>
+						<li>구직자</li>
+						<li>이메일 제목</li>
+						<li>지원 이력서</li>
+						<!-- <li>첨부파일</li> -->
+					</ul>
+					<ul class="desc">
+						<li>${companyMap.name }(${companyMap.email })</li>
+						<li>${memberMap.name }(${memberMap.email })</li>
+						<li><input type="text" id="resumeTitle" name="resumeTitle" value="" /></li>
+						<li>
+						<select id="resumeSel" name="resumeSel">
+							<c:forEach var="result" items="${recruitList}" varStatus="status">
+								<option value="${result.no }">${result.bizTitle }</option>
+							</c:forEach>
+						</select>
+						</li>
+						<!-- <li>
+							<input id="res09_desc01"/><label for="res09_desc01_1">파일첨부</label><input id="res09_desc01_1" type="file"/>
+						</li> -->
+					</ul>
+				</fieldset>
+			</form>
+		</div>
+		<div class="btnArea">
+			<p class="a01"><a href="#" title="취소">취소</a></p>
+			<p class="a02"><a href="#" title="면접요청">면접요청</a></p>
+		</div>
+	</div>
+</div>
+
 <div id="containerWrap">
 	<div id="container">
 		<div id="leftPart">
@@ -226,7 +272,7 @@
 						<li><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>
 					</c:if>
 					<c:if test="${interviewCnt <= 0 }">
-						<li class="res_ok"><a href="#none" title="면접제의">면접제의</a></li>
+						<li class="res_ok"><a href="javascript:applyPopup();" title="면접제의">면접제의</a></li>
 					</c:if>
 				</ul>
 			</ul>
@@ -239,7 +285,7 @@
 <form id="registForm" name="registForm" method="post">
 	<input type="hidden" name="no" id="no" value="${map.no}" />
 	<input type="hidden" name="uid" id="uid" value="${SE_LOGIN_ID }">
-	<input type="hidden" name="rUid" id="rUid" value="">
+	<input type="hidden" name="rUid" id="rUid" value="${resumeMap.uid }">
 	<input type="hidden" name="scrapCnt" id="scrapCnt" value="${scrapCnt }">
 	<input type="hidden" name="interviewCnt" id="interviewCnt" value="${interviewCnt }">
 	<input type="hidden" name="recruitCnt" id="recruitCnt" value="${recruitCnt }">
@@ -250,16 +296,24 @@
 	
 	$(document).ready(function(){
 		
+		$(".close_btn, .btnArea .a01").on("click", function(e){
+			$("#resumeSel").val("");
+			$("#popupWrap_applyWrap").css("display", "none");
+		});
+		
+		$(".btnArea .a02").on("click", function(e){
+			registApply();
+		});
 		
 	});	
 
 	// 스크랩 등록
 	function goScrapRegist(){
 		
-		//if($("#resumeCnt").val() <= 0){
-		//	alert("이력서를 먼저 작성해 주세요");
-		//	return;
-		//}else{
+		if($("#recruitCnt").val() <= 0){
+			alert("채용공고를 먼저 작성해 주세요");
+			return;
+		}else{
 			loadingOn();
 			var callback = function(data){
 				alert("저장 되었습니다.");
@@ -275,11 +329,11 @@
 						, rUid : $("#rUid").val()
 					};
 			ajax('post', '/registScrap.ajax', param, callback);
-		//}
+		}
 	}
 	
 	// 입사지원 popup
-	function applyPopup(applyType){
+	function applyPopup(){
 		
 		if($("#resumeCnt").val() <= 0){
 			alert("이력서를 먼저 작성해 주세요");
@@ -290,27 +344,47 @@
 				if(data.rstCnt > 0){
 					alert("이미 지원 하셨습니다.");
 					loadingOff();
+				
 				}else{
-					// 입사 지원 popup];
+					$("html").scrollTop(0);
+					$("#popupWrap_applyWrap").css("display", "inline-block");
 				}
 			};
 			
 			var param = {
-						toType : applyType
+						toType : "interview"
 						, type : "job"
 						, subType : "company"
 						, uid : $("#uid").val()
 						, toUid : $("#rUid").val()
 						, toNo : $("#no").val()
 					}; 
-			ajax('post', '/selectNetfuOnlineRecruitRegistCnt.ajax', param, callback);
+			ajax('post', '/getNetfuOnlineRecruitRegistCnt.ajax', param, callback);
 		}		
 	}
 	
 	// 입사지원 등록
-	function registApply(applyType){
+	function registApply(){
+		loadingOn();
+		var callback = function(data){
+			loadingOff();
+			$("#resumeSel").val("");
+			$("#popupWrap_applyWrap").css("display", "none");
+			alert("면접제의가 완료 되었습니다.");
+		};
 		
-		
+		var param = {
+					toType : "interview"
+					, type : "job"
+					, subType : "company"
+					, uid : $("#uid").val()
+					, toUid : $("#rUid").val()
+					, toNo : $("#no").val()
+					, fromNo : $("#resumeSel option:selected").val()
+					, opened : "no"
+					, jobDetail : $("#resumeTitle").val()
+				}; 
+		ajax('post', '/insertNetfuOnlineRecruit.ajax', param, callback);
 	}
 	
 </script>

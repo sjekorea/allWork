@@ -27,6 +27,7 @@ import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
 import allwork.common.util.CommonUtil;
 import allwork.common.util.FileUtils;
+import allwork.common.util.MakeQueryUtil;
 import allwork.service.NetfuCateService;
 import allwork.service.NetfuCompanyService;
 import allwork.service.NetfuItemCompanyService;
@@ -35,6 +36,7 @@ import allwork.service.NetfuMemberService;
 import allwork.service.NetfuMyServiceService;
 import allwork.service.NetfuOnlineRecruitService;
 import allwork.service.NetfuScrapService;
+import allwork.service.RecruitViewService;
 
 @Controller
 public class CompanyController {
@@ -63,7 +65,10 @@ public class CompanyController {
 	private NetfuCateService netfuCateService;	
 
 	@Resource(name="fileUtils") 
-	private FileUtils fileUtils;	
+	private FileUtils fileUtils;			
+
+	@Resource(name="recruitViewService")
+	private RecruitViewService recruitViewService;	
 
 	//(begin) 2020.12.30 by s.yoo
 	@Resource(name="aiMatchingRecruitService")
@@ -114,16 +119,22 @@ public class CompanyController {
 			//(end) 2020.12.30 by s.yoo
 
 			// 맞춤 인재 정보 목록
+			Map<String, Object> myServiceMap = netfuMyServiceService.selectNetfuMyServiceMap(commandMap.getMap());
+			commandMap = MakeQueryUtil.makeMyResumeQuery(commandMap, myServiceMap);
 			List<Map<String, Object>> myServiceResumeList = netfuMyServiceService.selectMyServiceResumeList(commandMap.getMap());
 			
 			// 스크랩 이력서 정보
 			List<Map<String, Object>> resumeScrapList = netfuScrapService.selectResumeScrapList(commandMap.getMap());
+			
+			// 최근 본 인재
+			List<Map<String, Object>> resumeViewList = recruitViewService.selectResumeViewList(commandMap.getMap());
 			
 			mv.addObject("memberMap", memberMap);
 			mv.addObject("recruitList", recruitList);
 			mv.addObject("recommandResumeList", recommandResumeList);	//++2020.12.30 by s.yoo
 			mv.addObject("myServiceResumeList", myServiceResumeList);
 			mv.addObject("resumeScrapList", resumeScrapList);
+			mv.addObject("resumeViewList", resumeViewList);
 			mv.addObject("map", commandMap.getMap());
 			
 		}catch(Exception e){
@@ -235,18 +246,6 @@ public class CompanyController {
 			log.info(this.getClass().getName()+".registRecruit Exception !!!!! \n"+e.toString());
 			CommonUtil.Alert("등록에 실패 하였습니다.", "/companyHome.do", request, response);
 		}
-	}
-	
-	
-	/*
-	 * 면접제의 요청관리
-	 */
-	@RequestMapping(value="/interviewSuggestList.do")
-	public ModelAndView interviewSuggestList(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/company/interviewSuggestList");
-		
-		return mv;
 	}
 	
 	

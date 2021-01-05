@@ -26,6 +26,12 @@ public class NetfuItemResumeDao extends AbstractDAO{
 		return (List<Map<String, Object>>)selectList("netfuItemResume.selectNetfuItemResumeList", map);
 	}
 	
+	// 전체 이력서 리스트
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectNetfuItemResumeAllList(Map<String, Object> map) {
+		return (List<Map<String, Object>>)selectList("netfuItemResume.selectNetfuItemResumeAllList", map);
+	}
+	
 	// 등록된 이력서 갯수  - keyword 검색
 	public int selectKeywordNetfuItemResumeCnt(Map<String, Object> map) throws Exception{
 		return selectCnt("netfuItemResume.selectKeywordNetfuItemResumeCnt", map);

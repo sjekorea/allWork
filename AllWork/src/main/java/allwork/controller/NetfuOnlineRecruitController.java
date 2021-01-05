@@ -186,6 +186,71 @@ Logger log = Logger.getLogger(this.getClass());
 	
 	
 	/*
+	 * 면접제의 요청관리
+	 */
+	@RequestMapping(value="/interviewSuggestList.do")
+	public ModelAndView interviewSuggestList(CommandMap commandMap, HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView("/company/interviewSuggestList");
+		int pageSize = 10;
+		int totalSize = 0;
+		
+		try{
+			
+			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
+				commandMap.put("pageNo", "1");
+			}
+			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
+			commandMap.put("pageSize", pageSize);
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("applyType", "interview");
+			
+			// 입사 지원자 관리
+			List<Map<String, Object>> interviewList = netfuOnlineRecruitService.selectApplyList(commandMap.getMap());
+			Map<String, Object> pageMap = new HashMap<String, Object>();
+			if(interviewList.size() > 0){
+				totalSize = netfuOnlineRecruitService.selectApplyCnt(commandMap.getMap());
+				pageMap = PaginationUtil.makePageInfo(totalSize, pageSize, (String)commandMap.get("pageNo"));
+				commandMap.put("totalSize", totalSize);
+			}
+			
+			// 진행중인 채용정보
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+			commandMap.put("companyUid", (String)session.getAttribute("SE_LOGIN_ID"));
+			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyProceess(commandMap.getMap());
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("totalSize", totalSize);
+			mv.addObject("list", interviewList);
+			mv.addObject("recruitList", recruitList);
+			mv.addObject("pageMap", pageMap);
+		
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".interviewSuggestList Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+	
+	
+	/*
+	 * 입사지원 정보 저장
+	 */
+	@RequestMapping(value="/insertNetfuOnlineRecruit.ajax")
+	public ModelAndView insertNetfuOnlineRecruit(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		try{
+			int rstCnt = netfuOnlineRecruitService.insertNetfuOnlineRecruit(commandMap.getMap());
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("rstCnt", rstCnt);
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".insertNetfuOnlineRecruit Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+	
+	
+	/*
 	 * 입사지원 정보 삭제
 	 */
 	@RequestMapping(value="/deleteApplyMulti.ajax")

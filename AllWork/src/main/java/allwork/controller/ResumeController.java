@@ -20,11 +20,13 @@ import allwork.common.util.CommonColumnUtil;
 import allwork.common.util.ConvertUtil;
 import allwork.common.util.PaginationUtil;
 import allwork.service.NetfuCateService;
+import allwork.service.NetfuCompanyService;
 import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuItemResumeService;
 import allwork.service.NetfuMemberService;
 import allwork.service.NetfuOnlineRecruitService;
 import allwork.service.NetfuScrapService;
+import allwork.service.RecruitViewService;
 import de.ailis.pherialize.Mixed;
 import de.ailis.pherialize.MixedArray;
 import de.ailis.pherialize.Pherialize;
@@ -50,7 +52,13 @@ public class ResumeController {
 	private NetfuOnlineRecruitService netfuOnlineRecruitService;
 
 	@Resource(name="netfuCateService")
-	private NetfuCateService netfuCateService;
+	private NetfuCateService netfuCateService;	
+
+	@Resource(name="recruitViewService")
+	private RecruitViewService recruitViewService;
+
+	@Resource(name="netfuCompanyService")
+	private NetfuCompanyService netfuCompanyService;
 	
 	
 	/*
@@ -477,6 +485,16 @@ public class ResumeController {
 		try{
 			
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
+			
+			// 열람 정보 저장
+			commandMap.put("no", commandMap.get("resumeNo"));
+			commandMap.put("viewType", "resume");
+			recruitViewService.insertRecruitView(commandMap.getMap());
+			
+			// 회사정보 
+			commandMap.put("uid", commandMap.get("companyUid"));
+			Map<String, Object> companyMap = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
 			
 			// 개인회원정보 -- uid 
 			commandMap.put("uid", commandMap.get("personUid"));
@@ -503,8 +521,13 @@ public class ResumeController {
 			commandMap.put("uid", commandMap.get("companyUid"));
 			int recruitCnt = netfuItemCompanyService.selectNetfuItemCompanyCnt(commandMap.getMap());
 			
+			// 진행중인 채용정보 목록
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyProceess(commandMap.getMap());
+			
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("memberMap", memberMap);
+			mv.addObject("companyMap", companyMap);
 			mv.addObject("resumeMap", resumeMap);
 			
 			/*
@@ -533,6 +556,7 @@ public class ResumeController {
 			mv.addObject("scrapCnt", scrapCnt);
 			mv.addObject("interviewCnt", interviewCnt);
 			mv.addObject("recruitCnt", recruitCnt);
+			mv.addObject("recruitList", recruitList);
 			
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".resumeDetail Exception !!!!! \n"+e.toString());

@@ -55,5 +55,11 @@ public class NetfuMyServiceServiceImpl implements NetfuMyServiceService{
 	public int insertNetfuMyService(Map<String, Object> map) throws Exception {
 		return netfuMyServiceDao.insertNetfuMyService(map);
 	}
+	
+	// 맞춤 채용정보 수정
+	@Override
+	public int updateNetfuMyService(Map<String, Object> map) throws Exception {
+		return netfuMyServiceDao.updateNetfuMyService(map);
+	}
 
 }

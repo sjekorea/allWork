@@ -14,7 +14,7 @@
 <div id="containerWrap">
 	<div id="leftPart">
 		<div id="paymentBox">
-			<p>결제하실 금액 <strong>0</strong>원 <span class="payBtn"><a href="#" title="내역보기">내역보기</a></span></p>
+			<p>결제하실 금액 <strong>0</strong>원 <span class="payBtn"><a href="/resumeSearchPaidList.do" title="내역보기">내역보기</a></span></p>
 			<p>충전금 <strong>0</strong>원</p>
 		</div>
 		<div id="menuTree">
@@ -94,7 +94,7 @@
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
-						<li style="width:100%;"><div class="desc01">내역이 없습니다.</div></li>
+						<li style="width:100%;align:center;"><div class="desc01" style="text-align:center;">내역이 없습니다.</div></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
@@ -223,7 +223,7 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<tr><td class="desc00" colspan="6">내역이 없습니다.</td></tr>
+							<tr><td class="desc00" colspan="6" style="text-align:center;height:50px;">내역이 없습니다.</td></tr>
 						</c:otherwise>
 					</c:choose>
 				</tbody>
@@ -274,27 +274,46 @@
 			</table>
 			<table class="list"  id="list03" style="display:none;">
 				<tbody class="tabelArea">
-					<tr>
-					<th></th>
-					<td class="desc00">
-					<span>주oo</span><br/>
-					<span>남/64년생</span><br/>
-					<span>대학교졸업(2,3년)</span>
-					</td>
-					<td class="desc01">
-					<a href="#none"><span class="desc01_01">영업관리</span></a>
-					</td>
-					<td class="desc02">
-					<span>경기&nbsp;>&nbsp;수원시</span><br/>
-					<span>서울&nbsp;>&nbsp;구로구</span>
-					</td>
-					<td class="desc03">
-					<span>신입</span><br/>
-					<span>회사내규에따름</span>
-					</td>
-					<td class="date">2020.08.27</td>
-					</a>
-					</tr>
+					<c:choose>
+						<c:when test="${resumeScrapList.size() > 0 }">
+							<c:forEach var="result" items="${resumeScrapList}" varStatus="status">
+								<tr>
+									<th></th>
+									<td class="desc00">
+										<span>${result.name }</span><br/>
+										<span>${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span><br/>
+										<span>${codeConvert:getLastSchool(result.inidLastSchool) }</span>
+									</td>
+									<td class="desc01">
+										<a href="#none">
+											<span class="desc01_01">
+												${result.inidType1Name }
+												${convert:checkNull(result.inidType2Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType2Name) }
+												${convert:checkNull(result.inidType3Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType3Name) }
+											</span>
+										</a>
+									</td>
+									<td class="desc02">
+										<span>
+											${result.inidArea1Name }
+											${convert:checkNull(result.inidArea2Name) eq '' ? '</span>' : '&nbsp;>&nbsp;'.concat(result.inidArea2Name).concat('</span>') }
+											${convert:checkNull(result.inidArea3Name) eq '' ? '</span>' : '<br/><span>'.concat(result.inidArea3Name) }
+											${convert:checkNull(result.inidArea4Name) eq '' ? '</span>' : '&nbsp;>&nbsp;'.concat(result.inidArea4Name).concat('</span>') }
+											${convert:checkNull(result.inidArea5Name) eq '' ? '</span>' : '<br/><span>'.concat(result.inidArea5Name) }
+											${convert:checkNull(result.inidArea6Name) eq '' ? '</span>' : '&nbsp;>&nbsp;'.concat(result.inidArea6Name).concat('</span>') }
+									</td>
+									<td class="desc03">
+										<span>${result.inidJobformName }</span><br/>
+										<span>${result.inidPayName }</span>
+									</td>
+									<td class="date">${result.wdate }</td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr><td class="desc00" colspan="6">내역이 없습니다.</td></tr>
+						</c:otherwise>
+					</c:choose>
 				</tbody>
 			</table>
 		</div>

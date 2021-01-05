@@ -96,9 +96,17 @@ public class NetfuItemResumeVo {
 	private String inidAreaJob9;
 	private String inidAreaJob9Name;
 	private String portfolioFile;
+	private String viewDate;
 	
 	
 	
+	
+	public String getViewDate() {
+		return viewDate;
+	}
+	public void setViewDate(String viewDate) {
+		this.viewDate = viewDate;
+	}
 	public String getInidAreaJob1() {
 		return inidAreaJob1;
 	}

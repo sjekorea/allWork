@@ -74,6 +74,7 @@ public class NetfuConcernController {
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
 			// 관심기업 목록
 			List<Map<String, Object>> netfuConcernList = netfuConcernService.selectNetfuConcernList(commandMap.getMap());
@@ -118,11 +119,12 @@ public class NetfuConcernController {
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
+			
 			// 관심기업 목록
-			List<Map<String, Object>> recruitByCompanyList = netfuItemCompanyService.selectNetfuItemCompanyListByCompany(commandMap.getMap());
+			List<Map<String, Object>> recruitByCompanyList = netfuConcernService.selectNetfuConcernRecruitList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitByCompanyList.size() > 0){
-				totalSize = netfuItemCompanyService.selectNetfuItemCompanyCntByCompany(commandMap.getMap());
+				totalSize = netfuConcernService.selectNetfuConcernRecruitCnt(commandMap.getMap());
 				pageMap = PaginationUtil.makePageInfo(totalSize, pageSize, (String)commandMap.get("pageNo"));
 				commandMap.put("totalSize", totalSize);
 			}

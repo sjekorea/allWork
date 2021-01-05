@@ -18,47 +18,49 @@
 <link rel="stylesheet" type="text/css" href="/css/company_01_view.css"/>
 
 <div id="popupWrap_applyWrap" style="display:none;">
-<div id="popupWrap_apply">
-<div class="topArea">
-<p class="close_btn"><i class="fas fa-times"></i></p>
-<p class="email_img"><i class="fas fa-envelope-open-text"></i></p>
-<p>이메일 입사지원</p>
-</div>
-<div class="descArea">
-<p>
-채용 담당자의 이메일로 홍길동님의 이력서가 전송됩니다.
-</p>
-<form>
-<fieldset>
-<legend>이메일 입사지원</legend>
-<ul class="title">
-<li>보내는 사람</li>
-<li>채용 담당자</li>
-<li>이메일 제목</li>
-<li>지원 이력서</li>
-<li>첨부파일</li>
-</ul>
-<ul class="desc">
-<li>홍길동(test@hanmail.net)</li>
-<li>신규식(test@hanmail.net)</li>
-<li><input type="text"/></li>
-<li>
-<select>
-<option value="3차직무선택">홍길동 이력</option>
-</select>
-</li>
-<li>
-<input id="res09_desc01"/><label for="res09_desc01_1">파일첨부</label><input id="res09_desc01_1" type="file"/>
-</li>
-</ul>
-</fieldset>
-</form>
-</div>
-<div class="btnArea">
-<p class="a01"><a href="#" title="취소">취소</a></p>
-<p class="a02"><a href="#" title="지원하기">지원하기</a></p>
-</div>
-</div>
+	<div id="popupWrap_apply">
+		<div class="topArea">
+			<p class="close_btn"><i class="fas fa-times"></i></p>
+			<p class="email_img"><i class="fas fa-envelope-open-text"></i></p>
+			<p>이메일 입사지원</p>
+		</div>
+		<div class="descArea">
+			<p>
+				채용 담당자의 이메일로 ${SE_USER_NM }님의 이력서가 전송됩니다.
+			</p>
+			<form>
+				<fieldset>
+					<legend>이메일 입사지원</legend>
+					<ul class="title">
+						<li>보내는 사람</li>
+						<li>채용 담당자</li>
+						<li>이메일 제목</li>
+						<li>지원 이력서</li>
+						<!-- <li>첨부파일</li> -->
+					</ul>
+					<ul class="desc">
+						<li>${personMap.name }(${personMap.email })</li>
+						<li>${recruitMap.bizPerson }(${recruitMap.bizPemail })</li>
+						<li><input type="text" id="resumeTitle" name="resumeTitle" value="" /></li>
+						<li>
+						<select id="resumeSel" name="resumeSel">
+							<c:forEach var="result" items="${resumeList}" varStatus="status">
+								<option value="${result.no }">${result.inidTitle }</option>
+							</c:forEach>
+						</select>
+						</li>
+						<!-- <li>
+							<input id="res09_desc01"/><label for="res09_desc01_1">파일첨부</label><input id="res09_desc01_1" type="file"/>
+						</li> -->
+					</ul>
+				</fieldset>
+			</form>
+		</div>
+		<div class="btnArea">
+			<p class="a01"><a href="#" title="취소">취소</a></p>
+			<p class="a02"><a href="#" title="지원하기">지원하기</a></p>
+		</div>
+	</div>
 </div>
 
 <div id="containerWrap">
@@ -255,24 +257,32 @@
 	<input type="hidden" name="scrapCnt" id="scrapCnt" value="${scrapCnt }">
 	<input type="hidden" name="concernCnt" id="concernCnt" value="${concernCnt }">
 	<input type="hidden" name="resumeCnt" id="resumeCnt" value="${resumeCnt }">
+	<input type="hidden" name="applyType" id="applyType" value="">
 </form>
 
 
 <script type="text/javascript">
 	
 	$(document).ready(function(){
-		$(".close_btn").on("click", function(e){
+		$(".close_btn, .a01").on("click", function(e){
+			$("#applyType").val("");
 			$("#popupWrap_applyWrap").css("display", "none");
+		});
+		
+		$(".btnArea .a02").on("click", function(e){
+			registApply();
 		});
 	});	
 
 	// 스크랩 등록
 	function goScrapRegist(){
 		
-		//if($("#resumeCnt").val() <= 0){
-		//	alert("이력서를 먼저 작성해 주세요");
-		//	return;
-		//}else{
+		if($("#resumeCnt").val() <= 0){
+			alert("이력서를 먼저 작성해 주세요");
+			return;
+			
+		}else{
+			
 			loadingOn();
 			var callback = function(data){
 				alert("저장 되었습니다.");
@@ -288,15 +298,15 @@
 						, rUid : $("#rUid").val()
 					};
 			ajax('post', '/registScrap.ajax', param, callback);
-		//}
+		}
 	}
 	
 	// 관심기업 등록
 	function goConcernRegist(){
-		//if($("#resumeCnt").val() <= 0){
-		//	alert("이력서를 먼저 작성해 주세요");
-		//	return;
-		//}else{
+		if($("#resumeCnt").val() <= 0){
+			alert("이력서를 먼저 작성해 주세요");
+			return;
+		}else{
 			loadingOn();
 			var callback = function(data){
 				alert("저장 되었습니다.");
@@ -312,43 +322,63 @@
 						, rUid : $("#rUid").val()
 					};
 			ajax('post', '/registNetfuConcern.ajax', param, callback);
-		//}
+		}
 	}
 	
 	// 입사지원 popup
 	function applyPopup(applyType){
 		
-		//if($("#resumeCnt").val() <= 0){
-		//	alert("이력서를 먼저 작성해 주세요");
-		//	return;
+		$("#applyType").val(applyType);
 		
-		//}else{
-		//	var callback = function(data){
-		//		if(data.rstCnt > 0){
-		//			alert("이미 지원 하셨습니다.");
-		//			loadingOff();
-		//		}else{
+		if(Number($("#resumeCnt").val()) <= 0){
+			alert("이력서를 먼저 작성해 주세요");
+			return;
+		
+		}else{
+			
+			var callback = function(data){
+				if(data.rstCnt > 0){
+					alert("이미 지원 하셨습니다.");
+					loadingOff();
+				}else{
 					$("html").scrollTop(0);
 					$("#popupWrap_applyWrap").css("display", "inline-block");
-		//		}
-		//	};
+				}
+			};
 			
-		//	var param = {
-		//				toType : applyType
-		//				, type : "job"
-		//				, subType : "company"
-		//				, uid : $("#uid").val()
-		//				, toUid : $("#rUid").val()
-		//				, toNo : $("#no").val()
-		//			}; 
-		//	ajax('post', '/selectNetfuOnlineRecruitRegistCnt.ajax', param, callback);
-		//}		
+			var param = {
+						toType : applyType
+						, type : "job"
+						, subType : "company"
+						, uid : $("#uid").val()
+						, toUid : $("#rUid").val()
+						, toNo : $("#no").val()
+					}; 
+			ajax('post', '/getNetfuOnlineRecruitRegistCnt.ajax', param, callback);
+		}		
 	}
 	
 	// 입사지원 등록
-	function registApply(applyType){
+	function registApply(){
+		loadingOn();
+		var callback = function(data){
+			loadingOff();
+			$("#popupWrap_applyWrap").css("display", "none");
+			alert("입사지원이 완료 되었습니다.");
+		};
 		
-		
+		var param = {
+					toType : $("#applyType").val()
+					, type : "job"
+					, subType : "company"
+					, uid : $("#uid").val()
+					, toUid : $("#rUid").val()
+					, toNo : $("#no").val()
+					, fromNo : $("#resumeSel option:selected").val()
+					, opened : "no"
+					, jobDetail : $("#resumeTitle").val()
+				}; 
+		ajax('post', '/insertNetfuOnlineRecruit.ajax', param, callback);
 	}
 	
 </script>

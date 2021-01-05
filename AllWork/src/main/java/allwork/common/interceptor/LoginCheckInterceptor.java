@@ -25,30 +25,6 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 			HttpSession session = request.getSession(false);
 			
 			if(session == null || session.getAttribute("SE_LOGIN_STATUS") == null || !((Boolean) session.getAttribute("SE_LOGIN_STATUS")).booleanValue()){
-				
-				Enumeration param = request.getParameterNames();
-		        String strParam = ""; 
-		        while(param.hasMoreElements()) { 
-		            String name = (String)param.nextElement(); 
-		            String value = request.getParameter(name); 
-		            strParam += name + "=" + value + "&"; 
-		        }
-		        
-		        if(!"".equals(strParam) && strParam != null){
-		        	strParam = strParam.substring(0, strParam.length() -1);
-		        }
-		        
-		        String requestUri = "";
-		        if(!"".equals(strParam) && strParam != null){
-		        	if(!"/".equals(request.getRequestURI())){
-		        		requestUri = request.getRequestURL() + "?" + strParam;
-		        	}else{
-		        		requestUri = "/index.do";
-		        	}
-		        }
-		        
-				request.getSession().setAttribute("requestUri", requestUri);
-				
 				response.sendRedirect("/login.do");
 				return false;
 			}

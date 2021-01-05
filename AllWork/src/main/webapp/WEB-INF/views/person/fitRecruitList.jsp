@@ -20,52 +20,54 @@
 			<div id="detailArea">
 				<h4>맞춤채용정보</h4>
 				<p class="delete"><a href="#" title="맞춤설정">맞춤설정</a></p>
-				<table>
-					<tbody class="tabelArea">
-						<tr>
-							<th class="table_title">직종</th>
-							<th colspan="3" class="table_desc01">
-								${myServiceMap.job1Name } 
-								${convert:checkNull(myServiceMap.job2Name) eq '' ? '' : '>'.concat(myServiceMap.job2Name) }
-								${convert:checkNull(myServiceMap.job3Name) eq '' ? '' : '>'.concat(myServiceMap.job3Name) }
-								${convert:checkNull(myServiceMap.job4Name) eq '' ? '' : '<br/>'.concat(myServiceMap.job4Name) }
-								${convert:checkNull(myServiceMap.job5Name) eq '' ? '' : '>'.concat(myServiceMap.job5Name) }
-								${convert:checkNull(myServiceMap.job6Name) eq '' ? '' : '>'.concat(myServiceMap.job6Name) }
-								${convert:checkNull(myServiceMap.job7Name) eq '' ? '' : '<br/>'.concat(myServiceMap.job7Name) }
-								${convert:checkNull(myServiceMap.job8Name) eq '' ? '' : '>'.concat(myServiceMap.job8Name) }
-								${convert:checkNull(myServiceMap.job9Name) eq '' ? '' : '>'.concat(myServiceMap.job9Name) }
-							</th>
-						</tr>
-						<tr>
-							<td class="table_title">근무지역</td>
-							<td class="table_desc">
-								${myServiceMap.areaName }
-								${convert:checkNull(myServiceMap.area2Name) eq '' ? '' : '>'.concat(myServiceMap.area2Name) }
-								${convert:checkNull(myServiceMap.area3Name) eq '' ? '' : '<br/>'.concat(myServiceMap.area3Name) }
-								${convert:checkNull(myServiceMap.area4Name) eq '' ? '' : '>'.concat(myServiceMap.area4Name) }
-								${convert:checkNull(myServiceMap.area5Name) eq '' ? '' : '<br/>'.concat(myServiceMap.area5Name) }
-								${convert:checkNull(myServiceMap.area6Name) eq '' ? '' : '>'.concat(myServiceMap.area6Name) }
-							</td>
-							<td class="table_title">성별</td>
-							<td class="table_desc">${codeConvert:getBizSex(myServiceMap.sex) }</td>
-						</tr>
-						<tr>
-							<td class="table_title">학력</td>
-							<td class="table_desc">${codeConvert:getBizAbility(myServiceMap.school) }</td>
-							<td class="table_title">고용형태</td>
-							<td class="table_desc">${myServiceMap.formName }</td>
-						</tr>
-						<tr>
-							<td class="table_title">급여정도</td>
-							<td class="table_desc">${myServiceMap.payTypeName } / ${myServiceMap.payName }</td>
-							<td class="table_title">경력</td>
-							<td class="table_desc">${codeConvert:getBizCareerSplit(myServiceMap.career) }</td>
-						</tr>
-					</tbody>
-				</table>
+				<c:if test="${!myServiceMap.isEmpty()}">
+					<table>
+						<tbody class="tabelArea">
+							<tr>
+								<th class="table_title">직종</th>
+								<th colspan="3" class="table_desc01">
+									${myServiceMap.job1Name } 
+									${convert:checkNull(myServiceMap.job2Name) eq '' ? '' : '>'.concat(myServiceMap.job2Name) }
+									${convert:checkNull(myServiceMap.job3Name) eq '' ? '' : '>'.concat(myServiceMap.job3Name) }
+									${convert:checkNull(myServiceMap.job4Name) eq '' ? '' : '<br/>'.concat(myServiceMap.job4Name) }
+									${convert:checkNull(myServiceMap.job5Name) eq '' ? '' : '>'.concat(myServiceMap.job5Name) }
+									${convert:checkNull(myServiceMap.job6Name) eq '' ? '' : '>'.concat(myServiceMap.job6Name) }
+									${convert:checkNull(myServiceMap.job7Name) eq '' ? '' : '<br/>'.concat(myServiceMap.job7Name) }
+									${convert:checkNull(myServiceMap.job8Name) eq '' ? '' : '>'.concat(myServiceMap.job8Name) }
+									${convert:checkNull(myServiceMap.job9Name) eq '' ? '' : '>'.concat(myServiceMap.job9Name) }
+								</th>
+							</tr>
+							<tr>
+								<td class="table_title">근무지역</td>
+								<td class="table_desc">
+									${myServiceMap.areaName }
+									${convert:checkNull(myServiceMap.area2Name) eq '' ? '' : '>'.concat(myServiceMap.area2Name) }
+									${convert:checkNull(myServiceMap.area3Name) eq '' ? '' : '<br/>'.concat(myServiceMap.area3Name) }
+									${convert:checkNull(myServiceMap.area4Name) eq '' ? '' : '>'.concat(myServiceMap.area4Name) }
+									${convert:checkNull(myServiceMap.area5Name) eq '' ? '' : '<br/>'.concat(myServiceMap.area5Name) }
+									${convert:checkNull(myServiceMap.area6Name) eq '' ? '' : '>'.concat(myServiceMap.area6Name) }
+								</td>
+								<td class="table_title">성별</td>
+								<td class="table_desc">${codeConvert:getBizSex(myServiceMap.sex) }</td>
+							</tr>
+							<tr>
+								<td class="table_title">학력</td>
+								<td class="table_desc">${codeConvert:getBizAbility(myServiceMap.school) }</td>
+								<td class="table_title">고용형태</td>
+								<td class="table_desc">${myServiceMap.formName }</td>
+							</tr>
+							<tr>
+								<td class="table_title">급여정도</td>
+								<td class="table_desc">${myServiceMap.payTypeName } / ${myServiceMap.payName }</td>
+								<td class="table_title">경력</td>
+								<td class="table_desc">${codeConvert:getBizCareerSplit(myServiceMap.career) }</td>
+							</tr>
+						</tbody>
+					</table>
+				</c:if>
 			</div>
 			<div id="listPart">
-				<p class="listTitle">검색된 맞춤채용정보</p>
+				<p class="listTitle">맞춤채용정보</p>
 				<select id="align">
 					<option value="">정렬방식선택</option>
 					<option value="wdate desc" <c:if test="${map.orderRule eq 'wdate desc'}">selected</c:if>>등록일순</option>
@@ -114,7 +116,7 @@
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<tr class="desc"><td colspan="6">내역이 없습니다.</td></tr>
+								<td colspan="5" style="text-align: center; height: 80px;">내역이 없습니다.</td>
 							</c:otherwise>
 						</c:choose>
 					</tbody>

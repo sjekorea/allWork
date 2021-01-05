@@ -74,5 +74,11 @@ public class NetfuOnlineRecruitServiceImpl implements NetfuOnlineRecruitService{
 	public int deleteNetfuOnlineRecruitMulti(Map<String, Object> map) throws Exception {
 		return netfuOnlineRecruitDao.deleteNetfuOnlineRecruitMulti(map);
 	}
+	
+	// 입사지원정보 저장
+	@Override
+	public int insertNetfuOnlineRecruit(Map<String, Object> map) throws Exception {
+		return netfuOnlineRecruitDao.insertNetfuOnlineRecruit(map);
+	}
 
 }

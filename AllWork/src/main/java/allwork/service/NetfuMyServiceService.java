@@ -11,5 +11,6 @@ public interface NetfuMyServiceService {
 	List<Map<String, Object>> selectMyServiceResumeList(Map<String, Object> map) throws Exception;
 	Map<String, Object> selectNetfuMyServiceMap(Map<String, Object> map) throws Exception;
 	int insertNetfuMyService(Map<String, Object> map) throws Exception;
+	int updateNetfuMyService(Map<String, Object> map) throws Exception;
 
 }

@@ -50,11 +50,25 @@ public class CommonController {
 			
 			// popup 정보
 			List<Map<String, Object>> popupList = homeCommonService.selectMainPopupList(commandMap.getMap());
+			System.out.println("popupList.size() : "+popupList.size());
 			mv.addObject("popupList", popupList);
 			
 		}catch(Exception e){
 			System.out.println(this.getClass().getName()+".home Exception!!! \n"+e.toString());
 		}
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/mainWinPop.do")
+	public ModelAndView mainWinPop(CommandMap commandMap) {
+		
+		System.out.println("###########################    ");
+		
+		ModelAndView mv = new ModelAndView("/popup/mainWinPop");
+		
+		
 		
 		return mv;
 	}

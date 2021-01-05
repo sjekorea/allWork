@@ -12,11 +12,18 @@
 			AND `left` <![CDATA[ <> ]]> 'yes'
 			<!-- (end) 2021.01.03 by s.yoo	-->
 			<choose>
-				<when test="personUid != null and personUid != ''">
-					and uid = BINARY(#{personUid})	
-				</when>
+				<when test="uid != null and uid != ''">
+					and uid = BINARY(#{uid})	
+				</when>	
 				<otherwise>
-					and uid = BINARY(#{loginId})
+					<choose>
+						<when test="personUid != null and personUid != ''">
+							and uid = BINARY(#{personUid})	
+						</when>
+						<otherwise>
+							and uid = BINARY(#{loginId})
+						</otherwise>
+					</choose>
 				</otherwise>
 			</choose>
 	</select>

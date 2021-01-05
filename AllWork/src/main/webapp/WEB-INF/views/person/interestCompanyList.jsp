@@ -35,10 +35,10 @@
 									<tr class="desc">
 										<td class="desc00"><input type="checkbox" name="chk" value="${result.rUid }" /></td>
 										<td class="desc01">
-											<a href="javascript:goRecruitList('${result.rUid }', '');">${result.bizName }</a>
+											<a href="javascript:goRecruitList('${result.rUid }');">${result.bizName }</a>
 										</td>
 										<td class="desc02">
-											<a href="javascript:goRecruitList('${result.rUid }', 'no');">채용중 <span>${result.bizIngCnt }</span>건</a>
+											<a href="javascript:goRecruitList('${result.rUid }');">채용중 <span>${result.bizIngCnt }</span>건</a>
 										</td>
 										<td class="desc03"><input type="radio"/></td>
 									</tr>
@@ -101,10 +101,10 @@
 		ajax('post', '/deleteNetfuConcernMulti.ajax', param, callback);
 	}
 	
-	function goRecruitList(companyUid, bizIng){
+	function goRecruitList(companyUid){
 		loadingOn();
 		$("#companyUid").val(companyUid);
-		$("#bizIng").val(bizIng);
+		$("#bizIng").val("no");
 		$("#pageNo").val("");
 		$("#searchForm").attr("action", "/recruitByCompanyList.do");
 		$("#searchForm").submit();
