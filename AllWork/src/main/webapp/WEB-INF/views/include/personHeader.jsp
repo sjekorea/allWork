@@ -58,7 +58,7 @@
 						<li><a href="/recruitSearch.do" title="채용정보">채용정보</a></li>
 						<li><a href="/headhuntList.do" title="헤드헌팅">헤드헌팅</a></li>
 						<li><a href="/progressList.do" title="채용진행현황">채용진행현황</a></li>
-						<li><a href="/noticeList.do" title="커뮤니티">커뮤니티</a></li>
+						<li><a href="/noticeList.do" title="고객센터">고객센터</a></li>
 					</ul>
 					<ul class="linkArea">
 						<li class="a01"><span>${SE_USER_NM }&nbsp;&nbsp;&nbsp;</span><a href="/resumeList.do" title="이력서 관리">이력서 관리</a></li>
@@ -74,7 +74,7 @@
 							<h4>채용정보</h4>
 							<ul>
 								<li class="sitemap_depth01">
-									<a href="#" title="채용정보">채용정보</a>
+									<a href="/recruitSearch.do" title="채용정보">채용정보</a>
 									<ul class="sub">
 										<li class="sitemap_depth02"><a href="/recruitSearch.do" title="상세검색">상세검색</a></li>
 										<li class="sitemap_depth02"><a href="/recruitSearchByDuty.do" title="직무별">직무별</a></li>
@@ -97,36 +97,37 @@
 						<div>
 							<h4>채용진행현황</h4>
 							<ul>
-								<li class="sitemap_depth01"><a href="#" title="면접진행">면접진행</a></li>
-								<li class="sitemap_depth01"><a href="#" title="기업방문">기업방문</a></li>
-								<li class="sitemap_depth01"><a href="#" title="이력서제공">이력서제공</a></li>
-								<li class="sitemap_depth01"><a href="#" title="재취업성공">재취업성공</a></li>
-								<li class="sitemap_depth01"><a href="#" title="사전면접">사전면접</a></li>
+							<li class="sitemap_depth01"><a href="/progressInterview.do" title="면접진행">면접진행</a>
+							<li class="sitemap_depth01"><a href="/progressVisitCompany.do" title="기업방문">기업방문</a></li>
+							<li class="sitemap_depth01"><a href="/progressProvideResume.do" title="이력서제공">이력서제공</a></li>
+							<li class="sitemap_depth01"><a href="/progressSuccess.do" title="재취업성공">재취업성공</a></li>
+							<li class="sitemap_depth01"><a href="/progressPreMeeting.do" title="사전면접">사전면접</a></li>
+							<li class="sitemap_depth01"><a href="/progressConsulting.do" title="적응컨설팅">적응컨설팅</a></li>
 							</ul>
 						</div>
 						<div>
-							<h4>커뮤니티</h4>
+							<h4>고객센터</h4>
 							<ul>
 								<li class="menu menu01"><a href="/noticeList.do" title="공지사항">공지사항</a></li>
-								<li class="menu menu02"><a href="/boardList.do" title="게시판">게시판</a></li>
-								<li class="menu menu03"><a href="#" title="FAQ">FAQ</a></li>
-								<li class="menu menu04"><a href="#" title="이용안내">이용안내</a>
-								<ul class="sub">
-									<li><a href="#" title="유료채용광고 문의">유료채용광고 문의</a></li>
-								</ul>
+								<li class="menu menu02"><a href="/bbsList.do" title="게시판">게시판</a></li>
+								<li class="menu menu03"><a href="/faqList.do" title="FAQ">FAQ</a></li>
+								<li class="menu menu04"><a href="/paymentGuide.do" title="이용안내">이용안내</a>
+									<ul class="sub">
+										<li><a href="/paymentGuide.do" title="유료채용광고 문의">유료채용광고 문의</a></li>
+									</ul>
 								</li>
-									<li class="menu menu05"><a href="#" title="이용약관">이용약관</a></li>
-									<li class="menu menu06"><a href="#" title="개인정보 취급방침">개인정보 취급방침</a></li>
-									<li class="menu menu07"><a href="#" title="불편 및 신고상황 접수">불편 및 신고상황 접수</a></li>
-									<li class="menu menu08"><a href="#" title="모바일 서비스">모바일 서비스</a></li>
-									<li class="menu menu09"><a href="#" title="자료실">자료실</a></li>
-								</ul>
-							</div>
-							<p class="allMenu_ect">
-								<span><a href="/noticeList.do" title="고객센터">고객센터</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-								<span><a href="/introAbout.do" title="회사소개">회사소개</a></span>
-							</p>
+								<li class="menu menu05"><a href="/termsOfService.do" title="이용약관">이용약관</a></li>
+								<li class="menu menu06"><a href="/privacyPolicy.do" title="개인정보 취급방침">개인정보 취급방침</a></li>
+								<li class="menu menu07"><a href="/customerClaim.do" title="불편 및 신고상황 접수">불편 및 신고상황 접수</a></li>
+								<li class="menu menu08"><a href="/mobileGuide.do" title="모바일 서비스">모바일 서비스</a></li>
+								<li class="menu menu09"><a href="/libraryList.do" title="자료실">자료실</a></li>
+							</ul>
 						</div>
+						<p class="allMenu_ect">
+							<span><a href="/sitemap.do" title="사이트맵">사이트맵</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+							<span><a href="/introAbout.do" title="회사소개">회사소개</a></span>
+						</p>
 					</div>
 				</div>
-	
+			</div>
+		</div>

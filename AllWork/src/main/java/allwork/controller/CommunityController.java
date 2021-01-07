@@ -34,9 +34,6 @@ public class CommunityController {
 	private String strDefaultBoardCode =  "netfu_57809_60663";		//default는 공지사항.
 	
 	
-	//@Autowired protected AdminBbsSetupService bbsSetupService;
-	//@Autowired protected ApiBbsDataService bbsService;
-	
 	@Resource(name="adminBbsSetupService")
 	protected AdminBbsSetupService bbsSetupService;
 
@@ -45,31 +42,55 @@ public class CommunityController {
 
 
 	/*
-	 * 커뮤니티.
+	 * 고객센터 인터페이스.
 	 */
+	//고객센터 - 공지사항.
 	@RequestMapping(value="/noticeList.do")
 	public ModelAndView noticeList(CommandMap commandMap, Locale locale) {
 		log.info("/noticeList.do");
 
-		commandMap.put("pageNo", 1);
+		//commandMap.put("pageNo", 1);
 		commandMap.put("boardCode", "netfu_57809_60663");
 		return procBoardList(commandMap);
 	}
 
+	//고객센터 - 게시판.
+	@RequestMapping(value="/bbsList.do")
+	public ModelAndView bbsList(CommandMap commandMap, Locale locale) {
+		log.info("/bbsList.do");
+
+		//commandMap.put("pageNo", 1);
+		commandMap.put("boardCode", "netfu_41549_84812");
+		return procBoardList(commandMap);
+	}
+
+	//고객센터 - FAQ.
 	@RequestMapping(value="/faqList.do")
 	public ModelAndView faqList(CommandMap commandMap, Locale locale) {
 		log.info("/faqList.do");
 
-		commandMap.put("pageNo", 1);
+		//commandMap.put("pageNo", 1);
 		commandMap.put("boardCode", "netfu_92829_39479");
 		return procBoardList(commandMap);
 	}
 
+	//고객센터 - 불편 및 신고사항 접수.
+	@RequestMapping(value="/customerClaim.do")
+	public ModelAndView customerClaim(CommandMap commandMap, HttpSession session, Locale locale) {
+		log.info("/customerClaim.do");
+
+		//commandMap.put("pageNo", 1);
+		commandMap.put("boardCode", "netfu_44304_38055");
+		commandMap.put("no", 0);
+		return procBoardEdit(commandMap, session);
+	}
+
+	//고객센터 - 자료실.
 	@RequestMapping(value="/libraryList.do")
 	public ModelAndView libraryList(CommandMap commandMap, Locale locale) {
 		log.info("/libraryList.do");
 
-		commandMap.put("pageNo", 1);
+		//commandMap.put("pageNo", 1);
 		commandMap.put("boardCode", "netfu_94498_34711");
 		return procBoardList(commandMap);
 	}
@@ -234,6 +255,46 @@ public class CommunityController {
 			mv.addObject("map", commandMap.getMap());
 		} catch(Exception e) {
 			log.info(this.getClass().getName()+".boardEdit Exception !!!!! \n"+e.toString());
+		}
+
+		return mv;
+	}
+
+	protected ModelAndView procBoardEdit(CommandMap commandMap, HttpSession session) {
+
+		ModelAndView mv = new ModelAndView("/community/boardEdit");
+		
+		try {
+			AdminBbsSetupModel modelSetup = getBoardInfo(commandMap);
+			String boardCode = (String) commandMap.get("boardCode");
+			String boardType = (String) commandMap.get("boardType");
+			String boardName = modelSetup.getBoardName();
+
+			//View 데이터 구성.
+			ApiBbsDataModel model = new ApiBbsDataModel();
+			model.setType(strBbsType);
+			model.setBoardCode(boardCode);
+			int id = getItemId(commandMap);
+			if (id > 0) {
+				model.setId(id);
+				model = bbsService.getBbsData(model);				
+				
+				//[Smart Editor 지원] content에 있는 쌍따옴표(")를 단일따옴표(')로 변환.
+				model.setContent(ApiCommonUtils.cnvtDoubleQuote2SingleQuote(model.getContent()));
+			} else {
+				model.setId(0);
+				model.setUid((String)session.getAttribute("SE_LOGIN_ID"));
+			}
+
+			//View에 데이터 전달.
+			mv.addObject("rstCnt", 2);
+			mv.addObject("boardType", boardType);
+			mv.addObject("boardCode", boardCode);
+			mv.addObject("boardName", boardName);
+			mv.addObject("item", model);
+			mv.addObject("map", commandMap.getMap());
+		} catch(Exception e) {
+			log.info(this.getClass().getName()+".procBoardEdit Exception !!!!! \n"+e.toString());
 		}
 
 		return mv;

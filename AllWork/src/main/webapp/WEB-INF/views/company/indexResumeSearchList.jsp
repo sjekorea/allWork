@@ -8,22 +8,14 @@
 <%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert" %>
 
 
-<!-- (begin) 2020.12.30 by s.yoo	-->
 <!-- 
 <jsp:include page="/companyHeader.do" />
  -->
-<c:choose>
-	<c:when test="${SE_LOGIN_STATUS}">
-		<c:if test="${SE_USER_TYPE == 'company' }">
-			<jsp:include page="/indexHeaderCompany.do" />
-		</c:if>
-	</c:when>
-	<c:otherwise>
-			<jsp:include page="/indexHeader.do" />
-	</c:otherwise>
-</c:choose>
-<!-- (end) 2020.12.30 by s.yoo	-->
+<jsp:include page="/indexHeader.do" />
 
+<!-- 
+<link rel="stylesheet" type="text/css" href="/css/header_main.css"/>
+ -->
 <link rel="stylesheet" type="text/css" href="/css/company_home.css"/>
 
 <div id="containerWrap">

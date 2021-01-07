@@ -22,6 +22,7 @@
 			<jsp:include page="/indexHeader.do" />
 	</c:otherwise>
 </c:choose>
+
 <!-- (end) 2020.12.30 by s.yoo	-->
 <!-- (begin) 2020.12.30 by s.yoo	-->
 <link rel="stylesheet" type="text/css" href="/css/community.css"/>

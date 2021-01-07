@@ -32,16 +32,21 @@
 	<div id="allworkWrap">
 		<div id="topmenuWrap">
 			<ul class="topMenu">
-			<li class="allworkHome"><a href="/index.do" title="allwork사이트">Allwork&nbsp;&nbsp;|&nbsp;</a></li>
-			<li><a href="#none" title="비밀번호 초기화">비밀번호 초기화</a></li>
+				<li class="allworkHome"><a href="/index.do" title="allwork사이트">Allwork&nbsp;&nbsp;|&nbsp;</a></li>
+				<li><a href="/introAbout.do" title="회사소개">회사소개&nbsp;|&nbsp;</a></li>
+				<li><a href="/sitemap.do" title="사이트맵">사이트맵&nbsp;|&nbsp;</a></li>
+				<li><a href="/noticeList.do" title="고객센터">고객센터&nbsp;|&nbsp;</a></li>
+				<li><a href="/login.do" title="로그인">로그인</a></li>
 			</ul>
 		</div>
 		<div id="loginWrap">
 			<div id="loginArea">
 			<div class="logintext">
 				<h1>비밀번호 찾기</h1>
-				 회원님의 아이디와 이름, 가입시 작성하신 이메일 주소 또는 전화번호를 입력해주세요.
-				<br />회원님의 비밀번호를 초기화하고, 임시 비밀번호를 알려드립니다.
+				<p>
+					 회원님의 아이디와 이름, 가입시 작성하신 이메일 주소 또는 전화번호를 입력해주세요.
+					<br />회원님의 비밀번호를 초기화하고, 임시 비밀번호를 알려드립니다.
+				</p>
 			</div>
 				<form action="javascript:findPw();" method="post">
 					<fieldset>

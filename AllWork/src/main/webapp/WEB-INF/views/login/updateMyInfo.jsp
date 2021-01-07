@@ -95,7 +95,7 @@
 										<p class="imgPart"><img src="allwork/peg/${map.photo}" alt="이력서 사진" width=120 height=142/></p>
 									</c:if>
 										<p class="descPart">
-											<span><input type="file" id="filePhoto" name="filePhoto" /></span><br/>
+											<span><input type="file" id="filePhoto" name="filePhoto" /><label for="filePhoto">파일선택</label></span><br/>
 											<span>
 												※ 이미지 파일형식은 확장자 *.jpg, *.gif만 가능합니다.<br/>
 												※ 이력서 사진 권장사이즈는 가로 120 * 세로 142 입니다.
@@ -158,7 +158,7 @@
 										</span>
 									</td>
 								</tr>
-								<tr class="email">
+								<tr class="phone">
 									<th>휴대폰 번호<span class="necessary">*</span></th>
 									<!-- 
 									<td><input id="hphone" type="text" name="hphone" title="휴대폰 번호" placeholder="010-1234-5678" value="${map.hphone}" /></td>

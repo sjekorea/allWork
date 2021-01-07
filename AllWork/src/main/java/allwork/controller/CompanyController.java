@@ -302,7 +302,7 @@ public class CompanyController {
 	//(begin) 2021.01.04 by s.yoo
 	@RequestMapping(value="/companyModify.do")
 	public ModelAndView companyModify(CommandMap commandMap, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView("/company/companyModify");
+		ModelAndView mv = new ModelAndView("/login/companyModify");
 
 		try {
 			// 기업회원 가입  - 업종 ( netfu_cate : type = 'job')
@@ -340,7 +340,7 @@ public class CompanyController {
 	
 	@RequestMapping(value="/companyModifyProcess.do")
 	public ModelAndView companyModifyProcess(CommandMap commandMap, HttpSession session, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception{
-		ModelAndView mv = new ModelAndView("/company/companyModify");
+		ModelAndView mv = new ModelAndView("/login/companyModify");
 
 		try {
 			String uid = (String) commandMap.get("uid");

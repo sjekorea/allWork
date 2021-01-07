@@ -14,7 +14,9 @@
 <div id="containerWrap">
 	<div id="container">
 		<div id="leftPart">
+		<c:if test="${SE_USER_TYPE == 'person' }">
 			<jsp:include page="/recruitInfoSubMenu.do" />
+		</c:if>
 		</div>
 		<div id="rightPart">
 			<div id="listPart">

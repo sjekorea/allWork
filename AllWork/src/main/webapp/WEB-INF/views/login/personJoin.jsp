@@ -40,13 +40,16 @@
 		<div id="topmenuWrap">
 			<ul class="topMenu">
 				<li class="allworkHome"><a href="/index.do" title="allwork사이트">Allwork&nbsp;&nbsp;|&nbsp;</a></li>
-				<li><a href="/noticeList.do" title="고객센터">고객센터</a></li>
+				<li><a href="/introAbout.do" title="회사소개">회사소개&nbsp;|&nbsp;</a></li>
+				<li><a href="/sitemap.do" title="사이트맵">사이트맵&nbsp;|&nbsp;</a></li>
+				<li><a href="/noticeList.do" title="고객센터">고객센터&nbsp;|&nbsp;</a></li>
+				<li><a href="/login.do" title="로그인">로그인</a></li>
 			</ul>
 		</div>
 		<div id="registerWrap">
 			<div id="registerArea">
 				<div class="registertext">
-					<h4>회원가입</h4>
+					<h4>개인회원 가입</h4>
 					<p>올워크 개인회원 가입은 <span class="bold">무료</span>입니다.</p>
 				</div>
 				<form id="mainForm" name="mainForm" action="javascript:goRegistMember();" method="post" enctype="multipart/form-data" >
@@ -115,26 +118,26 @@
 											<span class="comment">비밀번호 확인을 위해 다시 한 번 입력해 주시기 바랍니다.</span>
 										</td>
 									</tr>
-									<tr class="logoArea">
-										<th>이력서 사진</th>
-										<td>
-											<p class="imgPart"><img id="photoImg" name="photoImg" src="/img/myCompany/noimage.jpg" alt="이력서 사진"/></p>
-											<p class="descPart">
-												<span><input type="file" id="filePhoto" name="filePhoto" /></span><br/>
-												 <!-- 
-												<form name="fileUploadForm0" id="fileUploadForm0" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
-													<span><input type="file" id="attachFile0" name="attachFile0" accept="image/gif, image/png, image/jpeg" onchange="javascript:fileUpload('photo', 'photoImg', 'fileUploadForm0');"></span>
-												</form>
-												<input type="hidden" name="photo" id="photo" value=""/>
-												<br/>
-												  -->
-												<span>
-													※ 이미지 파일형식은 확장자 *.jpg, *.gif만 가능합니다.<br/>
-													※ 이력서 사진 권장사이즈는 가로 120 * 세로 142 입니다.
-												</span>
-											</p>
-										</td>
-									</tr>
+								<tr class="logoArea">
+									<th>이력서 사진</th>
+									<td>
+										<p class="imgPart"><img id="photoImg" name="photoImg" src="img/myCompany/noimage.jpg" alt="이력서 사진"/></p>
+										<p class="descPart">
+											<span><input type="file" id="filePhoto" name="filePhoto" /><label for="filePhoto">파일선택</label></span><br/>
+											 <!-- 
+											<form name="fileUploadForm0" id="fileUploadForm0" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
+												<span><input type="file" id="attachFile0" name="attachFile0" accept="image/gif, image/png, image/jpeg" onchange="javascript:fileUpload('photo', 'photoImg', 'fileUploadForm0');"></span>
+											</form>
+											<input type="hidden" name="photo" id="photo" value=""/>
+											<br/>
+											  -->
+											<span>
+												※ 이미지 파일형식은 확장자 *.jpg, *.gif만 가능합니다.<br/>
+												※ 이력서 사진 권장사이즈는 가로 120 * 세로 142 입니다.
+											</span>
+										</p>
+									</td>
+								</tr>
 									<!-- 
 									<tr>
 										<th>생년월일<span class="necessary">*</span></th>
@@ -147,7 +150,7 @@
 										</td>
 									</tr>
 									 -->
-								<tr>
+								<tr class="phone">
 									<th>생년월일<span class="necessary">*</span></th>
 									<td>
 										<span>

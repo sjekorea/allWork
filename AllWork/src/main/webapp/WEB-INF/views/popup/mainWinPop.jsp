@@ -7,20 +7,22 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"/>
-<title>  </title>
-<link rel="stylesheet" type="text/css" href="/css/common.css"/>
-<link rel="stylesheet" type="text/css" href="/css/font.css"/>
-<link rel="stylesheet" type="text/css" href="/css/reset.css"/>
-<link  rel="stylesheet" type="text/css" href="/css/all.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="/js/jquery-1.12.4.js"></script>
-<script src="/js/jquery-ui.min.js"></script>
-<script src="/js/common.js"></script>
+	<meta charset="utf-8"/>
+	<title>  </title>
+	<link rel="stylesheet" type="text/css" href="/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/font.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+	<link  rel="stylesheet" type="text/css" href="/css/all.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/popup.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="/js/jquery-1.12.4.js"></script>
+	<script src="/js/jquery-ui.min.js"></script>
+	<script src="/js/common.js"></script>
+	<script type="text/javascript" src="/js/Cookie.js"></script>
 <script>
 
-	var nWidth = parseInt("${popupMap.width}") + 45;
-	var nHeight = parseInt("${popupMap.height}") + 140;
+	var nWidth = parseInt("${popupMap.width}") + 15;
+	var nHeight = parseInt("${popupMap.height}") + 120;
 	window.top.resizeTo(nWidth, nHeight);
 	window.top.moveTo("${popupMap.left}", "${popupMap.top}");
 

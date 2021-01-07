@@ -33,15 +33,18 @@
 	<div id="allworkWrap">
 		<div id="topmenuWrap">
 			<ul class="topMenu">
-			<li class="allworkHome"><a href="/index.do" title="allwork사이트">Allwork&nbsp;&nbsp;|&nbsp;</a></li>
-			<li><a href="#none" title="사용자 ID 찾기">사용자 ID 찾기</a></li>
+				<li class="allworkHome"><a href="/index.do" title="allwork사이트">Allwork&nbsp;&nbsp;|&nbsp;</a></li>
+				<li><a href="/introAbout.do" title="회사소개">회사소개&nbsp;|&nbsp;</a></li>
+				<li><a href="/sitemap.do" title="사이트맵">사이트맵&nbsp;|&nbsp;</a></li>
+				<li><a href="/noticeList.do" title="고객센터">고객센터&nbsp;|&nbsp;</a></li>
+				<li><a href="/login.do" title="로그인">로그인</a></li>
 			</ul>
 		</div>
 		<div id="loginWrap">
 			<div id="loginArea">
 			<div class="logintext">
 				<h1>아이디 찾기</h1>
-				 회원님의 이름과 가입시 작성하신 이메일 주소 또는 전화번호를 입력해주세요.
+				<p>회원님의 이름과 가입시 작성하신 이메일 주소 또는 전화번호를 입력해주세요.</p>
 			</div>
 				<form action="javascript:findId();" method="post">
 					<fieldset>
@@ -50,13 +53,15 @@
 							<p>
 								<input id="name" type="text" name="name" title="이름" placeholder="회원 이름 입력 (예)홍길동"/>
 							</p>
-							<div class="tab">
-								<span class="btn_persnal"><input id="find_by_email" type="radio" name="searchType" checked="checked" value="1"/>&nbsp;이메일</span>
-								<span class="btn_company"><input id="find_by_phone" type="radio" name="searchType" value="2"/>&nbsp;전화번호</span>
+							<div class="emailBox">
+								<div class="tab">
+									<span class="btn_persnal"><input id="find_by_email" type="radio" name="searchType" checked="checked" value="1"/>&nbsp;이메일</span>
+									<span class="btn_company"><input id="find_by_phone" type="radio" name="searchType" value="2"/>&nbsp;전화번호</span>
+								</div>
+								<p>
+									<input id="email" type="text" name="email" title="이메일 또는 전화번호" placeholder="이메일 또는 전화번호 입력 gdhong@abc.com 또는 010-1234-5678"/>
+								</p>
 							</div>
-							<p>
-								<input id="email" type="text" name="email" title="이메일 또는 전화번호" placeholder="이메일 또는 전화번호 입력 gdhong@abc.com 또는 010-1234-5678"/>
-							</p>
 							<p class="button"><input type="submit" value="확인" title="확인"/></p>
 							<p class="findArea">
 								<span><a href="javascript:goFindPw();" title="비밀번호찾기">비밀번호찾기&nbsp;&nbsp;|&nbsp;</a></span>

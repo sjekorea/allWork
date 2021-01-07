@@ -66,7 +66,9 @@
 <div id="containerWrap">
 	<div id="container">
 		<div id="leftPart">
+		<c:if test="${SE_USER_TYPE == 'person' }">
 			<jsp:include page="${map.leftMenuUrl }" />
+		</c:if>
 		</div>
 		<div id="rightPart">
 			<div id="regist00">
@@ -231,6 +233,7 @@
 					</table>
 				</div>
 			</div>
+		<c:if test="${SE_USER_TYPE == 'person' }">
 			<c:if test="${finishedStatus ne '채용 마감' }">
 				<ul>
 					<c:if test="${scrapCnt <= 0 }">
@@ -244,6 +247,7 @@
 					</c:if>
 				</ul>
 			</c:if>
+		</c:if>
 		</div>
 	</div>
 </div>

@@ -6,26 +6,10 @@
 <%@ taglib uri="/WEB-INF/tlds/convertUtil.tld" prefix="convert" %>
 <%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert" %>
 
+<script type="text/javascript" src="/js/Cookie.js"></script>
 
-<!-- (begin) 2020.12.30 by s.yoo	-->
-<!-- 
+
 <jsp:include page="/indexHeader.do" />
- -->
-<c:choose>
-	<c:when test="${SE_LOGIN_STATUS}">
-		<c:if test="${SE_USER_TYPE == 'company' }">
-			<jsp:include page="/indexHeaderCompany.do"/>
-		</c:if>
-
-		<c:if test="${SE_USER_TYPE == 'person' }">
-			<jsp:include page="/indexHeaderPerson.do" />
-		</c:if>
-	</c:when>
-	<c:otherwise>
-		<jsp:include page="/indexHeader.do" />
-	</c:otherwise>
-</c:choose>
-<!-- (end) 2020.12.30 by s.yoo	-->
 
 <div id="content01Wrap">
 	<div id="content01">
@@ -50,11 +34,14 @@
 					<c:if test="${result.type == 'alba' }">
 						<li class="partT">
 							<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', 'open', '');" title="기업회원등록공고">
-							<span class="desc00">알바</span><span class="desc01">${result.bizMen}명</span>
+								<span class="desc00">알바</span><span class="desc01">${result.bizMen}명</span>
 					</c:if>
-							<p class="desc02">${result.bizName}</p>
-							<p class="desc03">${convert:compByte(result.bizTitle, 95, "...")}</p>
-							<span class="desc04">${result.bizArea1Name}</span><span class="desc05">등록일:${result.wdate}</span>
+								<p class="desc02">${result.bizName}</p>
+								<p class="desc03">${convert:compByte(result.bizTitle, 95, "...")}</p>
+								<!-- 
+								<span class="desc04">${result.bizArea1Name}</span><span class="desc05">등록일: ${result.wdate}</span>
+								 -->
+								<span class="desc04">${result.bizArea1Name}</span><span class="desc05">${(result.bizEndType == 'input')? ('마감: '.concat(result.bizEndDay)) : ((result.bizEndType == 'get')? '채용시까지' : ((result.bizEndType == 'often')? '상시채용' : '')) }</span>
 							</a>
 						</li>
 				</c:forEach>
@@ -138,13 +125,12 @@
 						<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="기업회원등록공고">
 							<div class="descBox">
 								<p class="desc01">${result.bizName }</p>
-								<p class="desc02">${result.bizTitle }</p>
+								<p class="desc02">${convert:compByte(result.bizTitle, 70, "...")}</p>
 								<span class="desc03">${result.bizMen }명</span>
 								<span class="desc04">
 									${result.bizArea1Name }
-									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '>'.concat(result.bizArea2Name) }
-								</span>
-								<span class="desc05">등록일:${result.wdate }</span>
+									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '> '.concat(result.bizArea2Name) }
+								</span><span class="desc05">${(result.bizEndType == 'input')? ('마감: '.concat(result.bizEndDay)) : ((result.bizEndType == 'get')? '채용시까지' : ((result.bizEndType == 'often')? '상시채용' : '')) }</span>
 							</div>
 						</a>
 					</li>
@@ -164,13 +150,12 @@
 						<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="기업회원등록공고">
 							<div class="descBox">
 								<p class="desc01">${result.bizName }</p>
-								<p class="desc02">${result.bizTitle }</p>
+								<p class="desc02">${convert:compByte(result.bizTitle, 70, "...")}</p>
 								<span class="desc03">${result.bizMen }명</span>
 								<span class="desc04">
 									${result.bizArea1Name }
-									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '>'.concat(result.bizArea2Name) }
-								</span>
-								<span class="desc05">등록일:${result.wdate }</span>
+									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '> '.concat(result.bizArea2Name) }
+								</span><span class="desc05">${(result.bizEndType == 'input')? ('마감: '.concat(result.bizEndDay)) : ((result.bizEndType == 'get')? '채용시까지' : ((result.bizEndType == 'often')? '상시채용' : '')) }</span>
 							</div>
 						</a>
 					</li>
@@ -190,13 +175,12 @@
 						<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="기업회원등록공고">
 							<div class="descBox">
 								<p class="desc01">${result.bizName }</p>
-								<p class="desc02">${result.bizTitle }</p>
+								<p class="desc02">${convert:compByte(result.bizTitle, 70, "...")}</p>
 								<span class="desc03">${result.bizMen }명</span>
 								<span class="desc04">
 									${result.bizArea1Name }
-									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '>'.concat(result.bizArea2Name) }
-								</span>
-								<span class="desc05">등록일:${result.wdate }</span>
+									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '> '.concat(result.bizArea2Name) }
+								</span><span class="desc05">${(result.bizEndType == 'input')? ('마감: '.concat(result.bizEndDay)) : ((result.bizEndType == 'get')? '채용시까지' : ((result.bizEndType == 'often')? '상시채용' : '')) }</span>
 							</div>
 						</a>
 					</li>

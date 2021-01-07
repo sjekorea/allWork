@@ -83,6 +83,7 @@
             <mvc:exclude-mapping path="/faqList.do"/>
             <mvc:exclude-mapping path="/libraryList.do"/>
             <mvc:exclude-mapping path="/indexRecruitSearchList.do"/>
+            <mvc:exclude-mapping path="/boardView.do"/>
     	<!-- (end) 2020.12.30 by s.yoo -->
 			<bean id="loginCheckInterceptor" class="allwork.common.interceptor.LoginCheckInterceptor" />
 		</mvc:interceptor>

@@ -19,9 +19,12 @@
 
 <div id="containerWrap">
 	<div id="leftPart">
+	<c:if test="${SE_USER_TYPE == 'person' }">
 		<jsp:include page="/recruitInfoSubMenu.do" />
+	</c:if>
 	</div>
 	<div id="rightPart">
+	<c:if test="${SE_USER_TYPE == 'person' }">
 		<div id="recruitment">
 			<h4>채용정보 직무별</h4>
 			<div id="part02">
@@ -64,6 +67,7 @@
 				</div>
 			</div>
 		</div>
+	</c:if>
 		<div id="rec_listPart01">
 			<div id="rec_titleArea01">
 				<h4>채용정보</h4>

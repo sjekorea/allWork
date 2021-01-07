@@ -35,10 +35,6 @@ public class HeadhuntController {
 	private String strDefaultBoardCode =  "netfu_52508_48920";		//default는 면접진행.
 	
 	
-	//@Autowired protected ApiRecruitItemService headhuntService;
-	//@Autowired protected AdminBbsSetupService bbsSetupService;
-	//@Autowired protected ApiBbsDataService bbsService;
-	
 	@Resource(name="apiRecruitItemService")
 	protected ApiRecruitItemService headhuntService;
 	
@@ -98,6 +94,59 @@ public class HeadhuntController {
 		}
 		
 		return mv;
+	}
+
+
+	
+	/*
+	 * 채용진행현황 인터페이스.
+	 */
+	//채용진행현황 - 면접진행.
+	@RequestMapping(value="/progressInterview.do")
+	public ModelAndView progressInterview(CommandMap commandMap, Locale locale) {
+		commandMap.put("boardCode", "netfu_52508_48920");
+		commandMap.put("pageNo", 1);
+		return progressList(commandMap, locale);
+	}
+
+	//채용진행현황 - 기업방문.
+	@RequestMapping(value="/progressVisitCompany.do")
+	public ModelAndView progressVisitCompany(CommandMap commandMap, Locale locale) {
+		commandMap.put("boardCode", "netfu_52508_50000");
+		commandMap.put("pageNo", 1);
+		return progressList(commandMap, locale);
+	}
+
+	//채용진행현황 - 이력서제공.
+	@RequestMapping(value="/progressProvideResume.do")
+	public ModelAndView progressProvideResume(CommandMap commandMap, Locale locale) {
+		commandMap.put("boardCode", "netfu_52508_60000");
+		commandMap.put("pageNo", 1);
+		return progressList(commandMap, locale);
+	}
+
+	//채용진행현황 - 재취업성공.
+	@RequestMapping(value="/progressSuccess.do")
+	public ModelAndView progressSuccess(CommandMap commandMap, Locale locale) {
+		commandMap.put("boardCode", "netfu_52508_70000");
+		commandMap.put("pageNo", 1);
+		return progressList(commandMap, locale);
+	}
+
+	//채용진행현황 - 사전면접.
+	@RequestMapping(value="/progressPreMeeting.do")
+	public ModelAndView progressPreMeeting(CommandMap commandMap, Locale locale) {
+		commandMap.put("boardCode", "netfu_52508_80000");
+		commandMap.put("pageNo", 1);
+		return progressList(commandMap, locale);
+	}
+
+	//채용진행현황 - 적응컨설팅.
+	@RequestMapping(value="/progressConsulting.do")
+	public ModelAndView progressConsulting(CommandMap commandMap, Locale locale) {
+		commandMap.put("boardCode", "netfu_52508_90000");
+		commandMap.put("pageNo", 1);
+		return progressList(commandMap, locale);
 	}
 
 	

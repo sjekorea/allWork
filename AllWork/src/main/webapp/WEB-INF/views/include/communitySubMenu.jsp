@@ -18,7 +18,7 @@
 		</li>
 	<c:if test="${SE_LOGIN_STATUS}">
 		<li class="menu menu02">
-			<a href="javascript:goBoardList('netfu_41549_84812', 1);">
+			<a href="/bbsList.do">
 				게시판
 			</a>
 		</li>
@@ -50,7 +50,7 @@
 		</li>
 	<c:if test="${SE_LOGIN_STATUS}">
 		<li class="menu menu07">
-			<a href="javascript:goBoardEdit('netfu_44304_38055', 0, 1);">
+			<a href="/customerClaim.do">
 				불편 및 신고상황 접수
 			</a>
 		</li>
@@ -71,17 +71,34 @@
 
 <form id="searchForm" name="searchForm" method="post" action="/boardList.do">
 	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
-	<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />
+	<input type="hidden" name="boardCode" id="boardCode" value="${map.boardCode}" />
 	<input type="hidden" name="no" id="no" value="" />
 </form>
 
 <script type="text/javascript">
 
 	function goBoardList(boardCode, pageNo){
+		var strUrl = "/boardList.do";	//default 공지사항.
+		switch(boardCode) {
+		case "netfu_41549_84812":		//게시판.
+			strUrl = "/bbsList.do";
+			break;
+		case "netfu_92829_39479":		//FAQ.
+			strUrl = "/faqList.do";
+			break;
+		case "netfu_94498_34711":		//자료실.
+			strUrl = "/libraryList.do";
+			break;
+		case "netfu_57809_60663":		//공지사항.
+		default:
+			strUrl = "/noticeList.do";
+			break;
+		}
+		
 		$("#pageNo").val(pageNo);
 		//$("#boardType").val(boardType);
 		$("#boardCode").val(boardCode);
-		$("#searchForm").attr("action", "/boardList.do");
+		$("#searchForm").attr("action", strUrl);
 		$("#searchForm").submit();
 	}
 

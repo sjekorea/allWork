@@ -82,7 +82,7 @@ public class NetfuMemberController {
 	@RequestMapping(value="/personJoin.do")
 	public ModelAndView personalJoin(CommandMap commandMap) {
 		
-		ModelAndView mv = new ModelAndView("/person/personJoin");
+		ModelAndView mv = new ModelAndView("/login/personJoin");
 
 		//(begin) 2021.01.05 by s.yoo
 		try {
@@ -107,7 +107,7 @@ public class NetfuMemberController {
 	@RequestMapping(value="/companyJoin.do")
 	public ModelAndView companyJoin(CommandMap commandMap) {
 		
-		ModelAndView mv = new ModelAndView("/company/companyJoin");
+		ModelAndView mv = new ModelAndView("/login/companyJoin");
 		
 		try {
 			// 기업회원 가입  - 업종 ( netfu_cate : type = 'job')
@@ -206,7 +206,7 @@ public class NetfuMemberController {
 	//개인회원 등록.
 	@RequestMapping(value="/registNetfuMemberProcess.do")
 	public ModelAndView registNetfuMemberProcess(CommandMap commandMap, HttpSession session, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception{
-		ModelAndView mv = new ModelAndView("/person/personJoin");
+		ModelAndView mv = new ModelAndView("/login/personJoin");
 
 		try{
 			String uid = (String) commandMap.get("uid");
@@ -239,7 +239,7 @@ public class NetfuMemberController {
 	//기업회원 등록.
 	@RequestMapping(value="/registNetfuCompanyProcess.do")
 	public ModelAndView registNetfuCompanyProcess(CommandMap commandMap, HttpSession session, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception{
-		ModelAndView mv = new ModelAndView("/company/companyJoin");
+		ModelAndView mv = new ModelAndView("/login/companyJoin");
 
 		try{
 			String uid = (String) commandMap.get("uid");

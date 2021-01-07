@@ -44,7 +44,7 @@ public class NetfuItemCompanyVo {
 	private String bizArea6Name;
 	private String bizSubway;
 	private String bizBusiness;
-	private int bizMen;
+	private String bizMen;
 	private String bizJobfrom;
 	private String bizJobfromName;
 	private String bizPay;
@@ -268,7 +268,7 @@ public class NetfuItemCompanyVo {
 	public String getBizBusiness() {
 		return bizBusiness;
 	}
-	public int getBizMen() {
+	public String getBizMen() {
 		return bizMen;
 	}
 	public String getBizJobfrom() {
@@ -520,7 +520,7 @@ public class NetfuItemCompanyVo {
 	public void setBizBusiness(String bizBusiness) {
 		this.bizBusiness = bizBusiness;
 	}
-	public void setBizMen(int bizMen) {
+	public void setBizMen(String bizMen) {
 		this.bizMen = bizMen;
 	}
 	public void setBizJobfrom(String bizJobfrom) {

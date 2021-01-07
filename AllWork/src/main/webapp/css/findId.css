@@ -10,15 +10,20 @@
 /*###################################   loginWrap    ###################################*/
 #loginWrap{width:100%;overflow:hidden;}
 #loginArea{width:1000px;margin: 0 auto;}
-#loginArea .logintext{width:500px;margin: 0 auto;text-align: center;padding-top: 100px;padding-bottom:50px;font-size:16px;line-height:46px;color:#666;}
+#loginArea .logintext{text-align: center;width:500px;margin: 0 auto;padding-top: 100px;padding-bottom:20px;color:#999;}
 #loginArea .logintext h1{font-size:35px;font-family:"NotoSansKR-Thin";}
+#loginArea .logintext p{font-size:15px;line-height:28px;padding-top:20px;letter-spacing:-0.8px;color:#000;}
 #loginArea Form{width:500px;margin: 0 auto;}
 #loginArea fieldset{width:100%;border:none;}
 #loginArea legend{display:none;}
 #loginArea .loginBox{width:100%;height:300px;margin:30px 0 140px;}
-#loginArea .loginBox p{width:498px;height:48px;border:1px solid #ccc;margin:10px 0;}
+#loginArea .loginBox p{width:500px;height:48px;border:1px solid #ccc;margin:10px 0;}
 #loginArea .loginBox p input{display:block;width:100%;height:100%;border:none;background-color:#fff;text-indent:10px;}
 #loginArea .loginBox p input::placeholder{color:#ccc;}
+#loginArea .loginBox .emailBox{width:100%;}
+#loginArea .loginBox .emailBox .tab{padding-top:20px;}
+#loginArea .loginBox .emailBox .tab span{padding-right:20px;}
+#loginArea .loginBox .emailBox p{width:100%;}
 #loginArea .loginBox p.button{border:none;margin-bottom:0;}
 #loginArea .loginBox p.button input{display:inline;;width:500px;height:50px;background-color:#4F60E3;color:#fff;font-size:18px;}
 

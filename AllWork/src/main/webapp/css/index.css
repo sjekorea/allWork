@@ -1,9 +1,9 @@
 /*###################################   containerWrap ###################################*/
 /*###################################   visual ###################################*/
-
+body{font-family:"NotoSansKR-Regular";}
 #containerWrap{width:100%;margin-top:100px;position:relative;}
-#visualWrap{width:100%;height:400px;overflow:hidden;position:absolute;top:0;left:0;z-index:15;}
-#visual{width:1000px;height:400px;margin:0 auto;}
+#visualWrap{width:100%;height:300px;overflow:hidden;position:absolute;top:0;left:0;z-index:15;}
+#visual{width:1000px;height:300px;margin:0 auto;}
 
 /*
 #visual .descBox{width:500px;height:100%;margin:100px auto 0;}
@@ -14,9 +14,7 @@
 
 #visual .descBox{width:500px;height:100%;/*background-color:rgba(0,0,0,1);*/}
 #visual .descBox p{width:100%;font-size:28px;font-family:"NanumBarunGothicUltralight";color:#fff;}
-#visual .descBox .desc0{height:120px;line-height:180px;font-size:20px;font-family:"NotoSansKR-Bold";}
-#visual .descBox .desc1{padding-top:100px;height:220px;font-size:44px;line-height:50px;font-family:"NotoSansKR-Regular";}
-#visual .descBox .desc1 .bold{font-family:"NotoSansKR-Regular";}
+#visual .descBox .desc1{padding-top:100px;height:155px;font-size:30px;font-family:"NotoSansKR-Regular";letter-spacing:-0.8px;}
 
 #visual .descBox #searchArea{width:500px;height:90px;background-color:rgba(255,255,255,0.6);}
 #visual .descBox #searchArea form{width:460px;height:46px;margin:0px auto;}
@@ -25,25 +23,24 @@
 #visual .descBox #searchArea .textBox{width:370px;height:44px;border:1px solid #43425D;margin-top:22px;float:left;}
 #visual .descBox #searchArea .textBox input{width:100%;height:100%;border:none;font-size:14px;text-indent:10px;}
 #visual .descBox #searchArea .textBox input::placeholder{color:#ccc;}
-#visual .descBox #searchArea .btnBox00{width:80px;height:46px;text-align: center;margin-top:22px;float:left;}
-#visual .descBox #searchArea .btnBox00 input{width:100%;height:100%;border:none;background-color:#43425D;color:#fff;font-size:16px; }
+#visual .descBox #searchArea .btnBox00{width:80px;height:44px;text-align: center;margin-top:22px;float:left;}
+#visual .descBox #searchArea .btnBox00 input{width:100%;height:100%;vertical-align: middle;border:none;background-color:#43425D;color:#fff;font-size:16px; }
 
 #visual .descBox #searchArea:hover .textBox{border:1px solid #ccc;}
 
-#screen{width:1920px;height: 400px;margin: 0 auto;position:relative;overflow: hidden;}
-#film{width:3840px;}
-#film .scene{width:1920px;float:left;}
+#screen{width:1920px;height:300px;margin: 0 auto;position:relative;overflow: hidden;}
+#film{width:100%;}
 #film .scene img{width:100%;}
 
 
 
 /*###################################   content01_offer 유료공고 모음 ###################################*/
 #contentWrap{width:100%;overflow: hidden;}
-#content01{width:1000px;overflow: hidden;margin:100px auto 20px;}
+#content01{width:1000px;overflow: hidden;margin:50px auto 20px;}
 
 #content01_offer{width:750px;height:500px;float: left;}
 #content01_offer ul{width:100%;}
-#content01_offer ul li{display:inline-block;width:235px;height:235px;border:1px solid #ccc;box-shadow:5px 5px 1px rgba(220,220,220,1);margin-right:10px;margin-bottom: 10px;}
+#content01_offer ul li{width:235px;height:235px;border:1px solid #ccc;box-shadow:5px 5px 1px rgba(220,220,220,1);margin-right:10px;margin-bottom: 10px;float:left;}
 #content01_offer ul li a{display:inline-block;width:100%;height:100%;padding:10%;position: relative;}
 #content01_offer ul li a span{display:inline-block;font-size:14px;}
 
@@ -64,9 +61,9 @@
 /*###################################   content01_ad 유료광고 모음 ###################################*/
 #content01_ad{width:250px;height:500px;float: left;}
 #content01_ad ul{width:100%;height:100%;}
-#content01_ad ul li{display:inline-block;width:250px;height:110px;border:1px solid #ccc;
+#content01_ad ul li{display:inline-block;width:250px;height:110px;line-height:104px;text-align: center;border:1px solid #ccc;
   box-shadow:5px 5px 1px rgba(220,220,220,1);margin-right:15px;margin-bottom:8px;overflow: hidden;}
-#content01_ad ul li img{width:100%;}
+#content01_ad ul li img{width:100%;vertical-align:middle;}
 
 #content01_ad ul li:hover{border:1px solid #333;}
 
@@ -93,76 +90,76 @@
 
 /*###################################   content03 기업회원등록 공고 ###################################*/
 #content03Wrap{width:100%;border-top: 1px solid #ccc;}
-#content03{width:1000px;height:600px;margin:100px auto 0;overflow: hidden;}
-#content03 h4{width:100%;height:120px;line-height: 120px;font-size:28px;font-family:"NanumBarunGothicUltralight";text-align: center;}
-#content03 p{width:100%;height:44px;padding-bottom: 10px;}
+#content03{width:1000px;height:450px;margin:10px auto 0;overflow: hidden;}
+#content03 h4{width:100%;height:80px;line-height: 120px;font-size:28px;text-align: center;font-family:"NanumBarunGothicUltralight";}
+#content03 p.more{width:100%;height:30px;}
 #content03 ul{width:1020px;height:330px;}
-#content03 ul li{display: inline-block;width:240px;height:160px;border:1px solid #ccc;margin-right:9px;margin-bottom:10px;background-color: #fff;}
-#content03 ul li .descBox{width:238px;height:148px;padding:20px;}
-#content03 ul li span{display: inline-block;font-size:12px;}
+#content03 ul li{width:240px;height:160px;border:1px solid #ccc;margin-right:9px;margin-bottom:10px;background-color: #fff;float:left;}
+#content03 ul li a .descBox{width:238px;height:148px;padding:20px;}
+#content03 ul li a .descBox span{display: inline-block;font-size:12px;}
 
-#content03 ul li .desc01{width:100%;font-size: 12px;height:25px;font-family:"NanumBarunGothicRegula";white-space:nowrap;overflow:hidden;}
-#content03 ul li .desc02{width:100%;font-size: 16px;height:45px;line-height:24px;font-family:"NanumBarunGothicBold";overflow:hidden;}
-#content03 ul li .desc03{width:100%;font-size: 12px;height:20px;line-height:20px;font-family:"NotoSansKR-Bold";}
-#content03 ul li .desc04{width:50%;text-align:left;height:15px;font-size: 12px;overflow:hidden;}
-#content03 ul li .desc05{width:50%;text-align:right;height:15px;font-size: 12px;overflow:hidden;}
+#content03 ul li a .descBox p.desc01{width:100%;font-size: 12px;height:26px;white-space:nowrap;overflow:hidden;}
+#content03 ul li a .descBox p.desc02{width:100%;font-size: 16px;height:45px;margin-bottom:5px;line-height:22px;overflow:hidden;font-family:"NotoSansKR-Medium";}
+#content03 ul li a .descBox span.desc03{width:100%;font-size: 12px;height:20px;line-height:20px;font-family:"NotoSansKR-Bold";}
+#content03 ul li a .descBox span.desc04{width:106px;text-align:left;height:15px;font-size: 12px;white-space:nowrap;overflow:hidden;}
+#content03 ul li a .descBox span.desc05{width:92px;text-align:right;height:15px;font-size: 12px;overflow:hidden;}
 
 #content03 ul li:hover{border:1px solid #43425D;}
 
 
   /*###################################   content04 프리랜서 공고 ###################################*/
       #content04Wrap{width:100%;background-color:#EDF0F5;}
-      #content04{width:1000px;height:600px;margin:100px auto 0;overflow: hidden;}
-      #content04 h4{width:100%;height:120px;margin-top:40px;line-height: 120px;font-size:28px;font-family:"NanumBarunGothicUltralight";text-align: center;}
-      #content04 p{width:100%;height:44px;padding-bottom: 10px;}
+      #content04{width:1000px;height:450px;margin:10px auto 0;overflow: hidden;}
+      #content04 h4{width:100%;height:80px;line-height: 120px;font-size:28px;text-align: center;font-family:"NanumBarunGothicUltralight";}
+      #content04 p.more{width:100%;height:30px;}
       #content04 ul{width:1020px;height:330px;}
-      #content04 ul li{display: inline-block;width:240px;height:160px;border:1px solid #ccc;margin-right:9px;margin-bottom:10px;background-color: #fff;}
-      #content04 ul li .descBox{width:238px;height:148px;padding:20px;}
-      #content04 ul li span{display: inline-block;font-size:12px;}
+      #content04 ul li{width:240px;height:160px;border:1px solid #ccc;margin-right:9px;margin-bottom:10px;background-color: #fff;float:left;}
+      #content04 ul li a .descBox{width:238px;height:148px;padding:20px;}
+      #content04 ul li a .descBox span{display: inline-block;font-size:12px;}
 
-      #content04 ul li .desc01{width:100%;font-size: 12px;height:25px;font-family:"NanumBarunGothicRegula";white-space:nowrap;overflow:hidden;}
-      #content04 ul li .desc02{width:100%;font-size: 16px;height:45px;line-height:24px;font-family:"NanumBarunGothicBold";overflow:hidden;}
-      #content04 ul li .desc03{width:100%;font-size: 12px;height:20px;line-height:20px;font-family:"NotoSansKR-Bold";}
-      #content04 ul li .desc04{width:50%;text-align:left;height:15px;font-size: 12px;overflow:hidden;}
-      #content04 ul li .desc05{width:50%;text-align:right;height:15px;font-size: 12px;overflow:hidden;}
+      #content04 ul li a .descBox p.desc01{width:100%;font-size: 12px;height:26px;white-space:nowrap;overflow:hidden;}
+      #content04 ul li a .descBox p.desc02{width:100%;font-size: 16px;height:45px;margin-bottom:5px;line-height:22px;overflow:hidden;font-family:"NotoSansKR-Medium";}
+      #content04 ul li a .descBox span.desc03{width:100%;font-size: 12px;height:20px;line-height:20px;font-family:"NotoSansKR-Bold";}
+      #content04 ul li a .descBox span.desc04{width:106px;text-align:left;height:15px;font-size: 12px;white-space:nowrap;overflow:hidden;}
+      #content04 ul li a .descBox span.desc05{width:92px;text-align:right;height:15px;font-size: 12px;overflow:hidden;}
 
       #content04 ul li:hover{border:1px solid #43425D;}
 
       /*###################################   content05 알바 공고 ###################################*/
       #content05Wrap{width:100%;}
-      #content05{width:1000px;height:600px;margin:100px auto 0;overflow: hidden;}
-      #content05 h4{width:100%;height:120px;margin-top:40px;line-height: 120px;font-size:28px;font-family:"NanumBarunGothicUltralight";text-align: center;}
-      #content05 p{width:100%;height:44px;padding-bottom: 10px;}
+      #content05{width:1000px;height:450px;margin:10px auto 0;overflow: hidden;}
+      #content05 h4{width:100%;height:80px;line-height: 120px;font-size:28px;text-align: center;font-family:"NanumBarunGothicUltralight";}
+      #content05 p.more{width:100%;height:30px;}
       #content05 ul{width:1020px;height:330px;}
-      #content05 ul li{display: inline-block;width:240px;height:160px;border:1px solid #ccc;margin-right:9px;margin-bottom:10px;background-color: #fff;}
-      #content05 ul li .descBox{width:238px;height:148px;padding:20px;}
-      #content05 ul li span{display: inline-block;font-size:12px;}
+      #content05 ul li{width:240px;height:160px;border:1px solid #ccc;margin-right:9px;margin-bottom:10px;background-color: #fff;float:left;}
+      #content05 ul li a .descBox{width:238px;height:148px;padding:20px;}
+      #content05 ul li a .descBox span{display: inline-block;font-size:12px;}
 
-      #content05 ul li .desc01{width:100%;font-size: 12px;height:25px;font-family:"NanumBarunGothicRegula";white-space:nowrap;overflow:hidden;}
-      #content05 ul li .desc02{width:100%;font-size: 16px;height:45px;line-height:24px;font-family:"NanumBarunGothicBold";overflow:hidden;}
-      #content05 ul li .desc03{width:100%;font-size: 12px;height:20px;line-height:20px;font-family:"NotoSansKR-Bold";}
-      #content05 ul li .desc04{width:50%;text-align:left;height:15px;font-size: 12px;overflow:hidden;}
-      #content05 ul li .desc05{width:50%;text-align:right;height:15px;font-size: 12px;overflow:hidden;}
+      #content05 ul li a .descBox p.desc01{width:100%;font-size: 12px;height:26px;white-space:nowrap;overflow:hidden;}
+      #content05 ul li a .descBox p.desc02{width:100%;font-size: 16px;height:45px;margin-bottom:5px;line-height:22px;overflow:hidden;font-family:"NotoSansKR-Medium";}
+      #content05 ul li a .descBox span.desc03{width:100%;font-size: 12px;height:20px;line-height:20px;font-family:"NotoSansKR-Bold";}
+      #content05 ul li a .descBox span.desc04{width:106px;text-align:left;height:15px;font-size: 12px;white-space:nowrap;overflow:hidden;}
+      #content05 ul li a .descBox span.desc05{width:92px;text-align:right;height:15px;font-size: 12px;overflow:hidden;}
 
       #content05 ul li:hover{border:1px solid #43425D;}
 
 
 /*###################################   content06 기타채용공고 ###################################*/
 #content06Wrap{width:100%;overflow:hidden;background-color:#EDF0F5;}
-#content06{width:1000px;overflow:hidden;margin:160px auto 200px;}
-#content06 h4{width:100%;line-height: 120px;font-size:28px;font-family:"NanumBarunGothicUltralight";text-align: center;}
-#content06 p{width:100%;padding-bottom: 10px;}
+#content06{width:1000px;overflow:hidden;margin:30px auto 100px;}
+#content06 h4{width:100%;line-height:60px;font-size:28px;font-family:"NanumBarunGothicUltralight";text-align: center;}
+#content06 p.more{width:100%;height:30px;}
 #content06 table{width:100%;}
 #content06 table caption{display: none;}
 #content06 table thead{width:100%;line-height:50px;font-size:16px;text-align: center;}
 #content06 table thead tr{width:1000px;border-top:2px solid #000;border-bottom:2px solid #aaa;display: table;font-size:16px;font-family:"NanumBarunGothicBold";}
 
-#content06 table tbody{width:100%;font-size:16px;text-align: center;}
+#content06 table tbody{width:100%;font-size:16px;}
 #content06 table tbody tr{width:1000px;line-height:22px;border-bottom:1px solid #ccc;display: table;font-size:14px;font-family:"NanumBarunGothicLight";}
 
-    #content06 table tr th{width:140px;}
-    #content06 table tr td{padding:20px 0;}
-    #content06 table tr .jPart{width:460px;}
+    #content06 table tr th{width:200px;}
+    #content06 table tr td{width:200px;padding:20px 0;text-align: center;}
+    #content06 table tr .jPart{width:400px;}
     #content06 table tr .jPerson{width:80px;}
     #content06 table tr .jadd{width:120px;}
     #content06 table tr .jcontact{width:120px;}

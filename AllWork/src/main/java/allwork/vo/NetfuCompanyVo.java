@@ -10,7 +10,7 @@ public class NetfuCompanyVo {
 	private String bizRecharger;
 	private String bizSubject;
 	private String bizFonundation;
-	private int bizMen;
+	private String bizMen;
 	private String bizList;
 	private String bizListName;
 	private String bizForm;
@@ -65,7 +65,7 @@ public class NetfuCompanyVo {
 	public String getBizFonundation() {
 		return bizFonundation;
 	}
-	public int getBizMen() {
+	public String getBizMen() {
 		return bizMen;
 	}
 	public String getBizList() {
@@ -176,7 +176,7 @@ public class NetfuCompanyVo {
 	public void setBizFonundation(String bizFonundation) {
 		this.bizFonundation = bizFonundation;
 	}
-	public void setBizMen(int bizMen) {
+	public void setBizMen(String bizMen) {
 		this.bizMen = bizMen;
 	}
 	public void setBizList(String bizList) {

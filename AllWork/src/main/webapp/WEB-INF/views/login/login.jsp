@@ -5,15 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css"/>
-
-<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/js/moment.min.js"></script>
-<script type="text/javascript" src="/js/common.js"></script>
-<script type="text/javascript" src="/js/process.js?v=<%=System.currentTimeMillis() %>"></script>
-<script type="text/javascript" src="/js/Cookie.js"></script>
-
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -21,6 +12,7 @@
 	<title>로그인</title>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
+	<link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/common.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/header_mini.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/login_01.css"/>
@@ -28,19 +20,29 @@
 	<link rel="stylesheet" type="text/css" href="/css/font.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/reset.css"/>
 	<link  rel="stylesheet" type="text/css" href="/css/all.css"/>
-	</head>
+	
+	<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/js/moment.min.js"></script>
+	<script type="text/javascript" src="/js/common.js"></script>
+	<script type="text/javascript" src="/js/process.js?v=<%=System.currentTimeMillis() %>"></script>
+	<script type="text/javascript" src="/js/Cookie.js"></script>
+</head>
 
 <body>
 	<div id="progress_barWrap" style="display:none;">
 		<p id="progress_bar">
 			<img src="/img/main/loading_circle.gif" alt="로딩이미지"/>
 		</p>
-    </div>
+	</div>
 	<div id="allworkWrap">
 		<div id="topmenuWrap">
 			<ul class="topMenu">
 				<li class="allworkHome"><a href="/index.do" title="allwork사이트">Allwork&nbsp;&nbsp;|&nbsp;</a></li>
-				<li><a href="/noticeList.do" title="고객센터">고객센터</a></li>
+				<li><a href="/introAbout.do" title="회사소개">회사소개&nbsp;|&nbsp;</a></li>
+				<li><a href="/sitemap.do" title="사이트맵">사이트맵&nbsp;|&nbsp;</a></li>
+				<li><a href="/noticeList.do" title="고객센터">고객센터&nbsp;|&nbsp;</a></li>
+				<li><a href="/personJoin.do" title="회원가입">회원가입</a></li>
 			</ul>
 		</div>
 		<div id="loginWrap">
@@ -113,28 +115,28 @@
 			$(".snsLogin").css("display", "block");
 		});
 		
-	    // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
-	    var key = getCookie("allworkId");
-	    $("#loginId").val(key); 
-	     
-	    if($("#loginId").val() != ""){ // 그 전에 ID를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 ID가 표시된 상태라면,
-	        $("#idSaveCheck").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
-	    }
-	     
-	    $("#idSaveCheck").change(function(){ // 체크박스에 변화가 있다면,
-	        if($("#idSaveCheck").is(":checked")){ // ID 저장하기 체크했을 때,
-	            setCookie("allworkId", $("#loginId").val(), 7); // 7일 동안 쿠키 보관
-	        }else{ // ID 저장하기 체크 해제 시,
-	            deleteCookie("allworkId");
-	        }
-	    });
-	     
-	    // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
-	    $("#loginId").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
-	        if($("#idSaveCheck").is(":checked")){ // ID 저장하기를 체크한 상태라면,
-	            setCookie("allworkId", $("#loginId").val(), 7); // 7일 동안 쿠키 보관
-	        }
-	    });
+		// 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
+		var key = getCookie("allworkId");
+		$("#loginId").val(key); 
+		 
+		if($("#loginId").val() != ""){ // 그 전에 ID를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 ID가 표시된 상태라면,
+			$("#idSaveCheck").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
+		}
+		 
+		$("#idSaveCheck").change(function(){ // 체크박스에 변화가 있다면,
+			if($("#idSaveCheck").is(":checked")){ // ID 저장하기 체크했을 때,
+				setCookie("allworkId", $("#loginId").val(), 7); // 7일 동안 쿠키 보관
+			}else{ // ID 저장하기 체크 해제 시,
+				deleteCookie("allworkId");
+			}
+		});
+		 
+		// ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
+		$("#loginId").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
+			if($("#idSaveCheck").is(":checked")){ // ID 저장하기를 체크한 상태라면,
+				setCookie("allworkId", $("#loginId").val(), 7); // 7일 동안 쿠키 보관
+			}
+		});
 	});
 	
 	
@@ -159,11 +161,12 @@
 				if($("#requestUri").val() != null && $("#requestUri").val() != ""){
 					location.href = $("#requestUri").val();
 				}else{
-					
+					//Login 사용자의 홈페이지로 이동.
 					if(data.memberInfoMap.type == 1){
-						location.href="/personHome.do";	
+						//location.href="/personHome.do";		//개인회원 홈페이지.
+						location.href="/index.do";				//사이트 홈페이지.
 					}else{
-						location.href="/companyHome.do";
+						location.href="/companyHome.do";		//기업회원 홈페이지.
 					}
 				}
 				

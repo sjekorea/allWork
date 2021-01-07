@@ -43,13 +43,16 @@
 		<div id="topmenuWrap">
 			<ul class="topMenu">
 				<li class="allworkHome"><a href="/index.do" title="allwork사이트">Allwork&nbsp;&nbsp;|&nbsp;</a></li>
-				<li><a href="/noticeList.do" title="고객센터">고객센터</a></li>
+				<li><a href="/introAbout.do" title="회사소개">회사소개&nbsp;|&nbsp;</a></li>
+				<li><a href="/sitemap.do" title="사이트맵">사이트맵&nbsp;|&nbsp;</a></li>
+				<li><a href="/noticeList.do" title="고객센터">고객센터&nbsp;|&nbsp;</a></li>
+				<li><a href="/login.do" title="로그인">로그인</a></li>
 			</ul>
 		</div>
 		<div id="registerWrap">
 			<div id="registerArea">
 				<div class="registertext">
-					<h4>기업회원가입</h4>
+					<h4>기업회원 가입</h4>
 					<p>
 						올워크 모든회원의 가입은 <span class="bold">무료</span>입니다.
 					</p>
@@ -58,8 +61,8 @@
 					<fieldset>
 						<legend>회원가입</legend>
 						<div class="tab">
-							<span class="btn_persnal"><input id="memberJoin" type="radio" name="memberJoin" onClick="location.href='personJoin.do'" />&nbsp;개인회원</span>
-							<span class="btn_company"><input id="memberJoin" type="radio" name="memberJoin" checked="checked" />&nbsp;기업회원</span>
+							<span class="btn_persnal"><input id="memberJoinPerson" type="radio" name="memberJoin" onClick="location.href='personJoin.do'" /><label for="memberJoinPerson">&nbsp;개인회원</label></span>
+							<span class="btn_company"><input id="memberJoinCompany" type="radio" name="memberJoin" checked="checked" /><label for="memberJoinCompany">&nbsp;기업회원</label></span>
 						</div>
 						<div class="descBox">
 							<p class="title">
@@ -233,7 +236,7 @@
 												<input type="hidden" name="bizLogo" id="bizLogo" value=""/>
 												<br/>
 												 -->
-												<span><input type="file" id="fileLogo" name="fileLogo" /></span><br/>
+												<span><input type="file" id="fileLogo" name="fileLogo" ><label for="fileLogo">파일선택</label></span><br/>
 												<span>
 													※ 이미지 파일형식은 확장자 *.jpg, *.gif만 가능합니다.<br/>
 													※ 로고 이미지 권장사이즈는 가로120 * 세로34입니다.
@@ -251,7 +254,7 @@
 												<li><img id="photoImg4" src="/img/myCompany/noimage.jpg" alt="회사이미지4"/></li>
 											</ul>
 											<ul class="upLoadArea">
-												<li>회사사진1
+												<li>
 													<span>
 														<!-- 
 														<form name="fileUploadForm1" id="fileUploadForm1" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
@@ -259,10 +262,10 @@
 														</form>
 														<input type="hidden" name="photo1" id="photo1" value=""/>
 														 -->
-														<input type="file" id="filePhoto1" name="filePhoto1" />
+														<input type="file" id="filePhoto1" name="filePhoto1" ><label for="filePhoto1">파일선택</label>
 													</span>
 												</li>
-												<li>회사사진2
+												<li>
 													<span>
 														<!-- 
 														<form name="fileUploadForm2" id="fileUploadForm2" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
@@ -270,10 +273,10 @@
 														</form>
 														<input type="hidden" name="photo2" id="photo2" value=""/>
 														 -->
-														<input type="file" id="filePhoto2" name="filePhoto2" />
+														<input type="file" id="filePhoto2" name="filePhoto2" ><label for="filePhoto2">파일선택</label>
 													</span>
 												</li>
-												<li>회사사진3
+												<li>
 													<span>
 														<!-- 
 														<form name="fileUploadForm3" id="fileUploadForm3" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
@@ -281,10 +284,10 @@
 														</form>
 														<input type="hidden" name="photo3" id="photo3" value=""/>
 														 -->
-														<input type="file" id="filePhoto3" name="filePhoto3" />
+														<input type="file" id="filePhoto3" name="filePhoto3" ><label for="filePhoto3">파일선택</label>
 													</span>
 												</li>
-												<li>회사사진4
+												<li>
 													<span>
 														<!-- 
 														<form name="fileUploadForm4" id="fileUploadForm4" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
@@ -292,7 +295,7 @@
 														</form>
 														<input type="hidden" name="photo4" id="photo4" value=""/>
 														 -->
-														<input type="file" id="filePhoto4" name="filePhoto4" />
+														<input type="file" id="filePhoto4" name="filePhoto4" ><label for="filePhoto4">파일선택</label>
 													</span>
 												</li>
 											</ul>
@@ -351,7 +354,7 @@
 									<td>
 										<p class="imgPart"><img id="photoImg" name="photoImg" src="img/myCompany/noimage.jpg" alt="이력서 사진"/></p>
 										<p class="descPart">
-											<span><input type="file" id="filePhoto" name="filePhoto" /></span><br/>
+											<span><input type="file" id="filePhoto" name="filePhoto" ><label for="filePhoto">파일선택</label></span><br/>
 											 <!-- 
 											<form name="fileUploadForm0" id="fileUploadForm0" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
 												<span><input type="file" id="attachFile0" name="attachFile0" accept="image/gif, image/png, image/jpeg" onchange="javascript:fileUpload('photo', 'photoImg', 'fileUploadForm0');"></span>

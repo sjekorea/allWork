@@ -10,7 +10,7 @@
 	<!-- 메인 페이지 popup 리스트 -->
 	<select id="selectMainPopupMap" parameterType="hashmap" resultType="allwork.vo.NetfuPopupVo">
 		select * from netfu_popup 
-		where view = 'yes' AND end_day >= curdate()
+		where view = 'yes' AND start_day <![CDATA[<=]]> curdate() AND end_day <![CDATA[>=]]> curdate()
 			and code = #{code} 
 		order by end_day
 	</select>
@@ -26,28 +26,19 @@
 		from 
 		(
 				SELECT 'head' type, a.ser no, '' uid, concat(a.company_initial, '사') bizName, b.recruit_item_contents bizTitle, b.men bizMen, b.place_work bizArea1Name
-						, DATE_FORMAT(b.date_work, '%m/%d') wdate
+						, b.biz_end_type bizEndType, DATE_FORMAT(b.biz_end_day, '%m/%d') bizEndDay
+						, DATE_FORMAT(b.date_req, '%m/%d') wdate
 						FROM recruit_company AS a, recruit_item AS b
 				WHERE 1=1
 					and a.prs='P' AND b.prs='P' AND a.ser=b.target_ser 
-					and b.date_work BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
-					
-				UNION ALL
-				
-				select 'recruit' type , nic.no, nic.uid,  nic.biz_name bizName, nic.biz_title bizTitle, nic.biz_men bizMen
-						, concat(getCodeName(nic.biz_area1),' ', ifnull(getCodeName(nic.biz_area2), '')) bizArea1Name
-						, DATE_FORMAT(nic.wdate, '%m/%d') wdate
-				from netfu_item_company nic
-				where 1=1
-					and nic.biz_ing <![CDATA[<>]]> 'yes'
-					and ((nic.biz_end_type ='input' and nic.biz_end_day >= CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
-					and (nic.biz_jobfrom LIKE '%netfu_48782_57525%' OR nic.biz_jobfrom LIKE '%netfu_85884_14481%')
-					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
-					
+					and ((b.biz_end_type ='input' and b.biz_end_day >= CURRENT_TIMESTAMP()) or b.biz_end_type ='get' or b.biz_end_type ='often')
+					and date_req BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+
 				UNION ALL
 				
 				select 'free' type , nic.no, nic.uid,  nic.biz_name bizName, nic.biz_title bizTitle, nic.biz_men bizMen
 						, concat(getCodeName(nic.biz_area1),' ', ifnull(getCodeName(nic.biz_area2), '')) bizArea1Name 
+						, nic.biz_end_type bizEndType, DATE_FORMAT(nic.biz_end_day, '%m/%d') bizEndDay
 						, DATE_FORMAT(nic.wdate, '%m/%d') wdate
 				from netfu_item_company nic
 				where 1=1
@@ -60,12 +51,26 @@
 				
 				select 'alba' type , nic.no, nic.uid,  nic.biz_name bizName, nic.biz_title bizTitle, nic.biz_men bizMen
 						, concat(getCodeName(nic.biz_area1),' ', ifnull(getCodeName(nic.biz_area2), '')) bizArea1Name
+						, nic.biz_end_type bizEndType, DATE_FORMAT(nic.biz_end_day, '%m/%d') bizEndDay
 						, DATE_FORMAT(nic.wdate, '%m/%d') wdate
 				from netfu_item_company nic
 				where 1=1
 					and nic.biz_ing <![CDATA[<>]]> 'yes'
 					and ((nic.biz_end_type ='input' and nic.biz_end_day >= CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
 					and (nic.biz_jobfrom LIKE '%netfu_34537_33276%' OR nic.biz_jobfrom LIKE '%arbeit%')
+					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+					
+				UNION ALL
+				
+				select 'recruit' type , nic.no, nic.uid,  nic.biz_name bizName, nic.biz_title bizTitle, nic.biz_men bizMen
+						, concat(getCodeName(nic.biz_area1),' ', ifnull(getCodeName(nic.biz_area2), '')) bizArea1Name
+						, nic.biz_end_type bizEndType, DATE_FORMAT(nic.biz_end_day, '%m/%d') bizEndDay
+						, DATE_FORMAT(nic.wdate, '%m/%d') wdate
+				from netfu_item_company nic
+				where 1=1
+					and nic.biz_ing <![CDATA[<>]]> 'yes'
+					and ((nic.biz_end_type ='input' and nic.biz_end_day >= CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+					and (nic.biz_jobfrom LIKE '%netfu_48782_57525%' OR nic.biz_jobfrom LIKE '%netfu_85884_14481%')
 					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
 		) aa
 		order by rand() limit 6

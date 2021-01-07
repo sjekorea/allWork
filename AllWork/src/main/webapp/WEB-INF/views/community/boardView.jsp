@@ -6,23 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!-- (begin) 2020.12.30 by s.yoo	-->
-<!-- 
 <jsp:include page="/communityHeader.do" />
- -->
-<c:choose>
-	<c:when test="${SE_LOGIN_STATUS}">
-		<c:if test="${SE_USER_TYPE == 'company' }">
-			<jsp:include page="/companyHeader.do"/>
-		</c:if>
-
-		<c:if test="${SE_USER_TYPE == 'person' }">
-			<jsp:include page="/personHeader.do" />
-		</c:if>
-	</c:when>
-	<c:otherwise>
-			<jsp:include page="/indexHeader.do" />
-	</c:otherwise>
-</c:choose>
 
 <link rel="stylesheet" type="text/css" href="/css/customerCenter_board_post.css"/>
 
@@ -68,14 +52,13 @@
 				</div>
 
 				<!-- 게시판에 대해서만 내가 쓴 글에 대해 수정/삭제 기능 지원 -->
+				<p class="golist"><a href="javascript:goBoardList('${boardCode}', ${map.get("pageNo")});" title="목록">목록보기</a></p>
+			<c:if test="${boardCode == 'netfu_41549_84812' && item.uid == SE_LOGIN_ID}">
 				<ul class="buttonPart">
-					<a href="javascript:goBoardList('${boardCode}', ${map.get("pageNo")});" title="목록"><li>목록보기</li></a>
-				<c:if test="${boardCode == 'netfu_41549_84812' && item.uid == SE_LOGIN_ID}">
-					<li>&nbsp;</li>
-					<a href="javascript:goBoardEdit('${boardCode}', ${item.id}, ${map.get("pageNo")});" title="수정"><li>수정</li></a>
-					<a href="javascript:confirmDelete(${item.id})" title="삭제"><li>삭제</li></a>
-				</c:if>
+					<li><a href="javascript:goBoardEdit('${boardCode}', ${item.id}, ${map.get("pageNo")});" title="수정">수정</a></li>
+					<li><a href="javascript:confirmDelete(${item.id})" title="삭제">삭제</a></li>
 				</ul>
+			</c:if>
 			
 				<!-- 
 				<ul class="buttonPart">

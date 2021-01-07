@@ -13,11 +13,28 @@
 jQuery(document).ready(function(){
 
   //드랍메뉴 열고 닫기
-  		jQuery("#allMenuWrap").css({"display":"none"});
+	jQuery("#allMenuWrap").css({"display":"none"});
 
-  		jQuery("#headerWrap #head .nav").first().click(function(){
-  		jQuery("#allMenuWrap").show();
-  		});
+	/* (begin) 2021.01.07 by s.yoo	*/
+	/*
+	jQuery("#headerWrap #head .nav").first().click(function(){
+		jQuery("#allMenuWrap").show();
+	});
+	*/
+	$( "#headerWrap #head .nav" ).mouseover(function() {
+		jQuery("#allMenuWrap").show();
+	});
+	$( "#headerWrap #head .nav" ).mouseout(function() {
+		jQuery("#allMenuWrap").hide();
+	});
+
+	$( "#allMenuWrap #allMenu" ).mouseover(function() {
+		jQuery("#allMenuWrap").show();
+	});
+	$( "#allMenuWrap #allMenu" ).mouseout(function() {
+		jQuery("#allMenuWrap").hide();
+	});
+	/* (end) 2021.01.07 by s.yoo	*/
 
       jQuery(".fa-times").first().click(function(){
   		jQuery("#allMenuWrap").css({"display":"none"});

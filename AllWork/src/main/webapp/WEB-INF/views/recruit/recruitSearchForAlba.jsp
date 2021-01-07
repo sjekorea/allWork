@@ -19,9 +19,12 @@
 
 <div id="containerWrap">
 	<div id="leftPart">
+	<c:if test="${SE_USER_TYPE == 'person' }">
 		<jsp:include page="/recruitInfoSubMenu.do" />
+	</c:if>
 	</div>
 	<div id="rightPart">
+	<c:if test="${SE_USER_TYPE == 'person' }">
 		<div id="recruitment">
 			<h4>알바 채용 정보 상세검색</h4>
 			<div id="part02">
@@ -78,6 +81,7 @@
 				<p class="goBtn"><input id="search_btn" type="button" value="선택된 조건 검색하기"/></p>
 			</div>
 		</div>
+	</c:if>
 		<div id="rec_listPart01">
 			<div id="rec_titleArea01">
 				<h4>채용정보</h4>

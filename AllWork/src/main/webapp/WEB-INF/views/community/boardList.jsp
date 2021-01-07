@@ -6,23 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!-- (begin) 2020.12.30 by s.yoo	-->
-<!-- 
 <jsp:include page="/communityHeader.do" />
- -->
-<c:choose>
-	<c:when test="${SE_LOGIN_STATUS}">
-		<c:if test="${SE_USER_TYPE == 'company' }">
-			<jsp:include page="/companyHeader.do"/>
-		</c:if>
-
-		<c:if test="${SE_USER_TYPE == 'person' }">
-			<jsp:include page="/personHeader.do" />
-		</c:if>
-	</c:when>
-	<c:otherwise>
-			<jsp:include page="/indexHeader.do" />
-	</c:otherwise>
-</c:choose>
 
 <link rel="stylesheet" type="text/css" href="/css/customerCenter_board_list.css"/>
 
@@ -92,7 +76,7 @@
 			
 				<!-- 게시판에 대해서만 목록화면에서 글쓰기를 허용. -->
 			<c:if test="${boardCode == 'netfu_41549_84812' }">
-				<a href="javascript:goBoardEdit('${boardCode}', 0, ${map.get("pageNo")});" title="등록"><p class="delete">등록</p></a>
+				<p class="delete"><a href="javascript:goBoardEdit('${boardCode}', 0, ${map.get("pageNo")});" title="등록">등록</a></p>
 			</c:if>
 				
 				<div class="numareaWrap">

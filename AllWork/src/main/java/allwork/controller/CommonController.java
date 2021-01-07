@@ -77,51 +77,63 @@ public class CommonController {
 	}
 	
 	
+	/*
+	 * 개인회원 홈
+	 */
 	@RequestMapping(value="/personHeader.do")
 	public ModelAndView personalHeader(CommandMap commandMap) {
-		
 		ModelAndView mv = new ModelAndView("/include/personHeader");
-		
 		return mv;
 	}
-	
-	
 	@RequestMapping(value="/personSubMenu.do")
 	public ModelAndView personSubMenu(CommandMap commandMap) {
-		
 		ModelAndView mv = new ModelAndView("/include/personSubMenu");
-		
 		return mv;
 	}
 	
 	
+	/*
+	 * 기업회원 홈.
+	 */
 	@RequestMapping(value="/companyHeader.do")
 	public ModelAndView companyHeader(CommandMap commandMap) {
-		
 		ModelAndView mv = new ModelAndView("/include/companyHeader");
-		
 		return mv;
 	}
-	
-	
 	@RequestMapping(value="/companySubMenu.do")
 	public ModelAndView companySubMenu(CommandMap commandMap) {
-		
 		ModelAndView mv = new ModelAndView("/include/companySubMenu");
-		
 		return mv;
 	}
 	
 	
+	/*
+	 * 헤드헌팅, 채용진행현황, 고객센터.
+	 */
+	@RequestMapping(value="/communityHeader.do")
+	public ModelAndView communityHeader(CommandMap commandMap) {
+		ModelAndView mv = new ModelAndView("/include/communityHeader");
+		return mv;
+	}
 	@RequestMapping(value="/communitySubMenu.do")
 	public ModelAndView communitySubMenu(CommandMap commandMap) {
-		
 		ModelAndView mv = new ModelAndView("/include/communitySubMenu");
-		
 		return mv;
 	}
 	
-	
+	@RequestMapping(value="/headhuntSubMenu.do")
+	public ModelAndView headhuntSubMenu(CommandMap commandMap) {
+		ModelAndView mv = new ModelAndView("/include/headhuntSubMenu");
+		return mv;
+	}
+
+	@RequestMapping(value="/progressSubMenu.do")
+	public ModelAndView progressSubMenu(CommandMap commandMap) {
+		ModelAndView mv = new ModelAndView("/include/progressSubMenu");
+		return mv;
+	}
+
+
 	@RequestMapping(value="/recruitInfoSubMenu.do")
 	public ModelAndView recruitInfoSubMenu(CommandMap commandMap) {
 		
@@ -130,7 +142,6 @@ public class CommonController {
 		return mv;
 	}
 	
-	
 	@RequestMapping(value="/personInfoSubMenu.do")
 	public ModelAndView personInfoSubMenu(CommandMap commandMap) {
 		
@@ -138,83 +149,19 @@ public class CommonController {
 		
 		return mv;
 	}
-	
-	
-	@RequestMapping(value="/headHuntingSubMenu.do")
-	public ModelAndView headHuntingSubMenu(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/include/headHuntingSubMenu");
-		
-		return mv;
-	}
-
-	//(begin) 2020.12.30 by s.yoo
-	@RequestMapping(value="/indexHeaderCompany.do")
-	public ModelAndView indexHeaderCompany(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/include/indexHeaderCompany");
-		
-		return mv;
-	}
-	@RequestMapping(value="/indexHeaderPerson.do")
-	public ModelAndView indexHeaderPerson(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/include/indexHeaderPerson");
-		
-		return mv;
-	}
 
 	
-	@RequestMapping(value="/headhuntSubMenu.do")
-	public ModelAndView headhuntSubMenu(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/include/headhuntSubMenu");
-		
-		return mv;
-	}
-
-	@RequestMapping(value="/progressSubMenu.do")
-	public ModelAndView progressSubMenu(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/include/progressSubMenu");
-		
-		return mv;
-	}
-	//(end) 2020.12.30 by s.yoo
-
-	
-	@RequestMapping(value="/recruitStatusSubMenu.do")
-	public ModelAndView recruitStatusSubMenu(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/include/recruitStatusSubMenu");
-		
-		return mv;
-	}
-	
-	
-	@RequestMapping(value="/communityHeader.do")
-	public ModelAndView communityHeader(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/include/communityHeader");
-		
-		return mv;
-	}
-	
-	
+	/*
+	 * 회사소개.
+	 */
 	@RequestMapping(value="/introHeader.do")
 	public ModelAndView introHeader(CommandMap commandMap) {
-		
 		ModelAndView mv = new ModelAndView("/include/introHeader");
-		
 		return mv;
 	}
-	
-	
 	@RequestMapping(value="/introSubMenu.do")
 	public ModelAndView introSubMenu(CommandMap commandMap) {
-		
 		ModelAndView mv = new ModelAndView("/include/introSubMenu");
-		
 		return mv;
 	}
 	
