@@ -58,6 +58,7 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resume00 #detailArea .detail_title{width:340px;height:32px;font-size:18px;float:left;}
     #resume00 #detailArea .personal_setting{width:110px;height:32px;line-height:28px;font-size:14px;margin-bottom:10px;margin-left:260px;text-align:center;border:1px solid #333;float:left;}
 
+
     #resume00 #imgPart{width:120px;margin-right:10px;height:200px;float: left;overflow:hidden;}
     #resume00 .imgArea{width:120px;margin-right:10px;height:140px;border:1px solid #ccc;overflow: hidden;}
     #resume00 .imgArea p{width:100%;background-color:#ccc;}
@@ -201,7 +202,7 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resForm09 th{display:none;}
     #resForm09 td{width:710px;}
 
-    #resForm09 .file_btn{border:none;margin:0;padding:0;}
+/*    #resForm09 .file_btn{border:none;margin:0;padding:0;}
     #resForm09 input[type="file"]{position: absolute;
                                   width: 0;
                                   height: 0;
@@ -235,3 +236,4 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 
 
                     }
+*/

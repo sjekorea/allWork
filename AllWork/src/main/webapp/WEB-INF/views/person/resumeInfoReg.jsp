@@ -8,6 +8,7 @@
 <jsp:include page="/personHeader.do" />
 
 <script type="text/javascript" src="/smartEditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+
 <link rel="stylesheet" type="text/css" href="/css/resume.css"/>
 
 <div id="containerWrap">
@@ -23,15 +24,29 @@
 			</div>
 		</div>
 		<div id="rightPart">
+		<form id="registForm" name="registForm" enctype="multipart/form-data" action="/registResume.do" method="post">
+			<input type="hidden" name="infoType" id="infoType" value="1" />
+			<input type="hidden" name="uid" id="uid" value="${SE_LOGIN_ID}" />
+			<input type="hidden" name="name" id="name" value="${memberMap.name}" />
+			<input type="hidden" name="inidPhotoOrg" id="inidPhotoOrg" value="${memberMap.photo}" />
+			<input type="hidden" name="inidPhone" id="inidPhone" value="${memberMap.phone}" />
+			<input type="hidden" name="inidHphone" id="inidHphone" value="${memberMap.hphone}" />
+			<input type="hidden" name="inidEmail" id="inidEmail" value="${memberMap.hphone}" />
+			<input type="hidden" name="inidPost" id="inidPost" value="${memberMap.post}" />
+			<input type="hidden" name="inidAddress1" id="inidAddress1" value="${memberMap.address1}" />
+			<input type="hidden" name="inidAddress2" id="inidAddress2" value="${memberMap.address2}" />
+			<input type="hidden" name="inidHome" id="inidHome" value="${memberMap.home}" />
+				
 			<div id="resume00">
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
 					<p class="personal_setting"><a href="/updateMyInfo.do" title="기본정보수정"><i class="fas fa-cog"></i>&nbsp;기본정보수정</a></p>
 					<div id="imgPart">
 						<div class="imgArea">
-							<p><img src="img/userNo.png" alt="본인사진"/></p>
+							<p><img src="/img/userNo.png" alt="본인사진"/></p>
 						</div>
-						<p class="btnArea"><label for="myImg">사진선택</label><input id="myImg" type="file"/></p>
+						<p class="btnArea"><label for="myImg">사진선택</label><input id="inidPhoto" name="inidPhoto" type="file" onchange="javascript:viewImgName(this);"/><br/><li id="imgName"></li></p>
+						<input type="hidden" name="imgChangeFlag" id="imgChangeFlag" value="N" />
 					</div>
 					<table>
 						<caption>이력 등록하기</caption>
@@ -45,17 +60,6 @@
 					</table>
 				</div>
 			</div>
-			<form id="registForm" name="registForm" enctype="multipart/form-data" action="/registResume.do" method="post">
-				<input type="hidden" name="infoType" id="infoType" value="2" />
-				<input type="hidden" name="name" id="name" value="${memberMap.name}" />
-				<input type="hidden" name="inidPhoto" id="inidPhoto" value="${memberMap.photo}" />
-				<input type="hidden" name="inidPhone" id="inidPhone" value="${memberMap.phone}" />
-				<input type="hidden" name="inidHphone" id="inidHphone" value="${memberMap.hphone}" />
-				<input type="hidden" name="inidEmail" id="inidEmail" value="${memberMap.email}" />
-				<input type="hidden" name="inidPost" id="inidPost" value="${memberMap.post}" />
-				<input type="hidden" name="inidAddress1" id="inidAddress1" value="${memberMap.address1}" />
-				<input type="hidden" name="inidAddress2" id="inidAddress2" value="${memberMap.address2}" />
-				<input type="hidden" name="inidHome" id="inidHome" value="${memberMap.home}" />
 				<div id="resume01">
 					<li id="resForm01">
 						<fieldset>
@@ -67,15 +71,17 @@
 										<tr>
 											<th>이력서 공개<span class="necessary">*</span></th>
 											<td>
-												<span><input id="inidPChk" type="radio" name="inidPChk"/><label for="res01_desc01">&nbsp;공개</label></span>
-												<span><input id="inidPChk" type="radio" name="inidPChk"/><label for="res01_desc01_1">&nbsp;비공개</label></span>
+												<span><input id="inidSecretChk" type="radio" name="inidSecretChk" checked value="Y"/><label for="res01_desc01">&nbsp;공개</label></span>
+												<span><input id="inidSecretChk" type="radio" name="inidSecretChk" value="N"/><label for="res01_desc01_1">&nbsp;비공개</label></span>
+												<input type="hidden" name="inidPChk" id="inidPChk" value="" />
 											</td>
 										</tr>
 										<tr>
 											<th>사진 공개<span class="necessary">*</span></th>
 											<td>
-												<span><input id="inidTitle" type="radio" name="inidTitle"/><label for="res01_desc01">&nbsp;공개</label></span>
-												<span><input id="inidTitle" type="radio" name="inidTitle"/><label for="res01_desc01_1">&nbsp;비공개</label></span>
+												<span><input id="inidPChkRadio" type="radio" name="inidPChkRadio" checked value="no"/><label for="res01_desc01">&nbsp;공개</label></span>
+												<span><input id="inidPChkRadio" type="radio" name="inidPChkRadio" value="yes"/><label for="res01_desc01_1">&nbsp;비공개</label></span>
+												<input type="hidden" name="inidSecret" id="inidSecret" value="" />
 											</td>
 										</tr>
 									</tbody>
@@ -144,7 +150,7 @@
 													<option value="${result.code}">${result.name}</option>
 												</c:forEach>
 											</select>
-											<select id="inidType2" name="inidType2" title="2차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'bizType3', true, true);">
+											<select id="inidType2" name="inidType2" title="2차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'inidType3', true, true);">
 												<option value="">2차직무선택</option>
 											</select>
 											<select id="inidType3" name="inidType3" title="3차직무선택">
@@ -216,12 +222,12 @@
 							<legend>학력사항</legend>
 							<table>
 								<caption>학력사항</caption>
-								<tbody>
+								<tbody id="education">
 									<tr class="final_education">
 										<th>최종학력</th>
 										<td>
-											<select id="res03_desc01" name="res03_desc01" title="학력 선택">
-												<option value="학력 선택">학력 선택</option>
+											<select id="final_degree" name="final_degree" title="학력 선택">
+												<option value="">학력 선택</option>
 												<c:forEach var="result" items="${jobSchoolList}" varStatus="status">
 													<option value="${result.code}">${result.name}</option>
 												</c:forEach>
@@ -232,25 +238,25 @@
 										<th>학력</th>
 										<td>
 											<span>
-												<input id="res03_desc02" type="date" placeholder="yyyy-mm-dd" name="res03_desc02"/>
-												<select id="res03_desc02_1" name="res03_desc02_1" title="학교구분">
+												<input id="lesson_sdate_full" type="date" placeholder="yyyy-mm-dd" name="lesson_sdate_full"/>
+												<select id="school2" name="school2" title="학교구분">
 													<c:forEach var="result" items="${jobSchoolList}" varStatus="status">
 														<option value="${result.code}">${result.name}</option>
 													</c:forEach>
 												</select>
-												<input id="res03_desc02_2" type="text" name="res03_desc02_2" placeholder="학교명"/>
+												<input id="school" type="text" name="school" placeholder="학교명"/>
 											</span>
 											<span>
-												<input id="res03_desc03" type="date" placeholder="yyyy-mm-dd" name="res03_desc03"/>
-												<select id="res03_desc03_1" name="res03_desc03_1" title="졸업상태">
+												<input id="lesson_edate_full" type="date" placeholder="yyyy-mm-dd" name="lesson_edate_full"/>
+												<select id="lesson_state" name="lesson_state" title="졸업상태">
 													<c:forEach var="result" items="${jobStateList}" varStatus="status">
 														<option value="${result.code}">${result.name}</option>
 													</c:forEach>
 												</select>
-												<input id="res03_desc03_2" type="text" name="res03_desc03_2" placeholder="학교명"/>
-												<input id="res03_desc03_3" type="text" name="res03_desc03_3" placeholder="전공명"/>
+												<input id="lesson" type="text" name="lesson" placeholder="전공명"/>
+												<input id="lesson2" type="text" name="lesson2" placeholder="학과명"/>
 											</span>
-											<span class="comment"> 다중 경력자는 [추가]를 클릭하면 현재 입력폼에서 추가 경력을 작성할 수 있습니다.</span>
+											<span class="comment"> 다중 학력자는 [추가]를 클릭하면 현재 입력폼에서 추가 경력을 작성할 수 있습니다.</span>
 										</td>
 									</tr>
 								</tbody>
@@ -258,8 +264,8 @@
 						</fieldset>
 					</li>
 					<p class="moreTab">
-						<input type="button" name="appendItem" kind="school" value="+ 추가"/>
-						<input type="button" name="deleteItem" kind="school" value="- 삭제"/>
+						<input type="button" name="appendItem" kind="education" value="+ 추가"/>
+						<input type="button" name="deleteItem" kind="education" value="- 삭제"/>
 					</p>
 				</div>
 				<div id="resume04">
@@ -268,33 +274,35 @@
 							<legend>경력사항</legend>
 							<table>
 								<caption>경력사항</caption>
-								<tbody>
+								<tbody id="career">
 									<tr class="total_experience">
 										<th>총 경력년수</th>
 										<td>
-										<select id="res04_desc01" name="res04_desc01" title="경력연차">
-											<c:forEach var="i" begin="0" end="30">
-												<option value="${i}">${i}</option>
-											</c:forEach>
-										</select>&nbsp;년
-										<select id="res04_desc01_1" name="res04_desc01_1" title="경력연차">
-											<c:forEach var="i" begin="0" end="30">
-												<option value="${i}">${i}</option>
-											</c:forEach>
-										</select>&nbsp;개월
-										<input id="res04_desc01_2" type="checkbox" name="res04_desc01_2"/><label for="res04_desc01_2">신입</label>
+											<select id="total_year" name="total_year" title="경력연차">
+												<c:forEach var="i" begin="0" end="30">
+													<option value="${i}">${i}</option>
+												</c:forEach>
+											</select>&nbsp;년
+											<select id="total_month" name="total_month" title="경력연차">
+												<c:forEach var="i" begin="0" end="12">
+													<option value="${i}">${i}</option>
+												</c:forEach>
+											</select>&nbsp;개월
+											<input id="careerKindChk" type="checkbox" name="careerKind" value="102"/><label for="res04_desc01_2">신입</label>
+											<input type="hidden" name="careerKind" id="careerKind" value="" />
 										</td>
 									</tr>
 									<tr class="experience">
 										<th>경력</th>
 										<td>
 											<span>
-												<input id="res04_desc02" type="date" placeholder="yyyy-mm-dd" name="res04_desc02"/>
-												<input id="res04_desc02_1" type="text" name="res04_desc02_1" placeholder="회사명"/>
+												<input id="hold_sdate_full" type="date" placeholder="yyyy-mm-dd" name="hold_sdate_full"/>
+												<input id="company" type="text" name="company" placeholder="회사명"/>
+												
 											</span>
 											<span>
-												<input id="res04_desc03" type="date" placeholder="yyyy-mm-dd" name="res04_desc03"/>
-												<input id="res04_desc03_1" type="text" name="res04_desc03_1" placeholder="담당업무"/>
+												<input id="hold_edate_full" type="date" placeholder="yyyy-mm-dd" name="hold_edate_full"/>
+												<input id="business" type="text" name="business" placeholder="담당업무"/>
 											</span>
 											<span class="comment"> 다중 경력자는 [추가]를 클릭하면 현재 입력폼에서 추가 경력을 작성할 수 있습니다.</span>
 										</td>
@@ -314,26 +322,13 @@
 							<legend>자격사항</legend>
 							<table>
 								<caption>자격사항</caption>
-								<tbody>
+								<tbody id="licence">
 									<tr>
-									<th>자격사항</th>
-									<td>
-										<p class="part01"><span>취득일자</span><br/><input id="res06_desc01" type="date" placeholder="yyyy-mm-dd" name="res06_desc01"/></p>
-										<p class="part02"><span>자격증명</span><br/>
-											<select id="inidMylskill1" name="inidMylskill1" title="1차직무선택" onchange="javascript:getNetfuCateListForSelect('inid_mylskill', this, '자격증2차선택', 'inidMylskill2', true, true);">
-												<option value="">자격증1차선택</option>
-												<c:forEach var="result" items="${jobList}" varStatus="status">
-													<option value="${result.code}">${result.name}</option>
-												</c:forEach>
-											</select>
-											<select id="inidMylskill2" name="inidMylskill2" title="2차직무선택" onchange="javascript:getNetfuCateListForSelect('inid_mylskill', this, '자격증3차선택', 'inidMylskill3', true, true);">
-												<option value="">2차직무선택</option>
-											</select>
-											<select id="inidMylskill3" name="inidMylskill3" title="3차직무선택">
-												<option value="3차직무선택">3차직무선택</option>
-											</select>
-										</p>
-										<p class="part03"><span>발행처</span><br/><input id="res06_desc01_4" type="text" name="res06_desc01_4"/></p>
+										<th>자격사항</th>
+										<td>
+											<p class="part01"><span>취득일자</span><br/><input id="obtain_date" type="date" placeholder="yyyy-mm-dd" name="obtain_date"/></p>
+											<p class="part02"><span>자격증명</span><br/><input id="qualification" type="text" placeholder="자격증명" name="qualification"/></p>
+											<p class="part03"><span>발행처</span><br/><input id="public_place" type="text" name="public_place"/></p>
 										</td>
 									</tr>
 								</tbody>
@@ -351,30 +346,28 @@
 							<legend>외국어</legend>
 							<table>
 								<caption>외국어</caption>
-								<tbody>
+								<tbody id="language">
 									<tr>
 										<th>외국어</th>
 										<td>
-											<p class="part01"><span>취득일자</span><br/><input id="res07_desc01" type="date" placeholder="yyyy-mm-dd"  name="res07_desc01"/></p>
-											<p class="part02"><span>외국어명</span><br/><input id="res07_desc01_1" type="text" name="res07_desc01_1"/></p>
+											<p class="part01"><span>취득일자</span><br/><input id="ex_obtain_date" type="date" placeholder="yyyy-mm-dd"  name="ex_obtain_date"/></p>
+											<p class="part02"><span>외국어명</span><br/><input id="language" type="text" name="language"/></p>
 											<p class="part03">
 												<span>수준</span><br/>
-												<select id="res07_desc01_2" name="res07_desc01_2" title="선택">
-													<option value="선택">선택</option>
+												<select id="level" name="level" title="선택">
+													<option value="">선택</option>
 													<option value="상">상</option>
 													<option value="중">중</option>
 													<option value="하">하</option>
 												</select>
-												</p>
-												<p class="part04"><span>발행처</span><br/><input id="res07_desc01_3" type="text" name="res07_desc01_3"/></p>
-												<p class="part05"><span>점수</span><br/><input id="res07_desc01_4" type="text" name="res07_desc01_4"/></p>
-												<p class="part06">
-												<span>점수/등급</span><br/>
-												<select id="res07_desc01_5" name="res07_desc01_5" title="선택">
-													<option value="선택">선택</option>
-													<option value="상">점</option>
-													<option value="중">중</option>
-													<option value="하">하</option>
+											</p>
+											<p class="part04"><span>발행처</span><br/><input id="examination" type="text" name="examination"/></p>
+											<p class="part05"><span>점수</span><br/><input id="point" type="text" name="point"/></p>
+											<p class="part06"><span>점수/등급</span><br/>
+												<select id="level2" name="level2" title="선택">
+													<option value="">선택</option>
+													<option value="점">점</option>
+													<option value="급">급</option>
 												</select>
 											</p>
 										</td>
@@ -424,12 +417,17 @@
 						</fieldset>
 					</li>
 				</div>
+				<input type="hidden" name="education2" id="education2" value="" />
+				<input type="hidden" name="career2" id="career2" value="" />
+				<input type="hidden" name="license2" id="license2" value="" />
+				<input type="hidden" name="language2" id="language2" value="" />
 			</form>
 			<ul>
 				<li><a href="#none" title="미리보기">미리보기</a></li>
 				<li><a href="#none" title="임시저장">임시저장</a></li>
 				<li class="res_ok"><a href="#none" title="등록완료">등록완료</a></li>
 			</ul>
+			</form>
 		</div>
 	</div>
 </div>
@@ -489,7 +487,7 @@
 		});
 		
 		
-		$(".reg_ok").on("click", function(e){
+		$(".res_ok").on("click", function(e){
 			registResume();
 		});
 	});	
@@ -526,6 +524,7 @@
 				getNetfuCateListForSelect("job", "", "1차직무선택", "bizType"+((appendNum*3)+1), true, true);
 			}
 			
+			
 		}else if(itemKind == "area_job"){
 			
 			if($("#area_job tr").length < 3){
@@ -551,6 +550,7 @@
 				getNetfuCateListForSelect("area_job", "", "1차산업선택", "bizAreaJob"+((appendNum*3)+1), true, true);
 			}
 
+			
 		}else if(itemKind == "area"){
 			
 			if($("#area tr").length < 3){
@@ -572,6 +572,98 @@
 				
 				getNetfuCateListForSelect("area", "", "시도 선택", "bizArea"+((appendNum*2)+1), true, true);
 			}
+
+			
+		}else if(itemKind == "education"){
+			
+			trHtml += "<tr class='education'>";
+			trHtml += "<th>학력</th>";
+			trHtml += "<td>";
+			trHtml += "	<span>";
+			trHtml += "		<input id='lesson_sdate_full' type='date' placeholder='yyyy-mm-dd' name='lesson_sdate_full'/>";
+			trHtml += "		<select id='school2"+appendNum+"' name='school2' title='학교구분'>";
+			trHtml += "		</select>";
+			trHtml += "		<input id='school' type='text' name='school' placeholder='학교명'/>";
+			trHtml += "	</span>";
+			trHtml += "	<span>";
+			trHtml += "		<input id='lesson_edate_full' type='date' placeholder='yyyy-mm-dd' name='lesson_edate_full'/>";
+			trHtml += "		<select id='lesson_state"+appendNum+"' name='lesson_state' title='졸업상태'>";
+			trHtml += "		</select>";
+			trHtml += "		<input id='lesson' type='text' name='lesson' placeholder='전공명'/>";
+			trHtml += "		<input id='lesson2' type='text' name='lesson2' placeholder='학과명'/>";
+			trHtml += "	</span>";
+			trHtml += "</td>";
+			trHtml += "</tr>";
+			
+			$("#education").find("tr").eq(appendNum-1).after(trHtml);	
+			
+			getNetfuCateListForSelect("job_school", "", "", "school2"+appendNum, false, false);
+			getNetfuCateListForSelect("job_state", "", "", "lesson_state"+appendNum, false, false);
+			
+		}else if(itemKind == "career"){
+			
+			trHtml += "<tr class='experience'>";
+			trHtml += "<th>경력</th>";
+			trHtml += "<td>";
+			trHtml += "	<span>";
+			trHtml += "		<input id='hold_sdate_full' type='date' placeholder='yyyy-mm-dd' name='hold_sdate_full'/>";
+			trHtml += "		<input id='company' type='text' name='company' placeholder='회사명'/>";
+			trHtml += "	</span>";
+			trHtml += "	<span>";
+			trHtml += "		<input id='hold_edate_full' type='date' placeholder='yyyy-mm-dd' name='hold_edate_full'/>";
+			trHtml += "		<input id='business' type='text' name='business' placeholder='담당업무'/>";
+			trHtml += "	</span>";
+			trHtml += "</td>";
+			trHtml += "</tr>";
+			
+			$("#career").find("tr").eq(appendNum-1).after(trHtml);	
+			
+			
+		}else if(itemKind == "licence"){
+			
+			trHtml += "<tr>";
+			trHtml += "	<th>자격사항</th>";
+			trHtml += "	<td>";
+			trHtml += "		<p class='part01'><span>취득일자</span><br/><input id='obtain_date' type='date' placeholder='yyyy-mm-dd' name='obtain_date'/></p>";
+			trHtml += "		<p class='part02'><span>자격증명</span><br/><input id='qualification' type='text' placeholder='자격증명' name='qualification'/></p>";
+			trHtml += "		<p class='part03'><span>발행처</span><br/><input id='public_place' type='text' name='public_place'/></p>";
+			trHtml += "		<input type='hidden' name='id' id='id' value='0' />";
+			trHtml += "	</td>";
+			trHtml += "</tr>";
+			
+			$("#licence").find("tr").eq(appendNum-1).after(trHtml);	
+		   
+			
+		}else if(itemKind == "language"){
+		
+			trHtml += "<tr>";
+			trHtml += "	<th>외국어</th>";
+			trHtml += "	<td>";
+			trHtml += "		<p class='part01'><span>취득일자</span><br/><input id='ex_obtain_date' type='date' placeholder='yyyy-mm-dd'  name='ex_obtain_date'/></p>";
+			trHtml += "		<p class='part02'><span>외국어명</span><br/><input id='language' type='text' name='language'/></p>";
+			trHtml += "		<p class='part03'>";
+			trHtml += "			<span>수준</span><br/>";
+			trHtml += "			<select id='level' name='level' title='선택'>";
+			trHtml += "				<option value=''>선택</option>";
+			trHtml += "				<option value='상'>상</option>";
+			trHtml += "				<option value='중'>중</option>";
+			trHtml += "				<option value='하'>하</option>";
+			trHtml += "			</select>";
+			trHtml += "		</p>";
+			trHtml += "		<p class='part04'><span>발행처</span><br/><input id='examination' type='text' name='examination'/></p>";
+			trHtml += "		<p class='part05'><span>점수</span><br/><input id='point' type='text' name='point'/></p>";
+			trHtml += "		<p class='part06'><span>점수/등급</span><br/>";
+			trHtml += "			<select id='level2' name='level2' title='선택'>";
+			trHtml += "				<option value=''>선택</option>";
+			trHtml += "				<option value='점'>점</option>";
+			trHtml += "				<option value='급'>급</option>";
+			trHtml += "			</select>";
+			trHtml += "		</p>";
+			trHtml += "	</td>";
+			trHtml += "</tr>";
+			
+			$("#language").find("tr").eq(appendNum-1).after(trHtml);	
+			
 		}
 	}
 
@@ -580,21 +672,203 @@
 		
 		var itemObj = $("#"+itemKind);
 		
-		if($(itemObj).find("tr").length > 1){
-			$(itemObj).find("tr:last").remove();	
+		if(itemKind == "education" || itemKind == "career"){
+			if($(itemObj).find("tr").length > 2){
+				$(itemObj).find("tr:last").remove();	
+			}
+		}else{
+			if($(itemObj).find("tr").length > 1){
+				$(itemObj).find("tr:last").remove();	
+			}
 		}
 	}
 	
 	
+	function viewImgName(imgObj){
+		var imgObjArr = $(imgObj).val().split("\\");
+		if(imgObjArr.length > 0){
+			$("#imgName").text(imgObjArr[imgObjArr.length-1]);	
+			$("#imgChangeFlag").val("Y");
+		}
+	}
+	
 	function registResume(){
-		var callback = function(data){
-			alert("저장 되었습니다.");
-		};
 		
-		var param = {
-					
-				};
-		ajax('post', '/registResume.ajax', param, callback);
+		$("#inidSecret").val($("input[name=inidSecretChk]:checked").val());
+		$("#inidPChk").val($("input[name=bizCareerRadio]:checked").val());
+		inidMylskill_object.getById["inidMylskill"].exec("UPDATE_CONTENTS_FIELD", []);
+		
+		$("#indiCondition").val($("input[name=indiConditionRadio]:checked").val());
+		
+		var inidJobform = "";
+		$("input[name=inidJobformChk]").each(function() {
+		      if(this.checked){
+		    	  inidJobform += this.value+",";
+		      }
+		});
+		inidJobform = inidJobform.length > 0 ? inidJobform.substring(0, inidJobform.length-1) : "";
+		$("#inidJobform").val(inidJobform);
+		
+		inidIntroduce.getById["inidMylskill"].exec("UPDATE_CONTENTS_FIELD", []);  
+
+		if(checkNull($("#inidSecret").val())){ alert("사진 공개 여부를 체크하세요."); return; }
+		if(checkNull($("#inidPChk").val())){ alert("사진 공개 여부를 체크하세요."); return; }
+		if(checkNull($("#inidTitle").val())){ alertAndFocus("이력서 제목을 입력하세요.", $("#inidTitle")); return; }
+		if(checkNull($("inidArea1 option:selected").val())){ alert("근무지역을 선택하세요."); return; }
+		if(checkNull($("inidType1 option:selected").val())){ alert("직무분야를 선택하세요."); return; }
+		if(checkNull($("inidAreaJob1 option:selected").val())){ alert("산업분야를 선택하세요."); return; }
+		if(checkNull($("inidJobform").val())){ alert("희망근무형태를 선택하세요."); return; }
+		if(checkNull($("payType option:selected").val())){ alert("급여 종류를 선택하세요."); return; }
+		if(checkNull($("inidPay option:selected").val())){ alert("희망급여를 선택하세요."); return; }
+		
+		
+		
+		/*  #######  학력 정보 JSON  */
+		var educationTopInfo = new Object();
+		var educationArray = new Array();
+		var educationInfo;
+		var lesson_sdate_full;
+		var lesson_sdate;
+		var lesson_sdate2;
+		var lesson_edate_full;
+		var lesson_edate;
+		var lesson_edate2;
+		
+		educationTopInfo.final_degree = $("#final_degree option:selected").val();
+		
+		$("#education .education").each(function(index, item){
+			
+			educationInfo = new Object();
+			
+			lesson_sdate_full = $(this).find("#lesson_sdate_full").val();
+			if(lesson_sdate_full != "" && lesson_sdate_full.length > 7){
+				lesson_sdate = lesson_sdate_full.substring(0, 4);
+				lesson_sdate2 = lesson_sdate_full.substring(5, 2);
+			}
+		
+			lesson_edate_full = $(this).find("#lesson_edate_full").val();
+			if(lesson_edate_full != "" && lesson_edate_full.length > 7){
+				lesson_edate = lesson_edate_full.substring(0, 4);
+				lesson_edate2 = lesson_edate_full.substring(5, 2);
+			}
+			
+			educationInfo.lesson_sdate = lesson_sdate;
+			educationInfo.lesson_sdate2 = lesson_sdate2;
+			educationInfo.school2 = $(this).find("#school2 option:selected").val();
+			educationInfo.school2 = $(this).find("#school2 option:selected").text();
+			educationInfo.school = $(this).find("#school").val();
+			educationInfo.lesson_edate = lesson_edate;
+			educationInfo.lesson_edate2 = lesson_edate2;
+			educationInfo.lesson = $(this).find("#lesson").val();
+			educationInfo.lesson2 = $(this).find("#lesson2").val();
+			educationInfo.lesson_state = $(this).find("#lesson_state option:selected").val();
+			educationInfo.strState = $(this).find("#lesson_state option:selected").text();
+			educationInfo.id = $(this).index();
+			
+			educationArray.push(educationInfo);
+		});
+		
+		educationTopInfo.data = educationArray;
+		
+		$("#education2").val(JSON.stringify(educationTopInfo));
+		//console.log(JSON.stringify(educationTopInfo));
+		
+		
+		/*  #######  경력 정보 JSON  */
+		var careerTopInfo = new Object();
+		var careerArray = new Array();
+		var careerInfo;
+		var hold_sdate_full;
+		var hold_sdate;
+		var hold_sdate2;
+		var hold_edate_full;
+		var hold_edate;
+		var hold_edate2;
+		
+		careerTopInfo.total_year = $("#total_year option:selected").val();
+		careerTopInfo.total_month = $("#total_month option:selected").val();
+		
+		$("#career .experience").each(function(index, item){
+			
+			careerInfo = new Object();
+			
+			hold_sdate_full = $(this).find("#hold_sdate_full").val();
+			if(hold_sdate_full != "" && hold_sdate_full.length > 7){
+				hold_sdate = hold_sdate_full.substring(0, 4);
+				hold_sdate2 = hold_sdate_full.substring(5, 2);
+			}
+		
+			hold_edate_full = $(this).find("#hold_edate_full").val();
+			if(hold_edate_full != "" && hold_edate_full.length > 7){
+				hold_edate = hold_edate_full.substring(0, 4);
+				hold_edate2 = hold_edate_full.substring(5, 2);
+			}
+			
+			careerInfo.hold_sdate = hold_sdate;
+			careerInfo.hold_sdate2 = hold_sdate2;
+			careerInfo.hold_edate = hold_edate;
+			careerInfo.hold_edate2 = hold_edate2;
+			careerInfo.company = $(this).find("#company").val();
+			careerInfo.business = $(this).find("#business").val();
+			careerInfo.id = $(this).index();
+			
+			careerArray.push(careerInfo);
+		});
+		
+		careerTopInfo.data = careerArray;
+		
+		$("#career2").val(JSON.stringify(careerTopInfo));
+		//console.log("{data:"+JSON.stringify(careerArray))+"}";
+		
+		
+		/*  #######  자격증 정보 JSON  */
+		var licenceTopInfo = new Object();
+		var licenceArray = new Array();
+		var licenceInfo;
+		
+		$("#licence tr").each(function(index, item){
+			
+			licenceInfo = new Object();
+			licenceInfo.obtain_date = $(this).find("#obtain_date").val();;
+			licenceInfo.qualification = $(this).find("#qualification").val();
+			licenceInfo.public_place = $(this).find("#public_place").val();
+			licenceInfo.id = $(this).index();
+			
+			licenceArray.push(licenceInfo);
+		});
+		
+		licenceTopInfo.data = licenceArray;
+		
+		$("#license2").val(JSON.stringify(licenceTopInfo));
+		//console.log("{data:"+JSON.stringify(careerArray))+"}";
+
+		
+		
+		/*  #######  외국어 정보 JSON  */
+		var languageTopInfo = new Object();
+		var languageItemArray = new Array();
+		var languageInfo;
+		
+		$("#language tr").each(function(index, item){
+			
+			languageInfo = new Object();
+			languageInfo.ex_obtain_date = $(this).find("#ex_obtain_date").val();;
+			languageInfo.language = $(this).find("#language").val();
+			languageInfo.level = $(this).find("#level option:selected").val();
+			languageInfo.examination = $(this).find("#examination").val();
+			languageInfo.point = $(this).find("#point").val();
+			languageInfo.level2 = $(this).find("#level2 option:selected").val();
+			languageInfo.id = $(this).index();
+			
+			languageItemArray.push(languageInfo);
+		});
+		languageTopInfo.data = languageItemArray;
+		
+		$("#language2").val(JSON.stringify(languageTopInfo));
+		//console.log("{data:"+JSON.stringify(careerArray))+"}";
+		
+		
+		$("#registForm").submit();
 	}
 	
 </script>

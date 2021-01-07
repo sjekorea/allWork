@@ -89,6 +89,7 @@
 			alert($("#code").val()); 
 		}
 	}
+	
 	 function openWindow(code){
 		// alert(code);
         //window.open("/mainWinPop.do","_blank","top=200,left=0,width=400,height=445,resizable=1,scrollbars=yes");

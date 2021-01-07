@@ -14,6 +14,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import allwork.common.CommandMap;
+
 @Component("fileUtils")
 public class FileUtils {
 	
@@ -27,7 +29,7 @@ public class FileUtils {
 	//private static final String filePath = "/var/lib/tomcat8/webapps/ROOT/peg/";
 	private static final String fileUrl = "/contentsImg/";
 	
-	public List<Map<String,Object>> parseInsertFileInfo(Map<String,Object> map, HttpServletRequest request) throws Exception{
+	public CommandMap uploadFileMap(CommandMap map, HttpServletRequest request) throws Exception{
     	
     	List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
     	
@@ -49,10 +51,10 @@ public class FileUtils {
 			
 			//String serverIp = CommonUtil.getServerIp();
 	        
-	        //System.out.println("IMG NAME : "+multipartHttpServletRequest.getParameter("imgName"));
-	        
 	        while(iterator.hasNext()){
 	        	multipartFile = multipartHttpServletRequest.getFile(iterator.next());
+	        	System.out.println("multipartFile.getName() :"+multipartFile.getName());
+	        	
 	        	if(multipartFile.isEmpty() == false){
 	        		originalFileName = new String(multipartFile.getOriginalFilename().getBytes("8859_1"), "UTF-8");
 	        		originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
@@ -60,27 +62,18 @@ public class FileUtils {
 	        		
 	        		file = new File(filePath + storedFileName);
 	        		multipartFile.transferTo(file);
-	        		
-	        		listMap = new HashMap<String,Object>();
-	        		listMap.put("contentsImgSeq", (String)map.get("contentsImgSeq"));
-	        		listMap.put("imgName", new String(((String)map.get("imgName")).getBytes("8859_1"), "UTF-8"));
-	        		listMap.put("orgFileName", originalFileName);
-	        		listMap.put("maskFileName", storedFileName);
-	        		listMap.put("fileUrl", fileUrl+storedFileName);
-	        		listMap.put("fileSize", multipartFile.getSize());
-	        		listMap.put("loginId", (String)map.get("loginId"));
-	        		listMap.put("sendType", (String)map.get("sendType"));
-	        		list.add(listMap);
+	        		System.out.println("storedFileName :"+storedFileName);
+	        		map.put(multipartFile.getName(), storedFileName);
 	        	}
 	        }
 	        
 	        //System.out.println(" ---------> FILE UPLOAD !!!!  " + list.size());
 			
 		}catch(Exception e){
-			System.out.println(this.getClass().getName()+".parseInsertFileInfo Exception!!!!!    "+e.toString());
+			System.out.println(this.getClass().getName()+".uploadFileArr Exception!!!!!    "+e.toString());
 		}
 		
-		return list;
+		return map;
 	}
 	
 	

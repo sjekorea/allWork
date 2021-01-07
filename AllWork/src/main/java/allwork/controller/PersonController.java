@@ -9,9 +9,12 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +39,9 @@ import allwork.service.RecruitItemService;
 import allwork.service.RecruitViewService;
 import allwork.common.util.PaginationUtil;
 import allwork.common.util.CommonColumnUtil;
+import allwork.common.util.CommonUtil;
 import allwork.common.util.ConvertUtil;
+import allwork.common.util.FileUtils;
 import allwork.common.util.MakeQueryUtil;
 
 @Controller
@@ -76,6 +81,9 @@ public class PersonController {
 
 	@Resource(name="recruitViewService")
 	private RecruitViewService recruitViewService;		
+
+	@Resource(name="fileUtils") 
+	private FileUtils fileUtils;			
 	
 	//(begin) 2020.12.30 by s.yoo
 	@Resource(name="aiMatchingRecruitService")
@@ -232,18 +240,24 @@ public class PersonController {
 	 * 이력서 등록 처리
 	 */
 	@RequestMapping(value="/registResume.do")
-	public ModelAndView registResume(CommandMap commandMap) {
+	public void registResume(CommandMap commandMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		
 		ModelAndView mv = new ModelAndView();
+		String attachFileName = "";
+		String alertMsg = "";
+		String redirectUrl = "";
 		try{
-			int rstCnt = netfuItemResumeService.insertNetfuItemResume(commandMap.getMap());
-			mv.addObject("map", commandMap.getMap());
-			mv.addObject("rstCnt", rstCnt);
-			mv.setViewName("jsonView");
+			
+			commandMap = fileUtils.uploadFileMap(commandMap, request); // 첨부파일 업로드
+			
+			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
+			netfuItemResumeService.insertNetfuItemResume(commandMap.getMap()); // 채용공고 저장
+			CommonUtil.Alert("등록되었습니다.", "/resumeList.do", request, response);
+			
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".registResume Exception !!!!! \n"+e.toString());
+			CommonUtil.Alert("등록에 실패 하였습니다.", "/personHome.do", request, response);
 		}
-		return mv;
 	}
 	
 	

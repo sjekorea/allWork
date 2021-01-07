@@ -97,10 +97,36 @@ public class NetfuItemResumeVo {
 	private String inidAreaJob9Name;
 	private String portfolioFile;
 	private String viewDate;
+	private String education2;
+	private String career2;
+	private String license2;
+	private String language2;
 	
 	
-	
-	
+	public String getEducation2() {
+		return education2;
+	}
+	public String getCareer2() {
+		return career2;
+	}
+	public String getLicense2() {
+		return license2;
+	}
+	public String getLanguage2() {
+		return language2;
+	}
+	public void setEducation2(String education2) {
+		this.education2 = education2;
+	}
+	public void setCareer2(String career2) {
+		this.career2 = career2;
+	}
+	public void setLicense2(String license2) {
+		this.license2 = license2;
+	}
+	public void setLanguage2(String language2) {
+		this.language2 = language2;
+	}
 	public String getViewDate() {
 		return viewDate;
 	}

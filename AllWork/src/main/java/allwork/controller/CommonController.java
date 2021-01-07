@@ -47,10 +47,8 @@ public class CommonController {
 		int totalSize = 0;
 		
 		try{
-			
-			// popup 정보
+			// popup 리스트
 			List<Map<String, Object>> popupList = homeCommonService.selectMainPopupList(commandMap.getMap());
-			System.out.println("popupList.size() : "+popupList.size());
 			mv.addObject("popupList", popupList);
 			
 		}catch(Exception e){
@@ -64,11 +62,16 @@ public class CommonController {
 	@RequestMapping(value="/mainWinPop.do")
 	public ModelAndView mainWinPop(CommandMap commandMap) {
 		
-		System.out.println("###########################    ");
-		
 		ModelAndView mv = new ModelAndView("/popup/mainWinPop");
 		
-		
+		try{
+			// popup 정보
+			Map<String, Object> popupMap = homeCommonService.selectMainPopupMap(commandMap.getMap());
+			mv.addObject("popupMap", popupMap);
+			
+		}catch(Exception e){
+			System.out.println(this.getClass().getName()+".mainWinPop Exception!!! \n"+e.toString());
+		}
 		
 		return mv;
 	}

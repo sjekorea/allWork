@@ -27,6 +27,11 @@ public class HomeCommonServiceImpl implements HomeCommonService{
 		return homeCommonDao.selectMainPopupList(map);
 	}
 	
+	@Override
+	public Map<String, Object> selectMainPopupMap(Map<String, Object> map) throws Exception {
+		return homeCommonDao.selectMainPopupMap(map);
+	}
+	
 	// 메인화면 배너 리스트
 	@Override
 	public List<Map<String, Object>> selectMainBannerList(Map<String, Object> map) throws Exception {

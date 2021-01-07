@@ -209,42 +209,48 @@
 
 	<!-- 이력서 정보 등록 -->
 	<insert id="insertNetfuItemResume" parameterType="hashmap">
-		<![CDATA[
-			insert into netfu_item_resume
-			(
-				uid, info_type, basic, name, inid_p_chk, inid_photo, inid_phone, inid_hphone
-				, inid_email, inid_post, inid_address1, inid_address2
-				, inid_home, inid_title, indi_condition
-				, inid_area1, inid_area2, inid_area3, inid_area4, inid_area5, inid_area6
-				, inid_type1, inid_type2, inid_type3, inid_type4, inid_type5, inid_type6
-				, inid_mylskill, inid_jobform, inid_pay, pay_type
-				, inid_last_school, inid_career, inid_license, inid_languages, inid_introduce, inid_secret
-				, wdate, u_wdate, j_wdate, hit
-				, service11, service12, service13, service101, service14, service15, service16, service17
-				, inid_type7, inid_type8, inid_type9
-				, inid_sex, sms_send, a_insert, memo, education2, career2, license2, language2
-				, inid_area_job1, inid_area_job2, inid_area_job3, inid_area_job4, inid_area_job5, inid_area_job6
-				, inid_area_job7, inid_area_job8, inid_area_job9
-				, portfolio_file	
-			)
-			values
-			(
-				${uid}, #{infoType}, #{basic}, #{name}, #{inidPChk}, #{inidPhoto}, #{inidPhone}, #{inidHphone}
-				, #{inidEmail}, #{inidPost}, #{inidAddress1}, #{inidAddress2}
-				, #{inidHome}, #{inidTitle}, #{indiCondition}
-				, #{inidArea1}, #{inidArea2}, #{inidArea3}, #{inidArea4}, #{inidArea5}, #{inidArea6}
-				, #{inidType1}, #{inidType2}, #{inidType3}, #{inidType4}, #{inidType5}, #{inidType6}
-				, #{inidMylskill}, #{inidJobform}, #{inidPay}, #{payType}
-				, #{inidLastSchool}, #{inidCareer}, #{inidLicense}, #{inidLanguages}, #{inidIntroduce}, #{inidSecret}
-				, #{wdate}, #{uWdate}, #{jWdate}, #{hit}
-				, #{service11}, #{service12}, #{service13}, #{service101}, #{service14}, #{service15}, #{service16}, #{service17}
-				, #{inidType7}, #{inidType8}, #{inidType9}
-				, #{inidSex}, #{smsSend}, #{aInsert}, #{memo}, #{education2}, #{career2}, #{license2}, #{language2}
-				, #{inidAreaJob1}, #{inidAreaJob2}, #{inidAreaJob3}, #{inidAreaJob4}, #{inidAreaJob5}, #{inidAreaJob6}
-				, #{inidAreaJob7}, #{inidAreaJob8}, #{inidAreaJob9}
-				, #{portfolioFile}
-			)
-		]]>
+		insert into netfu_item_resume
+		(
+			uid, info_type, basic, name, inid_p_chk
+			<if test="imgChangeFlag == 'Y'">
+			, inid_photo
+			</if>
+			, inid_phone, inid_hphone
+			, inid_email, inid_post, inid_address1, inid_address2
+			, inid_home, inid_title, indi_condition
+			, inid_area1, inid_area2, inid_area3, inid_area4, inid_area5, inid_area6
+			, inid_type1, inid_type2, inid_type3, inid_type4, inid_type5, inid_type6
+			, inid_mylskill, inid_jobform, inid_pay, pay_type
+			, inid_last_school, inid_career, inid_license, inid_languages, inid_introduce, inid_secret
+			, wdate, u_wdate, j_wdate, hit
+			, service11, service12, service13, service101, service14, service15, service16, service17
+			, inid_type7, inid_type8, inid_type9
+			, inid_sex, sms_send, a_insert, memo, education2, career2, license2, language2
+			, inid_area_job1, inid_area_job2, inid_area_job3, inid_area_job4, inid_area_job5, inid_area_job6
+			, inid_area_job7, inid_area_job8, inid_area_job9
+			, portfolio_file	
+		)
+		values
+		(
+			${uid}, #{infoType}, #{basic}, #{name}, #{inidPChk}
+			<if test="imgChangeFlag == 'Y'">
+			, #{inidPhoto}
+			</if>
+			, #{inidPhone}, #{inidHphone}
+			, #{inidEmail}, #{inidPost}, #{inidAddress1}, #{inidAddress2}
+			, #{inidHome}, #{inidTitle}, #{indiCondition}
+			, #{inidArea1}, #{inidArea2}, #{inidArea3}, #{inidArea4}, #{inidArea5}, #{inidArea6}
+			, #{inidType1}, #{inidType2}, #{inidType3}, #{inidType4}, #{inidType5}, #{inidType6}
+			, #{inidMylskill}, #{inidJobform}, #{inidPay}, #{payType}
+			, #{inidLastSchool}, #{inidCareer}, #{inidLicense}, #{inidLanguages}, #{inidIntroduce}, #{inidSecret}
+			, #{wdate}, #{uWdate}, #{jWdate}, #{hit}
+			, #{service11}, #{service12}, #{service13}, #{service101}, #{service14}, #{service15}, #{service16}, #{service17}
+			, #{inidType7}, #{inidType8}, #{inidType9}
+			, #{inidSex}, #{smsSend}, #{aInsert}, #{memo}, #{education2}, #{career2}, #{license2}, #{language2}
+			, #{inidAreaJob1}, #{inidAreaJob2}, #{inidAreaJob3}, #{inidAreaJob4}, #{inidAreaJob5}, #{inidAreaJob6}
+			, #{inidAreaJob7}, #{inidAreaJob8}, #{inidAreaJob9}
+			, #{portfolioFile}
+		)
 	</insert>
 
 
