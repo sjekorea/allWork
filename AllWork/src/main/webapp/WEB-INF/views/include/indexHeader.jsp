@@ -94,18 +94,15 @@
 		// alert(code);
         //window.open("/mainWinPop.do","_blank","top=200,left=0,width=400,height=445,resizable=1,scrollbars=yes");
     }
+	 
+	 <c:forEach var="result" items="${popupList}" varStatus="status">
+		 window.open("/mainWinPop.do?code=${result.code}","_blank","top=200,left=0,width=400,height=445,resizable=1,scrollbars=yes");
+	 </c:forEach>
+	 
 </script>
 
   </head>
   <body>
-
-	<form name="openPopForm" id="openPopForm" method="post">
-	    <input type="hidden" name="code" id="code" value="" />
-	</form>
-	
-	<c:forEach var="result" items="${popupList}" varStatus="status">
-		<script>openWindow("${result.code}");</script>
-	</c:forEach>
 
 	<div id="progress_barWrap" style="display:none;">
 		<p id="progress_bar">

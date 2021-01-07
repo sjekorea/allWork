@@ -27,7 +27,6 @@
 	document.title = "${popupMap.subject}";
 
 	var set_cookie = function(code){
-		alert(code);
 		setCookie("netfu_popup_"+code, code, 1);
 	}
 </script> 
@@ -37,7 +36,14 @@
 <body>
 	<div id="popupWrap">
 		<div class="imgArea" style="resize: both; overflow: auto;">
-			<img src="img/main/popup.jpg" alt="이미지00"/>
+			<c:choose>
+				<c:when test="${popupMap.type != 'image'}">
+					${popupMap.contents}
+				</c:when>
+				<c:otherwise>
+					${popupMap.contentsImage}
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div class="buttonArea">
 			<div class="col-1">

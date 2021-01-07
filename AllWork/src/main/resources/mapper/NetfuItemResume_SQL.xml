@@ -236,6 +236,7 @@
 			<if test="imgChangeFlag == 'Y'">
 			, #{inidPhoto}
 			</if>
+			<![CDATA[
 			, #{inidPhone}, #{inidHphone}
 			, #{inidEmail}, #{inidPost}, #{inidAddress1}, #{inidAddress2}
 			, #{inidHome}, #{inidTitle}, #{indiCondition}
@@ -250,6 +251,7 @@
 			, #{inidAreaJob1}, #{inidAreaJob2}, #{inidAreaJob3}, #{inidAreaJob4}, #{inidAreaJob5}, #{inidAreaJob6}
 			, #{inidAreaJob7}, #{inidAreaJob8}, #{inidAreaJob9}
 			, #{portfolioFile}
+			]]>
 		)
 	</insert>
 

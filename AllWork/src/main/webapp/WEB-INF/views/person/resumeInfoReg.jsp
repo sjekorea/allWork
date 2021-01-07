@@ -71,17 +71,17 @@
 										<tr>
 											<th>이력서 공개<span class="necessary">*</span></th>
 											<td>
-												<span><input id="inidSecretChk" type="radio" name="inidSecretChk" checked value="Y"/><label for="res01_desc01">&nbsp;공개</label></span>
-												<span><input id="inidSecretChk" type="radio" name="inidSecretChk" value="N"/><label for="res01_desc01_1">&nbsp;비공개</label></span>
-												<input type="hidden" name="inidPChk" id="inidPChk" value="" />
+												<span><input id="inidSecretRadio" type="radio" name="inidSecretRadio" checked value="no"/><label for="res01_desc01">&nbsp;공개</label></span>
+												<span><input id="inidSecretRadio" type="radio" name="inidSecretRadio" value="yes"/><label for="res01_desc01_1">&nbsp;비공개</label></span>
+												<input type="hidden" name="inidSecret" id="inidSecret" value="" />
 											</td>
 										</tr>
 										<tr>
 											<th>사진 공개<span class="necessary">*</span></th>
 											<td>
-												<span><input id="inidPChkRadio" type="radio" name="inidPChkRadio" checked value="no"/><label for="res01_desc01">&nbsp;공개</label></span>
-												<span><input id="inidPChkRadio" type="radio" name="inidPChkRadio" value="yes"/><label for="res01_desc01_1">&nbsp;비공개</label></span>
-												<input type="hidden" name="inidSecret" id="inidSecret" value="" />
+												<span><input id="inidPChkRadio" type="radio" name="inidPChkRadio" checked value="yes"/><label for="res01_desc01">&nbsp;공개</label></span>
+												<span><input id="inidPChkRadio" type="radio" name="inidPChkRadio" value="no"/><label for="res01_desc01_1">&nbsp;비공개</label></span>
+												<input type="hidden" name="inidPChk" id="inidPChk" value="" />
 											</td>
 										</tr>
 									</tbody>
@@ -391,7 +391,7 @@
 									<tr>
 										<th>자기소개서</th>
 										<td>
-											<textarea id="inidIntroduce"></textarea>
+											<textarea id="inidIntroduce" name="inidIntroduce"></textarea>
 										</td>
 									</tr>
 								</tbody>
@@ -694,8 +694,8 @@
 	
 	function registResume(){
 		
-		$("#inidSecret").val($("input[name=inidSecretChk]:checked").val());
-		$("#inidPChk").val($("input[name=bizCareerRadio]:checked").val());
+		$("#inidSecret").val($("input[name=inidSecretRadio]:checked").val());
+		$("#inidPChk").val($("input[name=inidPChkRadio]:checked").val());
 		inidMylskill_object.getById["inidMylskill"].exec("UPDATE_CONTENTS_FIELD", []);
 		
 		$("#indiCondition").val($("input[name=indiConditionRadio]:checked").val());
@@ -709,17 +709,16 @@
 		inidJobform = inidJobform.length > 0 ? inidJobform.substring(0, inidJobform.length-1) : "";
 		$("#inidJobform").val(inidJobform);
 		
-		inidIntroduce.getById["inidMylskill"].exec("UPDATE_CONTENTS_FIELD", []);  
+		inidIntroduce_object.getById["inidIntroduce"].exec("UPDATE_CONTENTS_FIELD", []);  
 
-		if(checkNull($("#inidSecret").val())){ alert("사진 공개 여부를 체크하세요."); return; }
-		if(checkNull($("#inidPChk").val())){ alert("사진 공개 여부를 체크하세요."); return; }
+		if(checkNull($("#inidSecret").val())){ alert("이력서 공개 여부를 체크하세요."); return; }
 		if(checkNull($("#inidTitle").val())){ alertAndFocus("이력서 제목을 입력하세요.", $("#inidTitle")); return; }
-		if(checkNull($("inidArea1 option:selected").val())){ alert("근무지역을 선택하세요."); return; }
-		if(checkNull($("inidType1 option:selected").val())){ alert("직무분야를 선택하세요."); return; }
-		if(checkNull($("inidAreaJob1 option:selected").val())){ alert("산업분야를 선택하세요."); return; }
-		if(checkNull($("inidJobform").val())){ alert("희망근무형태를 선택하세요."); return; }
-		if(checkNull($("payType option:selected").val())){ alert("급여 종류를 선택하세요."); return; }
-		if(checkNull($("inidPay option:selected").val())){ alert("희망급여를 선택하세요."); return; }
+		if(checkNull($("#inidArea1 option:selected").val())){ alert("근무지역을 선택하세요."); return; }
+		if(checkNull($("#inidType1 option:selected").val())){ alert("직무분야를 선택하세요."); return; }
+		if(checkNull($("#inidAreaJob1 option:selected").val())){ alert("산업분야를 선택하세요."); return; }
+		if(checkNull($("#inidJobform").val())){ alert("희망근무형태를 선택하세요."); return; }
+		if(checkNull($("#payType option:selected").val())){ alert("급여 종류를 선택하세요."); return; }
+		if(checkNull($("#inidPay option:selected").val())){ alert("희망급여를 선택하세요."); return; }
 		
 		
 		
