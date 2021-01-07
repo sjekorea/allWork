@@ -66,7 +66,7 @@
 <div id="containerWrap">
 	<div id="container">
 		<div id="leftPart">
-		<c:if test="${SE_USER_TYPE == 'person' }">
+		<c:if test="${SE_USER_TYPE == 'person' || companyMap.uid == SE_LOGIN_ID }">
 			<jsp:include page="${map.leftMenuUrl }" />
 		</c:if>
 		</div>

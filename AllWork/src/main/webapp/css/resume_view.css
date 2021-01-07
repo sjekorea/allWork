@@ -8,7 +8,7 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 
 /*###################################   leftpart   ###################################*/
 /*현재메뉴 언더라인*/
-#menuTree ul .gnb01 .subMenu01{text-decoration: underline;}
+/*	#menuTree ul .gnb01 .subMenu01{text-decoration: underline;}		*/
 
 /*###################################   res_rightPart   ###################################*/
 #rightPart{width:790px;overflow:hidden;margin-left:10px;float:left;}

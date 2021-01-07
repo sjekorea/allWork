@@ -22,8 +22,8 @@
 				<li class="gnb"><a href="/recruitListProgress.do" title="채용관리">채용관리</a>
 					<h3>채용관리</h3>
 					<ol>
-						<li><a href="/recruitInfoReg.do" title="채용공고 등록">채용공고 등록</a></li>
 						<li><a href="/recruitListProgress.do" title="진행중인 채용정보">진행중인 채용정보</a></li>
+						<li><a href="/recruitInfoReg.do" title="채용공고 등록">채용공고 등록</a></li>
 						<li><a href="/recruitListClosed.do" title="마감된 채용정보">마감된 채용정보</a></li>
 					</ol>
 				</li>
