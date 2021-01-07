@@ -64,6 +64,12 @@ public class NetfuItemResumeServiceImpl implements NetfuItemResumeService{
 	public int insertNetfuItemResume(Map<String, Object> map) throws Exception {
 		return netfuItemResumeDao.insertNetfuItemResume(map);
 	}
+	
+	// 이력서 정보  삭제
+	@Override
+	public int deleteNetfuItemResumeMulti(Map<String, Object> map) throws Exception {
+		return netfuItemResumeDao.deleteNetfuItemResumeMulti(map);
+	}
 
 
 }

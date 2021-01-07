@@ -592,6 +592,58 @@ public class ResumeController {
 	public ModelAndView resumeList(CommandMap commandMap, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView("/resume/resumeList");
 		
+		int pageSize = 10;
+		int totalSize = 0;
+		
+		try{
+				
+			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
+				commandMap.put("pageNo", "1");
+				commandMap.put("orderField", "nir.wdate");
+				commandMap.put("orderRule", "desc");
+			}
+			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
+			commandMap.put("pageSize", pageSize);
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
+			
+			// 채용정보 검색 리스트
+			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			Map<String, Object> pageMap = new HashMap<String, Object>();
+			if(resumeList.size() > 0){
+				totalSize = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
+				pageMap = PaginationUtil.makePageInfo(totalSize, pageSize, (String)commandMap.get("pageNo"));
+				commandMap.put("totalSize", totalSize);
+			}
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("resumeList", resumeList);
+			mv.addObject("pageMap", pageMap);
+		
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".resumeList Exception !!!!! \n"+e.toString());
+		}
+		
+		return mv;
+		
+	}
+	
+	
+	/*
+	 * 이력서 정보 삭제
+	 */
+	@RequestMapping(value="/deleteResumeMulti.ajax")
+	public ModelAndView deleteResumeMulti(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		try{
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			int rstCnt = netfuItemResumeService.deleteNetfuItemResumeMulti(commandMap.getMap());
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("rstCnt", rstCnt);
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".deleteResumeMulti Exception !!!!! \n"+e.toString());
+		}
 		return mv;
 	}
 

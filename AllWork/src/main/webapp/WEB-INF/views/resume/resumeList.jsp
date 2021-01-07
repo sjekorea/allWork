@@ -9,59 +9,136 @@
 <link rel="stylesheet" type="text/css" href="/css/resume_list.css"/>
 
 <div id="containerWrap">
-<div id="container">
-<div id="leftPart">
-<jsp:include page="/personSubMenu.do" />
-</div>
-<div id="rightPart">
-<div id="listPart">
-<h4>이력서 목록</h4>
-<p class="upload"><a href="#none" title="이력서등록">이력서등록</a></p>
-<p class="delete"><a href="#none" title="선택삭제">선택삭제</a></p>
-<table class="list">
-<caption>리스트</caption>
-<tbody>
-<tr class="list_title">
-<th class="desc00"><input type="checkbox"/></th>
-<th class="desc01">이력서</th>
-<th class="desc02">등록일</th>
-<th class="desc03">공개</th>
-<th class="desc04">비공개</th>
-</tr>
-<tr class="desc">
-<td class="desc00"><input type="checkbox"/></td>
-<td class="desc01">
-<a href="#none" title="이력서">
-S/W 컨설팅및 유통(오피스,보안,문서관리시스템등),정부과제,PLC,CAD등 관련
-</a>
-</td>
-<td class="desc02">2020-11-21</td>
-<td class="desc03"><input type="radio"/></td>
-<td class="desc04"><input type="radio"/></td>
-</tr>
-</tbody>
-</table>
-<div class="numareaWrap">
-<ul class="numArea">
-<li><a href="#" title="prev"><i class="fas fa-chevron-left"></i></a></li>
-<li class="p01"><a href="#" title="page1">1</a></li>
-<li><a href="#" title="page2">2</a></li>
-<li><a href="#" title="page3">3</a></li>
-<li><a href="#" title="page4">4</a></li>
-<li><a href="#" title="page5">5</a></li>
-<li><a href="#" title="page6">6</a></li>
-<li><a href="#" title="page7">7</a></li>
-<li><a href="#" title="page8">8</a></li>
-<li><a href="#" title="page9">9</a></li>
-<li><a href="#" title="page10">10</a></li>
-<li><a href="#" title="next"><i class="fas fa-chevron-right"></i></a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
+	<div id="container">
+		<div id="leftPart">
+			<jsp:include page="/personSubMenu.do" />
+		</div>
+		<div id="rightPart">
+			<div id="listPart">
+				<h4>이력서 목록</h4>
+				<p class="upload"><a href="/resumeInfoReg.do" title="이력서등록">이력서등록</a></p>
+				<p class="delete"><a href="javascript:deleteResume();" title="선택삭제">선택삭제</a></p>
+				<table class="list">
+					<caption>리스트</caption>
+					<tbody>
+						<tr class="list_title">
+							<th class="desc00"><input type="checkbox" name="all" id="all"/></th>
+							<th class="desc01">이력서</th>
+							<th class="desc02">등록일</th>
+							<th class="desc03">공개</th>
+							<th class="desc04">비공개</th>
+						</tr>
+						<c:choose>
+							<c:when test="${resumeList.size() > 0 }">
+								<c:forEach var="result" items="${resumeList}" varStatus="status">
+									<tr class="desc">
+										<td class="desc00"><input type="checkbox" name="chk" value="${result.no }" /></td>
+										<td class="desc01">
+										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">
+											${result.inidTitle }
+										</a>
+										</td>
+										<td class="desc02">${result.wdate }</td>
+										<td class="desc03"><input type="radio" id="inidSecret" name="inidSecret" value="no"/></td>
+										<td class="desc04"><input type="radio" id="inidSecret" name="inidSecret" value="yes"/></td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr class="desc"><td colspan="5" style="width:100%; height;50px;">내역이 없습니다.</div></li>
+							</c:otherwise>
+						</c:choose>
+					</tbody>	
+				</table>
+				<div class="numareaWrap">
+					<ul class="numArea">
+						${pageMap.pageHtml }
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <jsp:include page="/footer.do" />
 
+<form id="searchForm" name="searchForm" method="post" action="/resumeList.do">
+	<input type="hidden" name="no" id="no" value="" />
+	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
+	<input type="hidden" name="personUid" id="personUid" value="${map.personUid}" />
+	<input type="hidden" name="companyUid" id="companyUid" value="${map.companyUid}" />
+	<input type="hidden" name="recruitNo" id="recruitNo" value="" />
+	<input type="hidden" name="resumeNo" id="resumeNo" value="" />
+	<input type="hidden" name="orderField" id="orderField" value="${map.orderField }"/>
+	<input type="hidden" name="orderRule" id="orderRule" value="${map.orderRule }"/>
+	<input type="hidden" name="leftMenuUrl" id="leftMenuUrl" value="/personSubMenu.do" />
+</form>
 
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$("#all").click(function(e){
+		if($(this).prop("checked")) {  
+			$("input[type=checkbox]").prop("checked",true); 
+		} else { 
+			$("input[type=checkbox]").prop("checked",false); 
+		}
+	});
+	
+	$(".delete a").click(function(e){
+		deleteRecruitResume();
+	});
+});	
+
+
+	function deleteResume(){
+		
+		if($("input[name=chk]:checked").length <= 0){
+			alert("삭제할 항목을 선택하세요.");
+			return;
+		}
+		
+		var deleteItemMulti = "";
+		
+		$("input[name=chk]").each(function() {
+		      if(this.checked){
+		    	  deleteItemMulti += this.value+",";
+		      }
+		});
+		deleteItemMulti = deleteItemMulti.substring(0, deleteItemMulti.length-1);
+		
+		var callback = function(data){
+			alert("저장 되었습니다.");
+			$("#personUid").val("");
+			$("#companyUid").val("");
+			$("#searchForm #pageNo").val("");
+			$("#searchForm").submit();
+		};
+		var param = {
+					deleteItemMulti : deleteItemMulti
+				};
+		ajax('post', '/deleteResumeMulti.ajax', param, callback);
+	}
+	
+
+	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
+		
+		loadingOn();
+		
+		if("no" != open){
+			alert("현재 비공개 상태로 설정되어 있습니다.");
+			loadingOff();
+	
+		}else{
+			$("#companyUid").val(companyUid);
+			$("#personUid").val(personUid);
+			$("#no").val(no);
+			$("#recruitNo").val(recruitNo);
+			$("#resumeNo").val(resumeNo);
+			$("#searchForm").attr("action", "/resumeDetail.do");
+			$("#searchForm").submit();
+		} 
+	}
+
+</script>

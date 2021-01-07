@@ -11,5 +11,6 @@ public interface NetfuItemResumeService {
 	int selectNetfuItemResumeCnt(Map<String, Object> map) throws Exception; 
 	Map<String, Object> selectNetfuItemResumeMap(Map<String, Object> map) throws Exception;
 	int insertNetfuItemResume(Map<String, Object> map) throws Exception;
+	int deleteNetfuItemResumeMulti(Map<String, Object> map) throws Exception;
 	
 }

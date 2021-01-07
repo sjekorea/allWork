@@ -254,6 +254,14 @@
 			]]>
 		)
 	</insert>
+	
+	<!-- 스크랩한 채용정보 삭제 -->
+	<delete id="deleteNetfuItemResumeMulti" parameterType="hashmap">
+		delete from netfu_item_resume 
+		where 1=1
+			and uid = #{loginId}
+			and FIND_IN_SET(no, #{deleteItemMulti})
+	</delete>
 
 
 </mapper>
