@@ -261,5 +261,51 @@ public class ConvertUtil {
         pos = pos + length + 4 - numberOfBigChar;
         return new Mixed(actual);
     }
-	
+
+	//(begin) 2021.01.08 by s.yoo
+    /*
+     * 개인 신상정보 감추기 지원
+     */
+    //구직자 이름
+    public static String getPersonNameHidden(String strName) {
+    	if (strName == null || strName.length() < 2) return "";
+    	return strName.substring(0, 1) + "OO";
+    }
+
+    //전화번호
+    public static String getPhoneNoHidden(String strPhoneNo) {
+    	if (strPhoneNo == null || strPhoneNo.length() < 4) return "";
+    	String[] list = strPhoneNo.split("-");
+    	if (list.length < 2)
+    		return(list[0].substring(0, 3) + "-OOOO-OOOO");
+    	
+    	String strHiddenValue = list[0];
+    	if (list.length > 1)	strHiddenValue += "-OOOO";
+    	if (list.length > 2)	strHiddenValue += "-OOOO";
+    	
+    	return strHiddenValue;
+    }
+
+    //이메일
+    public static String getEmailHidden(String strEmail) {
+    	if (strEmail == null || strEmail.length() < 1) return "";
+    	String[] list = strEmail.split("@");
+    	if (list.length < 2) return "";
+    	return("****@********.***");
+    }
+
+    //주소
+    public static String getAddressHidden(String strPost, String strAddress1, String strAddress2) {
+    	if (strAddress1 == null || strAddress1.length() < 1) return "";
+    	String[] list = strAddress1.split(" ");
+
+    	String strHiddenValue = "[" + strPost + "]";
+    	if (list.length > 0) strHiddenValue += " " + list[0];
+    	if (list.length > 1) strHiddenValue += " " + list[1];
+    	strHiddenValue += " ***** ";
+    	
+    	return strHiddenValue;
+    }
+    //(begin) 2021.01.08 by s.yoo 
+
 }

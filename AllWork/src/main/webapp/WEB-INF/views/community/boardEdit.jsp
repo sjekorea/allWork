@@ -117,8 +117,8 @@
 		
 		//게시판
 		<c:if test="${boardCode == 'netfu_41549_84812' }">
-			if (${item.id} > 0) {
-				goBoardView('${boardCode}', ${item.id}, ${map.get("pageNo")});
+			if ($("#id").val() > 0) {
+				goBoardView('${boardCode}', $("#id").val(), ${map.get("pageNo")});
 			} else {
 				goBoardList('${boardCode}', 0, ${map.get("pageNo")});
 			}

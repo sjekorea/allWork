@@ -393,9 +393,25 @@ public class CompanyController {
 				netfuCompanyService.updateNetfuCompany(commandMap.getMap());
 				rstCnt = 1;
 			}
-				
+			
+			// 기업회원 가입  - 업종 ( netfu_cate : type = 'job')
+			commandMap.put("type", "businesstype");
+			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 기업회원 가입  - 상장여부 ( netfu_cate : type = 'biz_list')
+			commandMap.put("type", "biz_list");
+			List<Map<String, Object>> bizList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 기업회원 가입  - 기업 형태( netfu_cate : type = 'biz_form')
+			commandMap.put("type", "biz_form");
+			List<Map<String, Object>> bizFormList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+
+			//View 표출.
 			mv.addObject("rstCnt", rstCnt);
 			mv.addObject("map", commandMap.getMap());
+			mv.addObject("businesstypeList", businesstypeList);
+			mv.addObject("bizList", bizList);
+			mv.addObject("bizFormList", bizFormList);
 		}catch(Exception e){
 			mv.addObject("rstCnt", 0);
 			log.info(this.getClass().getName()+".companyModifyProcess Exception !!!!! \n"+e.toString());

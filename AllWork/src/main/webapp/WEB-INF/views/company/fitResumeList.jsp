@@ -103,7 +103,7 @@
 								<c:forEach var="result" items="${myServiceResumeList}"
 									varStatus="status">
 									<tr class="desc">
-										<td class="desc01">${result.name }</td>
+										<td class="desc01">${convert:getPersonNameHidden(result.name) }</td>
 										<td class="desc02"><a
 											href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">${convert:compByte(result.inidTitle, 80, "...")}</a>
 										</td>

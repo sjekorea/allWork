@@ -38,7 +38,7 @@
 										<td class="desc00"><input type="checkbox" name="chk" value="${result.noTo }" /></td>
 										<td class="desc01"><img src="img/userNo.png" alt="인재사진"/></td>
 										<td class="desc02">
-											${result.name }<br/>
+											${convert:getPersonNameHidden(result.name) }<br/>
 											${codeConvert:getBizSex(result.sex)}</span>&nbsp;<span>${convert:calcAge(result.birth)}</span>
 										</td>
 										<td class="desc03">

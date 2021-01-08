@@ -27,7 +27,9 @@
 					<caption>리스트</caption>
 					<tbody>
 						<tr class="list_title">
+							<!-- 
 							<th class="desc01"></th>
+							 -->
 							<th class="desc02">이름/출생년도</th>
 							<th class="desc03">최종학력</th>
 							<th class="desc04">보유기술</th>
@@ -37,14 +39,16 @@
 							<c:when test="${resumeRecommendList.size() > 0 }">
 								<c:forEach var="result" items="${resumeRecommendList}" varStatus="status">
 									<tr class="desc">
+										<!-- 
 									<c:if test="${result.photo == null || result.photo == '' }">
 										<td class="desc01"><img src="img/userNo.png" alt="인재사진" width=120 height=142/></td>
 									</c:if>
 									<c:if test="${result.photo != null && result.photo != '' }">
 										<td class="desc01"><img src="allwork/peg/${result.photo}" alt="인재사진" width=120 height=142 /></td>
 									</c:if>
+										 -->
 										<td class="desc02">
-											${result.name }<br/>
+											${convert:getPersonNameHidden(result.name) }<br/>
 											${result.birthYear}</span>
 										</td>
 										<td class="desc03">
@@ -60,7 +64,7 @@
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<tr class="desc"><td colspan="5">우수추천 인재가 없습니다.</div></li>
+								<tr class="desc"><td colspan="4">우수추천 인재가 없습니다.</div></li>
 							</c:otherwise>
 						</c:choose>
 					</tbody>

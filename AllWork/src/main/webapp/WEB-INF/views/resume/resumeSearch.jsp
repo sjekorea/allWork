@@ -183,7 +183,7 @@
 							<c:forEach var="result" items="${resumeList}" varStatus="status">
 								<tr class="desc">
 									<td class="desc00">
-										<span>${result.name }</span><br/>
+										<span>${convert:getPersonNameHidden(result.name) }</span><br/>
 										<span>${codeConvert:getBizSex(result.sex)},${codeConvert:getBirthYear(result.birth)}년생</span>
 									</td>
 									<td class="desc01">

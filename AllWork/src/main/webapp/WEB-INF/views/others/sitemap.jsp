@@ -7,9 +7,9 @@
 
 <!-- (begin) 2020.12.30 by s.yoo	-->
 <!-- 
-<jsp:include page="/introHeader.do" />
- -->
 <jsp:include page="/indexHeader.do" />
+ -->
+<jsp:include page="/introHeader.do" />
 <!-- (end) 2020.12.30 by s.yoo	-->
 
 <link rel="stylesheet" type="text/css" href="/css/sitemap.css"/>

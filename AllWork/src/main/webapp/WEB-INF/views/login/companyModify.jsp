@@ -313,6 +313,10 @@
 					<input type="hidden" name="bizPhone" id="bizPhone" value="${map.bizPhone}" />
 					<input type="hidden" name="bizFax" id="bizFax" value="${map.bizFax}" />
 					<input type="hidden" name="bizLogo" id="bizLogo" value="${map.bizLogo}" />
+					<input type="hidden" name="photo1" id="photo1" value="${map.photo1}" />
+					<input type="hidden" name="photo2" id="photo2" value="${map.photo2}" />
+					<input type="hidden" name="photo3" id="photo3" value="${map.photo3}" />
+					<input type="hidden" name="photo4" id="photo4" value="${map.photo4}" />
 				</fieldset>
 			</form>
 			<div class="agree_ok">

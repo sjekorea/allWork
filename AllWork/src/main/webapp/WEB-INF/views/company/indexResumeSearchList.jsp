@@ -32,7 +32,7 @@
 							<c:forEach var="result" items="${item.resumeDataAllwork}" varStatus="status">
 								<tr>
 									<td class="desc00">
-										<span>${result.name }</span><br/>
+										<span>${convert:getPersonNameHidden(result.name) }</span><br/>
 									</td>
 									<td class="desc01" colspan=2>
 										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.recommend_id }', 'no', 'resume');">

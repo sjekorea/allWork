@@ -90,23 +90,26 @@
 						<tbody class="tabelArea">
 							<tr>
 								<th class="table_title">이름</th>
-								<td class="table_desc">${memberMap.name }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${memberMap.uid }</td>
+								<td class="table_desc">${convert:getPersonNameHidden(memberMap.name) }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${memberMap.uid }</td>
 							</tr>
 							<tr>
 								<th class="table_title">이메일</th>
-								<td class="table_desc">${memberMap.email }</td>
+								<td class="table_desc">${convert:getEmailHidden(memberMap.email) }</td>
 							</tr>
 							<tr>
 								<th class="table_title">휴대폰</th>
-								<td class="table_desc">${memberMap.hphone }</td>
+								<td class="table_desc">${convert:getPhoneNoHidden(memberMap.hphone) }</td>
 							</tr>
 							<tr>
 								<th class="table_title">연락처</th>
-								<td class="table_desc">${memberMap.phone }</td>
+								<td class="table_desc">${convert:getPhoneNoHidden(memberMap.phone) }</td>
 							</tr>
 							<tr>
 								<th class="table_title">주소</th>
+								<!-- 
 								<td class="table_desc"><p>[${memberMap.post }] ${memberMap.address1 } ${memberMap.address2 }</p></td>
+								 -->
+								<td class="table_desc"><p>${convert:getAddressHidden(memberMap.post, memberMap.address1, memberMap.address2) }</p></td>
 							</tr>
 						</tbody>
 					</table>
