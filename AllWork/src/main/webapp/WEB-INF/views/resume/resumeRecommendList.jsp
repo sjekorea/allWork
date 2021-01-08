@@ -55,7 +55,7 @@
 											${result.schooling }<br/>
 										</td>
 										<td class="desc04">
-											<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.resume_id }', '${result.inidSecret }', 'resume');">${convert:compByte(result.careerMain, 250, "...")}</a>
+											<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.uno }', '${result.inidSecret }', 'resume');">${convert:compByte(result.careerMain, 250, "...")}</a>
 										</td>
 										<td class="desc05">
 											${result.workArea }

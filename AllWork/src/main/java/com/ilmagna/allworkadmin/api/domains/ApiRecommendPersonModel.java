@@ -27,7 +27,6 @@ public class ApiRecommendPersonModel extends ApiJqGridParams implements Serializ
 	private String workArea;			// 희망근무지.
 	private String strRegDate;
 	private String memo;
-	private Integer resume_id;			//이력서 ID.
 
 	private String photo;				//사진.
 	private String inidSecret;			//이력서 비공개.
@@ -216,18 +215,6 @@ public class ApiRecommendPersonModel extends ApiJqGridParams implements Serializ
 	 */
 	public void setMemo(String memo) {
 		this.memo = memo;
-	}
-	/**
-	 * @return the resume_id
-	 */
-	public Integer getResume_id() {
-		return resume_id;
-	}
-	/**
-	 * @param resume_id the resume_id to set
-	 */
-	public void setResume_id(Integer resume_id) {
-		this.resume_id = resume_id;
 	}
 	/**
 	 * @return the photo

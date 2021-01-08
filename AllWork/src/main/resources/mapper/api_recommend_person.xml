@@ -21,11 +21,9 @@
 			, A.work_area AS workArea
 			, DATE_FORMAT(A.reg_date, '%Y-%m-%d') AS strRegDate
 			, A.memo AS memo
-			, IFNULL(B.photo, "") AS photo
 			, IFNULL(C.inid_secret, "yes") AS inidSecret
 		FROM 
-			recommend_person A LEFT JOIN netfu_member B ON A.uid = B.uid
-								LEFT JOIN netfu_item_resume C ON A.resume_id = B.no
+			recommend_person A LEFT JOIN netfu_item_resume C ON A.uno = C.no
 		<where>
 			A.prs = 'P'
 			<if test='id != null &amp;&amp; id > 0'>
@@ -72,11 +70,9 @@
 			, A.work_area AS workArea
 			, DATE_FORMAT(A.reg_date, '%Y-%m-%d') AS strRegDate
 			, A.memo AS memo
-			, IFNULL(B.photo, "") AS photo
 			, IFNULL(C.inid_secret, "yes") AS inidSecret
 		FROM 
-			recommend_person A LEFT JOIN netfu_member B ON A.uid = B.uid
-								LEFT JOIN netfu_item_resume C ON A.resume_id = B.no
+			recommend_person A LEFT JOIN netfu_item_resume C ON A.uno = C.no
 		<where>
 			A.ser = #{id}
 		</where>
