@@ -239,8 +239,10 @@ public class CommunityController {
 				model.setId(id);
 				model = bbsService.getBbsData(model);				
 				
+				/*
 				//[Smart Editor 지원] content에 있는 쌍따옴표(")를 단일따옴표(')로 변환.
 				model.setContent(ApiCommonUtils.cnvtDoubleQuote2SingleQuote(model.getContent()));
+				*/
 			} else {
 				model.setId(0);
 				model.setUid((String)session.getAttribute("SE_LOGIN_ID"));
@@ -279,8 +281,10 @@ public class CommunityController {
 				model.setId(id);
 				model = bbsService.getBbsData(model);				
 				
+				/*
 				//[Smart Editor 지원] content에 있는 쌍따옴표(")를 단일따옴표(')로 변환.
 				model.setContent(ApiCommonUtils.cnvtDoubleQuote2SingleQuote(model.getContent()));
+				*/
 			} else {
 				model.setId(0);
 				model.setUid((String)session.getAttribute("SE_LOGIN_ID"));

@@ -66,7 +66,7 @@
 							<span class="write_desc"><input id="subject" name="subject" maxlength=100 value="${item.subject}" /></span>
 						</p>
 						<p class="writePart">
-							<textarea id="content" name="content"></textarea>
+							<textarea id="content" name="content">${item.content}</textarea>
 						</p>
 					</div>
 					</fieldset>
@@ -104,7 +104,7 @@
 	        fOnAppLoad : function(){
 	            //textarea 내용을 에디터상에 바로 뿌려주고자 할때 사용
             	//var data = '${map.content}'.replace(/\"/gi, "");
-	            content_object.getById["content"].exec("PASTE_HTML", [ "${item.content}" ]);
+	            //content_object.getById["content"].exec("PASTE_HTML", [ "${item.content}" ]);
 	        }
 	    });
 	});

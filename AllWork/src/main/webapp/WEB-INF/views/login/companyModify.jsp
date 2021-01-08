@@ -288,13 +288,13 @@
 							<tr>
 								<th>기업개요/비전</th>
 								<td>
-									<textarea id="bizVision" name="bizVision"></textarea>
+									<textarea id="bizVision" name="bizVision">${map.bizVision}</textarea>
 								</td>
 							</tr>
 							<tr class="history">
 								<th>연혁/실적</th>
 								<td>
-									<textarea id="bizHistory" name="bizHistory"></textarea>
+									<textarea id="bizHistory" name="bizHistory">${map.bizHistory}</textarea>
 									<span>
 									[입력예]<br/>
 									2008.12 웹어워드위원회 주최,"2008 웹어워드코리아 대상"2년 연속 수상<br/>
@@ -350,7 +350,7 @@
 	        fOnAppLoad : function(){
 	            //textarea 내용을 에디터상에 바로 뿌려주고자 할때 사용
             	//var data = '${map.bizVision}'.replace(/\"/gi, "");
-	            bizVision_object.getById["bizVision"].exec("PASTE_HTML", [ "${map.bizVision}" ]);
+	            //bizVision_object.getById["bizVision"].exec("PASTE_HTML", [ "${map.bizVision}" ]);
 	        }
 	    });
 		 
@@ -370,7 +370,7 @@
 	            //textarea 내용을 에디터상에 바로 뿌려주고자 할때 사용
 	            try {
 	            	//var data = '${map.bizHistory}'.replace(/\"/gi, "");
-		            bizHistory_object.getById["bizHistory"].exec("PASTE_HTML", [ "${map.bizHistory}" ]);	            	
+		            //bizHistory_object.getById["bizHistory"].exec("PASTE_HTML", [ "${map.bizHistory}" ]);	            	
 	            } catch(error) {
 	            	console.log(error);
 	            }

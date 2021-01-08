@@ -321,9 +321,11 @@ public class CompanyController {
 			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
 			Map<String, Object> mapResult = netfuCompanyService.selectNetfuCompanyMap(commandMap.getMap());		
 			
+			/*
 			//[Smart Editor 지원] bizVision과 bizHistory에 있는 쌍따옴표(")를 단일따옴표(')로 변환.
 			mapResult.put("bizVision", ApiCommonUtils.cnvtDoubleQuote2SingleQuote((String) mapResult.get("bizVision")));
 			mapResult.put("bizHistory", ApiCommonUtils.cnvtDoubleQuote2SingleQuote((String) mapResult.get("bizHistory")));
+			*/
 
 			//View 표출.
 			mv.addObject("rstCnt", 2);
@@ -372,9 +374,11 @@ public class CompanyController {
 				strFilePhoto4 = ApiCommonUtils.uploadPhotoFile("photo", uid, filePhoto4, filePathPhoto);
 			}
 			
+			/*
 			//[Smart Editor 지원] bizVision과 bizHistory에 있는 쌍따옴표(")를 단일따옴표(')로 변환.
 			commandMap.put("bizVision", ApiCommonUtils.cnvtDoubleQuote2SingleQuote((String) commandMap.get("bizVision")));
 			commandMap.put("bizHistory", ApiCommonUtils.cnvtDoubleQuote2SingleQuote((String) commandMap.get("bizHistory")));
+			*/
 
 			//기업정보 등록.
 			int rstCnt = 0;
