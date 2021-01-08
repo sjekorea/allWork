@@ -37,7 +37,9 @@
 </head>
 <body>
 	<div id="popupWrap">
-		<div class="imgArea" style="resize: both; overflow: auto;">
+		<!-- div class="imgArea" style="resize: both; overflow: auto;" -->
+		<div class="imgArea" style="resize: both;">
+		<!-- div class="imgArea" style="resize: both; width: 200px; height: 112px;" -->
 			<c:choose>
 				<c:when test="${popupMap.type != 'image'}">
 					${popupMap.contents}

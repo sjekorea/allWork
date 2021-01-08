@@ -77,9 +77,17 @@
 	 <c:forEach var="result" items="${popupList}" varStatus="status">
 	 	//오늘 하루 보지않기 처리.
 	 	var popupCookie = getCookie("netfu_popup_" + "${result.code}");
+	 	//alert(popupCookie);
 	 	if (popupCookie == null || popupCookie.length < 1) {
-		 	//alert(popupCookie);
-			window.open("/mainWinPop.do?code=${result.code}","_blank","top=200,left=0,width=400,height=445,resizable=1,scrollbars=yes");	 		
+	 		var nWidth = parseInt("${result.width}") + 15;
+	 		var nHeight = parseInt("${result.height}") + 120;
+	 		var nLeft = parseInt("${result.left}");
+	 		var nTop = parseInt("${result.top}");
+
+			//window.open("/mainWinPop.do?code=${result.code}","_blank","top=200,left=0,width=400,height=445,resizable=1,scrollbars=yes");	 		
+			window.open("/mainWinPop.do?code=${result.code}","_blank",
+							"top=" + nTop + ",left=" + nLeft
+							+ ",width=" + nWidth + ",height=" + nHeight + ",resizable=1,scrollbars=yes");	 		
 	 	}
 	 </c:forEach>
 	 
