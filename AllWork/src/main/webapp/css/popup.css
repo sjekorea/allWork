@@ -1,22 +1,14 @@
 body{font-family:"NotoSansKR-Regular";}
-/* 메인페이지 팝업 */
+/* 메인페이지 팝업*/
 #popupWrap{width:100%;height:100%;position: relative;}
-#popupWrap .popup .imgArea{overflow: hidden;border:1px solid #999;background-color:#fff;}
-#popupWrap .popup .imgArea img{width:100%;}
+#popupWrap .imgArea{overflow:hidden;resize:both;background-color:#fff;}
+#popupWrap .imgArea img{width:100%;}
 
-#popupWrap .popup .buttonArea{width:100%;height:40px;line-height:44px;background-color:#eee;border:1px solid #999;border-top:none;}
-#popupWrap .popup .buttonArea p{display: inline-block;width:48%;height:40px;float: left;font-size:14px;}
-#popupWrap .popup .buttonArea span{padding:0 2px;}
-#popupWrap .popup .buttonArea .today_close{padding-left:2%;}
-#popupWrap .popup .buttonArea .popup_close{text-align:right;padding-right:2%;}
-
-/* 팝업사이즈 변경 */
-#popupWrap .popup .imgArea01{width:300px;height:500px;}
-#popupWrap .popup .imgArea02{width:500px;height:500px;}
-
-/* 팝업 위치 변경 */
-#popupWrap .popup01{z-index:200;position: absolute;top:0;left:0;}
-#popupWrap .popup02{z-index:300;position: absolute;top:0;left:550px;}
+#popupWrap .buttonArea{width:100%;height:40px;line-height:40px;background-color:#eee;}
+#popupWrap .buttonArea div{width:50%;height:100%;line-height:40px;text-align:center;color:#fff;background-color:#4F60E3;float:left;}
+#popupWrap .buttonArea div a{display:block;width:100%;height:100%;color:#fff;}
+#popupWrap .buttonArea .col-1{background-color:#eee;}
+#popupWrap .buttonArea .col-1 a{color:#000;}
 
 
 /* 유료옵션서비스 신청 팝업 */

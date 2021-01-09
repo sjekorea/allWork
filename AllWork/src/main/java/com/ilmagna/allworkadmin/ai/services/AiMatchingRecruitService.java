@@ -2,6 +2,7 @@ package com.ilmagna.allworkadmin.ai.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -12,6 +13,10 @@ import com.ilmagna.allworkadmin.ai.domains.AiMatchingRecommendationModel;
 import com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel;
 import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
 import com.ilmagna.allworkadmin.api.services.ApiCategoryService;
+
+import allwork.common.CommandMap;
+import allwork.common.util.CommonColumnUtil;
+import allwork.service.NetfuItemResumeService;
 
 @Service("aiMatchingRecruitService")
 public class AiMatchingRecruitService {
@@ -24,6 +29,9 @@ public class AiMatchingRecruitService {
 
 	@Resource(name="apiCategoryService")
 	protected ApiCategoryService categoryService;
+
+	@Resource(name="netfuItemResumeService")
+	private NetfuItemResumeService netfuItemResumeService;
 
 	
 	public AiMatchingRecruitModel getRecruitByCompany(AiMatchingRecruitModel model) throws Exception {
@@ -40,6 +48,27 @@ public class AiMatchingRecruitService {
 				for (int i = 0; i < list.size(); i++) {
 					AiMatchingRecruitModel itemData = procDataItem(list.get(i));
 					for (int j = 0; j < itemData.getData().size(); j++) {
+						////추천정보 등록일.
+						//itemData.getData().get(j).setStrWdate(item.getStrWdate());
+						
+						AiMatchingRecommendationModel data = itemData.getData().get(j);
+						if (!ApiCommonUtils.isNullOrEmpty(data.getRecommend_id())) {
+							int recommend_id = Integer.parseInt(data.getRecommend_id());
+							
+							CommandMap commandMap = new CommandMap();
+							commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
+							commandMap.put("personUid", data.getUid());
+							commandMap.put("no", recommend_id);
+							Map<String, Object> resumeMap = netfuItemResumeService.selectNetfuItemResumeMap(commandMap.getMap());
+
+							//이력서 공개상태.
+							itemData.getData().get(j).setInid_secret((String) resumeMap.get("inidSecret"));
+
+							//구직자 이력서 사진.
+							itemData.getData().get(j).setPhoto((String) resumeMap.get("photo"));							
+						}
+
+						//추천정보 등록.
 						listResult.add(itemData.getData().get(j));
 					}
 				}
@@ -51,6 +80,7 @@ public class AiMatchingRecruitService {
 
 	protected AiMatchingRecruitModel procDataItem(AiMatchingRecruitModel item) {
 		try {
+			//JSON 문자열을 Object로 변환.
 			item.parseJsonString(categoryService);
 		} catch (Exception e) {
 			e.printStackTrace();

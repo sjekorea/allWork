@@ -36,7 +36,7 @@
 											${result.title }
 										</a>
 									</td>
-									<td rowspan="3" class="desc05">채용마감: ${result.strEdate }</td>
+									<td rowspan="3" class="desc05">${result.strEdate }</td>
 								</tr>
 								<tr class="desc desc1">
 									<td class="desc03">급여</td>
@@ -67,7 +67,7 @@
 											${result.title }
 										</a>
 									</td>
-									<td rowspan="3" class="desc05">채용마감: ${result.strEdate }</td>
+									<td rowspan="3" class="desc05">${result.strEdate }</td>
 								</tr>
 								<tr class="desc desc1">
 									<td class="desc03">급여</td>

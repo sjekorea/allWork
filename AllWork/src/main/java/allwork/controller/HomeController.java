@@ -19,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ilmagna.allworkadmin.ai.domains.AiSearchModel;
 import com.ilmagna.allworkadmin.ai.services.AiSearchService;
+import com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel;
+import com.ilmagna.allworkadmin.api.services.ApiRecruitItemService;
 
 import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
@@ -48,6 +50,9 @@ public class HomeController {
 	
 
    	//(begin) 2020.12.30 by s.yoo
+	@Resource(name="apiRecruitItemService")
+	protected ApiRecruitItemService headhuntService;
+	
 	@Value("${ai.online}")
 	private boolean ai_online;
 	
@@ -88,7 +93,15 @@ public class HomeController {
 			
 			// 광고사 정보
 			
-			
+			//헤디헌팅 채용공고
+			ApiRecruitItemModel model = new ApiRecruitItemModel();
+			//model.setPagerEnableYn("Y");
+			//model.setPage(1);
+			//model.setRows(8);
+			model.setStartIdx(0);
+			model.setEndIdx(8);
+			List<ApiRecruitItemModel> headhuntList = headhuntService.getRecruitItemList(model);
+
 			// 기업회원 등록 채용공고
 			commandMap.put("infoType", "1");
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
@@ -107,6 +120,7 @@ public class HomeController {
 			
 			mv.addObject("bannerList", bannerList);
 			mv.addObject("mainRecruitList", mainRecruitList);
+			mv.addObject("headhuntList", headhuntList);
 			mv.addObject("recruitList", recruitList);
 			mv.addObject("recruitFreeList", recruitFreeList);
 			mv.addObject("recruitAlbaList", recruitAlbaList);

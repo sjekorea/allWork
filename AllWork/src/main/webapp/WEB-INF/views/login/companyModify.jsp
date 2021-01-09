@@ -226,7 +226,7 @@
 									<p class="imgPart"><img src="img/myCompany/noimage.jpg" alt="회사로고"/></p>
 								</c:if>
 								<c:if test="${map.bizLogo != null && map.bizLogo != '' }">
-									<p class="imgPart"><img src="allwork/peg/${map.bizLogo}" alt="회사 로고" width=120 height=134/></p>
+									<p class="imgPart"><img src="allwork/peg/${map.bizLogo}" alt="회사 로고"/></p>
 								</c:if>
 									<p class="descPart">
 										<span><input type="file" id="fileLogo" name="fileLogo" /></span><br/>
@@ -245,28 +245,28 @@
 										<li><img src="img/myCompany/noimage.jpg" alt="회사 이미지 1"/></li>
 									</c:if>
 									<c:if test="${map.photo1 != null && map.photo1 != '' }">
-										<li><img src="allwork/peg/${map.photo1}" alt="회사 이미지 1" width=120 height=134/></li>
+										<li><img src="allwork/peg/${map.photo1}" alt="회사 이미지 1" /></li>
 									</c:if>
 									
 									<c:if test="${map.photo2 == null || map.photo2 == '' }">
 										<li><img src="img/myCompany/noimage.jpg" alt="회사 이미지 2"/></li>
 									</c:if>
 									<c:if test="${map.photo2 != null && map.photo2 != '' }">
-										<li><img src="allwork/peg/${map.photo2}" alt="회사 이미지 2" width=120 height=134/></li>
+										<li><img src="allwork/peg/${map.photo2}" alt="회사 이미지 2" /></li>
 									</c:if>
 									
 									<c:if test="${map.photo3 == null || map.photo3 == '' }">
 										<li><img src="img/myCompany/noimage.jpg" alt="회사 이미지 3"/></li>
 									</c:if>
 									<c:if test="${map.photo3 != null && map.photo3 != '' }">
-										<li><img src="allwork/peg/${map.photo3}" alt="회사 이미지 3" width=120 height=134/></li>
+										<li><img src="allwork/peg/${map.photo3}" alt="회사 이미지 3" /></li>
 									</c:if>
 									
 									<c:if test="${map.photo4 == null || map.photo4 == '' }">
 										<li><img src="img/myCompany/noimage.jpg" alt="회사 이미지 4"/></li>
 									</c:if>
 									<c:if test="${map.photo4 != null && map.photo4 != '' }">
-										<li><img src="allwork/peg/${map.photo4}" alt="회사 이미지 4" width=120 height=134/></li>
+										<li><img src="allwork/peg/${map.photo4}" alt="회사 이미지 4" /></li>
 									</c:if>
 									</ul>
 									<ul class="upLoadArea">

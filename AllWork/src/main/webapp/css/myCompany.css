@@ -10,50 +10,118 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 /*###################################   rightpart   ###################################*/
 #rightPart{width:790px;height:100%;margin-left:10px;float: left;background-color:#fff;border:1px solid #ccc;padding:40px;}
 #rightPart h4{width:100%;height:50px;line-height:50px;font-size:18px;}
+#rightPart h4 span{font-size:12px;padding-left:10px;color:#666;}
 
 #rightPart form{width:710px;overflow: hidden;}
 #rightPart fieldset{border:none;}
 #rightPart legend{display:none;}
 
-#rightPart .myCompanyBox01, #rightPart .myCompanyBox02{width:100%;overflow: hidden;}
-#rightPart .myCompanyBox01 table, #rightPart .myCompanyBox02 table{width:710px;border-top:2px solid #000;table-layout: fixed;word-wrap: break-word;}
-#rightPart .myCompanyBox01 caption, #rightPart .myCompanyBox02 caption{width:100%;height:40px;line-height:50px;font-size:16px;text-align: left;}
-#rightPart .myCompanyBox01 caption span, #rightPart .myCompanyBox02 caption span{padding-left:10px;font-size: 11px;color:#666;}
-#rightPart .myCompanyBox01 tbody, #rightPart .myCompanyBox02 tbody{width:100%;overflow:hidden;}
+#rightPart .myCompanyBox01{width:100%;overflow: hidden;}
+#rightPart .myCompanyBox01 table{width:710px;border-top:2px solid #000;table-layout: fixed;word-wrap: break-word;}
+#rightPart .myCompanyBox01 caption{display:none;}
+#rightPart .myCompanyBox01 caption span{padding-left:10px;font-size: 11px;color:#666;}
+#rightPart .myCompanyBox01 tbody{width:100%;overflow:hidden;}
 tr{width:710px;height:40px;}
-th{width:160px;height:60px;line-height:60px;background-color:#EDF0F5;color:#666;}
-td{text-indent: 20px;width:550px;height:60px;border-bottom:1px solid #eee;}
+th{width:160px;padding:10px;line-height:40px;background-color:#EDF0F5;
+                                            text-align: right;padding-right:20px;font-size:14px;color:#666;}
+td{width:550px;padding:10px;border-bottom:1px solid #eee;font-size:14px;}
 .necessary{color:red;padding-left:5px;}
 .comment{padding-left:10px;font-size:12px;color:#4F60E3;vertical-align:bottom;}
 
 select{border:1px solid #999;text-indent:10px;color:#666;vertical-align:top;width:120px;height:40px;}
-input[type="text"]{width:200px;height:40px;}
+input[type="text"]{width:300px;height:40px;text-indent:10px;}
 input[type="submit"]{width:100px;height:40px;background-color:#43425D;color:#fff;border:none;vertical-align: middle;cursor:pointer;}
 input[type="password"]{width:200px;height:40px;}
 input[type="radio"]{width:20px;height:20px;vertical-align:middle;}
 
-#rightPart .myCompanyBox01 .companyPhone input, #rightPart .registerBox01 .companyPhone input{width:120px;}
+#rightPart .myCompanyBox01 .companyPhone input{width:120px;}
 #rightPart .myCompanyBox01 .businessDesc{height:100px;}
 #rightPart .myCompanyBox01 .businessDesc input{width:520px;}
-#rightPart .myCompanyBox01 .companyPhone input, #rightPart .myCompanyBox01 .companyFax input{width:120px;}
-#rightPart .myCompanyBox01 .email input, #rightPart .myCompanyBox02 .email input{width:120px;}
-#rightPart .myCompanyBox01 .email select, #rightPart .myCompanyBox02 .email select{width:200px;height:40px;}
-#rightPart .myCompanyBox01 .address{height:200px;}
+#rightPart .myCompanyBox01 .companyPhone input{width:120px;}
+#rightPart .myCompanyBox01 .companyFax input{width:120px;}
+#rightPart .myCompanyBox01 .email input{width:180px;}
+#rightPart .myCompanyBox01 .email select{width:120px;height:40px;}
 #rightPart .myCompanyBox01 .address p{width:100%;float: left;margin:2px 0;}
 #rightPart .myCompanyBox01 .address p input{width:520px;}
-#rightPart .myCompanyBox01 .address .postNumber input{width:120px;}
-#rightPart .myCompanyBox01 .logoArea .imgPart{background-color:#eee;width:120px;height:120px;text-align: center;line-height:120px;text-indent:0;margin-left:20px;}
+#rightPart .myCompanyBox01 .address .postNumber input{width:200px;}
+#rightPart .myCompanyBox01 .address .postNumber input[type="submit"]{width:120px;}
+/*이력서 사진*/
+#rightPart .myCompanyBox01 .logoArea .imgPart{background-color:#eee;width:120px;height:134px;text-align: center;line-height:120px;text-indent:0;float:left;}
 #rightPart .myCompanyBox01 .logoArea .imgPart img{width:100%;}
-#rightPart .myCompanyBox01 .logoArea .descPart{width:500px;height:100px;line-height:20px;padding-top: 20px;text-indent:0;margin-left:20px;font-size:12px;}
+#rightPart .myCompanyBox01 .logoArea .descPart{width:390px;overflow:hidden;line-height:20px;text-indent:0;margin-left:5px;font-size:12px;float:left;}
+#rightPart .myCompanyBox01 .logoArea .descPart span{display:inline-block;line-height:18px;margin-bottom:5px;}
+#rightPart .myCompanyBox01 .logoArea .descPart input[type="file"]{width: 240px;
+height: 24px;
+padding: 0;
+overflow: hidden;
+text-indent:0px;
+border: 1px solid #ccc;}
+/*#rightPart .myCompanyBox01 .logoArea .descPart #comLogo{
+                                                                  display: inline-block;
+                                                                  width:180px;
+                                                                  height:30px;
+                                                                  font-size:14px;
+                                                                  color:#ccc;
+                                                                  padding: 0 10px;
+                                                                  vertical-align: middle;
+                                                                    background-color: #fff;
+                                                                  border: 1px solid #ccc;
+                                                                  white-space:nowrap;overflow:hidden;
+
+                                                                }
+#rightPart .myCompanyBox01 .logoArea .descPart label{
+                                                  display: inline-block;
+                                                  height:30px;
+                                                  line-height:28px;
+                                                  width:100px;
+                                                  text-align: center;
+                                                  color: #fff;
+                                                  vertical-align: top;
+                                                  background-color:#43425D;
+                                                  cursor: pointer;
+                                                  border: 1px solid #ccc;
+                                                  margin-bottom:5px;
+                                              }*/
 #rightPart .myCompanyBox01 .comPhoto td{font-size:12px;}
-#rightPart .myCompanyBox01 .comPhoto .imgArea{width:100%;height:120px;margin-left:20px;}
-#rightPart .myCompanyBox01 .comPhoto .imgArea li{width:120px;height:120px;background-color:#eee;margin-right:2px;text-align: center;line-height:120px;text-indent: 0;float: left;}
+#rightPart .myCompanyBox01 .comPhoto .imgArea{width:100%;height:120px;}
+#rightPart .myCompanyBox01 .comPhoto .imgArea li{width:120px;height:134px;background-color:#eee;margin-right:5px;margin-bottom:5px;text-align: center;line-height:120px;text-indent: 0;float: left;}
 #rightPart .myCompanyBox01 .comPhoto .imgArea li img{width:100%;}
-.upLoadArea{width:100%;overflow:hidden;padding-top: 10px;margin-left:20px;}
-.upLoadArea li{text-indent: 0;line-height:30px;}
-.upLoadArea li span{padding-left:5px;}
+
+.upLoadArea{width:100%;overflow:hidden;padding-top:2px;}
+.upLoadArea li{margin-bottom:2px;width:240px;overflow:hidden;}
+.upLoadArea input[type="file"]{width: 240px;
+height: 24px;
+padding: 0;
+overflow: hidden;
+text-indent:0px;
+border: 1px solid #ccc;}
+/*.upLoadArea label{
+                                                  display:inline-block;
+                                                  height:30px;
+                                                  line-height:28px;
+                                                  width:120px;
+                                                  text-align: center;
+                                                  color: #fff;
+                                                  vertical-align: top;
+                                                  background-color:#43425D;
+                                                  cursor: pointer;
+                                                  margin-bottom:5px;
+                                              }
+.upLoadArea #comPhoto1, .upLoadArea #comPhoto2, .upLoadArea #comPhoto3, .upLoadArea #comPhoto4{
+                                                                  display:inline-block;
+                                                                  width:120px;
+                                                                  height:30px;
+                                                                  font-size:14px;
+                                                                  color:#ccc;
+                                                                  padding: 0 10px;
+                                                                  vertical-align: middle;
+                                                                    background-color: #fff;
+                                                                  border: 1px solid #ccc;
+
+
+                                                                }*/
 textarea{width:520px;height:100px;}
-.history span{display:inline-block;font-size:14px;line-height: 24px;margin-left: 20px;text-indent:0;}
+.history span{display:inline-block;font-size:14px;line-height: 24px;}
 
 .mobile input, .phone input{width:120px;}
 

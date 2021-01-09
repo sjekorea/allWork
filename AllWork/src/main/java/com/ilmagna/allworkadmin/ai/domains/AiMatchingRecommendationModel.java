@@ -4,8 +4,6 @@
 package com.ilmagna.allworkadmin.ai.domains;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.json.simple.JSONObject;
 
@@ -25,31 +23,47 @@ public class AiMatchingRecommendationModel implements Serializable  {
 	private Integer id;
 	private Integer type;						//X				allwork(1)			worknet(2)
 	private String recommend_id;				//이력서 ID		올워크 채용공고 ID		워크넷 채용공고 Key
-	private String uid;							//구직자 ID		구인자 ID				Null/Empty String
-	private String name;						//구직자이름		구인회사 이름			구인회사이름
-	private String title;						//이력서 제목		채용공고 제목			채용공고 제목
+	private String uid;							//구직자 사용자 ID	구인자 사용자 ID				Null/Empty String
+	private String name;						//구직자 이름		구인회사 이름			구인회사이름
+	private String title;						//X				채용공고 제목			채용공고 제목
 	private String loc;							//희망근무지		근무지				근무지
-	private String salary;						//X				연봉					연봉
+	private String salary;						//희망급여			연봉					연봉
 	//private String career;						//X				경력					경력
-	private String job_type;					//직종			직종					직종
-	private String strWdate;					//X				채용공고 등록일			채용공고 등록일
+	private String job_type;					//직무			직무					직무
+	private String strWdate;					//추천일자			채용공고 등록일			채용공고 등록일
 	private String strEdate;					//X				채용마감일				채용마감일
-	private String detail;						//				채용정보 상세내용			채용정보 상세내용
+	private String detail;						//보유기술			채용정보 상세내용			채용정보 상세내용
+	private String job_form;					//고용형태			X					X
+	
+	private String inid_secret;					//이력서 공개상태		X					X
+	private	String photo;						//구직자 사진.
+	private String open;						//X				채용공고 공개상태			X
+	
+	private String biz_end_type;				//				채용마감 조건.
+	private String biz_end_day;					//				채용마감 일.
 	
 	public AiMatchingRecommendationModel() {
 		this.id				= 0;
-		this.type			= 1;				//X				allwork(1)			worknet(2)
-		this.recommend_id	= "";				//이력서 ID		올워크 채용공고 ID		워크넷 채용공고 Key
-		this.uid			= "";				//구직자 ID		구인자 ID				Null/Empty String
-		this.name			= "";				//구직자이름		구인회사 이름			구인회사이름
-		this.title			= "";				//이력서 제목		채용공고 제목			채용공고 제목
-		this.loc			= "";				//희망근무지		근무지				근무지
-		this.salary			= "";				//X				연봉					연봉
-		//this.career			= "";				//X				경력					경력
-		this.job_type		= "";				//직종			직종					직종
-		this.strWdate		= "";				//X		채용공고 등록일			채용공고 등록일
-		this.strEdate		= "";				//X				채용마감일				채용마감일
-		this.detail			= "";				//				채용정보 상세내용			채용정보 상세내용
+		this.type			= 1;
+		this.recommend_id	= "";
+		this.uid			= "";
+		this.name			= "";
+		this.title			= "";
+		this.loc			= "";
+		this.salary			= "";
+		//this.career			= "";
+		this.job_type		= "";
+		this.strWdate		= "";
+		this.strEdate		= "";
+		this.detail			= "";
+		this.job_form		= "";
+		
+		this.inid_secret	= "yes";
+		this.photo			= "";
+		this.open			= "open";
+		
+		this.biz_end_type	= "get";
+		this.biz_end_day	= "";
 	}
 
 	
@@ -64,7 +78,7 @@ public class AiMatchingRecommendationModel implements Serializable  {
 			//	this.setType(Integer);
 			
 			//급여
-			String[] listPay = { "biz_pay" };
+			String[] listPay = { "biz_pay", "inid_pay" };
 			for (int i = 0; i < listPay.length; i++) {
 				String salary = (String) jsonObject.get(listPay[i]);
 				if (!ApiCommonUtils.isNullOrEmpty(salary)) {
@@ -111,7 +125,7 @@ public class AiMatchingRecommendationModel implements Serializable  {
 				this.setUid(uid);
 			
 			//회사명 또는 구직자 이름.
-			String[] listName = { "biz_name", "indi_name", "name" };
+			String[] listName = { "biz_name", "name" };
 			for (int i = 0; i < listName.length; i++) {
 				String name = (String) jsonObject.get(listName[i]);
 				if (!ApiCommonUtils.isNullOrEmpty(name))
@@ -141,7 +155,7 @@ public class AiMatchingRecommendationModel implements Serializable  {
 				this.setCareer(career);
 			*/
 			
-			//직종
+			//직무
 			String[] listJobType = { "job_type", "inid_type" };
 			for (int i = 0; i < listJobType.length; i++) {
 				String job_type = (String) jsonObject.get(listJobType[i]);
@@ -155,16 +169,29 @@ public class AiMatchingRecommendationModel implements Serializable  {
 				this.setStrWdate(strWdate);
 			
 			//채용마감일.
-			String strEdate = (String) jsonObject.get("biz_end_day");
-			if (!ApiCommonUtils.isNullOrEmpty(strEdate))
-				this.setStrEdate(strEdate);
+			String strEndType = (String) jsonObject.get("biz_end_type");
+			if (!ApiCommonUtils.isNullOrEmpty(strEndType))
+				this.setBiz_end_type(strEndType);
+			
+			String strEndDay = (String) jsonObject.get("biz_end_day");
+			if (!ApiCommonUtils.isNullOrEmpty(strEndDay))
+				this.setBiz_end_day(strEndDay);
 			
 			//채용공고 또는 이력서 상세내용.
-			String[] listDetail = { "biz_detail", "biz_short", "career_detail" };
+			String[] listDetail = { "skill", "biz_short", "tag_skill" };
 			for (int i = 0; i < listDetail.length; i++) {
 				String detail = (String) jsonObject.get(listDetail[i]);
 				if (!ApiCommonUtils.isNullOrEmpty(detail))
 					this.setDetail(detail);				
+			}
+			
+			//고용형태.
+			String[] listJobForm = { "job_form" };
+			for (int i = 0; i < listJobForm.length; i++) {
+				String jobForm = (String) jsonObject.get(listJobForm[i]);
+				if (!ApiCommonUtils.isNullOrEmpty(jobForm))
+					jobForm = jobForm.replaceAll("\\^", " ");
+					this.setJob_form(jobForm);				
 			}
 
 			//작업결과 등록.
@@ -322,5 +349,80 @@ public class AiMatchingRecommendationModel implements Serializable  {
 	 */
 	public void setDetail(String detail) {
 		this.detail = detail;
+	}
+	/**
+	 * @return the job_form
+	 */
+	public String getJob_form() {
+		return job_form;
+	}
+	/**
+	 * @param job_form the job_form to set
+	 */
+	public void setJob_form(String job_form) {
+		this.job_form = job_form;
+	}
+
+
+	/**
+	 * @return the inid_secret
+	 */
+	public String getInid_secret() {
+		return inid_secret;
+	}
+	/**
+	 * @param inid_secret the inid_secret to set
+	 */
+	public void setInid_secret(String inid_secret) {
+		this.inid_secret = inid_secret;
+	}
+	/**
+	 * @return the photo
+	 */
+	public String getPhoto() {
+		return photo;
+	}
+	/**
+	 * @param photo the photo to set
+	 */
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	/**
+	 * @return the open
+	 */
+	public String getOpen() {
+		return open;
+	}
+	/**
+	 * @param open the open to set
+	 */
+	public void setOpen(String open) {
+		this.open = open;
+	}
+
+	/**
+	 * @return the biz_end_type
+	 */
+	public String getBiz_end_type() {
+		return biz_end_type;
+	}
+	/**
+	 * @param biz_end_type the biz_end_type to set
+	 */
+	public void setBiz_end_type(String biz_end_type) {
+		this.biz_end_type = biz_end_type;
+	}
+	/**
+	 * @return the biz_end_day
+	 */
+	public String getBiz_end_day() {
+		return biz_end_day;
+	}
+	/**
+	 * @param biz_end_day the biz_end_day to set
+	 */
+	public void setBiz_end_day(String biz_end_day) {
+		this.biz_end_day = biz_end_day;
 	}
 }

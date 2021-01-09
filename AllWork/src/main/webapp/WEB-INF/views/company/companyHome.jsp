@@ -111,11 +111,13 @@
 								<li>
 									<p class="img00"><img src="img/userNo.png" alt="인재사진"/></p>
 									<p class="desc00">
-										<span class="name">${result.name }</span><br/>
+										<span class="name">${convert:getPersonNameHidden(result.name) }</span><br/>
 									</p>
 									<p class="desc01">
-										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.recommend_id }', 'open', 'resume');"><span class="detail">${result.title }</span></a>
+										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.recommend_id }', '${result.inid_secret }', 'resume');"><span class="detail">${convert:compByte(result.detail, 150, "...")}</span></a>
+										<span class="title01">${result.job_form }</span>
 										<span class="title01">${result.loc }</span>
+										<span class="title01">${result.salary }</span>
 									</p>
 									<p class="date">${result.strWdate }</p>
 								</li>
@@ -143,11 +145,11 @@
 		<div id="listPart">
 			<ul class="tab">
 				<!-- (begin) 2020.12.30 by s.yoo -->
-				<li><a class="selected" href="#" title="AI 추천 인재">AI 추천 인재</a></li>
-				<li><a href="#" title="맞춤인재정보">맞춤인재정보</a></li>
+				<li><a class="selected" href="#listPart" title="AI 추천 인재">AI 추천 인재</a></li>
+				<li><a href="#listPart" title="맞춤인재정보">맞춤인재정보</a></li>
 				<!-- (end) 2020.12.30 by s.yoo -->
-				<li><a href="#" title="스크랩인재">스크랩인재</a></li>
-				<li><a href="#" title="최근 본 인재">최근 본 인재</a></li>
+				<li><a href="#listPart" title="스크랩인재">스크랩인재</a></li>
+				<li><a href="#listPart" title="최근 본 인재">최근 본 인재</a></li>
 			</ul>
 			<!-- (begin) 2020.12.30 by s.yoo -->
 			<table class="list" id="list00">
@@ -158,23 +160,19 @@
 								<tr>
 									<th></th>
 									<td class="desc00">
-										<span>${result.name }</span><br/>
+										<span>${convert:getPersonNameHidden(result.name) }</span><br/>
 									</td>
 									<td class="desc01" colspan=3>
-										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', 'open', '');" title="AI 추천 인재정보">
+										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.recommend_id }', '${result.inid_secret }', 'resume');" title="AI 추천 인재정보">
 											<span class="desc01_01">
-												${result.title }
+												${convert:compByte(result.detail, 100, "...")}
 											</span>
 										</a>
-										<br /><span>${result.loc }</span>
+										<br /><span>${result.job_form }</span>
 									</td>
-									<!-- 
-									<td class="desc02">
-									</td>
-									<td class="desc03">
-									</td>
+									<td class="desc02">${result.loc }</td>
+									<td class="desc03">${result.salary }</td>
 									<td class="date">${result.strWdate }</td>
-									 -->
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -193,12 +191,12 @@
 								<tr>
 									<th></th>
 									<td class="desc00">
-										<span>${result.name }</span><br/>
+										<span>${convert:getPersonNameHidden(result.name) }</span><br/>
 										<span>${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span><br/>
 										<span>${codeConvert:getLastSchool(result.inidLastSchool) }</span>
 									</td>
 									<td class="desc01">
-										<a href="#none">
+										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');" title="AI 맞춤인재정보">
 											<span class="desc01_01">
 												${result.inidType1Name }
 												${convert:checkNull(result.inidType2Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType2Name) }
@@ -237,12 +235,12 @@
 								<tr>
 									<th></th>
 									<td class="desc00">
-										<span>${result.name }</span><br/>
+										<span>${convert:getPersonNameHidden(result.name) }</span><br/>
 										<span>${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span><br/>
 										<span>${codeConvert:getLastSchool(result.inidLastSchool) }</span>
 									</td>
 									<td class="desc01">
-										<a href="#none">
+										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');" title="스크랩인재정보">
 											<span class="desc01_01">
 												${result.inidType1Name }
 												${convert:checkNull(result.inidType2Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType2Name) }
@@ -281,12 +279,12 @@
 								<tr>
 									<th></th>
 									<td class="desc00">
-										<span>${result.name }</span><br/>
+										<span>${convert:getPersonNameHidden(result.name) }</span><br/>
 										<span>${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span><br/>
 										<span>${codeConvert:getLastSchool(result.inidLastSchool) }</span>
 									</td>
 									<td class="desc01">
-										<a href="#none">
+										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');" title="최근본인재정보">
 											<span class="desc01_01">
 												${result.inidType1Name }
 												${convert:checkNull(result.inidType2Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType2Name) }

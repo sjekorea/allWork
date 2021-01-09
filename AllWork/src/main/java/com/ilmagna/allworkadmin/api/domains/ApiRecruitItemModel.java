@@ -23,6 +23,8 @@ public class ApiRecruitItemModel extends ApiJqGridParams implements Serializable
 	private String memo;
 	private String strDateWork;
 	private String progressContents;
+	private String bizEndType;
+	private String bizEndDay;
 
 	private String companyTitle;
 	private String companyInitial;
@@ -163,6 +165,30 @@ public class ApiRecruitItemModel extends ApiJqGridParams implements Serializable
 	 */
 	public void setProgressContents(String progressContents) {
 		this.progressContents = progressContents;
+	}
+	/**
+	 * @return the bizEndType
+	 */
+	public String getBizEndType() {
+		return bizEndType;
+	}
+	/**
+	 * @param bizEndType the bizEndType to set
+	 */
+	public void setBizEndType(String bizEndType) {
+		this.bizEndType = bizEndType;
+	}
+	/**
+	 * @return the bizEndDay
+	 */
+	public String getBizEndDay() {
+		return bizEndDay;
+	}
+	/**
+	 * @param bizEndDay the bizEndDay to set
+	 */
+	public void setBizEndDay(String bizEndDay) {
+		this.bizEndDay = bizEndDay;
 	}
 	/**
 	 * @return the companyTitle

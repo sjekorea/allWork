@@ -67,6 +67,15 @@
     </function>
 	<!-- (begin) 2021.01.08 by s.yoo	-->
     <function>
+         <description>Get the biz end condition</description>
+         <name>getEndCond</name>
+         <function-class>allwork.common.util.ConvertUtil</function-class>
+         <function-signature>
+              String getEndCond(java.lang.String, java.lang.String)
+         </function-signature>
+    </function>
+
+    <function>
          <description>Hide the person name</description>
          <name>getPersonNameHidden</name>
          <function-class>allwork.common.util.ConvertUtil</function-class>

@@ -1,52 +1,111 @@
-body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
+body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 
 /*###################################   containerWrap  ###################################*/
-#containerWrap{width:100%;overflow: hidden;margin:20px 0 30px;}
-#container{width:1000px;margin:0 auto;}
+  #containerWrap{width:100%;overflow: hidden;margin:20px 0 100px;}
+  #container{width:1000px;margin:0 auto;}
 
-/*현재메뉴 언더라인*/
-/*	#menuTree ul .subMenu07_01{text-decoration: underline;}	*/
+  /*현재메뉴 언더라인*/
+  /*#menuTree ul .menu07{text-decoration: underline;}*/
 
-/*###################################   rightpart   ###################################*/
-#rightPart{width:790px;overflow:hidden;margin-left:10px;float: left;background-color:#fff;border:1px solid #ccc;padding:40px;}
+  /*###################################   res_rightPart   ###################################*/
+  #rightPart{width:790px;margin-left:10px;overflow: hidden;background-color:#fff;border:1px solid #ccc;float:left;padding:40px;}
+  h4{width:100%;height:50px;line-height:50px;font-size:18px;}
+  h4 span{font-size:12px;padding-left:10px;color:#666;}
 
-#rightPart h4{width:100%;height:50px;line-height:50px;font-size:18px;}
-#rightPart h4 span{padding-left:10px;font-size: 11px;color:#666;}
+  #rightPart form{width:100%;overflow: hidden;}
+  #rightPart fieldset{border:none;}
+  #rightPart legend{display:none;}
 
-#rightPart form{width:100%;overflow: hidden;}
-#rightPart fieldset{border:none;}
-#rightPart legend{display:none;}
+  #rightPart .registerBox{width:100%;overflow: hidden;border-top:2px solid #000;}
+  #rightPart .registerBox table{width:100%;}
+  #rightPart .registerBox caption{display:none;}
+  #rightPart .registerBox tbody{width:100%;overflow:hidden;}
+  #rightPart .registerBox tr{width:100%;height:40px;}
+  #rightPart .registerBox tr th{width:160px;padding:10px;line-height:40px;background-color:#EDF0F5;
+                                              text-align: right;padding-right:20px;font-size:14px;color:#666;}
+  #rightPart .registerBox tr td{width:550px;padding:10px;border-bottom:1px solid #eee;font-size:14px;}
+  .necessary{color:red;padding-left:5px;}
+  .comment{padding-left:10px;font-size:12px;color:#4F60E3;vertical-align:bottom;}
 
-#rightPart .registerBox{width:100%;overflow: hidden;border-top:2px solid #000;}
-#rightPart .registerBox table{width:100%;table-layout: fixed;word-wrap: break-word;}
-#rightPart .registerBox caption{display:none;}
-#rightPart .registerBox tbody{width:100%;overflow:hidden;}
-#rightPart .registerBox tr{width:100%;height:60px;}
-#rightPart .registerBox tr th{width:160px;height:60px;line-height:60px;background-color:#EDF0F5;color:#666;}
-#rightPart .registerBox tr td{text-indent: 20px;width:550px;height:60px;border-bottom:1px solid #eee;}
-.necessary{color:red;padding-left:5px;}
-.comment{padding-left:10px;font-size:12px;color:#4F60E3;vertical-align:bottom;}
+  select{border:1px solid #999;text-indent:10px;color:#666;vertical-align:top;width:300px;height:40px;}
+  input[type="text"]{width:200px;height:40px;text-indent:10px;}
+  input[type="submit"]{width:120px;height:40px;background-color:#43425D;color:#fff;border:none;cursor:pointer;vertical-align:middle;}
+  input[type="password"]{width:200px;height:40px;text-indent:10px;}
+  #year, #month, #day{width:100px;vertical-align: bottom;}
+  input[type="radio"]{width:20px;height:20px;vertical-align:middle;}
+  /*이력서 사진*/
+  #rightPart .registerBox .logoArea .imgPart{background-color:#eee;width:120px;height:142px;text-align: center;line-height:120px;text-indent:0;float:left;}
+  #rightPart .registerBox .logoArea .imgPart img{width:100%;}
+  #rightPart .registerBox .logoArea .descPart{width:390px;overflow:hidden;line-height:20px;text-indent:0;margin-left:5px;font-size:12px;float:left;}
+  #rightPart .registerBox .logoArea .descPart span{display:inline-block;line-height:18px;margin-bottom:5px;}
+  #rightPart .registerBox .logoArea .descPart input[type="file"]{width: 240px;
+  height: 24px;
+  padding: 0;
+  overflow: hidden;
+  text-indent:0px;
+  border: 1px solid #ccc;}
+  /*#rightPart .registerBox .logoArea .descPart #filePhoto1{
+                                                                    display: inline-block;
+                                                                    width:180px;
+                                                                    height:30px;
+                                                                    font-size:14px;
+                                                                    color:#ccc;
+                                                                    padding: 0 10px;
+                                                                    vertical-align: middle;
+                                                                      background-color: #fff;
+                                                                    border: 1px solid #ccc;
+                                                                    white-space:nowrap;overflow:hidden;
 
-select{border:1px solid #999;text-indent:10px;color:#666;vertical-align:top;width:120px;height:40px;}
-input[type="text"]{width:180px;height:40px;}
-input[type="submit"]{width:100px;height:42px;background-color:#43425D;color:#fff;border:none;cursor:pointer;}
-input[type="password"]{width:180px;height:40px;}
-#year, #month, #day{width:120px;vertical-align: bottom;}
-input[type="radio"]{width:20px;height:20px;vertical-align:middle;}
-#rightPart .registerBox .male{padding-right: 20px;}
-#rightPart .registerBox .male label{padding-left:5px;vertical-align:middle;}
-#rightPart .registerBox .female{padding-right: 20px;}
-#rightPart .registerBox .female label{padding-left:5px;vertical-align:middle;}
-#rightPart .registerBox .email input{width:120px;}
-#rightPart .registerBox .email select{width:160px;height:42px;}
-#rightPart .registerBox .phone{height:200px;}
-#rightPart .registerBox .phone p{margin-bottom:5px;}
-#rightPart .registerBox .phone label{display: inline-block;width:110px;}
-#rightPart .registerBox .phone .ok{width:88px;border: 1px solid #aaa;background-color: #ccc;color:#000;margin-right:5px;}
+                                                                  }
+  #rightPart .registerBox .logoArea .descPart label{
+                                                    display: inline-block;
+                                                    height:30px;
+                                                    line-height:28px;
+                                                    width:100px;
+                                                    text-align: center;
+                                                    color: #fff;
+                                                    vertical-align: top;
+                                                    background-color:#43425D;
+                                                    cursor: pointer;
+                                                    border: 1px solid #ccc;
+                                                    margin-bottom:5px;
+                                                }*/
+  /*성별*/
+  #rightPart .registerBox .male{padding-right: 20px;}
+  #rightPart .registerBox .male label{padding-left:5px;vertical-align:middle;}
+  #rightPart .registerBox .female{padding-right: 20px;}
+  #rightPart .registerBox .female label{padding-left:5px;vertical-align:middle;}
+  /*이메일*/
+  #rightPart .registerBox .email input{width:180px;}
+  #rightPart .registerBox .email select{width:120px;height:42px;}
+  /*휴대폰번호*/
+  #rightPart .registerBox .phone input{display: inline-block;width:110px;}
+  /*주소*/
+  #rightPart .registerBox .address p{margin-bottom:2px;}
+  #address1{width:500px;}
+  #address2{width:500px;}
 
-.agree_ok{width:100%;height:50px;margin-top:30px;margin-bottom:20px;}
-.agree_ok ul{width:100%;height:50px;text-align: center;}
-.agree_ok ul li{display:inline-block;width:200px;height:50px;margin-right:5px;line-height:50px;text-align: center;background-color:#eee;border:1px solid #ccc;}
-.agree_ok ul li:last-child{width:200px;height:50px;margin-right:0;background-color:#4F60E3;border:1px solid #4F60E3;}
-.agree_ok ul li a{display:block;width: 100%;height: 100%;}
-.agree_ok ul li:last-child a{color:#fff;}
+  #rightPart .agreement{margin-top:50px;color:#666;}
+  #rightPart .agreement .comment01{width:100%;height:40px;color:#666;border-bottom:2px solid #000;}
+  #rightPart .agreement ol{margin-top: 10px;width:1000px;padding-bottom:10px;overflow:hidden;border-bottom:2px solid #000;}
+  #rightPart .agreement ol li{width:100%;}
+
+  #rightPart .agreement ol li span{display:block;padding-left:10px;}
+  #rightPart .agreement ol li.descArea{width:1000px;}
+  #rightPart .agreement ol li.descArea .desc{width:640px;height: 40px;float:left;}
+  #rightPart .agreement ol li.descArea .descBtn{width:360px;height: 40px;float: left;padding-right:20px;text-align: right;font-size: 14px;color:#4F60E3;line-height:50px;vertical-align:middle;}
+  #rightPart .agreement ol li input[type="checkbox"]{width:20px;height: 20px;height: 40px;vertical-align:middle;}
+  #rightPart .agreement ol li input[type="button"]{cursor: pointer;outline:0;width:60px;height:40px;line-height:40px;background-color:#fff;border:none;color:#4F60E3;cursor:pointer;}
+  #rightPart .agreement ol li label{vertical-align:middle;}
+  #rightPart .agreement ol li:first-child{border-bottom:1px solid #ccc;line-height:50px;height:60px;}
+
+  #rightPart .agreement ol li.descArea .descBtn:hover{color:#000;cursor:pointer;}
+
+  #rightPart .agreement ol li .agreeDesc{padding:30px;display:none;}
+
+  .agree_ok{width:100%;height:50px;margin-top:20px;}
+  .agree_ok ul{width:100%;height:50px;text-align: center;}
+  .agree_ok ul li{display:inline-block;width:200px;height:50px;margin-right:5px;line-height:50px;text-align: center;background-color:#eee;border:1px solid #ccc;}
+  .agree_ok ul li:last-child{width:200px;height:50px;margin-right:0;background-color:#4F60E3;border:1px solid #4F60E3;}
+  .agree_ok ul li a{display:block;width: 100%;height: 100%;}
+  .agree_ok ul li:last-child a{color:#fff;}

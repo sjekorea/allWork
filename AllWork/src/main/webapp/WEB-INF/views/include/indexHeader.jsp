@@ -74,15 +74,30 @@
 		//window.open("/mainWinPop.do","_blank","top=200,left=0,width=400,height=445,resizable=1,scrollbars=yes");
 	}
 	 
+
+	
 	 <c:forEach var="result" items="${popupList}" varStatus="status">
 	 	//오늘 하루 보지않기 처리.
 	 	var popupCookie = getCookie("netfu_popup_" + "${result.code}");
 	 	//alert(popupCookie);
 	 	if (popupCookie == null || popupCookie.length < 1) {
-	 		var nWidth = parseInt("${result.width}") + 15;
-	 		var nHeight = parseInt("${result.height}") + 120;
+	 		var nWidth = parseInt("${result.width}") + 14;
+	 		var nHeight = parseInt("${result.height}") + 112;
 	 		var nLeft = parseInt("${result.left}");
 	 		var nTop = parseInt("${result.top}");
+	 		
+	 		//브라우저 특성 적용.
+			var agt = navigator.userAgent.toLowerCase();
+			//alert(agt)
+			if (agt.indexOf("msie") != -1 || agt.indexOf("edg") != -1) {
+				//alert("Edge");
+				nWidth -= 63;
+				nHeight -= 35;
+			}
+			else if (agt.indexOf("chrome") != -1) {
+				//alert( 'Chrome');
+			}
+
 
 			//window.open("/mainWinPop.do?code=${result.code}","_blank","top=200,left=0,width=400,height=445,resizable=1,scrollbars=yes");	 		
 			window.open("/mainWinPop.do?code=${result.code}","_blank",

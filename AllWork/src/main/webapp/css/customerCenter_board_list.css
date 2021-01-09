@@ -18,13 +18,13 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 #boardPart table{width:100%;}
 #boardPart table caption{display: none;}
 #boardPart table thead{width:100%;line-height:50px;font-size:16px;text-align: center;}
-#boardPart table thead tr{width:710px;border-top:1px solid #000;border-bottom:1px solid #aaa;display: table;font-size:16px;}
+#boardPart table thead tr{width:710px;border-top:1px solid #000;border-bottom:1px solid #aaa;display: table;font-size:16px;background-color:#EDF0F5;}
 
 #boardPart table tbody{width:100%;font-size:14px;text-align: center;}
 #boardPart table tbody tr{width:710px;line-height:20px;border-bottom:1px solid #ccc;display: table;font-size:14px;font-family:"NanumBarunGothicLight";}
 
-    #boardPart table tr th{width:80px;padding:15px 0;}
-    #boardPart table tr td{width:80px;padding:15px 0;}
+    #boardPart table tbody tr th{width:80px;padding:15px 0;}
+    #boardPart table tbody tr td{width:80px;padding:15px 0;}
     #boardPart table tr .board_Part{width:270px;}
     #boardPart table tr .board_Person{width:120px;}
     #boardPart table tr .board_date{width:120px;}

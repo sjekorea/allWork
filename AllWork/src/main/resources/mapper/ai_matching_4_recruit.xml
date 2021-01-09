@@ -10,7 +10,7 @@
 			A.no AS id
 			, A.recruit_id AS recruitId
 			, A.uid AS uid
-			, DATE_FORMAT(A.time, '%Y-%m-%d %H:%i:%s') AS strWdate
+			, DATE_FORMAT(A.time, '%Y-%m-%d') AS strWdate
 			, A.recommend_list_01 AS recommendList01
 			, A.recommend_list_02 AS recommendList02
 			, IFNULL(B.biz_name,'') AS bizName
@@ -55,7 +55,7 @@
 			A.no AS id
 			, A.recruit_id AS recruitId
 			, A.uid AS uid
-			, DATE_FORMAT(A.time, '%Y-%m-%d %H:%i:%s') AS strWdate
+			, DATE_FORMAT(A.time, '%Y-%m-%d') AS strWdate
 			, A.recommend_list_01 AS recommendList01
 			, A.recommend_list_02 AS recommendList02
 			, IFNULL(B.biz_name,'') AS bizName
@@ -80,7 +80,7 @@
 			A.no AS id
 			, A.recruit_id AS recruitId
 			, A.uid AS uid
-			, DATE_FORMAT(A.time, '%Y-%m-%d %H:%i:%s') AS strWdate
+			, DATE_FORMAT(A.time, '%Y-%m-%d') AS strWdate
 			, A.recommend_list_01 AS recommendList01
 			, A.recommend_list_02 AS recommendList02
 			, IFNULL(B.biz_name,'') AS bizName

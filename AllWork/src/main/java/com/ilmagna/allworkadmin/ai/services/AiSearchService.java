@@ -149,6 +149,10 @@ public class AiSearchService {
 				dataItem.parseJsonObj(categoryService, obj);
 				if (ApiCommonUtils.isNullOrEmpty(dataItem.getRecommend_id())) continue;
 				
+				//채용마감일 등록.
+				String strEdate = AiMatchingResumeService.getBizEndDay(dataItem.getBiz_end_type(), dataItem.getBiz_end_day());
+				dataItem.setStrEdate(strEdate);
+
 				dataItem.setId(i);
 				recruitDataAllwork.add(dataItem);
 			}
@@ -183,6 +187,10 @@ public class AiSearchService {
 				dataItem.parseJsonObj(categoryService, obj);
 				if (ApiCommonUtils.isNullOrEmpty(dataItem.getRecommend_id())) continue;
 				
+				//채용마감일 등록.
+				String strEdate = AiMatchingResumeService.getBizEndDay(dataItem.getBiz_end_type(), dataItem.getBiz_end_day());
+				dataItem.setStrEdate(strEdate);
+
 				dataItem.setId(i);
 				recruitDataWorknet.add(dataItem);
 			}

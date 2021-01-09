@@ -93,7 +93,7 @@
 							<c:if test="${status.index < 4 }">
 								<li>
 									<c:if test="${result.type == 1 }">
-										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', 'open', '');">
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', '${result.open }', '');">
 					                    	<div class="descBox">
 					                      		<p class="desc01">${result.name }</p>
 					                      		<p class="desc02">${convert:compByte(result.title, 30, "...")}</p>
@@ -133,11 +133,11 @@
 		<div id="listPart">
 			<ul class="tab">
 				<!-- (begin) 2020.12.30 by s.yoo -->
-				<li><a class="selected" href="#" title="AI 추천 채용정보">AI 추천 채용정보</a></li>
-				<li><a href="#" title="맞춤채용공고">맞춤채용공고</a></li>
+				<li><a class="selected" href="#listPart" title="AI 추천 채용정보">AI 추천 채용정보</a></li>
+				<li><a href="#listPart" title="맞춤채용공고">맞춤채용공고</a></li>
 				<!-- (end) 2020.12.30 by s.yoo -->
-				<li><a href="#" title="스크랩공고">스크랩공고</a></li>
-				<li><a href="#" title="최근 본 공고">최근 본 공고</a></li>
+				<li><a href="#listPart" title="스크랩공고">스크랩공고</a></li>
+				<li><a href="#listPart" title="최근 본 공고">최근 본 공고</a></li>
 			</ul>
 			<!-- (begin) 2020.12.30 by s.yoo -->
 			<table class="list" id="list00">
@@ -149,7 +149,7 @@
 									<td rowspan="3" class="desc01">${result.name }</td>
 									<td colspan="6" class="desc02">
 										<c:if test="${result.type == 1 }">
-											<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', 'open', '');">
+											<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', '${result.open }', '');">
 												${result.title }
 											</a>
 										</c:if>

@@ -18,6 +18,8 @@
 			, A.memo AS memo
 			, A.recruit_progress_contents AS progressContents
 			, DATE_FORMAT(A.date_work, '%Y-%m-%d') AS strDateWork
+			, A.biz_end_type AS bizEndType
+			, DATE_FORMAT(A.biz_end_day, '%m-%d') AS bizEndDay
 			, IFNULL(B.company_title, '') AS companyTitle
 			, IFNULL(B.company_initial, '') AS companyInitial
 		FROM
@@ -64,6 +66,8 @@
 			, A.memo AS memo
 			, A.recruit_progress_contents AS progressContents
 			, DATE_FORMAT(A.date_work, '%Y-%m-%d') AS strDateWork
+			, A.biz_end_type AS bizEndType
+			, DATE_FORMAT(A.biz_end_day, '%m-%d') AS bizEndDay
 			, IFNULL(B.company_title, '') AS companyTitle
 			, IFNULL(B.company_initial, '') AS companyInitial
 		FROM

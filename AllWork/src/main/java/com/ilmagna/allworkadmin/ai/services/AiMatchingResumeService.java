@@ -40,6 +40,11 @@ public class AiMatchingResumeService {
 				for (int i = 0; i < list.size(); i++) {
 					AiMatchingResumeModel itemData = procDataItem(list.get(i));
 					for (int j = 0; j < itemData.getData().size(); j++) {
+						//채용마감일 등록.
+						String strEdate = getBizEndDay(itemData.getData().get(j).getBiz_end_type(), itemData.getData().get(j).getBiz_end_day());
+						itemData.getData().get(j).setStrEdate(strEdate);
+
+						//추천정보 등록.
 						listResult.add(itemData.getData().get(j));
 					}
 				}
@@ -56,6 +61,18 @@ public class AiMatchingResumeService {
 			e.printStackTrace();
 		}
 		return item;
+	}
+	
+	public static String getBizEndDay(String strBizType, String strBizDay) {
+		String strEdate = "";
+
+		//채용마감일 등록.
+		if (strBizType.equalsIgnoreCase("get"))			strEdate = "채용시까지";
+		else if (strBizType.equalsIgnoreCase("often"))	strEdate = "상시채용";
+		//else if (strBizType.equalsIgnoreCase("input"))	strEdate = strBizDay;
+		else 											strEdate = strBizDay;
+		
+		return strEdate;
 	}
 
 	

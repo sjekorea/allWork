@@ -36,8 +36,8 @@
 		</div>
 		<div id="rightPart">
 			<div id="boardPart">
+				<h4>${boardName }</h4>
 				<div class="titlePart">
-					<h4>${boardName }</h4>
 					<p class="title">${item.subject}</p>
 					<div class="detailArea">
 						<p class="writer">작성자&nbsp;<span>${item.uid}</span></p>

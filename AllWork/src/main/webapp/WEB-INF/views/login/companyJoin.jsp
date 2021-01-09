@@ -236,10 +236,10 @@
 												<input type="hidden" name="bizLogo" id="bizLogo" value=""/>
 												<br/>
 												 -->
-												<span><input type="file" id="fileLogo" name="fileLogo" ><label for="fileLogo">파일선택</label></span><br/>
+												<span><input type="file" id="fileLogo" name="fileLogo" /></span><br/>
 												<span>
 													※ 이미지 파일형식은 확장자 *.jpg, *.gif만 가능합니다.<br/>
-													※ 로고 이미지 권장사이즈는 가로120 * 세로34입니다.
+													※ 로고 이미지 권장사이즈는 가로120 * 세로134입니다.
 												</span>
 											</p>
 										</td>
@@ -262,7 +262,7 @@
 														</form>
 														<input type="hidden" name="photo1" id="photo1" value=""/>
 														 -->
-														<input type="file" id="filePhoto1" name="filePhoto1" ><label for="filePhoto1">파일선택</label>
+														<input type="file" id="filePhoto1" name="filePhoto1" />
 													</span>
 												</li>
 												<li>
@@ -273,7 +273,7 @@
 														</form>
 														<input type="hidden" name="photo2" id="photo2" value=""/>
 														 -->
-														<input type="file" id="filePhoto2" name="filePhoto2" ><label for="filePhoto2">파일선택</label>
+														<input type="file" id="filePhoto2" name="filePhoto2" />
 													</span>
 												</li>
 												<li>
@@ -284,7 +284,7 @@
 														</form>
 														<input type="hidden" name="photo3" id="photo3" value=""/>
 														 -->
-														<input type="file" id="filePhoto3" name="filePhoto3" ><label for="filePhoto3">파일선택</label>
+														<input type="file" id="filePhoto3" name="filePhoto3" />
 													</span>
 												</li>
 												<li>
@@ -295,7 +295,7 @@
 														</form>
 														<input type="hidden" name="photo4" id="photo4" value=""/>
 														 -->
-														<input type="file" id="filePhoto4" name="filePhoto4" ><label for="filePhoto4">파일선택</label>
+														<input type="file" id="filePhoto4" name="filePhoto4" />
 													</span>
 												</li>
 											</ul>
@@ -354,7 +354,7 @@
 									<td>
 										<p class="imgPart"><img id="photoImg" name="photoImg" src="img/myCompany/noimage.jpg" alt="이력서 사진"/></p>
 										<p class="descPart">
-											<span><input type="file" id="filePhoto" name="filePhoto" ><label for="filePhoto">파일선택</label></span><br/>
+											<span><input type="file" id="filePhoto" name="filePhoto" /></span><br/>
 											 <!-- 
 											<form name="fileUploadForm0" id="fileUploadForm0" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
 												<span><input type="file" id="attachFile0" name="attachFile0" accept="image/gif, image/png, image/jpeg" onchange="javascript:fileUpload('photo', 'photoImg', 'fileUploadForm0');"></span>
@@ -687,7 +687,7 @@
 		alert("회원가입이 되었습니다.\n로그인 이후에 사용해 주십시오.");
 		
 		//로그인 화면으로 이동.
-		location.href = "/login.do";
+		location.href = "/login.do?type=company";
 	</c:if>
 	});	
 

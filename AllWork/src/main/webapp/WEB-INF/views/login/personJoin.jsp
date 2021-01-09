@@ -123,17 +123,12 @@
 									<td>
 										<p class="imgPart"><img id="photoImg" name="photoImg" src="img/myCompany/noimage.jpg" alt="이력서 사진"/></p>
 										<p class="descPart">
-											<span><input type="file" id="filePhoto" name="filePhoto" /><label for="filePhoto">파일선택</label></span><br/>
+											<span><input type="file" id="filePhoto" name="filePhoto" /></span><br/>
 											<!-- 
 											 -->
 											<!-- 
 											<form name="fileUploadForm0" id="fileUploadForm0" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
 												<span><input type="file" id="attachFile0" name="attachFile0" accept="image/gif, image/png, image/jpeg" onchange="javascript:fileUpload('photo', 'photoImg', 'fileUploadForm0');" /><a href="javascript:fileUpload('photo', 'photoImg', 'fileUploadForm0');"></span>
-											</form>
-											<input type="hidden" name="photo" id="photo" value=""/>
-											<br/>
-											<form name="fileUploadForm0" id="fileUploadForm0" method="post" enctype="multipart/form-data" accept-charset="EUC-KR">
-												<span><input type="file" id="attachFile0" name="attachFile0" accept="image/gif, image/png, image/jpeg" onchange="javascript:fileUpload('photo', 'photoImg', 'fileUploadForm0');" /><a href="javascript:fileUpload('photo', 'photoImg', 'fileUploadForm0');"><label for="filePhoto">파일선택</label></a></span>
 											</form>
 											<input type="hidden" name="photo" id="photo" value=""/>
 											<br/>
@@ -408,7 +403,7 @@
 		alert("회원가입이 되었습니다.\n로그인 이후에 사용해 주십시오.");
 		
 		//로그인 화면으로 이동.
-		location.href = "/login.do";
+		location.href = "/login.do?type=person";
 	</c:if>
 	});	
 

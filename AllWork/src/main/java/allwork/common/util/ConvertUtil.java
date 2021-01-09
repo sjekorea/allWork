@@ -264,6 +264,18 @@ public class ConvertUtil {
 
 	//(begin) 2021.01.08 by s.yoo
     /*
+     * 채용마감
+     */
+    public static String getEndCond(String bizEndType, String bizEndDay) {
+    	String strBizEndCond = "";
+		if (bizEndType.equalsIgnoreCase("input")) strBizEndCond = "마감: " + bizEndDay;
+		else if (bizEndType.equalsIgnoreCase("get")) strBizEndCond = "채용시까지";
+		else if (bizEndType.equalsIgnoreCase("often")) strBizEndCond = "상시채용";
+    	
+		return strBizEndCond;
+    }
+    
+    /*
      * 개인 신상정보 감추기 지원
      */
     //구직자 이름

@@ -21,8 +21,21 @@
 	<script type="text/javascript" src="/js/Cookie.js"></script>
 <script>
 
-	var nWidth = parseInt("${popupMap.width}") + 15;
-	var nHeight = parseInt("${popupMap.height}") + 120;
+	var nWidth = parseInt("${popupMap.width}") + 14;
+	var nHeight = parseInt("${popupMap.height}") + 112;
+		
+	//브라우저 특성 적용.
+	var agt = navigator.userAgent.toLowerCase();
+	//alert(agt)
+	if (agt.indexOf("msie") != -1 || agt.indexOf("edg") != -1) {
+		//alert("Edge");
+		nWidth -= 63;
+		nHeight -= 35;
+	}
+	else if (agt.indexOf("chrome") != -1) {
+		//alert( 'Chrome');
+	}
+
 	window.top.resizeTo(nWidth, nHeight);
 	window.top.moveTo("${popupMap.left}", "${popupMap.top}");
 

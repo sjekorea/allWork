@@ -38,10 +38,7 @@
 					</c:if>
 								<p class="desc02">${result.bizName}</p>
 								<p class="desc03">${convert:compByte(result.bizTitle, 95, "...")}</p>
-								<!-- 
-								<span class="desc04">${result.bizArea1Name}</span><span class="desc05">등록일: ${result.wdate}</span>
-								 -->
-								<span class="desc04">${result.bizArea1Name}</span><span class="desc05">${(result.bizEndType == 'input')? ('마감: '.concat(result.bizEndDay)) : ((result.bizEndType == 'get')? '채용시까지' : ((result.bizEndType == 'often')? '상시채용' : '')) }</span>
+								<span class="desc04">${result.bizArea1Name}</span><span class="desc05">${convert:getEndCond(result.bizEndType, result.bizEndDay)}</span>
 							</a>
 						</li>
 				</c:forEach>
@@ -115,6 +112,31 @@
 	</div>
  -->
 
+	<div id="content04Wrap">
+		<div id="content04">
+			<h4>헤드헌팅 채용공고</h4>
+			<p>
+				<a href="/headhuntList.do" title="더보기">more+</a>
+			</p>
+			<ul>
+				<c:forEach var="result" items="${headhuntList}" varStatus="status">
+					<li>
+						<a href="/headhuntList.do" title="헤드헌팅 채용공고">
+							<div class="descBox">
+								<p class="desc01">${result.companyInitial }사</p>
+								<p class="desc02">${convert:compByte(result.recruitContents, 70, "...")}</p>
+								<span class="desc03">${result.men }명</span>
+								<span class="desc04">
+									${result.placeWork }
+								</span><span class="desc05">${convert:getEndCond(result.bizEndType, result.bizEndDay)}</span>
+							</div>
+						</a>
+					</li>
+				</c:forEach>
+			</ul>
+		</div>
+	</div>
+
 	<div id="content03Wrap">
 		<div id="content03">
 			<h4>기업회원 등록 채용공고</h4>
@@ -130,7 +152,7 @@
 								<span class="desc04">
 									${result.bizArea1Name }
 									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '> '.concat(result.bizArea2Name) }
-								</span><span class="desc05">${(result.bizEndType == 'input')? ('마감: '.concat(result.bizEndDay)) : ((result.bizEndType == 'get')? '채용시까지' : ((result.bizEndType == 'often')? '상시채용' : '')) }</span>
+								</span><span class="desc05">${convert:getEndCond(result.bizEndType, result.bizEndDay)}</span>
 							</div>
 						</a>
 					</li>
@@ -155,7 +177,7 @@
 								<span class="desc04">
 									${result.bizArea1Name }
 									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '> '.concat(result.bizArea2Name) }
-								</span><span class="desc05">${(result.bizEndType == 'input')? ('마감: '.concat(result.bizEndDay)) : ((result.bizEndType == 'get')? '채용시까지' : ((result.bizEndType == 'often')? '상시채용' : '')) }</span>
+								</span><span class="desc05">${convert:getEndCond(result.bizEndType, result.bizEndDay)}</span>
 							</div>
 						</a>
 					</li>
@@ -180,7 +202,7 @@
 								<span class="desc04">
 									${result.bizArea1Name }
 									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '> '.concat(result.bizArea2Name) }
-								</span><span class="desc05">${(result.bizEndType == 'input')? ('마감: '.concat(result.bizEndDay)) : ((result.bizEndType == 'get')? '채용시까지' : ((result.bizEndType == 'often')? '상시채용' : '')) }</span>
+								</span><span class="desc05">${convert:getEndCond(result.bizEndType, result.bizEndDay)}</span>
 							</div>
 						</a>
 					</li>
