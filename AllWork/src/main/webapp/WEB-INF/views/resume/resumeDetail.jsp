@@ -156,7 +156,15 @@
 							<tr>
 								<th>산업분야</th>
 								<td>
-									
+									<p>${resumeMap.inidAreaJob1Name }&nbsp;
+									${convert:checkNull(resumeMap.inidAreaJob2Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob2Name).concat('&nbsp;') }
+									${convert:checkNull(resumeMap.inidAreaJob3Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob3Name).concat('</p>') }
+									${convert:checkNull(resumeMap.inidAreaJob4Name) eq '' ? '' : '<p>'.concat(resumeMap.inidAreaJob4Name).concat('&nbsp;') }
+									${convert:checkNull(resumeMap.inidAreaJob5Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob5Name).concat('&nbsp;') }
+									${convert:checkNull(resumeMap.inidAreaJob6Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob6Name).concat('</p>') }
+									${convert:checkNull(resumeMap.inidAreaJob7Name) eq '' ? '' : '<p>'.concat(resumeMap.inidAreaJob7Name).concat('&nbsp;') }
+									${convert:checkNull(resumeMap.inidAreaJob8Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob8Name).concat('&nbsp;') }
+									${convert:checkNull(resumeMap.inidAreaJob9Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob9Name).concat('</p>') }
 								</td>
 							</tr>
 							<tr>
@@ -165,7 +173,7 @@
 							</tr>
 							<tr>
 								<th>희망연봉</th>
-								<td><p>${resumeMap.inidPayName }</p></td>
+								<td><p>${resumeMap.payTypeName } / ${resumeMap.inidPayName }</p></td>
 							</tr>
 						</tbody>
 					</table>

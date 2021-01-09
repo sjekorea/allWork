@@ -54,6 +54,8 @@ public class NetfuItemResumeVo {
 	private String inidJobformName;
 	private String inidPay;
 	private String inidPayName;
+	private String payType;
+	private String payTypeName;
 	private String inidLastSchool;
 	private String inidCareer;
 	private String inidLicense;
@@ -103,6 +105,19 @@ public class NetfuItemResumeVo {
 	private String language2;
 	
 	
+	
+	public String getPayType() {
+		return payType;
+	}
+	public String getPayTypeName() {
+		return payTypeName;
+	}
+	public void setPayType(String payType) {
+		this.payType = payType;
+	}
+	public void setPayTypeName(String payTypeName) {
+		this.payTypeName = payTypeName;
+	}
 	public String getEducation2() {
 		return education2;
 	}

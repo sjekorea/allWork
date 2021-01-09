@@ -212,7 +212,7 @@
 		insert into netfu_item_resume
 		(
 			uid, info_type, basic, name, inid_p_chk
-			<if test="imgChangeFlag == 'Y'">
+			<if test='imgChangeFlag == "Y"'>
 			, inid_photo
 			</if>
 			, inid_phone, inid_hphone
@@ -232,8 +232,8 @@
 		)
 		values
 		(
-			${uid}, #{infoType}, #{basic}, #{name}, #{inidPChk}
-			<if test="imgChangeFlag == 'Y'">
+			#{uid}, #{infoType}, #{basic}, #{name}, #{inidPChk}
+			<if test='imgChangeFlag == "Y"'>
 			, #{inidPhoto}
 			</if>
 			<![CDATA[
@@ -244,7 +244,9 @@
 			, #{inidType1}, #{inidType2}, #{inidType3}, #{inidType4}, #{inidType5}, #{inidType6}
 			, #{inidMylskill}, #{inidJobform}, #{inidPay}, #{payType}
 			, #{inidLastSchool}, #{inidCareer}, #{inidLicense}, #{inidLanguages}, #{inidIntroduce}, #{inidSecret}
-			, #{wdate}, #{uWdate}, #{jWdate}, #{hit}
+			, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+			, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+			, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s'), '0'
 			, #{service11}, #{service12}, #{service13}, #{service101}, #{service14}, #{service15}, #{service16}, #{service17}
 			, #{inidType7}, #{inidType8}, #{inidType9}
 			, #{inidSex}, #{smsSend}, #{aInsert}, #{memo}, #{education2}, #{career2}, #{license2}, #{language2}

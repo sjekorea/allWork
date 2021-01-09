@@ -190,11 +190,9 @@
 									<tr>
 										<th>희망근무형태<span class="necessary">*</span></th>
 										<td>
-											<span><input id="inidJobformChk" type="checkbox" name="inidJobformChk"/><label for="res02_desc07">정규직</label></span>
-											<span><input id="inidJobformChk" type="checkbox" name="inidJobformChk"/><label for="res02_desc07_1">계약직</label></span>
-											<span><input id="inidJobformChk" type="checkbox" name="inidJobformChk"/><label for="res02_desc07_2">프리랜서</label></span>
-											<span><input id="inidJobformChk" type="checkbox" name="inidJobformChk"/><label for="res02_desc07_3">아르바이트</label></span>
-											<span><input id="inidJobformChk" type="checkbox" name="inidJobformChk"/><label for="res02_desc07_4">추후협의</label></span>
+											<c:forEach var="result" items="${jobTypeList}" varStatus="status">
+												<span><input id="inidJobformChk" type="checkbox" name="inidJobformChk" value="${result.code}"/><label for="reg02_desc07">${result.name}</label></span>
+											</c:forEach>
 											<input type="hidden" name="inidJobform" id="inidJobform" />
 										</td>
 									</tr>
@@ -228,9 +226,15 @@
 										<td>
 											<select id="final_degree" name="final_degree" title="학력 선택">
 												<option value="">학력 선택</option>
-												<c:forEach var="result" items="${jobSchoolList}" varStatus="status">
+												<option value="100">학력무관</option>
+												<option value="1">고등학교졸업</option>
+												<option value="2">대학졸업(2~3년)</option>
+												<option value="3">대학교졸업(4년)</option>
+												<option value="4">석사</option>
+												<option value="5">박사</option>
+												<%-- <c:forEach var="result" items="${jobSchoolList}" varStatus="status">
 													<option value="${result.code}">${result.name}</option>
-												</c:forEach>
+												</c:forEach> --%>
 											</select>
 										</td>
 									</tr>
@@ -240,9 +244,16 @@
 											<span>
 												<input id="lesson_sdate_full" type="date" placeholder="yyyy-mm-dd" name="lesson_sdate_full"/>
 												<select id="school2" name="school2" title="학교구분">
-													<c:forEach var="result" items="${jobSchoolList}" varStatus="status">
+													<option value="">학력 선택</option>
+													<option value="100">학력무관</option>
+													<option value="1">고등학교졸업</option>
+													<option value="2">대학졸업(2~3년)</option>
+													<option value="3">대학교졸업(4년)</option>
+													<option value="4">석사</option>
+													<option value="5">박사</option>
+													<%-- <c:forEach var="result" items="${jobSchoolList}" varStatus="status">
 														<option value="${result.code}">${result.name}</option>
-													</c:forEach>
+													</c:forEach> --%>
 												</select>
 												<input id="school" type="text" name="school" placeholder="학교명"/>
 											</span>
@@ -421,6 +432,9 @@
 				<input type="hidden" name="career2" id="career2" value="" />
 				<input type="hidden" name="license2" id="license2" value="" />
 				<input type="hidden" name="language2" id="language2" value="" />
+				<input type="hidden" name="hit" id="hit" value="0" />
+				<input type="hidden" name="smsSend" id="smsSend" value="NO" />
+				<input type="hidden" name="aInsert" id="aInsert" value="NO" />
 			</form>
 			<ul>
 				<li><a href="#none" title="미리보기">미리보기</a></li>
@@ -437,24 +451,9 @@
 
 <script type="text/javascript">
 
-	var inidMylskill_object = [];	
 	var inidIntroduce_object = [];	
 
 	$(document).ready(function(){
-		
-		nhn.husky.EZCreator.createInIFrame({
-	        oAppRef: inidMylskill_object,
-	        elPlaceHolder: "inidMylskill",
-	        sSkinURI: "/smartEditor/SmartEditor2Skin.html",
-	        htParams : {
-	            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-	            bUseToolbar : true,            
-	            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-	            bUseVerticalResizer : true,    
-	            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-	            bUseModeChanger : true,
-	        }
-	    });
 		
 		nhn.husky.EZCreator.createInIFrame({
 	        oAppRef: inidIntroduce_object,
@@ -507,13 +506,13 @@
 				trHtml += "<tr id='job'>";
 				trHtml += "<th></th>";
 				trHtml += "<td>";
-				trHtml += "<select id='bizType"+((appendNum*3)+1)+"' name='bizType"+((appendNum*3)+1)+"' onchange=\"javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'bizType"+((appendNum*3)+2)+"', true, true);\">";
+				trHtml += "<select id='inidType"+((appendNum*3)+1)+"' name='inidType"+((appendNum*3)+1)+"' onchange=\"javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'inidType"+((appendNum*3)+2)+"', true, true);\">";
 				trHtml += "<option value=''>1차직무선택</option>\n";
 				trHtml += "</select>\n";
-				trHtml += "<select id='bizType"+((appendNum*3)+2)+"' name='bizType"+((appendNum*3)+2)+"' onchange=\"javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'bizType"+((appendNum*3)+3)+"', true, true);\">";
+				trHtml += "<select id='inidType"+((appendNum*3)+2)+"' name='inidType"+((appendNum*3)+2)+"' onchange=\"javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'inidType"+((appendNum*3)+3)+"', true, true);\">";
 				trHtml += "<option value=''>2차직무선택</option>\n";
 				trHtml += "</select>\n";
-				trHtml += "<select id='bizType"+((appendNum*3)+3)+"' name='bizType"+((appendNum*3)+3)+"' >";
+				trHtml += "<select id='inidType"+((appendNum*3)+3)+"' name='inidType"+((appendNum*3)+3)+"' >";
 				trHtml += "<option value=''>3차직무선택</option>\n";
 				trHtml += "</select>";
 				trHtml += "</td>";
@@ -521,7 +520,7 @@
 				
 				$("#job").find("tr").eq(appendNum-1).after(trHtml);	
 				
-				getNetfuCateListForSelect("job", "", "1차직무선택", "bizType"+((appendNum*3)+1), true, true);
+				getNetfuCateListForSelect("job", "", "1차직무선택", "inidType"+((appendNum*3)+1), true, true);
 			}
 			
 			
@@ -533,13 +532,13 @@
 				trHtml += "<tr id='area_job'>";
 				trHtml += "<th></th>";
 				trHtml += "<td>";
-				trHtml += "<select id='bizAreaJob"+((appendNum*3)+1)+"' name='bizAreaJob"+((appendNum*3)+1)+"' onchange=\"javascript:getNetfuCateListForSelect('area_job', this, '2차산업선택', 'bizAreaJob"+((appendNum*3)+2)+"', true, true);\">";
+				trHtml += "<select id='inidAreaJob"+((appendNum*3)+1)+"' name='inidAreaJob"+((appendNum*3)+1)+"' onchange=\"javascript:getNetfuCateListForSelect('area_job', this, '2차산업선택', 'inidAreaJob"+((appendNum*3)+2)+"', true, true);\">";
 				trHtml += "<option value=''>1차산업선택</option>\n";
 				trHtml += "</select>\n";
-				trHtml += "<select id='bizAreaJob"+((appendNum*3)+2)+"' name='bizAreaJob"+((appendNum*3)+2)+"' onchange=\"javascript:getNetfuCateListForSelect('area_job', this, '3차산업선택', 'bizAreaJob"+((appendNum*3)+3)+"', true, true);\">";
+				trHtml += "<select id='inidAreaJob"+((appendNum*3)+2)+"' name='inidAreaJob"+((appendNum*3)+2)+"' onchange=\"javascript:getNetfuCateListForSelect('area_job', this, '3차산업선택', 'inidAreaJob"+((appendNum*3)+3)+"', true, true);\">";
 				trHtml += "<option value=''>2차산업선택</option>\n";
 				trHtml += "</select>\n";
-				trHtml += "<select id='bizAreaJob"+((appendNum*3)+3)+"' name='bizAreaJob"+((appendNum*3)+3)+"'>";
+				trHtml += "<select id='inidAreaJob"+((appendNum*3)+3)+"' name='inidAreaJob"+((appendNum*3)+3)+"'>";
 				trHtml += "<option value=''>3차산업선택</option>\n";
 				trHtml += "</select>";
 				trHtml += "</td>";
@@ -547,7 +546,7 @@
 				
 				$("#area_job").find("tr").eq(appendNum-1).after(trHtml);	
 				
-				getNetfuCateListForSelect("area_job", "", "1차산업선택", "bizAreaJob"+((appendNum*3)+1), true, true);
+				getNetfuCateListForSelect("area_job", "", "1차산업선택", "inidAreaJob"+((appendNum*3)+1), true, true);
 			}
 
 			
@@ -559,10 +558,10 @@
 				trHtml += "<tr>";
 				trHtml += "	<th></th>";
 				trHtml += "	<td>";
-				trHtml += "		<select id='bizArea"+((appendNum*2)+1)+"' name='bizArea"+((appendNum*2)+1)+"' onchange=\"javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'bizArea"+((appendNum*2)+2)+"', true, true);\">";
+				trHtml += "		<select id='inidArea"+((appendNum*2)+1)+"' name='inidArea"+((appendNum*2)+1)+"' onchange=\"javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'inidArea"+((appendNum*2)+2)+"', true, true);\">";
 				trHtml += "			<option value=''>시도 선택</option>\n";
 				trHtml += "		</select>";
-				trHtml += "		<select id='bizArea"+((appendNum*2)+2)+"' name='bizArea"+((appendNum*2)+2)+"' >";
+				trHtml += "		<select id='inidArea"+((appendNum*2)+2)+"' name='inidArea"+((appendNum*2)+2)+"' >";
 				trHtml += "			<option value=''>시구군선택</option>\n";
 				trHtml += "		</select>";
 				trHtml += "	</td>";
@@ -570,7 +569,7 @@
 				
 				$("#area").find("tr").eq(appendNum-1).after(trHtml);	
 				
-				getNetfuCateListForSelect("area", "", "시도 선택", "bizArea"+((appendNum*2)+1), true, true);
+				getNetfuCateListForSelect("area", "", "시도 선택", "inidArea"+((appendNum*2)+1), true, true);
 			}
 
 			
@@ -581,13 +580,20 @@
 			trHtml += "<td>";
 			trHtml += "	<span>";
 			trHtml += "		<input id='lesson_sdate_full' type='date' placeholder='yyyy-mm-dd' name='lesson_sdate_full'/>";
-			trHtml += "		<select id='school2"+appendNum+"' name='school2' title='학교구분'>";
+			trHtml += "		<select id='school2' name='school2' title='학교구분'>";
+			trHtml += "			<option value=''>학력 선택</option>";
+			trHtml += "			<option value='100'>학력무관</option>";
+			trHtml += "			<option value='1'>고등학교졸업</option>";
+			trHtml += "			<option value='2'>대학졸업(2~3년)</option>";
+			trHtml += "			<option value='3'>대학교졸업(4년)</option>";
+			trHtml += "			<option value='4'>석사</option>";
+			trHtml += "			<option value='5'>박사</option>";
 			trHtml += "		</select>";
 			trHtml += "		<input id='school' type='text' name='school' placeholder='학교명'/>";
 			trHtml += "	</span>";
 			trHtml += "	<span>";
 			trHtml += "		<input id='lesson_edate_full' type='date' placeholder='yyyy-mm-dd' name='lesson_edate_full'/>";
-			trHtml += "		<select id='lesson_state"+appendNum+"' name='lesson_state' title='졸업상태'>";
+			trHtml += "		<select id='lesson_state"+(appendNum)+"' name='lesson_state"+(appendNum)+"' title='졸업상태'>";
 			trHtml += "		</select>";
 			trHtml += "		<input id='lesson' type='text' name='lesson' placeholder='전공명'/>";
 			trHtml += "		<input id='lesson2' type='text' name='lesson2' placeholder='학과명'/>";
@@ -597,8 +603,8 @@
 			
 			$("#education").find("tr").eq(appendNum-1).after(trHtml);	
 			
-			getNetfuCateListForSelect("job_school", "", "", "school2"+appendNum, false, false);
-			getNetfuCateListForSelect("job_state", "", "", "lesson_state"+appendNum, false, false);
+			getNetfuCateListForSelect("job_state", "", "", "lesson_state"+(appendNum), false, false);
+			//getNetfuCateListForSelectUsingSelectObj("job_state", "", "", $("#lesson_state").last(), false, false);
 			
 		}else if(itemKind == "career"){
 			
@@ -696,7 +702,6 @@
 		
 		$("#inidSecret").val($("input[name=inidSecretRadio]:checked").val());
 		$("#inidPChk").val($("input[name=inidPChkRadio]:checked").val());
-		inidMylskill_object.getById["inidMylskill"].exec("UPDATE_CONTENTS_FIELD", []);
 		
 		$("#indiCondition").val($("input[name=indiConditionRadio]:checked").val());
 		
@@ -721,7 +726,6 @@
 		if(checkNull($("#inidPay option:selected").val())){ alert("희망급여를 선택하세요."); return; }
 		
 		
-		
 		/*  #######  학력 정보 JSON  */
 		var educationTopInfo = new Object();
 		var educationArray = new Array();
@@ -732,6 +736,8 @@
 		var lesson_edate_full;
 		var lesson_edate;
 		var lesson_edate2;
+		var lesson_state = "";
+		var strState = "";
 		
 		educationTopInfo.final_degree = $("#final_degree option:selected").val();
 		
@@ -742,32 +748,39 @@
 			lesson_sdate_full = $(this).find("#lesson_sdate_full").val();
 			if(lesson_sdate_full != "" && lesson_sdate_full.length > 7){
 				lesson_sdate = lesson_sdate_full.substring(0, 4);
-				lesson_sdate2 = lesson_sdate_full.substring(5, 2);
+				lesson_sdate2 = lesson_sdate_full.substring(5, 7);
 			}
 		
 			lesson_edate_full = $(this).find("#lesson_edate_full").val();
 			if(lesson_edate_full != "" && lesson_edate_full.length > 7){
 				lesson_edate = lesson_edate_full.substring(0, 4);
-				lesson_edate2 = lesson_edate_full.substring(5, 2);
+				lesson_edate2 = lesson_edate_full.substring(5, 7);
 			}
 			
-			educationInfo.lesson_sdate = lesson_sdate;
-			educationInfo.lesson_sdate2 = lesson_sdate2;
-			educationInfo.school2 = $(this).find("#school2 option:selected").val();
-			educationInfo.school2 = $(this).find("#school2 option:selected").text();
-			educationInfo.school = $(this).find("#school").val();
-			educationInfo.lesson_edate = lesson_edate;
-			educationInfo.lesson_edate2 = lesson_edate2;
-			educationInfo.lesson = $(this).find("#lesson").val();
-			educationInfo.lesson2 = $(this).find("#lesson2").val();
-			educationInfo.lesson_state = $(this).find("#lesson_state option:selected").val();
-			educationInfo.strState = $(this).find("#lesson_state option:selected").text();
-			educationInfo.id = $(this).index();
+			if(index <= 0){
+				lesson_state = $(this).find("#lesson_state option:selected").val();
+				strState = $(this).find("#lesson_state option:selected").text();	
+			}else{
+				lesson_state = $(this).find("#lesson_state"+(index+1)+" option:selected").val();
+				strState = $(this).find("#lesson_state"+(index+1)+" option:selected").text();
+			}
 			
+			educationInfo.school2 = $(this).find("#school2 option:selected").val();
+			educationInfo.school = $(this).find("#school").val();
+			educationInfo.lesson_state = lesson_state;
+			educationInfo.lesson = $(this).find("#lesson").val();
+			educationInfo.lesson_sdate2 = lesson_sdate2;
+			educationInfo.strDegree = $(this).find("#school2 option:selected").text();
+			educationInfo.lesson_edate2 = lesson_edate2;
+			educationInfo.strState = strState;
+			educationInfo.id = index;
+			educationInfo.lesson_sdate = lesson_sdate;
+			educationInfo.lesson2 = $(this).find("#lesson2").val();
+			educationInfo.lesson_edate = lesson_edate;
 			educationArray.push(educationInfo);
 		});
-		
 		educationTopInfo.data = educationArray;
+		educationTopInfo.strFinal_degree = $("#final_degree option:selected").text();
 		
 		$("#education2").val(JSON.stringify(educationTopInfo));
 		//console.log(JSON.stringify(educationTopInfo));
@@ -794,22 +807,22 @@
 			hold_sdate_full = $(this).find("#hold_sdate_full").val();
 			if(hold_sdate_full != "" && hold_sdate_full.length > 7){
 				hold_sdate = hold_sdate_full.substring(0, 4);
-				hold_sdate2 = hold_sdate_full.substring(5, 2);
+				hold_sdate2 = hold_sdate_full.substring(5, 7);
 			}
 		
 			hold_edate_full = $(this).find("#hold_edate_full").val();
 			if(hold_edate_full != "" && hold_edate_full.length > 7){
 				hold_edate = hold_edate_full.substring(0, 4);
-				hold_edate2 = hold_edate_full.substring(5, 2);
+				hold_edate2 = hold_edate_full.substring(5, 7);
 			}
 			
-			careerInfo.hold_sdate = hold_sdate;
 			careerInfo.hold_sdate2 = hold_sdate2;
-			careerInfo.hold_edate = hold_edate;
+			careerInfo.hold_sdate = hold_sdate;
 			careerInfo.hold_edate2 = hold_edate2;
-			careerInfo.company = $(this).find("#company").val();
 			careerInfo.business = $(this).find("#business").val();
-			careerInfo.id = $(this).index();
+			careerInfo.hold_edate = hold_edate;
+			careerInfo.company = $(this).find("#company").val();
+			careerInfo.id = index;
 			
 			careerArray.push(careerInfo);
 		});
@@ -831,7 +844,7 @@
 			licenceInfo.obtain_date = $(this).find("#obtain_date").val();;
 			licenceInfo.qualification = $(this).find("#qualification").val();
 			licenceInfo.public_place = $(this).find("#public_place").val();
-			licenceInfo.id = $(this).index();
+			licenceInfo.id = index;
 			
 			licenceArray.push(licenceInfo);
 		});
@@ -851,14 +864,15 @@
 		$("#language tr").each(function(index, item){
 			
 			languageInfo = new Object();
-			languageInfo.ex_obtain_date = $(this).find("#ex_obtain_date").val();;
-			languageInfo.language = $(this).find("#language").val();
+			
 			languageInfo.level = $(this).find("#level option:selected").val();
 			languageInfo.examination = $(this).find("#examination").val();
+			languageInfo.language = $(this).find("#language").val();
+			languageInfo.id = index;	
+			languageInfo.ex_obtain_date = $(this).find("#ex_obtain_date").val();;
 			languageInfo.point = $(this).find("#point").val();
 			languageInfo.level2 = $(this).find("#level2 option:selected").val();
-			languageInfo.id = $(this).index();
-			
+
 			languageItemArray.push(languageInfo);
 		});
 		languageTopInfo.data = languageItemArray;

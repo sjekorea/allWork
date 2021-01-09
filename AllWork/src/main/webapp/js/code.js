@@ -30,7 +30,7 @@ function getNetfuCateListForSelect(type, pObj, allTitle, selectObjId, loadingFla
 }
 
 function getNetfuCateListForSelectUsingSelectObj(type, pObj, allTitle, selectObj, loadingFlag, allFlag){
-	
+	alert("getNetfuCateListForSelectUsingSelectObj");
 	if(loadingFlag) loadingOn();
 	
 	var pCode = (pObj != null && pObj != "") ? $(pObj).val() : "";

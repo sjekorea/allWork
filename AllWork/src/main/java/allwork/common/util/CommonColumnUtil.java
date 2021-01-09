@@ -66,12 +66,22 @@ public class CommonColumnUtil {
 		rtnStr += ", nir.inid_mylskill";
 		rtnStr += ", nir.inid_jobform, getCodeName(nir.inid_jobform) inid_jobform_name";
 		rtnStr += ", nir.inid_pay, getCodeName(nir.inid_pay) inid_pay_name";
+		rtnStr += ", nir.pay_type, getCodeName(nir.pay_type) pay_type_name";
 		rtnStr += ", nir.inid_last_school, nir.inid_career, nir.inid_license, nir.inid_languages, nir.inid_introduce, nir.inid_secret";
 		rtnStr += ", DATE_FORMAT(nir.wdate, '%m/%d') wdate";
 		rtnStr += ", DATE_FORMAT(nir.u_wdate, '%m/%d') u_wdate";
 		rtnStr += ", DATE_FORMAT(nir.j_wdate, '%m/%d') j_wdate";
 		rtnStr += ", nir.hit, nir.service11, nir.service12, nir.service13, nir.service101, nir.service14, nir.service15, nir.service16, nir.service17";
 		rtnStr += ", nir.inid_sex, nir.sms_send, nir.a_insert";
+		rtnStr += ", nir.inid_area_job1, getCodeName(nir.inid_area_job1) inid_area_job1_name";
+		rtnStr += ", nir.inid_area_job2, getCodeName(nir.inid_area_job2) inid_area_job2_name";
+		rtnStr += ", nir.inid_area_job3, getCodeName(nir.inid_area_job3) inid_area_job3_name";
+		rtnStr += ", nir.inid_area_job4, getCodeName(nir.inid_area_job4) inid_area_job4_name";
+		rtnStr += ", nir.inid_area_job5, getCodeName(nir.inid_area_job5) inid_area_job5_name";
+		rtnStr += ", nir.inid_area_job6, getCodeName(nir.inid_area_job6) inid_area_job6_name";
+		rtnStr += ", nir.inid_area_job7, getCodeName(nir.inid_area_job7) inid_area_job7_name";
+		rtnStr += ", nir.inid_area_job8, getCodeName(nir.inid_area_job8) inid_area_job8_name";
+		rtnStr += ", nir.inid_area_job9, getCodeName(nir.inid_area_job9) inid_area_job9_name";
 		
 		return rtnStr;
 	}
