@@ -73,6 +73,7 @@ public class CommonColumnUtil {
 		rtnStr += ", DATE_FORMAT(nir.j_wdate, '%m/%d') j_wdate";
 		rtnStr += ", nir.hit, nir.service11, nir.service12, nir.service13, nir.service101, nir.service14, nir.service15, nir.service16, nir.service17";
 		rtnStr += ", nir.inid_sex, nir.sms_send, nir.a_insert";
+		rtnStr += ", nir.education2, nir.career2, nir.license2, nir.language2";
 		rtnStr += ", nir.inid_area_job1, getCodeName(nir.inid_area_job1) inid_area_job1_name";
 		rtnStr += ", nir.inid_area_job2, getCodeName(nir.inid_area_job2) inid_area_job2_name";
 		rtnStr += ", nir.inid_area_job3, getCodeName(nir.inid_area_job3) inid_area_job3_name";

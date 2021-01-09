@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,6 +28,7 @@ import allwork.service.NetfuMemberService;
 import allwork.service.NetfuOnlineRecruitService;
 import allwork.service.NetfuScrapService;
 import allwork.service.RecruitViewService;
+import allwork.vo.NetfuItemResumeVo;
 import de.ailis.pherialize.Mixed;
 import de.ailis.pherialize.MixedArray;
 import de.ailis.pherialize.Pherialize;
@@ -525,38 +527,30 @@ public class ResumeController {
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyProceess(commandMap.getMap());
 			
+			//Gson gson = new Gson();
+			
+			//ResumeEducationVo resumeEducation = gson.fromJson((String)resumeMap.get("education2"), ResumeEducationVo.class);
+			
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, String> resumeEducation = mapper.readValue((String)resumeMap.get("education2"), Map.class);
+			Map<String, String> resumeCareer = mapper.readValue((String)resumeMap.get("career2"), Map.class);
+			Map<String, String> resumeLicense = mapper.readValue((String)resumeMap.get("license2"), Map.class);
+			Map<String, String> resumeLanguage = mapper.readValue((String)resumeMap.get("language2"), Map.class);
+			
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("memberMap", memberMap);
 			mv.addObject("companyMap", companyMap);
 			mv.addObject("resumeMap", resumeMap);
 			
-			/*
-			String lastSchool = (String)resumeMap.get("inidLastSchool");
-			
-			
-			MixedArray list = new MixedArray();
-			
-			//list = Pherialize.unserialize(lastSchool).toArray();
-			
-			String[] lastSchoolArr;
-			//Map<String, Object> inidLastSchoolMap = new HashMap<String, Object>();
-			if(!"".equals(ConvertUtil.checkNull(lastSchool)) && lastSchool.length() > 0){
-				lastSchoolArr = lastSchool.split("____");
-				System.out.println("lastSchoolArr =======> "+lastSchoolArr.length);
-				if(lastSchoolArr.length > 1){
-					System.out.println("lastSchoolArr =======> "+lastSchoolArr[1].length());
-					Mixed mixed = ConvertUtil.unserializeString(lastSchoolArr[1]);
-					System.out.println("mixed =======> "+mixed.toString());
-					list = ConvertUtil.unserializeString(lastSchoolArr[1]).toArray();
-				}
-			}
-			
-			System.out.println("inidLastSchoolMap =======> \n"+list.toString());*/
-			
 			mv.addObject("scrapCnt", scrapCnt);
 			mv.addObject("interviewCnt", interviewCnt);
 			mv.addObject("recruitCnt", recruitCnt);
 			mv.addObject("recruitList", recruitList);
+			
+			mv.addObject("resumeEducation", resumeEducation);
+			mv.addObject("resumeCareer", resumeCareer);
+			mv.addObject("resumeLicense", resumeLicense);
+			mv.addObject("resumeLanguage", resumeLanguage);
 			
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".resumeDetail Exception !!!!! \n"+e.toString());

@@ -177,7 +177,6 @@
 			getNetfuCateList("job", $("#job1 option:selected").val(), "2차직무선택", "job2", true);
 		});
 		
-				
 		//	-- 맞춤 서비스 정보가 있는 경우 component value setting
 		<c:if test="${!msMap.isEmpty()}">
 			

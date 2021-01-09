@@ -168,7 +168,6 @@ public class NetfuMyServiceController {
 			
 			ObjectMapper mapper = new ObjectMapper();
 			String jsonText = mapper.writeValueAsString(msMap);
-			System.out.println("jsonText : "+jsonText);
 			
 			mv.addObject("json", jsonText);
 			mv.addObject("msMap", msMap);

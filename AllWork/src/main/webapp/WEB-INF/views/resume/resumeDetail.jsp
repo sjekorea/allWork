@@ -183,7 +183,7 @@
 				<div id="resForm03">
 					<h4>학력사항</h4>
 					<p class="final_education">
-						<span>최종학력</span><span class="edu_result">${codeConvert:getLastSchool(resumeMap.inidLastSchool) }</span>
+						<span>최종학력</span><span class="edu_result">${resumeEducation.strFinal_degree }</span>
 					</p>
 					<ul>
 						<li class="edu_title">
@@ -192,20 +192,22 @@
 							<p class="edu_desc03">전공</p>
 							<p class="edu_desc04">졸업상태</p>
 						</li>
-						<li class="edu_desc">
-							<p class="edu_desc01">2004.3.1 ~ 2008.2.20</p>
-							<p class="edu_desc02">oo대학교</p>
-							<p class="edu_desc03">oo과</p>
-							<p class="edu_desc04">졸업</p>
-						</li>
+						<c:forEach var="result" items="${resumeEducation.data}" varStatus="status">
+							<li class="edu_desc">
+								<p class="edu_desc01">${result.lesson_sdate}.${result.lesson_sdate2} ~ ${result.lesson_edate}.${result.lesson_edate2}</p>
+								<p class="edu_desc02">${result.school}</p>
+								<p class="edu_desc03">${result.lesson}</p>
+								<p class="edu_desc04">${result.strState}</p>
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
 			<div id="resume04">
 				<div id="resForm04">
-					<h4>학력사항</h4>
+					<h4>경력사항</h4>
 					<p class="final_education">
-						<span>총 경력년수</span><span class="edu_result">${codeConvert:getTotalCareer(resumeMap.inidCareer) }</span>
+						<span>총 경력년수</span><span class="edu_result">${resumeCareer.total_year }년  ${resumeCareer.total_month }개월</span>
 					</p>
 					<ul>
 						<li class="edu_title">
@@ -213,11 +215,13 @@
 							<p class="edu_desc02">회사명</p>
 							<p class="edu_desc03">담당업무</p>
 						</li>
-						<li class="edu_desc">
-							<p class="edu_desc01">2004.3.1 ~ 2008.2.20</p>
-							<p class="edu_desc02">(주)00</p>
-							<p class="edu_desc03">[현장파견]정규직 채용(전기공사. 통신공사)</p>
-						</li>
+						<c:forEach var="result" items="${resumeCareer.data}" varStatus="status">
+							<li class="edu_desc">
+								<p class="edu_desc01">${result.hold_sdate}.${result.hold_sdate2} ~ ${result.hold_edate}.${result.hold_edate2}</p>
+								<p class="edu_desc02">${result.company}</p>
+								<p class="edu_desc03">${result.business}</p>
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
@@ -236,16 +240,13 @@
 							<p class="edu_desc02">자격증명</p>
 							<p class="edu_desc03">발행처</p>
 						</li>
-						<li class="edu_desc">
-							<p class="edu_desc01">2004.3.1</p>
-							<p class="edu_desc02">중급전기공사</p>
-							<p class="edu_desc03">한국전기공사협회</p>
-						</li>
-						<li class="edu_desc">
-							<p class="edu_desc01">2008.3.1</p>
-							<p class="edu_desc02">2급소방안전관리자</p>
-							<p class="edu_desc03">한국소방안전원</p>
-						</li>
+						<c:forEach var="result" items="${resumeLicense.data}" varStatus="status">
+							<li class="edu_desc">
+								<p class="edu_desc01">${result.obtain_date}</p>
+								<p class="edu_desc02">${result.qualification}</p>
+								<p class="edu_desc03">${result.public_place}</p>
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
@@ -260,13 +261,15 @@
 							<p class="edu_desc04">점수</p>
 							<p class="edu_desc05">발행처</p>
 						</li>
-						<li class="edu_desc">
-							<p class="edu_desc01">2004.3.1</p>
-							<p class="edu_desc02">TOEIC</p>
-							<p class="edu_desc03">-</p>
-							<p class="edu_desc04">600</p>
-							<p class="edu_desc05">ETC</p>
-						</li>
+						<c:forEach var="result" items="${resumeLanguage.data}" varStatus="status">
+							<li class="edu_desc">
+								<p class="edu_desc01">${result.ex_obtain_date}</p>
+								<p class="edu_desc02">${result.language}</p>
+								<p class="edu_desc03">${result.level}</p>
+								<p class="edu_desc04">${result.point}</p>
+								<p class="edu_desc05">${result.examination}</p>
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
