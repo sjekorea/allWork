@@ -5,14 +5,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<jsp:include page="/personHeader.do" />
+<jsp:include page="/companyHeader.do" />
 
-<link rel="stylesheet" type="text/css" href="/css/personal_connectSetting.css"/>
+<link rel="stylesheet" type="text/css" href="/css/company_connectSetting.css"/>
 
 <div id="containerWrap">
 	<div id="container">
 		<div id="leftPart">
-			<jsp:include page="/personSubMenu.do" />
+			<jsp:include page="/companySubMenu.do" />
 		</div>
 		<div id="rightPart">
 			<div id="resume02">
