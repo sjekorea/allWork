@@ -5,14 +5,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<jsp:include page="/companyHeader.do" />
+<jsp:include page="/personHeader.do" />
 
-<link rel="stylesheet" type="text/css" href="/css/company_connectSetting.css"/>
+<link rel="stylesheet" type="text/css" href="/css/personal_connectSetting.css"/>
 
 <div id="containerWrap">
 	<div id="container">
 		<div id="leftPart">
-			<jsp:include page="/companySubMenu.do" />
+			<jsp:include page="/personSubMenu.do" />
 		</div>
 		<div id="rightPart">
 			<div id="resume02">
@@ -27,6 +27,9 @@
 									<td>
 										<select id="job1" name="job1" title="1차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'job2', true, true);">
 											<option value="">1차직무선택</option>
+											<c:forEach var="result" items="${jobList}" varStatus="status">
+												<option value="${result.code}">${result.name}</option>
+											</c:forEach>
 										</select>
 										<select id="job2" name="job2" title="2차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'job3', true, true);">
 											<option value="">2차직무선택</option>
@@ -34,8 +37,8 @@
 										<select id="job3" name="job3" title="3차직무선택">
 											<option value="">3차직무선택</option>
 										</select>
-										<input id="appendJob" type="button" name="appendJob" value="+ 추가" />
-										<input id="deleteJob" type="button" name="deleteJob" value="- 삭제" />
+										<input type="button" name="appendItem" kind="job" value="+ 추가" />
+										<input type="button" name="deleteItem" kind="job" value="- 삭제" />
 									</td>
 								</tr>
 							</tbody>
@@ -47,16 +50,19 @@
 									<td>
 										<select id="area1" name="area1" onchange="javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'area2', true, true);">
 											<option value="">시도선택</option>
+											<c:forEach var="result" items="${areaList}" varStatus="status">
+												<option value="${result.code}">${result.name}</option>
+											</c:forEach>
 										</select>
-										<select id="area1" name="area2">
+										<select id="area2" name="area2">
 											<option value="">시구군선택</option>
 										</select>
-										<input id="appendArea" type="button" name="appendArea" value="+ 추가" />
-										<input id="deleteArea" type="button" name="deleteArea" value="- 삭제" />
+										<input type="button" name="appendItem" kind="area" value="+ 추가" />
+										<input type="button" name="deleteItem" kind="area" value="- 삭제" />
 									</td>
 								</tr>
 							</tbody>
-						</table>	
+						</table>
 						<table>
 							<tbody>
 								<!-- <tr>
@@ -69,7 +75,11 @@
 								</tr> -->
 								<tr>
 									<th>고용형태</th>
-									<td id="jobFormTr"></td>
+									<td id="jobFormTr">
+										<c:forEach var="result" items="${jobTypeList}" varStatus="status">
+											<span><input id="jobForm" type="checkbox" name="jobForm" value="${result.code}"/><label for="reg02_desc07">${result.name}</label></span>
+										</c:forEach>
+									</td>
 								</tr>
 								<tr class="final_education">
 									<th>최종학력</th>
@@ -88,20 +98,20 @@
 								<tr>
 									<th>경력사항</th>
 									<td>
-										<span><input id="bizCareerChkRadio" type="radio" name="bizCareerChkRadio" value="102"/>신입</span> 
-										<span><input id="bizCareerChkRadio" type="radio" name="bizCareerChkRadio" value="101"/>경력</span>
+										<span><input id="bizCareerRadio" type="radio" name="bizCareerRadio" value="102"/>신입</span> 
+										<span><input id="bizCareerRadio" type="radio" name="bizCareerRadio" value="101"/>경력</span>
 										<span>
 											<select id="bizCareerSel1" name="bizCareerSel1" title="경력연차">
 												<option value="">선택</option>
-												<c:forEach var="result" items="${careerRange}" varStatus="status">
-													<option value="${result}">${result}</option>
+												<c:forEach var="i" begin="1" end="30">
+													<option value="${i}">${i}</option>
 												</c:forEach>
 											</select>
 											~
 											<select id="bizCareerSel2" name="bizCareerSel2" title="경력연차">
 												<option value="">선택</option>
-												<c:forEach var="result" items="${careerRange}" varStatus="status">
-													<option value="${result}">${result}</option>
+												<c:forEach var="i" begin="1" end="30">
+													<option value="${i}">${i}</option>
 												</c:forEach>
 											</select>
 										</span>
@@ -111,9 +121,13 @@
 								<tr>
 									<th>급여정도</th>
 									<td>
-										<select id="jobPay1" name="jobPay1" title="연봉/시급선택" onchange="javascript:getNetfuCateListForSelect('inid_pay', this, '', 'jobPay2', true, false);">
+										<select id="payType" name="payType" title="연봉/시급선택" onchange="javascript:getNetfuCateListForSelect('inid_pay', this, '급여 선택', 'jobPay', true, true);">
+											<option value="">급여 종류</option>
+											<c:forEach var="result" items="${inidPayList}" varStatus="status">
+												<option value="${result.code}">${result.name}</option>
+											</c:forEach>
 										</select>
-										<select id="jobPay2" name="jobPay2" title="연봉선택">
+										<select id="jobPay" name="jobPay" title="연봉선택">
 											<option value="">선택</option>
 										</select>
 									</td>
@@ -121,6 +135,8 @@
 							</tbody>
 						</table>
 					</fieldset>
+					<input type="hidden" name="processFlag" id="processFlag" value="insert" />
+					<input type="hidden" name="no" id="no" value="${msMap.no }" />
 				</form>
 			</div>
 			<ul>
@@ -130,87 +146,153 @@
 		</div>
 	</div>
 </div>
-
 <jsp:include page="/footer.do" />
 
 <script type="text/javascript">
 	
 	$(document).ready(function(){
 		
-		// 산업 정보 select
-		getNetfuCateListForSelect("job", "", "1차직무선택", "job1", true, true);
-		
-		// 지역 정보 select
-		getNetfuCateListForSelect("area", "", "시도 선택", "area1", true, true);
-		
-		// 고용형태 select
-		getNetfuCateListForCheckbox("job_type", "jobFormTr", "jobForm", true);
-		
-		// 학력 정보 select
-		//getNetfuCateListForSelect("job_school", "", "학력 선택", "jobSchool", true, true);
-		
-		// 급여 종류 정보 select
-		getNetfuCateListForSelect("inid_pay", "", "급여 종류 선택", "jobPay1", true, true);
-		
-		// 산업 정보 추가 Button
-		$("#appendJob").on("click", function(e){
-			appendItem("job");
+		// 추가 Button
+		$("input[name=appendItem]").each(function(index){
+			$(this).on("click", function(e){
+				appendItem($(this).attr("kind"));
+			});	
 		});
 		
-		// 산업 정보 추가 Button
-		$("#deleteJob").on("click", function(e){
-			deleteItem("job");
+		// 삭제 Button
+		$("input[name=deleteItem]").each(function(index){
+			$(this).on("click", function(e){
+				deleteItem($(this).attr("kind"));
+			});	
 		});
 		
-		// 지역 정보 추가 Button
-		$("#appendArea").on("click", function(e){
-			appendItem("area");
-		});
-		
-		// 지역 정보 추가 Button
-		$("#deleteArea").on("click", function(e){
-			deleteItem("area");
-		});
-		
-		// 지역 정보 select
-		$("#job1").on("change", function(e){
-			getNetfuCateList("job", $("#job1 option:selected").val(), "2차직무선택", "job2", true);
-		});
-		
-		//	-- 맞춤 서비스 정보가 있는 경우 component value setting
+		// -- 맞춤 서비스 정보가 있는 경우 component value setting
 		<c:if test="${!msMap.isEmpty()}">
+		
+			$("#processFlag").val("update");
 			
-			$("#job1").val("${msMap.job1}");console.log("jon1 : "+"${msMap.job1}");
+			if(!checkNull("${msMap.job1}")){
+				$("#job1").val("${msMap.job1}");
+				getNetfuCateListForSelect('job', $("#job1"), '2차직무선택', 'job2', false, true);
+			}
 			
 			if(!checkNull("${msMap.job2}")){
-				getNetfuCateListForSelect('inid_pay', $("#job1"), '', 'job2', true, false);
-				$("#job2").val("${msMap.job2}");console.log("jon1 : "+"${msMap.job2}");
+				$("#job2").val("${msMap.job2}");
+				getNetfuCateListForSelect('job', $("#job2"), '3차직무선택', 'job3', false, true);
 			}
 			
 			if(!checkNull("${msMap.job3}")){
-				getNetfuCateListForSelect('inid_pay', $("#job2"), '', 'job3', true, false);
-				$("#job3").val("${msMap.job3}");console.log("jon1 : "+"${msMap.job3}");
+				$("#job3").val("${msMap.job3}");
 			}
 			
-			$("#area1").val("${msMap.area}");
+			if(!checkNull("${msMap.job4}")){
+				appendItem("job");
+				$("#job4").val("${msMap.job4}");
+				getNetfuCateListForSelect('job', $("#job4"), '2차직무선택', 'job5', false, true);
+			}
+			
+			if(!checkNull("${msMap.job5}")){
+				$("#job5").val("${msMap.job5}");
+				getNetfuCateListForSelect('job', $("#job5"), '3차직무선택', 'job6', false, true);
+			}
+			
+			if(!checkNull("${msMap.job6}")){
+				$("#job6").val("${msMap.job6}");
+			}
+			
+			if(!checkNull("${msMap.job7}")){
+				appendItem("job");
+				$("#job7").val("${msMap.job7}");
+				getNetfuCateListForSelect('job', $("#job7"), '2차직무선택', 'job8', false, true);
+			}
+			
+			if(!checkNull("${msMap.job8}")){
+				$("#job8").val("${msMap.job8}");
+				getNetfuCateListForSelect('job', $("#job8"), '3차직무선택', 'job9', false, true);
+			}
+			
+			if(!checkNull("${msMap.job9}")){
+				$("#job9").val("${msMap.job9}");
+			}
+			
+			
+			
+			
+			if(!checkNull("${msMap.area}")){
+				$("#area1").val("${msMap.area}");
+				getNetfuCateListForSelect('area', $("#area1"), '시구군선택', 'area2', false, true);
+			}
 			
 			if(!checkNull("${msMap.area2}")){
-				getNetfuCateListForSelect('area', $("#area1"), '시구군선택', 'area2', true, true);
-				$("#area2").val("${msMap.area2}");console.log("jon1 : "+"${msMap.area2}");
+				$("#area2").val("${msMap.area2}");
 			}
 			
-			$("#jobSchool").val("${msMap.jobSchool}");
-			var career = "${msMap.career}".split(",");
-			console.log(career);
+			if(!checkNull("${msMap.area3}")){
+				appendItem("area");
+				$("#area3").val("${msMap.area3}");
+				getNetfuCateListForSelect('area', $("#area3"), '시구군선택', 'area4', false, true);
+			}
 			
-			$("#jobPay1").val("${msMap.payType}");
+			if(!checkNull("${msMap.area4}")){
+				$("#area4").val("${msMap.area4}");
+			}
+			
+			if(!checkNull("${msMap.area5}")){
+				appendItem("area");
+				$("#area5").val("${msMap.area5}");
+				getNetfuCateListForSelect('area', $("#area5"), '시구군선택', 'area6', false, true);
+			}
+			
+			if(!checkNull("${msMap.area6}")){
+				$("#area6").val("${msMap.area6}");
+			}
+			
+			var form = "${msMap.form}".split(",");
+			for(var i = 0 ; i < form.length ; i++){
+				$('input:checkbox[name="jobForm"]').each(function() {
+					if(form[i] == this.value){
+						$(this).attr("checked", true);
+					}
+				});
+			}
+			
+			if(!checkNull("${msMap.school}")){
+				$("#jobSchool").val("${msMap.school}");
+			}
+			
+			var career = "${msMap.career}".split(",");
+			if(career.length == 4){
+				if(career[0] == "101"){
+					$(":radio[name='bizCareerRadio'][value='101']").prop("checked", true);
+				}else if(career[0] == "102"){
+					$(":radio[name='bizCareerRadio'][value='102']").prop("checked", true);
+				}else{
+					
+				}
+				
+				$("#bizCareerSel1").val(career[1]);
+				$("#bizCareerSel2").val(career[2]);
+				
+				if(career[3] != null && career[3] != "" && career[3] == "100"){
+					$("#bizCareerChk").prop("checked", true);
+				}
+			}
+			
+			
+			
+			
 			
 			if(!checkNull("${msMap.payType}")){
-				getNetfuCateListForSelect('inid_pay', $("#jobPay1"), '', 'jobPay2', true, false);
-				$("#jobPay2").val("${msMap.pay}");console.log("jon1 : "+"${msMap.pay}");
-			}
+				$("#payType").val("${msMap.payType}");
+				getNetfuCateListForSelect('inid_pay', $("#payType"), '급여 선택', 'jobPay', false, true);
+			} 
+			
+			if(!checkNull("${msMap.pay}")){
+				$("#jobPay").val("${msMap.pay}");
+			} 
 			
 		</c:if>
+		
 		
 	});	
 	
@@ -243,7 +325,7 @@
 				
 				$("#job").find("tr").eq(appendNum-1).after(trHtml);	
 				
-				getNetfuCateListForSelect("job", "", "1차직무선택", "job"+(appendNum+1)+"1", true, true);
+				getNetfuCateListForSelect("job", "", "1차직무선택", "job"+((appendNum*3)+1), true, true);
 			}
 			
 		}else if(itemKind == "area"){
@@ -254,10 +336,10 @@
 				trHtml += "<tr>";
 				trHtml += "	<th></th>";
 				trHtml += "	<td>";
-				trHtml += "		<select id='area"+((appendNum*2)+1)+"' name='area"+((appendNum*2)+1)+"' title='시도선택' onchange=\"javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'area"+((appendNum*2)+1)+"', true, true);\">";
+				trHtml += "		<select id='area"+((appendNum*2)+1)+"' name='area"+((appendNum*2)+1)+"' title='시도선택' onchange=\"javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'area"+((appendNum*2)+2)+"', true, true);\">";
 				trHtml += "			<option value=''>시도선택</option>";
 				trHtml += "		</select>";
-				trHtml += "		<select id='area"+((appendNum*2)+2)+"' name='area"+((appendNum*2)+1)+"' title='시구군선택'>";
+				trHtml += "		<select id='area"+((appendNum*2)+2)+"' name='area"+((appendNum*2)+2)+"' title='시구군선택'>";
 				trHtml += "			<option value=''>시구군선택</option>";
 				trHtml += "		</select>";
 				trHtml += "	</td>";
@@ -265,7 +347,7 @@
 				
 				$("#area").find("tr").eq(appendNum-1).after(trHtml);	
 				
-				getNetfuCateListForSelect("area", "", "시도 선택", "area"+(appendNum+1)+"1", true, true);
+				getNetfuCateListForSelect("area", "", "시도 선택", "area"+((appendNum*2)+1), true, true);
 			}
 			
 		}
@@ -291,16 +373,16 @@
 		
 		loadingOn();
 		
-		// 성별 Radio
-		//var sex = $("input[name=sex]:checked").val();
-		//sex = (isEmpty(sex) ? "" : sex);
+		/* // 성별 Radio
+		var sex = $("input[name=sex]:checked").val();
+		sex = (isEmpty(sex) ? "" : sex); */
 		
 		// 고용형태 Checkbox
 		var form = "";
-		$("input[name=jobForm]").each(function() {
-		      if(this.checked){
-		    	  form += this.value+",";
-		      }
+		$('input:checkbox[name="jobForm"]').each(function() {
+			if(this.checked){
+				form += this.value+",";
+			}
 		});
 		form = form.length > 0 ? form.substring(0, form.length-1) : "";
 
@@ -331,6 +413,11 @@
 		var payType = $("#jobPay1 option:selected").val();
 		var pay = $("#jobPay2 option:selected").val();
 		
+		var processUrl = "/registMyService.ajax";
+		if("update" == $("#processFlag").val()){
+			processUrl = "/updateMyService.ajax";
+		}
+		
 		var callback = function(data){
 			alert("저장 되었습니다.");
 			loadingOff();
@@ -358,10 +445,12 @@
 					, form : form
 					, school : $("#jobSchool option:selected").val()
 					, career : career
-					, payType : $("#jobPay1 option:selected").val()
-					, pay : $("#jobPay1 option:selected").val()
+					, payType : $("#payType option:selected").val()
+					, pay : $("#jobPay option:selected").val()
+					, no : $("#no").val()
 				};
-		ajax('post', '/registMyService.ajax', param, callback);
+		ajax('post', processUrl, param, callback);
 	}
 	
 </script>
+

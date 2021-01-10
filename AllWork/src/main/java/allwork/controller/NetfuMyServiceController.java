@@ -111,7 +111,6 @@ public class NetfuMyServiceController {
 			
 			ObjectMapper mapper = new ObjectMapper();
 			String jsonText = mapper.writeValueAsString(msMap);
-			System.out.println("jsonText : "+jsonText);
 			
 			mv.addObject("json", jsonText);
 			mv.addObject("msMap", msMap);
@@ -185,6 +184,23 @@ public class NetfuMyServiceController {
 		
 		try{
 			
+			commandMap.put("pCode", "");
+			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
+			commandMap.put("type", "job");
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 지역별  ( netfu_cate : type ='area' )
+			commandMap.put("type", "area");
+			List<Map<String, Object>> areaList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+
+			// 고용형태  ( netfu_cate : type ='job_type' )
+			commandMap.put("type", "job_type");
+			List<Map<String, Object>> jobTypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 급여종류  ( netfu_cate : type ='inid_pay' )
+			commandMap.put("type", "inid_pay");
+			List<Map<String, Object>> inidPayList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+						
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			Map<String, Object> msMap = netfuMyServiceService.selectNetfuMyServiceMap(commandMap.getMap());
 			
@@ -193,7 +209,10 @@ public class NetfuMyServiceController {
 			
 			mv.addObject("json", jsonText);
 			mv.addObject("msMap", msMap);
-			mv.addObject("careerRange", CommonUtil.getNumberRanage(1, 20));
+			mv.addObject("jobList", jobList);
+			mv.addObject("areaList", areaList);
+			mv.addObject("jobTypeList", jobTypeList);
+			mv.addObject("inidPayList", inidPayList);
 			
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".fitResumeSetting Exception !!!!! \n"+e.toString());

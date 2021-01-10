@@ -77,7 +77,7 @@
 									<th>고용형태</th>
 									<td id="jobFormTr">
 										<c:forEach var="result" items="${jobTypeList}" varStatus="status">
-											<span><input id="jobFrom" type="checkbox" name="jobFrom" value="${result.code}"/><label for="reg02_desc07">${result.name}</label></span>
+											<span><input id="jobForm" type="checkbox" name="jobForm" value="${result.code}"/><label for="reg02_desc07">${result.name}</label></span>
 										</c:forEach>
 									</td>
 								</tr>
@@ -98,8 +98,8 @@
 								<tr>
 									<th>경력사항</th>
 									<td>
-										<span><input id="bizCareerChkRadio" type="radio" name="bizCareerChkRadio" value="102"/>신입</span> 
-										<span><input id="bizCareerChkRadio" type="radio" name="bizCareerChkRadio" value="101"/>경력</span>
+										<span><input id="bizCareerRadio" type="radio" name="bizCareerRadio" value="102"/>신입</span> 
+										<span><input id="bizCareerRadio" type="radio" name="bizCareerRadio" value="101"/>경력</span>
 										<span>
 											<select id="bizCareerSel1" name="bizCareerSel1" title="경력연차">
 												<option value="">선택</option>
@@ -169,8 +169,6 @@
 		// -- 맞춤 서비스 정보가 있는 경우 component value setting
 		<c:if test="${!msMap.isEmpty()}">
 		
-			alert("${msMap.pay}");
-			
 			$("#processFlag").val("update");
 			
 			if(!checkNull("${msMap.job1}")){
@@ -187,6 +185,103 @@
 				$("#job3").val("${msMap.job3}");
 			}
 			
+			if(!checkNull("${msMap.job4}")){
+				appendItem("job");
+				$("#job4").val("${msMap.job4}");
+				getNetfuCateListForSelect('job', $("#job4"), '2차직무선택', 'job5', false, true);
+			}
+			
+			if(!checkNull("${msMap.job5}")){
+				$("#job5").val("${msMap.job5}");
+				getNetfuCateListForSelect('job', $("#job5"), '3차직무선택', 'job6', false, true);
+			}
+			
+			if(!checkNull("${msMap.job6}")){
+				$("#job6").val("${msMap.job6}");
+			}
+			
+			if(!checkNull("${msMap.job7}")){
+				appendItem("job");
+				$("#job7").val("${msMap.job7}");
+				getNetfuCateListForSelect('job', $("#job7"), '2차직무선택', 'job8', false, true);
+			}
+			
+			if(!checkNull("${msMap.job8}")){
+				$("#job8").val("${msMap.job8}");
+				getNetfuCateListForSelect('job', $("#job8"), '3차직무선택', 'job9', false, true);
+			}
+			
+			if(!checkNull("${msMap.job9}")){
+				$("#job9").val("${msMap.job9}");
+			}
+			
+			
+			
+			
+			if(!checkNull("${msMap.area}")){
+				$("#area1").val("${msMap.area}");
+				getNetfuCateListForSelect('area', $("#area1"), '시구군선택', 'area2', false, true);
+			}
+			
+			if(!checkNull("${msMap.area2}")){
+				$("#area2").val("${msMap.area2}");
+			}
+			
+			if(!checkNull("${msMap.area3}")){
+				appendItem("area");
+				$("#area3").val("${msMap.area3}");
+				getNetfuCateListForSelect('area', $("#area3"), '시구군선택', 'area4', false, true);
+			}
+			
+			if(!checkNull("${msMap.area4}")){
+				$("#area4").val("${msMap.area4}");
+			}
+			
+			if(!checkNull("${msMap.area5}")){
+				appendItem("area");
+				$("#area5").val("${msMap.area5}");
+				getNetfuCateListForSelect('area', $("#area5"), '시구군선택', 'area6', false, true);
+			}
+			
+			if(!checkNull("${msMap.area6}")){
+				$("#area6").val("${msMap.area6}");
+			}
+			
+			var form = "${msMap.form}".split(",");
+			for(var i = 0 ; i < form.length ; i++){
+				$('input:checkbox[name="jobForm"]').each(function() {
+					if(form[i] == this.value){
+						$(this).attr("checked", true);
+					}
+				});
+			}
+			
+			if(!checkNull("${msMap.school}")){
+				$("#jobSchool").val("${msMap.school}");
+			}
+			
+			var career = "${msMap.career}".split(",");
+			if(career.length == 4){
+				if(career[0] == "101"){
+					$(":radio[name='bizCareerRadio'][value='101']").prop("checked", true);
+				}else if(career[0] == "102"){
+					$(":radio[name='bizCareerRadio'][value='102']").prop("checked", true);
+				}else{
+					
+				}
+				
+				$("#bizCareerSel1").val(career[1]);
+				$("#bizCareerSel2").val(career[2]);
+				
+				if(career[3] != null && career[3] != "" && career[3] == "100"){
+					$("#bizCareerChk").prop("checked", true);
+				}
+			}
+			
+			
+			
+			
+			
 			if(!checkNull("${msMap.payType}")){
 				$("#payType").val("${msMap.payType}");
 				getNetfuCateListForSelect('inid_pay', $("#payType"), '급여 선택', 'jobPay', false, true);
@@ -195,25 +290,6 @@
 			if(!checkNull("${msMap.pay}")){
 				$("#jobPay").val("${msMap.pay}");
 			} 
-			
-			/* 
-			$("#area1").val("${msMap.area}");
-			
-			if(!checkNull("${msMap.area2}")){
-				getNetfuCateListForSelect('area', $("#area1"), '시구군선택', 'area2', true, true);
-				$("#area2").val("${msMap.area2}");console.log("jon1 : "+"${msMap.area2}");
-			}
-			
-			$("#jobSchool").val("${msMap.jobSchool}");
-			var career = "${msMap.career}".split(",");
-			console.log(career);
-			
-			$("#jobPay1").val("${msMap.payType}");
-			
-			if(!checkNull("${msMap.payType}")){
-				getNetfuCateListForSelect('inid_pay', $("#jobPay1"), '', 'jobPay2', true, false);
-				$("#jobPay2").val("${msMap.pay}");console.log("jon1 : "+"${msMap.pay}");
-			} */
 			
 		</c:if>
 		
@@ -260,10 +336,10 @@
 				trHtml += "<tr>";
 				trHtml += "	<th></th>";
 				trHtml += "	<td>";
-				trHtml += "		<select id='area"+((appendNum*3)+1)+"' name='area"+((appendNum*3)+1)+"' title='시도선택' onchange=\"javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'area"+((appendNum*3)+2)+"', true, true);\">";
+				trHtml += "		<select id='area"+((appendNum*2)+1)+"' name='area"+((appendNum*2)+1)+"' title='시도선택' onchange=\"javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'area"+((appendNum*2)+2)+"', true, true);\">";
 				trHtml += "			<option value=''>시도선택</option>";
 				trHtml += "		</select>";
-				trHtml += "		<select id='area"+((appendNum*3)+2)+"' name='area"+((appendNum*3)+2)+"' title='시구군선택'>";
+				trHtml += "		<select id='area"+((appendNum*2)+2)+"' name='area"+((appendNum*2)+2)+"' title='시구군선택'>";
 				trHtml += "			<option value=''>시구군선택</option>";
 				trHtml += "		</select>";
 				trHtml += "	</td>";
@@ -271,7 +347,7 @@
 				
 				$("#area").find("tr").eq(appendNum-1).after(trHtml);	
 				
-				getNetfuCateListForSelect("area", "", "시도 선택", "area"+((appendNum*3)+1), true, true);
+				getNetfuCateListForSelect("area", "", "시도 선택", "area"+((appendNum*2)+1), true, true);
 			}
 			
 		}
@@ -303,10 +379,10 @@
 		
 		// 고용형태 Checkbox
 		var form = "";
-		$("input[name=jobForm]").each(function() {
-		      if(this.checked){
-		    	  form += this.value+",";
-		      }
+		$('input:checkbox[name="jobForm"]').each(function() {
+			if(this.checked){
+				form += this.value+",";
+			}
 		});
 		form = form.length > 0 ? form.substring(0, form.length-1) : "";
 
