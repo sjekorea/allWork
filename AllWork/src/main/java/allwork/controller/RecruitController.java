@@ -120,7 +120,7 @@ public class RecruitController {
 			
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("jobList", jobList);
-			mv.addObject("taskJobList", areaJobList);
+			mv.addObject("areaJobList", areaJobList);
 			mv.addObject("areaList", areaList);
 			mv.addObject("recruitList", recruitList);
 			mv.addObject("pageMap", pageMap);

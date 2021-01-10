@@ -255,7 +255,7 @@
 				}
 				
 				if("cate_industry" == ulClass){ // 산업별
-					$("#searchKind").val("areaJob");
+					$("#searchKind").val("area_job");
 					$(".tab").find("li").eq(1).css("background-color", "#000").siblings("li").css("background-color", "#ddd");
 					$(".select01").html($(".cate_industry").html());
 				}

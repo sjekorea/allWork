@@ -25,12 +25,12 @@ function getNetfuCateListForSelect(type, pObj, allTitle, selectObjId, loadingFla
 				type : type
 				, pCode : pCode
 			};
-	ajax('post', '/getCodeListAjax.ajax', param, callback);
+	ajaxNonAsync('post', '/getCodeListAjax.ajax', param, callback);
 	
 }
 
 function getNetfuCateListForSelectUsingSelectObj(type, pObj, allTitle, selectObj, loadingFlag, allFlag){
-	alert("getNetfuCateListForSelectUsingSelectObj");
+
 	if(loadingFlag) loadingOn();
 	
 	var pCode = (pObj != null && pObj != "") ? $(pObj).val() : "";

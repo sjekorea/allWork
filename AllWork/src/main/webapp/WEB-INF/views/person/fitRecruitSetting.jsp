@@ -25,17 +25,20 @@
 								<tr>
 									<th>모집업종</th>
 									<td>
-										<select id="job11" name="job1" title="1차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'job12', true, true);">
+										<select id="job1" name="job1" title="1차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'job2', true, true);">
 											<option value="">1차직무선택</option>
+											<c:forEach var="result" items="${jobList}" varStatus="status">
+												<option value="${result.code}">${result.name}</option>
+											</c:forEach>
 										</select>
-										<select id="job12" name="job2" title="2차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'job13', true, true);">
+										<select id="job2" name="job2" title="2차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'job3', true, true);">
 											<option value="">2차직무선택</option>
 										</select>
-										<select id="job13" name="job3" title="3차직무선택">
+										<select id="job3" name="job3" title="3차직무선택">
 											<option value="">3차직무선택</option>
 										</select>
-										<input id="appendJob" type="button" name="appendJob" value="+ 추가" />
-										<input id="deleteJob" type="button" name="deleteJob" value="- 삭제" />
+										<input type="button" name="appendItem" kind="job" value="+ 추가" />
+										<input type="button" name="deleteItem" kind="job" value="- 삭제" />
 									</td>
 								</tr>
 							</tbody>
@@ -45,31 +48,38 @@
 								<tr>
 									<th>근무지역</th>
 									<td>
-										<select id="area11" name="area1" onchange="javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'area12', true, true);">
+										<select id="area1" name="area1" onchange="javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'area2', true, true);">
 											<option value="">시도선택</option>
+											<c:forEach var="result" items="${areaList}" varStatus="status">
+												<option value="${result.code}">${result.name}</option>
+											</c:forEach>
 										</select>
-										<select id="area12" name="area2">
+										<select id="area2" name="area2">
 											<option value="">시구군선택</option>
 										</select>
-										<input id="appendArea" type="button" name="appendArea" value="+ 추가" />
-										<input id="deleteArea" type="button" name="deleteArea" value="- 삭제" />
+										<input type="button" name="appendItem" kind="area" value="+ 추가" />
+										<input type="button" name="deleteItem" kind="area" value="- 삭제" />
 									</td>
 								</tr>
 							</tbody>
 						</table>
 						<table>
 							<tbody>
-								<tr>
+								<!-- <tr>
 									<th>성별</th>
 									<td>
 										<span><input id="sex" type="radio" name="sex" value="none" />성별무관</span>
 										<span><input id="sex" type="radio" name="sex" value="man" />남자</span>
 										<span><input id="sex" type="radio" name="sex" value="woman" />여자</span>
 									</td>
-								</tr>
+								</tr> -->
 								<tr>
 									<th>고용형태</th>
-									<td id="jobFormTr"></td>
+									<td id="jobFormTr">
+										<c:forEach var="result" items="${jobTypeList}" varStatus="status">
+											<span><input id="jobFrom" type="checkbox" name="jobFrom" value="${result.code}"/><label for="reg02_desc07">${result.name}</label></span>
+										</c:forEach>
+									</td>
 								</tr>
 								<tr class="final_education">
 									<th>최종학력</th>
@@ -93,15 +103,15 @@
 										<span>
 											<select id="bizCareerSel1" name="bizCareerSel1" title="경력연차">
 												<option value="">선택</option>
-												<c:forEach var="result" items="${careerRange}" varStatus="status">
-													<option value="${result}">${result}</option>
+												<c:forEach var="i" begin="1" end="30">
+													<option value="${i}">${i}</option>
 												</c:forEach>
 											</select>
 											~
 											<select id="bizCareerSel2" name="bizCareerSel2" title="경력연차">
 												<option value="">선택</option>
-												<c:forEach var="result" items="${careerRange}" varStatus="status">
-													<option value="${result}">${result}</option>
+												<c:forEach var="i" begin="1" end="30">
+													<option value="${i}">${i}</option>
 												</c:forEach>
 											</select>
 										</span>
@@ -111,9 +121,13 @@
 								<tr>
 									<th>급여정도</th>
 									<td>
-										<select id="jobPay1" name="jobPay1" title="연봉/시급선택" onchange="javascript:getNetfuCateListForSelect('inid_pay', this, '', 'jobPay2', true, false);">
+										<select id="payType" name="payType" title="연봉/시급선택" onchange="javascript:getNetfuCateListForSelect('inid_pay', this, '급여 선택', 'jobPay', true, true);">
+											<option value="">급여 종류</option>
+											<c:forEach var="result" items="${inidPayList}" varStatus="status">
+												<option value="${result.code}">${result.name}</option>
+											</c:forEach>
 										</select>
-										<select id="jobPay2" name="jobPay2" title="연봉선택">
+										<select id="jobPay" name="jobPay" title="연봉선택">
 											<option value="">선택</option>
 										</select>
 									</td>
@@ -121,6 +135,8 @@
 							</tbody>
 						</table>
 					</fieldset>
+					<input type="hidden" name="processFlag" id="processFlag" value="insert" />
+					<input type="hidden" name="no" id="no" value="${msMap.no }" />
 				</form>
 			</div>
 			<ul>
@@ -136,61 +152,51 @@
 	
 	$(document).ready(function(){
 		
-		// 산업 정보 select
-		getNetfuCateListForSelect("job", "", "1차직무선택", "job11", true, true);
-		
-		// 지역 정보 select
-		getNetfuCateListForSelect("area", "", "시도 선택", "area11", true, true);
-		
-		// 고용형태 select
-		getNetfuCateListForCheckbox("job_type", "jobFormTr", "jobForm", true);
-		
-		// 학력 정보 select
-		//getNetfuCateListForSelect("job_school", "", "학력 선택", "jobSchool", true, true);
-		
-		// 급여 종류 정보 select
-		getNetfuCateListForSelect("job_pay", "", "급여 종류 선택", "jobPay1", true, true);
-		
-		// 직무 정보 추가 Button
-		$("#appendJob").on("click", function(e){
-			appendItem("job");
+		// 추가 Button
+		$("input[name=appendItem]").each(function(index){
+			$(this).on("click", function(e){
+				appendItem($(this).attr("kind"));
+			});	
 		});
 		
-		// 직무 정보 추가 Button
-		$("#deleteJob").on("click", function(e){
-			deleteItem("job");
-		});
-		
-		// 지역 정보 추가 Button
-		$("#appendArea").on("click", function(e){
-			appendItem("area");
-		});
-		
-		// 지역 정보 추가 Button
-		$("#deleteArea").on("click", function(e){
-			deleteItem("area");
-		});
-		
-		// 지역 정보 select
-		$("#job1").on("change", function(e){
-			getNetfuCateList("job", $("#job1 option:selected").val(), "2차직무선택", "job2", true);
+		// 삭제 Button
+		$("input[name=deleteItem]").each(function(index){
+			$(this).on("click", function(e){
+				deleteItem($(this).attr("kind"));
+			});	
 		});
 		
 		// -- 맞춤 서비스 정보가 있는 경우 component value setting
 		<c:if test="${!msMap.isEmpty()}">
+		
+			alert("${msMap.pay}");
 			
-			$("#job1").val("${msMap.job1}");console.log("jon1 : "+"${msMap.job1}");
+			$("#processFlag").val("update");
+			
+			if(!checkNull("${msMap.job1}")){
+				$("#job1").val("${msMap.job1}");
+				getNetfuCateListForSelect('job', $("#job1"), '2차직무선택', 'job2', false, true);
+			}
 			
 			if(!checkNull("${msMap.job2}")){
-				getNetfuCateListForSelect('inid_pay', $("#job1"), '', 'job2', true, false);
-				$("#job2").val("${msMap.job2}");console.log("jon1 : "+"${msMap.job2}");
+				$("#job2").val("${msMap.job2}");
+				getNetfuCateListForSelect('job', $("#job2"), '3차직무선택', 'job3', false, true);
 			}
 			
 			if(!checkNull("${msMap.job3}")){
-				getNetfuCateListForSelect('inid_pay', $("#job2"), '', 'job3', true, false);
-				$("#job3").val("${msMap.job3}");console.log("jon1 : "+"${msMap.job3}");
+				$("#job3").val("${msMap.job3}");
 			}
 			
+			if(!checkNull("${msMap.payType}")){
+				$("#payType").val("${msMap.payType}");
+				getNetfuCateListForSelect('inid_pay', $("#payType"), '급여 선택', 'jobPay', false, true);
+			} 
+			
+			if(!checkNull("${msMap.pay}")){
+				$("#jobPay").val("${msMap.pay}");
+			} 
+			
+			/* 
 			$("#area1").val("${msMap.area}");
 			
 			if(!checkNull("${msMap.area2}")){
@@ -207,7 +213,7 @@
 			if(!checkNull("${msMap.payType}")){
 				getNetfuCateListForSelect('inid_pay', $("#jobPay1"), '', 'jobPay2', true, false);
 				$("#jobPay2").val("${msMap.pay}");console.log("jon1 : "+"${msMap.pay}");
-			}
+			} */
 			
 		</c:if>
 		
@@ -229,13 +235,13 @@
 				trHtml += "<tr id='job'>";
 				trHtml += "<th></th>";
 				trHtml += "<td>";
-				trHtml += "<select id='job"+(appendNum+1)+"1' name='job"+(appendNum+1)+"1' title='1차직무선택' onchange=\"javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'job"+(appendNum+1)+"2', true, true);\">";
+				trHtml += "<select id='job"+((appendNum*3)+1)+"' name='job"+((appendNum*3)+1)+"' title='1차직무선택' onchange=\"javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'job"+((appendNum*3)+2)+"', true, true);\">";
 				trHtml += "		<option value=''>1차직무선택</option>";
 				trHtml += "</select>\n";
-				trHtml += "<select id='job"+(appendNum+1)+"2' name='job"+(appendNum+1)+"2' title='2차직무선택' onchange=\"javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'job"+(appendNum+1)+"3', true, true);\">";
+				trHtml += "<select id='job"+((appendNum*3)+2)+"' name='job"+((appendNum*3)+2)+"' title='2차직무선택' onchange=\"javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'job"+((appendNum*3)+3)+"', true, true);\">";
 				trHtml += "		<option value=''>2차직무선택</option>";
 				trHtml += "</select>\n";
-				trHtml += "<select id='job"+(appendNum+1)+"3' name='job"+(appendNum+1)+"3' title='3차직무선택'>";
+				trHtml += "<select id='job"+((appendNum*3)+3)+"' name='job"+((appendNum*3)+3)+"' title='3차직무선택'>";
 				trHtml += "		<option value=''>3차직무선택</option>";
 				trHtml += "</select>";
 				trHtml += "</td>";
@@ -243,7 +249,7 @@
 				
 				$("#job").find("tr").eq(appendNum-1).after(trHtml);	
 				
-				getNetfuCateListForSelect("job", "", "1차직무선택", "job"+(appendNum+1)+"1", true, true);
+				getNetfuCateListForSelect("job", "", "1차직무선택", "job"+((appendNum*3)+1), true, true);
 			}
 			
 		}else if(itemKind == "area"){
@@ -254,10 +260,10 @@
 				trHtml += "<tr>";
 				trHtml += "	<th></th>";
 				trHtml += "	<td>";
-				trHtml += "		<select id='area"+(appendNum+1)+"1' name='area"+(appendNum+1)+"1' title='시도선택' onchange=\"javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'area"+(appendNum+1)+"2', true, true);\">";
+				trHtml += "		<select id='area"+((appendNum*3)+1)+"' name='area"+((appendNum*3)+1)+"' title='시도선택' onchange=\"javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'area"+((appendNum*3)+2)+"', true, true);\">";
 				trHtml += "			<option value=''>시도선택</option>";
 				trHtml += "		</select>";
-				trHtml += "		<select id='area"+(appendNum+1)+"2' name='area"+(appendNum+1)+"2' title='시구군선택'>";
+				trHtml += "		<select id='area"+((appendNum*3)+2)+"' name='area"+((appendNum*3)+2)+"' title='시구군선택'>";
 				trHtml += "			<option value=''>시구군선택</option>";
 				trHtml += "		</select>";
 				trHtml += "	</td>";
@@ -265,7 +271,7 @@
 				
 				$("#area").find("tr").eq(appendNum-1).after(trHtml);	
 				
-				getNetfuCateListForSelect("area", "", "시도 선택", "area"+(appendNum+1)+"1", true, true);
+				getNetfuCateListForSelect("area", "", "시도 선택", "area"+((appendNum*3)+1), true, true);
 			}
 			
 		}
@@ -291,9 +297,9 @@
 		
 		loadingOn();
 		
-		// 성별 Radio
+		/* // 성별 Radio
 		var sex = $("input[name=sex]:checked").val();
-		sex = (isEmpty(sex) ? "" : sex);
+		sex = (isEmpty(sex) ? "" : sex); */
 		
 		// 고용형태 Checkbox
 		var form = "";
@@ -331,6 +337,11 @@
 		var payType = $("#jobPay1 option:selected").val();
 		var pay = $("#jobPay2 option:selected").val();
 		
+		var processUrl = "/registMyService.ajax";
+		if("update" == $("#processFlag").val()){
+			processUrl = "/updateMyService.ajax";
+		}
+		
 		var callback = function(data){
 			alert("저장 되었습니다.");
 			loadingOff();
@@ -338,30 +349,31 @@
 		
 		var param = {
 					uid : "${SE_LOGIN_ID}"
-					, job1 : (isEmpty($("#job11 option:selected").val()) ? "" : $("#job11 option:selected").val())
-					, job2 : (isEmpty($("#job12 option:selected").val()) ? "" : $("#job12 option:selected").val())
-					, job3 : (isEmpty($("#job13 option:selected").val()) ? "" : $("#job13 option:selected").val())
-					, job4 : (isEmpty($("#job21 option:selected").val()) ? "" : $("#job21 option:selected").val())
-					, job5 : (isEmpty($("#job22 option:selected").val()) ? "" : $("#job22 option:selected").val())
-					, job6 : (isEmpty($("#job23 option:selected").val()) ? "" : $("#job23 option:selected").val())
-					, job7 : (isEmpty($("#job31 option:selected").val()) ? "" : $("#job31 option:selected").val())
-					, job8 : (isEmpty($("#job32 option:selected").val()) ? "" : $("#job32 option:selected").val())
-					, job9 : (isEmpty($("#job33 option:selected").val()) ? "" : $("#job33 option:selected").val())
-					, area : (isEmpty($("#area11 option:selected").val()) ? "" : $("#area11 option:selected").val())
-					, area2 : (isEmpty($("#area12 option:selected").val()) ? "" : $("#area12 option:selected").val())
-					, area3 : (isEmpty($("#area21 option:selected").val()) ? "" : $("#area21 option:selected").val())
-					, area4 : (isEmpty($("#area22 option:selected").val()) ? "" : $("#area22 option:selected").val())
-					, area5 : (isEmpty($("#area31 option:selected").val()) ? "" : $("#area31 option:selected").val())
-					, area6 : (isEmpty($("#area32 option:selected").val()) ? "" : $("#area32 option:selected").val())
-					, sex : sex
+					, job1 : (isEmpty($("#job1 option:selected").val()) ? "" : $("#job1 option:selected").val())
+					, job2 : (isEmpty($("#job2 option:selected").val()) ? "" : $("#job2 option:selected").val())
+					, job3 : (isEmpty($("#job3 option:selected").val()) ? "" : $("#job3 option:selected").val())
+					, job4 : (isEmpty($("#job4 option:selected").val()) ? "" : $("#job4 option:selected").val())
+					, job5 : (isEmpty($("#job5 option:selected").val()) ? "" : $("#job5 option:selected").val())
+					, job6 : (isEmpty($("#job6 option:selected").val()) ? "" : $("#job6 option:selected").val())
+					, job7 : (isEmpty($("#job7 option:selected").val()) ? "" : $("#job7 option:selected").val())
+					, job8 : (isEmpty($("#job8 option:selected").val()) ? "" : $("#job8 option:selected").val())
+					, job9 : (isEmpty($("#job9 option:selected").val()) ? "" : $("#job9 option:selected").val())
+					, area : (isEmpty($("#area1 option:selected").val()) ? "" : $("#area1 option:selected").val())
+					, area2 : (isEmpty($("#area2 option:selected").val()) ? "" : $("#area2 option:selected").val())
+					, area3 : (isEmpty($("#area3 option:selected").val()) ? "" : $("#area3 option:selected").val())
+					, area4 : (isEmpty($("#area4 option:selected").val()) ? "" : $("#area4 option:selected").val())
+					, area5 : (isEmpty($("#area5 option:selected").val()) ? "" : $("#area5 option:selected").val())
+					, area6 : (isEmpty($("#area6 option:selected").val()) ? "" : $("#area6 option:selected").val())
+					, sex : ""
 					, age : ""
 					, form : form
 					, school : $("#jobSchool option:selected").val()
 					, career : career
-					, payType : $("#jobPay1 option:selected").val()
-					, pay : $("#jobPay1 option:selected").val()
+					, payType : $("#payType option:selected").val()
+					, pay : $("#jobPay option:selected").val()
+					, no : $("#no").val()
 				};
-		ajax('post', '/registMyService.ajax', param, callback);
+		ajax('post', processUrl, param, callback);
 	}
 	
 </script>
