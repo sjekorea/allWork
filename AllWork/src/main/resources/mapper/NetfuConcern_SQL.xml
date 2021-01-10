@@ -88,6 +88,9 @@
 			</if>
 			and ((nic.biz_end_type ='input' and nic.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
 			and nc.r_uid = nic.uid
+		<if test="orderRule != null and orderRule != ''">
+			order by ${orderRule}	
+		</if>
 	</select>
 	
 	

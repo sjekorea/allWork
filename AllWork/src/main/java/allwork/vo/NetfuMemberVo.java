@@ -48,6 +48,8 @@ public class NetfuMemberVo {
 	private String tosa180422Date;
 	//(begin) 2021.01.04 by s.yoo
 	private String usePush;
+	
+	private int showAll;					// 1 = 탈퇴한 사용자 계정 포함(showAll), 0 = 탈퇴한 사용자 계정 제외(not showAll)
 	//(end) 2021.01.04 by s.yoo
 
 	
@@ -317,4 +319,28 @@ public class NetfuMemberVo {
 		this.tosa180422Date = tosa180422Date;
 	}
 
+	/**
+	 * @return the usePush
+	 */
+	public String getUsePush() {
+		return usePush;
+	}
+	/**
+	 * @param usePush the usePush to set
+	 */
+	public void setUsePush(String usePush) {
+		this.usePush = usePush;
+	}
+	/**
+	 * @return the showAll
+	 */
+	public int getShowAll() {
+		return showAll;
+	}
+	/**
+	 * @param showAll the showAll to set
+	 */
+	public void setShowAll(int showAll) {
+		this.showAll = showAll;
+	}
 }

@@ -10,6 +10,9 @@
 <jsp:include page="/personHeader.do" />
 
 <link rel="stylesheet" type="text/css" href="/css/personal_scrap.css"/>
+<style type="text/css">
+	#menuTree ul .subMenu03_01{text-decoration: underline;}
+</style>
 
 <div id="containerWrap">
 	<div id="container">

@@ -146,12 +146,22 @@ public class PersonController {
 			
 			// 맞춤 채용 정보
 			Map<String, Object> myServiceMap = netfuMyServiceService.selectNetfuMyServiceMap(commandMap.getMap());
-			commandMap = MakeQueryUtil.makeMyRecruitQuery(commandMap, myServiceMap);
-			List<Map<String, Object>> myServiceRecruitList = netfuMyServiceService.selectMyServiceRecruitList(commandMap.getMap());
+			List<Map<String, Object>> myServiceRecruitList = new ArrayList<Map<String, Object>>();
+			if (myServiceMap != null && !myServiceMap.isEmpty()) {
+				//맞춤서비스가 설정된 경우.
+				commandMap = MakeQueryUtil.makeMyRecruitQuery(commandMap, myServiceMap);
+				myServiceRecruitList = netfuMyServiceService.selectMyServiceRecruitList(commandMap.getMap());
+			}
 			
 			// 스크랩 공고
 			List<Map<String, Object>> recruitScrapList = netfuScrapService.selectRecruitScrapList(commandMap.getMap());
 			
+			// 열람정보  검색 리스트
+			//commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
+			//commandMap.put("pageSize", pageSize);
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());			
+			List<Map<String, Object>> recruitViewList = recruitViewService.selectRecruitViewList(commandMap.getMap());
+
 			mv.addObject("memberMap", memberMap);
 			mv.addObject("onlineRecruitCnt", onlineRecruitCnt);
 			mv.addObject("netfuOpenResumeCnt", netfuOpenResumeCnt);
@@ -160,6 +170,7 @@ public class PersonController {
 			mv.addObject("recommandRecruitList", recommandRecruitList);
 			mv.addObject("myServiceRecruitList", myServiceRecruitList);
 			mv.addObject("recruitScrapList", recruitScrapList);
+			mv.addObject("recruitViewList", recruitViewList);
 			
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".personHome Exception !!!!! \n"+e.toString());

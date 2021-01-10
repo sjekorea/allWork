@@ -11,7 +11,6 @@
 
 <link rel="stylesheet" type="text/css" href="/css/personal_scrap.css"/>
 <style type="text/css">
-	#menuTree ul .subMenu03_01{text-decoration: none;}
 	#menuTree ul .menu04{text-decoration: underline;}
 </style>
 <div id="containerWrap">
@@ -43,7 +42,7 @@
 												${convert:compByte(result.bizTitle, 100, "...")}
 											</a>
 										</td>
-										<td class="desc03">${result.bizEndDay }</td>
+										<td class="desc03">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
 										<td class="desc04">${result.viewDate }</td>
 									</tr>
 								</c:forEach>

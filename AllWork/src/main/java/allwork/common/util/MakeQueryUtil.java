@@ -108,51 +108,59 @@ public class MakeQueryUtil {
 			
 			commandMap.put("areaCondition", areaCondition);
 			
-			
-			String tmpCareer[] = ((String)msMap.get("career")).split(",");
-			String careerCondition = "";
-			if(tmpCareer != null && tmpCareer.length > 0){
-				if (tmpCareer[0] == "102") { // 신입
-					if (tmpCareer[1] != "100") {
-						careerCondition += " and left(nir.inid_career,3) = '"+tmpCareer[0]+"'";
-					} else { // 무관포함
-						careerCondition += "";
-					}
-				} else if (tmpCareer[0] == "101") { // 경력
-					if (tmpCareer[3] != "100") {
-						careerCondition += " and ( left(nir.inid_career, 2) >= '"+tmpCareer[1]+"' and left(nir.inid_career, 2) <= '"+tmpCareer[2]+"')";
-					} else { // 무관포함
-						careerCondition += "";
-					}
-				}
-			}
-			commandMap.put("careerCondition", careerCondition);
-			
-			
-			String tmpFormArr[] = ((String)msMap.get("form")).split(",");
-			String formCondition = "";
-			if(tmpFormArr != null && tmpFormArr.length > 0){
-				formCondition += "and (";
-				for(int i = 0 ; i < tmpFormArr.length ; i++){
-					formCondition += " inid_jobform like '%"+tmpFormArr[i]+"%'";
-					if(i < (tmpFormArr.length-1)){
-						formCondition += " or ";
+			String mapCareer = (String)msMap.get("career");
+			if (mapCareer != null && mapCareer.length() > 0) {
+				String tmpCareer[] = ((String)msMap.get("career")).split(",");
+				String careerCondition = "";
+				if(tmpCareer != null && tmpCareer.length > 0){
+					if (tmpCareer[0] == "102") { // 신입
+						if (tmpCareer[1] != "100") {
+							careerCondition += " and left(nir.inid_career,3) = '"+tmpCareer[0]+"'";
+						} else { // 무관포함
+							careerCondition += "";
+						}
+					} else if (tmpCareer[0] == "101") { // 경력
+						if (tmpCareer[3] != "100") {
+							careerCondition += " and ( left(nir.inid_career, 2) >= '"+tmpCareer[1]+"' and left(nir.inid_career, 2) <= '"+tmpCareer[2]+"')";
+						} else { // 무관포함
+							careerCondition += "";
+						}
 					}
 				}
-				formCondition += " )";
+				commandMap.put("careerCondition", careerCondition);
 			}
-			commandMap.put("formCondition", formCondition);
+			
+			String mapForm = (String)msMap.get("form");
+			if (mapForm != null && mapForm.length() > 0) {
+				String tmpFormArr[] = ((String)msMap.get("form")).split(",");
+				String formCondition = "";
+				if(tmpFormArr != null && tmpFormArr.length > 0){
+					formCondition += "and (";
+					for(int i = 0 ; i < tmpFormArr.length ; i++){
+						formCondition += " inid_jobform like '%"+tmpFormArr[i]+"%'";
+						if(i < (tmpFormArr.length-1)){
+							formCondition += " or ";
+						}
+					}
+					formCondition += " )";
+				}
+				commandMap.put("formCondition", formCondition);	
+			}
+
 			
 			
-			String tmpSchoolArr[] = ((String)msMap.get("school")).split(",");
-			String tmpSchool = (String)msMap.get("school");
-			String schoolCondition = "";
-			if(tmpSchoolArr != null && tmpSchoolArr.length > 0){
-				if (tmpSchool.indexOf("100") > -1){
-					schoolCondition = " and left(nir.inid_last_school, 1) >= "+tmpSchoolArr[0];
-				} 
+			String mapSchool = (String)msMap.get("school");
+			if (mapSchool != null && mapSchool.length() > 0) {
+				String tmpSchoolArr[] = ((String)msMap.get("school")).split(",");
+				String tmpSchool = (String)msMap.get("school");
+				String schoolCondition = "";
+				if(tmpSchoolArr != null && tmpSchoolArr.length > 0){
+					if (tmpSchool.indexOf("100") > -1){
+						schoolCondition = " and left(nir.inid_last_school, 1) >= "+tmpSchoolArr[0];
+					} 
+				}
+				commandMap.put("schoolCondition", schoolCondition);				
 			}
-			commandMap.put("schoolCondition", schoolCondition);
 			commandMap.put("payType", (String)msMap.get("payType"));
 			commandMap.put("pay", (String)msMap.get("pay"));
 			
@@ -267,50 +275,59 @@ public class MakeQueryUtil {
 			commandMap.put("areaCondition", areaCondition);
 			
 			
-			String tmpCareer[] = ((String)msMap.get("career")).split(",");
-			String careerCondition = "";
-			if(tmpCareer != null && tmpCareer.length > 0){
-				if (tmpCareer[0] == "102") { // 신입
-					if (tmpCareer[1] != "100") {
-						careerCondition += " and nic.biz_career >= '"+tmpCareer[0]+"'";
-					} else { // 무관포함
-						careerCondition += "";
-					}
-				} else if (tmpCareer[0] == "101") { // 경력
-					if (tmpCareer[3] != "100") {
-						careerCondition += " and nic.biz_career >= '"+tmpCareer[1]+"')";
-					} else { // 무관포함
-						careerCondition += "";
-					}
-				}
-			}
-			commandMap.put("careerCondition", careerCondition);
-			
-			
-			String tmpFormArr[] = ((String)msMap.get("form")).split(",");
-			String formCondition = "";
-			if(tmpFormArr != null && tmpFormArr.length > 0){
-				formCondition += "and (";
-				for(int i = 0 ; i < tmpFormArr.length ; i++){
-					formCondition += " nic.biz_jobfrom like '%"+tmpFormArr[i]+"%'";
-					if(i < (tmpFormArr.length-1)){
-						formCondition += " or ";
+			String mapCareer = (String)msMap.get("career");
+			if (mapCareer != null && mapCareer.length() > 0) {
+				String tmpCareer[] = ((String)msMap.get("career")).split(",");
+				String careerCondition = "";
+				if(tmpCareer != null && tmpCareer.length > 0){
+					if (tmpCareer[0] == "102") { // 신입
+						if (tmpCareer[1] != "100") {
+							careerCondition += " and nic.biz_career >= '"+tmpCareer[0]+"'";
+						} else { // 무관포함
+							careerCondition += "";
+						}
+					} else if (tmpCareer[0] == "101") { // 경력
+						if (tmpCareer[3] != "100") {
+							careerCondition += " and nic.biz_career >= '"+tmpCareer[1]+"')";
+						} else { // 무관포함
+							careerCondition += "";
+						}
 					}
 				}
-				formCondition += " )";
+				commandMap.put("careerCondition", careerCondition);
 			}
-			commandMap.put("formCondition", formCondition);
 			
 			
-			String tmpSchoolArr[] = ((String)msMap.get("school")).split(",");
-			String tmpSchool = (String)msMap.get("school");
-			String schoolCondition = "";
-			if(tmpSchoolArr != null && tmpSchoolArr.length > 0){
-				if (tmpSchool.indexOf("100") > -1){
-					schoolCondition = " and nic.biz_ability >= "+tmpSchoolArr[0];
-				} 
+			String mapForm = (String)msMap.get("form");
+			if (mapForm != null && mapForm.length() > 0) {
+				String tmpFormArr[] = ((String)msMap.get("form")).split(",");
+				String formCondition = "";
+				if(tmpFormArr != null && tmpFormArr.length > 0){
+					formCondition += "and (";
+					for(int i = 0 ; i < tmpFormArr.length ; i++){
+						formCondition += " nic.biz_jobfrom like '%"+tmpFormArr[i]+"%'";
+						if(i < (tmpFormArr.length-1)){
+							formCondition += " or ";
+						}
+					}
+					formCondition += " )";
+				}
+				commandMap.put("formCondition", formCondition);
 			}
-			commandMap.put("schoolCondition", schoolCondition);
+			
+			
+			String mapSchool = (String)msMap.get("school");
+			if (mapSchool != null && mapSchool.length() > 0) {
+				String tmpSchoolArr[] = ((String)msMap.get("school")).split(",");
+				String tmpSchool = (String)msMap.get("school");
+				String schoolCondition = "";
+				if(tmpSchoolArr != null && tmpSchoolArr.length > 0){
+					if (tmpSchool.indexOf("100") > -1){
+						schoolCondition = " and nic.biz_ability >= "+tmpSchoolArr[0];
+					} 
+				}
+				commandMap.put("schoolCondition", schoolCondition);
+			}
 			commandMap.put("payType", (String)msMap.get("payType"));
 			commandMap.put("pay", (String)msMap.get("pay"));
 			

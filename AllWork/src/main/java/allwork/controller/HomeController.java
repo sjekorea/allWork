@@ -142,32 +142,9 @@ public class HomeController {
 		
 		ModelAndView mv = new ModelAndView("/person/indexRecruitSearchList");
 		
-	   	//(begin) 2020.12.30 by s.yoo
-		/*
-		int pageSize = 10;
-		int totalSize = 0;
-		*/
-		//(end) 2020.12.30 by s.yoo
-
 		try{
 			
 		   	//(begin) 2020.12.30 by s.yoo
-			/*
-			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
-				commandMap.put("pageNo", "1");
-			}
-			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
-			commandMap.put("pageSize", pageSize);
-			
-			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
-			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
-			
-			// 맞춤 채용 정보
-			List<Map<String, Object>> myServiceRecruitList = netfuMyServiceService.selectMyServiceRecruitList(commandMap.getMap());
-			
-			mv.addObject("myServiceRecruitList", myServiceRecruitList);
-			*/
-
 			//시멘틱 검색작업 수행.
 			AiSearchModel modelSearch = new AiSearchModel();
 			modelSearch.setKeyword((String) commandMap.get("q"));

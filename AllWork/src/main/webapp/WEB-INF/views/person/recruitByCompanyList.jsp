@@ -88,7 +88,8 @@
 <form id="searchForm" method="post" action="/recruitByCompanyList.do">
 	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
 	<input type="hidden" name="personUid" id="personUid" value="" />
-	<input type="hidden" name="companyUid" id="companyUid" value="" />
+	<input type="hidden" name="companyUid" id="companyUid" value="${map.companyUid}" />
+	<input type="hidden" name="bizIng" id="bizIng" value="yes" />
 	<input type="hidden" name="no" id="no" value="" />
 	<input type="hidden" name="recruitNo" id="recruitNo" value="" />
 	<input type="hidden" name="resumeNo" id="resumeNo" value="" />

@@ -132,7 +132,7 @@
 										<span class="age">**</span>
 									</p>
 									<p class="desc01">
-										<a href=""><span class="detail">추천 이력서</span></a>
+										<span class="detail">추천 이력서</span>
 										<span class="title01">내용이 충실한 채용공고를 등록하면, AI가 맞춤형 인재를 추천해 드립니다.</span>
 									</p>
 									<p class="date">OOOO-OO-OO</p>
@@ -177,7 +177,7 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<tr><td class="desc00" colspan="6">내역이 없습니다.</td></tr>
+							<tr><th></th><td class="desc00" colspan="5">내역이 없습니다.</td></tr>
 						</c:otherwise>
 					</c:choose>
 				</tbody>
@@ -197,6 +197,7 @@
 									</td>
 									<td class="desc01">
 										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');" title="AI 맞춤인재정보">
+											<span class="desc01_01">${result.inidTitle }</span><br />
 											<span class="desc01_01">
 												${result.inidType1Name }
 												${convert:checkNull(result.inidType2Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType2Name) }
@@ -222,7 +223,7 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<tr><td class="desc00" colspan="6" style="text-align:center;height:50px;">내역이 없습니다.</td></tr>
+							<tr><th></th><td class="desc00" colspan="5">내역이 없습니다.</td></tr>
 						</c:otherwise>
 					</c:choose>
 				</tbody>
@@ -241,6 +242,7 @@
 									</td>
 									<td class="desc01">
 										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');" title="스크랩인재정보">
+											<span class="desc01_01">${result.inidTitle }</span><br />
 											<span class="desc01_01">
 												${result.inidType1Name }
 												${convert:checkNull(result.inidType2Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType2Name) }
@@ -266,7 +268,7 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<tr><td class="desc00" colspan="6">내역이 없습니다.</td></tr>
+							<tr><th></th><td class="desc00" colspan="5">내역이 없습니다.</td></tr>
 						</c:otherwise>
 					</c:choose>
 				</tbody>
@@ -274,8 +276,8 @@
 			<table class="list"  id="list03" style="display:none;">
 				<tbody class="tabelArea">
 					<c:choose>
-						<c:when test="${resumeScrapList.size() > 0 }">
-							<c:forEach var="result" items="${resumeScrapList}" varStatus="status">
+						<c:when test="${resumeViewList.size() > 0 }">
+							<c:forEach var="result" items="${resumeViewList}" varStatus="status">
 								<tr>
 									<th></th>
 									<td class="desc00">
@@ -285,6 +287,7 @@
 									</td>
 									<td class="desc01">
 										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');" title="최근본인재정보">
+											<span class="desc01_01">${result.inidTitle }</span><br />
 											<span class="desc01_01">
 												${result.inidType1Name }
 												${convert:checkNull(result.inidType2Name) eq '' ? '' : '&nbsp;>&nbsp;'.concat(result.inidType2Name) }
@@ -310,7 +313,7 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<tr><td class="desc00" colspan="6">내역이 없습니다.</td></tr>
+							<tr><th></th><td class="desc00" colspan="5">내역이 없습니다.</td></tr>
 						</c:otherwise>
 					</c:choose>
 				</tbody>

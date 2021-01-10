@@ -1,0 +1,62 @@
+/*###################################   containerWrap ###################################*/
+/*###################################   visual ###################################*/
+body{font-family:"NotoSansKR-Regular";}
+#containerWrap{width:100%;margin-top:100px;position:relative;}
+#visualWrap{width:100%;height:300px;overflow:hidden;position:absolute;top:0;left:0;z-index:15;}
+#visual{width:1000px;height:300px;margin:0 auto;}
+
+/*
+#visual .descBox{width:500px;height:100%;margin:100px auto 0;}
+#visual .descBox p{width:100%;font-size:28px;font-family:"NanumBarunGothicUltralight";color:#fff;text-align: center;}
+#visual .descBox .desc0{height:50px;font-size:20px;font-family:"NotoSansKR-Bold";}
+#visual .descBox .desc1{height:60px;font-size:36px;}
+*/
+
+#visual .descBox{width:500px;height:100%;/*background-color:rgba(0,0,0,1);*/}
+#visual .descBox p{width:100%;font-size:28px;font-family:"NanumBarunGothicUltralight";color:#fff;}
+#visual .descBox .desc1{padding-top:100px;height:155px;font-size:30px;font-family:"NotoSansKR-Regular";letter-spacing:-0.8px;}
+
+#visual .descBox #searchArea{width:500px;height:90px;background-color:rgba(255,255,255,0.6);}
+#visual .descBox #searchArea form{width:460px;height:46px;margin:0px auto;}
+#visual .descBox #searchArea fieldset{border:none;}
+#visual .descBox #searchArea legend{display:none;}
+#visual .descBox #searchArea .textBox{width:370px;height:44px;border:1px solid #43425D;margin-top:22px;float:left;}
+#visual .descBox #searchArea .textBox input{width:100%;height:100%;border:none;font-size:14px;text-indent:10px;}
+#visual .descBox #searchArea .textBox input::placeholder{color:#ccc;}
+#visual .descBox #searchArea .btnBox00{width:80px;height:44px;text-align: center;margin-top:22px;float:left;}
+#visual .descBox #searchArea .btnBox00 input{width:100%;height:100%;vertical-align: middle;border:none;background-color:#43425D;color:#fff;font-size:16px; }
+
+#visual .descBox #searchArea:hover .textBox{border:1px solid #ccc;}
+
+#screen{width:1920px;height:300px;margin: 0 auto;position:relative;overflow: hidden;}
+#film{width:100%;}
+#film .scene img{width:100%;}
+
+
+
+/*###################################   content01_offer 유료공고 모음 ###################################*/
+#content01Wrap{width:100%;overflow: hidden;margin-bottom:50px;}
+/*###################################   listpart   ###################################*/
+
+.list{width:1000px;margin:0 auto;overflow: hidden;border-collapse: collapse;word-wrap: break-word;}
+.list caption{width:100%;height:80px;line-height: 120px;text-align: left;font-size:18px;}
+.list thead{width:1000px;background-color:#EDF0F5;border-top:1px solid #000;border-bottom:1px solid #ccc;}
+.list thead tr{height:50px;}
+.list thead tr .t_desc01{width:170px;}
+.list thead tr .t_desc02{width:420px;}
+.list thead tr .t_desc03{width:120px;}
+
+.list tbody{width:100%;overflow:hidden;border-bottom:1px solid #ccc;}
+.list tbody tr{width:100%;font-size:14px;background-color:#fff;overflow:hidden;}
+.list tbody .margin{width:100%;height:20px;}
+
+.list tbody .desc01{text-align: center;width:170px;}
+.list tbody .desc02{width:420px;padding:7px 0;text-align:left;line-height:22px;}
+.list tbody .desc03{color:#4F60E3;text-align: center;width:120px;}
+.list tbody td span{font-size:12px;}
+.list tbody .desc_title{padding-right:5px;}
+.list tbody .desc_desc00{color:#666;}
+
+.list td a:hover{text-decoration: underline;}
+
+.numareaWrap{padding-bottom: 30px;}

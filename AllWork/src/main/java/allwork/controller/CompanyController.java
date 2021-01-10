@@ -130,8 +130,12 @@ public class CompanyController {
 
 			// 맞춤 인재 정보 목록
 			Map<String, Object> myServiceMap = netfuMyServiceService.selectNetfuMyServiceMap(commandMap.getMap());
-			commandMap = MakeQueryUtil.makeMyResumeQuery(commandMap, myServiceMap);
-			List<Map<String, Object>> myServiceResumeList = netfuMyServiceService.selectMyServiceResumeList(commandMap.getMap());
+			List<Map<String, Object>> myServiceResumeList = new ArrayList<Map<String, Object>>();
+			if (myServiceMap != null && !myServiceMap.isEmpty()) {
+				//맞춤서비스가 설정된 경우.
+				commandMap = MakeQueryUtil.makeMyResumeQuery(commandMap, myServiceMap);
+				myServiceResumeList = netfuMyServiceService.selectMyServiceResumeList(commandMap.getMap());
+			}
 			
 			// 스크랩 이력서 정보
 			List<Map<String, Object>> resumeScrapList = netfuScrapService.selectResumeScrapList(commandMap.getMap());

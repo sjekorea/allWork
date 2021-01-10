@@ -77,10 +77,10 @@
 	<div id="rightPart">
 		<div id="reviewPart">
 			<ul>
-				<li class="review00"><a href="#" title="지원완료"><strong>${onlineRecruitCnt }</strong><span>지원완료</span></a></li>
+				<li class="review00"><a href="/personApplyList.do" title="지원완료"><strong>${onlineRecruitCnt }</strong><span>지원완료</span></a></li>
 				<li class="review01"><a href="#" title="이력서열람"><strong>${netfuOpenResumeCnt }</strong><span>이력서열람</span></a></li>
-				<li class="review02"><a href="#" title="스크랩공고"><strong>${netfuScrapCnt }</strong><span>스크랩공고</span></a></li>
-				<li class="review03"><a href="#" title="관심기업공고"><strong>${netfuConcernCnt }</strong><span>관심기업공고</span></a></li>
+				<li class="review02"><a href="/recruitScrapList.do" title="스크랩공고"><strong>${netfuScrapCnt }</strong><span>스크랩공고</span></a></li>
+				<li class="review03"><a href="/interestCompanyList.do" title="관심기업공고"><strong>${netfuConcernCnt }</strong><span>관심기업공고</span></a></li>
 			</ul>
 		</div>
 		<!-- (begin) 2020.12.30 by s.yoo -->
@@ -116,14 +116,12 @@
 					</c:when>
 					<c:otherwise>
 								<li style="width:100%; padding:10px">
-				                	<a href="#" title="추천채용정보">
-				                    	<div>
-				                      		<p class="desc01">추천 업체명</p>
-				                      		<p class="desc02">추천 채용공고</p>
-				                     		<span class="desc03">근무지</span>
-				                     		<span class="desc03">내용이 충실한 이력서를 등록하면, AI가 맞춤형 채용정보를 추천해 드립니다.</span>
-				                    	</div>
-				                  	</a>
+			                    	<div>
+			                      		<p class="desc01">추천 업체명</p>
+			                      		<p class="desc02">추천 채용공고</p>
+			                     		<span class="desc03">근무지</span>
+			                     		<span class="desc03">내용이 충실한 이력서를 등록하면, AI가 맞춤형 채용정보를 추천해 드립니다.</span>
+			                    	</div>
 				                </li>
 					</c:otherwise>
 				</c:choose>
@@ -171,6 +169,9 @@
 								</tr>
 							</c:forEach>
 						</c:when>
+						<c:otherwise>
+							<tr><td class="desc00" colspan="8">내역이 없습니다.</td></tr>
+						</c:otherwise>
 					</c:choose>
 				</tbody>
 			</table>
@@ -181,10 +182,10 @@
 						<c:when test="${myServiceRecruitList.size() > 0 }">
 							<c:forEach var="result" items="${myServiceRecruitList}" varStatus="status">
 								<tr class="desc desc0">
-									<td rowspan="3" class="desc01">(주)파인스태프</td>
+									<td rowspan="3" class="desc01">${result.bizName }</td>
 									<td colspan="6" class="desc02">
 										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
-											${result.bizName }
+											${result.bizTitle }
 										</a>
 									</td>
 									<td rowspan="3" class="desc05">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
@@ -207,6 +208,9 @@
 								</tr>
 							</c:forEach>
 						</c:when>
+						<c:otherwise>
+							<tr><td class="desc00" colspan="8">내역이 없습니다.</td></tr>
+						</c:otherwise>
 					</c:choose>
 				</tbody>
 			</table>
@@ -216,10 +220,10 @@
 						<c:when test="${recruitScrapList.size() > 0 }">
 							<c:forEach var="result" items="${recruitScrapList}" varStatus="status">
 								<tr class="desc desc0">
-									<td rowspan="3" class="desc01">(주)파인스태프</td>
+									<td rowspan="3" class="desc01">${result.bizName }</td>
 									<td colspan="6" class="desc02">
 										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
-											${result.bizName }
+											${result.bizTitle }
 										</a>
 									</td>
 									<td rowspan="3" class="desc05">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
@@ -242,34 +246,48 @@
 								</tr>
 							</c:forEach>
 						</c:when>
+						<c:otherwise>
+							<tr><td class="desc00" colspan="8">내역이 없습니다.</td></tr>
+						</c:otherwise>
 					</c:choose>
 				</tbody>
 			</table>
 			<table class="list" id="list03" style="display:none;">
 				<tbody>
-					<tr class="desc desc0">
-						<td rowspan="3" class="desc01">(주)최근 본 공고</td>
-						<td colspan="6" class="desc02">
-							[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진
-						</td>
-						<td rowspan="3" class="desc05">상시채용</td>
-					</tr>
-					<tr class="desc desc1">
-						<td class="desc03">급여</td>
-						<td class="desc04">3000-3500만원</td>
-						<td class="desc03">경력</td>
-						<td class="desc04">무관</td>
-						<td class="desc03">나이</td>
-						<td class="desc04">무관</td>
-					</tr>
-					<tr class="desc desc2">
-						<td class="desc03">지역</td>
-						<td class="desc04">경기 광주시</td>
-						<td class="desc03">학력</td>
-						<td class="desc04">무관</td>
-						<td class="desc03">성별</td>
-						<td class="desc04">무관</td>
-					</tr>
+					<c:choose>
+						<c:when test="${recruitViewList.size() > 0 }">
+							<c:forEach var="result" items="${recruitViewList}" varStatus="status">
+								<tr class="desc desc0">
+									<td rowspan="3" class="desc01">${result.bizName }</td>
+									<td colspan="6" class="desc02">
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
+											${result.bizTitle }
+										</a>
+									</td>
+									<td rowspan="3" class="desc05">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
+								</tr>
+								<tr class="desc desc1">
+									<td class="desc03">급여</td>
+									<td class="desc04">${result.bizPayName }</td>
+									<td class="desc03">경력</td>
+									<td class="desc04">${codeConvert:getBizCareer(result.bizCareer) }</td>
+									<td class="desc03">나이</td>
+									<td class="desc04">${result.bizAge }</td>
+								</tr>
+								<tr class="desc desc2">
+									<td class="desc03">지역</td>
+									<td class="desc04">${result.bizArea1Name }</td>
+									<td class="desc03">학력</td>
+									<td class="desc04">${codeConvert:getBizAbility(result.bizAbility) }</td>
+									<td class="desc03">성별</td>
+									<td class="desc04">${codeConvert:getBizSex(result.bizSex) }</td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr><td class="desc00" colspan="8">내역이 없습니다.</td></tr>
+						</c:otherwise>
+					</c:choose>
 				</tbody>
 			</table>
 		</div>

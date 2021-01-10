@@ -7,88 +7,393 @@
 <%@ taglib uri="/WEB-INF/tlds/convertUtil.tld" prefix="convert" %>
 <%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert" %>
 
-<!-- 
-<jsp:include page="/personHeader.do" />
- -->
+
 <jsp:include page="/indexHeader.do" />
 
-<!-- 
-<link rel="stylesheet" type="text/css" href="/css/header_main.css"/>
- -->
-<link rel="stylesheet" type="text/css" href="/css/personal_home.css"/>
+<link rel="stylesheet" type="text/css" href="/css/indexSearchList.css"/>
+
 
 <div id="containerWrap">
-	<div id="rightPart" style="width:100%;">
-		<div id="listPart">
-			<ul class="tab">
-				<li><a class="selected" href="#" title="">AI 통합 검색 채용 공고</a></li>
-			</ul>
-	       	<!-- (begin) 2020.12.30 by s.yoo -->
-			<table class="list" id="list01">
-				<tbody>
-					<c:choose>
-						<c:when test="${item.recruitDataAllwork.size() > 0 }">
-							<c:forEach var="result" items="${item.recruitDataAllwork}" varStatus="status">
-								<tr class="desc desc0">
-									<td rowspan="3" class="desc01">${result.name }</td>
-									<td colspan="6" class="desc02">
-										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', 'open', '');">
-											${result.title }
-										</a>
-									</td>
-									<td rowspan="3" class="desc05">${result.strEdate }</td>
-								</tr>
-								<tr class="desc desc1">
-									<td class="desc03">급여</td>
-									<td class="desc04">${result.salary }</td>
-								</tr>
-								<tr class="desc desc2">
-									<td class="desc03">근무지</td>
-									<td class="desc04">${result.loc }</td>
-								</tr>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<tr><td class="desc00" colspan="5">주어진 조건을 만족하는 기업회원 등록 채용정보를 찾을 수 없습니다.</td></tr>
-						</c:otherwise>
-					</c:choose>
-				</tbody>
-			</table>
+	<div id="content01Wrap">
+		<table class="list" style="table-layout:fixed;">
+			<colgroup>
+				<col style="width:25%;">
+				<col style="width:25%;">
+				<col style="width:15%;">
+				<col style="width:15%;">
+				<col style="width:20%;">
+			</colgroup>
+			<caption>AI 통합검색 회원등록 채용정보</caption>
+			<thead>
+				<tr>
+					<th class="t_desc01">회사명</th>
+					<th colspan="3" class="t_desc02">채용정보</th>
+					<th class="t_desc03">채용마감</th>
+				</tr>
+			</thead>
+<c:choose>
+	<c:when test="${item.recruitDataAllwork.size() > 0 }">
+		<c:forEach var="result" items="${item.recruitDataAllwork}" varStatus="status">
+			<tbody>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td rowspan="3" class="desc01">${result.name }</td>
+					<td colspan="3" class="desc02">
+						<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', 'open', '');">
+							${result.title }
+						</a>
+					</td>
+					<td rowspan="3" class="desc03">${convert:getEndCond(result.biz_end_type, result.biz_end_day)}</td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">급여:</span><span class="desc_desc00">${result.salary }</span></td>
+					<td colspan="2"><span class="desc_title">고용형태:</span><span class="desc_desc00">${result.job_form }</span></td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">등록일:</span><span class="desc_desc00">${result.strWdate }</span></td>
+					<td colspan="2"><span class="desc_title">근무지:</span><span class="desc_desc00">${result.loc }</span></td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+			</tbody>
+		</c:forEach>
+	</c:when>
+	<c:otherwise>
+			<tbody>
+				<tr><td class="desc00" colspan="5">주어진 조건을 만족하는 회원등록 채용정보를 찾을 수 없습니다.</td></tr>
+			</tbody>
+	</c:otherwise>
+</c:choose>
+			<!-- 
+			<tbody>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td class="desc01">(주)파인스태프</td>
+					<td colspan="3" class="desc02">
+						<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+					<td class="desc03">상시채용</td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+			</tbody>
+			<tbody>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td rowspan="3" class="desc01">(주)파인스태프</td>
+					<td colspan="3" class="desc02">
+						<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+					<td rowspan="3" class="desc03">상시채용</td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">급여</span><span class="desc_desc00">3000-3500만원</span></td>
+					<td><span class="desc_title">경력</span><span class="desc_desc00">무관</span></td>
+					<td><span class="desc_title">나이</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">지역</span><span class="desc_desc00">경기 광주시</span></td>
+					<td><span class="desc_title">학력</span><span class="desc_desc00">대학졸업(2,3년)</span></td>
+					<td><span class="desc_title">성별</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+			</tbody>
+			<tbody>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td rowspan="3" class="desc01">(주)파인스태프</td>
+					<td><span class="desc_title">급여</span><span class="desc_desc00">3000-3500만원</span></td>
+					<td><span class="desc_title">경력</span><span class="desc_desc00">무관</span></td>
+					<td><span class="desc_title">나이</span><span class="desc_desc00">무관</span></td>
+					<td rowspan="3" class="desc03">상시채용</td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">지역</span><span class="desc_desc00">경기 광주시</span></td>
+					<td><span class="desc_title">학력</span><span class="desc_desc00">대학졸업(2,3년)</span></td>
+					<td><span class="desc_title">성별</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr>
+					<td colspan="3" class="desc02">
+						<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+			</tbody>
+			<tbody>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td rowspan="4" class="desc01">(주)파인스태프</td>
+					<td colspan="3" class="desc02">
+						<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+					<td rowspan="4" class="desc03">상시채용</td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">급여</span><span class="desc_desc00">3000-3500만원</span></td>
+					<td><span class="desc_title">경력</span><span class="desc_desc00">무관</span></td>
+					<td><span class="desc_title">나이</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">지역</span><span class="desc_desc00">경기 광주시 경기 광주시 경기 광주시</span></td>
+					<td><span class="desc_title">학력</span><span class="desc_desc00">대학졸업(2,3년)</span></td>
+					<td><span class="desc_title">성별</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr>
+					<td colspan="3" class="desc02">
+						<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+			</tbody>
+			 -->
+		</table>
+		
+		
+		<table class="list" style="table-layout:fixed;">
+			<colgroup>
+				<col style="width:25%;">
+				<col style="width:25%;">
+				<col style="width:15%;">
+				<col style="width:15%;">
+				<col style="width:20%;">
+			</colgroup>
+			<caption>AI 통합검색 기타채용정보</caption>
+			<thead>
+				<tr>
+					<th class="t_desc01">회사명</th>
+					<th colspan="3" class="t_desc02">채용정보</th>
+					<th class="t_desc03">채용마감</th>
+				</tr>
+			</thead>
+<c:choose>
+	<c:when test="${item.recruitDataWorknet.size() > 0 }">
+		<c:forEach var="result" items="${item.recruitDataWorknet}" varStatus="status">
+			<tbody>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td rowspan="3" class="desc01">${result.name }</td>
+					<td colspan="3" class="desc02">
+						<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.recommend_id }" target="_blank">
+							${result.title }
+						</a>
+					</td>
+					<td rowspan="3" class="desc03">${convert:getEndCond(result.biz_end_type, result.biz_end_day)}</td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">급여:</span><span class="desc_desc00">${result.salary }</span></td>
+					<td colspan="2"><span class="desc_title">고용형태:</span><span class="desc_desc00">${result.job_form }</span></td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">등록일:</span><span class="desc_desc00">${result.strWdate }</span></td>
+					<td colspan="2"><span class="desc_title">근무지:</span><span class="desc_desc00">${result.loc }</span></td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+			</tbody>
+		</c:forEach>
+	</c:when>
+	<c:otherwise>
+			<tbody>
+				<tr><td class="desc00" colspan="5">주어진 조건을 만족하는 기타 채용정보를 찾을 수 없습니다.</td></tr>
+			</tbody>
+	</c:otherwise>
+</c:choose>
+		</table>
 
-			<table class="list" id="list02">
+		<!-- 
+		<table class="list" style="table-layout:fixed;">
+				<colgroup>
+				<col style="width:25%;">
+				<col style="width:25%;">
+				<col style="width:15%;">
+				<col style="width:15%;">
+				<col style="width:20%;">
+				</colgroup>
+				<caption>AI 통합검색 채용 공고</caption>
+				<thead>
+				<tr>
+					<th class="t_desc01">회사명</th>
+					<th colspan="3" class="t_desc02">채용공고</th>
+					<th class="t_desc03">마감일</th>
+				</tr>
+				</thead>
 				<tbody>
-					<c:choose>
-						<c:when test="${item.recruitDataWorknet.size() > 0 }">
-							<c:forEach var="result" items="${item.recruitDataWorknet}" varStatus="status">
-								<tr class="desc desc0">
-									<td rowspan="3" class="desc01">${result.name }</td>
-									<td colspan="6" class="desc02">
-										<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.recommend_id }" target="_blank">
-											${result.title }
-										</a>
-									</td>
-									<td rowspan="3" class="desc05">${result.strEdate }</td>
-								</tr>
-								<tr class="desc desc1">
-									<td class="desc03">급여</td>
-									<td class="desc04">${result.salary }</td>
-								</tr>
-								<tr class="desc desc2">
-									<td class="desc03">근무지</td>
-									<td class="desc04">${result.loc }</td>
-								</tr>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<tr><td class="desc00" colspan="5">주어진 조건을 만족하는 기타 채용정보를 찾을 수 없습니다.</td></tr>
-						</c:otherwise>
-					</c:choose>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td class="desc01">(주)파인스태프</td>
+					<td colspan="3" class="desc02">
+					<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+					<td class="desc03">상시채용</td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				</tbody>
+				<tbody>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td rowspan="3" class="desc01">(주)파인스태프</td>
+					<td colspan="3" class="desc02">
+					<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+					<td rowspan="3" class="desc03">상시채용</td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">급여</span><span class="desc_desc00">3000-3500만원</span></td>
+					<td><span class="desc_title">경력</span><span class="desc_desc00">무관</span></td>
+					<td><span class="desc_title">나이</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">지역</span><span class="desc_desc00">경기 광주시</span></td>
+					<td><span class="desc_title">학력</span><span class="desc_desc00">대학졸업(2,3년)</span></td>
+					<td><span class="desc_title">성별</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				</tbody>
+				<tbody>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td rowspan="3" class="desc01">(주)파인스태프</td>
+					<td><span class="desc_title">급여</span><span class="desc_desc00">3000-3500만원</span></td>
+					<td><span class="desc_title">경력</span><span class="desc_desc00">무관</span></td>
+					<td><span class="desc_title">나이</span><span class="desc_desc00">무관</span></td>
+					<td rowspan="3" class="desc03">상시채용</td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">지역</span><span class="desc_desc00">경기 광주시</span></td>
+					<td><span class="desc_title">학력</span><span class="desc_desc00">대학졸업(2,3년)</span></td>
+					<td><span class="desc_title">성별</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr>
+					<td colspan="3" class="desc02">
+					<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				</tbody>
+				<tbody>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td rowspan="4" class="desc01">(주)파인스태프</td>
+					<td colspan="3" class="desc02">
+					<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+					<td rowspan="4" class="desc03">상시채용</td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">급여</span><span class="desc_desc00">3000-3500만원</span></td>
+					<td><span class="desc_title">경력</span><span class="desc_desc00">무관</span></td>
+					<td><span class="desc_title">나이</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">지역</span><span class="desc_desc00">경기 광주시 경기 광주시 경기 광주시</span></td>
+					<td><span class="desc_title">학력</span><span class="desc_desc00">대학졸업(2,3년)</span></td>
+					<td><span class="desc_title">성별</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr>
+					<td colspan="3" class="desc02">
+					<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
 				</tbody>
 			</table>
-	       	<!-- (end) 2020.12.30 by s.yoo -->
-		</div>
+		<table class="list" style="table-layout:fixed;">
+				<colgroup>
+				<col style="width:25%;">
+				<col style="width:25%;">
+				<col style="width:15%;">
+				<col style="width:15%;">
+				<col style="width:20%;">
+				</colgroup>
+				<caption>AI 통합검색 채용 공고</caption>
+				<thead>
+				<tr>
+					<th class="t_desc01">회사명</th>
+					<th colspan="3" class="t_desc02">채용공고</th>
+					<th class="t_desc03">마감일</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td class="desc01">(주)파인스태프</td>
+					<td colspan="3" class="desc02">
+					<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+					<td class="desc03">상시채용</td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				</tbody>
+				<tbody>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td rowspan="3" class="desc01">(주)파인스태프</td>
+					<td colspan="3" class="desc02">
+					<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+					<td rowspan="3" class="desc03">상시채용</td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">급여</span><span class="desc_desc00">3000-3500만원</span></td>
+					<td><span class="desc_title">경력</span><span class="desc_desc00">무관</span></td>
+					<td><span class="desc_title">나이</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">지역</span><span class="desc_desc00">경기 광주시</span></td>
+					<td><span class="desc_title">학력</span><span class="desc_desc00">대학졸업(2,3년)</span></td>
+					<td><span class="desc_title">성별</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				</tbody>
+				<tbody>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td rowspan="3" class="desc01">(주)파인스태프</td>
+					<td><span class="desc_title">급여</span><span class="desc_desc00">3000-3500만원</span></td>
+					<td><span class="desc_title">경력</span><span class="desc_desc00">무관</span></td>
+					<td><span class="desc_title">나이</span><span class="desc_desc00">무관</span></td>
+					<td rowspan="3" class="desc03">상시채용</td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">지역</span><span class="desc_desc00">경기 광주시</span></td>
+					<td><span class="desc_title">학력</span><span class="desc_desc00">대학졸업(2,3년)</span></td>
+					<td><span class="desc_title">성별</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr>
+					<td colspan="3" class="desc02">
+					<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				</tbody>
+				<tbody>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td rowspan="4" class="desc01">(주)파인스태프</td>
+					<td colspan="3" class="desc02">
+					<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+					<td rowspan="4" class="desc03">상시채용</td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">급여</span><span class="desc_desc00">3000-3500만원</span></td>
+					<td><span class="desc_title">경력</span><span class="desc_desc00">무관</span></td>
+					<td><span class="desc_title">나이</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">지역</span><span class="desc_desc00">경기 광주시 경기 광주시 경기 광주시</span></td>
+					<td><span class="desc_title">학력</span><span class="desc_desc00">대학졸업(2,3년)</span></td>
+					<td><span class="desc_title">성별</span><span class="desc_desc00">무관</span></td>
+				</tr>
+				<tr>
+					<td colspan="3" class="desc02">
+					<a href="#none" title="맞춤채용공고">[월평균275만/믹서트럭]레미콘 직영기사 구인 광주/김포/당진레미콘 직영기사 구인 광주/김포/당진</a>
+					</td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				</tbody>
+			</table>
+		 -->
 	</div>
 </div>
+	
 <jsp:include page="/footer.do" />
 
 <form id="searchForm" name="searchForm" method="post" action="/recruitScrapList.do">

@@ -96,6 +96,9 @@
 			<if test="orderRule != null and orderRule != ''">
 				order by ${orderRule}	
 			</if>
+			<if test="orderRule == null or orderRule == ''">
+				order by nic.wdate desc		
+			</if>
 		limit #{start}, #{pageSize}
 	</select>
 	
@@ -165,6 +168,9 @@
 			</if>
 			<if test="orderRule != null and orderRule != ''">
 				order by ${orderField} ${orderRule}
+			</if>
+			<if test="orderRule == null or orderRule == ''">
+				order by nic.wdate desc		
 			</if>
 		limit #{start}, #{pageSize}
 	</select>

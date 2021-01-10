@@ -140,7 +140,7 @@
 				</form>
 			</div>
 			<ul>
-				<li><a href="javascript:goList();" title="보러가기">보러가기</a></li>
+				<li><a href="javascript:goList();" title="맞춤인재정보 보기">맞춤인재정보 보기<마/a></li>
 				<li class="reg_ok"><a href="javascript:registServiceSetting();" title="설정하기">설정하기</a></li>
 			</ul>
 		</div>
@@ -362,7 +362,7 @@
 		}
 	}
 	
-	// 보러가기
+	// 맞춤인재정보 확인
 	function goList(){
 		loadingOn();
 		location.href = "/fitRecruitList.do";

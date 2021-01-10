@@ -38,7 +38,7 @@
 					</c:if>
 								<p class="desc02">${result.bizName}</p>
 								<p class="desc03">${convert:compByte(result.bizTitle, 95, "...")}</p>
-								<span class="desc04">${result.bizArea1Name}</span><span class="desc05">${convert:getEndCond(result.bizEndType, result.bizEndDay)}</span>
+								<span class="desc04">${result.bizArea1Name}</span><span class="desc05">${convert:getEndCond4Index(result.bizEndType, result.bizEndDay)}</span>
 							</a>
 						</li>
 				</c:forEach>
@@ -128,7 +128,7 @@
 								<span class="desc03">${result.men }명</span>
 								<span class="desc04">
 									${result.placeWork }
-								</span><span class="desc05">${convert:getEndCond(result.bizEndType, result.bizEndDay)}</span>
+								</span><span class="desc05">${convert:getEndCond4Index(result.bizEndType, result.bizEndDay)}</span>
 							</div>
 						</a>
 					</li>
@@ -152,7 +152,7 @@
 								<span class="desc04">
 									${result.bizArea1Name }
 									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '> '.concat(result.bizArea2Name) }
-								</span><span class="desc05">${convert:getEndCond(result.bizEndType, result.bizEndDay)}</span>
+								</span><span class="desc05">${convert:getEndCond4Index(result.bizEndType, result.bizEndDay)}</span>
 							</div>
 						</a>
 					</li>
@@ -177,7 +177,7 @@
 								<span class="desc04">
 									${result.bizArea1Name }
 									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '> '.concat(result.bizArea2Name) }
-								</span><span class="desc05">${convert:getEndCond(result.bizEndType, result.bizEndDay)}</span>
+								</span><span class="desc05">${convert:getEndCond4Index(result.bizEndType, result.bizEndDay)}</span>
 							</div>
 						</a>
 					</li>
@@ -202,7 +202,7 @@
 								<span class="desc04">
 									${result.bizArea1Name }
 									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '> '.concat(result.bizArea2Name) }
-								</span><span class="desc05">${convert:getEndCond(result.bizEndType, result.bizEndDay)}</span>
+								</span><span class="desc05">${convert:getEndCond4Index(result.bizEndType, result.bizEndDay)}</span>
 							</div>
 						</a>
 					</li>

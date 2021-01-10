@@ -1,5 +1,6 @@
 package allwork.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,8 +58,13 @@ public class NetfuMyServiceController {
 			
 			// 맞춤 채용정보 목록
 			Map<String, Object> myServiceMap = netfuMyServiceService.selectNetfuMyServiceMap(commandMap.getMap());
-			commandMap = MakeQueryUtil.makeMyRecruitQuery(commandMap, myServiceMap);
-			List<Map<String, Object>> myServiceRecruitList = netfuMyServiceService.selectMyServiceRecruitList(commandMap.getMap());
+			List<Map<String, Object>> myServiceRecruitList = new ArrayList<Map<String, Object>>();
+			if (myServiceMap != null && !myServiceMap.isEmpty()) {
+				//맞춤서비스가 설정된 경우.
+				commandMap = MakeQueryUtil.makeMyRecruitQuery(commandMap, myServiceMap);
+				myServiceRecruitList = netfuMyServiceService.selectMyServiceRecruitList(commandMap.getMap());
+			}
+
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(myServiceRecruitList.size() > 0){
 				totalSize = netfuMyServiceService.selectMyServiceRecruitCnt(commandMap.getMap());
@@ -152,8 +158,13 @@ public class NetfuMyServiceController {
 			
 			// 맞춤 인재 정보 목록
 			Map<String, Object> myServiceMap = netfuMyServiceService.selectNetfuMyServiceMap(commandMap.getMap());
-			commandMap = MakeQueryUtil.makeMyResumeQuery(commandMap, myServiceMap);
-			List<Map<String, Object>> myServiceResumeList = netfuMyServiceService.selectMyServiceResumeList(commandMap.getMap());
+			List<Map<String, Object>> myServiceResumeList = new ArrayList<Map<String, Object>>();
+			if (myServiceMap != null && !myServiceMap.isEmpty()) {
+				//맞춤서비스가 설정된 경우.
+				commandMap = MakeQueryUtil.makeMyResumeQuery(commandMap, myServiceMap);
+				myServiceResumeList = netfuMyServiceService.selectMyServiceResumeList(commandMap.getMap());
+			}
+			
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(myServiceResumeList.size() > 0){
 				totalSize = netfuMyServiceService.selectMyServiceResumeCnt(commandMap.getMap());

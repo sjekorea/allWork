@@ -155,6 +155,7 @@ public class NetfuMemberController {
 	public ModelAndView chkDupUid(CommandMap commandMap, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		try{
+			commandMap.put("showAll", 1);						//탈퇴한 회원의 사용자 ID도 중복검사를 통해 다시 사용하지 못하도록 함.
 			int rstCnt = netfuMemberService.selectUidExistCnt(commandMap.getMap());
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("rstCnt", rstCnt);
@@ -474,6 +475,7 @@ public class NetfuMemberController {
 	public ModelAndView memberUnregisterProcess(CommandMap commandMap, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		try{
+			commandMap.put("showAll", 0);						//유효한 사용자 계정에 대해서만 존재여부를 검사한다.
 			int rstCnt = netfuMemberService.selectUidExistCnt(commandMap.getMap());
 			if (rstCnt > 0) {
 				netfuMemberService.memberUnregister(commandMap.getMap());

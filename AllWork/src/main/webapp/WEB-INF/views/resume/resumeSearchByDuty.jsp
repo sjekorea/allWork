@@ -139,6 +139,7 @@
 									</td>
 									<td class="desc01">
 										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">
+											<span class="desc01_01">${result.inidTitle }</span><br />
 											<span class="desc01_01">
 												${result.inidType1Name }
 												${convert:checkNull(result.inidType2Name) eq '' ? '</span>' : '&nbsp;>&nbsp;'.concat(result.inidType2Name).concat('&nbsp;') }

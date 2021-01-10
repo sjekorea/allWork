@@ -5,6 +5,7 @@
 	<select id="selectNetfuCateList" parameterType="hashmap" resultType="allwork.vo.NetfuCateVo">
 		select * from netfu_cate
 		where 1=1
+			AND view = 'yes'
 			and type = #{type}
 			and p_code = IFNULL(#{pCode}, '')
 		order by rank
@@ -14,6 +15,7 @@
 	<select id="selectNetfuCateMap" parameterType="hashmap" resultType="allwork.vo.NetfuCateVo">
 		select name from netfu_cate
 		where 1=1
+			AND view = 'yes'
 			and code = #{code}
 		order by rank
 	</select>

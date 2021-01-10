@@ -324,10 +324,10 @@
 	// 스크랩 등록
 	function goScrapRegist(){
 		
-		if($("#recruitCnt").val() <= 0){
-			alert("채용공고를 먼저 작성해 주세요");
-			return;
-		}else{
+		//if($("#recruitCnt").val() <= 0){
+		//	alert("채용공고를 먼저 작성해 주세요");
+		//	return;
+		//}else{
 			loadingOn();
 			var callback = function(data){
 				alert("저장 되었습니다.");
@@ -343,16 +343,15 @@
 						, rUid : $("#rUid").val()
 					};
 			ajax('post', '/registScrap.ajax', param, callback);
-		}
+		//}
 	}
 	
 	// 입사지원 popup
 	function applyPopup(){
 		
-		if($("#resumeCnt").val() <= 0){
-			alert("이력서를 먼저 작성해 주세요");
+		if($("#recruitCnt").val() <= 0){
+			alert("채용공고를 먼저 작성해 주세요");
 			return;
-		
 		}else{
 			var callback = function(data){
 				if(data.rstCnt > 0){

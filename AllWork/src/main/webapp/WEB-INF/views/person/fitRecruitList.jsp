@@ -11,6 +11,11 @@
 
 <link rel="stylesheet" type="text/css" href="/css/personal_connect.css"/>
 
+<style type="text/css">
+	/*현재메뉴 언더라인*/
+	#menuTree ul .menu05 .subMenu05_01{text-decoration: underline;}
+</style>
+
 <div id="containerWrap">
 	<div id="container">
 		<div id="leftPart">

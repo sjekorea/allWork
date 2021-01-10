@@ -81,7 +81,7 @@
 					<p class="detail_title">기본정보</p>
 					<p class="company_setting">
 						<c:if test="${concernCnt <= 0 }">
-							<a href="javascript:goConcernRegist();" title="관심기업등록"><i class="far fa-heart"></i></a>&nbsp;관심기업등록
+							<a href="javascript:goConcernRegist();" title="관심기업등록"><i class="far fa-heart"></i>&nbsp;관심기업등록</a>
 						</c:if>
 						<span><a href="#none" title="기업정보 상세보기"><i class="fas fa-cog"></i>&nbsp;기업정보 상세보기</a></span>
 					</p>
@@ -281,11 +281,11 @@
 	// 스크랩 등록
 	function goScrapRegist(){
 		
-		if($("#resumeCnt").val() <= 0){
-			alert("이력서를 먼저 작성해 주세요");
-			return;
+		//if($("#resumeCnt").val() <= 0){
+		//	alert("이력서를 먼저 작성해 주세요");
+		//	return;
 			
-		}else{
+		//}else{
 			
 			loadingOn();
 			var callback = function(data){
@@ -302,15 +302,15 @@
 						, rUid : $("#rUid").val()
 					};
 			ajax('post', '/registScrap.ajax', param, callback);
-		}
+		//}
 	}
 	
 	// 관심기업 등록
 	function goConcernRegist(){
-		if($("#resumeCnt").val() <= 0){
-			alert("이력서를 먼저 작성해 주세요");
-			return;
-		}else{
+		//if($("#resumeCnt").val() <= 0){
+		//	alert("이력서를 먼저 작성해 주세요");
+		//	return;
+		//}else{
 			loadingOn();
 			var callback = function(data){
 				alert("저장 되었습니다.");
@@ -326,7 +326,7 @@
 						, rUid : $("#rUid").val()
 					};
 			ajax('post', '/registNetfuConcern.ajax', param, callback);
-		}
+		//}
 	}
 	
 	// 입사지원 popup

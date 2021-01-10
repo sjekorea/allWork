@@ -55,7 +55,7 @@
 											<a href="javascript:goDetail('${result.companyUid }', '${result.personUid }', '${result.no }', '${result.recruitNo }', '${result.resumeNo }', '', 'resume');">${result.inidTitle }</a>
 										</a>
 										</td>
-										<td class="desc04">${result.bizEndDay }</td>
+										<td class="desc04">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
 										<td class="desc05">${result.wdate }</td>
 									</tr>
 								</c:forEach>

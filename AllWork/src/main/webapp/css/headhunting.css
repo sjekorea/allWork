@@ -1,0 +1,40 @@
+body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
+
+/*###################################   containerWrap  ###################################*/
+  #containerWrap{width:100%;overflow: hidden;margin:20px 0 100px;}
+  #container{width:1000px;margin:0 auto;}
+
+  /*현재메뉴 언더라인*/
+  #menuTree ul .menu01{text-decoration: underline;}
+
+/*###################################   res_rightPart   ###################################*/
+#rightPart{width:790px;height:100%;margin-left:10px;overflow: hidden;background-color:#fff;border:1px solid #ccc;float:left;padding:40px;}
+#rightPart h4{width:100%;height:50px;line-height:50px;font-size:18px;}
+#rightPart p{width:100%;border:1px solid #ccc;height:30px;line-height:30px;font-size:13px;margin-bottom:10px;text-align: center;}
+#rightPart p span{color:#4F60E3;}
+
+    /*###################################   listpart   ###################################*/
+    #listPart{width:710px;overflow: hidden;font-size: 14px;}
+
+    .list{width:710px;overflow: hidden;border-collapse: collapse;table-layout: fixed;word-wrap: break-word;}
+    .list caption{display:none;}
+    .list thead{width:710px;background-color:#EDF0F5;border-top:1px solid #000;border-bottom:1px solid #ccc;}
+    .list thead tr{height:50px;}
+    .list thead tr .t_desc01{width:170px;}
+    .list thead tr .t_desc02{width:420px;}
+    .list thead tr .t_desc03{width:120px;}
+
+    .list tbody{width:100%;overflow:hidden;border-bottom:1px solid #ccc;}
+    .list tbody tr{width:100%;font-size:14px;background-color:#fff;overflow:hidden;}
+    .list tbody .margin{width:100%;height:20px;}
+
+    .list tbody .desc01{text-align: center;width:170px;}
+    .list tbody .desc02{width:420px;padding:7px 0;text-align:left;line-height:22px;}
+    .list tbody .desc03{color:#4F60E3;text-align: center;width:120px;}
+    .list tbody td span{font-size:12px;}
+    .list tbody .desc_title{padding-right:5px;}
+    .list tbody .desc_desc00{color:#666;}
+
+    .list td a:hover{text-decoration: underline;}
+
+    .numareaWrap{padding-bottom: 30px;}

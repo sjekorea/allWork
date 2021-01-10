@@ -5,7 +5,7 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 #container{width:1000px;margin:0 auto;}
 
 /*현재메뉴 언더라인*/
-#menuTree ul .menu03 .subMenu03_01{text-decoration: underline;}
+/*	#menuTree ul .menu03 .subMenu03_01{text-decoration: underline;}	*/
 
 /*###################################   rightpart   ###################################*/
 #rightPart{width:790px;height:100%;margin-left:10px;float: left;background-color:#fff;border:1px solid #ccc;padding:40px;}
