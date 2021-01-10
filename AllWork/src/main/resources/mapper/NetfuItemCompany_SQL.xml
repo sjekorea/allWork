@@ -21,10 +21,10 @@
 			<if test="uid != null and uid != ''">
 				and nic.uid = #{uid}
 			</if>
-			<if test='infoType == "4"'>
+			<if test='infoType == 4'>
 				and (nic.biz_jobfrom like '%freelancer%' or nic.biz_jobfrom like '%netfu_34537_33276%')
 			</if>
-			<if test='infoType == "2"'>
+			<if test='infoType == 2'>
 				and (nic.biz_jobfrom like '%arbeit%' or nic.biz_jobfrom like '%netfu_34537_33276%')
 			</if>
 			<if test="bizType3 != null and bizType3 != ''">
@@ -76,10 +76,10 @@
 			<if test="uid != null and uid != ''">
 				and nic.uid = #{uid}
 			</if>
-			<if test='infoType == "4"'>
+			<if test='infoType == 4'>
 				and (nic.biz_jobfrom like '%freelancer%' or nic.biz_jobfrom like '%netfu_34537_33276%')
 			</if>
-			<if test='infoType == "2"'>
+			<if test='infoType == 2'>
 				and (nic.biz_jobfrom like '%arbeit%' or nic.biz_jobfrom like '%netfu_34537_33276%')
 			</if>
 			<if test="bizType3 != null and bizType3 != ''">

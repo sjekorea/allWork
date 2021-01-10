@@ -40,10 +40,10 @@
 			<if test="loginId != null and loginId != ''">
 				and nir.uid = #{loginId}
 			</if>
-			<if test='infoType == "4"'>
+			<if test='infoType == 4'>
 				and (nir.inid_jobform like '%freelancer%' or nir.inid_jobform like '%netfu_34537_33276%')
 			</if>
-			<if test='infoType == "2"'>
+			<if test='infoType == 2'>
 				and (nir.inid_jobform like '%arbeit%' or nir.inid_jobform like '%netfu_34537_33276%')
 			</if>
 			<if test="inidType != null and inidType != ''">
@@ -106,10 +106,10 @@
 			<if test="loginId != null and loginId != ''">
 				and nir.uid = #{loginId}
 			</if>
-			<if test='infoType == "4"'>
+			<if test='infoType == 4'>
 				and (nir.inid_jobform like '%freelancer%' or nir.inid_jobform like '%netfu_34537_33276%')
 			</if>
-			<if test='infoType == "2"'>
+			<if test='infoType == 2'>
 				and (nir.inid_jobform like '%arbeit%' or nir.inid_jobform like '%netfu_34537_33276%')
 			</if>
 			<if test="inidType != null and inidType != ''">
