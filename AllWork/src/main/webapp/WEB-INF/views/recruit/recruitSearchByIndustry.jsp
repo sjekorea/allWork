@@ -146,7 +146,7 @@
 	<input type="hidden" name="resumeNo" id="resumeNo" value="" />
 	<input type="hidden" name="leftMenuUrl" id="leftMenuUrl" value="/recruitInfoSubMenu.do" />
 	
-	<input type="hidden" name="searchKind" id="searchKind" value="areaJob" />
+	<input type="hidden" name="searchKind" id="searchKind" value="area_job" />
 	<input type="hidden" name="bizType3" id="bizType3" value="${map.bizType3 }" />
 	<input type="hidden" name="areaJob3" id="areaJob3" value="${map.areaJob3 }" />
 	<input type="hidden" name="bizArea2" id="bizArea2" value="${map.bizArea2 }" />
