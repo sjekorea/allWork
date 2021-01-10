@@ -58,11 +58,16 @@ public class NetfuItemResumeServiceImpl implements NetfuItemResumeService{
 		return netfuItemResumeDao.selectNetfuItemResumeMap(map);
 	}
 	
-	
 	// 이력서 정보 등록
 	@Override
 	public int insertNetfuItemResume(Map<String, Object> map) throws Exception {
 		return netfuItemResumeDao.insertNetfuItemResume(map);
+	}
+	
+	// 이력서 공개/비공개 설정
+	@Override
+	public int updateNetfuItemResumeSecret(Map<String, Object> map) throws Exception {
+		return netfuItemResumeDao.updateNetfuItemResumeSecret(map);
 	}
 	
 	// 이력서 정보  삭제

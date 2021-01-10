@@ -176,6 +176,42 @@
 			getNetfuCateList("job", $("#job1 option:selected").val(), "2차직무선택", "job2", true);
 		});
 		
+		// -- 맞춤 서비스 정보가 있는 경우 component value setting
+		<c:if test="${!msMap.isEmpty()}">
+			
+			$("#job1").val("${msMap.job1}");console.log("jon1 : "+"${msMap.job1}");
+			
+			if(!checkNull("${msMap.job2}")){
+				getNetfuCateListForSelect('inid_pay', $("#job1"), '', 'job2', true, false);
+				$("#job2").val("${msMap.job2}");console.log("jon1 : "+"${msMap.job2}");
+			}
+			
+			if(!checkNull("${msMap.job3}")){
+				getNetfuCateListForSelect('inid_pay', $("#job2"), '', 'job3', true, false);
+				$("#job3").val("${msMap.job3}");console.log("jon1 : "+"${msMap.job3}");
+			}
+			
+			$("#area1").val("${msMap.area}");
+			
+			if(!checkNull("${msMap.area2}")){
+				getNetfuCateListForSelect('area', $("#area1"), '시구군선택', 'area2', true, true);
+				$("#area2").val("${msMap.area2}");console.log("jon1 : "+"${msMap.area2}");
+			}
+			
+			$("#jobSchool").val("${msMap.jobSchool}");
+			var career = "${msMap.career}".split(",");
+			console.log(career);
+			
+			$("#jobPay1").val("${msMap.payType}");
+			
+			if(!checkNull("${msMap.payType}")){
+				getNetfuCateListForSelect('inid_pay', $("#jobPay1"), '', 'jobPay2', true, false);
+				$("#jobPay2").val("${msMap.pay}");console.log("jon1 : "+"${msMap.pay}");
+			}
+			
+		</c:if>
+		
+		
 	});	
 	
 	

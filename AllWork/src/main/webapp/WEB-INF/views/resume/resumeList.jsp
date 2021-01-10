@@ -35,12 +35,13 @@
 										<td class="desc00"><input type="checkbox" name="chk" value="${result.no }" /></td>
 										<td class="desc01">
 										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">
-											${result.inidTitle }
+											${result.inidSecret}${result.inidTitle }
 										</a>
 										</td>
 										<td class="desc02">${result.wdate }</td>
-										<td class="desc03"><input type="radio" id="inidSecret" name="inidSecret" value="no"/></td>
-										<td class="desc04"><input type="radio" id="inidSecret" name="inidSecret" value="yes"/></td>
+										<td class="desc03"><input type="radio" id="inidSecretRadio${result.no }" name="inidSecretRadio${result.no }" value="yes" <c:if test="${result.inidSecret eq 'yes' }">checked</c:if> onclick="javascript:updateSecret('${result.no}');"/></td>
+										<td class="desc04"><input type="radio" id="inidSecretRadio${result.no }" name="inidSecretRadio${result.no }" value="no" <c:if test="${result.inidSecret ne 'yes' }">checked</c:if> onclick="javascript:updateSecret('${result.no}');"/></td>
+										<input type="hidden" name="inidSecret" id="inidSecret" value="${result.inidSecret}" />
 									</tr>
 								</c:forEach>
 							</c:when>
@@ -90,6 +91,23 @@ $(document).ready(function(){
 		deleteRecruitResume();
 	});
 });	
+
+
+	function updateSecret(no){
+	
+		var inidSecret = $("input[name=inidSecretRadio"+no+"]:checked").val(); 
+		alert(inidSecret);
+		loadingOn();
+		var callback = function(data){
+			alert("설정 되었습니다.");
+			loadingOff();
+		};
+		var param = {
+					inidSecret : inidSecret
+					, no : no
+				};
+		ajax('post', '/updateNetfuItemResumeSecret.ajax', param, callback);
+	}
 
 
 	function deleteResume(){

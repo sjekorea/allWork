@@ -28,21 +28,20 @@
 		<div id="recruitment">
 			<h4>채용정보 지역별</h4>
 			<div id="part02">
-				<form id="keyworkSearchForm" name="keyworkSearchForm" method="post" action="/recruitSearchByArea.do" >
-					<fieldset>
-						<legend>검색</legend>
-						<div>
-							<span><input type="radio" id="keywordR" name="keywordR" value="and" checked /></span>&nbsp;‘그리고’(and) 검색
-							<span><input type="radio" id="keywordR" name="keywordR" value="or" <c:if test="${map.keywordCondition eq 'or' }">checked</c:if> /></span>&nbsp;‘또는’(or) 검색 
-						</div>
-						<p><input type="text" id="keyword1" name="keyword1" value="${map.keyword1 }" placeholder="키워드" /></p>
-						<p><input type="text" id="keyword2" name="keyword2" value="${map.keyword2 }" placeholder="키워드" /></p>
-						<p><input type="text" id="keyword3" name="keyword3" value="${map.keyword3 }" placeholder="키워드" /></p>
-						<p class="btnBox"><input id="keyword_search_btn" type="button" name="keyword_search_btn" value="검색" style="cursor:pointer;"/></p>
-						<input type="hidden" name="keywordCondition" id="keywordCondition" value="${map.keywordCondition }"/>
-						<input type="hidden" name="searchFlag" id="searchFlag" value="keyword"/>
-					</fieldset>
-				</form>
+				<form id="" name="">
+				<fieldset>
+					<legend>검색</legend>
+					<div>
+						<span><input type="radio" id="keywordR" name="keywordR" value="and" checked /></span>&nbsp;‘그리고’(and) 검색
+						<span><input type="radio" id="keywordR" name="keywordR" value="or" <c:if test="${map.keywordCondition eq 'or' }">checked</c:if> /></span>&nbsp;‘또는’(or) 검색 
+					</div>
+					<p><input type="text" id="keywordTxt1" name="keywordTxt1" value="${map.keyword1 }" placeholder="키워드" /></p>
+					<p><input type="text" id="keywordTxt2" name="keywordTxt2" value="${map.keyword2 }" placeholder="키워드" /></p>
+					<p><input type="text" id="keywordTxt3" name="keywordTxt3" value="${map.keyword3 }" placeholder="키워드" /></p>
+					<%-- <p class="btnBox"><input id="search_btn" type="button" name="search_btn" value="검색" style="cursor:pointer;"/></p>
+					<input type="hidden" name="searchFlag" id="searchFlag" value="keyword"/> --%>
+				</fieldset>
+			</form>
 			</div>	
 			<div id="rec_row01">
 				<ul class="tab">
@@ -154,6 +153,10 @@
 	<input type="hidden" name="areaJob3" id="areaJob3" value="${map.areaJob3 }" />
 	<input type="hidden" name="bizArea2" id="bizArea2" value="${map.bizArea2 }" />
 	<input type="hidden" name="keywordsHtml" id="keywordsHtml" value="${map.keywordsHtml }" />
+	<input type="hidden" name="keyword1" id="keyword1" value="${map.keyword1 }" />
+	<input type="hidden" name="keyword2" id="keyword2" value="${map.keyword2 }" />
+	<input type="hidden" name="keyword3" id="keyword3" value="${map.keyword3 }" />
+	<input type="hidden" name="keywordCondition" id="keywordCondition" value="${map.keywordCondition }"/>
 </form>
 
 <script type="text/javascript">
@@ -331,8 +334,13 @@
 		$("#areaJob3").val(areaJob);
 		$("#bizArea2").val(bizArea);
 		$("#keywordsHtml").val($(".keywords").html());
+		$("#keyword1").val($("#keywordTxt1").val());
+		$("#keyword2").val($("#keywordTxt2").val());
+		$("#keyword3").val($("#keywordTxt3").val());
+		$("#keywordCondition").val($("input[name=keywordR]:checked").val());
 		
-		if(bizType.length <= 0 && areaJob.length <= 0 && bizArea.length <= 0){
+		if(bizType.length <= 0 && areaJob.length <= 0 && bizArea.length <= 0 && $("#keyword1").val() == "" && $("#keyword2").val() == "" && $("#keyword3").val() == ""){
+			loadingOff();
 			alert("검색 조건을 확인하세요.");
 		}else{
 			$("#searchForm").submit();	

@@ -24,53 +24,19 @@
 	<select id="selectNetfuItemResumeCnt" parameterType="hashmap" resultType="int">
 		select 
 			count(nir.no) cnt
-		from netfu_item_resume nir
-		where 1=1
-			and nir.inid_secret <![CDATA[<>]]> 'yes'
-			<if test="loginId != null and loginId != ''">
-				and nir.uid = #{loginId}
-			</if>
-			<if test='infoType == "4"'>
-				and (nir.inid_jobform like '%freelancer%' or nir.inid_jobform like '%netfu_34537_33276%')
-			</if>
-			<if test='infoType == "2"'>
-				and (nir.inid_jobform like '%arbeit%' or nir.inid_jobform like '%netfu_34537_33276%')
-			</if>
-			<if test="inidType != null and inidType != ''">
-				and (nir.inid_type3 in ('${inidType3}') or nir.inid_type6 in ('${inidType6}') or nir.inid_type9 in ('${inidType7}'))
-			</if>
-			<if test="inidAreaJob != null and inidAreaJob != ''">
-				and (nir.inid_area_job3 in ('${inidAreaJob}') or nir.inid_area_job3 in ('${inidAreaJob}') or nir.inid_area_job3 in ('${inidAreaJob}'))
-			</if>
-			<if test="inidArea != null and inidArea != ''">
-				and (nir.inid_area2 in ('${inidArea}') or nir.inid_area4 in ('${inidArea}') or nir.inid_area6 in ('${inidArea}'))
-			</if>
-			<if test="inidLicense != null and inidLicense != ''">
-				and (nir.inid_license in ('${inidLicense}') or nir.inid_license in ('${inidLicense}') or nir.inid_license in ('${inidLicense}'))
-			</if>
-			<if test="inidCareer != null and inidCareer != ''">
-				and (nir.inid_career in ('${inidCareer}'))
-			</if>
-			<if test="inidSchool != null and inidSchool != ''">
-				and (nir.inid_last_school in ('${inidSchool}'))
-			</if>
-			<if test="inidJobform != null and inidJobform != ''">
-				and (nir.inid_jobform in ('${inidJobform}'))
-			</if>
-			<if test="inidPay != null and inidPay != ''">
-				and (nir.inid_pay in ('${inidPay}'))
-			</if>
-	</select>
-	
-	
-	<!-- 이력서 리스트 -->
-	<select id="selectNetfuItemResumeList" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
+		from 
+		(
 		select 
 			${resumeColumn}
 			, nm.sex, nm.birth
+			, concat(ifnull(nir.name, ''), '|',ifnull(nir.inid_address1, ''), '|',ifnull(nir.inid_address2, ''), '|',ifnull(nir.inid_title, '')
+				, '|',ifnull(nir.inid_last_school, ''), '|',ifnull(nir.inid_career, '')
+				, '|',ifnull(nir.inid_license, ''), '|',ifnull(nir.inid_languages, '')) fullStr
 		from netfu_item_resume nir left outer join netfu_member nm on nir.uid = nm.uid
 		where 1=1
-			and nir.inid_secret <![CDATA[<>]]> 'yes'
+			<if test="allFlag == null or allFlag == ''">
+				and nir.inid_secret <![CDATA[<>]]> 'yes'
+			</if>
 			<if test="loginId != null and loginId != ''">
 				and nir.uid = #{loginId}
 			</if>
@@ -103,6 +69,85 @@
 			</if>
 			<if test="inidPay != null and inidPay != ''">
 				and (nir.inid_pay in ('${inidPay}'))
+			</if>
+		) nir
+		where 1=1
+			<if test="keyword1 != '' and keyword1 != null">
+				and (
+						nir.fullStr like '%${keyword1}%'
+						<if test="keyword2 != '' and keyword2 != null">
+							${keywordCondition} nir.fullStr like '%${keyword2}%'
+						</if>
+						<if test="keyword3 != '' and keyword3 != null">
+							${keywordCondition} nir.fullStr like '%${keyword3}%'
+						</if>
+					)	
+			</if>
+	</select>
+	
+	
+	<!-- 이력서 리스트 -->
+	<select id="selectNetfuItemResumeList" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
+		select 
+			*
+		from 
+		(
+		select 
+			${resumeColumn}
+			, nm.sex, nm.birth
+			, concat(ifnull(nir.name, ''), '|',ifnull(nir.inid_address1, ''), '|',ifnull(nir.inid_address2, ''), '|',ifnull(nir.inid_title, '')
+				, '|',ifnull(nir.inid_last_school, ''), '|',ifnull(nir.inid_career, '')
+				, '|',ifnull(nir.inid_license, ''), '|',ifnull(nir.inid_languages, '')) fullStr
+		from netfu_item_resume nir left outer join netfu_member nm on nir.uid = nm.uid
+		where 1=1
+			<if test="allFlag == null or allFlag == ''">
+				and nir.inid_secret <![CDATA[<>]]> 'yes'
+			</if>
+			<if test="loginId != null and loginId != ''">
+				and nir.uid = #{loginId}
+			</if>
+			<if test='infoType == "4"'>
+				and (nir.inid_jobform like '%freelancer%' or nir.inid_jobform like '%netfu_34537_33276%')
+			</if>
+			<if test='infoType == "2"'>
+				and (nir.inid_jobform like '%arbeit%' or nir.inid_jobform like '%netfu_34537_33276%')
+			</if>
+			<if test="inidType != null and inidType != ''">
+				and (nir.inid_type3 in ('${inidType}') or nir.inid_type6 in ('${inidType}') or nir.inid_type9 in ('${inidType}'))
+			</if>
+			<if test="inidAreaJob != null and inidAreaJob != ''">
+				and (nir.inid_area_job3 in ('${inidAreaJob}') or nir.inid_area_job3 in ('${inidAreaJob}') or nir.inid_area_job3 in ('${inidAreaJob}'))
+			</if>
+			<if test="inidArea != null and inidArea != ''">
+				and (nir.inid_area2 in ('${inidArea}') or nir.inid_area4 in ('${inidArea}') or nir.inid_area6 in ('${inidArea}'))
+			</if>
+			<if test="inidLicense != null and inidLicense != ''">
+				and (nir.inid_license in ('${inidLicense}') or nir.inid_license in ('${inidLicense}') or nir.inid_license in ('${inidLicense}'))
+			</if>
+			<if test="inidCareer != null and inidCareer != ''">
+				and (nir.inid_career in ('${inidCareer}'))
+			</if>
+			<if test="inidSchool != null and inidSchool != ''">
+				and (nir.inid_last_school in ('${inidSchool}'))
+			</if>
+			<if test="inidJobform != null and inidJobform != ''">
+				and (nir.inid_jobform in ('${inidJobform}'))
+			</if>
+			<if test="inidPay != null and inidPay != ''">
+				and (nir.inid_pay in ('${inidPay}'))
+			</if>
+		) nir
+		where 1=1
+			<if test="keyword1 != '' and keyword1 != null">
+				and (
+						nir.fullStr like '%${keyword1}%'
+						<if test="keyword2 != '' and keyword2 != null">
+							${keywordCondition} nir.fullStr like '%${keyword2}%'
+						</if>
+						<if test="keyword3 != '' and keyword3 != null">
+							${keywordCondition} nir.fullStr like '%${keyword3}%'
+						</if>
+					)	
 			</if>
 		order by ${orderField} ${orderRule}
 		limit #{start}, #{pageSize}
@@ -256,6 +301,15 @@
 			]]>
 		)
 	</insert>
+	
+	<!-- 이력서 공개/비공개 설정 -->
+	<update id="updateNetfuItemResumeSecret" parameterType="hashmap">
+		update netfu_item_resume
+		set inid_secret = #{inidSecret}
+		where 1=1
+			and uid = #{loginId}
+			and no = #{no}
+	</update>
 	
 	<!-- 스크랩한 채용정보 삭제 -->
 	<delete id="deleteNetfuItemResumeMulti" parameterType="hashmap">

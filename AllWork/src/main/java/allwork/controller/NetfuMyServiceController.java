@@ -116,9 +116,6 @@ public class NetfuMyServiceController {
 		
 		try{
 			
-			
-			
-			
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
 				commandMap.put("orderRule", "nir.wdate desc");

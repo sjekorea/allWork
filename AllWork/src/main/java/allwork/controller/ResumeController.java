@@ -527,10 +527,6 @@ public class ResumeController {
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyProceess(commandMap.getMap());
 			
-			//Gson gson = new Gson();
-			
-			//ResumeEducationVo resumeEducation = gson.fromJson((String)resumeMap.get("education2"), ResumeEducationVo.class);
-			
 			ObjectMapper mapper = new ObjectMapper();
 			Map<String, String> resumeEducation = mapper.readValue((String)resumeMap.get("education2"), Map.class);
 			Map<String, String> resumeCareer = mapper.readValue((String)resumeMap.get("career2"), Map.class);
@@ -563,11 +559,31 @@ public class ResumeController {
 	/*
 	 * 등록된 이력서 갯수
 	 */
+	@RequestMapping(value="/updateNetfuItemResumeSecret.ajax")
+	public ModelAndView updateNetfuItemResumeSecret(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		try{
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			int rstCnt = netfuItemResumeService.updateNetfuItemResumeSecret(commandMap.getMap());
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("rstCnt", rstCnt);
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			log.debug(this.getClass().getName()+" updateNetfuItemResumeSecret.ajax Exception!!!!  "+e.toString());
+		}
+		return mv;
+	}
+	
+	
+	/*
+	 * 등록된 이력서 갯수
+	 */
 	@RequestMapping(value="/selectNetfuItemResumeCnt.ajax")
 	public ModelAndView selectNetfuItemResumeCnt(CommandMap commandMap, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		try{
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
 			int rstCnt = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("rstCnt", rstCnt);
@@ -599,6 +615,7 @@ public class ResumeController {
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("allFlag", "Y");
 			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
 			
 			// 채용정보 검색 리스트

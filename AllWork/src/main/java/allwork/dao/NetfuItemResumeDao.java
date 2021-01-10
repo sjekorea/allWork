@@ -54,6 +54,11 @@ public class NetfuItemResumeDao extends AbstractDAO{
 		return insert("netfuItemResume.insertNetfuItemResume", map);
 	}
 	
+	// 이력서  공개/비공개 설정
+	public int updateNetfuItemResumeSecret(Map<String, Object> map) throws Exception{ 
+		return update("netfuItemResume.updateNetfuItemResumeSecret", map);
+	}
+	
 	// 이력서  삭제
 	public int deleteNetfuItemResumeMulti(Map<String, Object> map) throws Exception{ 
 		return delete("netfuItemResume.deleteNetfuItemResumeMulti", map);

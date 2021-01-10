@@ -4,7 +4,16 @@
 
 	<!-- 채용정보 검색 Count -->
 	<select id="selectNetfuItemCompanyCnt" parameterType="hashmap" resultType="int">
-		select count(no) cnt
+		select
+			count(nic.no) cnt
+		from
+		(
+		select 
+			${recruitColumn}
+			, concat(
+				ifnull(nic.biz_name, ''), '|' , ifnull(nic.biz_title, ''), '|' , ifnull(nic.biz_address1, ''), '|'
+				, ifnull(nic.biz_business, ''), '|' , ifnull(nic.biz_detail, ''), '|' , ifnull(nic.biz_pemail, ''), '|'
+			) fullStr
 		from netfu_item_company nic
 		where 1=1
 			and nic.biz_ing <![CDATA[<>]]> 'yes'
@@ -26,6 +35,19 @@
 			</if>
 			<if test="bizArea2 != null and bizArea2 != ''">
 				and (nic.biz_area2 in ('${bizArea2}') or nic.biz_area4 in ('${bizArea2}') or nic.biz_area6 in ('${bizArea2}'))
+			</if>
+		) nic
+		where 1=1
+			<if test="keyword1 != '' and keyword1 != null">
+				and (
+						nic.fullStr like '%${keyword1}%'
+						<if test="keyword2 != '' and keyword2 != null">
+							${keywordCondition} nic.fullStr like '%${keyword2}%'
+						</if>
+						<if test="keyword3 != '' and keyword3 != null">
+							${keywordCondition} nic.fullStr like '%${keyword3}%'
+						</if>
+					)	
 			</if>
 	</select>
 	
@@ -37,8 +59,16 @@
 		     상세요강 : 모집요강 ==> biz_detail
 	 -->
 	<select id="selectNetfuItemCompanyList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
+		select
+			*
+		from
+		(
 		select 
 			${recruitColumn}
+			, concat(
+				ifnull(nic.biz_name, ''), '|' , ifnull(nic.biz_title, ''), '|' , ifnull(nic.biz_address1, ''), '|'
+				, ifnull(nic.biz_business, ''), '|' , ifnull(nic.biz_detail, ''), '|' , ifnull(nic.biz_pemail, ''), '|'
+			) fullStr
 		from netfu_item_company nic
 		where 1=1
 			and nic.biz_ing <![CDATA[<>]]> 'yes'
@@ -60,6 +90,19 @@
 			</if>
 			<if test="bizArea2 != null and bizArea2 != ''">
 				and (nic.biz_area2 in ('${bizArea2}') or nic.biz_area4 in ('${bizArea2}') or nic.biz_area6 in ('${bizArea2}'))
+			</if>
+		) nic
+		where 1=1
+			<if test="keyword1 != '' and keyword1 != null">
+				and (
+						nic.fullStr like '%${keyword1}%'
+						<if test="keyword2 != '' and keyword2 != null">
+							${keywordCondition} nic.fullStr like '%${keyword2}%'
+						</if>
+						<if test="keyword3 != '' and keyword3 != null">
+							${keywordCondition} nic.fullStr like '%${keyword3}%'
+						</if>
+					)	
 			</if>
 		order by ${orderField} ${orderRule}
 		limit #{start}, #{pageSize}
