@@ -408,7 +408,7 @@
 			if(spanId == "job3"){
 				bizType += $(this).attr("name")+","
 			}
-			if(spanId == "areaJob3"){
+			if(spanId == "area_job3"){
 				areaJob += $(this).attr("name")+","
 			}
 			if(spanId == "area2"){

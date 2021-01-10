@@ -31,7 +31,7 @@
 				and (nic.biz_type3 in ('${bizType3}') or nic.biz_type6 in ('${bizType3}') or nic.biz_type9 in ('${bizType3}'))
 			</if>
 			<if test="areaJob3 != null and areaJob3 != ''">
-				and (nic.area_job3 in ('${areaJob3}') or nic.area_job6 in ('${areaJob3}') or nic.area_job9 in ('${areaJob3}'))
+				and (nic.biz_area_job3 in ('${areaJob3}') or nic.biz_area_job6 in ('${areaJob3}') or nic.biz_area_job9 in ('${areaJob3}'))
 			</if>
 			<if test="bizArea2 != null and bizArea2 != ''">
 				and (nic.biz_area2 in ('${bizArea2}') or nic.biz_area4 in ('${bizArea2}') or nic.biz_area6 in ('${bizArea2}'))
@@ -86,7 +86,7 @@
 				and (nic.biz_type3 in ('${bizType3}') or nic.biz_type6 in ('${bizType3}') or nic.biz_type9 in ('${bizType3}'))
 			</if>
 			<if test="areaJob3 != null and areaJob3 != ''">
-				and (nic.area_job3 in ('${areaJob3}') or nic.area_job6 in ('${areaJob3}') or nic.area_job9 in ('${areaJob3}'))
+				and (nic.biz_area_job3 in ('${areaJob3}') or nic.biz_area_job6 in ('${areaJob3}') or nic.biz_area_job9 in ('${areaJob3}'))
 			</if>
 			<if test="bizArea2 != null and bizArea2 != ''">
 				and (nic.biz_area2 in ('${bizArea2}') or nic.biz_area4 in ('${bizArea2}') or nic.biz_area6 in ('${bizArea2}'))
