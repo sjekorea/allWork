@@ -467,8 +467,6 @@ public class RecruitController {
 		
 		try{
 			
-			System.out.println("map : "+commandMap.getMap().toString());
-			
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());

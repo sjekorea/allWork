@@ -364,10 +364,10 @@
 
 		}else{
 			var callback = function(data){
-				if(data.rstCnt <= 0){
-					alert("이력서를 먼저 작성해 주세요");
-					loadingOff();
-				}else{
+				//if(data.rstCnt <= 0){
+				//	alert("이력서를 먼저 작성해 주세요");
+				//	loadingOff();
+				//}else{
 					$("#companyUid").val(companyUid);
 					$("#personUid").val(personUid);
 					$("#no").val(no);
@@ -375,7 +375,7 @@
 					$("#resumeNo").val(resumeNo);
 					$("#searchForm").attr("action", "/recruitDetail.do");
 					$("#searchForm").submit();
-				}
+				//}
 			};
 			var param = {
 					

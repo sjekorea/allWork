@@ -34,8 +34,11 @@
 									<tr class="desc">
 										<td class="desc00"><input type="checkbox" name="chk" value="${result.no }" /></td>
 										<td class="desc01">
+										<!-- 
 										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">
-											${result.inidSecret}${result.inidTitle }
+										 -->
+										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', 'no', 'resume');">
+											${result.inidTitle }
 										</a>
 										</td>
 										<td class="desc02">${result.wdate }</td>
