@@ -467,6 +467,8 @@ public class RecruitController {
 		
 		try{
 			
+			System.out.println("map : "+commandMap.getMap().toString());
+			
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
@@ -610,7 +612,6 @@ public class RecruitController {
 	}
 	
 	
-	
 	//(begin) 2021.01.05 by s.yoo
 	/*
 	 * 우수추천 인재정보 목록
@@ -662,6 +663,8 @@ public class RecruitController {
 		
 		return mv;
 	}
+	
+	
 
 	//Page No 획득.
 	protected int getPageNo(CommandMap commandMap) {

@@ -75,7 +75,7 @@
 				<div id="company_detail">
 					<p class="company_name">${companyMap.bizName }</p>
 					<p class="company_hp"><a href="#none" title="기업홈페이지">${companyMap.bizHome }</a></p>
-					<p class="company_logo"><img src="${convert:checkNull(companyMap.bizLogo) eq '' ? 'img/logoNo.jpg' : '/allwork/peg/'.concat(companyMap.bizLogo) }" alt="로고"  /></p>
+					<p class="company_logo"><img src="${convert:checkNull(companyMap.bizLogo) eq '' ? '/img/logoNo.jpg' : '/allwork/peg/'.concat(companyMap.bizLogo) }" alt="로고"  /></p>
 				</div>
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
@@ -83,7 +83,7 @@
 						<c:if test="${concernCnt <= 0 }">
 							<a href="javascript:goConcernRegist();" title="관심기업등록"><i class="far fa-heart"></i>&nbsp;관심기업등록</a>
 						</c:if>
-						<span><a href="#none" title="기업정보 상세보기"><i class="fas fa-cog"></i>&nbsp;기업정보 상세보기</a></span>
+						<span><a href="javascript:detailPopup();" title="기업정보 상세보기"><i class="fas fa-cog"></i>&nbsp;기업정보 상세보기</a></span>
 					</p>
 					<table>
 						<caption>채용공고 등록하기</caption>
@@ -115,10 +115,10 @@
 								<td>${recruitMap.bizType1Name } 
 									${convert:checkNull(recruitMap.bizType2Name) eq '' ? '' : '>'.concat(recruitMap.bizType2Name) }
 									${convert:checkNull(recruitMap.bizType3Name) eq '' ? '' : '>'.concat(recruitMap.bizType3Name) }
-									${convert:checkNull(recruitMap.bizType4Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(recruitMap.bizType4Name) }
+									${convert:checkNull(recruitMap.bizType4Name) eq '' ? '' : '<br/>'.concat(recruitMap.bizType4Name) }
 									${convert:checkNull(recruitMap.bizType5Name) eq '' ? '' : '>'.concat(recruitMap.bizType5Name) }
 									${convert:checkNull(recruitMap.bizType6Name) eq '' ? '' : '>'.concat(recruitMap.bizType6Name) }
-									${convert:checkNull(recruitMap.bizType7Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(recruitMap.bizType7Name) }
+									${convert:checkNull(recruitMap.bizType7Name) eq '' ? '' : '<br/>'.concat(recruitMap.bizType7Name) }
 									${convert:checkNull(recruitMap.bizType8Name) eq '' ? '' : '>'.concat(recruitMap.bizType8Name) }
 									${convert:checkNull(recruitMap.bizType9Name) eq '' ? '' : '>'.concat(recruitMap.bizType9Name) }
 								</td>
@@ -127,9 +127,9 @@
 								<th>근무지역</th>
 								<td>${recruitMap.bizArea1Name }
 									${convert:checkNull(recruitMap.bizArea2Name) eq '' ? '' : '>'.concat(recruitMap.bizArea2Name) }
-									${convert:checkNull(recruitMap.bizArea3Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(recruitMap.bizArea3Name) }
+									${convert:checkNull(recruitMap.bizArea3Name) eq '' ? '' : '<br/>'.concat(recruitMap.bizArea3Name) }
 									${convert:checkNull(recruitMap.bizArea4Name) eq '' ? '' : '>'.concat(recruitMap.bizArea4Name) }
-									${convert:checkNull(recruitMap.bizArea5Name) eq '' ? '' : '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.concat(recruitMap.bizArea5Name) }
+									${convert:checkNull(recruitMap.bizArea5Name) eq '' ? '' : '<br/>'.concat(recruitMap.bizArea5Name) }
 									${convert:checkNull(recruitMap.bizArea6Name) eq '' ? '' : '>'.concat(recruitMap.bizArea6Name) }
 								</td>
 							</tr>
@@ -253,7 +253,7 @@
 </div>
 
 <jsp:include page="/footer.do" />
-      
+
 <form id="registForm" name="registForm" method="post">
 	<input type="hidden" name="no" id="no" value="${map.no}" />
 	<input type="hidden" name="uid" id="uid" value="${SE_LOGIN_ID }">
@@ -261,6 +261,7 @@
 	<input type="hidden" name="scrapCnt" id="scrapCnt" value="${scrapCnt }">
 	<input type="hidden" name="concernCnt" id="concernCnt" value="${concernCnt }">
 	<input type="hidden" name="resumeCnt" id="resumeCnt" value="${resumeCnt }">
+	<input type="hidden" name="companyUid" id="companyUid" value="${map.companyUid }">
 	<input type="hidden" name="applyType" id="applyType" value="">
 </form>
 
@@ -268,6 +269,7 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
+		
 		$(".close_btn, .a01").on("click", function(e){
 			$("#applyType").val("");
 			$("#popupWrap_applyWrap").css("display", "none");
@@ -383,6 +385,11 @@
 					, jobDetail : $("#resumeTitle").val()
 				}; 
 		ajax('post', '/insertNetfuOnlineRecruit.ajax', param, callback);
+	}
+	
+	// 기업 정보 상세보기 팝업
+	function detailPopup(){
+		window.open("/companyDetail.do?company="+$("#companyUid").val(),"companyDetail","top=200px,left=200px,width=810px,height=700px,resizable=1,scrollbars=yes");
 	}
 	
 </script>

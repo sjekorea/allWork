@@ -311,6 +311,9 @@
 			and no = #{no}
 	</update>
 	
+	
+	
+	
 	<!-- 스크랩한 채용정보 삭제 -->
 	<delete id="deleteNetfuItemResumeMulti" parameterType="hashmap">
 		delete from netfu_item_resume 

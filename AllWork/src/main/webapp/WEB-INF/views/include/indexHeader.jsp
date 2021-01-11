@@ -52,7 +52,6 @@
 	});
 	
 	function openPop(code){
-		alert($("#code").val());
 		var openPop = window.open("","_blank","top=200,left=0,width=400,height=445,resizable=1,scrollbars=yes");
 		$("#code").val(code);
 		$("#openPopForm").action = "/mainWinPop.do" ;

@@ -278,6 +278,43 @@
 		]]>
 	</insert>
 	
-
+		
+	<!-- 채용정보 수정 -->
+	<delete id="updateNetfuItemCompany" parameterType="hashmap">
+		update netfu_item_company 
+			set
+				uid = #{uid}, info_type = #{infoType}, biz_name = #{bizName}, biz_title = #{bizTitle}
+				, biz_post = #{bizPost}, biz_address1 = #{bizAddress1}, biz_address2 = #{bizAddress2}
+				, biz_type1 = #{bizType1}, biz_type2 = #{bizType2}, biz_type3 = #{bizType3}, biz_type4 = #{bizType4}
+				, biz_type5 = #{bizType5}, biz_type6 = #{bizType6}
+				, biz_position = #{bizPosition}
+				, biz_area1 = #{bizArea1}, biz_area2 = #{bizArea2}, biz_area3 = #{bizArea3}, biz_area4 = #{bizArea4}, biz_area5 = #{bizArea5}, biz_area6 = #{bizArea6}
+				, biz_subway = #{bizSubway}, biz_business = #{bizBusiness}, biz_men = #{bizMen}, biz_jobfrom = #{bizJobfrom}
+				, biz_pay = #{bizPay}, pay_type = #{payType}, biz_welfare = #{bizWelfare}
+				, biz_sex = #{bizSex}, biz_age = #{bizAge}, biz_ability = #{bizAbility}, biz_preferential = #{bizPreferential}, biz_career = #{bizCareer}, biz_detail = #{bizDetail}
+				, biz_end_day = #{bizEndDay}, biz_end_type = #{bizEndType}, biz_method = #{bizMethod}, biz_person = #{bizPerson}, biz_pemail = #{bizPemail}
+				, biz_pphone = #{bizPphone}, biz_pfax = #{bizPfax}
+				, u_wdate = DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+				, service1 = #{service1}, service2 = #{service2}, service3 = #{service3}, service4 = #{service4}, service5 = #{service5}
+				, service100 = #{service100}, service6 = #{service6}, service7 = #{service7}, service8 = #{service8}
+				, service9 = #{service9}, service10 = #{service10}, service11 = #{service11}
+				, biz_paper = #{bizPaper}, biz_form = #{bizForm}, biz_form_file = #{bizFormFile}, biz_type7 = #{bizType7}, biz_type8 = #{bizType8}, biz_type9 = #{bizType9}
+				, sms_send = #{smsSend}, biz_page = #{bizPage}, type_r = #{typeR}
+				, biz_area_job1 = #{bizAreaJob1}, biz_area_job2 = #{bizAreaJob2}, biz_area_job3 = #{bizAreaJob3}
+				, biz_area_job4 = #{bizAreaJob4}, biz_area_job5 = #{bizAreaJob5}, biz_area_job6 = #{bizAreaJob6}
+				, biz_area_job7 = #{bizAreaJob7}, biz_area_job8 = #{bizAreaJob8}, biz_area_job9 = #{bizAreaJob9}
+		where 1=1
+			and uid = #{uid}
+			and no = #{no}
+	</delete>
+	
+	
+	<!-- 채용정보 삭제 -->
+	<delete id="deleteNetfuItemCompany" parameterType="hashmap">
+		delete from netfu_item_company 
+		where 1=1
+			and uid = #{loginId}
+			and no = #{no}
+	</delete>
 	
 </mapper>

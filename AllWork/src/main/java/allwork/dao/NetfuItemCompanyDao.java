@@ -59,5 +59,15 @@ public class NetfuItemCompanyDao extends AbstractDAO{
 	public int insertNetfuItemCompany(Map<String, Object> map) throws Exception{ 
 		return insert("netfuItemCompany.insertNetfuItemCompany", map);
 	}
+	
+	// 채용공고 수정
+	public int updateNetfuItemCompany(Map<String, Object> map) throws Exception{ 
+		return insert("netfuItemCompany.updateNetfuItemCompany", map);
+	}
+	
+	// 채용공고 삭제
+	public int deleteNetfuItemCompany(Map<String, Object> map) throws Exception{ 
+		return insert("netfuItemCompany.deleteNetfuItemCompany", map);
+	}
 
 }

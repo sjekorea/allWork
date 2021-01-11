@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -264,6 +265,141 @@ public class CompanyController {
 	
 	
 	/*
+	 * 채용정보 수정
+	 */
+	@RequestMapping(value="/recruitInfoUpt.do", method = RequestMethod.POST)
+	public ModelAndView recruitInfoUpt(CommandMap commandMap, HttpSession session ) {
+		
+		ModelAndView mv = new ModelAndView("/company/recruitInfoUpt");
+		
+		try{
+			
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+			
+			// 개인회원 정보 select
+			Map<String, Object> memberMap = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
+			
+			// 기업정보 select
+			commandMap.put("uid", commandMap.get("loginId"));
+			Map<String, Object> companyMap = netfuCompanyService.selectNetfuCompanyMap(commandMap.getMap());
+			
+			// 채용정보 select
+			commandMap.put("uid", commandMap.get("loginId"));
+			commandMap.put("no", commandMap.get("recruitNo"));
+			Map<String, Object> recruitMap = netfuItemCompanyService.selectNetfuItemCompanyMap(commandMap.getMap());
+			
+			
+			
+			commandMap.put("pCode", "");
+			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
+			commandMap.put("type", "job");
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 산업별 목록  ( netfu_cate : type = 'area_job' )
+			commandMap.put("type", "area_job");
+			List<Map<String, Object>> areaJobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 지역별  ( netfu_cate : type ='area' )
+			commandMap.put("type", "area");
+			List<Map<String, Object>> areaList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 고용형태  ( netfu_cate : type ='job_type' )
+			commandMap.put("type", "job_type");
+			List<Map<String, Object>> jobTypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 급여종류  ( netfu_cate : type ='inid_pay' )
+			commandMap.put("type", "inid_pay");
+			List<Map<String, Object>> inidPayList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 최종학력  ( netfu_cate : type ='job_school' )
+			commandMap.put("type", "job_school");
+			List<Map<String, Object>> jobSchoolList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 우대조건  ( netfu_cate : type ='preferential' )
+			commandMap.put("type", "preferential");
+			List<Map<String, Object>> preferentialList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 제출서류  ( netfu_cate : type ='job_paper' )
+			commandMap.put("type", "job_paper");
+			List<Map<String, Object>> jobPaperList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 접수방법  ( netfu_cate : type ='job_recipient' )
+			commandMap.put("type", "job_recipient");
+			List<Map<String, Object>> jobRecipientList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("memberMap", memberMap);
+			mv.addObject("companyMap", companyMap);
+			mv.addObject("recruitMap", recruitMap);
+			mv.addObject("jobList", jobList);
+			mv.addObject("areaJobList", areaJobList);
+			mv.addObject("areaList", areaList);
+			mv.addObject("jobTypeList", jobTypeList);
+			mv.addObject("inidPayList", inidPayList);
+			mv.addObject("jobSchoolList", jobSchoolList);
+			mv.addObject("preferentialList", preferentialList);
+			mv.addObject("jobPaperList", jobPaperList);
+			mv.addObject("jobRecipientList", jobRecipientList);
+			
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".recruitInfoUpt Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+	
+	
+	/*
+	 * 채용정보 수정 처리
+	 */
+	@RequestMapping(value="/updateRecruit.do")
+	public void updateRecruit(CommandMap commandMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView mv = new ModelAndView();
+		String attachFileName = "";
+		String alertMsg = "";
+		String redirectUrl = "";
+		try{
+			
+			String attachFlag = (String)commandMap.get("orgBizFormFileFlag");
+			if("Y".equals(attachFlag)){
+				attachFileName = fileUtils.uploadFile(commandMap.getMap(), request); // 첨부파일 업로드
+			}else{
+				attachFileName = (String)commandMap.get("orgBizFormFile");
+			}
+			
+			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("bizFormFile", attachFileName);
+			netfuItemCompanyService.updateNetfuItemCompany(commandMap.getMap()); // 채용공고 저장
+			CommonUtil.Alert("등록되었습니다.", "/recruitListProgress.do", request, response);
+			
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".updateRecruit Exception !!!!! \n"+e.toString());
+			CommonUtil.Alert("등록에 실패 하였습니다.", "/companyHome.do", request, response);
+		}
+	}
+
+	
+	/*
+	 * 채용정보 삭제
+	 */
+	@RequestMapping(value="/deleteRecruitInfo.ajax")
+	public ModelAndView deleteRecruitInfo(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		try{
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			int rstCnt = netfuItemCompanyService.deleteNetfuItemCompany(commandMap.getMap());
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("rstCnt", rstCnt);
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".deleteRecruitInfo Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+	
+	
+	/*
 	 *  유료 채용광고 서비스 신청
 	 */
 	@RequestMapping(value="/recruitApplyForPay.do")
@@ -295,6 +431,30 @@ public class CompanyController {
 		
 		ModelAndView mv = new ModelAndView("/company/resumeSearchPaidList");
 		
+		return mv;
+	}
+	
+	
+	/*
+	 * 기업정보 상세보기
+	 */
+	@RequestMapping(value="/companyDetail.do")
+	public ModelAndView companyDetail(CommandMap commandMap, HttpSession session ) {
+		
+		ModelAndView mv = new ModelAndView("/company/companyDetail");
+		
+		try{
+			
+			// 기업정보 select
+			commandMap.put("uid", (String)commandMap.get("company"));
+			Map<String, Object> companyMap = netfuCompanyService.selectNetfuCompanyMap(commandMap.getMap());
+
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("companyMap", companyMap);
+			
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".companyDetail Exception !!!!! \n"+e.toString());
+		}
 		return mv;
 	}
 

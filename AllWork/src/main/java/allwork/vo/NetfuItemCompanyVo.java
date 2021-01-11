@@ -96,10 +96,17 @@ public class NetfuItemCompanyVo {
 	private String type;
 	private String bizManiMen;
 	private String viewDate;
+	private String payType;
 	
 	
 	
 	
+	public String getPayType() {
+		return payType;
+	}
+	public void setPayType(String payType) {
+		this.payType = payType;
+	}
 	public String getViewDate() {
 		return viewDate;
 	}

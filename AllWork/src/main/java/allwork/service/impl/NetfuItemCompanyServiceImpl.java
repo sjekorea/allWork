@@ -74,4 +74,16 @@ public class NetfuItemCompanyServiceImpl implements NetfuItemCompanyService{
 	public int insertNetfuItemCompany(Map<String, Object> map) throws Exception {
 		return netfuItemCompanyDao.insertNetfuItemCompany(map);
 	}
+	
+	// 채용공고 수정
+	@Override
+	public int updateNetfuItemCompany(Map<String, Object> map) throws Exception {
+		return netfuItemCompanyDao.updateNetfuItemCompany(map);
+	}
+	
+	// 채용공고 삭제
+	@Override
+	public int deleteNetfuItemCompany(Map<String, Object> map) throws Exception {
+		return netfuItemCompanyDao.deleteNetfuItemCompany(map);
+	}
 }

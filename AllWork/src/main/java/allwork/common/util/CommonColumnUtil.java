@@ -37,7 +37,7 @@ public class CommonColumnUtil {
 		rtnStr += ", nic.service1, nic.service2, nic.service3, nic.service4, nic.service5, nic.service100";
 		rtnStr += ", nic.service6, nic.service7, nic.service8, nic.service9, nic.service10, nic.service11";
 		rtnStr += ", nic.biz_paper, getCodeName(nic.biz_paper) biz_paper_name";
-		rtnStr += ", nic.biz_form, nic.biz_form_file, nic.sms_send, nic.biz_page, nic.hit, nic.type_r, nic.order_view";
+		rtnStr += ", nic.biz_form, nic.biz_form_file, nic.sms_send, nic.biz_page, nic.hit, nic.type_r, nic.order_view, pay_type";
 		
 		return rtnStr;
 	}

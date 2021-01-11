@@ -12,5 +12,7 @@ public interface NetfuItemCompanyService {
 	List<Map<String, Object>>selectNetfuItemCompanyProceess(Map<String, Object> map) throws Exception;
 	Map<String, Object> selectNetfuItemCompanyMap(Map<String, Object> map) throws Exception;
 	int insertNetfuItemCompany(Map<String, Object> map) throws Exception;
+	int updateNetfuItemCompany(Map<String, Object> map) throws Exception;
+	int deleteNetfuItemCompany(Map<String, Object> map) throws Exception;
 
 }
