@@ -279,17 +279,19 @@
 					<p>${resumeMap.inidIntroduce }</p>
 				</div>
 			</div>
-			<ul class="buttons">
-				<ul>
-					<li><a href="#none" title="포트폴리오 다운로드">포트폴리오 다운로드</a></li>
-					<c:if test="${scrapCnt <= 0 }">
-						<li><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>
-					</c:if>
-					<c:if test="${interviewCnt <= 0 }">
-						<li class="res_ok"><a href="javascript:applyPopup();" title="면접제의">면접제의</a></li>
-					</c:if>
+			<c:if test="${SE_USER_TYPE == 'company' }">
+				<ul class="buttons">
+					<ul>
+						<li><a href="#none" title="포트폴리오 다운로드">포트폴리오 다운로드</a></li>
+						<c:if test="${scrapCnt <= 0 }">
+							<li><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>
+						</c:if>
+						<c:if test="${interviewCnt <= 0 }">
+							<li class="res_ok"><a href="javascript:applyPopup();" title="면접제의">면접제의</a></li>
+						</c:if>
+					</ul>
 				</ul>
-			</ul>
+			</c:if>
 		</div>
 	</div>
 </div>

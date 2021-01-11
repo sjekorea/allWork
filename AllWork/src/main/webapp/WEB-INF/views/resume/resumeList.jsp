@@ -39,8 +39,8 @@
 										</a>
 										</td>
 										<td class="desc02">${result.wdate }</td>
-										<td class="desc03"><input type="radio" id="inidSecretRadio${result.no }" name="inidSecretRadio${result.no }" value="yes" <c:if test="${result.inidSecret eq 'yes' }">checked</c:if> onclick="javascript:updateSecret('${result.no}');"/></td>
-										<td class="desc04"><input type="radio" id="inidSecretRadio${result.no }" name="inidSecretRadio${result.no }" value="no" <c:if test="${result.inidSecret ne 'yes' }">checked</c:if> onclick="javascript:updateSecret('${result.no}');"/></td>
+										<td class="desc03"><input type="radio" id="inidSecretRadio${result.no }" name="inidSecretRadio${result.no }" value="no" <c:if test="${result.inidSecret ne 'yes' }">checked</c:if> onclick="javascript:updateSecret('${result.no}');"/></td>
+										<td class="desc04"><input type="radio" id="inidSecretRadio${result.no }" name="inidSecretRadio${result.no }" value="yes" <c:if test="${result.inidSecret eq 'yes' }">checked</c:if> onclick="javascript:updateSecret('${result.no}');"/></td>
 										<input type="hidden" name="inidSecret" id="inidSecret" value="${result.inidSecret}" />
 									</tr>
 								</c:forEach>
