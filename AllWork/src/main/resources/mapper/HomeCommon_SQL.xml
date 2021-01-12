@@ -28,10 +28,10 @@
 				SELECT 'head' type, a.ser no, '' uid, concat(a.company_initial, '사') bizName, b.recruit_item_contents bizTitle, b.men bizMen, b.place_work bizArea1Name
 						, b.biz_end_type bizEndType, DATE_FORMAT(b.biz_end_day, '%m/%d') bizEndDay
 						, DATE_FORMAT(b.date_req, '%m/%d') wdate
-						FROM recruit_company AS a, recruit_item AS b
+						, CASE b.prs WHEN 'P' THEN 'yes' ELSE 'no' END bizIng
+				FROM recruit_company AS a, recruit_item AS b
 				WHERE 1=1
 					and a.prs='P' AND b.prs='P' AND a.ser=b.target_ser 
-					and ((b.biz_end_type ='input' and b.biz_end_day >= CURRENT_TIMESTAMP()) or b.biz_end_type ='get' or b.biz_end_type ='often')
 					and date_req BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
 
 				UNION ALL
@@ -40,6 +40,7 @@
 						, concat(getCodeName(nic.biz_area1),' ', ifnull(getCodeName(nic.biz_area2), '')) bizArea1Name 
 						, nic.biz_end_type bizEndType, DATE_FORMAT(nic.biz_end_day, '%m/%d') bizEndDay
 						, DATE_FORMAT(nic.wdate, '%m/%d') wdate
+						, nic.biz_ing bizIng
 				from netfu_item_company nic
 				where 1=1
 					and nic.biz_ing = 'yes'
@@ -52,6 +53,7 @@
 						, concat(getCodeName(nic.biz_area1),' ', ifnull(getCodeName(nic.biz_area2), '')) bizArea1Name
 						, nic.biz_end_type bizEndType, DATE_FORMAT(nic.biz_end_day, '%m/%d') bizEndDay
 						, DATE_FORMAT(nic.wdate, '%m/%d') wdate
+						, nic.biz_ing bizIng
 				from netfu_item_company nic
 				where 1=1
 					and nic.biz_ing = 'yes'
@@ -64,6 +66,7 @@
 						, concat(getCodeName(nic.biz_area1),' ', ifnull(getCodeName(nic.biz_area2), '')) bizArea1Name
 						, nic.biz_end_type bizEndType, DATE_FORMAT(nic.biz_end_day, '%m/%d') bizEndDay
 						, DATE_FORMAT(nic.wdate, '%m/%d') wdate
+						, nic.biz_ing bizIng
 				from netfu_item_company nic
 				where 1=1
 					and nic.biz_ing = 'yes'

@@ -86,7 +86,7 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nic.wdate");
+				commandMap.put("orderField", "nic.no");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
@@ -96,6 +96,7 @@ public class RecruitController {
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
 			// 채용정보 검색 리스트
+			commandMap.put("showAll", 1);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -148,7 +149,7 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nic.wdate");
+				commandMap.put("orderField", "nic.no");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
@@ -158,6 +159,7 @@ public class RecruitController {
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
 			// 채용정보 검색 리스트
+			commandMap.put("showAll", 1);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -200,7 +202,7 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nic.wdate");
+				commandMap.put("orderField", "nic.no");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
@@ -210,6 +212,7 @@ public class RecruitController {
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
 			// 채용정보 검색 리스트
+			commandMap.put("showAll", 1);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -252,7 +255,7 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nic.wdate");
+				commandMap.put("orderField", "nic.no");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
@@ -262,6 +265,7 @@ public class RecruitController {
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
 			// 채용정보 검색 리스트
+			commandMap.put("showAll", 1);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -304,7 +308,7 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nic.wdate");
+				commandMap.put("orderField", "nic.no");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
@@ -315,6 +319,7 @@ public class RecruitController {
 			commandMap.put("infoType", "2");
 			
 			// 채용정보 검색 리스트
+			commandMap.put("showAll", 1);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -367,7 +372,7 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nic.wdate");
+				commandMap.put("orderField", "nic.no");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
@@ -378,6 +383,7 @@ public class RecruitController {
 			commandMap.put("infoType", "4");
 			
 			// 채용정보 검색 리스트
+			commandMap.put("showAll", 1);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -430,7 +436,7 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nic.wdate");
+				commandMap.put("orderField", "nic.no");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
@@ -580,7 +586,7 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nic.wdate");
+				commandMap.put("orderField", "nic.no");
 				commandMap.put("orderRule", "desc");
 				commandMap.put("companyUid", (String)session.getAttribute("SE_LOGIN_ID"));
 				commandMap.put("bizIng", "no");

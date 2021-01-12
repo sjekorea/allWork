@@ -71,7 +71,7 @@
 		 <name>getEndCond</name>
 		 <function-class>allwork.common.util.ConvertUtil</function-class>
 		 <function-signature>
-			  String getEndCond(java.lang.String, java.lang.String)
+			  String getEndCond(java.lang.String, java.lang.String, java.lang.String)
 		 </function-signature>
 	</function>
 	<function>
@@ -79,7 +79,7 @@
 		 <name>getEndCond4Index</name>
 		 <function-class>allwork.common.util.ConvertUtil</function-class>
 		 <function-signature>
-			  String getEndCond4Index(java.lang.String, java.lang.String)
+			  String getEndCond4Index(java.lang.String, java.lang.String, java.lang.String)
 		 </function-signature>
 	</function>
 

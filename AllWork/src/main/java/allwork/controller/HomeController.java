@@ -81,7 +81,7 @@ public class HomeController {
 			
 			commandMap.put("start", 0);
 			commandMap.put("pageSize", 8);
-			commandMap.put("orderField", "nic.wdate");
+			commandMap.put("orderField", "nic.no");
 			commandMap.put("orderRule", "desc");
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
@@ -95,6 +95,7 @@ public class HomeController {
 			
 			//헤디헌팅 채용공고
 			ApiRecruitItemModel model = new ApiRecruitItemModel();
+			model.setShowAll("N");
 			//model.setPagerEnableYn("Y");
 			//model.setPage(1);
 			//model.setRows(8);
@@ -103,6 +104,8 @@ public class HomeController {
 			List<ApiRecruitItemModel> headhuntList = headhuntService.getRecruitItemList(model);
 
 			// 기업회원 등록 채용공고
+			commandMap.put("showAll", 0);
+
 			commandMap.put("infoType", "1");
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			

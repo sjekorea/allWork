@@ -266,8 +266,10 @@ public class ConvertUtil {
     /*
      * 채용마감
      */
-    public static String getEndCond(String bizEndType, String bizEndDay) {
+    public static String getEndCond(String bizIng, String bizEndType, String bizEndDay) {
     	String strBizEndCond = "";
+		if (!bizIng.equalsIgnoreCase("yes")) return "채용마감";
+
 		if (bizEndType.equalsIgnoreCase("input")) strBizEndCond = bizEndDay;
 		else if (bizEndType.equalsIgnoreCase("get")) strBizEndCond = "채용시까지";
 		else if (bizEndType.equalsIgnoreCase("often")) strBizEndCond = "상시채용";
@@ -275,8 +277,10 @@ public class ConvertUtil {
 		return strBizEndCond;
     }
 
-    public static String getEndCond4Index(String bizEndType, String bizEndDay) {
+    public static String getEndCond4Index(String bizIng, String bizEndType, String bizEndDay) {
     	String strBizEndCond = "";
+		if (!bizIng.equalsIgnoreCase("yes")) return "채용마감";
+
 		if (bizEndType.equalsIgnoreCase("input")) strBizEndCond = "마감: " + bizEndDay;
 		else if (bizEndType.equalsIgnoreCase("get")) strBizEndCond = "채용시까지";
 		else if (bizEndType.equalsIgnoreCase("often")) strBizEndCond = "상시채용";

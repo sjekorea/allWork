@@ -202,7 +202,6 @@
 								<li class="sitemap_depth01"><a href="/recruitSearchForFree.do" title="프리랜서">프리랜서</a></li>
 								<li class="sitemap_depth01"><a href="/recruitSearchForAlba.do" title="알바채용">알바채용</a></li>
 								<li class="sitemap_depth01"><a href="/recruitOther.do" title="기타채용정보">기타채용정보</a></li>
-								<li class="sitemap_depth01"><a href="#" title="모바일채용정보">모바일채용정보</a></li>
 							</ul>
 						</div>
 		</c:if>
@@ -240,7 +239,6 @@
 								<li class="sitemap_depth01"><a href="/recruitSearchForFree.do" title="프리랜서">프리랜서</a></li>
 								<li class="sitemap_depth01"><a href="/recruitSearchForAlba.do" title="알바채용">알바채용</a></li>
 								<li class="sitemap_depth01"><a href="/recruitOther.do" title="기타채용정보">기타채용정보</a></li>
-								<li class="sitemap_depth01"><a href="#" title="모바일채용정보">모바일채용정보</a></li>
 							</ul>
 						</div>
 						<div class="sitemap">

@@ -28,6 +28,7 @@ public class ApiRecruitItemModel extends ApiJqGridParams implements Serializable
 
 	private String companyTitle;
 	private String companyInitial;
+	private String bizIng;
 
 	private List<Integer> ids;
 	private String sidx;	//sorting field.
@@ -213,6 +214,18 @@ public class ApiRecruitItemModel extends ApiJqGridParams implements Serializable
 	 */
 	public void setCompanyInitial(String companyInitial) {
 		this.companyInitial = companyInitial;
+	}
+	/**
+	 * @return the bizIng
+	 */
+	public String getBizIng() {
+		return bizIng;
+	}
+	/**
+	 * @param bizIng the bizIng to set
+	 */
+	public void setBizIng(String bizIng) {
+		this.bizIng = bizIng;
 	}
 	/**
 	 * @return the ids

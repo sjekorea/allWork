@@ -16,7 +16,9 @@
 			) fullStr
 		from netfu_item_company nic
 		where 1=1
-			and nic.biz_ing = 'yes'
+			<if test="showAll != 1">
+				and nic.biz_ing = 'yes'
+			</if>
 			<if test="uid != null and uid != ''">
 				and nic.uid = #{uid}
 			</if>
@@ -70,7 +72,9 @@
 			) fullStr
 		from netfu_item_company nic
 		where 1=1
-			and nic.biz_ing = 'yes'
+			<if test="showAll != 1">
+				and nic.biz_ing = 'yes'
+			</if>
 			<if test="uid != null and uid != ''">
 				and nic.uid = #{uid}
 			</if>
@@ -102,7 +106,12 @@
 						</if>
 					)	
 			</if>
-		order by ${orderField} ${orderRule}
+		<if test="orderField != null and orderField != ''">
+			order by ${orderField} ${orderRule}
+		</if>
+		<if test="orderField == null or orderField == ''">
+			order by nic.no desc
+		</if>
 		limit #{start}, #{pageSize}
 	</select>
 	

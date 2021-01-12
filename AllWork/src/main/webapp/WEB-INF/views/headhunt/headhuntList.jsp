@@ -52,7 +52,7 @@
 							<td colspan="3" class="desc02">
 								${result.recruitContents}
 							</td>
-							<td rowspan="2" class="desc03">${convert:getEndCond(result.bizEndType, result.bizEndDay)}</td>
+							<td rowspan="2" class="desc03">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay)}</td>
 						</tr>
 						<tr>
 							<td><span class="desc_title">근무지:</span><span class="desc_desc00">${result.placeWork}</span></td>

@@ -37,7 +37,6 @@ public class AiMatchingRecommendationModel implements Serializable  {
 	
 	private String inid_secret;					//이력서 공개상태		X					X
 	private	String photo;						//구직자 사진.
-	private String open;						//X				채용공고 공개상태			X
 	
 	private String biz_end_type;				//				채용마감 조건.
 	private String biz_end_day;					//				채용마감 일.
@@ -60,7 +59,6 @@ public class AiMatchingRecommendationModel implements Serializable  {
 		
 		this.inid_secret	= "yes";
 		this.photo			= "";
-		this.open			= "open";
 		
 		this.biz_end_type	= "get";
 		this.biz_end_day	= "";
@@ -388,19 +386,6 @@ public class AiMatchingRecommendationModel implements Serializable  {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	/**
-	 * @return the open
-	 */
-	public String getOpen() {
-		return open;
-	}
-	/**
-	 * @param open the open to set
-	 */
-	public void setOpen(String open) {
-		this.open = open;
-	}
-
 	/**
 	 * @return the biz_end_type
 	 */

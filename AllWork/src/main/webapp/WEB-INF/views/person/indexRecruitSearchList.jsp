@@ -43,7 +43,7 @@
 							${result.title }
 						</a>
 					</td>
-					<td rowspan="3" class="desc03">${convert:getEndCond(result.biz_end_type, result.biz_end_day)}</td>
+					<td rowspan="3" class="desc03">${convert:getEndCond(result.biz_ing, result.biz_end_type, result.biz_end_day)}</td>
 				</tr>
 				<tr>
 					<td><span class="desc_title">급여:</span><span class="desc_desc00">${result.salary }</span></td>
@@ -175,7 +175,7 @@
 							${result.title }
 						</a>
 					</td>
-					<td rowspan="3" class="desc03">${convert:getEndCond(result.biz_end_type, result.biz_end_day)}</td>
+					<td rowspan="3" class="desc03">${convert:getEndCond(result.biz_ing, result.biz_end_type, result.biz_end_day)}</td>
 				</tr>
 				<tr>
 					<td><span class="desc_title">급여:</span><span class="desc_desc00">${result.salary }</span></td>
@@ -408,14 +408,13 @@
 
 <script type="text/javascript">
 	
-	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
+	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, bizIng, detailFlag){
 		
 		loadingOn();
-		if("yes" != open){
-			alert("현재 비공개 상태로 설정되어 있습니다.");
-			loadingOff();
-
-		}else{
+		//if("yes" != bizIng){
+		//	alert("채용을 마감했습니다.");
+		//	loadingOff();
+		//}else{
 			var callback = function(data){
 				//if(data.rstCnt <= 0){
 				//	alert("이력서를 먼저 작성해 주세요");
@@ -435,7 +434,7 @@
 			};
 			
 			ajax('post', '/selectNetfuItemResumeCnt.ajax', param, callback);
-		}
+		//}
 	}
 	
 </script>

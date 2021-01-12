@@ -29,7 +29,7 @@ public class CodeConvertUtil {
 		
 		try{
 
-			if("yes".equals(bizIng)){
+			if("no".equals(bizIng)){
 				rtnStr = "<p class='deadline deadline01'>채용 마감</p>";
 			}else{
 				if("get".equals(bizEndType)){
@@ -37,6 +37,7 @@ public class CodeConvertUtil {
 				}else if("often".equals(bizEndType)){
 					rtnStr = "<p class='deadline deadline00'>상시채용</p>";
 				}else{
+					/*
 					if("".equals(ConvertUtil.checkNull(bizEndDay))){
 						rtnStr = "<p class='deadline deadline00'>상시채용</p>";
 					}else{
@@ -46,6 +47,24 @@ public class CodeConvertUtil {
 							dateCompareResult = DateUtil.getCompareDate(bizEndDay);
 							if( dateCompareResult < 0){  // 오늘날짜가 마감일 이후
 								rtnStr = "<p class='deadline deadline01'>채용 마감</p>";
+							}else if( dateCompareResult > 0){  // 오늘날짜가 마감일 이전
+								rtnStr = "<p class='deadline deadline02'> ~"+bizEndDay.substring(5)+"("+DateUtil.getDayOfWeek(bizEndDay)+")"+"</p>";
+							}else{
+								rtnStr = "<p class='deadline deadline00'>오늘 마감</p>";
+							}	
+						}
+					}
+					*/
+					//rtnStr = "<p class='deadline deadline02'> ~"+bizEndDay.substring(5)+"("+DateUtil.getDayOfWeek(bizEndDay)+")"+"</p>";
+					if("".equals(ConvertUtil.checkNull(bizEndDay))){
+						rtnStr = "<p class='deadline deadline00'>미정</p>";
+					}else{
+						if(bizEndDay.length() != 10){
+							rtnStr = "<p class='deadline deadline00'>미정</p>";
+						}else{
+							dateCompareResult = DateUtil.getCompareDate(bizEndDay);
+							if( dateCompareResult < 0){  // 오늘날짜가 마감일 이후
+								rtnStr = "<p class='deadline deadline01'>마감일 경과: " + bizEndDay.substring(5) +"</p>";
 							}else if( dateCompareResult > 0){  // 오늘날짜가 마감일 이전
 								rtnStr = "<p class='deadline deadline02'> ~"+bizEndDay.substring(5)+"("+DateUtil.getDayOfWeek(bizEndDay)+")"+"</p>";
 							}else{

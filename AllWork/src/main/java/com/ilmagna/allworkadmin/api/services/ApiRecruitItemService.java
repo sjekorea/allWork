@@ -1,5 +1,6 @@
 package com.ilmagna.allworkadmin.api.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -18,11 +19,22 @@ public class ApiRecruitItemService {
 
 	
 	public List<ApiRecruitItemModel> getRecruitItemList(ApiRecruitItemModel model) throws Exception {
-		return headhuntDAO.getRecruitItemList(model);
+		//return headhuntDAO.getRecruitItemList(model);
+		List<ApiRecruitItemModel> list = headhuntDAO.getRecruitItemList(model);
+		
+		List<ApiRecruitItemModel> listResult = new ArrayList<ApiRecruitItemModel>();
+		for (int i = 0; i < list.size(); i++) {
+			ApiRecruitItemModel item = procDataItem(list.get(i));
+			listResult.add(item);
+		}
+		return listResult;
 	}
 	
 	public ApiRecruitItemModel getRecruitItem(ApiRecruitItemModel model) throws Exception {
-		return headhuntDAO.getRecruitItem(model);
+		//return headhuntDAO.getRecruitItem(model);
+		ApiRecruitItemModel item = headhuntDAO.getRecruitItem(model);
+		item = procDataItem(item);
+		return item;
 		/*
 		ApiRecruitItemModel item = new ApiRecruitItemModel();		
 		if(model.getId() > 0) {
@@ -35,6 +47,19 @@ public class ApiRecruitItemService {
 		return item;
 		*/
 	}
+	
+
+	protected ApiRecruitItemModel procDataItem(ApiRecruitItemModel item) {
+		try {
+			String strBizIng = "no";
+			if (item.getPrs().equalsIgnoreCase("P")) strBizIng = "yes";
+			item.setBizIng(strBizIng);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return item;
+	}
+
 
 	public int getRecruitItemTotalCnt(ApiRecruitItemModel model) throws Exception {
 		return headhuntDAO.getRecruitItemTotalCnt(model);

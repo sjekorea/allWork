@@ -23,22 +23,22 @@
 					</c:if>
 					<c:if test="${result.type == 'recruit' }">
 						<li class="regular">
-							<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', 'open', '');" title="기업회원등록공고">
+							<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="기업회원등록공고">
 							<span class="desc00">정규직</span><span class="desc01">${result.bizMen}명</span>
 					</c:if>
 					<c:if test="${result.type == 'free' }">
 						<li class="freelance">
-							<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', 'open', '');" title="기업회원등록공고">
+							<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="기업회원등록공고">
 							<span class="desc00">프리랜서</span><span class="desc01">${result.bizMen}명</span>
 					</c:if>
 					<c:if test="${result.type == 'alba' }">
 						<li class="partT">
-							<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', 'open', '');" title="기업회원등록공고">
+							<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="기업회원등록공고">
 								<span class="desc00">알바</span><span class="desc01">${result.bizMen}명</span>
 					</c:if>
 								<p class="desc02">${result.bizName}</p>
 								<p class="desc03">${convert:compByte(result.bizTitle, 95, "...")}</p>
-								<span class="desc04">${result.bizArea1Name}</span><span class="desc05">${convert:getEndCond4Index(result.bizEndType, result.bizEndDay)}</span>
+								<span class="desc04">${result.bizArea1Name}</span><span class="desc05">${convert:getEndCond4Index(result.bizIng, result.bizEndType, result.bizEndDay)}</span>
 							</a>
 						</li>
 				</c:forEach>
@@ -128,7 +128,7 @@
 								<span class="desc03">${result.men }명</span>
 								<span class="desc04">
 									${result.placeWork }
-								</span><span class="desc05">${convert:getEndCond4Index(result.bizEndType, result.bizEndDay)}</span>
+								</span><span class="desc05">${convert:getEndCond4Index(result.bizIng, result.bizEndType, result.bizEndDay)}</span>
 							</div>
 						</a>
 					</li>
@@ -144,7 +144,7 @@
 			<ul>
 				<c:forEach var="result" items="${recruitList}" varStatus="status">
 					<li>
-						<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="기업회원등록공고">
+						<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="기업회원등록공고">
 							<div class="descBox">
 								<p class="desc01">${result.bizName }</p>
 								<p class="desc02">${convert:compByte(result.bizTitle, 70, "...")}</p>
@@ -152,7 +152,7 @@
 								<span class="desc04">
 									${result.bizArea1Name }
 									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '> '.concat(result.bizArea2Name) }
-								</span><span class="desc05">${convert:getEndCond4Index(result.bizEndType, result.bizEndDay)}</span>
+								</span><span class="desc05">${convert:getEndCond4Index(result.bizIng, result.bizEndType, result.bizEndDay)}</span>
 							</div>
 						</a>
 					</li>
@@ -177,7 +177,7 @@
 								<span class="desc04">
 									${result.bizArea1Name }
 									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '> '.concat(result.bizArea2Name) }
-								</span><span class="desc05">${convert:getEndCond4Index(result.bizEndType, result.bizEndDay)}</span>
+								</span><span class="desc05">${convert:getEndCond4Index(result.bizIng, result.bizEndType, result.bizEndDay)}</span>
 							</div>
 						</a>
 					</li>
@@ -202,7 +202,7 @@
 								<span class="desc04">
 									${result.bizArea1Name }
 									${convert:checkNull(result.bizArea2Name) eq '' ? '' : '> '.concat(result.bizArea2Name) }
-								</span><span class="desc05">${convert:getEndCond4Index(result.bizEndType, result.bizEndDay)}</span>
+								</span><span class="desc05">${convert:getEndCond4Index(result.bizIng, result.bizEndType, result.bizEndDay)}</span>
 							</div>
 						</a>
 					</li>
@@ -266,10 +266,10 @@
 
 <script type="text/javascript">
 	
-	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
+	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, bizIng, detailFlag){
 		
 		loadingOn();
-		//if("open" != open){
+		//if("yes" != bizIng){
 		//	alert("현재 비공개 상태로 설정되어 있습니다.");
 		//	loadingOff();
 

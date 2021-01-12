@@ -74,6 +74,7 @@ public class HeadhuntController {
 			commandMap.put("pageSize", pageSize);
 
 			//(2) 이번 페이지의 데이터 목록.
+			model.setShowAll("Y");
 			item = headhuntService.getRecruitItemList(model);
 			
 			//(3) 항목 번호 할당 - N/A.

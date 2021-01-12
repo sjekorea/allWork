@@ -27,8 +27,8 @@
 						<tr class="list_title">
 							<th class="desc01">회사명</th>
 							<th class="desc02">채용공고</th>
-							<th class="desc03">마감일</th>
-							<th class="desc04">스크랩일</th>
+							<th class="desc03">채용마감</th>
+							<th class="desc04">방문일</th>
 						</tr>
 						<c:choose>
 							<c:when test="${recruitViewList.size() > 0 }">
@@ -107,14 +107,13 @@
 	}
 	
 	
-	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
+	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, bizIng, detailFlag){
 		
 		loadingOn();
-		if("yes" != open){
-			alert("현재 비공개 상태로 설정되어 있습니다.");
-			loadingOff();
-
-		}else{
+		//if("yes" != bizIng){
+		//	alert("채용을 마감했습니다.");
+		//	loadingOff();
+		//}else{
 			var callback = function(data){
 				//if(data.rstCnt <= 0){
 				//	alert("이력서를 먼저 작성해 주세요");
@@ -134,7 +133,7 @@
 			};
 			
 			ajax('post', '/selectNetfuItemResumeCnt.ajax', param, callback);
-		}
+		//}
 	}
 </script>
 

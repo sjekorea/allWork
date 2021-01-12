@@ -177,14 +177,13 @@
 	}
 	
 	
-	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
+	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, bizIng, detailFlag){
 		
 		loadingOn();
-		if("open" != open){
-			alert("현재 비공개 상태로 설정되어 있습니다.");
-			loadingOff();
-	
-		}else{
+		//if("yes" != bizIng){
+		//	alert("채용을 마감했습니다.");
+		//	loadingOff();
+		//}else{
 			
 			$("#companyUid").val(companyUid);
 			$("#personUid").val(personUid);
@@ -193,6 +192,6 @@
 			$("#resumeNo").val(resumeNo);
 			$("#searchForm").attr("action", "/recruitDetail.do");
 			$("#searchForm").submit();
-		}
+		//}
 	}
 </script>

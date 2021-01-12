@@ -179,7 +179,7 @@
 	}
 	
 	
-	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
+	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, bizIng, detailFlag){
 		
 		loadingOn();
 			
