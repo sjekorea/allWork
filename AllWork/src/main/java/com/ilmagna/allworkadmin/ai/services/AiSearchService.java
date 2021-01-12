@@ -7,6 +7,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -19,7 +20,13 @@ import org.springframework.stereotype.Service;
 import com.ilmagna.allworkadmin.ai.domains.AiMatchingRecommendationModel;
 import com.ilmagna.allworkadmin.ai.domains.AiSearchModel;
 import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
+import com.ilmagna.allworkadmin.api.common.ApiConvertorUtil;
 import com.ilmagna.allworkadmin.api.services.ApiCategoryService;
+
+import allwork.common.CommandMap;
+import allwork.common.util.CommonColumnUtil;
+import allwork.service.NetfuItemCompanyService;
+import allwork.service.NetfuItemResumeService;
 
 @Service("aiSearchService")
 public class AiSearchService {
@@ -27,6 +34,13 @@ public class AiSearchService {
 	//@Autowired protected ApiCategoryService categoryService;
 	@Resource(name="apiCategoryService")
 	protected ApiCategoryService categoryService;
+
+
+	@Resource(name="netfuItemCompanyService")
+	private NetfuItemCompanyService netfuItemCompanyService;	
+
+	@Resource(name="netfuItemResumeService")
+	private NetfuItemResumeService netfuItemResumeService;
 
 	
 	//시멘틱 검색 작업 수행.
@@ -149,10 +163,19 @@ public class AiSearchService {
 				dataItem.parseJsonObj(categoryService, obj);
 				if (ApiCommonUtils.isNullOrEmpty(dataItem.getRecommend_id())) continue;
 				
+				//채용마감상태와 채용마감일 등록.
+				CommandMap commandMap = new CommandMap();
+				commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+				commandMap.put("no", dataItem.getRecommend_id());
+				Map<String, Object> recruitMap = netfuItemCompanyService.selectNetfuItemCompanyMap(commandMap.getMap());
+				String strBizIng = (String) recruitMap.get("bizIng");
+				dataItem.setBizIng(strBizIng);
+				
 				//채용마감일 등록.
-				String strEdate = AiMatchingResumeService.getBizEndDay(dataItem.getBiz_end_type(), dataItem.getBiz_end_day());
+				String strEdate = ApiConvertorUtil.getBizEndDay(dataItem.getBizIng(), dataItem.getBiz_end_type(), dataItem.getBiz_end_day());
 				dataItem.setStrEdate(strEdate);
 
+				//채용정보 등록.
 				dataItem.setId(i);
 				recruitDataAllwork.add(dataItem);
 			}
@@ -187,10 +210,13 @@ public class AiSearchService {
 				dataItem.parseJsonObj(categoryService, obj);
 				if (ApiCommonUtils.isNullOrEmpty(dataItem.getRecommend_id())) continue;
 				
+				//채용마감상태와 채용마감일 등록.
+				dataItem.setBizIng("yes");
 				//채용마감일 등록.
-				String strEdate = AiMatchingResumeService.getBizEndDay(dataItem.getBiz_end_type(), dataItem.getBiz_end_day());
+				String strEdate = ApiConvertorUtil.getBizEndDay(dataItem.getBizIng(), dataItem.getBiz_end_type(), dataItem.getBiz_end_day());
 				dataItem.setStrEdate(strEdate);
 
+				//채용정보 등록.
 				dataItem.setId(i);
 				recruitDataWorknet.add(dataItem);
 			}
@@ -225,6 +251,17 @@ public class AiSearchService {
 				dataItem.parseJsonObj(categoryService, obj);
 				if (ApiCommonUtils.isNullOrEmpty(dataItem.getRecommend_id())) continue;
 				
+				//이력서 공개상태.
+				CommandMap commandMap = new CommandMap();
+				commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
+				commandMap.put("personUid", dataItem.getUid());
+				commandMap.put("no", dataItem.getRecommend_id());
+				Map<String, Object> resumeMap = netfuItemResumeService.selectNetfuItemResumeMap(commandMap.getMap());
+
+				dataItem.setInid_secret((String) resumeMap.get("inidSecret"));
+
+				
+				//인재정보 등록.
 				dataItem.setId(i);
 				resumeDataAllwork.add(dataItem);
 			}

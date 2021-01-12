@@ -38,7 +38,7 @@
 				<tr>
 					<td rowspan="3" class="desc01">${convert:getPersonNameHidden(result.name) }</td>
 					<td colspan="2" class="desc02">
-						<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.recommend_id }', 'no', 'resume');">
+						<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.recommend_id }', '${result.inid_secret }', 'resume');">
 							${result.detail }
 						</a>
 					</td>
@@ -365,24 +365,22 @@
 	});	
 	
 	
-	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
+	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, secret, detailFlag){
 		
 		loadingOn();
 		
-		if("resume" == detailFlag){
-			if("no" != open){
-				alert("현재 비공개 상태로 설정되어 있습니다.");
-				loadingOff();
+		if("no" != secret){
+			alert("현재 비공개 상태로 설정되어 있습니다.");
+			loadingOff();
 
-			}else{
-				$("#companyUid").val(companyUid);
-				$("#personUid").val(personUid);
-				$("#no").val(no);
-				$("#recruitNo").val(recruitNo);
-				$("#resumeNo").val(resumeNo);
-				$("#searchForm").attr("action", "/resumeDetail.do");
-				$("#searchForm").submit();
-			} 
-		}
+		}else{
+			$("#companyUid").val(companyUid);
+			$("#personUid").val(personUid);
+			$("#no").val(no);
+			$("#recruitNo").val(recruitNo);
+			$("#resumeNo").val(resumeNo);
+			$("#searchForm").attr("action", "/resumeDetail.do");
+			$("#searchForm").submit();
+		} 
 	}
 </script>

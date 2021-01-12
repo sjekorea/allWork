@@ -126,6 +126,10 @@
 						<caption>희망구직 정보</caption>
 						<tbody>
 							<tr>
+								<th>이력서 공개</th>
+								<td>${(resumeMap.inidSecret == 'yes')? "비공개" : "공개"}</td>
+							</tr>
+							<tr>
 								<th>이력서 제목</th>
 								<td>${resumeMap.inidTitle }</td>
 							</tr>

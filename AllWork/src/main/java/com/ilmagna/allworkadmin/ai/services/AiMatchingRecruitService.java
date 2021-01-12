@@ -55,13 +55,13 @@ public class AiMatchingRecruitService {
 						if (!ApiCommonUtils.isNullOrEmpty(data.getRecommend_id())) {
 							int recommend_id = Integer.parseInt(data.getRecommend_id());
 							
+							//이력서 공개상태.
 							CommandMap commandMap = new CommandMap();
 							commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
 							commandMap.put("personUid", data.getUid());
 							commandMap.put("no", recommend_id);
 							Map<String, Object> resumeMap = netfuItemResumeService.selectNetfuItemResumeMap(commandMap.getMap());
 
-							//이력서 공개상태.
 							itemData.getData().get(j).setInid_secret((String) resumeMap.get("inidSecret"));
 
 							//구직자 이력서 사진.

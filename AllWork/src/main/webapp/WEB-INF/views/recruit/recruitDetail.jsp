@@ -240,7 +240,7 @@
 				</div>
 			</div>
 		<c:if test="${SE_USER_TYPE == 'person' }">
-			<c:if test="${finishedStatus ne '채용 마감' }">
+			<c:if test="${finishedStatus ne '채용마감' }">
 				<ul>
 					<c:if test="${scrapCnt <= 0 }">
 						<li id="scrapBtn"><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>

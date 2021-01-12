@@ -39,11 +39,11 @@
 				<tr>
 					<td rowspan="3" class="desc01">${result.name }</td>
 					<td colspan="3" class="desc02">
-						<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', 'yes', '');">
+						<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', '${result.bizIng }', '');">
 							${result.title }
 						</a>
 					</td>
-					<td rowspan="3" class="desc03">${convert:getEndCond(result.biz_ing, result.biz_end_type, result.biz_end_day)}</td>
+					<td rowspan="3" class="desc03">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</td>
 				</tr>
 				<tr>
 					<td><span class="desc_title">급여:</span><span class="desc_desc00">${result.salary }</span></td>
@@ -175,7 +175,7 @@
 							${result.title }
 						</a>
 					</td>
-					<td rowspan="3" class="desc03">${convert:getEndCond(result.biz_ing, result.biz_end_type, result.biz_end_day)}</td>
+					<td rowspan="3" class="desc03">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</td>
 				</tr>
 				<tr>
 					<td><span class="desc_title">급여:</span><span class="desc_desc00">${result.salary }</span></td>

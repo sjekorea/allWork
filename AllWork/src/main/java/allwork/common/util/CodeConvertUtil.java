@@ -30,10 +30,10 @@ public class CodeConvertUtil {
 		try{
 
 			if("no".equals(bizIng)){
-				rtnStr = "<p class='deadline deadline01'>채용 마감</p>";
+				rtnStr = "<p class='deadline deadline01'>채용마감</p>";
 			}else{
 				if("get".equals(bizEndType)){
-					rtnStr = "<p class='deadline deadline04'>채용시마감</p>";
+					rtnStr = "<p class='deadline deadline04'>채용시까지</p>";
 				}else if("often".equals(bizEndType)){
 					rtnStr = "<p class='deadline deadline00'>상시채용</p>";
 				}else{
@@ -46,7 +46,7 @@ public class CodeConvertUtil {
 						}else{
 							dateCompareResult = DateUtil.getCompareDate(bizEndDay);
 							if( dateCompareResult < 0){  // 오늘날짜가 마감일 이후
-								rtnStr = "<p class='deadline deadline01'>채용 마감</p>";
+								rtnStr = "<p class='deadline deadline01'>채용마감</p>";
 							}else if( dateCompareResult > 0){  // 오늘날짜가 마감일 이전
 								rtnStr = "<p class='deadline deadline02'> ~"+bizEndDay.substring(5)+"("+DateUtil.getDayOfWeek(bizEndDay)+")"+"</p>";
 							}else{
@@ -91,10 +91,10 @@ public class CodeConvertUtil {
 		try{
 
 			if("no".equals(bizIng)){
-				rtnStr = "채용 마감";
+				rtnStr = "채용마감";
 			}else{
 				if("get".equals(bizEndType)){
-					rtnStr = "채용시마감";
+					rtnStr = "채용시까지";
 				}else if("often".equals(bizEndType)){
 					rtnStr = "상시채용";
 				}else{
@@ -106,7 +106,7 @@ public class CodeConvertUtil {
 						}else{
 							dateCompareResult = DateUtil.getCompareDate(bizEndDay);
 							if( dateCompareResult < 0){  // 오늘날짜가 마감일 이후
-								rtnStr = "채용 마감";
+								rtnStr = "채용마감";
 							}else if( dateCompareResult > 0){  // 오늘날짜가 마감일 이전
 								rtnStr = bizEndDay+" ( "+DateUtil.getDayOfWeek(bizEndDay)+"요일 ) 마김일"+(dateCompareResult)+"일전";
 							}else{
@@ -133,10 +133,10 @@ public class CodeConvertUtil {
 		try{
 
 			if("yes".equals(bizIng)){
-				rtnStr = "채용 마감";
+				rtnStr = "채용마감";
 			}else{
 				if("get".equals(bizEndType)){
-					rtnStr = "채용시마감";
+					rtnStr = "채용시까지";
 				}else if("often".equals(bizEndType)){
 					rtnStr = "상시채용";
 				}else{
@@ -148,7 +148,7 @@ public class CodeConvertUtil {
 						}else{
 							dateCompareResult = DateUtil.getCompareDate(bizEndDay);
 							if( dateCompareResult < 0){  // 오늘날짜가 마감일 이후
-								rtnStr = "채용 마감";
+								rtnStr = "채용마감";
 							}else if( dateCompareResult > 0){  // 오늘날짜가 마감일 이전
 								rtnStr = bizEndDay+" ( "+DateUtil.getDayOfWeek(bizEndDay)+"요일 )";
 							}else{

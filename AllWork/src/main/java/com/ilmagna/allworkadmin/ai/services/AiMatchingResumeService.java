@@ -2,6 +2,7 @@ package com.ilmagna.allworkadmin.ai.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -11,7 +12,12 @@ import com.ilmagna.allworkadmin.ai.daos.AiMatchingResumeDAO;
 import com.ilmagna.allworkadmin.ai.domains.AiMatchingRecommendationModel;
 import com.ilmagna.allworkadmin.ai.domains.AiMatchingResumeModel;
 import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
+import com.ilmagna.allworkadmin.api.common.ApiConvertorUtil;
 import com.ilmagna.allworkadmin.api.services.ApiCategoryService;
+
+import allwork.common.CommandMap;
+import allwork.common.util.CommonColumnUtil;
+import allwork.service.NetfuItemCompanyService;
 
 @Service("aiMatchingResumeService")
 public class AiMatchingResumeService {
@@ -24,6 +30,9 @@ public class AiMatchingResumeService {
 
 	@Resource(name="apiCategoryService")
 	protected ApiCategoryService categoryService;
+
+	@Resource(name="netfuItemCompanyService")
+	private NetfuItemCompanyService netfuItemCompanyService;	
 
 	
 	public AiMatchingResumeModel getResumeByMember(AiMatchingResumeModel model) throws Exception {
@@ -40,8 +49,16 @@ public class AiMatchingResumeService {
 				for (int i = 0; i < list.size(); i++) {
 					AiMatchingResumeModel itemData = procDataItem(list.get(i));
 					for (int j = 0; j < itemData.getData().size(); j++) {
+						//채용마감상태와 채용마감일 등록.
+						CommandMap commandMap = new CommandMap();
+						commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+						commandMap.put("no", itemData.getData().get(j).getRecommend_id());
+						Map<String, Object> recruitMap = netfuItemCompanyService.selectNetfuItemCompanyMap(commandMap.getMap());
+						String strBizIng = (String) recruitMap.get("bizIng");
+						itemData.getData().get(j).setBizIng(strBizIng);
+
 						//채용마감일 등록.
-						String strEdate = getBizEndDay(itemData.getData().get(j).getBiz_end_type(), itemData.getData().get(j).getBiz_end_day());
+						String strEdate = ApiConvertorUtil.getBizEndDay(itemData.getData().get(j).getBizIng(), itemData.getData().get(j).getBiz_end_type(), itemData.getData().get(j).getBiz_end_day());
 						itemData.getData().get(j).setStrEdate(strEdate);
 
 						//추천정보 등록.
@@ -61,18 +78,6 @@ public class AiMatchingResumeService {
 			e.printStackTrace();
 		}
 		return item;
-	}
-	
-	public static String getBizEndDay(String strBizType, String strBizDay) {
-		String strEdate = "";
-
-		//채용마감일 등록.
-		if (strBizType.equalsIgnoreCase("get"))			strEdate = "채용시까지";
-		else if (strBizType.equalsIgnoreCase("often"))	strEdate = "상시채용";
-		//else if (strBizType.equalsIgnoreCase("input"))	strEdate = strBizDay;
-		else 											strEdate = strBizDay;
-		
-		return strEdate;
 	}
 
 	

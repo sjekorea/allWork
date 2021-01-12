@@ -83,6 +83,7 @@
 												<input type="hidden" name="inidSecret" id="inidSecret" value="" />
 											</td>
 										</tr>
+										<!-- 
 										<tr>
 											<th>사진 공개<span class="necessary">*</span></th>
 											<td>
@@ -91,6 +92,8 @@
 												<input type="hidden" name="inidPChk" id="inidPChk" value="" />
 											</td>
 										</tr>
+										 -->
+												<input type="hidden" name="inidPChk" id="inidPChk" value="yes" />
 									</tbody>
 								</table>
 							</div>

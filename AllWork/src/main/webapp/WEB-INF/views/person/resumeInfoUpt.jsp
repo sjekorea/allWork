@@ -42,7 +42,12 @@
 					<p class="personal_setting"><a href="/updateMyInfo.do" title="기본정보수정"><i class="fas fa-cog"></i>&nbsp;기본정보수정</a></p>
 					<div id="imgPart">
 						<div class="imgArea">
+				<c:if test="${resumeMap.inidPhoto == null || resumeMap.inidPhoto == '' }">
 							<p><img src="/img/userNo.png" alt="본인사진"/></p>
+				</c:if>
+				<c:if test="${resumeMap.inidPhoto != null && resumeMap.inidPhoto != '' }">
+						<p><img src="/allwork/peg/${resumeMap.photo}" alt="이력서 사진" /></p>
+				</c:if>
 						</div>
 						<p class="btnArea"><label for="myImg">사진선택</label><input id="inidPhoto" name="inidPhoto" type="file" onchange="javascript:viewImgName(this);"/><br/><li id="imgName"></li></p>
 						<input type="hidden" name="orgInidPhoto" id="orgInidPhoto" value="${resumeMap.inidPhoto }" />
@@ -75,6 +80,7 @@
 												<input type="hidden" name="inidSecret" id="inidSecret" value="" />
 											</td>
 										</tr>
+										<!-- 
 										<tr>
 											<th>사진 공개<span class="necessary">*</span></th>
 											<td>
@@ -83,6 +89,8 @@
 												<input type="hidden" name="inidPChk" id="inidPChk" value="" />
 											</td>
 										</tr>
+										 -->
+												<input type="hidden" name="inidPChk" id="inidPChk" value="yes" />
 									</tbody>
 								</table>
 							</div>

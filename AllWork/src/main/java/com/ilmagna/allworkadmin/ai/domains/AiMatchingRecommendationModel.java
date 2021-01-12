@@ -40,6 +40,7 @@ public class AiMatchingRecommendationModel implements Serializable  {
 	
 	private String biz_end_type;				//				채용마감 조건.
 	private String biz_end_day;					//				채용마감 일.
+	private String bizIng;						//				yes = 채용진행중, no = 채용마감.
 	
 	public AiMatchingRecommendationModel() {
 		this.id				= 0;
@@ -57,11 +58,12 @@ public class AiMatchingRecommendationModel implements Serializable  {
 		this.detail			= "";
 		this.job_form		= "";
 		
-		this.inid_secret	= "yes";
+		this.inid_secret	= "no";
 		this.photo			= "";
 		
 		this.biz_end_type	= "get";
 		this.biz_end_day	= "";
+		this.bizIng			= "yes";
 	}
 
 	
@@ -409,5 +411,17 @@ public class AiMatchingRecommendationModel implements Serializable  {
 	 */
 	public void setBiz_end_day(String biz_end_day) {
 		this.biz_end_day = biz_end_day;
+	}
+	/**
+	 * @return the bizIng
+	 */
+	public String getBizIng() {
+		return bizIng;
+	}
+	/**
+	 * @param bizIng the bizIng to set
+	 */
+	public void setBizIng(String bizIng) {
+		this.bizIng = bizIng;
 	}
 }
