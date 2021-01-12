@@ -32,7 +32,7 @@
 							<img src="/img/company_view/logoNo.jpg" alt="로고"/>	
 						</c:when>
 						<c:otherwise>
-							<img src="/peg/${companyMap.bizLogo }" alt="로고"/>
+							<img src="/allwork/peg/${companyMap.bizLogo }" alt="로고"/>
 						</c:otherwise>
 					</c:choose>
 				</p>
@@ -125,7 +125,7 @@
 												<img id="photoImg1" src="/img/myCompany/noimage.jpg" alt="회사이미지1">
 											</c:when>
 											<c:otherwise>
-												<img src="/peg/${companyMap.photo1 }" alt="로고"/>
+												<img src="/allwork/peg/${companyMap.photo1 }" alt="로고"/>
 											</c:otherwise>
 										</c:choose>
 									</li>
@@ -135,7 +135,7 @@
 												<img id="photoImg2" src="/img/myCompany/noimage.jpg" alt="회사이미지2">
 											</c:when>
 											<c:otherwise>
-												<img src="/peg/${companyMap.photo2 }" alt="로고"/>
+												<img src="/allwork/peg/${companyMap.photo2 }" alt="로고"/>
 											</c:otherwise>
 										</c:choose>
 									</li>
@@ -145,7 +145,7 @@
 												<img id="photoImg3" src="/img/myCompany/noimage.jpg" alt="회사이미지3">
 											</c:when>
 											<c:otherwise>
-												<img src="/peg/${companyMap.photo3 }" alt="로고"/>
+												<img src="/allwork/peg/${companyMap.photo3 }" alt="로고"/>
 											</c:otherwise>
 										</c:choose>
 									</li>
@@ -155,7 +155,7 @@
 												<img id="photoImg4" src="/img/myCompany/noimage.jpg" alt="회사이미지4">
 											</c:when>
 											<c:otherwise>
-												<img src="/peg/${companyMap.photo4 }" alt="로고"/>
+												<img src="/allwork/peg/${companyMap.photo4 }" alt="로고"/>
 											</c:otherwise>
 										</c:choose>
 									</li>

@@ -14,5 +14,6 @@ public interface NetfuItemCompanyService {
 	int insertNetfuItemCompany(Map<String, Object> map) throws Exception;
 	int updateNetfuItemCompany(Map<String, Object> map) throws Exception;
 	int deleteNetfuItemCompany(Map<String, Object> map) throws Exception;
+	int updateNetfuItemCompanyBizIng(Map<String, Object> map) throws Exception;
 
 }

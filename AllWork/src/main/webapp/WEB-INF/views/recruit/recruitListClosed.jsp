@@ -31,13 +31,19 @@
 								<li>
 									<p class="state">모집마감</p>
 									<div class="desc">
-										<p class="desc0"><a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="모집공고타이틀">${result.bizTitle }</a></p>
+										<p class="desc0"><a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="모집공고타이틀">${result.bizTitle }</a></p>
 										<div class="desc1">
 											<span>${codeConvert:getRecruitStatusText(result.bizIng, result.bizEndType, result.bizEndDay) }</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-											<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="공고보기"><span>공고보기</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-											<!-- 
-											<a href="javascript:copyRecruit('${result.no }');" title="복사"><span>복사</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-											 -->
+											<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="공고보기"><span>공고보기</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+											<%-- <a href="javascript:copyRecruit('${result.no }');" title="복사"><span>복사</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; --%>
+											<c:choose>
+												<c:when test="${result.bizIng eq 'yes' }">
+													<a href="javascript:updateBizIng('${result.no }', 'no');" title="비공개"><span>비공개</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+												</c:when>
+												<c:otherwise>
+													<a href="javascript:updateBizIng('${result.no }', 'yes');" title="공개"><span>공개</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+												</c:otherwise>
+											</c:choose>
 											<a href="javascript:updateRecruit('${result.no }');" title="수정"><span>수정</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 											<a href="javascript:deleteRecruit('${result.no }');" title="삭제"><span>삭제</span></a>
 										</div>
@@ -126,7 +132,25 @@
 			$("#searchForm").submit();
 		});
 	});	
+	
+	
+	function updateBizIng(no, bizIng){
+		
 
+		loadingOn();
+		var callback = function(data){
+			alert("설정 되었습니다.");
+			$("#personUid").val("");
+			$("#companyUid").val("");
+			$("#pageNo").val("");
+			$("#searchForm").submit();
+		};
+		var param = {
+					bizIng : bizIng
+					, no : no
+				};
+		ajax('post', '/updateNetfuItemCompanyBizIng.ajax', param, callback);
+	}
 	
 	function updateRecruit(no){
 		
@@ -136,34 +160,35 @@
 		$("#searchForm").submit();
 	}
 
-	function deleteRecruit(){
+	function deleteRecruit(no){
 		//채용공고 삭제에 대한 사용자 확인.
 		if(!confirm("채용공고를 삭제할까요?")) return;
 
 		//채용공고 삭제.
+		var callback = function(data){
+			alert("저장 되었습니다.");
+			$("#personUid").val("");
+			$("#companyUid").val("");
+			$("#pageNo").val("");
+			$("#searchForm").submit();
+		};
 		var param = {
-					deleteItemMulti : deleteItemMulti
+					no : no
 				};
-		ajax('post', '/deleteRecruitScrapMulti.ajax', param, callback);
+		ajax('post', '/deleteRecruitInfo.ajax', param, callback);
 	}
 	
 	
 	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
 		
 		loadingOn();
-		if("open" != open){
-			alert("현재 비공개 상태로 설정되어 있습니다.");
-			loadingOff();
-	
-		}else{
 			
-			$("#companyUid").val(companyUid);
-			$("#personUid").val(personUid);
-			$("#no").val(no);
-			$("#recruitNo").val(recruitNo);
-			$("#resumeNo").val(resumeNo);
-			$("#searchForm").attr("action", "/recruitDetail.do");
-			$("#searchForm").submit();
-		}
+		$("#companyUid").val(companyUid);
+		$("#personUid").val(personUid);
+		$("#no").val(no);
+		$("#recruitNo").val(recruitNo);
+		$("#resumeNo").val(resumeNo);
+		$("#searchForm").attr("action", "/recruitDetail.do");
+		$("#searchForm").submit();
 	}
 </script>

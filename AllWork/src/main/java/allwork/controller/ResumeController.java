@@ -560,25 +560,6 @@ public class ResumeController {
 	/*
 	 * 등록된 이력서 갯수
 	 */
-	@RequestMapping(value="/updateNetfuItemResumeSecret.ajax")
-	public ModelAndView updateNetfuItemResumeSecret(CommandMap commandMap, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		try{
-			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
-			int rstCnt = netfuItemResumeService.updateNetfuItemResumeSecret(commandMap.getMap());
-			mv.addObject("map", commandMap.getMap());
-			mv.addObject("rstCnt", rstCnt);
-			mv.setViewName("jsonView");
-		}catch(Exception e){
-			log.debug(this.getClass().getName()+" updateNetfuItemResumeSecret.ajax Exception!!!!  "+e.toString());
-		}
-		return mv;
-	}
-	
-	
-	/*
-	 * 등록된 이력서 갯수
-	 */
 	@RequestMapping(value="/selectNetfuItemResumeCnt.ajax")
 	public ModelAndView selectNetfuItemResumeCnt(CommandMap commandMap, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();

@@ -302,6 +302,37 @@
 		)
 	</insert>
 	
+	
+	<!-- 이력서 정보수정 -->
+	<insert id="updateNetfuItemResume" parameterType="hashmap">
+		<![CDATA[
+		update netfu_item_resume
+		set 
+			uid = #{uid}, info_type = #{infoType}, basic = #{basic}, name = #{name}, inid_p_chk = #{inidPChk}
+			, inid_phone = #{inidPhone}, inid_hphone = #{inidHphone}
+			, inid_email = #{inidEmail}, inid_post = #{inidPost}, inid_address1 = #{inidAddress1}, inid_address2 = #{inidAddress2}
+			, inid_home = #{inidHome}, inid_title = #{inidTitle}, indi_condition = #{indiCondition}
+			, inid_area1 = #{inidArea1}, inid_area2 = #{inidArea2}, inid_area3 = #{inidArea3}, inid_area4 = #{inidArea4}, inid_area5 = #{inidArea5}, inid_area6 = #{inidArea6}
+			, inid_type1 = #{inidType1}, inid_type2 = #{inidType2}, inid_type3 = #{inidType3}, inid_type4 = #{inidType4}, inid_type5 = #{inidType5}, inid_type6 = #{inidType6}
+			, inid_mylskill = #{inidMylskill}, inid_jobform = #{inidJobform}, inid_pay = #{inidPay}, pay_type = #{payType}
+			, inid_last_school = #{inidLastSchool}, inid_career = #{inidCareer}, inid_license = #{inidLicense}, inid_languages = #{inidLanguages}
+			, inid_introduce = #{inidIntroduce}, inid_secret = #{inidSecret}
+			, u_wdate = DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+			, service11 = #{service11}, service12 = #{service12}, service13 = #{service13}, service101 = #{service101}, service14 = #{service14}
+			, service15 = #{service15}, service16 = #{service16}, service17 = #{service17}
+			, inid_type7 = #{inidType7}, inid_type8 = #{inidType8}, inid_type9 = #{inidType9}
+			, inid_sex = #{inidSex}, sms_send = #{smsSend}, a_insert = #{aInsert}
+			, education2 = #{education2}, career2 = #{career2}, license2 = #{license2}, language2 = #{language2}
+			, inid_area_job1 = #{inidAreaJob1}, inid_area_job2 = #{inidAreaJob2}, inid_area_job3 = #{inidAreaJob3}, inid_area_job4 = #{inidAreaJob4}
+			, inid_area_job5 = #{inidAreaJob5}, inid_area_job6 = #{inidAreaJob6}, inid_area_job7 = #{inidAreaJob7}, inid_area_job8 = #{inidAreaJob8}, inid_area_job9 = #{inidAreaJob9}
+			, portfolio_file = #{portfolioFile}	
+		where 1=1
+			and uid = #{uid}
+			and no = #{no}
+		]]>
+	</insert>
+	
+	
 	<!-- 이력서 공개/비공개 설정 -->
 	<update id="updateNetfuItemResumeSecret" parameterType="hashmap">
 		update netfu_item_resume

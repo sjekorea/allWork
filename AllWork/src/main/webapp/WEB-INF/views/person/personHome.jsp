@@ -93,7 +93,7 @@
 							<c:if test="${status.index < 4 }">
 								<li>
 									<c:if test="${result.type == 1 }">
-										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', '${result.open }', '');">
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', '${result.bizIng }', '');">
 					                    	<div class="descBox">
 					                      		<p class="desc01">${result.name }</p>
 					                      		<p class="desc02">${convert:compByte(result.title, 30, "...")}</p>
@@ -147,7 +147,7 @@
 									<td rowspan="3" class="desc01">${result.name }</td>
 									<td colspan="6" class="desc02">
 										<c:if test="${result.type == 1 }">
-											<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', '${result.open }', '');">
+											<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', '${result.bizIng }', '');">
 												${result.title }
 											</a>
 										</c:if>
@@ -184,7 +184,7 @@
 								<tr class="desc desc0">
 									<td rowspan="3" class="desc01">${result.bizName }</td>
 									<td colspan="6" class="desc02">
-										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');">
 											${result.bizTitle }
 										</a>
 									</td>
@@ -222,7 +222,7 @@
 								<tr class="desc desc0">
 									<td rowspan="3" class="desc01">${result.bizName }</td>
 									<td colspan="6" class="desc02">
-										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');">
 											${result.bizTitle }
 										</a>
 									</td>
@@ -260,7 +260,7 @@
 								<tr class="desc desc0">
 									<td rowspan="3" class="desc01">${result.bizName }</td>
 									<td colspan="6" class="desc02">
-										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');">
 											${result.bizTitle }
 										</a>
 									</td>
@@ -320,7 +320,7 @@
 	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
 		
 		loadingOn();
-		if("open" != open){
+		if("yes" != open){
 			alert("현재 비공개 상태로 설정되어 있습니다.");
 			loadingOff();
 

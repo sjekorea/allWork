@@ -14,16 +14,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ilmagna.allworkadmin.ai.domains.AiMatchingRecommendationModel;
 import com.ilmagna.allworkadmin.ai.domains.AiMatchingResumeModel;
 import com.ilmagna.allworkadmin.ai.services.AiMatchingRecruitService;
 import com.ilmagna.allworkadmin.ai.services.AiMatchingResumeService;
+import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
 
 import allwork.common.CommandMap;
 import allwork.service.NetfuMemberService;
@@ -92,6 +97,8 @@ public class PersonController {
 	protected AiMatchingResumeService matchingResumeService;
 	//(end) 2020.12.30 by s.yoo
 
+	@Value("${upload.path.photo}")
+	private String filePathPhoto;
 	
 	/*
 	 * 개인 회원 홈
@@ -269,6 +276,152 @@ public class PersonController {
 			log.info(this.getClass().getName()+".registResume Exception !!!!! \n"+e.toString());
 			CommonUtil.Alert("등록에 실패 하였습니다.", "/personHome.do", request, response);
 		}
+	}
+	
+	
+	/*
+	 * 이력서 수정 페이지 이동
+	 */
+	@RequestMapping(value="/resumeInfoUpt.do")
+	public ModelAndView resumeInfoUpt(CommandMap commandMap, HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView("/person/resumeInfoUpt");
+		
+		try{
+			
+			commandMap.put("personUid", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
+			
+			// 회원정보 조회
+			Map<String, Object> memberMap = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
+
+			// 이력서 정보 -- uid, no
+			commandMap.put("uid", commandMap.get("personUid"));
+			commandMap.put("no", commandMap.get("resumeNo"));
+			Map<String, Object> resumeMap = netfuItemResumeService.selectNetfuItemResumeMap(commandMap.getMap());
+						
+			commandMap.put("pCode", "");
+			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
+			commandMap.put("type", "job");
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 산업별 목록  ( netfu_cate : type = 'area_job' )
+			commandMap.put("type", "area_job");
+			List<Map<String, Object>> areaJobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 지역별  ( netfu_cate : type ='area' )
+			commandMap.put("type", "area");
+			List<Map<String, Object>> areaList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 고용형태  ( netfu_cate : type ='job_type' )
+			commandMap.put("type", "job_type");
+			List<Map<String, Object>> jobTypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 급여종류  ( netfu_cate : type ='inid_pay' )
+			commandMap.put("type", "inid_pay");
+			List<Map<String, Object>> inidPayList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 최종학력  ( netfu_cate : type ='job_school' )
+			commandMap.put("type", "job_school");
+			List<Map<String, Object>> jobSchoolList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 학력-상태  ( netfu_cate : type ='job_state' )
+			commandMap.put("type", "job_state");
+			List<Map<String, Object>> jobStateList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			// 자격증  ( netfu_cate : type ='inid_mylskill' )
+			commandMap.put("type", "inid_mylskill");
+			List<Map<String, Object>> inidMylskillList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, String> resumeEducation = mapper.readValue((String)resumeMap.get("education2"), Map.class);
+			Map<String, String> resumeCareer = mapper.readValue((String)resumeMap.get("career2"), Map.class);
+			Map<String, String> resumeLicense = mapper.readValue((String)resumeMap.get("license2"), Map.class);
+			Map<String, String> resumeLanguage = mapper.readValue((String)resumeMap.get("language2"), Map.class);
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("memberMap", memberMap);
+			mv.addObject("resumeMap", resumeMap);
+			mv.addObject("jobList", jobList);
+			mv.addObject("areaJobList", areaJobList);
+			mv.addObject("areaList", areaList);
+			mv.addObject("jobTypeList", jobTypeList);
+			mv.addObject("inidPayList", inidPayList);
+			mv.addObject("jobSchoolList", jobSchoolList);
+			mv.addObject("jobStateList", jobStateList);
+			mv.addObject("inidMylskillList", inidMylskillList);
+
+			mv.addObject("resumeEducation", resumeEducation);
+			mv.addObject("resumeCareer", resumeCareer);
+			mv.addObject("resumeLicense", resumeLicense);
+			mv.addObject("resumeLanguage", resumeLanguage);
+			
+		}catch(Exception e){
+			System.out.println(this.getClass().getName()+".resumeInfoUpt Exception!!!! \n"+e.toString());
+		}
+		
+		return mv;
+	}
+	
+	
+	/*
+	 * 이력서수정 처리
+	 */
+	@RequestMapping(value="/updateResume.do")
+	public void updateResume(CommandMap commandMap, HttpSession session, MultipartHttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView mv = new ModelAndView();
+		String attachFileName = "";
+		String alertMsg = "";
+		String redirectUrl = "";
+		try{
+			
+			//첨부파일 Upload.
+			String strInidPhoto = "";
+			MultipartFile fileInidPhoto = request.getFile("inidPhoto");
+			if(fileInidPhoto != null && !fileInidPhoto.isEmpty()) {
+				strInidPhoto = ApiCommonUtils.uploadPhotoFile("inidPhoto", (String)session.getAttribute("SE_LOGIN_ID"), fileInidPhoto, filePathPhoto);
+				commandMap.put("inidPhoto", strInidPhoto);
+			}else{
+				commandMap.put("inidPhoto", (String)commandMap.get("orgInidPhoto"));
+			}
+			
+			String strPortfolio = "";
+			MultipartFile filePortfolio = request.getFile("portfolioFile");
+			if(filePortfolio != null && !filePortfolio.isEmpty()) {
+				strPortfolio = ApiCommonUtils.uploadPhotoFile("portfolioFile", (String)session.getAttribute("SE_LOGIN_ID"), filePortfolio, filePathPhoto);
+				commandMap.put("portfolioFile", strPortfolio);
+			}else{
+				commandMap.put("portfolioFile", (String)commandMap.get("orgportfolioFile"));
+			}
+			
+			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
+			netfuItemResumeService.updateNetfuItemResume(commandMap.getMap()); // 이력서 수정
+			CommonUtil.Alert("수정되었습니다.", "/resumeList.do", request, response);
+			
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".registResume Exception !!!!! \n"+e.toString());
+			CommonUtil.Alert("수정에 실패 하였습니다.", "/personHome.do", request, response);
+		}
+	}
+	
+	/*
+	 * 이력서 공개/비공개 설정
+	 */
+	@RequestMapping(value="/updateNetfuItemResumeSecret.ajax")
+	public ModelAndView updateNetfuItemResumeSecret(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		try{
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			int rstCnt = netfuItemResumeService.updateNetfuItemResumeSecret(commandMap.getMap());
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("rstCnt", rstCnt);
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			log.debug(this.getClass().getName()+" updateNetfuItemResumeSecret.ajax Exception!!!!  "+e.toString());
+		}
+		return mv;
 	}
 	
 	

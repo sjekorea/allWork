@@ -76,10 +76,10 @@
 							<li>
 								<p class="state">진행중</p>
 								<div class="desc">
-									<p class="desc0"><a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="모집공고타이틀">${result.bizTitle }</a></p>
+									<p class="desc0"><a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="모집공고타이틀">${result.bizTitle }</a></p>
 									<div class="desc1">
 										<span>${codeConvert:getRecruitStatusText(result.bizIng, result.bizEndType, result.bizEndDay) }</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="공고보기"><span>공고보기</span></a>
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="공고보기"><span>공고보기</span></a>
 										<%-- <a href="javascript:copyRecruit('${result.no }');" title="복사"><span>복사</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 										<a href="javascript:deleteRecruit('${result.no }');" title="삭제"><span>삭제</span></a> --%>
 									</div>
@@ -370,7 +370,7 @@
 			} 
 		}else{
 			
-			if("open" != open){
+			if("yes" != open){
 				alert("현재 비공개 상태로 설정되어 있습니다.");
 				loadingOff();
 		

@@ -83,7 +83,12 @@
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
 					<div id="imgArea">
+				<c:if test="${memberMap.photo == null || memberMap.photo == '' }">
 						<p><img src="img/userNo.png" alt="본인사진"/></p>
+				</c:if>
+				<c:if test="${memberMap.photo != null && memberMap.photo != '' }">
+						<p><img src="/allwork/peg/${memberMap.photo}" alt="이력서 사진" /></p>
+				</c:if>
 					</div>
 					<table>
 						<caption>이력 등록하기</caption>

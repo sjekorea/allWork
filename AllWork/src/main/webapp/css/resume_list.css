@@ -29,13 +29,14 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 
 /*###################################   리스트 제목부분   ###################################*/
   #listPart .list .list_title th{height:50px;line-height: 50px;margin:0;background-color:#EDF0F5;}
-  #listPart .list .desc td{padding: 20px 0;}
-  #listPart .list .desc00{width:50px;}
-  #listPart .list .desc01{width:400px;}
-  #listPart .list .desc02{width:100px;}
-  #listPart .list .desc03{width:80px;}
-  #listPart .list .desc04{width:80px;}
-
-  #listPart .list td.desc01{text-align: left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  #listPart .list .desc td{padding: 20px 0;line-height:22px;}
+  #listPart .list .desc00{width:60px;}
+  #listPart .list .desc01{width:300px;text-align: left;}
+  #listPart .list .desc02{width:120px;}
+  #listPart .list .desc03{width:60px;}
+  #listPart .list .desc04{width:60px;}
+  #listPart .list .desc05{width:120px;}
+  #listPart .list .desc05 a{display:inline-block;padding:5px 10px;border:1px solid #ccc;font-size:12px;}
 
   #listPart .list td a:hover{text-decoration: underline;}
+  #listPart .list .desc05 a:hover{text-decoration:none;border:1px solid #999;}

@@ -27,6 +27,7 @@
 							<th class="desc02">등록일</th>
 							<th class="desc03">공개</th>
 							<th class="desc04">비공개</th>
+							<th class="desc05">이력서 수정</th>
 						</tr>
 						<c:choose>
 							<c:when test="${resumeList.size() > 0 }">
@@ -44,6 +45,7 @@
 										<td class="desc02">${result.wdate }</td>
 										<td class="desc03"><input type="radio" id="inidSecretRadio${result.no }" name="inidSecretRadio${result.no }" value="no" <c:if test="${result.inidSecret ne 'yes' }">checked</c:if> onclick="javascript:updateSecret('${result.no}');"/></td>
 										<td class="desc04"><input type="radio" id="inidSecretRadio${result.no }" name="inidSecretRadio${result.no }" value="yes" <c:if test="${result.inidSecret eq 'yes' }">checked</c:if> onclick="javascript:updateSecret('${result.no}');"/></td>
+										<td class="desc05"><a href="javascript:updateResume('${result.no }');" title="수정">수정하기</a></td>
 										<input type="hidden" name="inidSecret" id="inidSecret" value="${result.inidSecret}" />
 									</tr>
 								</c:forEach>
@@ -99,11 +101,14 @@ $(document).ready(function(){
 	function updateSecret(no){
 	
 		var inidSecret = $("input[name=inidSecretRadio"+no+"]:checked").val(); 
-		alert(inidSecret);
+
 		loadingOn();
 		var callback = function(data){
 			alert("설정 되었습니다.");
-			loadingOff();
+			$("#personUid").val("");
+			$("#companyUid").val("");
+			$("#pageNo").val("");
+			$("#searchForm").submit();
 		};
 		var param = {
 					inidSecret : inidSecret
@@ -133,7 +138,7 @@ $(document).ready(function(){
 			alert("항목을 삭제했습니다.");
 			$("#personUid").val("");
 			$("#companyUid").val("");
-			$("#searchForm #pageNo").val("");
+			$("#pageNo").val("");
 			$("#searchForm").submit();
 		};
 		var param = {
@@ -160,6 +165,15 @@ $(document).ready(function(){
 			$("#searchForm").attr("action", "/resumeDetail.do");
 			$("#searchForm").submit();
 		} 
+	}
+	
+	
+	function updateResume(no){
+		
+		$("#no").val(no);
+		$("#resumeNo").val(no);
+		$("#searchForm").attr("action", "/resumeInfoUpt.do");
+		$("#searchForm").submit();
 	}
 
 </script>

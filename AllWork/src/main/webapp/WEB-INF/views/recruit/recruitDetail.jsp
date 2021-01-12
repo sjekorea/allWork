@@ -80,7 +80,7 @@
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
 					<p class="company_setting">
-						<c:if test="${concernCnt <= 0 }">
+						<c:if test="${concernCnt <= 0 && SE_LOGIN_ID != companyMap.uid }">
 							<a href="javascript:goConcernRegist();" title="관심기업등록"><i class="far fa-heart"></i>&nbsp;관심기업등록</a>
 						</c:if>
 						<span><a href="javascript:detailPopup();" title="기업정보 상세보기"><i class="fas fa-cog"></i>&nbsp;기업정보 상세보기</a></span>

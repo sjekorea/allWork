@@ -169,7 +169,7 @@
 			<ul>
 				<c:forEach var="result" items="${recruitFreeList}" varStatus="status">
 					<li>
-						<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="기업회원등록공고">
+						<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="기업회원등록공고">
 							<div class="descBox">
 								<p class="desc01">${result.bizName }</p>
 								<p class="desc02">${convert:compByte(result.bizTitle, 70, "...")}</p>
@@ -194,7 +194,7 @@
 			<ul>
 				<c:forEach var="result" items="${recruitAlbaList}" varStatus="status">
 					<li>
-						<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="기업회원등록공고">
+						<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="기업회원등록공고">
 							<div class="descBox">
 								<p class="desc01">${result.bizName }</p>
 								<p class="desc02">${convert:compByte(result.bizTitle, 70, "...")}</p>

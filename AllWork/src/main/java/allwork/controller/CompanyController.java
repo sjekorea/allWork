@@ -353,7 +353,7 @@ public class CompanyController {
 	 * 채용정보 수정 처리
 	 */
 	@RequestMapping(value="/updateRecruit.do")
-	public void updateRecruit(CommandMap commandMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+	public void updateRecruit(CommandMap commandMap, HttpSession session, MultipartHttpServletRequest request, HttpServletResponse response) {
 		
 		ModelAndView mv = new ModelAndView();
 		String attachFileName = "";
@@ -361,15 +361,17 @@ public class CompanyController {
 		String redirectUrl = "";
 		try{
 			
-			String attachFlag = (String)commandMap.get("orgBizFormFileFlag");
-			if("Y".equals(attachFlag)){
-				attachFileName = fileUtils.uploadFile(commandMap.getMap(), request); // 첨부파일 업로드
+			//첨부파일 Upload.
+			String strbizFormFile = "";
+			MultipartFile filebizFormFile = request.getFile("bizFormFile");
+			if(filebizFormFile != null && !filebizFormFile.isEmpty()) {
+				strbizFormFile = ApiCommonUtils.uploadPhotoFile("bizFormFile", (String)session.getAttribute("SE_LOGIN_ID"), filebizFormFile, filePathPhoto);
+				commandMap.put("bizFormFile", attachFileName);
 			}else{
-				attachFileName = (String)commandMap.get("orgBizFormFile");
+				commandMap.put("bizFormFile", (String)commandMap.get("orgBizFormFile"));
 			}
 			
 			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
-			commandMap.put("bizFormFile", attachFileName);
 			netfuItemCompanyService.updateNetfuItemCompany(commandMap.getMap()); // 채용공고 저장
 			CommonUtil.Alert("등록되었습니다.", "/recruitListProgress.do", request, response);
 			

@@ -27,12 +27,12 @@
 				<div id="company_detail">
 					<p class="company_name">${companyMap.bizName}</p>
 					<p class="company_hp"><a href="#none" title="기업홈페이지">${companyMap.bizHome}</a></p>
-		<c:if test="${companyMap.biz == null || companyMap.biz == '' }">
+				<c:if test="${companyMap.bizLogo == null || companyMap.bizLogo == '' }">
 					<p class="company_logo"><img src="img/logoNo.jpg" alt="로고"/></p>
-		</c:if>
-		<c:if test="${companyMap.biz != null && companyMap.biz != '' }">
-					<p class="company_logo"><img src="/allwork/peg/"+${companyMap.biz} alt="로고" /></p>
-		</c:if>
+				</c:if>
+				<c:if test="${companyMap.bizLogo != null && companyMap.bizLogo != '' }">
+					<p class="company_logo"><img src="/allwork/peg/${companyMap.bizLogo}" alt="로고" /></p>
+				</c:if>
 				</div>
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
@@ -170,7 +170,7 @@
 										<span>
 											<select id="bizCareerYear" name="bizCareerYear" title="경력연차">
 												<option value="">선택</option>
-												<c:forEach var="i" begin="1" end="30">
+												<c:forEach var="i" begin="1" end="50">
 													<option value="${i}">${i}</option>
 												</c:forEach>
 											</select>

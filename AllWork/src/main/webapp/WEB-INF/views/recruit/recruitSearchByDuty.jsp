@@ -92,7 +92,7 @@
 								<tr>
 									<td rowspan="3" class="desc01">${result.bizName }</td>
 									<td colspan="3" class="desc02">
-										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');">
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');">
 											${convert:compByte(result.bizTitle, 100, "...")}
 										</a>
 									</td>
@@ -273,7 +273,7 @@
 	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
 		
 		loadingOn();
-		if("open" != open){
+		if("yes" != open){
 			alert("현재 비공개 상태로 설정되어 있습니다.");
 			loadingOff();
 

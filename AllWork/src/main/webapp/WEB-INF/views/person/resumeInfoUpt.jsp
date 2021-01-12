@@ -17,15 +17,14 @@
 			<jsp:include page="/personSubMenu.do" />
 			<div id="leftPart_buttom">
 				<ul>
-					<li><a href="#none" title="미리보기">미리보기</a></li>
-					<li><a href="#none" title="임시저장">임시저장</a></li>
-					<li class="res_ok"><a href="#none" title="등록">등록</a></li>
+					<li class="res_ok"><a href="#none" title="수정">수정</a></li>
 				</ul>
 			</div>
 		</div>
 		<div id="rightPart">
-		<form id="registForm" name="registForm" enctype="multipart/form-data" action="/registResume.do" method="post">
+		<form id="registForm" name="registForm" enctype="multipart/form-data" action="/updateResume.do" method="post">
 			<input type="hidden" name="infoType" id="infoType" value="1" />
+			<input type="hidden" name="no" id="no" value="${map.no}" />
 			<input type="hidden" name="uid" id="uid" value="${SE_LOGIN_ID}" />
 			<input type="hidden" name="name" id="name" value="${memberMap.name}" />
 			<input type="hidden" name="inidPhotoOrg" id="inidPhotoOrg" value="${memberMap.photo}" />
@@ -43,17 +42,10 @@
 					<p class="personal_setting"><a href="/updateMyInfo.do" title="기본정보수정"><i class="fas fa-cog"></i>&nbsp;기본정보수정</a></p>
 					<div id="imgPart">
 						<div class="imgArea">
-						<c:if test="${memberMap.photo == null || memberMap.photo == '' }">
 							<p><img src="/img/userNo.png" alt="본인사진"/></p>
-						</c:if>
-						<c:if test="${memberMap.photo != null && memberMap.photo != '' }">
-								<p><img src="/allwork/peg/${memberMap.photo}" alt="이력서 사진" /></p>
-						</c:if>
 						</div>
-						<!-- 
 						<p class="btnArea"><label for="myImg">사진선택</label><input id="inidPhoto" name="inidPhoto" type="file" onchange="javascript:viewImgName(this);"/><br/><li id="imgName"></li></p>
-						 -->
-						<input type="hidden" name="imgChangeFlag" id="imgChangeFlag" value="N" />
+						<input type="hidden" name="orgInidPhoto" id="orgInidPhoto" value="${resumeMap.inidPhoto }" />
 					</div>
 					<table>
 						<caption>이력 등록하기</caption>
@@ -113,7 +105,7 @@
 									</tr>
 									<tr>
 										<th>보유기술</th>
-										<td><textarea id="inidMylskill" name="inidMylskill"></textarea></td>
+										<td><textarea id="inidMylskill" name="inidMylskill">${resumeMap.inidMylskill}</textarea></td>
 									</tr>
 									<tr>
 										<th>현재상태</th>
@@ -258,9 +250,6 @@
 													<option value="3">대학교졸업(4년)</option>
 													<option value="4">석사</option>
 													<option value="5">박사</option>
-													<%-- <c:forEach var="result" items="${jobSchoolList}" varStatus="status">
-														<option value="${result.code}">${result.name}</option>
-													</c:forEach> --%>
 												</select>
 												<input id="school" type="text" name="school" placeholder="학교명"/>
 											</span>
@@ -409,7 +398,7 @@
 									<tr>
 										<th>자기소개서</th>
 										<td>
-											<textarea id="inidIntroduce" name="inidIntroduce"></textarea>
+											<textarea id="inidIntroduce" name="inidIntroduce">${resumeMap.inidIntroduce }</textarea>
 										</td>
 									</tr>
 								</tbody>
@@ -425,9 +414,13 @@
 								<caption>파일 첨부하기</caption>
 								<tbody>
 									<tr>
-										<th>파일 첨부하기</th>
+										<th>파일 첨부하기 </th>
 										<td>
 											<input id="portfolioFile" type="file" name="portfolioFile"/>
+											<input type="hidden" name="orgportfolioFile" id="orgportfolioFile" value="${resumeMap.portfolioFile }" />
+											<c:if test="${resumeMap.portfolioFile ne '' and resumeMap.portfolioFile ne null}">
+												<li style="font-wight:bold;font-color:blue;margin-top:10px;"><a href="/peg/${resumeMap.portfolioFile}">portfolio 다운로드</a></li>
+											</c:if>
 										</td>
 									</tr>
 								</tbody>
@@ -439,14 +432,11 @@
 				<input type="hidden" name="career2" id="career2" value="" />
 				<input type="hidden" name="license2" id="license2" value="" />
 				<input type="hidden" name="language2" id="language2" value="" />
-				<input type="hidden" name="hit" id="hit" value="0" />
 				<input type="hidden" name="smsSend" id="smsSend" value="NO" />
 				<input type="hidden" name="aInsert" id="aInsert" value="NO" />
 			</form>
 			<ul>
-				<li><a href="#none" title="미리보기">미리보기</a></li>
-				<li><a href="#none" title="임시저장">임시저장</a></li>
-				<li class="res_ok"><a href="#none" title="등록">등록</a></li>
+				<li class="res_ok"><a href="#none" title="수정">수정</a></li>
 			</ul>
 			</form>
 		</div>
@@ -494,8 +484,237 @@
 		
 		
 		$(".res_ok").on("click", function(e){
-			registResume();
+			updateResume();
 		});
+		
+		<c:if test="${!resumeMap.isEmpty()}">
+		
+			// 이력서 공개/비공개
+			if("${resumeMap.inidSecret}" == "yes"){
+				$(":radio[name='inidSecretRadio'][value='yes']").prop("checked", true);
+			}else{
+				$(":radio[name='inidSecretRadio'][value='no']").prop("checked", true);
+			}
+			
+			// 사진 공개/비공개
+			if("${resumeMap.inidPChk}" == "yes"){
+				$(":radio[name='inidPChkRadio'][value='yes']").prop("checked", true);
+			}else{
+				$(":radio[name='inidPChkRadio'][value='no']").prop("checked", true);
+			}
+			
+			// 이력서 제목
+			$("#inidTitle").val("${resumeMap.inidTitle}");
+			
+			// 현재 상태
+			if("${resumeMap.indiCondition}" == "1"){
+				$(":radio[name='inidSecretRadio'][value='1']").prop("checked", true);
+			}else if("${resumeMap.indiCondition}" == "2"){
+				$(":radio[name='inidSecretRadio'][value='2']").prop("checked", true);
+			}else if("${resumeMap.indiCondition}" == "3"){
+				$(":radio[name='inidSecretRadio'][value='3']").prop("checked", true);
+			}else{
+			}
+			
+			// 근무 지역
+			if(!checkNull("${resumeMap.inidArea1}")){
+				$("#inidArea1").val("${resumeMap.inidArea1}");
+				getNetfuCateListForSelect('area', $("#inidArea1"), '시구군선택', 'inidArea2', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidArea2}")){
+				$("#inidArea2").val("${resumeMap.inidArea2}");
+			}
+			
+			if(!checkNull("${resumeMap.inidArea3}")){
+				appendItem("area");
+				$("#inidArea3").val("${resumeMap.inidArea3}");
+				getNetfuCateListForSelect('area', $("#inidArea3"), '시구군선택', 'inidArea4', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidArea4}")){
+				$("#inidArea4").val("${resumeMap.inidArea4}");
+			}
+			
+			if(!checkNull("${resumeMap.inidArea5}")){
+				appendItem("area");
+				$("#inidArea5").val("${resumeMap.inidArea5}");
+				getNetfuCateListForSelect('area', $("#inidArea5"), '시구군선택', 'inidArea6', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidArea6}")){
+				$("#inidArea6").val("${resumeMap.inidArea6}");
+			}
+			
+			
+			// 직무 분야
+			if(!checkNull("${resumeMap.inidType1}")){
+				$("#inidType1").val("${resumeMap.inidType1}");
+				getNetfuCateListForSelect('job', $("#inidType1"), '2차직무선택', 'inidType2', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidType2}")){
+				$("#inidType2").val("${resumeMap.inidType2}");
+				getNetfuCateListForSelect('job', $("#inidType2"), '3차직무선택', 'inidType3', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidType3}")){
+				$("#inidType3").val("${resumeMap.inidType3}");
+			}
+			
+			if(!checkNull("${resumeMap.inidType4}")){
+				appendItem("job");
+				$("#inidType4").val("${resumeMap.inidType4}");
+				getNetfuCateListForSelect('job', $("#inidType4"), '2차직무선택', 'inidType5', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidType5}")){
+				$("#inidType5").val("${resumeMap.inidType5}");
+				getNetfuCateListForSelect('job', $("#inidType5"), '3차직무선택', 'inidType6', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidType6}")){
+				$("#inidType6").val("${resumeMap.inidType6}");
+			}
+			
+			if(!checkNull("${resumeMap.inidType7}")){
+				appendItem("job");
+				$("#inidType7").val("${resumeMap.inidType7}");
+				getNetfuCateListForSelect('job', $("#inidType7"), '2차직무선택', 'inidType8', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidType8}")){
+				$("#inidType8").val("${resumeMap.inidType8}");
+				getNetfuCateListForSelect('job', $("#inidType8"), '3차직무선택', 'inidType9', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidType9}")){
+				$("#inidType9").val("${resumeMap.inidType9}");
+			}
+			
+			
+			// 산업 분야
+			if(!checkNull("${resumeMap.inidAreaJob1}")){
+				$("#inidAreaJob1").val("${resumeMap.inidAreaJob1}");
+				getNetfuCateListForSelect('area_job', $("#inidAreaJob1"), '2차직무선택', 'inidAreaJob2', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidAreaJob2}")){
+				$("#inidAreaJob2").val("${resumeMap.inidAreaJob2}");
+				getNetfuCateListForSelect('area_job', $("#inidAreaJob2"), '3차직무선택', 'inidAreaJob3', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidAreaJob3}")){
+				$("#inidAreaJob3").val("${resumeMap.inidAreaJob3}");
+			}
+			
+			if(!checkNull("${resumeMap.inidAreaJob4}")){
+				appendItem("area_job");
+				$("#inidAreaJob4").val("${resumeMap.inidAreaJob4}");
+				getNetfuCateListForSelect('area_job', $("#inidAreaJob4"), '2차직무선택', 'inidAreaJob5', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidAreaJob5}")){
+				$("#inidAreaJob5").val("${resumeMap.inidAreaJob5}");
+				getNetfuCateListForSelect('area_job', $("#inidAreaJob5"), '3차직무선택', 'inidAreaJob6', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidAreaJob6}")){
+				$("#inidAreaJob6").val("${resumeMap.inidAreaJob6}");
+			}
+			
+			if(!checkNull("${resumeMap.inidAreaJob7}")){
+				appendItem("area_job");
+				$("#inidAreaJob7").val("${resumeMap.inidAreaJob7}");
+				getNetfuCateListForSelect('area_job', $("#inidAreaJob7"), '2차직무선택', 'inidAreaJob8', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidAreaJob8}")){
+				$("#inidAreaJob8").val("${resumeMap.inidAreaJob8}");
+				getNetfuCateListForSelect('area_job', $("#inidAreaJob8"), '3차직무선택', 'inidAreaJob9', false, true);
+			}
+			
+			if(!checkNull("${resumeMap.inidAreaJob9}")){
+				$("#inidAreaJob9").val("${resumeMap.inidAreaJob9}");
+			}
+			
+			
+			// 희망 근무 형태
+			var form = "${resumeMap.inidJobform}".split(",");
+			for(var i = 0 ; i < form.length ; i++){
+				$('input:checkbox[name="inidJobformChk"]').each(function() {
+					if(form[i] == this.value){
+						$(this).attr("checked", true);
+					}
+				});
+			}
+			
+			
+			// 희망 연봉
+			if(!checkNull("${resumeMap.payType}")){
+				$("#payType").val("${resumeMap.payType}");
+				getNetfuCateListForSelect('inid_pay', $("#payType"), '급여 선택', 'inidPay', false, true);
+			} 
+			
+			if(!checkNull("${resumeMap.inidPay}")){
+				$("#inidPay").val("${resumeMap.inidPay}");
+			} 
+			
+			
+			// 학력 사항
+			$("#final_degree").val("${resumeEducation.final_degree }");
+			<c:forEach var="result" items="${resumeEducation.data}" varStatus="status">
+				<c:if test="${status.index > 0}">
+					appendItem("education");
+				</c:if>		
+				$("input[name='lesson_sdate_full']").eq("${status.index}").val("${result.lesson_sdate}"+"-"+"${result.lesson_sdate2}"+"-01");
+				$("input[name='school2']").eq("${status.index}").val("${result.school2 }");
+				$("input[name='school']").eq("${status.index}").val("${result.school }");
+				$("input[name='lesson_edate_full']").eq("${status.index}").val("${result.lesson_edate}"+"-"+"${result.lesson_edate2}"+"-01");
+				$("input[name='lesson_state${status.count}']").val("${result.lesson_state }");
+				$("input[name='lesson']").eq("${status.index}").val("${result.lesson }");
+				$("input[name='lesson2']").eq("${status.index}").val("${result.lesson2 }");
+			</c:forEach>
+			
+			// 경력 사항
+			$("#total_year").val("${resumeCareer.total_year }");
+			$("#total_month").val("${resumeCareer.total_month }");
+			<c:forEach var="result" items="${resumeCareer.data}" varStatus="status">
+				<c:if test="${status.index > 0}">
+					appendItem("career");
+				</c:if>	
+				$("input[name='hold_sdate_full']").eq("${status.index}").val("${result.hold_sdate}"+"-"+"${result.hold_sdate2}"+"-01");
+				$("input[name='company']").eq("${status.index}").val("${result.company }");
+				$("input[name='hold_edate_full']").eq("${status.index}").val("${result.hold_edate}"+"-"+"${result.hold_edate2}"+"-01");
+				$("input[name='business']").eq("${status.index}").val("${result.business }");
+			</c:forEach>
+			
+			// 자격사항
+			<c:forEach var="result" items="${resumeLicense.data}" varStatus="status">
+				<c:if test="${status.index > 0}">
+					appendItem("licence");
+				</c:if>
+				$("input[name='obtain_date']").eq("${status.index}").val("${result.obtain_date }");
+				$("input[name='qualification']").eq("${status.index}").val("${result.qualification }");
+				$("input[name='public_place']").eq("${status.index}").val("${result.public_place }");
+			</c:forEach>
+			
+			// 외국어
+			<c:forEach var="result" items="${resumeLanguage.data}" varStatus="status">
+				<c:if test="${status.index > 0}">
+					appendItem("language");
+				</c:if>
+				$("input[name='ex_obtain_date']").eq("${status.index}").val("${result.ex_obtain_date }");
+				$("input[name='language']").eq("${status.index}").val("${result.language }");
+				$("input[name='level']").eq("${status.index}").val("${result.level }");
+				$("input[name='examination']").eq("${status.index}").val("${result.examination }");
+				$("input[name='point']").eq("${status.index}").val("${result.point }");
+				$("input[name='level2']").eq("${status.index}").val("${result.level2 }");
+			</c:forEach>
+			
+			
+		</c:if>
+		
 	});	
 	
 	
@@ -701,11 +920,10 @@
 		var imgObjArr = $(imgObj).val().split("\\");
 		if(imgObjArr.length > 0){
 			$("#imgName").text(imgObjArr[imgObjArr.length-1]);	
-			$("#imgChangeFlag").val("Y");
 		}
 	}
 	
-	function registResume(){
+	function updateResume(){
 		
 		$("#inidSecret").val($("input[name=inidSecretRadio]:checked").val());
 		$("#inidPChk").val($("input[name=inidPChkRadio]:checked").val());

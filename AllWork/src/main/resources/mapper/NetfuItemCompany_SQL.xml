@@ -321,4 +321,14 @@
 			and no = #{no}
 	</delete>
 	
+	
+	<!-- 채용공고 공개/비공개 설정 -->
+	<update id="updateNetfuItemCompanyBizIng" parameterType="hashmap">
+		update netfu_item_company
+		set biz_ing = #{bizIng}
+		where 1=1
+			and uid = #{loginId}
+			and no = #{no}
+	</update>
+	
 </mapper>
