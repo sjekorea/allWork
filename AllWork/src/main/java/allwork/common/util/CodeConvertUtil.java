@@ -71,7 +71,7 @@ public class CodeConvertUtil {
 		
 		try{
 
-			if("yes".equals(bizIng)){
+			if("no".equals(bizIng)){
 				rtnStr = "채용 마감";
 			}else{
 				if("get".equals(bizEndType)){

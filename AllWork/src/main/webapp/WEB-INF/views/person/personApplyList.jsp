@@ -20,9 +20,14 @@
 			<div id="listPart">
 				<h4>입사지원 현황</h4>
 				<ul class="tab">
+					<!-- 
 					<li><a class="selected" href="#none" title="온라인 입사지원">온라인 입사지원</a></li>
 					<li><a href="#" title="이메일 입사지원">이메일 입사지원</a></li>
 					<li><a href="#" title="모바일 입사지원">모바일 입사지원</a></li>
+					 -->
+					<li>온라인 입사지원</li>
+					<li></li>
+					<li></li>
 					<li><a href="#" title="선택삭제">선택삭제</a></li>
 				</ul>
 				<p class="apply_total">온라인 입사지원 총 <span>${totalSize }</span>건</p>
@@ -177,7 +182,7 @@
 		loadingOn();
 		
 		var callback = function(data){
-			alert("저장 되었습니다.");
+			alert("항목을 삭제했습니다.");
 			$("#pageNo").val("1");
 			$("#searchForm").submit();
 		};

@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="/WEB-INF/tlds/convertUtil.tld" prefix="convert"%>
+<%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert"%>
 
 <jsp:include page="/companyHeader.do" />
 
@@ -15,8 +17,8 @@
 		</div>
 		<div id="rightPart">
 			<div id="listPart">
-				<h4>면접제의요청 관리</h4>
-				<p class="listTotal">면접제의요청관리 총<span>${totalSize }</span>명</p>
+				<h4>당사에서 면접을 제의한 구직자 목록</h4>
+				<p class="listTotal">면접제의요청자 총<span>${totalSize }</span>명</p>
 				<select id="selRecruitNo" name="selRecruitNo" onchange="javascript:goList();">
 					<option value="">진행중인 채용공고</option>
 					<c:choose>
@@ -35,17 +37,17 @@
 					<tbody>
 						<tr class="list_title">
 							<th class="desc00"><input type="checkbox" id="all" /></th>
-							<th class="desc01">지원자명</th>
-							<th class="desc02">사업내용</th>
-							<th class="desc03">이력서보기</th>
-							<th class="desc04">면접요청메일 발송일</th>
+							<th class="desc01">면접요청자</th>
+							<th class="desc02">채용공고 제목</th>
+							<th class="desc03">이력서</th>
+							<th class="desc04">면접요청일</th>
 						</tr>
 						<c:choose>
 							<c:when test="${list.size() > 0 }">
 								<c:forEach var="result" items="${list}" varStatus="status">
 									<tr class="desc">
 										<td class="desc00"><input type="checkbox" name="chk" value="${result.no }" /></td>
-										<td class="desc01"><img src="/img/userNo.png" alt="인재사진"/></td>
+										<td class="desc01">${convert:getPersonNameHidden(result.name) }</td>
 										<td class="desc02">${result.bizTitle }</td>
 										<td class="desc03">
 											<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.personUid }', '', '', '${result.resumeNo }', '${result.inidSecret }', 'resume');">
@@ -143,7 +145,7 @@
 		loadingOn();
 		
 		var callback = function(data){
-			alert("저장 되었습니다.");
+			alert("면접요청을 전달했습니다.");
 			$("#pageNo").val("1");
 			$("#searchForm").submit();
 		};

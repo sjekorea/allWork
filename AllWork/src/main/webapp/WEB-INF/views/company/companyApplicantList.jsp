@@ -18,8 +18,8 @@
 		</div>
 		<div id="rightPart">
 			<div id="listPart">
-				<h4>입사지원자 관리</h4>
-				<p class="listTotal">입사지원자관리 총<span>${totalSize }</span>명</p>
+				<h4>당사에 입사를 지원한 지원자 목록</h4>
+				<p class="listTotal">입사지원자 총<span>${totalSize }</span></p>
 				<select id="selRecruitNo" name="selRecruitNo" onchange="javascript:goList();">
 					<option value="">진행중인 채용공고</option>
 					<c:choose>
@@ -38,23 +38,27 @@
 					<tbody>
 						<tr class="list_title">
 							<th class="desc00"><input type="checkbox" name="all"/></th>
-							<th class="desc01"></th>
-							<th class="desc02">이름</th>
-							<th class="desc03">이력서</th>
-							<th class="desc04">스크랩일</th>
+							<th class="desc01">입사지원자</th>
+							<th class="desc02">이력서</th>
+							<th class="desc03">채용공고</th>
+							<th class="desc04">입사지원일</th>
 						</tr>
 						<c:choose>
 							<c:when test="${list.size() > 0 }">
 								<c:forEach var="result" items="${list}" varStatus="status">
 									<tr class="desc">
 										<td class="desc00"><input type="checkbox" name="chk" value="${result.no }" /></td>
-										<td class="desc01"><img src="img/userNo.png" alt="인재사진"/></td>
-										<td class="desc02">${result.name }</td>
-										<td class="desc03">
-											<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">
+										<td class="desc01">
+											<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.fromNo }', '${result.inidSecret }', 'resume');">
+												${result.name }
+											</a>
+										</td>
+										<td class="desc02">
+											<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.fromNo }', '${result.inidSecret }', 'resume');">
 												<p class="t_desc01">${result.inidTitle}</p>
 											</a>
 										</td>
+										<td class="desc03">${result.bizTitle }</td>
 										<td class="desc04">${result.wdate }</td>
 									</tr>
 								</c:forEach>
@@ -141,7 +145,7 @@
 		loadingOn();
 		
 		var callback = function(data){
-			alert("저장 되었습니다.");
+			alert("항목을 삭제했습니다.");
 			$("#pageNo").val("1");
 			$("#searchForm").submit();
 		};

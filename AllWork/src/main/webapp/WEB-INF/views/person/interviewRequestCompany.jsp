@@ -25,8 +25,8 @@
 					<tbody>
 						<tr class="list_title">
 							<th class="desc01">회사명</th>
-							<th class="desc02">사업내용</th>
-							<th class="desc03">열람일</th>
+							<th class="desc02">채용공고</th>
+							<th class="desc03">면접요청일</th>
 						</tr>
 						<c:choose>
 							<c:when test="${list.size() > 0 }">

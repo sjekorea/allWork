@@ -130,7 +130,7 @@ $(document).ready(function(){
 		deleteItemMulti = deleteItemMulti.substring(0, deleteItemMulti.length-1);
 		
 		var callback = function(data){
-			alert("저장 되었습니다.");
+			alert("항목을 삭제했습니다.");
 			$("#personUid").val("");
 			$("#companyUid").val("");
 			$("#searchForm #pageNo").val("");

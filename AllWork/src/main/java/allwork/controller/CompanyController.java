@@ -111,7 +111,7 @@ public class CompanyController {
 			commandMap.put("start", 0);
 			commandMap.put("pageSize", 3);
 			commandMap.put("companyUid", (String)session.getAttribute("SE_LOGIN_ID"));
-			commandMap.put("bizIng", "no");
+			commandMap.put("bizIng", "yes");
 			// 진행중인 채용정보
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyListByCompany(commandMap.getMap());
 			
@@ -259,7 +259,7 @@ public class CompanyController {
 			
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".registRecruit Exception !!!!! \n"+e.toString());
-			CommonUtil.Alert("등록에 실패 하였습니다.", "/companyHome.do", request, response);
+			CommonUtil.Alert("오류가 발생해서 채용공고 등록에 실패 하였습니다.", "/companyHome.do", request, response);
 		}
 	}
 	
@@ -375,7 +375,7 @@ public class CompanyController {
 			
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".updateRecruit Exception !!!!! \n"+e.toString());
-			CommonUtil.Alert("등록에 실패 하였습니다.", "/companyHome.do", request, response);
+			CommonUtil.Alert("오류가 발생해서 채용공고 등록에 실패 하였습니다.", "/companyHome.do", request, response);
 		}
 	}
 

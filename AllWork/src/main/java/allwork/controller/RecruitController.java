@@ -538,7 +538,7 @@ public class RecruitController {
 				commandMap.put("pageNo", "1");
 				commandMap.put("orderRule", "nic.wdate desc");
 				commandMap.put("companyUid", (String)session.getAttribute("SE_LOGIN_ID"));
-				commandMap.put("bizIng", "no");
+				commandMap.put("bizIng", "yes");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);
@@ -583,7 +583,7 @@ public class RecruitController {
 				commandMap.put("orderField", "nic.wdate");
 				commandMap.put("orderRule", "desc");
 				commandMap.put("companyUid", (String)session.getAttribute("SE_LOGIN_ID"));
-				commandMap.put("bizIng", "yes");
+				commandMap.put("bizIng", "no");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);

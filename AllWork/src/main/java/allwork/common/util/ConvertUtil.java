@@ -283,6 +283,46 @@ public class ConvertUtil {
     	
 		return strBizEndCond;
     }
+    
+    /*
+     * 이메일과 전화번호 분할.
+     */
+    public static String getPhone01(String strPhoneNo) {
+    	String strValue = "";
+    	if (strPhoneNo == null || strPhoneNo.length() < 1) return strValue;
+    	String[] list = strPhoneNo.split("-");
+    	if (list.length > 0) strValue = list[0];   	
+		return strValue;
+    }
+    public static String getPhone02(String strPhoneNo) {
+    	String strValue = "";
+    	if (strPhoneNo == null || strPhoneNo.length() < 1) return strValue;
+    	String[] list = strPhoneNo.split("-");
+    	if (list.length > 1) strValue = list[1];   	
+		return strValue;
+    }
+    public static String getPhone03(String strPhoneNo) {
+    	String strValue = "";
+    	if (strPhoneNo == null || strPhoneNo.length() < 1) return strValue;
+    	String[] list = strPhoneNo.split("-");
+    	if (list.length > 2) strValue = list[2];   	
+		return strValue;
+    }
+
+    public static String getEmail01(String strEmail) {
+    	String strValue = "";
+    	if (strEmail == null || strEmail.length() < 1) return strValue;
+    	String[] list = strEmail.split("\\@");
+    	if (list.length > 0) strValue = list[0];   	
+		return strValue;
+    }
+    public static String getEmail02(String strEmail) {
+    	String strValue = "";
+    	if (strEmail == null || strEmail.length() < 1) return strValue;
+    	String[] list = strEmail.split("\\@");
+    	if (list.length > 1) strValue = list[1];   	
+		return strValue;
+    }
 
     /*
      * 개인 신상정보 감추기 지원

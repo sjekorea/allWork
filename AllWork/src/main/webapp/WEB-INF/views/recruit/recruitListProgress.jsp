@@ -35,12 +35,14 @@
 										<div class="desc1">
 											<span>${codeConvert:getRecruitStatusText(result.bizIng, result.bizEndType, result.bizEndDay) }</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 											<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.open }', '');" title="공고보기"><span>공고보기</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+											<!-- 
 											<a href="javascript:copyRecruit('${result.no }');" title="복사"><span>복사</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+											 -->
 											<a href="javascript:updateRecruit('${result.no }');" title="수정"><span>수정</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 											<a href="javascript:deleteRecruit('${result.no }');" title="삭제"><span>삭제</span></a>
 										</div>
 										<div class="desc2">
-											<a href="#" title="전체 지원자" class="total">전체 지원자<span>${result.totalApplianceCnt }</span></a><!-- &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+											<a href="/companyApplicantList.do" title="전체 지원자" class="total">전체 지원자<span>${result.totalApplianceCnt }</span></a><!-- &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 											<a href="#" title="미열람">미열람<span>11</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 											<a href="#" title="열람">열람<span>0</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 											<a href="#" title="서류합격">서류합격<span>0</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -133,9 +135,12 @@
 	
 	
 	function deleteRecruit(no){
-		
+		//채용공고 삭제에 대한 사용자 확인.
+		if(!confirm("채용공고를 삭제할까요?")) return;
+
+		//채용공고 삭제.
 		var callback = function(data){
-			alert("저장 되었습니다.");
+			alert("항목을 삭제했습니다.");
 			$("#personUid").val("");
 			$("#companyUid").val("");
 			$("#pageNo").val("");

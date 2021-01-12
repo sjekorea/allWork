@@ -38,8 +38,7 @@
 		select count(no) cnt
 		from netfu_item_company nic
 		where 1=1
-			and nic.biz_ing <![CDATA[<>]]> 'yes'
-			and ((nic.biz_end_type ='input' and nic.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+			and nic.biz_ing = 'yes'
 			<if test="jobCondition != null and jobCondition != ''">
 				${jobCondition}
 			</if>
@@ -70,8 +69,7 @@
 			${recruitColumn}
 		from netfu_item_company nic
 		where 1=1
-			and biz_ing <![CDATA[<>]]> 'yes'
-			and ((nic.biz_end_type ='input' and nic.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+			and biz_ing = 'yes'
 			<if test="jobCondition != null and jobCondition != ''">
 				${jobCondition}
 			</if>
@@ -107,7 +105,7 @@
 	<!-- 맞춤 인재 정보 검색 Count -->
 	<select id="selectMyServiceResumeCnt" parameterType="hashmap" resultType="int">
 		select count(no) cnt
-		from netfu_item_resume
+		from netfu_item_resume nir
 		where 1=1
 			and nir.inid_secret <![CDATA[<>]]> 'yes'
 			<if test="jobCondition != null and jobCondition != ''">

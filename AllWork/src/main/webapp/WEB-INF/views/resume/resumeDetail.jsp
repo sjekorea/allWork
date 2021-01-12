@@ -23,11 +23,11 @@
 		<div class="topArea">
 			<p class="close_btn"><i class="fas fa-times"></i></p>
 			<p class="email_img"><i class="fas fa-envelope-open-text"></i></p>
-			<p>이메일 입사지원</p>
+			<p>면접제의</p>
 		</div>
 		<div class="descArea">
 			<p>
-				구작자의 이메일로 ${SE_USER_NM }님의 채용공고가 전송됩니다.
+				구직자에게 ${SE_USER_NM }님의 채용공고가 전송됩니다.
 			</p>
 			<form>
 				<fieldset>
@@ -35,13 +35,13 @@
 					<ul class="title">
 						<li>보내는 사람</li>
 						<li>구직자</li>
-						<li>이메일 제목</li>
-						<li>지원 이력서</li>
+						<li>면접요청 메시지</li>
+						<li>채용공고</li>
 						<!-- <li>첨부파일</li> -->
 					</ul>
 					<ul class="desc">
 						<li>${companyMap.name }(${companyMap.email })</li>
-						<li>${memberMap.name }(${memberMap.email })</li>
+						<li>${convert:getPersonNameHidden(memberMap.name) }(${convert:getEmailHidden(memberMap.email) })</li>
 						<li><input type="text" id="resumeTitle" name="resumeTitle" value="" /></li>
 						<li>
 						<select id="resumeSel" name="resumeSel">
@@ -332,7 +332,7 @@
 		//}else{
 			loadingOn();
 			var callback = function(data){
-				alert("저장 되었습니다.");
+				alert("스크랩 했습니다.");
 				$("#scrapBtn").hide();
 				loadingOff();
 			};

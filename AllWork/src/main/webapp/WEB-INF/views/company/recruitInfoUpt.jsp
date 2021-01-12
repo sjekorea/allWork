@@ -16,7 +16,7 @@
 			<jsp:include page="/companySubMenu.do" />
 			<div id="leftPart_buttom">
 				<ul>
-					<li class="reg_ok"><a href="#none" title="수정완료">수정완료</a></li>
+					<li class="reg_ok"><a href="#none" title="수정">수정</a></li>
 				</ul>
 			</div>
 		</div>
@@ -62,150 +62,157 @@
 						<div>
 							<table>
 							<caption>모집요강</caption>
-							<tbody>
-								<tr>
-									<th>공고제목<span class="necessary">*</span></th>
-									<td>
-										<span><input class="reg_text" id="bizTitle" type="text" name="bizTitle" placeholder="ex)웹기획 경력직 채용" value="공고제목"/></span>
-									</td>
-								</tr>
-							</tbody>
+								<tbody id="job">
+									<tr>
+										<th>채용마감</th>
+										<td>
+											<input id="bizIngChk" type="checkbox" name="bizIngChk"/><label for="reg02_desc07">채용마감(채용마감시 체크박스를 선택해 주세요.)</label>
+											<input type="hidden" id="bizIng" name="bizIng" value="${(result.bizIng == 'yes')? 'yes' : 'no'}" />
+										</td>
+									</tr>
+									<tr>
+										<th>공고제목<span class="necessary">*</span></th>
+										<td>
+											<input class="reg_text" id="bizTitle" type="text" name="bizTitle" placeholder="ex)웹기획 경력직 채용" value="공고제목"/>
+										</td>
+									</tr>
+								</tbody>
 							</table>
 							<table>
-							<tbody id="job">
-								<tr>
-									<th>모집업종<span class="necessary">*</span></th>
-									<td>
-										<select id="bizType1" name="bizType1" title="1차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'bizType2', true, true);">
-											<option value="">1차직무선택</option>
-											<c:forEach var="result" items="${jobList}" varStatus="status">
-												<option value="${result.code}">${result.name}</option>
-											</c:forEach>
-										</select>
-										<select id="bizType2" name="bizType2" title="2차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'bizType3', true, true);">
-											<option value="">2차직무선택</option>
-										</select>
-										<select id="bizType3" name="bizType3" title="3차직무선택">
-											<option value="3차직무선택">3차직무선택</option>
-										</select>
-										<input type="button" name="appendItem" kind="job" value="+ 추가" />
-										<input type="button" name="deleteItem" kind="job" value="- 삭제" />
-									</td>
-								</tr>
-							</tbody>
-							</table>
-							<table>
-							<tbody id="area_job">
-								<tr>
-									<th>산업분야<span class="necessary">*</span></th>
-									<td>
-										<select id="bizAreaJob1" name="bizAreaJob1" title="1차산업선택" onchange="javascript:getNetfuCateListForSelect('area_job', this, '2차산업선택', 'bizAreaJob2', true, true);">
-											<option value="">1차산업선택</option>
-											<c:forEach var="result" items="${areaJobList}" varStatus="status">
-												<option value="${result.code}">${result.name}</option>
-											</c:forEach>
-										</select>
-										<select id="bizAreaJob2" name="bizAreaJob2" title="2차산업선택" onchange="javascript:getNetfuCateListForSelect('area_job', this, '3차산업선택', 'bizAreaJob3', true, true);">
-											<option value="">2차산업선택</option>
-										</select>
-										<select id="bizAreaJob3" name="bizAreaJob3" title="3차산업선택">
-											<option value="3차직무선택">3차산업선택</option>
-										</select>
-										<input type="button" name="appendItem" kind="area_job" value="+ 추가" />
-										<input type="button" name="deleteItem" kind="area_job" value="- 삭제" />
-									</td>
-								</tr>
-							</tbody>
-							</table>
-							<table>
-							<tbody id="area">
-								<tr>
-									<th>근무지역<span class="necessary">*</span></th>
-									<td>
-										<select id="bizArea1" name="bizArea1" onchange="javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'bizArea2', true, true);">
-											<option value="">시도선택</option>
-											<c:forEach var="result" items="${areaList}" varStatus="status">
-												<option value="${result.code}">${result.name}</option>
-											</c:forEach>
-										</select>
-										<select id="bizArea2" name="bizArea2">
-											<option value="">시구군선택</option>
-										</select>
-										<input type="button" name="appendItem" kind="area" value="+ 추가" />
-										<input type="button" name="deleteItem" kind="area" value="- 삭제" />
-										<span class="comment">최대 3개까지 선택 가능</span>
-									</td>
-								</tr>
-							</tbody>
-							</table>
-							<table>
-							<tbody>
-								<tr>
-									<th>담당업무<span class="necessary">*</span></th>
-									<td><input id="bizBusiness" type="text" name="bizBusiness"/></td>
-								</tr>
-								<tr>
-									<th>고용형태<span class="necessary">*</span></th>
-									<td>
-										<c:forEach var="result" items="${jobTypeList}" varStatus="status">
-											<span><input id="bizJobfromChk" type="checkbox" name="bizJobfromChk" value="${result.code}"/><label for="reg02_desc07">${result.name}</label></span>
-										</c:forEach>
-										<input type="hidden" id="bizJobfrom" name="bizJobfrom" />
-									</td>
-								</tr>
-								<tr>
-									<th>모집인원<span class="necessary">*</span></th>
-									<td>
-										<span><input id="bizMen" type="text" name="bizMen" style="width:50px; vertical-align:middle;" numberOnly /><label for="reg02_desc08_1">&nbsp;명</label></span>
-									</td>
-								</tr>
-								<tr>
-									<th>경력사항<span class="necessary">*</span></th>
-									<td>
-										<span><input id="bizCareerRadio" type="radio" name="bizCareerRadio" value="102"/><label for="reg02_desc09">신입</label></span>
-										<span><input id="bizCareerRadio" type="radio" name="bizCareerRadio" value=""/><label for="reg02_desc09_1">경력</label></span>
-										<span>
-											<select id="bizCareerYear" name="bizCareerYear" title="경력연차">
-												<option value="">선택</option>
-												<c:forEach var="i" begin="1" end="30">
-													<option value="${i}">${i}</option>
+								<tbody id="job">
+									<tr>
+										<th>모집업종<span class="necessary">*</span></th>
+										<td>
+											<select id="bizType1" name="bizType1" title="1차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'bizType2', true, true);">
+												<option value="">1차직무선택</option>
+												<c:forEach var="result" items="${jobList}" varStatus="status">
+													<option value="${result.code}">${result.name}</option>
 												</c:forEach>
 											</select>
-										</span>
-										<span><input id="bizCareerRadio" type="radio" name="bizCareerRadio" value="100"/><label for="reg02_desc09_3">경력무관</label></span>
-										<input type="hidden" name="bizCareer" id="bizCareer" />
-									</td>
-								</tr>
-								<tr>
-									<th>급여조건<span class="necessary">*</span></th>
-									<td>
-										<select id="payType" name="payType" onchange="javascript:getNetfuCateListForSelect('inid_pay', this, '', 'bizPay', true, false);">
-											<option value="">선택</option>
-											<c:forEach var="result" items="${inidPayList}" varStatus="status">
-												<option value="${result.code}">${result.name}</option>
+											<select id="bizType2" name="bizType2" title="2차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'bizType3', true, true);">
+												<option value="">2차직무선택</option>
+											</select>
+											<select id="bizType3" name="bizType3" title="3차직무선택">
+												<option value="3차직무선택">3차직무선택</option>
+											</select>
+											<input type="button" name="appendItem" kind="job" value="+ 추가" />
+											<input type="button" name="deleteItem" kind="job" value="- 삭제" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<table>
+								<tbody id="area_job">
+									<tr>
+										<th>산업분야<span class="necessary">*</span></th>
+										<td>
+											<select id="bizAreaJob1" name="bizAreaJob1" title="1차산업선택" onchange="javascript:getNetfuCateListForSelect('area_job', this, '2차산업선택', 'bizAreaJob2', true, true);">
+												<option value="">1차산업선택</option>
+												<c:forEach var="result" items="${areaJobList}" varStatus="status">
+													<option value="${result.code}">${result.name}</option>
+												</c:forEach>
+											</select>
+											<select id="bizAreaJob2" name="bizAreaJob2" title="2차산업선택" onchange="javascript:getNetfuCateListForSelect('area_job', this, '3차산업선택', 'bizAreaJob3', true, true);">
+												<option value="">2차산업선택</option>
+											</select>
+											<select id="bizAreaJob3" name="bizAreaJob3" title="3차산업선택">
+												<option value="3차직무선택">3차산업선택</option>
+											</select>
+											<input type="button" name="appendItem" kind="area_job" value="+ 추가" />
+											<input type="button" name="deleteItem" kind="area_job" value="- 삭제" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<table>
+								<tbody id="area">
+									<tr>
+										<th>근무지역<span class="necessary">*</span></th>
+										<td>
+											<select id="bizArea1" name="bizArea1" onchange="javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'bizArea2', true, true);">
+												<option value="">시도선택</option>
+												<c:forEach var="result" items="${areaList}" varStatus="status">
+													<option value="${result.code}">${result.name}</option>
+												</c:forEach>
+											</select>
+											<select id="bizArea2" name="bizArea2">
+												<option value="">시구군선택</option>
+											</select>
+											<input type="button" name="appendItem" kind="area" value="+ 추가" />
+											<input type="button" name="deleteItem" kind="area" value="- 삭제" />
+											<span class="comment">최대 3개까지 선택 가능</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<table>
+								<tbody>
+									<tr>
+										<th>담당업무<span class="necessary">*</span></th>
+										<td><input id="bizBusiness" type="text" name="bizBusiness"/></td>
+									</tr>
+									<tr>
+										<th>고용형태<span class="necessary">*</span></th>
+										<td>
+											<c:forEach var="result" items="${jobTypeList}" varStatus="status">
+												<span><input id="bizJobfromChk" type="checkbox" name="bizJobfromChk" value="${result.code}"/><label for="reg02_desc07">${result.name}</label></span>
 											</c:forEach>
-										</select>
-										<select id="bizPay" name="bizPay">
-										</select>
-									</td>
-								</tr>
-								<tr>
-									<th>최종학력<span class="necessary">*</span></th>
-									<td>
-										<select id="bizAbility" name="bizAbility" title="학력 선택">
-											<option value="">학력 선택</option>
-											<option value="100">학력무관</option>
-											<option value="1">고등학교졸업</option>
-											<option value="2">대학졸업(2~3년)</option>
-											<option value="3">대학교졸업(4년)</option>
-											<option value="4">석사</option>
-											<option value="5">박사</option>
-											<%-- <c:forEach var="result" items="${jobSchoolList}" varStatus="status">
-												<option value="${result.code}">${result.name}</option>
-											</c:forEach> --%>
-										</select>
-									</td>
-								</tr>
+											<input type="hidden" id="bizJobfrom" name="bizJobfrom" />
+										</td>
+									</tr>
+									<tr>
+										<th>모집인원<span class="necessary">*</span></th>
+										<td>
+											<span><input id="bizMen" type="text" name="bizMen" style="width:50px; vertical-align:middle;" numberOnly /><label for="reg02_desc08_1">&nbsp;명</label></span>
+										</td>
+									</tr>
+									<tr>
+										<th>경력사항<span class="necessary">*</span></th>
+										<td>
+											<span><input id="bizCareerRadio" type="radio" name="bizCareerRadio" value="102"/><label for="reg02_desc09">신입</label></span>
+											<span><input id="bizCareerRadio" type="radio" name="bizCareerRadio" value=""/><label for="reg02_desc09_1">경력</label></span>
+											<span>
+												<select id="bizCareerYear" name="bizCareerYear" title="경력연차">
+													<option value="">선택</option>
+													<c:forEach var="i" begin="1" end="30">
+														<option value="${i}">${i}</option>
+													</c:forEach>
+												</select>
+											</span>
+											<span><input id="bizCareerRadio" type="radio" name="bizCareerRadio" value="100"/><label for="reg02_desc09_3">경력무관</label></span>
+											<input type="hidden" name="bizCareer" id="bizCareer" />
+										</td>
+									</tr>
+									<tr>
+										<th>급여조건<span class="necessary">*</span></th>
+										<td>
+											<select id="payType" name="payType" onchange="javascript:getNetfuCateListForSelect('inid_pay', this, '', 'bizPay', true, false);">
+												<option value="">선택</option>
+												<c:forEach var="result" items="${inidPayList}" varStatus="status">
+													<option value="${result.code}">${result.name}</option>
+												</c:forEach>
+											</select>
+											<select id="bizPay" name="bizPay">
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<th>최종학력</th>
+										<td>
+											<select id="bizAbility" name="bizAbility" title="학력 선택">
+												<option value="">학력 선택</option>
+												<option value="100">학력무관</option>
+												<option value="1">고등학교졸업</option>
+												<option value="2">대학졸업(2~3년)</option>
+												<option value="3">대학교졸업(4년)</option>
+												<option value="4">석사</option>
+												<option value="5">박사</option>
+												<%-- <c:forEach var="result" items="${jobSchoolList}" varStatus="status">
+													<option value="${result.code}">${result.name}</option>
+												</c:forEach> --%>
+											</select>
+										</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
@@ -256,17 +263,18 @@
 				</div>
 				<div id="regist05">
 					<li id="regForm05">
-						<legend>마감일/방법</legend>
+						<legend>채욤마감/채용방법</legend>
 						<div>
 							<table>
-								<caption>마감일/방법</caption>
+								<caption>채용마감</caption>
 								<tbody>
 									<tr>
-									<th>마감일<span class="necessary">*</span></th>
+									<th>채용마감<span class="necessary">*</span></th>
 										<td>
+											<span><input id="bizEndTypeInput" type="radio" name="bizEndTypeChk" value="input"/><label for="bizEndType">마감일</label></span>
 											<span><input id="bizEndDay" type="date" name="bizEndDay"/></span>
-											<span><input id="bizEndTypeChk" type="checkbox" name="bizEndTypeChk" value="often"/><label for="bizEndType">상시채용</label></span>
-											<span><input id="bizEndTypeChk" type="checkbox" name="bizEndTypeChk" value="get"/><label for="bizEndType">채용시 마감</label></span>
+											<span><input id="bizEndTypeGet" type="radio" name="bizEndTypeChk" value="get"/><label for="bizEndType">채용시 마감</label></span>
+											<span><input id="bizEndTypeOften" type="radio" name="bizEndTypeChk" value="often"/><label for="bizEndType">상시채용</label></span>
 											<input type="hidden" name="bizEndType" id="bizEndType" />
 										</td>
 									</tr>
@@ -331,6 +339,7 @@
 											<input type="hidden" name="bizPphone" id="bizPphone" value="" />
 										</td>
 									</tr>
+									<!-- 
 									<tr>
 										<th>팩스<span class="necessary">*</span></th>
 										<td>
@@ -342,6 +351,7 @@
 											<input type="hidden" name="bizPfax" id="bizPfax" value="" />
 										</td>
 									</tr>
+									 -->
 									<tr>
 										<th>이메일<span class="necessary">*</span></th>
 										<td>
@@ -367,7 +377,7 @@
 			</form>
 			<ul>
 				<li><a href="/recruitListProgress.do" title="">취소</a></li>
-				<li class="reg_ok"><a href="#" title="수정완료">수정완료</a></li>
+				<li class="reg_ok"><a href="#" title="수정">수정</a></li>
 			</ul>
 		</div>
 	</div>
@@ -450,6 +460,10 @@
 		
 		<c:if test="${!recruitMap.isEmpty()}">
 			
+			//채용마감.
+			var bizIng = "${recruitMap.bizIng}";
+			if (bizIng != 'yes')	$('#bizIngChk').attr("checked", true);
+
 			// 공고 제목
 			$("#bizTitle").val("${recruitMap.bizTitle}");
 			
@@ -630,10 +644,10 @@
 			
 			// 마감일
 			$("#bizEndDay").val("${recruitMap.bizEndDay}");
-			var endType = "${recruitMap.bizEndType}".split(",");
-			for(var i = 0 ; i < endType.length ; i++){
-				$('input:checkbox[name="bizEndTypeChk"]').each(function() {
-					if(endType[i] == this.value){
+			var endType = "${recruitMap.bizEndType}";
+			if (endType != null && endType.length > 0) {
+				$('input:radio[name="bizEndTypeChk"]').each(function() {
+					if(endType == this.value){
 						$(this).attr("checked", true);
 					}
 				});
@@ -819,7 +833,11 @@
 		if(checkNull($("#bizArea2 option:selected").val())){ alert("근무지역을 선택하세요."); return; }
 		if(checkNull($("#bizBusiness").val())){ alertAndFocus("담당업무를 입력하세요.", $("#bizBusiness")); return; }
 		
-		
+		//채용마감.
+		var bizIng ='yes';
+		if ($('#bizIngChk').prop("checked")) bizIng = 'no';
+		$('#bizIng').val(bizIng)
+
 		// 고용형태 checkbox
 		var bizJobfrom = "";
 		$("input[name=bizJobfromChk]").each(function() {
@@ -852,7 +870,7 @@
 			return;
 		}
 		
-		if(checkNull($("#bizAbility option:selected").val())){ alert("최종학력을 선택하세요."); return; }
+		//if(checkNull($("#bizAbility option:selected").val())){ alert("최종학력을 선택하세요."); return; }
 		 
 		// 우대조건 checkbox
 		var bizPreferential = "";
@@ -867,19 +885,19 @@
 		// 채용방법 checkbox
 		var bizEndType = "";
 		$("input[name=bizEndTypeChk]").each(function() {
-		      if(this.checked){
-		    	  bizEndType += this.value+",";
-		      }
+			  if(this.checked){
+				  bizEndType = this.value;
+			  }
 		});
-		bizEndType = bizEndType.length > 0 ? bizEndType.substring(0, bizEndType.length-1) : "";
-		if(bizEndType == "" && checkNull($("#bizEndDay").val())){
-			alert("마감일을 선태하세요.");
+		if(checkNull(bizEndType)){
+			alert("채용마감방법을 선태하세요.");
+			return;
+		}
+		if(bizEndType == "input" && checkNull($("#bizEndDay").val())){
+			alert("채용 마감일을 선태하세요.");
 			return;
 		}
 		$("#bizEndType").val(bizEndType);
-		if(!checkNull($("#bizEndDay").val())){
-			$("#bizEndType").val("input");
-		}
 		
 		// 제출서류 checkbox
 		var bizPaper = "";
@@ -920,11 +938,13 @@
 		}
 		$("#bizPphone").val($("#bizPphone1").val()+"-"+$("#bizPphone2").val()+"-"+$("#bizPphone3").val());
 		
+		/*
 		if(checkNull($("#bizPfax1").val()) && checkNull($("#bizPfax2").val()) && checkNull($("#bizPfax3").val())){
 			alert("담당자 팩스번호를 입력하세요."); 
 			return; 
 		}
 		$("#bizPfax").val($("#bizPfax1").val()+"-"+$("#bizPfax2").val()+"-"+$("#bizPfax3").val());
+		*/
 		
 		if(checkNull($("#bizPemailId").val())){ alertAndFocus("담당자 이메일 ID를 입력하세요.", $("#bizPemailId")); return; }
 		if(checkNull($("#bizPemailHost").val())){ alertAndFocus("담당자 이메일 종류를 입력하세요.", $("#bizPemailHost")); return; }

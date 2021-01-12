@@ -19,7 +19,7 @@
 				<ul>
 					<li><a href="#none" title="미리보기">미리보기</a></li>
 					<li><a href="#none" title="임시저장">임시저장</a></li>
-					<li class="res_ok"><a href="#none" title="등록완료">등록완료</a></li>
+					<li class="res_ok"><a href="#none" title="등록">등록</a></li>
 				</ul>
 			</div>
 		</div>
@@ -439,7 +439,7 @@
 			<ul>
 				<li><a href="#none" title="미리보기">미리보기</a></li>
 				<li><a href="#none" title="임시저장">임시저장</a></li>
-				<li class="res_ok"><a href="#none" title="등록완료">등록완료</a></li>
+				<li class="res_ok"><a href="#none" title="등록">등록</a></li>
 			</ul>
 			</form>
 		</div>

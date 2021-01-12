@@ -42,8 +42,7 @@
 						, DATE_FORMAT(nic.wdate, '%m/%d') wdate
 				from netfu_item_company nic
 				where 1=1
-					and nic.biz_ing <![CDATA[<>]]> 'yes'
-					and ((nic.biz_end_type ='input' and nic.biz_end_day >= CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+					and nic.biz_ing = 'yes'
 					and (nic.biz_jobfrom LIKE '%netfu_34537_33276%' OR nic.biz_jobfrom LIKE '%freelancer%')
 					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
 					
@@ -55,8 +54,7 @@
 						, DATE_FORMAT(nic.wdate, '%m/%d') wdate
 				from netfu_item_company nic
 				where 1=1
-					and nic.biz_ing <![CDATA[<>]]> 'yes'
-					and ((nic.biz_end_type ='input' and nic.biz_end_day >= CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+					and nic.biz_ing = 'yes'
 					and (nic.biz_jobfrom LIKE '%netfu_34537_33276%' OR nic.biz_jobfrom LIKE '%arbeit%')
 					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
 					
@@ -68,8 +66,7 @@
 						, DATE_FORMAT(nic.wdate, '%m/%d') wdate
 				from netfu_item_company nic
 				where 1=1
-					and nic.biz_ing <![CDATA[<>]]> 'yes'
-					and ((nic.biz_end_type ='input' and nic.biz_end_day >= CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+					and nic.biz_ing = 'yes'
 					and (nic.biz_jobfrom LIKE '%netfu_48782_57525%' OR nic.biz_jobfrom LIKE '%netfu_85884_14481%')
 					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
 		) aa

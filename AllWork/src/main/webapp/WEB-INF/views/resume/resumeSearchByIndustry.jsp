@@ -22,6 +22,7 @@
 		<jsp:include page="/personInfoSubMenu.do" />
 	</div>
 	<div id="rightPart">
+		<!-- 
 		<div id="part01">
 			<ul class="adPart">
 				<li>
@@ -70,6 +71,7 @@
 				</li>
 			</ul>
 		</div>
+		 -->
 		<div id="part02">
 			<form id="" name="">
 				<fieldset>

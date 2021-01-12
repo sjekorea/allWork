@@ -118,6 +118,7 @@ Logger log = Logger.getLogger(this.getClass());
 			commandMap.put("searchType", (String)session.getAttribute("SE_USER_TYPE"));
 			
 			// 입사 지원 관리
+			commandMap.put("applyType", "");
 			List<Map<String, Object>> personApplyList = netfuOnlineRecruitService.selectApplyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(personApplyList.size() > 0){
@@ -170,6 +171,7 @@ Logger log = Logger.getLogger(this.getClass());
 			
 			// 진행중인 채용정보
 			commandMap.put("companyUid", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyProceess(commandMap.getMap());
 			
 			mv.addObject("map", commandMap.getMap());

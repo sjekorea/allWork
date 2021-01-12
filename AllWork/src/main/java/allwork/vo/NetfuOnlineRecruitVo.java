@@ -16,6 +16,7 @@ public class NetfuOnlineRecruitVo {
 	private int recruitNo;
 	private int resumeNo;
 	private String bizName;
+	private String bizIng;
 	private int infoType;
 	private String bizTitle;
 	private String inidTitle;
@@ -25,6 +26,7 @@ public class NetfuOnlineRecruitVo {
 	private String inidCareer;
 	private String inidPay;
 	private String inidPayName;
+	private String bizEndType;
 	private String bizEndDay;
 	private String companyUid;
 	private String personUid;
@@ -70,6 +72,18 @@ public class NetfuOnlineRecruitVo {
 	public void setCompanyUid(String companyUid) {
 		this.companyUid = companyUid;
 	}
+	/**
+	 * @return the bizEndType
+	 */
+	public String getBizEndType() {
+		return bizEndType;
+	}
+	/**
+	 * @param bizEndType the bizEndType to set
+	 */
+	public void setBizEndType(String bizEndType) {
+		this.bizEndType = bizEndType;
+	}
 	public String getBizEndDay() {
 		return bizEndDay;
 	}
@@ -84,6 +98,18 @@ public class NetfuOnlineRecruitVo {
 	}
 	public String getBizName() {
 		return bizName;
+	}
+	/**
+	 * @return the bizIng
+	 */
+	public String getBizIng() {
+		return bizIng;
+	}
+	/**
+	 * @param bizIng the bizIng to set
+	 */
+	public void setBizIng(String bizIng) {
+		this.bizIng = bizIng;
 	}
 	public int getInfoType() {
 		return infoType;

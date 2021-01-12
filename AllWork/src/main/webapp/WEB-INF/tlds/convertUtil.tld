@@ -1,119 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <taglib  xmlns="http://java.sun.com/xml/ns/j2ee"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
-                        web-jsptaglibrary_2_0.xsd"
-     version="2.0">
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+						web-jsptaglibrary_2_0.xsd"
+	 version="2.0">
  
-     <description>convertUtil</description>
-     <tlib-version>1.1</tlib-version>
-     <short-name>convert</short-name>
-     <uri>/WEB-INF/tlds/convertUtil.tld</uri>
-     <function>
-         <description>Enter 처리</description>
-         <name>convertEnterToBr</name>
-         <function-class>allwork.common.util.ConvertUtil</function-class>
-         <function-signature>
-              String convertEnterToBr(java.lang.String)
-         </function-signature>
-    </function>
-    <function>
-         <description>Br 처리</description>
-         <name>convertBrToEnter</name>
-         <function-class>allwork.common.util.ConvertUtil</function-class>
-         <function-signature>
-              String convertBrToEnter(java.lang.String)
-         </function-signature>
-    </function>
-    <function>
-         <description>Query Quotes 처리</description>
-         <name>convertQueryQuotes</name>
-         <function-class>allwork.common.util.ConvertUtil</function-class>
-         <function-signature>
-              String convertQueryQuotes(java.lang.String)
-         </function-signature>
-    </function>
-    <function>
-         <description>Slice the long Sentence</description>
-         <name>comp</name>
-         <function-class>allwork.common.util.ConvertUtil</function-class>
-         <function-signature>
-              String comp(java.lang.String, java.lang.Integer)
-         </function-signature>
-    </function>
-    <function>
-         <description>Slice the long Sentence By byte</description>
-         <name>compByte</name>
-         <function-class>allwork.common.util.ConvertUtil</function-class>
-         <function-signature>
-              String compByte(java.lang.String, java.lang.Integer, java.lang.String)
-         </function-signature>
-    </function>
-    <function>
-         <description>check null</description>
-         <name>checkNull</name>
-         <function-class>allwork.common.util.ConvertUtil</function-class>
-         <function-signature>
-              String checkNull(java.lang.String)
-         </function-signature>
-    </function>
-    <function>
-         <description>Calculate Age</description>
-         <name>calcAge</name>
-         <function-class>allwork.common.util.ConvertUtil</function-class>
-         <function-signature>
-              String calcAge(java.lang.String)
-         </function-signature>
-    </function>
+	 <description>convertUtil</description>
+	 <tlib-version>1.1</tlib-version>
+	 <short-name>convert</short-name>
+	 <uri>/WEB-INF/tlds/convertUtil.tld</uri>
+	 <function>
+		 <description>Enter 처리</description>
+		 <name>convertEnterToBr</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String convertEnterToBr(java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>Br 처리</description>
+		 <name>convertBrToEnter</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String convertBrToEnter(java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>Query Quotes 처리</description>
+		 <name>convertQueryQuotes</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String convertQueryQuotes(java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>Slice the long Sentence</description>
+		 <name>comp</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String comp(java.lang.String, java.lang.Integer)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>Slice the long Sentence By byte</description>
+		 <name>compByte</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String compByte(java.lang.String, java.lang.Integer, java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>check null</description>
+		 <name>checkNull</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String checkNull(java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>Calculate Age</description>
+		 <name>calcAge</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String calcAge(java.lang.String)
+		 </function-signature>
+	</function>
 	<!-- (begin) 2021.01.08 by s.yoo	-->
-    <function>
-         <description>Get the biz end condition</description>
-         <name>getEndCond</name>
-         <function-class>allwork.common.util.ConvertUtil</function-class>
-         <function-signature>
-              String getEndCond(java.lang.String, java.lang.String)
-         </function-signature>
-    </function>
-    <function>
-         <description>Get the biz end condition for index.do</description>
-         <name>getEndCond4Index</name>
-         <function-class>allwork.common.util.ConvertUtil</function-class>
-         <function-signature>
-              String getEndCond4Index(java.lang.String, java.lang.String)
-         </function-signature>
-    </function>
+	<function>
+		 <description>Get the biz end condition</description>
+		 <name>getEndCond</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String getEndCond(java.lang.String, java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>Get the biz end condition for index.do</description>
+		 <name>getEndCond4Index</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String getEndCond4Index(java.lang.String, java.lang.String)
+		 </function-signature>
+	</function>
 
-    <function>
-         <description>Hide the person name</description>
-         <name>getPersonNameHidden</name>
-         <function-class>allwork.common.util.ConvertUtil</function-class>
-         <function-signature>
-              String getPersonNameHidden(java.lang.String)
-         </function-signature>
-    </function>
-    <function>
-         <description>Hide the phone number</description>
-         <name>getPhoneNoHidden</name>
-         <function-class>allwork.common.util.ConvertUtil</function-class>
-         <function-signature>
-              String getPhoneNoHidden(java.lang.String)
-         </function-signature>
-    </function>
-    <function>
-         <description>Hide the email address</description>
-         <name>getEmailHidden</name>
-         <function-class>allwork.common.util.ConvertUtil</function-class>
-         <function-signature>
-              String getEmailHidden(java.lang.String)
-         </function-signature>
-    </function>
-    <function>
-         <description>Hide the address</description>
-         <name>getAddressHidden</name>
-         <function-class>allwork.common.util.ConvertUtil</function-class>
-         <function-signature>
-              String getAddressHidden(java.lang.String, java.lang.String, java.lang.String)
-         </function-signature>
-    </function>
+	<function>
+		 <description>Get phone no part 1</description>
+		 <name>getPhone01</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String getPhone01(java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>Get phone no part 2</description>
+		 <name>getPhone02</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String getPhone02(java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>Get phone no part 3</description>
+		 <name>getPhone03</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String getPhone03(java.lang.String)
+		 </function-signature>
+	</function>
+
+	<function>
+		 <description>Get email part 1</description>
+		 <name>getEmail01</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String getEmail01(java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>Get email part 2</description>
+		 <name>getEmail02</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String getEmail02(java.lang.String)
+		 </function-signature>
+	</function>
+
+
+	<function>
+		 <description>Hide the person name</description>
+		 <name>getPersonNameHidden</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String getPersonNameHidden(java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>Hide the phone number</description>
+		 <name>getPhoneNoHidden</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String getPhoneNoHidden(java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>Hide the email address</description>
+		 <name>getEmailHidden</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String getEmailHidden(java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>Hide the address</description>
+		 <name>getAddressHidden</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String getAddressHidden(java.lang.String, java.lang.String, java.lang.String)
+		 </function-signature>
+	</function>
 	<!-- (end) 2021.01.08 by s.yoo	-->
 </taglib>

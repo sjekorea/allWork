@@ -30,11 +30,11 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 
         #rightPart .lists .desc .desc0 a:hover{text-decoration: underline;}
 
-#rightPart .lists .desc .desc1{width:48%;height:40px;line-height:30px;font-size:11px;float: left;}
+#rightPart .lists .desc .desc1{width:70%;height:40px;line-height:30px;font-size:11px;float: left;}
 
       #rightPart .lists .desc .desc1 a:hover{text-decoration: underline;}
 
-#rightPart .lists .desc .desc2{width:52%;height:40px;line-height:30px;font-size:11px;float: left;text-align: right;padding-right:20px;}
+#rightPart .lists .desc .desc2{width:30%;height:40px;line-height:30px;font-size:11px;float: left;text-align: right;padding-right:20px;}
 #rightPart .lists .desc .desc2 .total{color:#4F60E3;font-weight:700;}
 
       #rightPart .lists .desc .desc2 a:hover{text-decoration: underline;}

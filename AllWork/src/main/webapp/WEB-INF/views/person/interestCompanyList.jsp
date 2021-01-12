@@ -27,7 +27,9 @@
 							<th class="desc00"><input type="checkbox" name="all"/></th>
 							<th class="desc01">회사명</th>
 							<th class="desc02">진행중인 공고</th>
+							<!-- 
 							<th class="desc03">채용소식 알람</th>
+							 -->
 						</tr>
 						<c:choose>
 							<c:when test="${netfuConcernList.size() > 0 }">
@@ -40,12 +42,14 @@
 										<td class="desc02">
 											<a href="javascript:goRecruitList('${result.rUid }');">채용중 <span>${result.bizIngCnt }</span>건</a>
 										</td>
+										<!-- 
 										<td class="desc03"><input type="radio"/></td>
+										 -->
 									</tr>
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<tr class="desc"><td colspan="4">내역이 없습니다.</td></tr>
+								<tr class="desc"><td colspan="3">내역이 없습니다.</td></tr>
 							</c:otherwise>
 						</c:choose>
 					</tbody>
@@ -91,7 +95,7 @@
 		loadingOn();
 		
 		var callback = function(data){
-			alert("저장 되었습니다.");
+			alert("항목을 삭제했습니다.");
 			$("#pageNo").val("1");
 			$("#searchForm").submit();
 		};

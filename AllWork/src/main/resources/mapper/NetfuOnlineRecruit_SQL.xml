@@ -29,7 +29,7 @@
 	select 
 		count(no) cnt
 	from netfu_item_company
-	where no in (select  to_no from netfu_online_recruit
+	where no in (select  from_no from netfu_online_recruit
                 where type = 'job' 
                 and sub_type = 'company'
                 and to_type = 'interview' and to_uid= #{loginId})
@@ -42,7 +42,7 @@
 		${recruitColumn}
 	from netfu_item_company nic
 	where 1=1
-		and no in (select to_no from netfu_online_recruit
+		and no in (select from_no from netfu_online_recruit
                 where type = 'job' 
                 and sub_type = 'company'
                 and to_type = 'interview' and to_uid = #{loginId})
@@ -64,7 +64,7 @@
 						and nor.to_type = #{applyType}
 					</when>
 					<otherwise>
-						and nor.to_type in ('email', 'online')
+						and nor.to_type in ('email', 'online', 'mobile')
 					</otherwise>
 				</choose>
 			) 
@@ -88,8 +88,10 @@
 	SELECT 
 		nic.no recruitNo
 		, nir.no resumeNo
+		, nir.name name
 		, nor.from_no
 		, nic.biz_name
+		, nic.biz_ing
 		, nic.info_type
 		, nic.biz_title
 		, nir.inid_title
@@ -102,6 +104,7 @@
 		, DATE_FORMAT(nor.wdate, '%m/%d') wdate
 		, nor.no no
 		, nor.uid uid
+		, nic.biz_end_type
 		, nic.biz_end_day
 		, nic.uid companyUid
 		, nir.uid personUid
@@ -114,7 +117,7 @@
 						and nor.to_type = #{applyType}
 					</when>
 					<otherwise>
-						and nor.to_type in ('email', 'online')
+						and nor.to_type in ('email', 'online', 'mobile')
 					</otherwise>
 				</choose>
 			) 
@@ -137,8 +140,8 @@
 	
 	<!-- 입사지원자 현황 count(to_type:onlene:온라인 / to_type:email:이메일)  -->
 	<select id="selectApplicantCnt" parameterType="hashmap" resultType="int">
-	SELECT count(nic.no) cnt
-	FROM netfu_online_recruit AS nor, netfu_item_resume AS nir , netfu_item_company  AS nic
+	SELECT count(nor.no) cnt
+	FROM netfu_online_recruit AS nor
 	WHERE 1=1
 		and (
 				nor.type = 'job' 
@@ -148,14 +151,10 @@
 						and nor.to_type = #{applyType}
 					</when>
 					<otherwise>
-						and nor.to_type in ('email', 'online')
+						and nor.to_type in ('email', 'online', 'mobile')
 					</otherwise>
 				</choose>
 			)  
-		<if test="recruitNo != null and recruitNo != ''">
-			and nic.no = #{recruitNo}
-		</if>	
-		AND (nir.no = nor.from_no and nic.no = nor.to_no)
 		and nor.to_uid = #{loginId}
 	</select>
 	
@@ -195,16 +194,17 @@
 						and nor.to_type = #{applyType}
 					</when>
 					<otherwise>
-						and nor.to_type in ('email', 'online')
+						and nor.to_type in ('email', 'online', 'mobile')
 					</otherwise>
 				</choose>
 			) 
 		<if test="recruitNo != null and recruitNo != ''">
 			and nic.no = #{recruitNo}
 		</if>	
-		and (nir.no = nor.from_no and nic.no = nor.to_no)
+		and nic.no = nor.to_no
 		and nor.to_uid = #{loginId}
-		and nir.uid = nm.uid
+		and nir.no = nor.from_no
+		and nm.uid = nor.uid
     order by nor.no desc            
 	limit #{start}, #{pageSize}
 	</select>

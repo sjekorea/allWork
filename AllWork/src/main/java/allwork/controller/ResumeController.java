@@ -521,8 +521,9 @@ public class ResumeController {
 			
 			// 등록 채용정보 갯수
 			commandMap.put("uid", commandMap.get("companyUid"));
+			commandMap.put("bizIng", "yes");
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
-			int recruitCnt = netfuItemCompanyService.selectNetfuItemCompanyCnt(commandMap.getMap());
+			int recruitCnt = netfuItemCompanyService.selectNetfuItemCompanyCntByCompany(commandMap.getMap());
 			
 			// 진행중인 채용정보 목록
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyProceess(commandMap.getMap());

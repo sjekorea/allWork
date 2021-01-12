@@ -11,6 +11,7 @@
 			<if test="no != null and no != ''">
 				and nic.no = #{no}
 			</if>
+			AND nic.biz_ing = 'yes'
 			and nc.r_uid = nic.uid
 	</select>
 
@@ -42,8 +43,8 @@
 			nc.uid
 			, nco.biz_name
 			, nc.r_uid
-			, sum(if((nic.biz_ing <![CDATA[<>]]> 'yes' and nic.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()), 1, 0)) biz_ing_cnt
-			, sum(if((nic.biz_ing = 'yes' or nic.biz_end_day <![CDATA[<]]> CURRENT_TIMESTAMP()), 1, 0)) biz_not_ing_cnt
+			, sum(if((nic.biz_ing = 'yes'), 1, 0)) biz_ing_cnt
+			, sum(if((nic.biz_ing is null or nic.biz_ing <![CDATA[<>]]> 'yes'), 1, 0)) biz_not_ing_cnt
 		from netfu_concern nc, netfu_item_company nic, netfu_company nco
 		where 1=1
 			and nc.uid = #{loginId}
@@ -66,9 +67,8 @@
 			and nc.type = 'job'
 			and nc.sub_type = 'company'
 			<if test="bizIng == 'no'">
-				and nic.biz_ing <![CDATA[<>]]> 'yes'
+				and (nic.biz_ing is null or nic.biz_ing <![CDATA[<>]]> 'yes')
 			</if>
-			and ((nic.biz_end_type ='input' and nic.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
 			and nc.r_uid = nic.uid
 	</select>
 	
@@ -83,10 +83,12 @@
 			and nic.uid = #{companyUid}
 			and nc.type = 'job'
 			and nc.sub_type = 'company'
-			<if test="bizIng == 'no'">
-				and nic.biz_ing <![CDATA[<>]]> 'yes'
+			<if test="bizIng == 'yes'">
+				and (nic.biz_ing = 'yes')
 			</if>
-			and ((nic.biz_end_type ='input' and nic.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+			<if test="bizIng == 'no'">
+				and (nic.biz_ing is null or nic.biz_ing <![CDATA[<>]]> 'yes')
+			</if>
 			and nc.r_uid = nic.uid
 		<if test="orderRule != null and orderRule != ''">
 			order by ${orderRule}	

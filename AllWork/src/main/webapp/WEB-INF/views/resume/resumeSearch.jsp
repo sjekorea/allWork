@@ -22,6 +22,7 @@
 		<jsp:include page="/personInfoSubMenu.do" />
 	</div>
 	<div id="rightPart">
+		<!-- 
 		<div id="part01">
 			<ul class="adPart">
 				<li>
@@ -123,6 +124,7 @@
 					<ul class="select03" id="select03"></ul>
 				</div>
 			</div>
+		 -->
 			<div id="row02">
 				<ul class="tab">
 					<li id="job_career" style="background-color:#ddd;"><a href="#" title="경력">경력</a></li>

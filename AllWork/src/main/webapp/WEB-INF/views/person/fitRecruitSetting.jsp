@@ -419,7 +419,7 @@
 		}
 		
 		var callback = function(data){
-			alert("저장 되었습니다.");
+			alert("맞춤서비스를 설정했습니다.");
 			loadingOff();
 		};
 		

@@ -119,7 +119,7 @@
 		
 		var callback = function(data){
 			loadingOff();
-			alert("저장 되었습니다.");
+			alert("항목을 삭제했습니다.");
 			$("#searchForm #pageNo").val("1");
 			$("#searchForm").submit();
 		};
@@ -168,7 +168,7 @@
 		//}else{
 			loadingOn();
 			var callback = function(data){
-				alert("저장 되었습니다.");
+				alert("관심기업을 등록했습니다.");
 				$("#concernCnt").val(data.rstCnt);
 				loadingOff();
 			};

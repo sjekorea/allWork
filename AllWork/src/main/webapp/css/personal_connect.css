@@ -4,8 +4,8 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
   #containerWrap{width:100%;overflow: hidden;margin:20px 0 100px;}
   #container{width:1000px;margin:0 auto;}
 
-  /*현재메뉴 언더라인*/
-  #menuTree ul .menu05 .subMenu05_01{text-decoration: underline;}
+/*현재메뉴 언더라인*/
+/*	#menuTree ul .menu05 .subMenu05_01{text-decoration: underline;}	*/
 
 /*###################################   res_rightPart   ###################################*/
 #rightPart{width:790px;height:100%;margin-left:10px;overflow: hidden;background-color:#fff;border:1px solid #ccc;float:left;padding:40px;}

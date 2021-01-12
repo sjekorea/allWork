@@ -22,11 +22,11 @@
 		<div class="topArea">
 			<p class="close_btn"><i class="fas fa-times"></i></p>
 			<p class="email_img"><i class="fas fa-envelope-open-text"></i></p>
-			<p>이메일 입사지원</p>
+			<p>온라인 입사지원</p>
 		</div>
 		<div class="descArea">
 			<p>
-				채용 담당자의 이메일로 ${SE_USER_NM }님의 이력서가 전송됩니다.
+				채용 담당자에게 ${SE_USER_NM }님의 이력서가 전송됩니다.
 			</p>
 			<form>
 				<fieldset>
@@ -34,8 +34,8 @@
 					<ul class="title">
 						<li>보내는 사람</li>
 						<li>채용 담당자</li>
-						<li>이메일 제목</li>
-						<li>지원 이력서</li>
+						<li>입사지원 메시지</li>
+						<li>입사지원 이력서</li>
 						<!-- <li>첨부파일</li> -->
 					</ul>
 					<ul class="desc">
@@ -106,6 +106,10 @@
 					<table>
 						<caption>모집요강</caption>
 						<tbody>
+							<tr>
+								<th>채용진행상태</th>
+								<td>${(recruitMap.bizIng == 'yes')? "채용진행중" : "채용마감" }</td>
+							</tr>
 							<tr>
 								<th>공고제목</th>
 								<td>${recruitMap.bizTitle }</td>
@@ -221,10 +225,12 @@
 								<th>전화번호</th>
 								<td>${recruitMap.bizPphone }</td>
 							</tr>
+							<!-- 
 							<tr>
 								<th>팩스</th>
 								<td>${recruitMap.bizPfax }</td>
 							</tr>
+							 -->
 							<tr>
 								<th>이메일</th>
 								<td>${recruitMap.bizPemail }</td>
@@ -242,9 +248,11 @@
 					<c:if test="${recruitMap.bizMethodName.contains('온라인')}">
 						<li class="reg_ok"><a href="javascript:applyPopup('online');" title="입사지원">온라인입사지원</a></li>
 					</c:if>
+					<!-- 
 					<c:if test="${recruitMap.bizMethodName.contains('이메일')}">
 						<li class="reg_ok"><a href="javascript:applyPopup('email');" title="입사지원">이메일입사지원</a></li>
 					</c:if>
+					 -->
 				</ul>
 			</c:if>
 		</c:if>
@@ -291,7 +299,7 @@
 			
 			loadingOn();
 			var callback = function(data){
-				alert("저장 되었습니다.");
+				alert("스크랩 했습니다.");
 				$("#scrapBtn").hide();
 				loadingOff();
 			};
@@ -315,7 +323,7 @@
 		//}else{
 			loadingOn();
 			var callback = function(data){
-				alert("저장 되었습니다.");
+				alert("관심기업을 등록했습니다.");
 				$("#concernCnt").val(data.rstCnt);
 				loadingOff();
 			};

@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="/WEB-INF/tlds/convertUtil.tld" prefix="convert" %>
+<%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert" %>
 
 <jsp:include page="/companyHeader.do" />
 
@@ -16,7 +18,7 @@
 			<jsp:include page="/companySubMenu.do" />
 			<div id="leftPart_buttom">
 				<ul>
-					<li class="reg_ok"><a href="#none" title="등록완료">등록완료</a></li>
+					<li class="reg_ok"><a href="#none" title="등록">등록</a></li>
 				</ul>
 			</div>
 		</div>
@@ -63,10 +65,11 @@
 							<table>
 							<caption>모집요강</caption>
 							<tbody>
+									<input type="hidden" id="bizIng" name="bizIng" value="yes" />
 								<tr>
 									<th>공고제목<span class="necessary">*</span></th>
 									<td>
-										<span><input class="reg_text" id="bizTitle" type="text" name="bizTitle" placeholder="ex)웹기획 경력직 채용" value="공고제목"/></span>
+										<span><input class="reg_text" id="bizTitle" type="text" name="bizTitle" placeholder="ex)웹기획 경력직 채용" value=""/></span>
 									</td>
 								</tr>
 							</tbody>
@@ -86,7 +89,7 @@
 											<option value="">2차직무선택</option>
 										</select>
 										<select id="bizType3" name="bizType3" title="3차직무선택">
-											<option value="3차직무선택">3차직무선택</option>
+											<option value="">3차직무선택</option>
 										</select>
 										<input type="button" name="appendItem" kind="job" value="+ 추가" />
 										<input type="button" name="deleteItem" kind="job" value="- 삭제" />
@@ -109,7 +112,7 @@
 											<option value="">2차산업선택</option>
 										</select>
 										<select id="bizAreaJob3" name="bizAreaJob3" title="3차산업선택">
-											<option value="3차직무선택">3차산업선택</option>
+											<option value="">3차산업선택</option>
 										</select>
 										<input type="button" name="appendItem" kind="area_job" value="+ 추가" />
 										<input type="button" name="deleteItem" kind="area_job" value="- 삭제" />
@@ -190,7 +193,7 @@
 									</td>
 								</tr>
 								<tr>
-									<th>최종학력<span class="necessary">*</span></th>
+									<th>최종학력</th>
 									<td>
 										<select id="bizAbility" name="bizAbility" title="학력 선택">
 											<option value="">학력 선택</option>
@@ -256,17 +259,18 @@
 				</div>
 				<div id="regist05">
 					<li id="regForm05">
-						<legend>마감일/방법</legend>
+						<legend>채욤마감/채용방법</legend>
 						<div>
 							<table>
-								<caption>마감일/방법</caption>
+								<caption>채용마감</caption>
 								<tbody>
 									<tr>
-									<th>마감일<span class="necessary">*</span></th>
+									<th>채용마감<span class="necessary">*</span></th>
 										<td>
+											<span><input id="bizEndTypeInput" type="radio" name="bizEndTypeChk" value="input"/><label for="bizEndType">마감일</label></span>
 											<span><input id="bizEndDay" type="date" name="bizEndDay"/></span>
-											<span><input id="bizEndTypeChk" type="checkbox" name="bizEndTypeChk" value="often"/><label for="bizEndType">상시채용</label></span>
-											<span><input id="bizEndTypeChk" type="checkbox" name="bizEndTypeChk" value="get"/><label for="bizEndType">채용시 마감</label></span>
+											<span><input id="bizEndTypeGet" type="radio" name="bizEndTypeChk" value="get"/><label for="bizEndType">채용시 마감</label></span>
+											<span><input id="bizEndTypeOften" type="radio" name="bizEndTypeChk" value="often"/><label for="bizEndType">상시채용</label></span>
 											<input type="hidden" name="bizEndType" id="bizEndType" />
 										</td>
 									</tr>
@@ -316,19 +320,20 @@
 								<tbody>
 									<tr>
 										<th>담당자명<span class="necessary">*</span></th>
-										<td><input id="bizPerson" type="text" name="bizPerson" title="담당자명"/></td>
+										<td><input id="bizPerson" type="text" name="bizPerson" title="담당자명" value="${memberMap.name}"/></td>
 									</tr>
 									<tr>
 										<th>전화번호<span class="necessary">*</span></th>
 										<td>
-											<span><input id="bizPphone1" type="text" name="bizPphone1" title="" numberOnly/></span>
+											<span><input id="bizPphone1" type="text" name="bizPphone1" title="" numberOnly value="${convert:getPhone01(memberMap.hphone)}"/></span>
 											<span>-</span>
-											<span><input id="bizPphone2" type="text" name="bizPphone2" title="" numberOnly/></span>
+											<span><input id="bizPphone2" type="text" name="bizPphone2" title="" numberOnly value="${convert:getPhone02(memberMap.hphone)}"/></span>
 											<span>-</span>
-											<span><input id="bizPphone3" type="text" name="bizPphone3" title="" numberOnly/></span>
+											<span><input id="bizPphone3" type="text" name="bizPphone3" title="" numberOnly value="${convert:getPhone03(memberMap.hphone)}"/></span>
 											<input type="hidden" name="bizPphone" id="bizPphone" value="" />
 										</td>
 									</tr>
+									<!-- 
 									<tr>
 										<th>팩스<span class="necessary">*</span></th>
 										<td>
@@ -340,10 +345,11 @@
 											<input type="hidden" name="bizPfax" id="bizPfax" value="" />
 										</td>
 									</tr>
+									 -->
 									<tr>
 										<th>이메일<span class="necessary">*</span></th>
 										<td>
-											<span><input id="bizPemailId" type="text" name="bizPemailId" title=""/></span><span>@</span><span><input id="bizPemailHost" type="text" name="bizPemailHost" title=""/></span>
+											<span><input id="bizPemailId" type="text" name="bizPemailId" title=""  value="${convert:getEmail01(memberMap.email)}"/></span><span>@</span><span><input id="bizPemailHost" type="text" name="bizPemailHost" title=""  value="${convert:getEmail02(memberMap.email)}"/></span>
 											<span>
 												<select id="selBizPemailHost" name="selBizPemailHost" title="">
 													<option value="">직접입력</option>
@@ -364,8 +370,8 @@
 			
 			</form>
 			<ul>
-				<li><a href="" title="">취소</a></li>
-				<li class="reg_ok"><a href="#none" title="등록완료">등록완료</a></li>
+				<li><a href="/recruitListProgress.do" title="">취소</a></li>
+				<li class="reg_ok"><a href="#none" title="등록">등록</a></li>
 			</ul>
 		</div>
 	</div>
@@ -379,18 +385,18 @@
 	$(document).ready(function(){
 		
 		nhn.husky.EZCreator.createInIFrame({
-	        oAppRef: bizDetail_object,
-	        elPlaceHolder: "bizDetail",
-	        sSkinURI: "/smartEditor/SmartEditor2Skin.html",
-	        htParams : {
-	            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-	            bUseToolbar : true,            
-	            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-	            bUseVerticalResizer : true,    
-	            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-	            bUseModeChanger : true,
-	        }
-	    });
+			oAppRef: bizDetail_object,
+			elPlaceHolder: "bizDetail",
+			sSkinURI: "/smartEditor/SmartEditor2Skin.html",
+			htParams : {
+				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+				bUseToolbar : true,			
+				// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+				bUseVerticalResizer : true,	
+				// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+				bUseModeChanger : true,
+			}
+		});
 		
 		
 		$("input:text[numberOnly]").on("keypress", function(e){
@@ -536,6 +542,7 @@
 	
 	function registRecruit(){
 		
+		
 		if(checkNull($("#bizTitle").val())){ alertAndFocus("공고제목을 입력하세요.", $("#bizTitle")); return; }
 		if(checkNull($("#bizType3 option:selected").val())){ alert("모집업종을 선택하세요."); return; }
 		if(checkNull($("#bizAreaJob3 option:selected").val())){ alert("산업분야를 선택하세요."); return; }
@@ -546,9 +553,9 @@
 		// 고용형태 checkbox
 		var bizJobfrom = "";
 		$("input[name=bizJobfromChk]").each(function() {
-		      if(this.checked){
-		    	  bizJobfrom += this.value+",";
-		      }
+			  if(this.checked){
+				  bizJobfrom += this.value+",";
+			  }
 		});
 		bizJobfrom = bizJobfrom.length > 0 ? bizJobfrom.substring(0, bizJobfrom.length-1) : "";
 		if(checkNull(bizJobfrom)){ alert("고용형태를 선택하세요."); return; }
@@ -575,14 +582,14 @@
 			return;
 		}
 		
-		if(checkNull($("#bizAbility option:selected").val())){ alert("최종학력을 선택하세요."); return; }
+		//if(checkNull($("#bizAbility option:selected").val())){ alert("최종학력을 선택하세요."); return; }
 		 
 		// 우대조건 checkbox
 		var bizPreferential = "";
 		$("input[name=bizPreferentialChk]").each(function() {
-		      if(this.checked){
-		    	  bizPreferential += this.value+",";
-		      }
+			  if(this.checked){
+				  bizPreferential += this.value+",";
+			  }
 		});
 		bizPreferential = bizPreferential.length > 0 ? bizPreferential.substring(0, bizPreferential.length-1) : "";
 		$("#bizPreferential").val(bizPreferential);
@@ -590,26 +597,27 @@
 		// 채용방법 checkbox
 		var bizEndType = "";
 		$("input[name=bizEndTypeChk]").each(function() {
-		      if(this.checked){
-		    	  bizEndType += this.value+",";
-		      }
+			  if(this.checked){
+				  bizEndType = this.value;
+			  }
 		});
-		bizEndType = bizEndType.length > 0 ? bizEndType.substring(0, bizEndType.length-1) : "";
-		if(bizEndType == "" && checkNull($("#bizEndDay").val())){
-			alert("마감일을 선태하세요.");
+		if(checkNull(bizEndType)){
+			alert("채용마감방법을 선태하세요.");
+			return;
+		}
+		if(bizEndType == "input" && checkNull($("#bizEndDay").val())){
+			alert("채용 마감일을 선태하세요.");
 			return;
 		}
 		$("#bizEndType").val(bizEndType);
-		if(!checkNull($("#bizEndDay").val())){
-			$("#bizEndType").val("input");
-		}
-		
+
+				
 		// 제출서류 checkbox
 		var bizPaper = "";
 		$("input[name=bizPaperChk]").each(function() {
-		      if(this.checked){
-		    	  bizPaper += this.value+",";
-		      }
+			  if(this.checked){
+				  bizPaper += this.value+",";
+			  }
 		});
 		bizPaper = bizPaper.length > 0 ? bizPaper.substring(0, bizPaper.length-1) : "";
 		$("#bizPaper").val(bizPaper);
@@ -617,9 +625,9 @@
 		// 접수방법 checkbox
 		var bizMethod = "";
 		$("input[name=bizMethodChk]").each(function() {
-		      if(this.checked){
-		    	  bizMethod += this.value+",";
-		      }
+			  if(this.checked){
+				  bizMethod += this.value+",";
+			  }
 		});
 		bizMethod = bizMethod.length > 0 ? bizMethod.substring(0, bizMethod.length-1) : "";
 		if(checkNull(bizMethod)){ alert("접수방법을 선택하세요."); return; }
@@ -628,9 +636,9 @@
 		// 이력서 양식 checkbox
 		var bizForm = "";
 		$("input[name=bizFormChk]").each(function() {
-		      if(this.checked){
-		    	  bizForm += this.value+",";
-		      }
+			  if(this.checked){
+				  bizForm += this.value+",";
+			  }
 		});
 		bizForm = bizForm.length > 0 ? bizForm.substring(0, bizForm.length-1) : "";
 		$("#bizForm").val(bizForm);
@@ -643,11 +651,13 @@
 		}
 		$("#bizPphone").val($("#bizPphone1").val()+"-"+$("#bizPphone2").val()+"-"+$("#bizPphone3").val());
 		
+		/*
 		if(checkNull($("#bizPfax1").val()) && checkNull($("#bizPfax2").val()) && checkNull($("#bizPfax3").val())){
 			alert("담당자 팩스번호를 입력하세요."); 
 			return; 
 		}
 		$("#bizPfax").val($("#bizPfax1").val()+"-"+$("#bizPfax2").val()+"-"+$("#bizPfax3").val());
+		*/
 		
 		if(checkNull($("#bizPemailId").val())){ alertAndFocus("담당자 이메일 ID를 입력하세요.", $("#bizPemailId")); return; }
 		if(checkNull($("#bizPemailHost").val())){ alertAndFocus("담당자 이메일 종류를 입력하세요.", $("#bizPemailHost")); return; }
