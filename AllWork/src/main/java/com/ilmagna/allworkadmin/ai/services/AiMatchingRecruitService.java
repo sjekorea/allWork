@@ -1,6 +1,7 @@
 package com.ilmagna.allworkadmin.ai.services;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -52,21 +53,31 @@ public class AiMatchingRecruitService {
 						//itemData.getData().get(j).setStrWdate(item.getStrWdate());
 						
 						AiMatchingRecommendationModel data = itemData.getData().get(j);
-						if (!ApiCommonUtils.isNullOrEmpty(data.getRecommend_id())) {
-							int recommend_id = Integer.parseInt(data.getRecommend_id());
-							
-							//이력서 공개상태.
-							CommandMap commandMap = new CommandMap();
-							commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
-							commandMap.put("personUid", data.getUid());
-							commandMap.put("no", recommend_id);
-							Map<String, Object> resumeMap = netfuItemResumeService.selectNetfuItemResumeMap(commandMap.getMap());
 
-							itemData.getData().get(j).setInid_secret((String) resumeMap.get("inidSecret"));
+						//이력서 공개상태와 구직자 이력서 사진.
+						Map<String, Object> resumeMap = new HashMap<String, Object>();
+						try {
+							if (!ApiCommonUtils.isNullOrEmpty(data.getRecommend_id())) {
+								int recommend_id = Integer.parseInt(data.getRecommend_id());
+								
+								//이력서 공개상태.
+								CommandMap commandMap = new CommandMap();
+								commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
+								commandMap.put("personUid", data.getUid());
+								commandMap.put("no", recommend_id);
+								resumeMap = netfuItemResumeService.selectNetfuItemResumeMap(commandMap.getMap());
 
-							//구직자 이력서 사진.
-							itemData.getData().get(j).setPhoto((String) resumeMap.get("photo"));							
+								itemData.getData().get(j).setInid_secret((String) resumeMap.get("inidSecret"));
+
+								//구직자 이력서 사진.
+								itemData.getData().get(j).setPhoto((String) resumeMap.get("photo"));							
+							}
+						} catch (Exception e2) {
 						}
+						//사라진 이력서는 무시.
+						if (resumeMap == null || resumeMap.isEmpty()) continue;		
+						//비공개 이력서는 무시.
+						if (itemData.getData().get(j).getInid_secret().equalsIgnoreCase("yes"))	continue;
 
 						//추천정보 등록.
 						listResult.add(itemData.getData().get(j));

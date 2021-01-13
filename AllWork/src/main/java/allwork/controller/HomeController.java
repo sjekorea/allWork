@@ -1,7 +1,5 @@
 package allwork.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -12,9 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ilmagna.allworkadmin.ai.domains.AiSearchModel;
@@ -24,10 +20,8 @@ import com.ilmagna.allworkadmin.api.services.ApiRecruitItemService;
 
 import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
-import allwork.common.util.ConvertUtil;
 import allwork.service.HomeCommonService;
 import allwork.service.NetfuItemCompanyService;
-import allwork.service.NetfuItemResumeService;
 import allwork.service.NetfuMyServiceService;
 import allwork.service.RecruitOtherService;
 

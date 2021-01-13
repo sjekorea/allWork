@@ -1,25 +1,19 @@
 package allwork.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import allwork.common.CommandMap;
-import allwork.common.util.CommonColumnUtil;
 import allwork.common.util.FileUtils;
 import allwork.service.HomeCommonService;
-import allwork.service.NetfuCateService;
 
 @Controller
 public class CommonController {
@@ -43,8 +37,8 @@ public class CommonController {
 		
 		ModelAndView mv = new ModelAndView("/include/indexHeader");
 		
-		int pageSize = 8;
-		int totalSize = 0;
+		//int pageSize = 8;
+		//int totalSize = 0;
 		
 		try{
 			// popup 리스트

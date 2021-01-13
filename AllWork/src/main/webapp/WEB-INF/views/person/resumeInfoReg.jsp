@@ -15,6 +15,7 @@
 	<div id="container">
 		<div id="leftPart">
 			<jsp:include page="/personSubMenu.do" />
+			<!-- 
 			<div id="leftPart_buttom">
 				<ul>
 					<li><a href="#none" title="미리보기">미리보기</a></li>
@@ -22,6 +23,7 @@
 					<li class="res_ok"><a href="#none" title="등록">등록</a></li>
 				</ul>
 			</div>
+			 -->
 		</div>
 		<div id="rightPart">
 		<form id="registForm" name="registForm" enctype="multipart/form-data" action="/registResume.do" method="post">
@@ -447,8 +449,10 @@
 				<input type="hidden" name="aInsert" id="aInsert" value="NO" />
 			</form>
 			<ul>
+				<!-- 
 				<li><a href="#none" title="미리보기">미리보기</a></li>
 				<li><a href="#none" title="임시저장">임시저장</a></li>
+				 -->
 				<li class="res_ok"><a href="#none" title="등록">등록</a></li>
 			</ul>
 			</form>

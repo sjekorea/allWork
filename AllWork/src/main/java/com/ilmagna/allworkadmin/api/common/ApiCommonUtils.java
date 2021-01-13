@@ -490,11 +490,19 @@ public class ApiCommonUtils {
 	        	file.mkdirs();
 	        }
 
+	        //파일 확장명 추출.
+	        String strOriginalFilename = photoFile.getOriginalFilename();
+	        if (ApiCommonUtils.isNullOrEmpty(strOriginalFilename)) return strFilename;
+	        int nIndex = strOriginalFilename.lastIndexOf(".");
+	        if (nIndex < 0) return strFilename;
+	        
+	        String strExt = strOriginalFilename.substring(nIndex, strOriginalFilename.length());
+	        
 	        //Target 파일이름 생성.
 			String strKey = encodeMD5(generateTimeId());
 			if (strKey.length() >= 4)
 				strKey = strKey.substring(0, 4);
-			strFilename = prefix + "_" + uid + "_" + strKey;
+			strFilename = prefix + "_" + uid + "_" + strKey + strExt;
 			//System.out.println(strFilename);
 	        
 			//Target 파일 Path 설정.

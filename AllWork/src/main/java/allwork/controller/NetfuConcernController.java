@@ -19,7 +19,6 @@ import allwork.common.util.PaginationUtil;
 import allwork.service.NetfuConcernService;
 import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuOnlineRecruitService;
-import allwork.service.NetfuScrapService;
 
 @Controller
 public class NetfuConcernController {

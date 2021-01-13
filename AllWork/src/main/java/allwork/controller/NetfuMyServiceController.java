@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
-import allwork.common.util.CommonUtil;
 import allwork.common.util.ConvertUtil;
 import allwork.common.util.MakeQueryUtil;
 import allwork.common.util.PaginationUtil;

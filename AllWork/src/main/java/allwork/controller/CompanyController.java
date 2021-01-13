@@ -1,11 +1,7 @@
 package allwork.controller;
 
-import java.io.PrintWriter;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -36,7 +32,6 @@ import allwork.common.util.MakeQueryUtil;
 import allwork.service.NetfuCateService;
 import allwork.service.NetfuCompanyService;
 import allwork.service.NetfuItemCompanyService;
-import allwork.service.NetfuItemResumeService;
 import allwork.service.NetfuMemberService;
 import allwork.service.NetfuMyServiceService;
 import allwork.service.NetfuOnlineRecruitService;
@@ -243,10 +238,10 @@ public class CompanyController {
 	@RequestMapping(value="/registRecruit.do")
 	public void registRecruit(CommandMap commandMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		
-		ModelAndView mv = new ModelAndView();
+		//ModelAndView mv = new ModelAndView();
 		String attachFileName = "";
-		String alertMsg = "";
-		String redirectUrl = "";
+		//String alertMsg = "";
+		//String redirectUrl = "";
 		try{
 			
 			
@@ -357,8 +352,8 @@ public class CompanyController {
 		
 		ModelAndView mv = new ModelAndView();
 		String attachFileName = "";
-		String alertMsg = "";
-		String redirectUrl = "";
+		//String alertMsg = "";
+		//String redirectUrl = "";
 		try{
 			
 			//첨부파일 Upload.

@@ -49,7 +49,7 @@
 										 -->
 										<td class="desc02">
 											${convert:getPersonNameHidden(result.name) }<br/>
-											${result.birthYear}</span>
+											(${result.birthYear}년)</span>
 										</td>
 										<td class="desc03">
 											${result.schooling }<br/>

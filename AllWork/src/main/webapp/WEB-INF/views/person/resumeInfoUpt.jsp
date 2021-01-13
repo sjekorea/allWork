@@ -15,11 +15,13 @@
 	<div id="container">
 		<div id="leftPart">
 			<jsp:include page="/personSubMenu.do" />
+			<!-- 
 			<div id="leftPart_buttom">
 				<ul>
 					<li class="res_ok"><a href="#none" title="수정">수정</a></li>
 				</ul>
 			</div>
+			 -->
 		</div>
 		<div id="rightPart">
 		<form id="registForm" name="registForm" enctype="multipart/form-data" action="/updateResume.do" method="post">
@@ -42,14 +44,16 @@
 					<p class="personal_setting"><a href="/updateMyInfo.do" title="기본정보수정"><i class="fas fa-cog"></i>&nbsp;기본정보수정</a></p>
 					<div id="imgPart">
 						<div class="imgArea">
-				<c:if test="${resumeMap.inidPhoto == null || resumeMap.inidPhoto == '' }">
+				<c:if test="${memberMap.photo == null || memberMap.photo == '' }">
 							<p><img src="/img/userNo.png" alt="본인사진"/></p>
 				</c:if>
-				<c:if test="${resumeMap.inidPhoto != null && resumeMap.inidPhoto != '' }">
-						<p><img src="/allwork/peg/${resumeMap.photo}" alt="이력서 사진" /></p>
+				<c:if test="${memberMap.photo != null && memberMap.photo != '' }">
+						<p><img src="/allwork/peg/${memberMap.photo}" alt="이력서 사진" /></p>
 				</c:if>
 						</div>
+						<!-- 
 						<p class="btnArea"><label for="myImg">사진선택</label><input id="inidPhoto" name="inidPhoto" type="file" onchange="javascript:viewImgName(this);"/><br/><li id="imgName"></li></p>
+						 -->
 						<input type="hidden" name="orgInidPhoto" id="orgInidPhoto" value="${resumeMap.inidPhoto }" />
 					</div>
 					<table>

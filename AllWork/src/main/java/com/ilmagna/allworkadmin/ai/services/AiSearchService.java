@@ -6,6 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -164,16 +165,22 @@ public class AiSearchService {
 				if (ApiCommonUtils.isNullOrEmpty(dataItem.getRecommend_id())) continue;
 				
 				//채용마감상태와 채용마감일 등록.
-				CommandMap commandMap = new CommandMap();
-				commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
-				commandMap.put("no", dataItem.getRecommend_id());
-				Map<String, Object> recruitMap = netfuItemCompanyService.selectNetfuItemCompanyMap(commandMap.getMap());
-				String strBizIng = (String) recruitMap.get("bizIng");
-				dataItem.setBizIng(strBizIng);
+				Map<String, Object> recruitMap = new HashMap<String, Object>();
+				try {
+					CommandMap commandMap = new CommandMap();
+					commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+					commandMap.put("no", dataItem.getRecommend_id());
+					recruitMap = netfuItemCompanyService.selectNetfuItemCompanyMap(commandMap.getMap());
+					String strBizIng = (String) recruitMap.get("bizIng");
+					dataItem.setBizIng(strBizIng);
 				
-				//채용마감일 등록.
-				String strEdate = ApiConvertorUtil.getBizEndDay(dataItem.getBizIng(), dataItem.getBiz_end_type(), dataItem.getBiz_end_day());
-				dataItem.setStrEdate(strEdate);
+					//채용마감일 등록.
+					String strEdate = ApiConvertorUtil.getBizEndDay(dataItem.getBizIng(), dataItem.getBiz_end_type(), dataItem.getBiz_end_day());
+					dataItem.setStrEdate(strEdate);
+				} catch (Exception e2) {
+				}
+				//사라진 채용공고는 무시.
+				if (recruitMap == null || recruitMap.isEmpty()) continue;
 
 				//채용정보 등록.
 				dataItem.setId(i);
@@ -252,13 +259,21 @@ public class AiSearchService {
 				if (ApiCommonUtils.isNullOrEmpty(dataItem.getRecommend_id())) continue;
 				
 				//이력서 공개상태.
-				CommandMap commandMap = new CommandMap();
-				commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
-				commandMap.put("personUid", dataItem.getUid());
-				commandMap.put("no", dataItem.getRecommend_id());
-				Map<String, Object> resumeMap = netfuItemResumeService.selectNetfuItemResumeMap(commandMap.getMap());
+				Map<String, Object> resumeMap = new HashMap<String, Object>();
+				try {
+					CommandMap commandMap = new CommandMap();
+					commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
+					commandMap.put("personUid", dataItem.getUid());
+					commandMap.put("no", dataItem.getRecommend_id());
+					resumeMap = netfuItemResumeService.selectNetfuItemResumeMap(commandMap.getMap());
 
-				dataItem.setInid_secret((String) resumeMap.get("inidSecret"));
+					dataItem.setInid_secret((String) resumeMap.get("inidSecret"));
+				} catch (Exception e2) {
+				}
+				//사라진 이력서는 무시.
+				if (resumeMap == null || resumeMap.isEmpty()) continue;
+				//비공개 이력서는 무시.
+				if (dataItem.getInid_secret().equalsIgnoreCase("yes"))	continue;
 
 				
 				//인재정보 등록.

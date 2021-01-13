@@ -1,6 +1,7 @@
 package com.ilmagna.allworkadmin.ai.services;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,17 +50,25 @@ public class AiMatchingResumeService {
 				for (int i = 0; i < list.size(); i++) {
 					AiMatchingResumeModel itemData = procDataItem(list.get(i));
 					for (int j = 0; j < itemData.getData().size(); j++) {
-						//채용마감상태와 채용마감일 등록.
-						CommandMap commandMap = new CommandMap();
-						commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
-						commandMap.put("no", itemData.getData().get(j).getRecommend_id());
-						Map<String, Object> recruitMap = netfuItemCompanyService.selectNetfuItemCompanyMap(commandMap.getMap());
-						String strBizIng = (String) recruitMap.get("bizIng");
-						itemData.getData().get(j).setBizIng(strBizIng);
 
-						//채용마감일 등록.
-						String strEdate = ApiConvertorUtil.getBizEndDay(itemData.getData().get(j).getBizIng(), itemData.getData().get(j).getBiz_end_type(), itemData.getData().get(j).getBiz_end_day());
-						itemData.getData().get(j).setStrEdate(strEdate);
+						//채용마감상태와 채용마감일 .
+						Map<String, Object> recruitMap = new HashMap<String, Object>();
+						try {
+							//채용마감상태와 채용마감일 등록.
+							CommandMap commandMap = new CommandMap();
+							commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+							commandMap.put("no", itemData.getData().get(j).getRecommend_id());
+							recruitMap = netfuItemCompanyService.selectNetfuItemCompanyMap(commandMap.getMap());
+							String strBizIng = (String) recruitMap.get("bizIng");
+							itemData.getData().get(j).setBizIng(strBizIng);
+
+							//채용마감일 등록.
+							String strEdate = ApiConvertorUtil.getBizEndDay(itemData.getData().get(j).getBizIng(), itemData.getData().get(j).getBiz_end_type(), itemData.getData().get(j).getBiz_end_day());
+							itemData.getData().get(j).setStrEdate(strEdate);
+						} catch (Exception e2) {
+						}
+						//사라진 채용공고는 무시.
+						if (recruitMap == null || recruitMap.isEmpty()) continue;
 
 						//추천정보 등록.
 						listResult.add(itemData.getData().get(j));

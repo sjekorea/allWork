@@ -13,10 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.Gson;
-
 import allwork.common.CommandMap;
-import allwork.common.util.CodeConvertUtil;
 import allwork.common.util.CommonColumnUtil;
 import allwork.common.util.ConvertUtil;
 import allwork.common.util.PaginationUtil;
@@ -28,10 +25,6 @@ import allwork.service.NetfuMemberService;
 import allwork.service.NetfuOnlineRecruitService;
 import allwork.service.NetfuScrapService;
 import allwork.service.RecruitViewService;
-import allwork.vo.NetfuItemResumeVo;
-import de.ailis.pherialize.Mixed;
-import de.ailis.pherialize.MixedArray;
-import de.ailis.pherialize.Pherialize;
 
 @Controller
 public class ResumeController {

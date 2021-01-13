@@ -165,8 +165,10 @@ public class AiMatchingRecommendationModel implements Serializable  {
 			
 			//등록일.
 			String strWdate = (String) jsonObject.get("wdate");
-			if (!ApiCommonUtils.isNullOrEmpty(strWdate))
+			if (!ApiCommonUtils.isNullOrEmpty(strWdate)) {
+				if (strWdate.length() > 10) strWdate = strWdate.substring(0, 10);
 				this.setStrWdate(strWdate);
+			}
 			
 			//채용마감일.
 			String strEndType = (String) jsonObject.get("biz_end_type");

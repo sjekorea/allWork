@@ -1,11 +1,8 @@
 package allwork.controller;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -15,8 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.json.simple.parser.JSONParser;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -108,7 +103,7 @@ public class PersonController {
 		
 		ModelAndView mv = new ModelAndView("/person/personHome");
 		int pageSize = 10;
-		int totalSize = 0;
+		//int totalSize = 0;
 		
 		try{
 			
@@ -260,10 +255,10 @@ public class PersonController {
 	@RequestMapping(value="/registResume.do")
 	public void registResume(CommandMap commandMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		
-		ModelAndView mv = new ModelAndView();
-		String attachFileName = "";
-		String alertMsg = "";
-		String redirectUrl = "";
+		//ModelAndView mv = new ModelAndView();
+		//String attachFileName = "";
+		//String alertMsg = "";
+		//String redirectUrl = "";
 		try{
 			
 			commandMap = fileUtils.uploadFileMap(commandMap, request); // 첨부파일 업로드
@@ -372,9 +367,9 @@ public class PersonController {
 	public void updateResume(CommandMap commandMap, HttpSession session, MultipartHttpServletRequest request, HttpServletResponse response) {
 		
 		ModelAndView mv = new ModelAndView();
-		String attachFileName = "";
-		String alertMsg = "";
-		String redirectUrl = "";
+		//String attachFileName = "";
+		//String alertMsg = "";
+		//String redirectUrl = "";
 		try{
 			
 			//첨부파일 Upload.
