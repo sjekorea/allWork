@@ -18,6 +18,10 @@ public class NetfuMemberDao extends AbstractDAO{
 		return selectCnt("netfuMember.selectNetfuMemberLoginCnt", map);
 	}
 	
+	public int selectNetfuMemberSNSLoginCnt(Map<String, Object> map) throws Exception{
+		return selectCnt("netfuMember.selectNetfuMemberSNSLoginCnt", map);
+	}
+	
 	public int selectUidExistCnt(Map<String, Object> map) throws Exception{
 		return selectCnt("netfuMember.selectUidExistCnt", map);
 	}

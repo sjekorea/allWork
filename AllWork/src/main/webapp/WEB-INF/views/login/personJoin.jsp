@@ -28,6 +28,8 @@
 	<script type="text/javascript" src="/js/process.js"></script>
 	<!-- Daum 주소검색 사용. -->
 	<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	</head>
 
 <body>
@@ -78,8 +80,8 @@
 						<div class="snsRegister">
 							<p>소셜 회원가입</p>
 							<ul>
-								<li><a href="#none" title="네이버 회원가입"><img src="/img/login/sns01.png" alt="이미지00"/>&nbsp;&nbsp;&nbsp;&nbsp;네이버 회원가입</a></li>
-								<li><a href="#none" title="카카오 회원가입"><img src="/img/login/sns02.png" alt="이미지00"/>&nbsp;&nbsp;&nbsp;&nbsp;카카오 회원가입</a></li>
+								<div id="naverIdLogin"></div>
+								<div><a id="kakao-login-btn" class="btn kakao font-mgb">카카오로 로그인</a></div>
 								<li><a href="#none" title="구글 회원가입"><img src="/img/login/sns03.jpg" alt="이미지00"/>&nbsp;&nbsp;&nbsp;&nbsp;구글 회원가입</a></li>
 							</ul>
 						</div>
@@ -283,6 +285,8 @@
 						<input type="hidden" name="birth" id="birth" value="" />
 						<input type="hidden" name="email" id="email" value="" />
 						<input type="hidden" name="hphone" id="hphone" value="" />
+						<input type="hidden" name="ciKey" id="ciKey" value="" />
+						<input type="hidden" name="snsLoginType" id="snsLoginType" value="" />
 						</fieldset>
 					</form>
 					<div class="agree_ok">
@@ -297,7 +301,52 @@
 <jsp:include page="/footer.do" />
 
 <script type="text/javascript">
+
+	var naverLogin = new naver.LoginWithNaverId(
+		{
+			clientId: "Dwg08lyiUIJtmpURlfNJ",
+			callbackUrl: "http://localhost:8080/naverLogin.do",
+			isPopup: true, /* 팝업을 통한 연동처리 여부 */
+			loginButton: {color: "green", type: 2, height: 50} /* 로그인 버튼의 타입을 지정 */
+		}
+	);
 	
+	/* 설정정보를 초기화하고 연동을 준비 */
+	naverLogin.init();
+	
+	
+	
+	// kakao 회원가입 설정
+	Kakao.init('bea44c26b9547404f0b081cd46b351b8');
+    // 카카오 로그인 버튼을 생성합니다.
+    Kakao.Auth.createLoginButton({
+		container: '#kakao-login-btn',
+		success: function(authObj) {
+        	// 로그인 성공시, API를 호출합니다.
+        	Kakao.API.request({
+          		url: '/v2/user/me',
+          		success: function(res) {
+	          		var kakaoInfo = JSON.stringify(res);
+	          		console.log(kakaoInfo);
+	            	console.log("id =====> "+res.id);
+	            	console.log("properties.nickname =====> "+res.properties.nickname);
+	            	console.log("kakao_account.email =====> "+res.kakao_account.email);
+	            	
+	            	goKakaoLogin(res.kakao_account.email, res.properties.nickname, res.id);
+	            	
+	          	},
+	          	fail: function(error) {
+	          		console.log(JSON.stringify(error));
+	          	}
+	        });
+		},
+		fail: function(err) {
+	        alert(JSON.stringify(err));
+	    }
+	});
+	
+    
+    
 	$(document).ready(function(){
 		
 		$("input:text[numberOnly]").on("keypress", function(e){
@@ -358,7 +407,25 @@
 			goRegistMember();
 		});
 		*/
-
+		
+		if("${map.ciKey}" != ""){
+			$("#ciKey").val("${map.ciKey}");
+			$("#snsLoginType").val("${map.snsLoginType}");
+			var tmpEmail = "${map.email}".split("@");
+			if(tmpEmail.length == 2){
+				$("#emailId").val(tmpEmail[0]);
+				$("#emailHost").val(tmpEmail[1]);
+				$("#selEmailHost").val("gmail.com");
+			}
+			$("#email").val("${map.email}");
+			
+			if("${map.snsLoginType}" != "google"){
+				$("#name").val("${map.name}");
+				$("#name").attr("readonly", true);
+				$("#name").css("background-color", "#A2A2A2");	
+			}
+		}
+		
 
 		//생년월일 combobox 생성.
 		var thisYear = new Date().getFullYear();
@@ -406,6 +473,37 @@
 		location.href = "/login.do?type=person";
 	</c:if>
 	});	
+	
+	
+	// kakao 회원가입 
+	function goKakaoLogin(email, name, id){
+		var callback = function(data){
+			if(data.rstCnt > 0){
+				location.href = "/index.do";
+			}else{
+				$("#ciKey").val(id);
+				$("#email").val(email);
+				
+				var tmpEmail = email.split("@");
+				if(tmpEmail.length == 2){
+					$("#emailId").val(tmpEmail[0]);
+					$("#emailHost").val(tmpEmail[1]);
+					$("#selEmailHost").val("gmail.com");
+				}
+				
+				$("#name").val(name);
+				$("#name").readonly(true);
+				$("#name").css("background-color", "#A2A2A2");
+				$("#snsLoginType").val("kakao");
+			}
+		};
+		var param = {
+						id : id
+						, type : "1"
+						, snsLoginType : "kakao"
+					};
+		ajax('post', '/snsLoginProcess.ajax', param, callback);
+	}
 
 	//우편번호 검색.
 	function execDaumPostcode() {

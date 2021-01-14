@@ -12,16 +12,23 @@
 			AND `left` <![CDATA[ <> ]]> 'yes'
 			<!-- (end) 2021.01.03 by s.yoo	-->
 			<choose>
-				<when test="uid != null and uid != ''">
-					and uid = BINARY(#{uid})	
-				</when>	
+				<when test="ciKey != null and ciKey != ''">
+					and ci_key = #{ciKey}
+				</when>
 				<otherwise>
 					<choose>
-						<when test="personUid != null and personUid != ''">
-							and uid = BINARY(#{personUid})	
-						</when>
+						<when test="uid != null and uid != ''">
+							and uid = BINARY(#{uid})	
+						</when>	
 						<otherwise>
-							and uid = BINARY(#{loginId})
+							<choose>
+								<when test="personUid != null and personUid != ''">
+									and uid = BINARY(#{personUid})	
+								</when>
+								<otherwise>
+									and uid = BINARY(#{loginId})
+								</otherwise>
+							</choose>
 						</otherwise>
 					</choose>
 				</otherwise>
@@ -40,6 +47,17 @@
 			AND `left` <![CDATA[ <> ]]> 'yes'
 			<!-- (end) 2021.01.03 by s.yoo	-->
 	</select>
+	
+	
+	<!-- sns 로그인 회원 가입 여부 -->
+	<select id="selectNetfuMemberSNSLoginCnt" parameterType="hashmap" resultType="int">
+		select count(uid) cnt from netfu_member
+		where 1=1
+			and ci_key = #{id}
+			and type = #{type}
+			and sns_login_type = #{snsLoginType}
+	</select>
+	
 	
 	
 	<!-- ID 중복 확인, ID 찾기, PW 찾기 -->
@@ -176,7 +194,7 @@
 			 photo,
 		</if>
 			 sex, use_mail, use_sms, use_push, email, wdate, 
-			 type, post, address1, address2)
+			 type, post, address1, address2, ci_key, sns_login_type)
 			values
 			(
 				#{uid}
@@ -198,6 +216,8 @@
 				, #{post}
 				, #{address1}
 				, #{address2}
+				, #{ciKey}
+				, #{snsLoginType}
 			)
 	</insert>
 	

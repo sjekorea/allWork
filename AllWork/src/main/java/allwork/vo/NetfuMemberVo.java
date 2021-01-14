@@ -49,11 +49,29 @@ public class NetfuMemberVo {
 	//(begin) 2021.01.04 by s.yoo
 	private String usePush;
 	
-	private int showAll;					// 1 = Å»ÅðÇÑ »ç¿ëÀÚ °èÁ¤ Æ÷ÇÔ(showAll), 0 = Å»ÅðÇÑ »ç¿ëÀÚ °èÁ¤ Á¦¿Ü(not showAll)
+	private int showAll;					// 1 = Å»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(showAll), 0 = Å»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(not showAll)
 	//(end) 2021.01.04 by s.yoo
-
+	
+	private String ciKey;
+	private String snsLoginType;
 	
 	
+	
+	
+	
+	
+	public String getSnsLoginType() {
+		return snsLoginType;
+	}
+	public void setSnsLoginType(String snsLoginType) {
+		this.snsLoginType = snsLoginType;
+	}
+	public String getCiKey() {
+		return ciKey;
+	}
+	public void setCiKey(String ciKey) {
+		this.ciKey = ciKey;
+	}
 	public int getNo() {
 		return no;
 	}

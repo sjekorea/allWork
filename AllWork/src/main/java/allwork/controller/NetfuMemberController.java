@@ -95,6 +95,7 @@ public class NetfuMemberController {
 			
 			mv.addObject("item", item);
 			mv.addObject("rstCnt", 2);
+			mv.addObject("map", commandMap.getMap());
 		}catch(Exception e){
 			System.out.println(this.getClass().getName()+".personalJoin.do Exception!!! \n"+e.toString());
 		}

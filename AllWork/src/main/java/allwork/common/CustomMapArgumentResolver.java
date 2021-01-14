@@ -41,7 +41,7 @@ public class CustomMapArgumentResolver implements HandlerMethodArgumentResolver{
 				commandMap.put(key, (values.length > 1) ? values : values[0]);
 			}
 			
-			//System.out.println("=============> CustomMapArgumentResolver Param Map : "+key+" || "+((values.length > 1) ? values : values[0]));
+			System.out.println("=============> CustomMapArgumentResolver Param Map : "+key+" || "+((values.length > 1) ? values : values[0]));
 		}
 		
 		return commandMap;

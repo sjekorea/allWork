@@ -53,6 +53,9 @@
             <mvc:exclude-mapping path="/"/>
             <mvc:exclude-mapping path="/index.do"/>
             <mvc:exclude-mapping path="/login.do"/>
+            <mvc:exclude-mapping path="/naverLogin.do"/>
+            <mvc:exclude-mapping path="/kakaoLogin.do"/>
+            <mvc:exclude-mapping path="/googleLogin.do"/>
             <mvc:exclude-mapping path="/logout.do"/>
             <mvc:exclude-mapping path="/findId.do"/>
             <mvc:exclude-mapping path="/findPw.do"/>
