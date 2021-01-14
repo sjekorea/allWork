@@ -98,6 +98,13 @@ function getNetfuCateListForUl(type, pCode, appendObjId, selfId, loadingFlag){
 		
 		$(appendObj).empty();
 		
+		//(begin)++2021.01.13 by s.yoo.
+		if (selfId == "area_job2" || selfId == "area_job3" || selfId == "job2" || selfId == "job3") {
+			tempLi = "<li><input id='"+selfId+"' class='on' type='button' name='all' value='전체'/></li>"; 
+			$(appendObj).append(tempLi);
+		}
+		//(end)++2021.01.13 by s.yoo.
+		
 		var tempLi = "";
 		for(var count = 0 ; count < data.list.length ; count++){
 			tempLi = "<li><input id='"+selfId+"' class='on' type='button' name='"+data.list[count].code+"' value='"+data.list[count].name+"'/></li>"; 

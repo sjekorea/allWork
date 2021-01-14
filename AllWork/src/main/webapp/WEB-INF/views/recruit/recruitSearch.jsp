@@ -201,7 +201,10 @@
 		
 		// 상단 직무별, 산업별, 지역별, 상세조건별 Tab click
 		$(".tab li a").on("click", function(e){
-			
+
+			////선택영역 화면표출.
+			//$(".descArea").css("display", "block");	
+
 			var idx = $(this).parent("li").index();
 			$(".tab").find("li").eq(idx).css("background-color", "#000").siblings("li").css("background-color", "#ddd");
 			
@@ -233,6 +236,10 @@
 		});
 		
 		// 검색 항목 click
+		//(begin)++2021.01.13 by s.yoo.
+		var selectedItem = [ "", "", "" ];
+		var selectedCode = [ "", "", "" ];
+		//(end)++2021.01.13 by s.yoo.
 		$(document).on("click", "#rec_row01_1 input:button", function(e){
 			
 			//alert("UL Class : "+$(this).closest("ul").attr("class")+" || ID : "+$(this).attr("id")+" || VALUE : "+$(this).attr("value")+" || NAME : "+$(this).attr("name")+" || SEARCH_KIND : "+$("#searchKind").val());
@@ -241,6 +248,33 @@
 			var selectedId = $(this).attr("id");
 			var selectedValue = $(this).attr("value");
 			var selectedName = $(this).attr("name");
+			
+			//(begin)++2021.01.13 by s.yoo.
+			switch(selectedId) {
+			case "bizType1":
+			case "areaJob1":
+			case "bizArea1":
+				selectedItem[0] = selectedValue;
+				selectedItem[1] = selectedItem[2] = "";
+				selectedCode[0] = selectedName;
+				selectedCode[1] = selectedCode[2] = "";
+				break;
+			case "job2":
+			case "area_job2":
+			case "area2":
+				selectedItem[1] = selectedValue;
+				selectedItem[2] = "";
+				selectedCode[1] = selectedName;
+				selectedCode[2] = "";
+				break;
+			case "job3":
+			case "area_job3":
+			case "area3":
+				selectedItem[2] = selectedValue;
+				selectedCode[2] = selectedName;
+				break;
+			}
+			//(end)++2021.01.13 by s.yoo.
 			
 			if("cate_job" == ulClass || "cate_industry" == ulClass || "cate_location" == ulClass){
 				
@@ -292,7 +326,16 @@
 			}else{
 				if(($("#searchKind").val() == "area" && ulClass == "select02") || ($("#searchKind").val() != "area" && ulClass == "select03")){
 					if(!chkSearchConditionExist(selectedName)){
-						$(".keywords").append("<span><input id='"+selectedId+"' type='button' name='"+selectedName+"' value='"+selectedValue+"' /><i class='fas fa-times'></i></span>");	
+						//$(".keywords").append("<span><input id='"+selectedId+"' type='button' name='"+selectedName+"' value='"+selectedValue+"' /><i class='fas fa-times'></i></span>");	
+						//(begin)++2021.01.13 by s.yoo.
+						var value = "", selName = "";
+						for(var i = 0; i < 3; i++) {
+							if (selectedItem[i] == null || selectedItem[i].length < 1) continue;
+							value = (value.length < 1)? selectedItem[i] : (value + ">" + selectedItem[i]);
+							selName = (selName.length < 1)? selectedCode[i] : (selName + "," + selectedCode[i]);
+						}
+						$(".keywords").append("<span><input id='"+selectedId+"' type='button' name='"+selName+"' value='"+value+"' /><i class='fas fa-times'></i></span>");
+						//(end)++2021.01.13 by s.yoo.
 					}	
 				}	
 			}
@@ -313,10 +356,41 @@
 		
 		
 		$("#search_btn").on("click", function(e){
+			//(begin)++2021.01.13 by s.yoo.
+			//Keyword를 검색조건에 추가.
+			var listKey = [ 'keywordTxt1Sel', 'keywordTxt2Sel', 'keywordTxt3Sel' ];
+			var listKeyword = [ $('#keywordTxt1'), $('#keywordTxt2'), $('#keywordTxt3') ];
+			for (var i = 0; i < 3; i++) {
+				key = listKey[i];
+				value = listKeyword[i].val();
+				if (value == null || value.length < 1) {
+					deleteItem(key);
+				} else {
+					selectedId = listKey[i]
+					selectedName = listKey[i];
+					if(chkSearchConditionExist(selectedName)) {
+						deleteItem(key);
+					}
+					$(".keywords").append("<span><input id='"+selectedId+"' type='button' name='"+selectedName+"' value='"+value+"' /><i class='fas fa-times'></i></span>");						
+				}				
+			}
+			//(end)++2021.01.13 by s.yoo.
+			
 			//e.prevantDefault();
 			recruitSearch();
 		});
 		
+		//(begin)++2021.01.13 by s.yoo.
+		function deleteItem(key) {
+			var count = $(".keywords").find("span").length;
+			for(var j = 0; j < count; j++) {
+				if ($(".keywords").find("span")[j].children[0].id == key) break;
+			}
+			if (j >= 0 && j < count)
+				$(".keywords").find("span").eq(j).remove();			
+		}
+		//(end)++2021.01.13 by s.yoo.
+
 		
 		$(".rec_align a").on("click", function(e){
 			
@@ -404,6 +478,7 @@
 		
 		$(".keywords span input:button").each(function(index, item){
 			spanId = $(this).attr("id");
+			/*
 			if(spanId == "job3"){
 				bizType += $(this).attr("name")+","
 			}
@@ -413,10 +488,24 @@
 			if(spanId == "area2"){
 				bizArea += $(this).attr("name")+","
 			}
+			*/
+			//(begin)++2021.01.13 by s.yoo.
+			if(spanId == "job3"){
+				bizType = (bizType.length < 1)? $(this).attr("name") : (bizType + ";" + $(this).attr("name"));
+			}
+			if(spanId == "area_job3"){
+				areaJob = (areaJob.length < 1)? $(this).attr("name") : (areaJob + ";" + $(this).attr("name"));
+			}
+			if(spanId == "area2"){
+				bizArea = (bizArea.length < 1)? $(this).attr("name") : (bizArea + ";" + $(this).attr("name"));
+			}
+			//(end)++2021.01.13 by s.yoo.
 		});
+		/*
 		bizType = bizType.length > 0 ? bizType.substring(0, bizType.length - 1) : "";
 		areaJob = areaJob.length > 0 ? areaJob.substring(0, areaJob.length - 1) : "";
 		bizArea = bizArea.length > 0 ? bizArea.substring(0, bizArea.length - 1) : "";
+		*/
 		
 		$("#bizType3").val(bizType);
 		$("#areaJob3").val(areaJob);

@@ -18,6 +18,7 @@ import com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel;
 import com.ilmagna.allworkadmin.api.services.ApiRecommendPersonService;
 
 import allwork.common.CommandMap;
+import allwork.common.QueryParser;
 import allwork.common.util.CommonColumnUtil;
 import allwork.common.util.ConvertUtil;
 import allwork.common.util.PaginationUtil;
@@ -93,9 +94,17 @@ public class RecruitController {
 			
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+
+			// 검색 Query 생성.
+			String strQueryBizType = QueryParser.genQueryRecruitBizType((String) commandMap.get("bizType3"));
+			String strQueryIndustry = QueryParser.genQueryRecruitIndustry((String) commandMap.get("areaJob3"));
+			String strQueryArea = QueryParser.genQueryRecruitArea((String) commandMap.get("bizArea2"));
 			
 			// 채용정보 검색 리스트
 			commandMap.put("showAll", 1);
+			commandMap.put("bizType3", strQueryBizType);
+			commandMap.put("areaJob3", strQueryIndustry);
+			commandMap.put("bizArea2", strQueryArea);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -157,8 +166,12 @@ public class RecruitController {
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
+			// 검색 Query 생성.
+			String strQueryBizType = QueryParser.genQueryRecruitBizType((String) commandMap.get("bizType3"));
+
 			// 채용정보 검색 리스트
 			commandMap.put("showAll", 1);
+			commandMap.put("bizType3", strQueryBizType);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -210,8 +223,12 @@ public class RecruitController {
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
+			// 검색 Query 생성.
+			String strQueryIndustry = QueryParser.genQueryRecruitIndustry((String) commandMap.get("areaJob3"));
+
 			// 채용정보 검색 리스트
 			commandMap.put("showAll", 1);
+			commandMap.put("areaJob3", strQueryIndustry);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -263,8 +280,12 @@ public class RecruitController {
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
+			// 검색 Query 생성.
+			String strQueryArea = QueryParser.genQueryRecruitArea((String) commandMap.get("bizArea2"));
+			
 			// 채용정보 검색 리스트
 			commandMap.put("showAll", 1);
+			commandMap.put("bizArea2", strQueryArea);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -316,9 +337,17 @@ public class RecruitController {
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			commandMap.put("infoType", "2");
-			
+
+			// 검색 Query 생성.
+			String strQueryBizType = QueryParser.genQueryRecruitBizType((String) commandMap.get("bizType3"));
+			String strQueryIndustry = QueryParser.genQueryRecruitIndustry((String) commandMap.get("areaJob3"));
+			String strQueryArea = QueryParser.genQueryRecruitArea((String) commandMap.get("bizArea2"));
+
 			// 채용정보 검색 리스트
 			commandMap.put("showAll", 1);
+			commandMap.put("bizType3", strQueryBizType);
+			commandMap.put("areaJob3", strQueryIndustry);
+			commandMap.put("bizArea2", strQueryArea);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -343,7 +372,7 @@ public class RecruitController {
 			
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("jobList", jobList);
-			mv.addObject("taskJobList", areaJobList);
+			mv.addObject("areaJobList", areaJobList);
 			mv.addObject("areaList", areaList);
 			mv.addObject("recruitList", recruitList);
 			mv.addObject("pageMap", pageMap);
@@ -380,9 +409,17 @@ public class RecruitController {
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			commandMap.put("infoType", "4");
-			
+
+			// 검색 Query 생성.
+			String strQueryBizType = QueryParser.genQueryRecruitBizType((String) commandMap.get("bizType3"));
+			String strQueryIndustry = QueryParser.genQueryRecruitIndustry((String) commandMap.get("areaJob3"));
+			String strQueryArea = QueryParser.genQueryRecruitArea((String) commandMap.get("bizArea2"));
+
 			// 채용정보 검색 리스트
 			commandMap.put("showAll", 1);
+			commandMap.put("bizType3", strQueryBizType);
+			commandMap.put("areaJob3", strQueryIndustry);
+			commandMap.put("bizArea2", strQueryArea);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -407,7 +444,7 @@ public class RecruitController {
 			
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("jobList", jobList);
-			mv.addObject("taskJobList", areaJobList);
+			mv.addObject("areaJobList", areaJobList);
 			mv.addObject("areaList", areaList);
 			mv.addObject("recruitList", recruitList);
 			mv.addObject("pageMap", pageMap);

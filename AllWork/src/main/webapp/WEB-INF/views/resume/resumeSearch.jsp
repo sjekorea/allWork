@@ -71,6 +71,8 @@
 				</li>
 			</ul>
 		</div>
+		-->
+		
 		<div id="part02">
 			<form id="" name="">
 				<fieldset>
@@ -124,7 +126,6 @@
 					<ul class="select03" id="select03"></ul>
 				</div>
 			</div>
-		 -->
 			<div id="row02">
 				<ul class="tab">
 					<li id="job_career" style="background-color:#ddd;"><a href="#" title="경력">경력</a></li>

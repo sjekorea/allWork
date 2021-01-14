@@ -29,6 +29,26 @@ public class NetfuItemCompanyVo {
 	private String bizType8Name;
 	private String bizType9;
 	private String bizType9Name;
+
+	private String bizAreaJob1;
+	private String bizAreaJob1Name;
+	private String bizAreaJob2;
+	private String bizAreaJob2Name;
+	private String bizAreaJob3;
+	private String bizAreaJob3Name;
+	private String bizAreaJob4;
+	private String bizAreaJob4Name;
+	private String bizAreaJob5;
+	private String bizAreaJob5Name;
+	private String bizAreaJob6;
+	private String bizAreaJob6Name;
+	private String bizAreaJob7;
+	private String bizAreaJob7Name;
+	private String bizAreaJob8;
+	private String bizAreaJob8Name;
+	private String bizAreaJob9;
+	private String bizAreaJob9Name;
+
 	private String bizPosition;
 	private String bizArea1;
 	private String bizArea1Name;
@@ -229,6 +249,223 @@ public class NetfuItemCompanyVo {
 	}
 	public String getBizType6Name() {
 		return bizType6Name;
+	}
+	
+	/**
+	 * @return the bizAreaJob1
+	 */
+	public String getBizAreaJob1() {
+		return bizAreaJob1;
+	}
+	/**
+	 * @param bizAreaJob1 the bizAreaJob1 to set
+	 */
+	public void setBizAreaJob1(String bizAreaJob1) {
+		this.bizAreaJob1 = bizAreaJob1;
+	}
+	/**
+	 * @return the bizAreaJob1Name
+	 */
+	public String getBizAreaJob1Name() {
+		return bizAreaJob1Name;
+	}
+	/**
+	 * @param bizAreaJob1Name the bizAreaJob1Name to set
+	 */
+	public void setBizAreaJob1Name(String bizAreaJob1Name) {
+		this.bizAreaJob1Name = bizAreaJob1Name;
+	}
+	/**
+	 * @return the bizAreaJob2
+	 */
+	public String getBizAreaJob2() {
+		return bizAreaJob2;
+	}
+	/**
+	 * @param bizAreaJob2 the bizAreaJob2 to set
+	 */
+	public void setBizAreaJob2(String bizAreaJob2) {
+		this.bizAreaJob2 = bizAreaJob2;
+	}
+	/**
+	 * @return the bizAreaJob2Name
+	 */
+	public String getBizAreaJob2Name() {
+		return bizAreaJob2Name;
+	}
+	/**
+	 * @param bizAreaJob2Name the bizAreaJob2Name to set
+	 */
+	public void setBizAreaJob2Name(String bizAreaJob2Name) {
+		this.bizAreaJob2Name = bizAreaJob2Name;
+	}
+	/**
+	 * @return the bizAreaJob3
+	 */
+	public String getBizAreaJob3() {
+		return bizAreaJob3;
+	}
+	/**
+	 * @param bizAreaJob3 the bizAreaJob3 to set
+	 */
+	public void setBizAreaJob3(String bizAreaJob3) {
+		this.bizAreaJob3 = bizAreaJob3;
+	}
+	/**
+	 * @return the bizAreaJob3Name
+	 */
+	public String getBizAreaJob3Name() {
+		return bizAreaJob3Name;
+	}
+	/**
+	 * @param bizAreaJob3Name the bizAreaJob3Name to set
+	 */
+	public void setBizAreaJob3Name(String bizAreaJob3Name) {
+		this.bizAreaJob3Name = bizAreaJob3Name;
+	}
+	/**
+	 * @return the bizAreaJob4
+	 */
+	public String getBizAreaJob4() {
+		return bizAreaJob4;
+	}
+	/**
+	 * @param bizAreaJob4 the bizAreaJob4 to set
+	 */
+	public void setBizAreaJob4(String bizAreaJob4) {
+		this.bizAreaJob4 = bizAreaJob4;
+	}
+	/**
+	 * @return the bizAreaJob4Name
+	 */
+	public String getBizAreaJob4Name() {
+		return bizAreaJob4Name;
+	}
+	/**
+	 * @param bizAreaJob4Name the bizAreaJob4Name to set
+	 */
+	public void setBizAreaJob4Name(String bizAreaJob4Name) {
+		this.bizAreaJob4Name = bizAreaJob4Name;
+	}
+	/**
+	 * @return the bizAreaJob5
+	 */
+	public String getBizAreaJob5() {
+		return bizAreaJob5;
+	}
+	/**
+	 * @param bizAreaJob5 the bizAreaJob5 to set
+	 */
+	public void setBizAreaJob5(String bizAreaJob5) {
+		this.bizAreaJob5 = bizAreaJob5;
+	}
+	/**
+	 * @return the bizAreaJob5Name
+	 */
+	public String getBizAreaJob5Name() {
+		return bizAreaJob5Name;
+	}
+	/**
+	 * @param bizAreaJob5Name the bizAreaJob5Name to set
+	 */
+	public void setBizAreaJob5Name(String bizAreaJob5Name) {
+		this.bizAreaJob5Name = bizAreaJob5Name;
+	}
+	/**
+	 * @return the bizAreaJob6
+	 */
+	public String getBizAreaJob6() {
+		return bizAreaJob6;
+	}
+	/**
+	 * @param bizAreaJob6 the bizAreaJob6 to set
+	 */
+	public void setBizAreaJob6(String bizAreaJob6) {
+		this.bizAreaJob6 = bizAreaJob6;
+	}
+	/**
+	 * @return the bizAreaJob6Name
+	 */
+	public String getBizAreaJob6Name() {
+		return bizAreaJob6Name;
+	}
+	/**
+	 * @param bizAreaJob6Name the bizAreaJob6Name to set
+	 */
+	public void setBizAreaJob6Name(String bizAreaJob6Name) {
+		this.bizAreaJob6Name = bizAreaJob6Name;
+	}
+	/**
+	 * @return the bizAreaJob7
+	 */
+	public String getBizAreaJob7() {
+		return bizAreaJob7;
+	}
+	/**
+	 * @param bizAreaJob7 the bizAreaJob7 to set
+	 */
+	public void setBizAreaJob7(String bizAreaJob7) {
+		this.bizAreaJob7 = bizAreaJob7;
+	}
+	/**
+	 * @return the bizAreaJob7Name
+	 */
+	public String getBizAreaJob7Name() {
+		return bizAreaJob7Name;
+	}
+	/**
+	 * @param bizAreaJob7Name the bizAreaJob7Name to set
+	 */
+	public void setBizAreaJob7Name(String bizAreaJob7Name) {
+		this.bizAreaJob7Name = bizAreaJob7Name;
+	}
+	/**
+	 * @return the bizAreaJob8
+	 */
+	public String getBizAreaJob8() {
+		return bizAreaJob8;
+	}
+	/**
+	 * @param bizAreaJob8 the bizAreaJob8 to set
+	 */
+	public void setBizAreaJob8(String bizAreaJob8) {
+		this.bizAreaJob8 = bizAreaJob8;
+	}
+	/**
+	 * @return the bizAreaJob8Name
+	 */
+	public String getBizAreaJob8Name() {
+		return bizAreaJob8Name;
+	}
+	/**
+	 * @param bizAreaJob8Name the bizAreaJob8Name to set
+	 */
+	public void setBizAreaJob8Name(String bizAreaJob8Name) {
+		this.bizAreaJob8Name = bizAreaJob8Name;
+	}
+	/**
+	 * @return the bizAreaJob9
+	 */
+	public String getBizAreaJob9() {
+		return bizAreaJob9;
+	}
+	/**
+	 * @param bizAreaJob9 the bizAreaJob9 to set
+	 */
+	public void setBizAreaJob9(String bizAreaJob9) {
+		this.bizAreaJob9 = bizAreaJob9;
+	}
+	/**
+	 * @return the bizAreaJob9Name
+	 */
+	public String getBizAreaJob9Name() {
+		return bizAreaJob9Name;
+	}
+	/**
+	 * @param bizAreaJob9Name the bizAreaJob9Name to set
+	 */
+	public void setBizAreaJob9Name(String bizAreaJob9Name) {
+		this.bizAreaJob9Name = bizAreaJob9Name;
 	}
 	public String getBizPosition() {
 		return bizPosition;

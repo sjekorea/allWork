@@ -11,6 +11,7 @@
 
 <jsp:include page="/indexHeader.do" />
 
+<!-- 메인 채용공고와 배너광고 -->
 <div id="content01Wrap">
 	<div id="content01">
 		<div id="content01_offer">
@@ -62,6 +63,31 @@
 		</div>
 	</div>
 </div>
+
+<!-- 롤 배너광고	-->
+<div id="content02Wrap">
+	<div id="content02">
+		<div id="adArea">
+			<p class="btn btn_prev"><a href="" title="이전보기"><img src="img/main/btn_prev.jpg" alt="이전버튼" /></a></p>
+			<ul id="adList">
+				<c:forEach var="result" items="${rollBannerList}" varStatus="status">
+					<c:if test="${status.index < 6 }">
+						<li>
+							<c:if test="${result.link == null || result.link == '' }">
+									<p class="adImg"><div style="width: 155px; height: 50px;">${result.thumbnail}</div></p>
+							</c:if>
+							<c:if test="${result.link != null && result.link != '' }">
+								<a href="${result.link }" target="_blank" title="롤 배너광고">
+									<p class="adImg"><div style="width: 155px; height: 50px;">${result.thumbnail}</div></p>
+								</a>
+							</c:if>
+						</li>
+					</c:if>
+				</c:forEach>
+			</ul>
+			<p class="btn btn_prev"><a href="" title="다음보기"><img src="img/main/btn_next.jpg" alt="다음버튼" /></a></p>
+		</div>
+	</div>
 
 <!-- 
 <div id="content02Wrap">
@@ -254,6 +280,7 @@
 </div>
 
 <jsp:include page="/footer.do" />
+ -->
 
 <form id="searchForm" name="searchForm" method="post" action="/recruitDetail.do">
 	<input type="hidden" name="no" id="no" value="" />

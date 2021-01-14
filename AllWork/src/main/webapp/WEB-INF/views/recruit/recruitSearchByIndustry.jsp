@@ -45,10 +45,10 @@
 			</div>	
 			<div id="rec_row01">
 				<ul class="tab">
-					<li style="background-color:#ddd;"><a href="#" title="직무별">직무별</a></li>
 					<li style="background-color:#000;"><a href="#" title="산업별">산업별</a></li>
-					<li style="background-color:#ddd;"><a href="#" title="지역별">지역별</a></li>
-					<li style="background-color:#ddd;"><a href="#" title="상세조건별">상세조건별</a></li>
+					<li style="background-color:#ddd;"><a href="#" title="직무별"></a></li>
+					<li style="background-color:#ddd;"><a href="#" title="지역별"></a></li>
+					<li style="background-color:#ddd;"><a href="#" title="상세조건별"></a></li>
 				</ul>
 				<div id="cateOn">
 					<ul class="select01" id="select01">
@@ -60,7 +60,7 @@
                   	<ul class="select03" id="select03"></ul>
 				</div>
 				<div id="searchBox">
-					<p class="keywords"></p>
+					<p class="keywords">${map.keywordsHtml }</p>
 					<p class="reset"><a href="#none" title="초기화">초기화</a></p>
 					<p class="goBtn"><input id="search_btn" type="button" value="선택된 조건 검색하기"/></p>
 				</div>
@@ -186,6 +186,10 @@
 		});
 		
 		// 검색 항목 click
+		//(begin)++2021.01.13 by s.yoo.
+		var selectedItem = [ "", "", "" ];
+		var selectedCode = [ "", "", "" ];
+		//(end)++2021.01.13 by s.yoo.
 		$(document).on("click", "#cateOn input:button", function(e){
 			
 			//alert("UL Class : "+$(this).closest("ul").attr("class")+" || ID : "+$(this).attr("id")+" || VALUE : "+$(this).attr("value")+" || NAME : "+$(this).attr("name")+" || SEARCH_KIND : "+$("#searchKind").val());
@@ -194,7 +198,34 @@
 			var selectedId = $(this).attr("id");
 			var selectedValue = $(this).attr("value");
 			var selectedName = $(this).attr("name");
-				
+			
+			//(begin)++2021.01.13 by s.yoo.
+			switch(selectedId) {
+			case "bizType1":
+			case "areaJob1":
+			case "bizArea1":
+				selectedItem[0] = selectedValue;
+				selectedItem[1] = selectedItem[2] = "";
+				selectedCode[0] = selectedName;
+				selectedCode[1] = selectedCode[2] = "";
+				break;
+			case "job2":
+			case "area_job2":
+			case "area2":
+				selectedItem[1] = selectedValue;
+				selectedItem[2] = "";
+				selectedCode[1] = selectedName;
+				selectedCode[2] = "";
+				break;
+			case "job3":
+			case "area_job3":
+			case "area3":
+				selectedItem[2] = selectedValue;
+				selectedCode[2] = selectedName;
+				break;
+			}
+			//(end)++2021.01.13 by s.yoo.
+
 			if("select01" == ulClass){
 				$(".select02, .select03").empty();
 				getNetfuCateListForUl($("#searchKind").val(), $(this).attr("name"), "select02", $("#searchKind").val()+"2", true);
@@ -210,7 +241,16 @@
 					alert("겸색 조건은 10까지만 등록가능합니다.");
 				}else{
 					if(!chkSearchConditionExist(selectedName)){
-						$(".keywords").append("<span><input id='"+selectedId+"' type='button' name='"+selectedName+"' value='"+selectedValue+"' /><i class='fas fa-times'></i></span>");	
+						//$(".keywords").append("<span><input id='"+selectedId+"' type='button' name='"+selectedName+"' value='"+selectedValue+"' /><i class='fas fa-times'></i></span>");	
+						//(begin)++2021.01.13 by s.yoo.
+						var value = "", selName = "";
+						for(var i = 0; i < 3; i++) {
+							if (selectedItem[i] == null || selectedItem[i].length < 1) continue;
+							value = (value.length < 1)? selectedItem[i] : (value + ">" + selectedItem[i]);
+							selName = (selName.length < 1)? selectedCode[i] : (selName + "," + selectedCode[i]);
+						}
+						$(".keywords").append("<span><input id='"+selectedId+"' type='button' name='"+selName+"' value='"+value+"' /><i class='fas fa-times'></i></span>");
+						//(end)++2021.01.13 by s.yoo.
 					}
 				}
 			}
@@ -228,10 +268,41 @@
 		
 		
 		$("#search_btn").on("click", function(e){
+			//(begin)++2021.01.13 by s.yoo.
+			//Keyword를 검색조건에 추가.
+			var listKey = [ 'keywordTxt1Sel', 'keywordTxt2Sel', 'keywordTxt3Sel' ];
+			var listKeyword = [ $('#keywordTxt1'), $('#keywordTxt2'), $('#keywordTxt3') ];
+			for (var i = 0; i < 3; i++) {
+				key = listKey[i];
+				value = listKeyword[i].val();
+				if (value == null || value.length < 1) {
+					deleteItem(key);
+				} else {
+					selectedId = listKey[i]
+					selectedName = listKey[i];
+					if(chkSearchConditionExist(selectedName)) {
+						deleteItem(key);
+					}
+					$(".keywords").append("<span><input id='"+selectedId+"' type='button' name='"+selectedName+"' value='"+value+"' /><i class='fas fa-times'></i></span>");						
+				}				
+			}
+			//(end)++2021.01.13 by s.yoo.
+			
 			//e.prevantDefault();
 			recruitSearch();
 		});
 		
+		//(begin)++2021.01.13 by s.yoo.
+		function deleteItem(key) {
+			var count = $(".keywords").find("span").length;
+			for(var j = 0; j < count; j++) {
+				if ($(".keywords").find("span")[j].children[0].id == key) break;
+			}
+			if (j >= 0 && j < count)
+				$(".keywords").find("span").eq(j).remove();			
+		}
+		//(end)++2021.01.13 by s.yoo.
+
 		
 		$(".rec_align a").on("click", function(e){
 			
@@ -317,19 +388,34 @@
 		
 		$(".keywords span input:button").each(function(index, item){
 			spanId = $(this).attr("id");
+			/*
 			if(spanId == "job3"){
 				bizType += $(this).attr("name")+","
 			}
-			if(spanId == "areaJob3"){
+			if(spanId == "area_job3"){
 				areaJob += $(this).attr("name")+","
 			}
 			if(spanId == "area2"){
 				bizArea += $(this).attr("name")+","
 			}
+			*/
+			//(begin)++2021.01.13 by s.yoo.
+			if(spanId == "job3"){
+				bizType = (bizType.length < 1)? $(this).attr("name") : (bizType + ";" + $(this).attr("name"));
+			}
+			if(spanId == "area_job3"){
+				areaJob = (areaJob.length < 1)? $(this).attr("name") : (areaJob + ";" + $(this).attr("name"));
+			}
+			if(spanId == "area2"){
+				bizArea = (bizArea.length < 1)? $(this).attr("name") : (bizArea + ";" + $(this).attr("name"));
+			}
+			//(end)++2021.01.13 by s.yoo.
 		});
+		/*
 		bizType = bizType.length > 0 ? bizType.substring(0, bizType.length - 1) : "";
 		areaJob = areaJob.length > 0 ? areaJob.substring(0, areaJob.length - 1) : "";
 		bizArea = bizArea.length > 0 ? bizArea.substring(0, bizArea.length - 1) : "";
+		*/
 		
 		$("#bizType3").val(bizType);
 		$("#areaJob3").val(areaJob);

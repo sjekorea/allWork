@@ -337,6 +337,12 @@ public class ConvertUtil {
     	return strName.substring(0, 1) + "OO";
     }
 
+    //구직자 UID
+    public static String getUidHidden(String strUid) {
+    	if (strUid == null || strUid.length() < 1) return "";
+    	return "OOOOOO";
+    }
+
     //전화번호
     public static String getPhoneNoHidden(String strPhoneNo) {
     	if (strPhoneNo == null || strPhoneNo.length() < 4) return "";

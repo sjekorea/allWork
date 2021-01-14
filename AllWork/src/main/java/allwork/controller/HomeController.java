@@ -82,6 +82,9 @@ public class HomeController {
 			// banner 정보
 			List<Map<String, Object>> bannerList = homeCommonService.selectMainBannerList(commandMap.getMap());
 			
+			// 롤 배너 정보
+			List<Map<String, Object>> rollBannerList = homeCommonService.selectMainRollBannerList(commandMap.getMap());
+			
 			// 채용정보 1
 			List<Map<String, Object>> mainRecruitList = homeCommonService.selectMainRecruitList(commandMap.getMap());
 			
@@ -116,6 +119,7 @@ public class HomeController {
 			List<Map<String, Object>> recruitOtherList = recruitOtherService.selectRecruitOtherList(commandMap.getMap());
 			
 			mv.addObject("bannerList", bannerList);
+			mv.addObject("rollBannerList", rollBannerList);
 			mv.addObject("mainRecruitList", mainRecruitList);
 			mv.addObject("headhuntList", headhuntList);
 			mv.addObject("recruitList", recruitList);
