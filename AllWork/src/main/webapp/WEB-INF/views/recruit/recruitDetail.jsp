@@ -115,7 +115,7 @@
 								<td>${recruitMap.bizTitle }</td>
 							</tr>
 							<tr>
-								<th>산업분야</th>
+								<th>직무</th>
 								<td>${recruitMap.bizType1Name } 
 									${convert:checkNull(recruitMap.bizType2Name) eq '' ? '' : '>'.concat(recruitMap.bizType2Name) }
 									${convert:checkNull(recruitMap.bizType3Name) eq '' ? '' : '>'.concat(recruitMap.bizType3Name) }
@@ -125,6 +125,19 @@
 									${convert:checkNull(recruitMap.bizType7Name) eq '' ? '' : '<br/>'.concat(recruitMap.bizType7Name) }
 									${convert:checkNull(recruitMap.bizType8Name) eq '' ? '' : '>'.concat(recruitMap.bizType8Name) }
 									${convert:checkNull(recruitMap.bizType9Name) eq '' ? '' : '>'.concat(recruitMap.bizType9Name) }
+								</td>
+							</tr>
+							<tr>
+								<th>산업분야</th>
+								<td>${recruitMap.bizAreaJob1Name } 
+									${convert:checkNull(recruitMap.bizAreaJob2Name) eq '' ? '' : '>'.concat(recruitMap.bizAreaJob2Name) }
+									${convert:checkNull(recruitMap.bizAreaJob3Name) eq '' ? '' : '>'.concat(recruitMap.bizAreaJob3Name) }
+									${convert:checkNull(recruitMap.bizAreaJob4Name) eq '' ? '' : '<br/>'.concat(recruitMap.bizAreaJob4Name) }
+									${convert:checkNull(recruitMap.bizAreaJob5Name) eq '' ? '' : '>'.concat(recruitMap.bizAreaJob5Name) }
+									${convert:checkNull(recruitMap.bizAreaJob6Name) eq '' ? '' : '>'.concat(recruitMap.bizAreaJob6Name) }
+									${convert:checkNull(recruitMap.bizAreaJob7Name) eq '' ? '' : '<br/>'.concat(recruitMap.bizAreaJob7Name) }
+									${convert:checkNull(recruitMap.bizAreaJob8Name) eq '' ? '' : '>'.concat(recruitMap.bizAreaJob8Name) }
+									${convert:checkNull(recruitMap.bizAreaJob9Name) eq '' ? '' : '>'.concat(recruitMap.bizAreaJob9Name) }
 								</td>
 							</tr>
 							<tr>

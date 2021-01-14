@@ -38,6 +38,12 @@ public class HomeCommonServiceImpl implements HomeCommonService{
 		return homeCommonDao.selectMainBannerList(map);
 	}
 	
+	// 메인화면 롤 배너 리스트
+	@Override
+	public List<Map<String, Object>> selectMainRollBannerList(Map<String, Object> map) throws Exception {
+		return homeCommonDao.selectMainRollBannerList(map);
+	}
+	
 	// 메인 채용공고 리스트
 	@Override
 	public List<Map<String, Object>> selectMainRecruitList(Map<String, Object> map) throws Exception {

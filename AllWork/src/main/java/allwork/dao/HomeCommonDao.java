@@ -27,6 +27,12 @@ public class HomeCommonDao extends AbstractDAO{
 		return (List<Map<String, Object>>)selectList("homeCommon.selectMainBannerList", map);
 	}
 	
+	// 메인화면 롤 배너 list
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectMainRollBannerList(Map<String, Object> map) {
+		return (List<Map<String, Object>>)selectList("homeCommon.selectMainRollBannerList", map);
+	}
+	
 	// 메인화면 채용공고 list
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectMainRecruitList(Map<String, Object> map) {

@@ -95,7 +95,7 @@
 						<tbody class="tabelArea">
 							<tr>
 								<th class="table_title">이름</th>
-								<td class="table_desc">${convert:getPersonNameHidden(memberMap.name) }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${memberMap.uid }</td>
+								<td class="table_desc">${convert:getPersonNameHidden(memberMap.name) }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${convert:getUidHidden(memberMap.uid) }</td>
 							</tr>
 							<tr>
 								<th class="table_title">이메일</th>

@@ -16,6 +16,15 @@ public class CommonColumnUtil {
 		rtnStr += ", nic.biz_type7, getCodeName(nic.biz_type7) biz_type7_name";
 		rtnStr += ", nic.biz_type8, getCodeName(nic.biz_type8) biz_type8_name";
 		rtnStr += ", nic.biz_type9, getCodeName(nic.biz_type9) biz_type9_name";
+		rtnStr += ", nic.biz_area_job1, getCodeName(nic.biz_area_job1) biz_area_job1_name";
+		rtnStr += ", nic.biz_area_job2, getCodeName(nic.biz_area_job2) biz_area_job2_name";
+		rtnStr += ", nic.biz_area_job3, getCodeName(nic.biz_area_job3) biz_area_job3_name";
+		rtnStr += ", nic.biz_area_job4, getCodeName(nic.biz_area_job4) biz_area_job4_name";
+		rtnStr += ", nic.biz_area_job5, getCodeName(nic.biz_area_job5) biz_area_job5_name";
+		rtnStr += ", nic.biz_area_job6, getCodeName(nic.biz_area_job6) biz_area_job6_name";
+		rtnStr += ", nic.biz_area_job7, getCodeName(nic.biz_area_job7) biz_area_job7_name";
+		rtnStr += ", nic.biz_area_job8, getCodeName(nic.biz_area_job8) biz_area_job8_name";
+		rtnStr += ", nic.biz_area_job9, getCodeName(nic.biz_area_job9) biz_area_job9_name";
 		rtnStr += ", nic.biz_position";
 		rtnStr += ", nic.biz_area1, getCodeName(nic.biz_area1) biz_area1_name";
 		rtnStr += ", nic.biz_area2, getCodeName(nic.biz_area2) biz_area2_name";
