@@ -83,7 +83,8 @@
 					<p><input type="text" id="keywordTxt1" name="keywordTxt1" value="${map.keyword1 }" placeholder="키워드" /></p>
 					<p><input type="text" id="keywordTxt2" name="keywordTxt2" value="${map.keyword2 }" placeholder="키워드" /></p>
 					<p><input type="text" id="keywordTxt3" name="keywordTxt3" value="${map.keyword3 }" placeholder="키워드" /></p>
-					<%-- <p class="btnBox"><input id="search_btn" type="button" name="search_btn" value="검색" style="cursor:pointer;"/></p>
+					<p class="btnBox"><input id="search_btn" type="button" name="search_btn" value="검색" style="cursor:pointer;"/></p>
+					<%-- 
 					<input type="hidden" name="searchFlag" id="searchFlag" value="keyword"/> --%>
 				</fieldset>
 			</form>
@@ -115,7 +116,7 @@
 		</div>
 		
 		<div id="listPart">
-			<h4>인재정보</h4>
+			<h4>인재정보(<fmt:formatNumber value="${map.totalSize}" pattern="#,###"/>)</h4>
 			<ul class="rec_align">
 				<li><a href="#none" title="등록일순">등록일순&nbsp;&nbsp;|&nbsp;</a></li>
                 <li><a href="#none" title="등록일순">수정일순&nbsp;&nbsp;|&nbsp;</a></li>
@@ -222,6 +223,12 @@
 	
 	$(document).ready(function(){
 		
+		loadingOff();
+		
+		$("#search_btn").on("click", function(e){
+			procSearch();
+		});
+
 		// 검색 항목 click
 		//(begin)++2021.01.13 by s.yoo.
 		var selectedItem = [ "", "", "" ];
@@ -282,6 +289,12 @@
 		
 		$(document).on("click", ".keywords .fas", function(e){
 			$(this).parents(".keywords").find("span").eq($(this).parents("span").index()).remove();
+			
+			//키워드 입력창의 내용 삭제.
+			var idDel = $(this).parents("span")[0].children[0].id;
+			if (idDel == "keywordTxt1Sel") $("#keywordTxt1").val("");
+			else if (idDel == "keywordTxt2Sel") $("#keywordTxt2").val("");
+			else if (idDel == "keywordTxt3Sel") $("#keywordTxt3").val("");
 		});
 		
 		$(".reset").on("click", function(e){
@@ -290,6 +303,10 @@
 		
 		
 		$("#search_detail_btn").on("click", function(e){
+			procSearch();
+		});
+		
+		function procSearch() {
 			//(begin)++2021.01.13 by s.yoo.
 			//Keyword를 검색조건에 추가.
 			var listKey = [ 'keywordTxt1Sel', 'keywordTxt2Sel', 'keywordTxt3Sel' ];
@@ -311,7 +328,7 @@
 			//(end)++2021.01.13 by s.yoo.
 			
 			resumeSearch();
-		});
+		};
 		
 		//(begin)++2021.01.13 by s.yoo.
 		function deleteItem(key) {
@@ -510,7 +527,7 @@
 				&& inidCareer.length <= 0 && inidSchool.length <= 0 && inidJobform.length <= 0 && inidPay.length <= 0
 				&& $("#keyword1").val() == "" && $("#keyword2").val() == "" && $("#keyword3").val() == ""){
 			
-			alert("검색 조건을 확인하세요.");
+			alert("검색 조건이 없습니다. 검색조건을 확인하세요.");
 			loadingOff();
 		}else{
 			$("#searchForm").submit();	

@@ -38,7 +38,8 @@
 						<p><input type="text" id="keywordTxt1" name="keywordTxt1" value="${map.keyword1 }" placeholder="키워드" /></p>
 						<p><input type="text" id="keywordTxt2" name="keywordTxt2" value="${map.keyword2 }" placeholder="키워드" /></p>
 						<p><input type="text" id="keywordTxt3" name="keywordTxt3" value="${map.keyword3 }" placeholder="키워드" /></p>
-						<%-- <p class="btnBox"><input id="search_btn" type="button" name="search_btn" value="검색" style="cursor:pointer;"/></p>
+						<p class="btnBox"><input id="search_btn" type="button" name="search_btn" value="검색" style="cursor:pointer;"/></p>
+						<%-- 
 						<input type="hidden" name="searchFlag" id="searchFlag" value="keyword"/> --%>
 					</fieldset>
 				</form>
@@ -62,14 +63,14 @@
 				<div id="searchBox">
 					<p class="keywords">${map.keywordsHtml }</p>
 					<p class="reset"><a href="#none" title="초기화">초기화</a></p>
-					<p class="goBtn"><input id="search_btn" type="button" value="선택된 조건 검색하기"/></p>
+					<p class="goBtn"><input id="search_detail_btn" type="button" value="선택된 조건 검색하기"/></p>
 				</div>
 			</div>
 		</div>
 	</c:if>
 		<div id="rec_listPart01">
 			<div id="rec_titleArea01">
-				<h4>채용정보</h4>
+				<h4>채용정보(<fmt:formatNumber value="${map.totalSize}" pattern="#,###"/>)</h4>
 				<ul class="rec_align">
 					<li><a href="#" title="등록일순">등록일순&nbsp;&nbsp;|&nbsp;</a></li>
 					<li><a href="#" title="등록일순">수정일순&nbsp;&nbsp;|&nbsp;</a></li>
@@ -259,6 +260,12 @@
 		
 		$(document).on("click", ".keywords .fas", function(e){
 			$(this).parents(".keywords").find("span").eq($(this).parents("span").index()).remove();
+			
+			//키워드 입력창의 내용 삭제.
+			var idDel = $(this).parents("span")[0].children[0].id;
+			if (idDel == "keywordTxt1Sel") $("#keywordTxt1").val("");
+			else if (idDel == "keywordTxt2Sel") $("#keywordTxt2").val("");
+			else if (idDel == "keywordTxt3Sel") $("#keywordTxt3").val("");
 		});
 		
 		
@@ -268,6 +275,13 @@
 		
 		
 		$("#search_btn").on("click", function(e){
+			procSearch();
+		});
+		$("#search_detail_btn").on("click", function(e){
+			procSearch();
+		});
+		
+		function procSearch() {
 			//(begin)++2021.01.13 by s.yoo.
 			//Keyword를 검색조건에 추가.
 			var listKey = [ 'keywordTxt1Sel', 'keywordTxt2Sel', 'keywordTxt3Sel' ];
@@ -290,7 +304,7 @@
 			
 			//e.prevantDefault();
 			recruitSearch();
-		});
+		};
 		
 		//(begin)++2021.01.13 by s.yoo.
 		function deleteItem(key) {
@@ -428,7 +442,7 @@
 		
 		if(bizType.length <= 0 && areaJob.length <= 0 && bizArea.length <= 0 && $("#keyword1").val() == "" && $("#keyword2").val() == "" && $("#keyword3").val() == ""){
 			loadingOff();
-			alert("검색 조건을 확인하세요.");
+			alert("검색 조건이 없습니다. 검색조건을 확인하세요.");
 		}else{
 			$("#searchForm").submit();	
 		}
