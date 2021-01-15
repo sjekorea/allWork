@@ -157,7 +157,7 @@
 											</a>
 										</c:if>
 									</td>
-									<td rowspan="3" class="desc05">${result.strEdate }</td>
+									<td rowspan="3" class="desc05">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</td>
 								</tr>
 								<tr class="desc desc1">
 									<td class="desc03">급여</td>

@@ -20,7 +20,22 @@
 		</div>
 		<div id="rightPart">
 			<div id="listPart">
-				<h4>기타 채용공고</h4>
+				<h4>기타 채용정보(<fmt:formatNumber value="${map.totalSize}" pattern="#,###"/>)</h4>
+				
+			<div>
+				<form id="searchForm" name="searchForm" action="/recruitOther.do">
+					<fieldset>
+						<legend>검색</legend>
+						<p><input type="text" id="search_company" name="search_company" value="${map.search_company }" placeholder="회사명" /></p>
+						<p><input type="text" id="search_title" name="search_title" value="${map.search_title }" placeholder="채용공고 내용" /></p>
+						<p><input type="text" id="search_loc" name="search_loc" value="${map.search_loc }" placeholder="근무지" /></p>
+						<p><input type="text" id="search_keyword" name="search_keyword" value="${map.search_keyword }" placeholder="키워드" /></p>
+						<p class="btnBox"><input id="search_btn" type="button" name="search_btn" value="검색" style="cursor:pointer;"/></p>
+						<p class="btnBox"><input id="reset_btn" type="button" name="reset_btn" value="초기화" style="cursor:pointer;"/></p>
+					</fieldset>
+				</form>
+			</div>	
+
 				<table class="list">
 					<caption>리스트</caption>
 					<thead>
@@ -87,7 +102,19 @@
 	
 	$(document).ready(function(){
 		
-		
+		$("#search_btn").on("click", function(e) {
+			$("#searchForm").submit();	
+		});
+
+		$("#reset_btn").on("click", function(e) {
+			$("#search_company").val("");
+			$("#search_title").val("");
+			$("#search_loc").val("");
+			$("#search_keyword").val("");
+
+			$("#searchForm").submit();	
+		});
+
 	});	
 	
 </script>

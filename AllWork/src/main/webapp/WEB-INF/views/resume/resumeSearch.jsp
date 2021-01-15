@@ -411,7 +411,6 @@
 					$(".tab:eq(0)").find("li").eq(3).css("background-color", "#000").siblings("li").css("background-color", "#ddd");
 					$(".select01").html($(".cate_license").html());
 				}
-				$(".tab:eq(1)").find("li").css("background-color", "#ddd");
 				getNetfuCateListForUl($("#searchKind").val(), $(this).attr("name"), "select02", $("#searchKind").val()+"2", true);
 				
 			

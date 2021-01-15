@@ -37,6 +37,26 @@
 		from recruit_other
 		where 1=1
 			and prs='P'
+			<if test='search_company != null &amp;&amp; search_company != ""'>
+				AND company_title LIKE CONCAT('%', #{search_company}, '%')
+			</if>
+			<if test='search_title != null &amp;&amp; search_title != ""'>
+				AND recruit_item LIKE CONCAT('%', #{search_title}, '%')
+			</if>
+			<if test='search_loc != null &amp;&amp; search_loc != ""'>
+				AND whereis LIKE CONCAT('%', #{search_loc}, '%')
+			</if>
+			<if test='search_keyword != null &amp;&amp; search_keyword != ""'>
+				AND (
+					   company_title LIKE CONCAT('%', #{search_keyword}, '%')
+					OR phone LIKE CONCAT('%', #{search_keyword}, '%')
+					OR recruit_item LIKE CONCAT('%', #{search_keyword}, '%')
+					OR whereis LIKE CONCAT('%', #{search_keyword}, '%')
+					OR job_type LIKE CONCAT('%', #{search_keyword}, '%')
+					OR preference LIKE CONCAT('%', #{search_keyword}, '%')
+					OR strEdate LIKE CONCAT('%', #{search_keyword}, '%')
+					)
+			</if>
 		ORDER BY wdate DESC, ser DESC 
 		limit #{start}, #{pageSize}
 	</select>

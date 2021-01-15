@@ -53,22 +53,32 @@ public class AiMatchingResumeService {
 
 						//채용마감상태와 채용마감일 .
 						Map<String, Object> recruitMap = new HashMap<String, Object>();
+						boolean bDeletedItem = true;
 						try {
+							AiMatchingRecommendationModel obj = itemData.getData().get(j);
+
 							//채용마감상태와 채용마감일 등록.
-							CommandMap commandMap = new CommandMap();
-							commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
-							commandMap.put("no", itemData.getData().get(j).getRecommend_id());
-							recruitMap = netfuItemCompanyService.selectNetfuItemCompanyMap(commandMap.getMap());
-							String strBizIng = (String) recruitMap.get("bizIng");
+							String strBizIng = "yes";
+							if (obj.getType() == 1) {
+								CommandMap commandMap = new CommandMap();
+								commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
+								commandMap.put("no", itemData.getData().get(j).getRecommend_id());
+								recruitMap = netfuItemCompanyService.selectNetfuItemCompanyMap(commandMap.getMap());
+								strBizIng = (String) recruitMap.get("bizIng");								
+								if (recruitMap == null || recruitMap.isEmpty()) continue;
+							}
 							itemData.getData().get(j).setBizIng(strBizIng);
 
 							//채용마감일 등록.
 							String strEdate = ApiConvertorUtil.getBizEndDay(itemData.getData().get(j).getBizIng(), itemData.getData().get(j).getBiz_end_type(), itemData.getData().get(j).getBiz_end_day());
 							itemData.getData().get(j).setStrEdate(strEdate);
+							
+							bDeletedItem = false;
 						} catch (Exception e2) {
+							bDeletedItem = true;
 						}
 						//사라진 채용공고는 무시.
-						if (recruitMap == null || recruitMap.isEmpty()) continue;
+						if (bDeletedItem) continue;
 
 						//추천정보 등록.
 						listResult.add(itemData.getData().get(j));

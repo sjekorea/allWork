@@ -20,13 +20,13 @@ public class RecruitOtherServiceImpl implements RecruitOtherService{
 	private RecruitOtherDao recruitOtherDao;
 	
 	
-	// 기타 채용공고  Count
+	// 기타 채용정보  Count
 	@Override
 	public int selectRecruitOtherCnt(Map<String, Object> map) throws Exception {
 		return recruitOtherDao.selectRecruitOtherCnt(map);
 	}
 	
-	// 기타 채용공고   목록 
+	// 기타 채용정보   목록 
 	@Override
 	public List<Map<String, Object>> selectRecruitOtherList(Map<String, Object> map) throws Exception {
 		return recruitOtherDao.selectRecruitOtherList(map);
