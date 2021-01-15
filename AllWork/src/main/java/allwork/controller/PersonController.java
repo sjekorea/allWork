@@ -175,6 +175,7 @@ public class PersonController {
 			mv.addObject("recruitViewList", recruitViewList);
 			
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".personHome Exception !!!!! \n"+e.toString());
 		}
 		

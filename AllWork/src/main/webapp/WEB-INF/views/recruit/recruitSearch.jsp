@@ -248,7 +248,7 @@
 			var selectedId = $(this).attr("id");
 			var selectedValue = $(this).attr("value");
 			var selectedName = $(this).attr("name");
-			
+
 			//(begin)++2021.01.13 by s.yoo.
 			switch(selectedId) {
 			case "bizType1":

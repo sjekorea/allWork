@@ -85,9 +85,11 @@ public class ResumeEducationModel extends ApiJqGridParams implements Serializabl
 			
 			JSONObject jsonObject = (JSONObject) parser.parse(strData);
 			
-			Integer final_degree = Integer.parseInt(String.valueOf((Long) jsonObject.get("final_degree")));
-			this.setFinal_degree(final_degree);
-			
+			try {
+				Integer final_degree = Integer.parseInt(String.valueOf((Integer) jsonObject.get("final_degree")));
+				this.setFinal_degree(final_degree);
+			} catch(Exception e2) {}
+
 			String strFinal_degree = (String) jsonObject.get("strFinal_degree");
 			this.setStrFinal_degree(strFinal_degree);
 

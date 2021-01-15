@@ -135,6 +135,7 @@ public class RecruitController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".recruitSearch Exception !!!!! \n"+e.toString());
 		}
 		
@@ -192,6 +193,7 @@ public class RecruitController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".recruitSearchByDuty Exception !!!!! \n"+e.toString());
 		}
 		
@@ -249,6 +251,7 @@ public class RecruitController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".recruitSearchByIndustry Exception !!!!! \n"+e.toString());
 		}
 		
@@ -306,6 +309,7 @@ public class RecruitController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".recruitSearchByArea Exception !!!!! \n"+e.toString());
 		}
 		
@@ -378,6 +382,7 @@ public class RecruitController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".recruitSearch Exception !!!!! \n"+e.toString());
 		}
 		
@@ -450,6 +455,7 @@ public class RecruitController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".recruitSearchForFree Exception !!!!! \n"+e.toString());
 		}
 		
@@ -492,6 +498,7 @@ public class RecruitController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".recruitOther Exception !!!!! \n"+e.toString());
 		}
 		
@@ -557,6 +564,7 @@ public class RecruitController {
 			mv.addObject("resumeCnt", resumeCnt);
 			
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".recruitDetail Exception !!!!! \n"+e.toString());
 		}
 		return mv;
@@ -600,6 +608,7 @@ public class RecruitController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".recruitListProgress Exception !!!!! \n"+e.toString());
 		}
 		
@@ -645,6 +654,7 @@ public class RecruitController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".recruitListClosed Exception !!!!! \n"+e.toString());
 		}
 		
@@ -698,6 +708,7 @@ public class RecruitController {
 			mv.addObject("pageMap", pageMap);
 		
 		} catch(Exception e) {
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".resumeScrapList Exception !!!!! \n"+e.toString());
 		}
 		
@@ -714,6 +725,7 @@ public class RecruitController {
 			pageNo = Integer.parseInt((String) commandMap.get("pageNo"));
 			if (pageNo < 1) pageNo = 1;
 		} catch(Exception e) {
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".getPageNo Exception !!!!! \n"+e.toString());
 		}
 		return pageNo;

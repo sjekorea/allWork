@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import allwork.common.CommandMap;
+import allwork.common.QueryParser;
 import allwork.common.util.CommonColumnUtil;
 import allwork.common.util.ConvertUtil;
 import allwork.common.util.PaginationUtil;
@@ -78,8 +79,26 @@ public class ResumeController {
 			commandMap.put("pageSize", pageSize);
 			
 			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
-			
+
+			// 검색 Query 생성.
+			String strQueryBizType = QueryParser.genQueryResumeBizType((String) commandMap.get("inidType"));
+			String strQueryIndustry = QueryParser.genQueryResumeIndustry((String) commandMap.get("inidAreaJob"));
+			String strQueryArea = QueryParser.genQueryResumeArea((String) commandMap.get("inidArea"));
+			String strQueryLicense = QueryParser.genQueryResumeLicense((String) commandMap.get("inidLicense"), netfuCateService);
+			String strQueryCareer = QueryParser.genQueryResumeCareer((String) commandMap.get("inidCareer"));
+			String strQuerySchool = QueryParser.genQueryResumeSchool((String) commandMap.get("inidSchool"));
+			String strQueryJobForm = QueryParser.genQueryResumeJobForm((String) commandMap.get("inidJobform"));
+			String strQueryPay = QueryParser.genQueryResumePay((String) commandMap.get("inidPay"));
+
 			// 채용정보 검색 리스트
+			commandMap.put("inidType", strQueryBizType);
+			commandMap.put("inidAreaJob", strQueryIndustry);
+			commandMap.put("inidArea", strQueryArea);
+			commandMap.put("inidLicense", strQueryLicense);
+			commandMap.put("inidCareer", strQueryCareer);
+			commandMap.put("inidSchool", strQuerySchool);
+			commandMap.put("inidJobform", strQueryJobForm);
+			commandMap.put("inidPay", strQueryPay);
 			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(resumeList.size() > 0){
@@ -135,6 +154,7 @@ public class ResumeController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".resumeSearch Exception !!!!! \n"+e.toString());
 		}
 		
@@ -163,8 +183,12 @@ public class ResumeController {
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);
 			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
-			
+
+			// 검색 Query 생성.
+			String strQueryBizType = QueryParser.genQueryResumeBizType((String) commandMap.get("inidType"));
+
 			// 채용정보 검색 리스트
+			commandMap.put("inidType", strQueryBizType);
 			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(resumeList.size() > 0){
@@ -185,6 +209,7 @@ public class ResumeController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".resumeSearchByDuty Exception !!!!! \n"+e.toString());
 		}
 		
@@ -214,8 +239,12 @@ public class ResumeController {
 			commandMap.put("pageSize", pageSize);
 			
 			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
-			
+
+			// 검색 Query 생성.
+			String strQueryIndustry = QueryParser.genQueryResumeIndustry((String) commandMap.get("inidAreaJob"));
+
 			// 채용정보 검색 리스트
+			commandMap.put("inidAreaJob", strQueryIndustry);
 			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(resumeList.size() > 0){
@@ -236,6 +265,7 @@ public class ResumeController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".resumeSearchByIndustry Exception !!!!! \n"+e.toString());
 		}
 		
@@ -264,8 +294,12 @@ public class ResumeController {
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);
 			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
-			
+
+			// 검색 Query 생성.
+			String strQueryArea = QueryParser.genQueryResumeArea((String) commandMap.get("inidArea"));
+
 			// 채용정보 검색 리스트
+			commandMap.put("inidArea", strQueryArea);
 			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(resumeList.size() > 0){
@@ -286,6 +320,7 @@ public class ResumeController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".resumeSearchByArea Exception !!!!! \n"+e.toString());
 		}
 		
@@ -317,9 +352,27 @@ public class ResumeController {
 			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
 			commandMap.put("infoType", "2");
 			
-			System.out.println("INFO_TYPE : "+(String)commandMap.get("infoType"));
-			
+			//System.out.println("INFO_TYPE : "+(String)commandMap.get("infoType"));
+
+			// 검색 Query 생성.
+			String strQueryBizType = QueryParser.genQueryResumeBizType((String) commandMap.get("inidType"));
+			String strQueryIndustry = QueryParser.genQueryResumeIndustry((String) commandMap.get("inidAreaJob"));
+			String strQueryArea = QueryParser.genQueryResumeArea((String) commandMap.get("inidArea"));
+			String strQueryLicense = QueryParser.genQueryResumeLicense((String) commandMap.get("inidLicense"), netfuCateService);
+			String strQueryCareer = QueryParser.genQueryResumeCareer((String) commandMap.get("inidCareer"));
+			String strQuerySchool = QueryParser.genQueryResumeSchool((String) commandMap.get("inidSchool"));
+			String strQueryJobForm = QueryParser.genQueryResumeJobForm((String) commandMap.get("inidJobform"));
+			String strQueryPay = QueryParser.genQueryResumePay((String) commandMap.get("inidPay"));
+
 			// 채용정보 검색 리스트
+			commandMap.put("inidType", strQueryBizType);
+			commandMap.put("inidAreaJob", strQueryIndustry);
+			commandMap.put("inidArea", strQueryArea);
+			commandMap.put("inidLicense", strQueryLicense);
+			commandMap.put("inidCareer", strQueryCareer);
+			commandMap.put("inidSchool", strQuerySchool);
+			commandMap.put("inidJobform", strQueryJobForm);
+			commandMap.put("inidPay", strQueryPay);
 			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(resumeList.size() > 0){
@@ -375,6 +428,7 @@ public class ResumeController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".resumeSearchForAlba Exception !!!!! \n"+e.toString());
 		}
 		
@@ -405,8 +459,26 @@ public class ResumeController {
 			
 			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
 			commandMap.put("infoType", "4");
-			
+
+			// 검색 Query 생성.
+			String strQueryBizType = QueryParser.genQueryResumeBizType((String) commandMap.get("inidType"));
+			String strQueryIndustry = QueryParser.genQueryResumeIndustry((String) commandMap.get("inidAreaJob"));
+			String strQueryArea = QueryParser.genQueryResumeArea((String) commandMap.get("inidArea"));
+			String strQueryLicense = QueryParser.genQueryResumeLicense((String) commandMap.get("inidLicense"), netfuCateService);
+			String strQueryCareer = QueryParser.genQueryResumeCareer((String) commandMap.get("inidCareer"));
+			String strQuerySchool = QueryParser.genQueryResumeSchool((String) commandMap.get("inidSchool"));
+			String strQueryJobForm = QueryParser.genQueryResumeJobForm((String) commandMap.get("inidJobform"));
+			String strQueryPay = QueryParser.genQueryResumePay((String) commandMap.get("inidPay"));
+
 			// 채용정보 검색 리스트
+			commandMap.put("inidType", strQueryBizType);
+			commandMap.put("inidAreaJob", strQueryIndustry);
+			commandMap.put("inidArea", strQueryArea);
+			commandMap.put("inidLicense", strQueryLicense);
+			commandMap.put("inidCareer", strQueryCareer);
+			commandMap.put("inidSchool", strQuerySchool);
+			commandMap.put("inidJobform", strQueryJobForm);
+			commandMap.put("inidPay", strQueryPay);
 			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(resumeList.size() > 0){
@@ -462,6 +534,7 @@ public class ResumeController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".resumeSearchForFree Exception !!!!! \n"+e.toString());
 		}
 		
@@ -543,6 +616,7 @@ public class ResumeController {
 			mv.addObject("resumeLanguage", resumeLanguage);
 			
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".resumeDetail Exception !!!!! \n"+e.toString());
 		}
 		
@@ -564,6 +638,7 @@ public class ResumeController {
 			mv.addObject("rstCnt", rstCnt);
 			mv.setViewName("jsonView");
 		}catch(Exception e){
+			e.printStackTrace();
 			log.debug(this.getClass().getName()+" selectNetfuItemResumeCnt.ajax Exception!!!!  "+e.toString());
 		}
 		return mv;
@@ -607,6 +682,7 @@ public class ResumeController {
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".resumeList Exception !!!!! \n"+e.toString());
 		}
 		
@@ -628,6 +704,7 @@ public class ResumeController {
 			mv.addObject("rstCnt", rstCnt);
 			mv.setViewName("jsonView");
 		}catch(Exception e){
+			e.printStackTrace();
 			log.info(this.getClass().getName()+".deleteResumeMulti Exception !!!!! \n"+e.toString());
 		}
 		return mv;

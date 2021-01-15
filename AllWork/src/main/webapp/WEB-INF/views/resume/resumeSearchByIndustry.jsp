@@ -108,7 +108,7 @@
 				</div>
 			</div>
 			<div id="searchBox">
-				<p class="keywords"></p>
+				<p class="keywords">${map.keywordsHtml }</p>
 				<p class="reset"><a href="#none" title="초기화">초기화</a></p>
 				<p class="goBtn"><input id="search_detail_btn" type="button" value="선택된 조건 검색하기"/></p>
 			</div>
@@ -223,13 +223,51 @@
 	$(document).ready(function(){
 		
 		// 검색 항목 click
+		//(begin)++2021.01.13 by s.yoo.
+		var selectedItem = [ "", "", "" ];
+		var selectedCode = [ "", "", "" ];
+		//(end)++2021.01.13 by s.yoo.
 		$(document).on("click", "#row01 input:button", function(e){
 			
 			var ulClass = $(this).closest("ul").attr("class");
 			var selectedId = $(this).attr("id");
 			var selectedValue = $(this).attr("value");
 			var selectedName = $(this).attr("name");
-			
+
+			//(begin)++2021.01.13 by s.yoo.
+			switch(selectedId) {
+			case "job1":
+			case "area_job1":
+			case "area1":
+			case "inid_mylskill1":
+			case "job_career":
+			case "job_school":
+			case "job_type":
+			case "job_pay":
+				selectedItem[0] = selectedValue;
+				selectedItem[1] = selectedItem[2] = "";
+				selectedCode[0] = selectedName;
+				selectedCode[1] = selectedCode[2] = "";
+				break;
+			case "job2":
+			case "area_job2":
+			case "area2":
+			case "inid_mylskill2":
+				selectedItem[1] = selectedValue;
+				selectedItem[2] = "";
+				selectedCode[1] = selectedName;
+				selectedCode[2] = "";
+				break;
+			case "job3":
+			case "area_job3":
+			case "area3":
+			case "inid_mylskill3":
+				selectedItem[2] = selectedValue;
+				selectedCode[2] = selectedName;
+				break;
+			}
+			//(end)++2021.01.13 by s.yoo.
+
 			if("select01" == ulClass){
 				$(".select02, .select03").empty();
 				getNetfuCateListForUl($("#searchKind").val(), $(this).attr("name"), "select02", $("#searchKind").val()+"2", true);
@@ -241,7 +279,8 @@
 			}
 			
 			if("select03" == ulClass){
-				setCondition(ulClass, selectedId, selectedValue, selectedName);
+				//setCondition(ulClass, selectedId, selectedValue, selectedName);
+				setCondition(ulClass, selectedId, selectedValue, selectedName, selectedItem, selectedCode);		//++2021.01.13 by s.yoo.
 			}
 		});
 		
@@ -256,9 +295,40 @@
 		
 		
 		$("#search_detail_btn").on("click", function(e){
+			//(begin)++2021.01.13 by s.yoo.
+			//Keyword를 검색조건에 추가.
+			var listKey = [ 'keywordTxt1Sel', 'keywordTxt2Sel', 'keywordTxt3Sel' ];
+			var listKeyword = [ $('#keywordTxt1'), $('#keywordTxt2'), $('#keywordTxt3') ];
+			for (var i = 0; i < 3; i++) {
+				key = listKey[i];
+				value = listKeyword[i].val();
+				if (value == null || value.length < 1) {
+					deleteItem(key);
+				} else {
+					selectedId = listKey[i]
+					selectedName = listKey[i];
+					if(chkSearchConditionExist(selectedName)) {
+						deleteItem(key);
+					}
+					$(".keywords").append("<span><input id='"+selectedId+"' type='button' name='"+selectedName+"' value='"+value+"' /><i class='fas fa-times'></i></span>");						
+				}				
+			}
+			//(end)++2021.01.13 by s.yoo.
+			
 			resumeSearch();
 		});
 		
+		//(begin)++2021.01.13 by s.yoo.
+		function deleteItem(key) {
+			var count = $(".keywords").find("span").length;
+			for(var j = 0; j < count; j++) {
+				if ($(".keywords").find("span")[j].children[0].id == key) break;
+			}
+			if (j >= 0 && j < count)
+				$(".keywords").find("span").eq(j).remove();			
+		}
+		//(end)++2021.01.13 by s.yoo.
+
 		
 		$(".rec_align a").on("click", function(e){
 			
@@ -297,13 +367,26 @@
 	});	
 	
 	
-	function setCondition(ulClass, selectedId, selectedValue, selectedName){
-		
+	//function setCondition(ulClass, selectedId, selectedValue, selectedName){
+	function setCondition(ulClass, selectedId, selectedValue, selectedName, selectedItem, selectedCode) {	//++2021.01.13 by s.yoo.
+
 		if($(".keywords span").length >= 10){
 			alert("겸색 조건은 10까지만 등록가능합니다.");
 		}else{
-			if(!chkSearchConditionExist(selectedName)){
-				$(".keywords").append("<span><input id='"+selectedId+"' type='button' name='"+selectedName+"' value='"+selectedValue+"' /><i class='fas fa-times'></i></span>");	
+			//(begin)++2021.01.13 by s.yoo.
+			var value = "", selName = "";
+			for(var i = 0; i < 3; i++) {
+				if (selectedItem[i] == null || selectedItem[i].length < 1) continue;
+				value = (value.length < 1)? selectedItem[i] : (value + ">" + selectedItem[i]);
+				selName = (selName.length < 1)? selectedCode[i] : (selName + "," + selectedCode[i]);
+			}
+			//(end)++2021.01.13 by s.yoo.
+			//if(!chkSearchConditionExist(selectedName)){
+			if(!chkSearchConditionExist(selName)) {			//++2021.01.13 by s.yoo.
+				//$(".keywords").append("<span><input id='"+selectedId+"' type='button' name='"+selectedName+"' value='"+selectedValue+"' /><i class='fas fa-times'></i></span>");	
+				//(begin)++2021.01.13 by s.yoo.
+				$(".keywords").append("<span><input id='"+selectedId+"' type='button' name='"+selName+"' value='"+value+"' /><i class='fas fa-times'></i></span>");
+				//(end)++2021.01.13 by s.yoo.
 			}	
 		}
 	}
@@ -348,6 +431,7 @@
 
 		$(".keywords span input:button").each(function(index, item){
 			spanId = $(this).attr("id");
+			/*
 			if(spanId == "job3"){
 				inidType += $(this).attr("name")+","
 			}
@@ -372,7 +456,35 @@
 			if(spanId == "job_pay"){
 				inidPay += $(this).attr("name")+","
 			}
+			*/
+			//(begin)++2021.01.13 by s.yoo.
+			if(spanId == "job3"){
+				inidType = (inidType.length < 1)? $(this).attr("name") : (inidType + ";" + $(this).attr("name"));
+			}
+			if(spanId == "area_job3"){
+				inidAreaJob = (inidAreaJob.length < 1)? $(this).attr("name") : (inidAreaJob + ";" + $(this).attr("name"));
+			}
+			if(spanId == "area2"){
+				inidArea = (inidArea.length < 1)? $(this).attr("name") : (inidArea + ";" + $(this).attr("name"));
+			}
+			if(spanId == "inid_mylskill3"){
+				inidLicense = (inidLicense.length < 1)? $(this).attr("name") : (inidLicense + ";" + $(this).attr("name"));
+			}
+			if(spanId == "job_career"){
+				inidCareer = (inidCareer.length < 1)? $(this).attr("name") : (inidCareer + ";" + $(this).attr("name"));
+			}
+			if(spanId == "job_school"){
+				inidSchool = (inidSchool.length < 1)? $(this).attr("name") : (inidSchool + ";" + $(this).attr("name"));
+			}
+			if(spanId == "job_type"){
+				inidJobform = (inidJobform.length < 1)? $(this).attr("name") : (inidJobform + ";" + $(this).attr("name"));
+			}
+			if(spanId == "job_pay"){
+				inidPay = (inidPay.length < 1)? $(this).attr("name") : (inidPay + ";" + $(this).attr("name"));
+			}
+			//(end)++2021.01.13 by s.yoo.
 		});
+		/*
 		inidType = inidType.length > 0 ? inidType.substring(0, inidType.length - 1) : "";
 		inidAreaJob = inidAreaJob.length > 0 ? inidAreaJob.substring(0, inidAreaJob.length - 1) : "";
 		inidArea = inidArea.length > 0 ? inidArea.substring(0, inidArea.length - 1) : "";
@@ -381,6 +493,7 @@
 		inidSchool = inidSchool.length > 0 ? inidSchool.substring(0, inidSchool.length - 1) : "";
 		inidJobform = inidJobform.length > 0 ? inidJobform.substring(0, inidJobform.length - 1) : "";
 		inidPay = inidPay.length > 0 ? inidPay.substring(0, inidPay.length - 1) : "";
+		*/
 		
 		$("#inidType").val(inidType);
 		$("#inidAreaJob").val(inidAreaJob);

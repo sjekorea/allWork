@@ -47,28 +47,28 @@
 				and (nir.inid_jobform like '%arbeit%' or nir.inid_jobform like '%netfu_34537_33276%')
 			</if>
 			<if test="inidType != null and inidType != ''">
-				and (nir.inid_type3 in ('${inidType}') or nir.inid_type6 in ('${inidType}') or nir.inid_type9 in ('${inidType}'))
+				AND ${inidType}
 			</if>
 			<if test="inidAreaJob != null and inidAreaJob != ''">
-				and (nir.inid_area_job3 in ('${inidAreaJob}') or nir.inid_area_job3 in ('${inidAreaJob}') or nir.inid_area_job3 in ('${inidAreaJob}'))
+				AND ${inidAreaJob}
 			</if>
 			<if test="inidArea != null and inidArea != ''">
-				and (nir.inid_area2 in ('${inidArea}') or nir.inid_area4 in ('${inidArea}') or nir.inid_area6 in ('${inidArea}'))
+				AND ${inidArea}
 			</if>
 			<if test="inidLicense != null and inidLicense != ''">
-				and (nir.inid_license in ('${inidLicense}') or nir.inid_license in ('${inidLicense}') or nir.inid_license in ('${inidLicense}'))
+				AND ${inidLicense}
 			</if>
 			<if test="inidCareer != null and inidCareer != ''">
-				and (nir.inid_career in ('${inidCareer}'))
+				AND ${inidCareer}
 			</if>
 			<if test="inidSchool != null and inidSchool != ''">
-				and (nir.inid_last_school in ('${inidSchool}'))
+				AND ${inidSchool}
 			</if>
 			<if test="inidJobform != null and inidJobform != ''">
-				and (nir.inid_jobform in ('${inidJobform}'))
+				AND ${inidJobform}
 			</if>
 			<if test="inidPay != null and inidPay != ''">
-				and (nir.inid_pay in ('${inidPay}'))
+				AND ${inidPay}
 			</if>
 		) nir
 		where 1=1
@@ -113,28 +113,28 @@
 				and (nir.inid_jobform like '%arbeit%' or nir.inid_jobform like '%netfu_34537_33276%')
 			</if>
 			<if test="inidType != null and inidType != ''">
-				and (nir.inid_type3 in ('${inidType}') or nir.inid_type6 in ('${inidType}') or nir.inid_type9 in ('${inidType}'))
+				AND ${inidType}
 			</if>
 			<if test="inidAreaJob != null and inidAreaJob != ''">
-				and (nir.inid_area_job3 in ('${inidAreaJob}') or nir.inid_area_job3 in ('${inidAreaJob}') or nir.inid_area_job3 in ('${inidAreaJob}'))
+				AND ${inidAreaJob}
 			</if>
 			<if test="inidArea != null and inidArea != ''">
-				and (nir.inid_area2 in ('${inidArea}') or nir.inid_area4 in ('${inidArea}') or nir.inid_area6 in ('${inidArea}'))
+				AND ${inidArea}
 			</if>
 			<if test="inidLicense != null and inidLicense != ''">
-				and (nir.inid_license in ('${inidLicense}') or nir.inid_license in ('${inidLicense}') or nir.inid_license in ('${inidLicense}'))
+				AND ${inidLicense}
 			</if>
 			<if test="inidCareer != null and inidCareer != ''">
-				and (nir.inid_career in ('${inidCareer}'))
+				AND ${inidCareer}
 			</if>
 			<if test="inidSchool != null and inidSchool != ''">
-				and (nir.inid_last_school in ('${inidSchool}'))
+				AND ${inidSchool}
 			</if>
 			<if test="inidJobform != null and inidJobform != ''">
-				and (nir.inid_jobform in ('${inidJobform}'))
+				AND ${inidJobform}
 			</if>
 			<if test="inidPay != null and inidPay != ''">
-				and (nir.inid_pay in ('${inidPay}'))
+				AND ${inidPay}
 			</if>
 		) nir
 		where 1=1
