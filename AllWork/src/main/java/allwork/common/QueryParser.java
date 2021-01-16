@@ -483,11 +483,14 @@ public class QueryParser {
 			//DB Query 생성.
 			if (nQueryLevel <= 0 || nQueryLevel >= 99) return "";	//무관.
 			strQuery = "";
+			/*
 			for (int i = nQueryLevel; i <= 5; i++) {
 				strQuery += (strQuery.length() < 1)? "(" : " OR ";
 				strQuery += "nir.education2 LIKE '%\"final_degree\":\"" + i + "\"%' OR nir.education2 LIKE '%\"final_degree\":" + i + "%' ";				
 			}
 			if (strQuery != null && strQuery.length() > 0) strQuery += ")";
+			*/
+			strQuery = "(nir.education_degree >= " + nQueryLevel + ")";
 		}catch(Exception e){
 			e.printStackTrace();
 			log.info("genQueryResumeSchool Exception !!!!! \n" + e.toString());

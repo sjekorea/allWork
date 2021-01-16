@@ -269,6 +269,11 @@
 		
 		$(".reset").on("click", function(e){
 			$(".keywords").empty();
+			
+			//키워드 입력창의 내용 삭제.
+			$("#keywordTxt1").val("");
+			$("#keywordTxt2").val("");
+			$("#keywordTxt3").val("");
 		});
 		
 		

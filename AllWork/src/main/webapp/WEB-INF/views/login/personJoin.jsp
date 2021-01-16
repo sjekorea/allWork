@@ -79,10 +79,15 @@
 						</div>
 						<div class="snsRegister">
 							<p>소셜 회원가입</p>
-							<ul>
+							<ul class="snsLogin">
+								<!-- 
 								<div id="naverIdLogin"></div>
 								<div><a id="kakao-login-btn" class="btn kakao font-mgb">카카오로 로그인</a></div>
-								<li><a href="#none" title="구글 회원가입"><img src="/img/login/sns03.jpg" alt="이미지00"/>&nbsp;&nbsp;&nbsp;&nbsp;구글 회원가입</a></li>
+								<li><a href="#none" title="구글 회원가입"><img src="/img/login/sns03.png" alt="이미지00"/>&nbsp;&nbsp;&nbsp;&nbsp;구글 회원가입</a></li>
+								 -->
+								<li id="naverIdLogin"> <a id="naverIdLogin_loginButton" href="#"> <img src="img/login/sns01.png"></a> </li>
+								<li><a id="kakao-login-btn" class="btn kakao font-mgb"><img id="kakao-login-btn" src="img/login/sns02.png"></a></li>
+								<li class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"><a><img src="img/login/sns03.png"></a></li>
 							</ul>
 						</div>
 						<div class="registerBox">

@@ -84,10 +84,22 @@ public class ResumeCareerModel extends ApiJqGridParams implements Serializable  
 			try {
 				Integer total_year = Integer.parseInt(String.valueOf((Long) jsonObject.get("total_year")));
 				this.setTotal_year(total_year);
+			} catch(Exception e2) {
+				try {
+					Integer total_year = Integer.parseInt(String.valueOf((String) jsonObject.get("total_year")));
+					this.setTotal_year(total_year);
+				} catch(Exception e3) {}
+			}
 				
+			try {
 				Integer total_month = Integer.parseInt(String.valueOf((Long) jsonObject.get("total_month")));
 				this.setTotal_month(total_month);
-			} catch(Exception e2) {}
+			} catch(Exception e2) {
+				try {
+					Integer total_month = Integer.parseInt(String.valueOf((String) jsonObject.get("total_month")));
+					this.setTotal_month(total_month);
+				} catch(Exception e3) {}
+			}
 
 			this.data = new ArrayList<ResumeCareerItemModel>();
 			JSONArray data = (JSONArray) jsonObject.get("data");

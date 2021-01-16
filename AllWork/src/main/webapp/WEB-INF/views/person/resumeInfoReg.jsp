@@ -38,7 +38,9 @@
 			<input type="hidden" name="inidAddress1" id="inidAddress1" value="${memberMap.address1}" />
 			<input type="hidden" name="inidAddress2" id="inidAddress2" value="${memberMap.address2}" />
 			<input type="hidden" name="inidHome" id="inidHome" value="${memberMap.home}" />
-				
+			<input type="hidden" name="educationDegree" id="educationDegree" value="${memberMap.educationDegree}" />
+			<input type="hidden" name="careerTotal" id="careerTotal" value="${memberMap.careerTotal}" />
+
 			<div id="resume00">
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
@@ -414,7 +416,10 @@
 									<tr>
 										<th>자기소개서</th>
 										<td>
-											<textarea id="inidIntroduce" name="inidIntroduce"></textarea>
+											<div><textarea id="inidIntroduce" name="inidIntroduce" style="width: 100%;" ></textarea></div>
+											<!-- 
+											<div><iframe frameborder="0" scrolling="no" style="width: 100%; height: 249px;" src="/smartEditor/SmartEditor2Skin.html"></iframe></div>
+											 -->
 										</td>
 									</tr>
 								</tbody>
@@ -894,6 +899,10 @@
 		$("#language2").val(JSON.stringify(languageTopInfo));
 		//console.log("{data:"+JSON.stringify(careerArray))+"}";
 		
+		//최종학력과 총경력년수.
+		$("#educationDegree").val($("#final_degree").val());
+		$("#careerTotal").val($("#total_year").val());
+
 		
 		$("#registForm").submit();
 	}

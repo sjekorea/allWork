@@ -199,14 +199,16 @@
 							<p class="edu_desc01">재학기간</p>
 							<p class="edu_desc02">학교명</p>
 							<p class="edu_desc03">전공</p>
-							<p class="edu_desc04">졸업상태</p>
+							<p class="edu_desc04">학위</p>
+							<p class="edu_desc05">졸업상태</p>
 						</li>
 						<c:forEach var="result" items="${resumeEducation.data}" varStatus="status">
 							<li class="edu_desc">
 								<p class="edu_desc01">${result.lesson_sdate}.${result.lesson_sdate2} ~ ${result.lesson_edate}.${result.lesson_edate2}</p>
 								<p class="edu_desc02">${result.school}</p>
 								<p class="edu_desc03">${result.lesson}</p>
-								<p class="edu_desc04">${result.strState}</p>
+								<p class="edu_desc04">${result.strDegree}</p>
+								<p class="edu_desc05">${result.strState}</p>
 							</li>
 						</c:forEach>
 					</ul>

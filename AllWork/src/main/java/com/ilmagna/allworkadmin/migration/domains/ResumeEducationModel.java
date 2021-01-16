@@ -126,9 +126,11 @@ public class ResumeEducationModel extends ApiJqGridParams implements Serializabl
 			String[] listData = strData.split("____");
 			if (listData.length < 2) return bResult;
 
-			int nSummary = Integer.parseInt(listData[0]);					//-- 최종학력.
-			this.setFinal_degree(nSummary);
-			this.setStrFinal_degree(getDegree(nSummary));
+			try {
+				int nSummary = Integer.parseInt(listData[0]);					//-- 최종학력.
+				this.setFinal_degree(nSummary);
+				this.setStrFinal_degree(getDegree(nSummary));				
+			} catch(Exception e2) {}
 			//System.out.println("최종학력: " + this.getFinal_degree());
 			String strInput = listData[1];
 			

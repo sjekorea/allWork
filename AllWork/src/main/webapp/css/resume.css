@@ -34,17 +34,17 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     th .necessary{padding-left:3px;color:red;}
 
     td{width:570px;font-size:14px;}
-    td input[type="button"]{width:100px;height:42px;padding:0 10px;text-align:center;font-size:16px;
-                            background-color:#fff;
-                            border:1px solid #999;vertical-align:top;cursor:pointer;}
+    td input[type="button"]{width:90px;height:42px;padding:0 10px;text-align:center;font-size:16px;
+                            background-color:#eee;
+                            border:1px solid #999;vertical-align:top;cursor:pointer;font-size: 13px;}
     td input[type="text"]{width:570px;height:40px;background-color:#fff;border:1px solid #999;text-indent:10px;}
     td input::placeholder{color:#ccc;text-indent:10px;}
     td input[type="checkbox"]{width:16px;height:16px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}
     td input[type="radio"]{width:16px;height:16px;vertical-align:bottom;margin-right:5px;border:1px solid #999;}
 
     td span{display:inline-block;padding-right:20px;padding-bottom:10px;}
-    td select{width:120px;height:42px;border:1px solid #999;font-size:16px;text-indent:10px;color:#666;vertical-align:top;}
-    td textarea{width:100%;height:80px;padding:10px;}
+    td select{width:120px;height:42px;border:1px solid #999;font-size:14px;text-indent:10px;color:#666;vertical-align:top;}
+    td textarea{width:570px;height:80px;padding:10px;}
     td input[type="date"]{width:160px;height:40px;border:1px solid #999;font-size:14px;padding:0 10px;color:#666;}
     .comment{color:red;font-size:12px;}
 
@@ -58,9 +58,8 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resume00 #detailArea .detail_title{width:340px;height:32px;font-size:18px;float:left;}
     #resume00 #detailArea .personal_setting{width:110px;height:32px;line-height:28px;font-size:14px;margin-bottom:10px;margin-left:260px;text-align:center;border:1px solid #333;float:left;}
 
-
     #resume00 #imgPart{width:120px;margin-right:10px;height:200px;float: left;overflow:hidden;}
-    #resume00 .imgArea{width:120px;margin-right:10px;height:140px;border:1px solid #ccc;overflow: hidden;}
+    #resume00 .imgArea{width:120px;margin-right:10px;height:134px;border:1px solid #ccc;overflow: hidden;}
     #resume00 .imgArea p{width:100%;background-color:#ccc;}
     #resume00 .imgArea p img{width:100%;}
     #resume00 .btnArea{width:100%;height:30px;font-size:14px;line-height:30px;text-align: center;margin-top:10px;}
@@ -108,7 +107,8 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resume02{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
     #resForm02{width:790px;background-color:#fff;padding:40px;}
     #resForm02 tr{height:80px;}
-    #res02_desc01{width:570px;height:40px;}
+    #resForm02 th{width:114px;}
+
 
     /*###############################   resume03 학력사항  ###############################*/
     #resume03{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
@@ -124,7 +124,8 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resForm03 #res03_desc03_2{width:210px;}
     #resForm03 #res03_desc03_3{width:188px;}
     #resForm03 td input[type="date"]{height:42px;}
-    #resForm03 input[type="text"]{width:400px;height:42px;}
+    #resForm03 input[type="text"]{width:422px;height:42px;}
+    #resForm03 #lesson, #resForm03 #lesson2{width:210px;}
 
     /*###############################   resume03 경력사항  ###############################*/
     #resume04{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
@@ -156,7 +157,7 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resForm06 td .part01{width:100%;overflow: hidden;margin-bottom:5px;}
     #resForm06 td .part01 input{padding:0 10px;width:200px;}
     #resForm06 td .part02{width:432px;overflow:hidden;}
-    #resForm06 td .part02 select{display: inline-block;margin:0;height:40px;width:140px;}
+    #resForm06 td .part02 input{width:100%;}
     #resForm06 td .part03{width:274px;height:40px;}
     #resForm06 td .part03 input{width:100%;padding:0;}
 
@@ -172,13 +173,13 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resForm07 td .part01 input{padding:0 10px;width:100%;height:40px;}
     #resForm07 td .part02{width:376px;overflow:hidden;margin-bottom:5px;}
     #resForm07 td .part02 input{width:100%;height:40px;}
-    #resForm07 td .part03{width:100px;overflow:hidden;margin-bottom:5px;}
+    #resForm07 td .part03{width:130px;overflow:hidden;margin-bottom:5px;}
     #resForm07 td .part03 select{width:100%;height:40px;}
     #resForm07 td .part04{width:200px;overflow:hidden;}
     #resForm07 td .part04 input{width:100%;}
     #resForm07 td .part05{width:80px;overflow:hidden;}
     #resForm07 td .part05 input{width:100%;}
-    #resForm07 td .part06{width:90px;}
+    #resForm07 td .part06{width:130px;}
     #resForm07 td .part06 select{width:100%;height:40px;}
     #resForm07 td .part08{width:40px;height:40px;margin-top:20px;}
     #resForm07 td .part08 input{width:100%;height:100%;background-color:#43425D;color:#fff;font-size:14px;margin-right:0;}
@@ -192,48 +193,20 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     #resForm08 tr{height:80px;}
     #resForm08 th{display:none;}
     #resForm08 td{width:710px;}
-    #resForm08 input[type="text"]{width:710px;}
-    #resForm08 textarea{width:710px;}
+    #resForm08 td div{width:100%;height:249px;border:1px solid #ccc;}
 
     /*###############################   resForm09   ###############################*/
     #resume09{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}
     #resForm09{width:790px;background-color:#fff;padding:40px;}
-    #resForm09 tr{height:80px;}
+    #resForm09 tr{height:40px;}
     #resForm09 th{display:none;}
-    #resForm09 td{width:710px;}
+    #resForm09 td{width:710px;height:40px;}
 
-/*    #resForm09 .file_btn{border:none;margin:0;padding:0;}
-    #resForm09 input[type="file"]{position: absolute;
-                                  width: 0;
-                                  height: 0;
+    #resForm09 .file_btn{border:none;margin:0;padding:0;}
+    #resForm09 input[type="file"]{display:block;
+                                  width:700px;
+                                  height:24px;
                                   padding: 0;
                                   overflow: hidden;
-                                  border: 0;
+                                  border: 1px solid #ccc;;
                               }
-  #resForm09 label {font-family:"NotoSansKR-Medium";
-                      display: inline-block;
-                      height: 40px;
-                      line-height:40px;
-                      width:108px;
-                      text-align: center;
-                      color: #fff;
-                      vertical-align: middle;
-                      background-color: #4F60E3;
-                      cursor: pointer;
-
-                  }
-  #resForm09 #res09_desc01{
-
-                      display: inline-block;
-                      width:598px;
-                      height: 40px;
-                      font-size:16px;
-                      color:#ccc;
-                      padding: 0 10px;
-                        vertical-align: middle;
-                        background-color: #fff;
-                      border: 1px solid #ccc;
-
-
-                    }
-*/

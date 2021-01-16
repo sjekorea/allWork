@@ -13,7 +13,6 @@
 <link rel="stylesheet" type="text/css" href="/css/indexSearchList.css"/>
 
 
-<div id="containerWrap">
 	<div id="content01Wrap">
 		<table class="list" style="table-layout:fixed;">
 			<colgroup>
@@ -338,7 +337,6 @@
 			</table>
 		 -->
 	</div>
-</div>
 	
 <jsp:include page="/footer.do" />
 

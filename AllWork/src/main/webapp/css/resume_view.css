@@ -60,10 +60,17 @@ td{width:570px;font-size:14px;padding:5px 20px;}
     #resForm03 ul .edu_title{background-color:#eee;}
     #resForm03 ul .edu_desc{background-color:#fff;border-bottom:1px solid #ccc;}
     #resForm03 ul li p{float:left;}
+    /*
     #resForm03 ul li .edu_desc01{width:190px;}
     #resForm03 ul li .edu_desc02{width:280px;}
     #resForm03 ul li .edu_desc03{width:120px;}
     #resForm03 ul li .edu_desc04{width:120px;}
+    */
+    #resForm03 ul li .edu_desc01{width:160px;}
+    #resForm03 ul li .edu_desc02{width:180px;}
+    #resForm03 ul li .edu_desc03{width:160px;}
+    #resForm03 ul li .edu_desc04{width:110px;}
+    #resForm03 ul li .edu_desc05{width:100px;}
 
     /*###############################   resume03  경력사항  ###############################*/
     #resume04{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}

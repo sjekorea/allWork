@@ -17,7 +17,7 @@
 #loginArea legend{display:none;}
 #loginArea .tab{width:100%;font-size:14px;}
 #loginArea .tab span{display:inline-block;padding-right:10px;}
-#loginArea .loginBox{width:100%;height:300px;}
+#loginArea .loginBox{width:100%;height:260px;}
 #loginArea .loginBox p{width:498px;height:48px;border:1px solid #ccc;margin:10px 0;}
 #loginArea .loginBox p input{display:block;width:100%;height:100%;border:none;background-color:#fff;text-indent:10px;}
 #loginArea .loginBox p input::placeholder{color:#ccc;}
@@ -30,11 +30,9 @@
 #loginArea .loginBox p.findArea{width:50%;height:50px;text-align:right;border:none;font-size:12px;float:left;}
 #loginArea .loginBox p.findArea .register a{color:#4F60E3;font-family:"NotoSansKR-Bold";}
 
-#loginArea .snsLogin{width:900px;height: 40px;margin:0 auto 100px;}
-#loginArea .snsLogin li{width:288px;height:38px;border:1px solid #333;margin-right:10px;line-height:38px;text-align: center;float:left;}
+#loginArea .snsLogin{width:600px;height:36px;margin:0 auto 100px;text-align: center;}
+#loginArea .snsLogin li{display:inline-block;height:36px;}
 #loginArea .snsLogin li:last-child{margin-right:0;}
 
-            #loginArea .snsLogin li:hover{border:1px solid #ccc}
-
 #loginArea .snsLogin li a{display:block;width:100%;height:100%;font-size:12px;}
-#loginArea .snsLogin li a img{width:20px;vertical-align:middle;}
+#loginArea .snsLogin li a img{height:100%;vertical-align:middle;}

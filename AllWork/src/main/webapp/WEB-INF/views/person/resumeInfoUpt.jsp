@@ -37,6 +37,8 @@
 			<input type="hidden" name="inidAddress1" id="inidAddress1" value="${memberMap.address1}" />
 			<input type="hidden" name="inidAddress2" id="inidAddress2" value="${memberMap.address2}" />
 			<input type="hidden" name="inidHome" id="inidHome" value="${memberMap.home}" />
+			<input type="hidden" name="educationDegree" id="educationDegree" value="${memberMap.educationDegree}" />
+			<input type="hidden" name="careerTotal" id="careerTotal" value="${memberMap.careerTotal}" />
 				
 			<div id="resume00">
 				<div id="detailArea">
@@ -410,7 +412,10 @@
 									<tr>
 										<th>자기소개서</th>
 										<td>
-											<textarea id="inidIntroduce" name="inidIntroduce">${resumeMap.inidIntroduce }</textarea>
+											<div><textarea id="inidIntroduce" name="inidIntroduce" style="width: 100%;" >${resumeMap.inidIntroduce }</textarea></div>
+											<!-- 
+											<div><iframe frameborder="0" scrolling="no" style="width: 100%; height: 249px;" src="/smartEditor/SmartEditor2Skin.html"></iframe></div>
+											 -->
 										</td>
 									</tr>
 								</tbody>
@@ -680,10 +685,11 @@
 					appendItem("education");
 				</c:if>		
 				$("input[name='lesson_sdate_full']").eq("${status.index}").val("${result.lesson_sdate}"+"-"+"${result.lesson_sdate2}"+"-01");
-				$("input[name='school2']").eq("${status.index}").val("${result.school2 }");
+				$("input[name='school2']").eq("${status.index}").val("${result.school2 }").prop("selected", true);;
 				$("input[name='school']").eq("${status.index}").val("${result.school }");
 				$("input[name='lesson_edate_full']").eq("${status.index}").val("${result.lesson_edate}"+"-"+"${result.lesson_edate2}"+"-01");
-				$("input[name='lesson_state${status.count}']").val("${result.lesson_state }");
+				//$("input[name='lesson_state${status.count}']").val("${result.lesson_state }");
+				$("input[name='lesson_state']").eq("${status.index}").val("${result.lesson_state }").prop("selected", true);;
 				$("input[name='lesson']").eq("${status.index}").val("${result.lesson }");
 				$("input[name='lesson2']").eq("${status.index}").val("${result.lesson2 }");
 			</c:forEach>
@@ -1117,6 +1123,10 @@
 		$("#language2").val(JSON.stringify(languageTopInfo));
 		//console.log("{data:"+JSON.stringify(careerArray))+"}";
 		
+		//최종학력과 총경력년수.
+		$("#educationDegree").val($("#final_degree").val());
+		$("#careerTotal").val($("#total_year").val());
+
 		
 		$("#registForm").submit();
 	}

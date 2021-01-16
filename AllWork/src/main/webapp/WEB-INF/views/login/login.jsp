@@ -80,9 +80,14 @@
 					</fieldset>
 				</form>
 				<ul class="snsLogin">
+					<!-- 
 					<div id="naverIdLogin"></div>
 					<div><a id="kakao-login-btn" class="btn kakao font-mgb">카카오로 로그인</a></div>
-					<!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">dfd</div> -->
+					<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">dfd</div>
+					 -->
+					<li id="naverIdLogin"> <a id="naverIdLogin_loginButton" href="#"> <img src="img/login/sns01.png"></a> </li>
+					<li><a id="kakao-login-btn" class="btn kakao font-mgb"><img id="kakao-login-btn" src="img/login/sns02.png"></a></li>
+					<li class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"><a><img src="img/login/sns03.png"></a></li>
 				</ul>
 			</div>
 		</div>
