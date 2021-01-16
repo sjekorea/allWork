@@ -135,7 +135,7 @@
 							<table>
 								<tbody id="area">
 									<tr>
-										<th>근무지역<span class="necessary">*</span></th>
+										<th>희망근무지<span class="necessary">*</span></th>
 										<td>
 											<select id="inidArea1" name="inidArea1" onchange="javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'inidArea2', true, true);">
 												<option value="">시도 선택</option>
@@ -309,7 +309,9 @@
 													<option value="${i}">${i}</option>
 												</c:forEach>
 											</select>&nbsp;개월
+											<!-- 
 											<input id="careerKindChk" type="checkbox" name="careerKind" value="102"/><label for="res04_desc01_2">신입</label>
+											 -->
 											<input type="hidden" name="careerKind" id="careerKind" value="" />
 										</td>
 									</tr>
@@ -513,23 +515,25 @@
 				$(":radio[name='inidSecretRadio'][value='no']").prop("checked", true);
 			}
 			
+			/*
 			// 사진 공개/비공개
 			if("${resumeMap.inidPChk}" == "yes"){
 				$(":radio[name='inidPChkRadio'][value='yes']").prop("checked", true);
 			}else{
 				$(":radio[name='inidPChkRadio'][value='no']").prop("checked", true);
 			}
+			*/
 			
 			// 이력서 제목
 			$("#inidTitle").val("${resumeMap.inidTitle}");
 			
 			// 현재 상태
 			if("${resumeMap.indiCondition}" == "1"){
-				$(":radio[name='inidSecretRadio'][value='1']").prop("checked", true);
+				$(":radio[name='indiConditionRadio'][value='1']").prop("checked", true);
 			}else if("${resumeMap.indiCondition}" == "2"){
-				$(":radio[name='inidSecretRadio'][value='2']").prop("checked", true);
+				$(":radio[name='indiConditionRadio'][value='2']").prop("checked", true);
 			}else if("${resumeMap.indiCondition}" == "3"){
-				$(":radio[name='inidSecretRadio'][value='3']").prop("checked", true);
+				$(":radio[name='indiConditionRadio'][value='3']").prop("checked", true);
 			}else{
 			}
 			
@@ -685,11 +689,11 @@
 					appendItem("education");
 				</c:if>		
 				$("input[name='lesson_sdate_full']").eq("${status.index}").val("${result.lesson_sdate}"+"-"+"${result.lesson_sdate2}"+"-01");
-				$("input[name='school2']").eq("${status.index}").val("${result.school2 }").prop("selected", true);;
+				$("select[name='school2']").eq("${status.index}").val("${result.school2 }");
 				$("input[name='school']").eq("${status.index}").val("${result.school }");
 				$("input[name='lesson_edate_full']").eq("${status.index}").val("${result.lesson_edate}"+"-"+"${result.lesson_edate2}"+"-01");
 				//$("input[name='lesson_state${status.count}']").val("${result.lesson_state }");
-				$("input[name='lesson_state']").eq("${status.index}").val("${result.lesson_state }").prop("selected", true);;
+				$("select[name='lesson_state']").eq("${status.index}").val("${result.lesson_state }");
 				$("input[name='lesson']").eq("${status.index}").val("${result.lesson }");
 				$("input[name='lesson2']").eq("${status.index}").val("${result.lesson2 }");
 			</c:forEach>
@@ -724,10 +728,10 @@
 				</c:if>
 				$("input[name='ex_obtain_date']").eq("${status.index}").val("${result.ex_obtain_date }");
 				$("input[name='language']").eq("${status.index}").val("${result.language }");
-				$("input[name='level']").eq("${status.index}").val("${result.level }");
+				$("select[name='level']").eq("${status.index}").val("${result.level }");
 				$("input[name='examination']").eq("${status.index}").val("${result.examination }");
 				$("input[name='point']").eq("${status.index}").val("${result.point }");
-				$("input[name='level2']").eq("${status.index}").val("${result.level2 }");
+				$("select[name='level2']").eq("${status.index}").val("${result.level2 }");
 			</c:forEach>
 			
 			
@@ -984,6 +988,7 @@
 		
 		educationTopInfo.final_degree = $("#final_degree option:selected").val();
 		
+		var bError = false;
 		$("#education .education").each(function(index, item){
 			
 			educationInfo = new Object();
@@ -1020,8 +1025,23 @@
 			educationInfo.lesson_sdate = lesson_sdate;
 			educationInfo.lesson2 = $(this).find("#lesson2").val();
 			educationInfo.lesson_edate = lesson_edate;
+	
+			if (educationInfo.school2 || educationInfo.school || educationInfo.lesson || educationInfo.lesson2) {
+				if(!lesson_sdate_full){
+					bError = true;
+					alert("학력사항 시작일을 선택하세요.");
+					return;
+				}
+				if(!lesson_edate_full){
+					bError = true;
+					alert("학력사항 종료일을 선택하세요.");
+					return;
+				}				
+			}
+
 			educationArray.push(educationInfo);
 		});
+		if (bError) return;
 		educationTopInfo.data = educationArray;
 		educationTopInfo.strFinal_degree = $("#final_degree option:selected").text();
 		
@@ -1066,10 +1086,26 @@
 			careerInfo.hold_edate = hold_edate;
 			careerInfo.company = $(this).find("#company").val();
 			careerInfo.id = index;
-			
+
+			if (careerInfo.hold_sdate2 || careerInfo.hold_sdate
+					|| careerInfo.hold_edate || careerInfo.hold_edate2
+					|| careerInfo.business || careerInfo.company) {
+				if(!hold_sdate_full){
+					bError = true;
+					alert("경력사항 시작일을 선택하세요.");
+					return;
+				}
+				if(!hold_edate_full){
+					bError = true;
+					alert("경력사항 종료일을 선택하세요.");
+					return;
+				}
+			}
+
 			careerArray.push(careerInfo);
 		});
-		
+		if (bError) return;
+
 		careerTopInfo.data = careerArray;
 		
 		$("#career2").val(JSON.stringify(careerTopInfo));
@@ -1088,9 +1124,16 @@
 			licenceInfo.qualification = $(this).find("#qualification").val();
 			licenceInfo.public_place = $(this).find("#public_place").val();
 			licenceInfo.id = index;
-			
+
+			if ((licenceInfo.qualification || licenceInfo.public_place) && !licenceInfo.obtain_date) {
+				bError = true;
+				alert("자격증 취득일을 선택하세요.");
+				return;
+			}
+
 			licenceArray.push(licenceInfo);
 		});
+		if (bError) return;
 		
 		licenceTopInfo.data = licenceArray;
 		
@@ -1116,8 +1159,16 @@
 			languageInfo.point = $(this).find("#point").val();
 			languageInfo.level2 = $(this).find("#level2 option:selected").val();
 
+			if ((languageInfo.level || languageInfo.examination || languageInfo.language
+					|| languageInfo.point || languageInfo.level2) && !languageInfo.ex_obtain_date) {
+				bError = true;
+				alert("어학증명 취득일을 선택하세요.");
+				return;
+			}
+
 			languageItemArray.push(languageInfo);
 		});
+		if (bError) return;
 		languageTopInfo.data = languageItemArray;
 		
 		$("#language2").val(JSON.stringify(languageTopInfo));

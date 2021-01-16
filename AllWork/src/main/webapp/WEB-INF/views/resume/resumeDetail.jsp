@@ -138,7 +138,7 @@
 								<td>${codeConvert:getCondition(resumeMap.indiCondition)}</td>
 							</tr>
 							<tr>
-								<th>근무지역</th>
+								<th>희망근무지</th>
 								<td class="workPlace">
 									<p>${resumeMap.inidArea1Name }&nbsp;
 									${convert:checkNull(resumeMap.inidArea2Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidArea2Name) }</p>

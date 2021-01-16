@@ -136,7 +136,7 @@
 							<table>
 								<tbody id="area">
 									<tr>
-										<th>근무지역<span class="necessary">*</span></th>
+										<th>희망근무지<span class="necessary">*</span></th>
 										<td>
 											<select id="inidArea1" name="inidArea1" onchange="javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'inidArea2', true, true);">
 												<option value="">시도 선택</option>
@@ -313,7 +313,9 @@
 													<option value="${i}">${i}</option>
 												</c:forEach>
 											</select>&nbsp;개월
+											<!-- 
 											<input id="careerKindChk" type="checkbox" name="careerKind" value="102"/><label for="res04_desc01_2">신입</label>
+											 -->
 											<input type="hidden" name="careerKind" id="careerKind" value="" />
 										</td>
 									</tr>
@@ -760,6 +762,7 @@
 		
 		educationTopInfo.final_degree = $("#final_degree option:selected").val();
 		
+		var bError = false;
 		$("#education .education").each(function(index, item){
 			
 			educationInfo = new Object();
@@ -796,8 +799,23 @@
 			educationInfo.lesson_sdate = lesson_sdate;
 			educationInfo.lesson2 = $(this).find("#lesson2").val();
 			educationInfo.lesson_edate = lesson_edate;
+			
+			if (educationInfo.school2 || educationInfo.school || educationInfo.lesson || educationInfo.lesson2) {
+				if(!lesson_sdate_full){
+					bError = true;
+					alert("학력사항 시작일을 선택하세요.");
+					return;
+				}
+				if(!lesson_edate_full){
+					bError = true;
+					alert("학력사항 종료일을 선택하세요.");
+					return;
+				}				
+			}
+
 			educationArray.push(educationInfo);
 		});
+		if (bError) return;
 		educationTopInfo.data = educationArray;
 		educationTopInfo.strFinal_degree = $("#final_degree option:selected").text();
 		
@@ -842,10 +860,26 @@
 			careerInfo.hold_edate = hold_edate;
 			careerInfo.company = $(this).find("#company").val();
 			careerInfo.id = index;
-			
+
+			if (careerInfo.hold_sdate2 || careerInfo.hold_sdate
+					|| careerInfo.hold_edate || careerInfo.hold_edate2
+					|| careerInfo.business || careerInfo.company) {
+				if(!hold_sdate_full){
+					bError = true;
+					alert("경력사항 시작일을 선택하세요.");
+					return;
+				}
+				if(!hold_edate_full){
+					bError = true;
+					alert("경력사항 종료일을 선택하세요.");
+					return;
+				}
+			}
+
 			careerArray.push(careerInfo);
 		});
-		
+		if (bError) return;
+
 		careerTopInfo.data = careerArray;
 		
 		$("#career2").val(JSON.stringify(careerTopInfo));
@@ -864,9 +898,16 @@
 			licenceInfo.qualification = $(this).find("#qualification").val();
 			licenceInfo.public_place = $(this).find("#public_place").val();
 			licenceInfo.id = index;
-			
+
+			if ((licenceInfo.qualification || licenceInfo.public_place) && !licenceInfo.obtain_date) {
+				bError = true;
+				alert("자격증 취득일을 선택하세요.");
+				return;
+			}
+
 			licenceArray.push(licenceInfo);
 		});
+		if (bError) return;
 		
 		licenceTopInfo.data = licenceArray;
 		
@@ -892,8 +933,16 @@
 			languageInfo.point = $(this).find("#point").val();
 			languageInfo.level2 = $(this).find("#level2 option:selected").val();
 
+			if ((languageInfo.level || languageInfo.examination || languageInfo.language
+					|| languageInfo.point || languageInfo.level2) && !languageInfo.ex_obtain_date) {
+				bError = true;
+				alert("어학증명 취득일을 선택하세요.");
+				return;
+			}
+
 			languageItemArray.push(languageInfo);
 		});
+		if (bError) return;
 		languageTopInfo.data = languageItemArray;
 		
 		$("#language2").val(JSON.stringify(languageTopInfo));
