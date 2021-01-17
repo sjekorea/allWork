@@ -293,7 +293,9 @@
 			<c:if test="${SE_USER_TYPE == 'company' }">
 				<ul class="buttons">
 					<ul>
-						<li><a href="#none" title="포트폴리오 다운로드">포트폴리오 다운로드</a></li>
+						<c:if test="${resumeMap.portfolioFile != null and resumeMap.portfolioFile.length() > 0 }">
+							<li><a href="/allwork/peg/${resumeMap.portfolioFile}" title="포트폴리오 다운로드">포트폴리오 다운로드</a></li>
+						</c:if>
 						<c:if test="${scrapCnt <= 0 }">
 							<li><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>
 						</c:if>

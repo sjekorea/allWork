@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="/WEB-INF/tlds/convertUtil.tld" prefix="convert" %>
+<%@ taglib uri="/WEB-INF/tlds/codeConvertUtil.tld" prefix="codeConvert" %>
 
 <jsp:include page="/companyHeader.do" />
 
@@ -310,6 +312,14 @@
 											<input id="bizFormFile" type="file" name="bizFormFile"/>
 											<input type="hidden" name="attachFlag" id="attachFlag" value="" />
 											<input type="hidden" name="orgBizFormFile" id="orgBizFormFile" value="${recruitMap.bizFormFile }" />
+											<c:if test="${convert:isRecruitBizFormConfirm(recruitMap.bizForm) }">
+												<c:if test="${recruitMap.bizFormFile != null and recruitMap.bizFormFile.length() > 0 }">
+													<br />자사 입사지원서 양식: 등록중
+												</c:if>
+												<c:if test="${recruitMap.bizFormFile == null or recruitMap.bizFormFile.length() < 1 }">
+													<br />자사 입사지원서 양식: 미등록
+												</c:if>
+											</c:if>
 										</td>
 									</tr>
 								</tbody>
@@ -376,6 +386,9 @@
 				<input type="hidden" name="no" id="no" value="${map.no }" />
 			</form>
 			<ul>
+			<c:if test="${convert:isRecruitBizFormConfirm(recruitMap.bizForm) and recruitMap.bizFormFile != null and recruitMap.bizFormFile.length() > 0 }">
+				<li id="scrapBtn"><a href="/allwork/peg/${recruitMap.bizFormFile }" title="입사지원서 양식 다운로드">입사지원서 양식 다운로드</a></li>
+			</c:if>
 				<li><a href="/recruitListProgress.do" title="">취소</a></li>
 				<li class="reg_ok"><a href="#" title="수정">수정</a></li>
 			</ul>
@@ -463,7 +476,7 @@
 			// 공고 제목
 			$("#bizTitle").val("${recruitMap.bizTitle}");
 			
-			// 모집 업졷
+			// 모집 업종
 			if(!checkNull("${recruitMap.bizType1}")){
 				$("#bizType1").val("${recruitMap.bizType1}");
 				getNetfuCateListForSelect('job', $("#bizType1"), '2차직무선택', 'bizType2', false, true);
@@ -663,23 +676,29 @@
 			
 			// 접수방법
 			var method = "${recruitMap.bizMethod}".split(",");
-			for(var i = 0 ; i < method.length ; i++){
-				$('input:checkbox[name="bizMethodChk"]').each(function() {
-					if(method[i] == this.value){
-						$(this).attr("checked", true);
+			$('input:checkbox[name="bizMethodChk"]').each(function() {
+				var checked = false;
+				for(var i = 0 ; i < method.length ; i++){
+					if (method[i] == this.value) {
+						checked = true;
+						break;
 					}
-				});
-			}
+				}
+				$(this).attr("checked", checked);
+			});
 			
 			// 이력서 양식
 			var bizForm = "${recruitMap.bizForm}".split(",");
-			for(var i = 0 ; i < bizForm.length ; i++){
-				$('input:checkbox[name="bizFormChk"]').each(function() {
-					if(bizForm[i] == this.value){
-						$(this).attr("checked", true);
+			$('input:checkbox[name="bizFormChk"]').each(function() {
+				var checked = false;
+				for(var i = 0 ; i < bizForm.length ; i++){
+					if (bizForm[i] == this.value) {
+						checked = true;
+						break;
 					}
-				});
-			}
+				}
+				$(this).attr("checked", checked);
+			});
 			
 			// 이력서 양식 첨부
 			$("#orgBizFormFile").val("${recruitMap.bizFormFile}");

@@ -236,19 +236,29 @@ public class CompanyController {
 	 * 채용정보 등록 처리
 	 */
 	@RequestMapping(value="/registRecruit.do")
-	public void registRecruit(CommandMap commandMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+	public void registRecruit(CommandMap commandMap, HttpSession session, MultipartHttpServletRequest request, HttpServletResponse response) {
 		
 		//ModelAndView mv = new ModelAndView();
-		String attachFileName = "";
+		//String attachFileName = "";
 		//String alertMsg = "";
 		//String redirectUrl = "";
 		try{
 			
 			
-			attachFileName = fileUtils.uploadFile(commandMap.getMap(), request); // 첨부파일 업로드
+			//attachFileName = fileUtils.uploadFile(commandMap.getMap(), request); // 첨부파일 업로드
+			//commandMap.put("bizFormFile", attachFileName);
+			
+			//첨부파일 Upload.
+			String strbizFormFile = "";
+			MultipartFile filebizFormFile = request.getFile("bizFormFile");
+			if(filebizFormFile != null && !filebizFormFile.isEmpty()) {
+				strbizFormFile = ApiCommonUtils.uploadPhotoFile("bizFormFile", (String)session.getAttribute("SE_LOGIN_ID"), filebizFormFile, filePathPhoto);
+				commandMap.put("bizFormFile", strbizFormFile);
+			}else{
+				commandMap.put("bizFormFile", "");
+			}
 
 			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
-			commandMap.put("bizFormFile", attachFileName);
 			netfuItemCompanyService.insertNetfuItemCompany(commandMap.getMap()); // 채용공고 저장
 			CommonUtil.Alert("등록되었습니다.", "/recruitListProgress.do", request, response);
 			
@@ -351,7 +361,7 @@ public class CompanyController {
 	public void updateRecruit(CommandMap commandMap, HttpSession session, MultipartHttpServletRequest request, HttpServletResponse response) {
 		
 		ModelAndView mv = new ModelAndView();
-		String attachFileName = "";
+		//String attachFileName = "";
 		//String alertMsg = "";
 		//String redirectUrl = "";
 		try{
@@ -361,9 +371,9 @@ public class CompanyController {
 			MultipartFile filebizFormFile = request.getFile("bizFormFile");
 			if(filebizFormFile != null && !filebizFormFile.isEmpty()) {
 				strbizFormFile = ApiCommonUtils.uploadPhotoFile("bizFormFile", (String)session.getAttribute("SE_LOGIN_ID"), filebizFormFile, filePathPhoto);
-				commandMap.put("bizFormFile", attachFileName);
+				commandMap.put("bizFormFile", strbizFormFile);
 			}else{
-				commandMap.put("bizFormFile", (String)commandMap.get("orgBizFormFile"));
+				commandMap.put("bizFormFile", "");
 			}
 			
 			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));

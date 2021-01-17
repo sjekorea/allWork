@@ -310,7 +310,11 @@
 				, service1 = #{service1}, service2 = #{service2}, service3 = #{service3}, service4 = #{service4}, service5 = #{service5}
 				, service100 = #{service100}, service6 = #{service6}, service7 = #{service7}, service8 = #{service8}
 				, service9 = #{service9}, service10 = #{service10}, service11 = #{service11}
-				, biz_paper = #{bizPaper}, biz_form = #{bizForm}, biz_form_file = #{bizFormFile}, biz_type7 = #{bizType7}, biz_type8 = #{bizType8}, biz_type9 = #{bizType9}
+				, biz_paper = #{bizPaper}, biz_form = #{bizForm}
+			<if test="bizFormFile != '' and bizFormFile != null">
+				, biz_form_file = #{bizFormFile}
+			</if>
+				, biz_type7 = #{bizType7}, biz_type8 = #{bizType8}, biz_type9 = #{bizType9}
 				, sms_send = #{smsSend}, biz_page = #{bizPage}, type_r = #{typeR}
 				, biz_area_job1 = #{bizAreaJob1}, biz_area_job2 = #{bizAreaJob2}, biz_area_job3 = #{bizAreaJob3}
 				, biz_area_job4 = #{bizAreaJob4}, biz_area_job5 = #{bizAreaJob5}, biz_area_job6 = #{bizAreaJob6}

@@ -187,7 +187,20 @@
 							${result.title }
 						</a>
 					</td>
-					<td rowspan="3" class="desc03">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</td>
+					<td rowspan="3" class="desc03">
+					<c:if test="${result.bizIng ne 'yes' }">
+						<span class="state01">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
+					</c:if>
+					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type eq 'often' }">
+						<span class="state02">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
+					</c:if>
+					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type eq 'get' }">
+						<span class="state03">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
+					</c:if>
+					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type eq 'input' }">
+						<span class="state04">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
+					</c:if>
+					</td>
 				</tr>
 				<tr>
 					<td><span class="desc_title">급여:</span><span class="desc_desc00">${result.salary }</span></td>

@@ -178,6 +178,7 @@
 								<th>최종학력</th>
 								<td>${codeConvert:getBizAbility(recruitMap.bizAbility) }</td>
 							</tr>
+							<!-- 
 							<tr>
 								<th>나이제한</th>
 								<td>${codeConvert:getBizAge(recruitMap.bizAge) }</td>
@@ -186,6 +187,7 @@
 								<th>성별</th>
 								<td>${codeConvert:getBizSex(recruitMap.bizSex) }</td>
 							</tr>
+							 -->
 						</tbody>
 					</table>
 				</div>
@@ -212,14 +214,22 @@
 							</tr>
 							<tr>
 								<th>접수방법</th>
-								<td>${recruitMap.bizForm eq 'online' ? "온라인 입사지원" : "자사 입사지원서" }</td>
+								<td>${recruitMap.bizMethodName }</td>
 							</tr>
-							<c:if test="${recruitMap.bizForm eq 'confirm' }">
-								<tr>
-									<th>이력서 양식</th>
-									<td><a href='/peg/netfu_83986_35291.hwp'>자사 입사지원서 양식 다운로드</a></td>
-								</tr>
-							</c:if>
+							<tr>
+								<th>이력서 양식</th>
+								<td>
+									${convert:getRecruitBizFormName(recruitMap.bizForm) }<br />
+									<c:if test="${convert:isRecruitBizFormConfirm(recruitMap.bizForm) }">
+										<c:if test="${convert:isRecruitBizFormConfirm(recruitMap.bizForm) and recruitMap.bizFormFile != null and recruitMap.bizFormFile.length() > 0 }">
+											<a href='/allwork/peg/${recruitMap.bizFormFile }'>자사 입사지원서 양식 다운로드</a>
+										</c:if>
+										<c:if test="${recruitMap.bizFormFile == null or recruitMap.bizFormFile.length() < 1 }">
+											자사 입사지원서 양식: 미등록
+										</c:if>
+									</c:if>
+								</td>
+							</tr>
 						
 						</tbody>
 					</table>
@@ -252,9 +262,13 @@
 					</table>
 				</div>
 			</div>
+
 		<c:if test="${SE_USER_TYPE == 'person' }">
 			<c:if test="${finishedStatus ne '채용마감' }">
 				<ul>
+					<c:if test="${recruitMap.bizFormFile != null and recruitMap.bizFormFile.length() > 0 }">
+						<li id="scrapBtn"><a href="/allwork/peg/${recruitMap.bizFormFile }" title="입사지원서 양식 다운로드">입사지원서 양식 다운로드</a></li>
+					</c:if>
 					<c:if test="${scrapCnt <= 0 }">
 						<li id="scrapBtn"><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>
 					</c:if>

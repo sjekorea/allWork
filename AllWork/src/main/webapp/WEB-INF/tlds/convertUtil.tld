@@ -65,7 +65,33 @@
 			  String calcAge(java.lang.String)
 		 </function-signature>
 	</function>
+	
 	<!-- (begin) 2021.01.08 by s.yoo	-->
+	<function>
+		 <description>Get the recruit biz_form name</description>
+		 <name>getRecruitBizFormName</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String getRecruitBizFormName(java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>Is recruit biz_form confirm?</description>
+		 <name>isRecruitBizFormConfirm</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  boolean isRecruitBizFormConfirm(java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
+		 <description>Is recruit biz_form online?</description>
+		 <name>isRecruitBizFormOnline</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  boolean isRecruitBizFormOnline(java.lang.String)
+		 </function-signature>
+	</function>
+
 	<function>
 		 <description>Get the biz end condition</description>
 		 <name>getEndCond</name>

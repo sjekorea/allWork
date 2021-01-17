@@ -433,12 +433,15 @@
 								<caption>파일 첨부하기</caption>
 								<tbody>
 									<tr>
-										<th>파일 첨부하기 </th>
+										<th>포트폴리오 파일 첨부하기 </th>
 										<td>
 											<input id="portfolioFile" type="file" name="portfolioFile"/>
 											<input type="hidden" name="orgportfolioFile" id="orgportfolioFile" value="${resumeMap.portfolioFile }" />
-											<c:if test="${resumeMap.portfolioFile ne '' and resumeMap.portfolioFile ne null}">
-												<li style="font-wight:bold;font-color:blue;margin-top:10px;"><a href="/peg/${resumeMap.portfolioFile}">portfolio 다운로드</a></li>
+											<c:if test="${resumeMap.portfolioFile != null and resumeMap.portfolioFile.length() > 0 }">
+												포트폴리오 파일: 등록중
+											</c:if>
+											<c:if test="${resumeMap.portfolioFile == null or resumeMap.portfolioFile.length() < 1 }">
+												포트폴리오 파일: 미등록
 											</c:if>
 										</td>
 									</tr>
@@ -455,6 +458,9 @@
 				<input type="hidden" name="aInsert" id="aInsert" value="NO" />
 			</form>
 			<ul>
+			<c:if test="${resumeMap.portfolioFile != null and resumeMap.portfolioFile.length() > 0 }">
+				<li><a href="/allwork/peg/${resumeMap.portfolioFile}" title="포트폴리오 다운로드">포트폴리오 다운로드</a></li>
+			</c:if>
 				<li class="res_ok"><a href="#none" title="수정">수정</a></li>
 			</ul>
 			</form>
@@ -692,8 +698,13 @@
 				$("select[name='school2']").eq("${status.index}").val("${result.school2 }");
 				$("input[name='school']").eq("${status.index}").val("${result.school }");
 				$("input[name='lesson_edate_full']").eq("${status.index}").val("${result.lesson_edate}"+"-"+"${result.lesson_edate2}"+"-01");
-				//$("input[name='lesson_state${status.count}']").val("${result.lesson_state }");
+				//$("select[name='lesson_state${status.count}']").val("${result.lesson_state }");
+			<c:if test="${status.count <= 1}">
 				$("select[name='lesson_state']").eq("${status.index}").val("${result.lesson_state }");
+			</c:if>		
+			<c:if test="${status.count > 1}">
+				$("select[name='lesson_state${status.count}']").val("${result.lesson_state }");
+			</c:if>		
 				$("input[name='lesson']").eq("${status.index}").val("${result.lesson }");
 				$("input[name='lesson2']").eq("${status.index}").val("${result.lesson2 }");
 			</c:forEach>
