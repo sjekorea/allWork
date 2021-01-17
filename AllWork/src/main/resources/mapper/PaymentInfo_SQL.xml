@@ -4,10 +4,13 @@
 
 	<!-- 결제 정보 Count -->
 	<select id="selectPaymentInfoCnt" parameterType="hashmap" resultType="int">
-		select count(no) cnt
+		select count(merchant_uid) cnt
 		from payment_info
 		where 1=1
 			and uid = #{loginId}
+			<if test="startDt != null and endDt != null">
+				and pay_date between #{startDt} and #{endDt}
+			</if>
 	</select>
 	
 	
@@ -17,6 +20,9 @@
 		from payment_info
 		where 1=1
 			and uid = #{loginId}
+			<if test="startDt != null and endDt != null">
+				and pay_date between #{startDt} and #{endDt}
+			</if>
 		order by pay_date desc
 		limit #{start}, #{pageSize}
 	</select>

@@ -150,7 +150,7 @@ public class PaymentInfoController {
 			
 			mv.addObject("memberInfoMap", memberInfoMap);
 		}catch(Exception e){
-			log.info(this.getClass().getName()+".resumeSearchApplyForPay Exception !!!!! \n"+e.toString());
+			log.info(this.getClass().getName()+".recruitApplyForPay Exception !!!!! \n"+e.toString());
 		}
 		return mv;
 	}
@@ -183,14 +183,33 @@ public class PaymentInfoController {
 	public ModelAndView resumePaidServiceList(CommandMap commandMap, HttpSession session) {
 		
 		ModelAndView mv = new ModelAndView("/company/resumeSearchPaidList");
+		int pageSize = 10;
+		int totalSize = 0;
+		
 		try{
+				
+			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
+				commandMap.put("pageNo", "1");
+			}
+			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
+			commandMap.put("pageSize", pageSize);
 			
-			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
-			Map<String, Object> memberInfoMap = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			
-			mv.addObject("memberInfoMap", memberInfoMap);
+			List<Map<String, Object>> paymentList = paymentInfoService.selectPaymentInfoList(commandMap.getMap());
+			Map<String, Object> pageMap = new HashMap<String, Object>();
+			if(paymentList.size() > 0){
+				totalSize = paymentInfoService.selectPaymentInfoCnt(commandMap.getMap());
+				pageMap = PaginationUtil.makePageInfo(totalSize, pageSize, (String)commandMap.get("pageNo"));
+				commandMap.put("totalSize", totalSize);
+			}
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("paymentList", paymentList);
+			mv.addObject("pageMap", pageMap);
+			
 		}catch(Exception e){
-			log.info(this.getClass().getName()+".recruitApplyPayService Exception !!!!! \n"+e.toString());
+			log.info(this.getClass().getName()+".resumeSearchPaidList Exception !!!!! \n"+e.toString());
 		}
 		return mv;
 	}
