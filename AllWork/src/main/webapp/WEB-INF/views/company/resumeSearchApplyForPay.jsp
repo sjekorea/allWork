@@ -8,6 +8,12 @@
 
 <link rel="stylesheet" type="text/css" href="/css/pay_searching.css"/>
 
+<script type="text/javascript" src="/js/moments.js"></script>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <div id="popupWrap_payService" style="display:none;">
 	<div class="textArea">
 		<p>서비스의 요금 환급 및 환불</p>
@@ -32,45 +38,54 @@
 </div>
 
 <div id="containerWrap">
-<div id="container">
-<div id="leftPart">
-<jsp:include page="/companySubMenu.do" />
-</div>
-<div id="rightPart">
-<h4>인재검색 서칭 서비스</h4>
-<p class="imgArea"><img src="img/pay_searching/img01.jpg" alt="이미지00"/></p>
-<div>
-<form>
-<fieldset>
-<legend>인재검색 서칭 서비스</legend>
-<p class="refund_btn"><a href="" title="환불정책 보기">환불정책 보기</a></p>
-<div class="allPart">
-<h5>가격</h5>
-<div>
-<p>
-<span class="day">7일</span><span class="count">100건</span><span class="fee">100,000원</span><span class="desc">/ vat포함</span><span><input type="radio" checked="checked"/></span>
-</p>
-<p>
-<span class="day">15일</span><span class="count">200건</span><span class="fee">150,000원</span><span class="desc">/ vat포함</span><span><input type="radio"/></span>
-</p>
-<p>
-<span class="day">30일</span><span class="count">400건</span><span class="fee">200,000원</span><span class="desc">/ vat포함</span><span><input type="radio"/></span>
-</p>
-</div>
-<h5 class="period">이용기간</h5>
-<div class="periodDesc"><input type="date" placeholder="yyyy-mm-dd"/></div>
-</div>
-<p class="apply"><input type="submit" value="신청하기"/></p>
-</fieldset>
-</form>
-</div>
-</div>
-</div>
+	<div id="container">
+		<div id="leftPart">
+			<jsp:include page="/companySubMenu.do" />
+		</div>
+		<div id="rightPart">
+			<h4>인재검색 서칭 서비스</h4>
+			<p class="imgArea"><img src="img/pay_searching/img01.jpg" alt="이미지00"/></p>
+			<div>
+				<form>
+					<fieldset>
+						<legend>인재검색 서칭 서비스</legend>
+						<p class="refund_btn"><a href="" title="환불정책 보기">환불정책 보기</a></p>
+						<div class="allPart">
+							<h5>가격</h5>
+							<div>
+								<p>
+									<span class="day">7일</span><span class="count">100건</span><span class="fee">100,000원</span><span class="desc">/ vat포함</span>
+									<span><input type="radio" name="payAmount" value="100000" checked="checked"/></span>
+								</p>
+								<p>
+									<span class="day">15일</span><span class="count">200건</span><span class="fee">150,000원</span><span class="desc">/ vat포함</span>
+									<span><input type="radio" name="payAmount" value="150000" /></span>
+								</p>
+								<p>
+									<span class="day">30일</span><span class="count">400건</span><span class="fee">200,000원</span><span class="desc">/ vat포함</span>
+									<span><input type="radio" name="payAmount" value="200000" /></span>
+								</p>
+							</div>
+							<h5 class="period">이용기간</h5>
+							<div class="periodDesc"><input type="date" id="serviceEndDate" placeholder="yyyy-mm-dd" readonly/></div>
+						</div>
+						<p class="apply"><input type="button" value="신청하기"/></p>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 <jsp:include page="/footer.do" />
 
 <script type="text/javascript">
+
+	IMP.init("imp57220421");
+	
 	$(document).ready(function(){
+		
+		$("#serviceEndDate").val(moment(addDay(new Date(), 7)).format('YYYY-MM-DD'));
+		
 		$(".refund_btn a").on("click", function(e){
 			$(".containerWrap").scrollTop(0);
 			$("#popupWrap_payService").css("display", "block");
@@ -79,5 +94,104 @@
 		$(".popupClose span").on("click", function(e){
 			$("#popupWrap_payService").css("display", "none");
 		});
+		
+		$("input[name=payAmount]").on("click", function(e){
+			var amount = $("input[name=payAmount]:checked").val();
+			var serviceEndDate = "";
+			if(amount == 100000){
+				serviceEndDate= moment(addDay(new Date(), 7)).format('YYYY-MM-DD');
+			}
+			if(amount == 150000){
+				serviceEndDate = moment(addDay(new Date(), 15)).format('YYYY-MM-DD');
+			}
+			if(amount == 200000){
+				serviceEndDate = moment(addDay(new Date(), 30)).format('YYYY-MM-DD');
+			}
+			$("#serviceEndDate").val(serviceEndDate);
+		});
+		
+		$(".apply").on("click", function(e){
+			if("${SE_SERVICE2}" == "Y"){
+				alert("현재 유료 서비스 이용중입니다.");
+			}else{
+				requestPay();	
+			}
+		});
 	});	
+	
+	
+	function requestPay() {
+		
+		var amount = $("input[name=payAmount]:checked").val();
+		var productName = "인재검색서칭 서비스"; // 개인회원 유료옵션 서비스, 유료 채용광고 서비스, 인재검색서칭 서비스
+		var service1EndDate = "";
+		var viewCount = 0;
+		if(amount == 100000){
+			service1EndDate = moment(addDay(new Date(), 7)).format('YYYY-MM-DD');
+			viewCount = 100;
+		}
+		if(amount == 150000){
+			service1EndDate = moment(addDay(new Date(), 15)).format('YYYY-MM-DD');
+			viewCount = 200;
+		}
+		if(amount == 200000){
+			service1EndDate = moment(addDay(new Date(), 30)).format('YYYY-MM-DD');
+			viewCount = 400;
+		}
+		
+		// IMP.request_pay(param, callback) 호출
+		IMP.request_pay({ // param
+			pg : 'danal_tpay', //아임포트 관리자에서 danal_tpay를 기본PG로 설정하신 경우는 생략 가능
+		    pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
+		    merchant_uid : 'merchant_' + new Date().getTime()+'_${SE_LOGIN_ID}', //상점에서 관리하시는 고유 주문번호를 전달
+		    name : productName,
+		    amount : 100,
+		    buyer_email : "${memberInfoMap.email}",
+		    buyer_name : "${memberInfoMap.name}",
+		    buyer_tel : "${memberInfoMap.hphone}", //누락되면 카드사 인증에 실패할 수 있으니 기입해주세요
+		    buyer_addr : "${memberInfoMap.address1}"+" "+"${memberInfoMap.address2}",
+		    buyer_postcode : "${memberInfoMap.post}"
+		}, function (rsp) { // callback
+			
+			//console.log(JSON.stringify(rsp));
+		
+		    if (rsp.success) {
+
+		    	// 결제 성공 시 로직
+		        var callback = function(data){
+		        	alert("처리 되었습니다.");
+		        	loadingOn();
+					location.href = "/index.do";
+				};
+				var param = {
+								merchantUid : rsp.merchant_uid 
+								, impUid : rsp.imp_uid
+								, buyerType : "2"
+								, productName : rsp.name
+								, payMethod : rsp.pay_method
+								, payAmount : rsp.paid_amount
+								, buyerName : rsp.buyer_name
+								, buyerEmail : rsp.buyer_email
+								, buyerTel : rsp.buyer_tel
+								, buyerAddr : rsp.buyer_addr
+								, buyerPostcode : rsp.buyer_postcode
+								, applyNum : rsp.apply_num
+								, status : rsp.status
+								, successStatus : rsp.success
+								, receiptUrl : rsp.receipt_url
+								, cardName : rsp.card_name
+								, bankName : rsp.bank_name
+								, cardQuota : rsp.card_quota
+								, cardNumber : rsp.card_number
+								, service2EndDate : serviceEndDate
+								, viewCount : viewCount
+							};
+				ajax('post', 'insertPaymentInfo.ajax', param, callback);
+				
+		    } else {
+		    	alert(rsp.error_msg);
+		    }
+		});
+	}
+	
 </script>	

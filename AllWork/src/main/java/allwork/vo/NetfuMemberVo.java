@@ -54,12 +54,44 @@ public class NetfuMemberVo {
 	
 	private String ciKey;
 	private String snsLoginType;
+	private String service1Flag;
+	private String service1EndDate;
+	private String service2Flag;
+	private String service2EndDate;
+	private int viewCount;
 	
 	
 	
-	
-	
-	
+	public int getViewCount() {
+		return viewCount;
+	}
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
+	}
+	public String getService1Flag() {
+		return service1Flag;
+	}
+	public void setService1Flag(String service1Flag) {
+		this.service1Flag = service1Flag;
+	}
+	public String getService1EndDate() {
+		return service1EndDate;
+	}
+	public void setService1EndDate(String service1EndDate) {
+		this.service1EndDate = service1EndDate;
+	}
+	public String getService2Flag() {
+		return service2Flag;
+	}
+	public void setService2Flag(String service2Flag) {
+		this.service2Flag = service2Flag;
+	}
+	public String getService2EndDate() {
+		return service2EndDate;
+	}
+	public void setService2EndDate(String service2EndDate) {
+		this.service2EndDate = service2EndDate;
+	}
 	public String getSnsLoginType() {
 		return snsLoginType;
 	}

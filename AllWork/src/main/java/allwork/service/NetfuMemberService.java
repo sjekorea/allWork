@@ -18,5 +18,7 @@ public interface NetfuMemberService {
 	//(end) 2021.01.03 by s.yoo
 	int insertNetfuMember(Map<String, Object> map) throws Exception;
 	int updatePw(Map<String, Object> map) throws Exception;
+	int updatePayServiceInfo(Map<String, Object> map) throws Exception;
+	int updateViewCount(Map<String, Object> map) throws Exception;
 
 }

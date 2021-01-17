@@ -407,42 +407,6 @@ public class CompanyController {
 	
 	
 	/*
-	 *  유료 채용광고 서비스 신청
-	 */
-	@RequestMapping(value="/recruitApplyForPay.do")
-	public ModelAndView recruitApplyForPay(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/company/recruitApplyForPay");
-		
-		return mv;
-	}
-	
-	
-	/*
-	 * 채용검색 서비스 신청
-	 */
-	@RequestMapping(value="/resumeSearchApplyForPay.do")
-	public ModelAndView resumeApplyPayService(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/company/resumeSearchApplyForPay");
-		
-		return mv;
-	}
-	
-	
-	/*
-	 * 결제 내역 조회 - 채용공고 검색
-	 */
-	@RequestMapping(value="/resumeSearchPaidList.do")
-	public ModelAndView resumePaidServiceList(CommandMap commandMap) {
-		
-		ModelAndView mv = new ModelAndView("/company/resumeSearchPaidList");
-		
-		return mv;
-	}
-	
-	
-	/*
 	 * 기업정보 상세보기
 	 */
 	@RequestMapping(value="/companyDetail.do")

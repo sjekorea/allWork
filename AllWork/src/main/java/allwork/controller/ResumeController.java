@@ -552,6 +552,9 @@ public class ResumeController {
 		
 		try{
 			
+			int viewCount = ConvertUtil.checkNullToInt(((Integer)session.getAttribute("SE_VIEW_COUNT")).toString());
+			String service2Flag = (String)session.getAttribute("SE_SERVICE2");
+		
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
 			
@@ -559,6 +562,12 @@ public class ResumeController {
 			commandMap.put("no", commandMap.get("resumeNo"));
 			commandMap.put("viewType", "resume");
 			recruitViewService.insertRecruitView(commandMap.getMap());
+			
+			// 유료 열람 서비스 count down
+			if("Y".equals(service2Flag)){
+				netfuMemberService.updateViewCount(commandMap.getMap());
+			}
+			
 			
 			// 회사정보 
 			commandMap.put("uid", commandMap.get("companyUid"));

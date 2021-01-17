@@ -32,6 +32,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
+		//alert("${SE_SERVICE1}"+" || "+"${SE_SERVICE1_END}" + " || " + "${SE_SERVICE2}"+" || "+"${SE_SERVICE2_END}"+" || "+"${SE_VIEW_COUNT}");
+		
 		$("#search_btn00").click(function(e){
 		   	//(begin) 2020.12.30 by s.yoo
 		   	if (!$("#searchText").val()) {

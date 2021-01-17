@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="paymentInfo">
+
+	<!-- 결제 정보 Count -->
+	<select id="selectPaymentInfoCnt" parameterType="hashmap" resultType="int">
+		select count(no) cnt
+		from payment_info
+		where 1=1
+			and uid = #{loginId}
+	</select>
+	
+	
+	<!-- 결제 정보 목록 -->
+	<select id="selectPaymentInfoList" parameterType="hashmap" resultType="allwork.vo.PaymentInfoVo">
+		select * 
+		from payment_info
+		where 1=1
+			and uid = #{loginId}
+		order by pay_date desc
+		limit #{start}, #{pageSize}
+	</select>
+	
+	
+	<!-- 결제 정보 등록 -->
+	<insert id="insertPaymentInfo" parameterType="hashmap">
+		<![CDATA[
+			insert into payment_info
+			(	
+				uid, merchant_uid, imp_uid, buyer_type, product_name, pay_method
+				, pay_date
+				, pay_amount, buyer_name, buyer_email
+				, buyer_tel, buyer_addr, buyer_postcode, apply_num, status, success_status
+				, receipt_url, card_name, bank_name, card_quota, card_number
+			)
+			values
+			(	#{uid}, #{merchantUid}, #{impUid}, #{buyerType}, #{productName}, #{payMethod}
+				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+				, #{payAmount}, #{buyerName}, #{buyerEmail}
+				, #{buyerTel}, #{buyerAddr}, #{buyerPostcode}, #{applyNum}, #{status}, #{successStatus}
+				, #{receiptUrl}, #{cardName}, #{bankName}, #{cardQuota}, #{cardNumber}
+			)
+		]]>
+	</insert>
+
+
+</mapper>

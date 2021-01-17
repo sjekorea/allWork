@@ -230,6 +230,37 @@
 			AND `left` <> 'yes'
 		]]>
 	</update>
+	
+	
+	<!--  유료 서비스 변경 -->
+	<update id="updatePayServiceInfo" parameterType="hashmap">
+		update netfu_member
+		set 
+			<if test="service1EndDate != null and service1EndDate != ''">
+			service1_flag = 'Y'
+			, service1_end_date = #{service1EndDate}
+			, view_count = 0
+			</if>
+			<if test="service2EndDate != null and service2EndDate != ''">
+			service2_flag = 'Y'
+			, service2_end_date = #{service2EndDate}
+			, view_count = #{viewCount}
+			</if>
+		where uid = #{uid}
+		AND `left` <![CDATA[<>]]> 'yes'
+	</update>
+	
+	
+	
+	
+	<!--  유료 서비스 변경 -->
+	<update id="updateViewCount" parameterType="hashmap">
+		update netfu_member
+		set 
+			view_count = view_count-1
+		where uid = #{loginId}
+		AND `left` <![CDATA[<>]]> 'yes'
+	</update>
 
 </mapper>
 

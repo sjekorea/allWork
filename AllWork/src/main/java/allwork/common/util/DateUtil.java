@@ -326,6 +326,8 @@ public class DateUtil {
 			compareTime = compareDate.getTime() - currentDate.getTime();
 			compareDay = compareTime / (24*60*60*1000);
 			
+			//System.out.println("compareDate : "+compareDate+" || currentDate : "+currentDate);
+			
 		}catch (Exception e){
 			System.out.println("DateUtil.getCompareDate() EXCEPTION !!!! \n"+e.toString());
 		}

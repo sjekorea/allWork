@@ -72,5 +72,15 @@ public class NetfuMemberDao extends AbstractDAO{
 	public int updatePw(Map<String, Object> map) throws Exception{ 
 		return update("netfuMember.updatePw", map);
 	}
+	
+	// 유료 서비스 정보 update
+	public int updatePayServiceInfo(Map<String, Object> map) throws Exception{ 
+		return update("netfuMember.updatePayServiceInfo", map);
+	}
+	
+	// 유료 서비스 count update
+	public int updateViewCount(Map<String, Object> map) throws Exception{ 
+		return update("netfuMember.updateViewCount", map);
+	}
 
 }

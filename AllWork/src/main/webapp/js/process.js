@@ -275,7 +275,7 @@ function addMonth(date, month){
 
 function addDay(date, day){
 
-    var temp = new Date(date.getFullYear(), date.getMonth(), date.getDate()-day);
+    var temp = new Date(date.getFullYear(), date.getMonth(), date.getDate() + day);
     return temp; 
 }
 
