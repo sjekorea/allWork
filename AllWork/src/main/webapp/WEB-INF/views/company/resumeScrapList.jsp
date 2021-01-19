@@ -38,7 +38,14 @@
 										<td class="desc00"><input type="checkbox" name="chk" value="${result.noTo }" /></td>
 										<td class="desc01"><img src="img/userNo.png" alt="인재사진"/></td>
 										<td class="desc02">
-											${convert:getPersonNameHidden(result.name) }<br/>
+											<c:choose>
+												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+													${result.name }
+												</c:when>
+												<c:otherwise>
+													${convert:getPersonNameHidden(result.name) }
+												</c:otherwise>
+											</c:choose><br/>
 											${codeConvert:getBizSex(result.sex)}</span>&nbsp;<span>${convert:calcAge(result.birth)}</span>
 										</td>
 										<td class="desc03">

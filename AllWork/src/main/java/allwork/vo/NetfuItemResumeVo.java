@@ -103,9 +103,25 @@ public class NetfuItemResumeVo {
 	private String career2;
 	private String license2;
 	private String language2;
+	private int educationDegree;
+	private int careerTotal;
 	
 	
 	
+	
+	
+	public int getEducationDegree() {
+		return educationDegree;
+	}
+	public void setEducationDegree(int educationDegree) {
+		this.educationDegree = educationDegree;
+	}
+	public int getCareerTotal() {
+		return careerTotal;
+	}
+	public void setCareerTotal(int careerTotal) {
+		this.careerTotal = careerTotal;
+	}
 	public String getPayType() {
 		return payType;
 	}

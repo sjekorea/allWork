@@ -28,6 +28,15 @@
 	</select>
 	
 	
+	<!-- 총 결제금액 -->
+	<select id="selectPaymentTotal" parameterType="hashmap" resultType="int">
+		select ifNull(sum(pay_amount), 0) amount
+		from payment_info
+		where 1=1
+			and uid = #{loginId}
+	</select>
+	
+	
 	<!-- 결제 정보 등록 -->
 	<insert id="insertPaymentInfo" parameterType="hashmap">
 		<![CDATA[

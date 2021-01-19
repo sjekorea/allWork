@@ -38,5 +38,11 @@ public class HomeCommonDao extends AbstractDAO{
 	public List<Map<String, Object>> selectMainRecruitList(Map<String, Object> map) {
 		return (List<Map<String, Object>>)selectList("homeCommon.selectMainRecruitList", map);
 	}
+	
+	// 메인화면 유료 채용공고 list
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectMainPayRecruitList(Map<String, Object> map) {
+		return (List<Map<String, Object>>)selectList("homeCommon.selectMainPayRecruitList", map);
+	}
 
 }

@@ -52,6 +52,10 @@ public class LoginController {
 			Map<String, Object> memberInfoMap = new HashMap<String, Object>();
 			
 			if(userInfoCnt > 0){
+				
+				netfuMemberService.updatePayService1Info(commandMap.getMap());
+				netfuMemberService.updatePayService2Info(commandMap.getMap());
+				
 				memberInfoMap = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
 				LoginSuccessProcess loginSuccessProcess = new LoginSuccessProcess();
 				loginSuccessProcess.loginSuccessMakeSession(req, memberInfoMap);

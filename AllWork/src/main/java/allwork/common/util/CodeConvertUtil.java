@@ -299,7 +299,8 @@ public class CodeConvertUtil {
 	
 	// 생년월일 정보
 	public static String getBirthYear(String birth){
-		String rtnStr = "";
+		
+		String rtnStr = "00";
 		
 		String[] birthArr;
 		if(birth.length() > 4){

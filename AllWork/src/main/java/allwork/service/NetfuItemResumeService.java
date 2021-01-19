@@ -10,6 +10,7 @@ public interface NetfuItemResumeService {
 	List<Map<String, Object>> selectNetfuItemResumeAllList(Map<String, Object> map) throws Exception;
 	int selectNetfuItemResumeCnt(Map<String, Object> map) throws Exception; 
 	Map<String, Object> selectNetfuItemResumeMap(Map<String, Object> map) throws Exception;
+	List<Map<String, Object>> selectPayResumeList(Map<String, Object> map) throws Exception;
 	int insertNetfuItemResume(Map<String, Object> map) throws Exception;
 	int updateNetfuItemResume(Map<String, Object> map) throws Exception;
 	int updateNetfuItemResumeSecret(Map<String, Object> map) throws Exception;

@@ -21,6 +21,11 @@ public class PaymentInfoDao extends AbstractDAO{
 		return (List<Map<String, Object>>)selectList("paymentInfo.selectPaymentInfoList", map);
 	}
 	
+	// 총 결제 금액
+	public int selectPaymentTotal(Map<String, Object> map) throws Exception{
+		return selectCnt("paymentInfo.selectPaymentTotal", map);
+	}
+	
 	// 결제 정보 등록
 	public int insertPaymentInfo(Map<String, Object> map) throws Exception{
 		return insert("paymentInfo.insertPaymentInfo", map);

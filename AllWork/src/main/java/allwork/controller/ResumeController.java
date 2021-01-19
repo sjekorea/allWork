@@ -107,6 +107,8 @@ public class ResumeController {
 				commandMap.put("totalSize", totalSize);
 			}
 			
+			List<Map<String, Object>> payResumeList = netfuItemResumeService.selectPayResumeList(commandMap.getMap());
+			
 			commandMap.put("pCode", "");
 			
 			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
@@ -151,6 +153,7 @@ public class ResumeController {
 			mv.addObject("jobTypeList", jobTypeList);
 			mv.addObject("jobPayList", jobPayList);
 			mv.addObject("resumeList", resumeList);
+			mv.addObject("payResumeList", payResumeList);
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
@@ -197,6 +200,8 @@ public class ResumeController {
 				commandMap.put("totalSize", totalSize);
 			}
 			
+			List<Map<String, Object>> payResumeList = netfuItemResumeService.selectPayResumeList(commandMap.getMap());
+			
 			commandMap.put("pCode", "");
 			
 			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
@@ -206,6 +211,7 @@ public class ResumeController {
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("jobList", jobList);
 			mv.addObject("resumeList", resumeList);
+			mv.addObject("payResumeList", payResumeList);
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
@@ -253,6 +259,8 @@ public class ResumeController {
 				commandMap.put("totalSize", totalSize);
 			}
 			
+			List<Map<String, Object>> payResumeList = netfuItemResumeService.selectPayResumeList(commandMap.getMap());
+			
 			commandMap.put("pCode", "");
 			
 			// 산업별 목록  ( netfu_cate : type = 'area_job' )
@@ -262,6 +270,7 @@ public class ResumeController {
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("areaJobList", areaJobList);
 			mv.addObject("resumeList", resumeList);
+			mv.addObject("payResumeList", payResumeList);
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
@@ -308,6 +317,8 @@ public class ResumeController {
 				commandMap.put("totalSize", totalSize);
 			}
 			
+			List<Map<String, Object>> payResumeList = netfuItemResumeService.selectPayResumeList(commandMap.getMap());
+			
 			commandMap.put("pCode", "");
 			
 			// 지역별  ( netfu_cate : type ='area' )
@@ -317,6 +328,7 @@ public class ResumeController {
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("areaList", areaList);
 			mv.addObject("resumeList", resumeList);
+			mv.addObject("payResumeList", payResumeList);
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
@@ -381,6 +393,8 @@ public class ResumeController {
 				commandMap.put("totalSize", totalSize);
 			}
 			
+			List<Map<String, Object>> payResumeList = netfuItemResumeService.selectPayResumeList(commandMap.getMap());
+			
 			commandMap.put("pCode", "");
 			
 			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
@@ -425,6 +439,7 @@ public class ResumeController {
 			mv.addObject("jobTypeList", jobTypeList);
 			mv.addObject("jobPayList", jobPayList);
 			mv.addObject("resumeList", resumeList);
+			mv.addObject("payResumeList", payResumeList);
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
@@ -487,6 +502,8 @@ public class ResumeController {
 				commandMap.put("totalSize", totalSize);
 			}
 			
+			List<Map<String, Object>> payResumeList = netfuItemResumeService.selectPayResumeList(commandMap.getMap());
+			
 			commandMap.put("pCode", "");
 			
 			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
@@ -531,6 +548,7 @@ public class ResumeController {
 			mv.addObject("jobTypeList", jobTypeList);
 			mv.addObject("jobPayList", jobPayList);
 			mv.addObject("resumeList", resumeList);
+			mv.addObject("payResumeList", payResumeList);
 			mv.addObject("pageMap", pageMap);
 		
 		}catch(Exception e){
@@ -552,7 +570,6 @@ public class ResumeController {
 		
 		try{
 			
-			int viewCount = ConvertUtil.checkNullToInt(((Integer)session.getAttribute("SE_VIEW_COUNT")).toString());
 			String service2Flag = (String)session.getAttribute("SE_SERVICE2");
 		
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
@@ -566,6 +583,12 @@ public class ResumeController {
 			// 유료 열람 서비스 count down
 			if("Y".equals(service2Flag)){
 				netfuMemberService.updateViewCount(commandMap.getMap());
+				int viewCount = ConvertUtil.checkNullToInt(((Integer)session.getAttribute("SE_VIEW_COUNT")).toString());
+				if((viewCount - 1) < 0){
+					netfuMemberService.updatePayService2Info(commandMap.getMap());
+					session.setAttribute("SE_SERVICE2", "");
+				}
+				session.setAttribute("SE_VIEW_COUNT", (viewCount - 1));
 			}
 			
 			

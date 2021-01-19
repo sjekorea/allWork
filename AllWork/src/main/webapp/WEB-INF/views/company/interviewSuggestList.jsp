@@ -47,7 +47,16 @@
 								<c:forEach var="result" items="${list}" varStatus="status">
 									<tr class="desc">
 										<td class="desc00"><input type="checkbox" name="chk" value="${result.no }" /></td>
-										<td class="desc01">${convert:getPersonNameHidden(result.name) }</td>
+										<td class="desc01">
+											<c:choose>
+												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+													${result.name }
+												</c:when>
+												<c:otherwise>
+													${convert:getPersonNameHidden(result.name) }
+												</c:otherwise>
+											</c:choose>
+										</td>
 										<td class="desc02">${result.bizTitle }</td>
 										<td class="desc03">
 											<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.personUid }', '', '', '${result.resumeNo }', '${result.inidSecret }', 'resume');">

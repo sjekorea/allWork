@@ -31,6 +31,11 @@ Logger log = Logger.getLogger(this.getClass());
 	}
 	
 	@Override
+	public int selectPaymentTotal(Map<String, Object> map) throws Exception {
+		return paymentInfoDao.selectPaymentTotal(map);
+	}
+	
+	@Override
 	public int insertPaymentInfo(Map<String, Object> map) throws Exception {
 		return paymentInfoDao.insertPaymentInfo(map);
 	}

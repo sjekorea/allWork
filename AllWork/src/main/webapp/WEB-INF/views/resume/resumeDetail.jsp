@@ -18,17 +18,19 @@
 
 <link rel="stylesheet" type="text/css" href="/css/resume_view.css" />
 
-<div id="popupWrap_applyWrap" style="display:none;">
+<div id="popupWrap_applyWrap" style="display: none;">
 	<div id="popupWrap_apply">
 		<div class="topArea">
-			<p class="close_btn"><i class="fas fa-times"></i></p>
-			<p class="email_img"><i class="fas fa-envelope-open-text"></i></p>
+			<p class="close_btn">
+				<i class="fas fa-times"></i>
+			</p>
+			<p class="email_img">
+				<i class="fas fa-envelope-open-text"></i>
+			</p>
 			<p>면접제의</p>
 		</div>
 		<div class="descArea">
-			<p>
-				구직자에게 ${SE_USER_NM }님의 채용공고가 전송됩니다.
-			</p>
+			<p>구직자에게 ${SE_USER_NM }님의 채용공고가 전송됩니다.</p>
 			<form>
 				<fieldset>
 					<legend>면접 제의</legend>
@@ -42,14 +44,14 @@
 					<ul class="desc">
 						<li>${companyMap.name }(${companyMap.email })</li>
 						<li>${convert:getPersonNameHidden(memberMap.name) }(${convert:getEmailHidden(memberMap.email) })</li>
-						<li><input type="text" id="resumeTitle" name="resumeTitle" value="" /></li>
-						<li>
-						<select id="resumeSel" name="resumeSel">
-							<c:forEach var="result" items="${recruitList}" varStatus="status">
-								<option value="${result.no }">${result.bizTitle }</option>
-							</c:forEach>
-						</select>
-						</li>
+						<li><input type="text" id="resumeTitle" name="resumeTitle"
+							value="" /></li>
+						<li><select id="resumeSel" name="resumeSel">
+								<c:forEach var="result" items="${recruitList}"
+									varStatus="status">
+									<option value="${result.no }">${result.bizTitle }</option>
+								</c:forEach>
+						</select></li>
 						<!-- <li>
 							<input id="res09_desc01"/><label for="res09_desc01_1">파일첨부</label><input id="res09_desc01_1" type="file"/>
 						</li> -->
@@ -58,8 +60,12 @@
 			</form>
 		</div>
 		<div class="btnArea">
-			<p class="a01"><a href="#" title="취소">취소</a></p>
-			<p class="a02"><a href="#" title="면접요청">면접요청</a></p>
+			<p class="a01">
+				<a href="#" title="취소">취소</a>
+			</p>
+			<p class="a02">
+				<a href="#" title="면접요청">면접요청</a>
+			</p>
 		</div>
 	</div>
 </div>
@@ -83,38 +89,81 @@
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
 					<div id="imgArea">
-				<c:if test="${memberMap.photo == null || memberMap.photo == '' }">
-						<p><img src="img/userNo.png" alt="본인사진"/></p>
-				</c:if>
-				<c:if test="${memberMap.photo != null && memberMap.photo != '' }">
-						<p><img src="/allwork/peg/${memberMap.photo}" alt="이력서 사진" /></p>
-				</c:if>
+						<c:if test="${memberMap.photo == null || memberMap.photo == '' }">
+							<p>
+								<img src="img/userNo.png" alt="본인사진" />
+							</p>
+						</c:if>
+						<c:if test="${memberMap.photo != null && memberMap.photo != '' }">
+							<p>
+								<img src="/allwork/peg/${memberMap.photo}" alt="이력서 사진" />
+							</p>
+						</c:if>
 					</div>
 					<table>
 						<caption>이력 등록하기</caption>
 						<tbody class="tabelArea">
 							<tr>
 								<th class="table_title">이름</th>
-								<td class="table_desc">${convert:getPersonNameHidden(memberMap.name) }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${convert:getUidHidden(memberMap.uid) }</td>
+								<td class="table_desc"><c:choose>
+										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT >= 0}'>
+											${memberMap.name} (${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${memberMap.uid }
+										</c:when>
+										<c:otherwise>
+											${convert:getPersonNameHidden(memberMap.name) }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${convert:getUidHidden(memberMap.uid) }
+										</c:otherwise>
+									</c:choose></td>
 							</tr>
 							<tr>
 								<th class="table_title">이메일</th>
-								<td class="table_desc">${convert:getEmailHidden(memberMap.email) }</td>
+								<td class="table_desc"><c:choose>
+										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT >= 0}'>
+											${memberMap.email }
+										</c:when>
+										<c:otherwise>
+											${convert:getEmailHidden(memberMap.email) }
+										</c:otherwise>
+									</c:choose></td>
 							</tr>
 							<tr>
 								<th class="table_title">휴대폰</th>
-								<td class="table_desc">${convert:getPhoneNoHidden(memberMap.hphone) }</td>
+								<td class="table_desc"><c:choose>
+										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT >= 0}'>
+											${memberMap.hphone }
+										</c:when>
+										<c:otherwise>
+											${convert:getPhoneNoHidden(memberMap.hphone) }
+										</c:otherwise>
+									</c:choose></td>
 							</tr>
 							<tr>
 								<th class="table_title">연락처</th>
-								<td class="table_desc">${convert:getPhoneNoHidden(memberMap.phone) }</td>
+								<td class="table_desc"><c:choose>
+										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT >= 0}'>
+											${memberMap.phone }
+										</c:when>
+										<c:otherwise>
+											${convert:getPhoneNoHidden(memberMap.phone) }
+										</c:otherwise>
+									</c:choose></td>
 							</tr>
 							<tr>
 								<th class="table_title">주소</th>
 								<!-- 
 								<td class="table_desc"><p>[${memberMap.post }] ${memberMap.address1 } ${memberMap.address2 }</p></td>
 								 -->
-								<td class="table_desc"><p>${convert:getAddressHidden(memberMap.post, memberMap.address1, memberMap.address2) }</p></td>
+								<td class="table_desc">
+									<p>
+										<c:choose>
+											<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT >= 0}'>
+												[${memberMap.post }] ${memberMap.address1 } ${memberMap.address2 }
+											</c:when>
+											<c:otherwise>
+												${convert:getAddressHidden(memberMap.post, memberMap.address1, memberMap.address2) }
+											</c:otherwise>
+										</c:choose>
+									</p>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -141,7 +190,7 @@
 								<th>희망근무지</th>
 								<td class="workPlace">
 									<p>${resumeMap.inidArea1Name }&nbsp;
-									${convert:checkNull(resumeMap.inidArea2Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidArea2Name) }</p>
+										${convert:checkNull(resumeMap.inidArea2Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidArea2Name) }</p>
 									${convert:checkNull(resumeMap.inidArea3Name) eq '' ? '' : '<p>'.concat(resumeMap.inidArea3Name).concat('&nbsp;') }
 									${convert:checkNull(resumeMap.inidArea4Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidArea4Name).concat('</p>') }
 									${convert:checkNull(resumeMap.inidArea5Name) eq '' ? '' : '<p>'.concat(resumeMap.inidArea5Name).concat('&nbsp;') }
@@ -152,28 +201,30 @@
 								<th>직무분야</th>
 								<td>
 									<p>${resumeMap.inidType1Name }&nbsp;
-									${convert:checkNull(resumeMap.inidType2Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType2Name).concat('&nbsp;') }
-									${convert:checkNull(resumeMap.inidType3Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType3Name).concat('</p>') }
-									${convert:checkNull(resumeMap.inidType4Name) eq '' ? '' : '<p>'.concat(resumeMap.inidType4Name).concat('&nbsp;') }
-									${convert:checkNull(resumeMap.inidType5Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType5Name).concat('&nbsp;') }
-									${convert:checkNull(resumeMap.inidType6Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType6Name).concat('</p>') }
-									${convert:checkNull(resumeMap.inidType7Name) eq '' ? '' : '<p>'.concat(resumeMap.inidType7Name).concat('&nbsp;') }
-									${convert:checkNull(resumeMap.inidType8Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType8Name).concat('&nbsp;') }
-									${convert:checkNull(resumeMap.inidType9Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType9Name).concat('</p>') }
+										${convert:checkNull(resumeMap.inidType2Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType2Name).concat('&nbsp;') }
+										${convert:checkNull(resumeMap.inidType3Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType3Name).concat('</p>') }
+										${convert:checkNull(resumeMap.inidType4Name) eq '' ? '' : '<p>'.concat(resumeMap.inidType4Name).concat('&nbsp;') }
+										${convert:checkNull(resumeMap.inidType5Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType5Name).concat('&nbsp;') }
+										${convert:checkNull(resumeMap.inidType6Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType6Name).concat('</p>') }
+										${convert:checkNull(resumeMap.inidType7Name) eq '' ? '' : '<p>'.concat(resumeMap.inidType7Name).concat('&nbsp;') }
+										${convert:checkNull(resumeMap.inidType8Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType8Name).concat('&nbsp;') }
+										${convert:checkNull(resumeMap.inidType9Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType9Name).concat('</p>') }
+									
 								</td>
 							</tr>
 							<tr>
 								<th>산업분야</th>
 								<td>
 									<p>${resumeMap.inidAreaJob1Name }&nbsp;
-									${convert:checkNull(resumeMap.inidAreaJob2Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob2Name).concat('&nbsp;') }
-									${convert:checkNull(resumeMap.inidAreaJob3Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob3Name).concat('</p>') }
-									${convert:checkNull(resumeMap.inidAreaJob4Name) eq '' ? '' : '<p>'.concat(resumeMap.inidAreaJob4Name).concat('&nbsp;') }
-									${convert:checkNull(resumeMap.inidAreaJob5Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob5Name).concat('&nbsp;') }
-									${convert:checkNull(resumeMap.inidAreaJob6Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob6Name).concat('</p>') }
-									${convert:checkNull(resumeMap.inidAreaJob7Name) eq '' ? '' : '<p>'.concat(resumeMap.inidAreaJob7Name).concat('&nbsp;') }
-									${convert:checkNull(resumeMap.inidAreaJob8Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob8Name).concat('&nbsp;') }
-									${convert:checkNull(resumeMap.inidAreaJob9Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob9Name).concat('</p>') }
+										${convert:checkNull(resumeMap.inidAreaJob2Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob2Name).concat('&nbsp;') }
+										${convert:checkNull(resumeMap.inidAreaJob3Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob3Name).concat('</p>') }
+										${convert:checkNull(resumeMap.inidAreaJob4Name) eq '' ? '' : '<p>'.concat(resumeMap.inidAreaJob4Name).concat('&nbsp;') }
+										${convert:checkNull(resumeMap.inidAreaJob5Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob5Name).concat('&nbsp;') }
+										${convert:checkNull(resumeMap.inidAreaJob6Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob6Name).concat('</p>') }
+										${convert:checkNull(resumeMap.inidAreaJob7Name) eq '' ? '' : '<p>'.concat(resumeMap.inidAreaJob7Name).concat('&nbsp;') }
+										${convert:checkNull(resumeMap.inidAreaJob8Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob8Name).concat('&nbsp;') }
+										${convert:checkNull(resumeMap.inidAreaJob9Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidAreaJob9Name).concat('</p>') }
+									
 								</td>
 							</tr>
 							<tr>
@@ -182,7 +233,8 @@
 							</tr>
 							<tr>
 								<th>희망연봉</th>
-								<td><p>${resumeMap.payTypeName } / ${resumeMap.inidPayName }</p></td>
+								<td><p>${resumeMap.payTypeName }/
+										${resumeMap.inidPayName }</p></td>
 							</tr>
 						</tbody>
 					</table>
@@ -202,9 +254,11 @@
 							<p class="edu_desc04">학위</p>
 							<p class="edu_desc05">졸업상태</p>
 						</li>
-						<c:forEach var="result" items="${resumeEducation.data}" varStatus="status">
+						<c:forEach var="result" items="${resumeEducation.data}"
+							varStatus="status">
 							<li class="edu_desc">
-								<p class="edu_desc01">${result.lesson_sdate}.${result.lesson_sdate2} ~ ${result.lesson_edate}.${result.lesson_edate2}</p>
+								<p class="edu_desc01">${result.lesson_sdate}.${result.lesson_sdate2}
+									~ ${result.lesson_edate}.${result.lesson_edate2}</p>
 								<p class="edu_desc02">${result.school}</p>
 								<p class="edu_desc03">${result.lesson}</p>
 								<p class="edu_desc04">${result.strDegree}</p>
@@ -218,7 +272,8 @@
 				<div id="resForm04">
 					<h4>경력사항</h4>
 					<p class="final_education">
-						<span>총 경력년수</span><span class="edu_result">${resumeCareer.total_year }년  ${resumeCareer.total_month }개월</span>
+						<span>총 경력년수</span><span class="edu_result">${resumeCareer.total_year }년
+							${resumeCareer.total_month }개월</span>
 					</p>
 					<ul>
 						<li class="edu_title">
@@ -226,9 +281,11 @@
 							<p class="edu_desc02">회사명</p>
 							<p class="edu_desc03">담당업무</p>
 						</li>
-						<c:forEach var="result" items="${resumeCareer.data}" varStatus="status">
+						<c:forEach var="result" items="${resumeCareer.data}"
+							varStatus="status">
 							<li class="edu_desc">
-								<p class="edu_desc01">${result.hold_sdate}.${result.hold_sdate2} ~ ${result.hold_edate}.${result.hold_edate2}</p>
+								<p class="edu_desc01">${result.hold_sdate}.${result.hold_sdate2}
+									~ ${result.hold_edate}.${result.hold_edate2}</p>
 								<p class="edu_desc02">${result.company}</p>
 								<p class="edu_desc03">${result.business}</p>
 							</li>
@@ -251,7 +308,8 @@
 							<p class="edu_desc02">자격증명</p>
 							<p class="edu_desc03">발행처</p>
 						</li>
-						<c:forEach var="result" items="${resumeLicense.data}" varStatus="status">
+						<c:forEach var="result" items="${resumeLicense.data}"
+							varStatus="status">
 							<li class="edu_desc">
 								<p class="edu_desc01">${result.obtain_date}</p>
 								<p class="edu_desc02">${result.qualification}</p>
@@ -272,7 +330,8 @@
 							<p class="edu_desc04">점수</p>
 							<p class="edu_desc05">발행처</p>
 						</li>
-						<c:forEach var="result" items="${resumeLanguage.data}" varStatus="status">
+						<c:forEach var="result" items="${resumeLanguage.data}"
+							varStatus="status">
 							<li class="edu_desc">
 								<p class="edu_desc01">${result.ex_obtain_date}</p>
 								<p class="edu_desc02">${result.language}</p>
@@ -293,14 +352,17 @@
 			<c:if test="${SE_USER_TYPE == 'company' }">
 				<ul class="buttons">
 					<ul>
-						<c:if test="${resumeMap.portfolioFile != null and resumeMap.portfolioFile.length() > 0 }">
-							<li><a href="/allwork/peg/${resumeMap.portfolioFile}" title="포트폴리오 다운로드">포트폴리오 다운로드</a></li>
+						<c:if
+							test="${resumeMap.portfolioFile != null and resumeMap.portfolioFile.length() > 0 }">
+							<li><a href="/allwork/peg/${resumeMap.portfolioFile}"
+								title="포트폴리오 다운로드">포트폴리오 다운로드</a></li>
 						</c:if>
 						<c:if test="${scrapCnt <= 0 }">
 							<li><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>
 						</c:if>
 						<c:if test="${interviewCnt <= 0 }">
-							<li class="res_ok"><a href="javascript:applyPopup();" title="면접제의">면접제의</a></li>
+							<li class="res_ok"><a href="javascript:applyPopup();"
+								title="면접제의">면접제의</a></li>
 						</c:if>
 					</ul>
 				</ul>
@@ -312,108 +374,108 @@
 <jsp:include page="/footer.do" />
 
 <form id="registForm" name="registForm" method="post">
-	<input type="hidden" name="no" id="no" value="${map.no}" />
-	<input type="hidden" name="uid" id="uid" value="${SE_LOGIN_ID }">
-	<input type="hidden" name="rUid" id="rUid" value="${resumeMap.uid }">
+	<input type="hidden" name="no" id="no" value="${map.no}" /> <input
+		type="hidden" name="uid" id="uid" value="${SE_LOGIN_ID }"> <input
+		type="hidden" name="rUid" id="rUid" value="${resumeMap.uid }">
 	<input type="hidden" name="scrapCnt" id="scrapCnt" value="${scrapCnt }">
-	<input type="hidden" name="interviewCnt" id="interviewCnt" value="${interviewCnt }">
-	<input type="hidden" name="recruitCnt" id="recruitCnt" value="${recruitCnt }">
+	<input type="hidden" name="interviewCnt" id="interviewCnt"
+		value="${interviewCnt }"> <input type="hidden"
+		name="recruitCnt" id="recruitCnt" value="${recruitCnt }">
 </form>
 
 
 <script type="text/javascript">
-	
-	$(document).ready(function(){
-		
-		$(".close_btn, .btnArea .a01").on("click", function(e){
+	$(document).ready(function() {
+
+		$(".close_btn, .btnArea .a01").on("click", function(e) {
 			$("#resumeSel").val("");
 			$("#popupWrap_applyWrap").css("display", "none");
 		});
-		
-		$(".btnArea .a02").on("click", function(e){
+
+		$(".btnArea .a02").on("click", function(e) {
 			registApply();
 		});
-		
-	});	
+
+	});
 
 	// 스크랩 등록
-	function goScrapRegist(){
-		
+	function goScrapRegist() {
+
 		//if($("#recruitCnt").val() <= 0){
 		//	alert("채용공고를 먼저 작성해 주세요");
 		//	return;
 		//}else{
-			loadingOn();
-			var callback = function(data){
-				alert("스크랩 했습니다.");
-				$("#scrapBtn").hide();
-				loadingOff();
-			};
-			
-			var param = {
-						no : $("#no").val()
-						, type : "job"
-						, subType : "indi"
-						, uid : $("#uid").val()
-						, rUid : $("#rUid").val()
-					};
-			ajax('post', '/registScrap.ajax', param, callback);
+		loadingOn();
+		var callback = function(data) {
+			alert("스크랩 했습니다.");
+			$("#scrapBtn").hide();
+			loadingOff();
+		};
+
+		var param = {
+			no : $("#no").val(),
+			type : "job",
+			subType : "indi",
+			uid : $("#uid").val(),
+			rUid : $("#rUid").val()
+		};
+		ajax('post', '/registScrap.ajax', param, callback);
 		//}
 	}
-	
+
 	// 입사지원 popup
-	function applyPopup(){
-		
-		if($("#recruitCnt").val() <= 0){
+	function applyPopup() {
+
+		if ($("#recruitCnt").val() <= 0) {
 			alert("채용공고를 먼저 작성해 주세요");
 			return;
-		}else{
-			var callback = function(data){
-				if(data.rstCnt > 0){
+		} else {
+			var callback = function(data) {
+				if (data.rstCnt > 0) {
 					alert("이미 지원 하셨습니다.");
 					loadingOff();
-				
-				}else{
+
+				} else {
 					$("html").scrollTop(0);
 					$("#popupWrap_applyWrap").css("display", "inline-block");
 				}
 			};
-			
+
 			var param = {
-						toType : "interview"
-						, type : "job"
-						, subType : "company"
-						, uid : $("#uid").val()
-						, toUid : $("#rUid").val()
-						, toNo : $("#no").val()
-					}; 
-			ajax('post', '/getNetfuOnlineRecruitRegistCnt.ajax', param, callback);
-		}		
+				toType : "interview",
+				type : "job",
+				subType : "company",
+				uid : $("#uid").val(),
+				toUid : $("#rUid").val(),
+				toNo : $("#no").val()
+			};
+			ajax('post', '/getNetfuOnlineRecruitRegistCnt.ajax', param,
+					callback);
+		}
 	}
-	
+
 	// 입사지원 등록
-	function registApply(){
+	function registApply() {
 		loadingOn();
-		var callback = function(data){
+		var callback = function(data) {
 			loadingOff();
 			$("#resumeSel").val("");
 			$("#popupWrap_applyWrap").css("display", "none");
 			alert("면접제의가 완료 되었습니다.");
 		};
-		
+
 		var param = {
-					toType : "interview"
-					, type : "job"
-					, subType : "company"
-					, uid : $("#uid").val()
-					, toUid : $("#rUid").val()
-					, toNo : $("#no").val()
-					, fromNo : $("#resumeSel option:selected").val()
-					, opened : "no"
-					, jobDetail : $("#resumeTitle").val()
-				}; 
+			toType : "interview",
+			type : "job",
+			subType : "company",
+			uid : $("#uid").val(),
+			toUid : $("#rUid").val(),
+			toNo : $("#no").val(),
+			fromNo : $("#resumeSel option:selected").val(),
+			opened : "no",
+			jobDetail : $("#resumeTitle").val()
+		};
 		ajax('post', '/insertNetfuOnlineRecruit.ajax', param, callback);
 	}
-	
 </script>
 

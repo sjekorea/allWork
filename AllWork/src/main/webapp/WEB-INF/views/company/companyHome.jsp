@@ -14,8 +14,10 @@
 <div id="containerWrap">
 	<div id="leftPart">
 		<div id="paymentBox">
-			<p>결제하실 금액 <strong>0</strong>원 <span class="payBtn"><a href="/resumeSearchPaidList.do" title="내역보기">내역보기</a></span></p>
-			<p>충전금 <strong>0</strong>원</p>
+			<p>총 결제 금액 <strong><fmt:formatNumber value="${paymentTotal}" pattern="#,###.##"/></strong>원 
+			<p>유료 만료일 <strong>${SE_SERVICE2_END}</strong></p>
+			<p>조회 가능 횟수 <strong><fmt:formatNumber value="${SE_VIEW_COUNT}" pattern="#,###.##"/></strong>회</p>
+			<span class="payBtn"><a href="/resumeSearchPaidList.do" title="내역보기">내역보기</a></span></p>
 		</div>
 		<div id="menuTree">
 			<ul>
@@ -114,7 +116,16 @@
 								<li>
 									<p class="img00"><img src="img/userNo.png" alt="인재사진"/></p>
 									<p class="desc00">
-										<span class="name">${convert:getPersonNameHidden(result.name) }</span><br/>
+										<span class="name">
+											<c:choose>
+												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+													${result.name }
+												</c:when>
+												<c:otherwise>
+													${convert:getPersonNameHidden(result.name) }
+												</c:otherwise>
+											</c:choose>
+										</span><br/>
 									</p>
 									<p class="desc01">
 										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.recommend_id }', '${result.inid_secret }', 'resume');"><span class="detail">${convert:compByte(result.detail, 150, "...")}</span></a>
@@ -163,7 +174,16 @@
 								<tr>
 									<th></th>
 									<td class="desc00">
-										<span>${convert:getPersonNameHidden(result.name) }</span><br/>
+										<span>
+											<c:choose>
+												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+													${result.name }
+												</c:when>
+												<c:otherwise>
+													${convert:getPersonNameHidden(result.name) }
+												</c:otherwise>
+											</c:choose>
+										</span><br/>
 									</td>
 									<td class="desc01" colspan=3>
 										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.recommend_id }', '${result.inid_secret }', 'resume');" title="AI 추천 인재정보">
@@ -180,7 +200,7 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<tr><th></th><td class="desc00" colspan="5">내역이 없습니다.</td></tr>
+							<tr><th></th><td width="790px" style="text-align:center;">내역이 없습니다.</td></tr>
 						</c:otherwise>
 					</c:choose>
 				</tbody>
@@ -194,7 +214,16 @@
 								<tr>
 									<th></th>
 									<td class="desc00">
-										<span>${convert:getPersonNameHidden(result.name) }</span><br/>
+										<span>
+											<c:choose>
+												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+													${result.name }
+												</c:when>
+												<c:otherwise>
+													${convert:getPersonNameHidden(result.name) }
+												</c:otherwise>
+											</c:choose>
+										</span><br/>
 										<span>${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span><br/>
 										<span>${codeConvert:getLastSchool(result.inidLastSchool) }</span>
 									</td>
@@ -226,7 +255,7 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<tr><th></th><td class="desc00" colspan="5">내역이 없습니다.</td></tr>
+							<tr><th></th><td width="790px" style="text-align:center;">내역이 없습니다.</td></tr>
 						</c:otherwise>
 					</c:choose>
 				</tbody>
@@ -239,7 +268,16 @@
 								<tr>
 									<th></th>
 									<td class="desc00">
-										<span>${convert:getPersonNameHidden(result.name) }</span><br/>
+										<span>
+											<c:choose>
+												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+													${result.name }
+												</c:when>
+												<c:otherwise>
+													${convert:getPersonNameHidden(result.name) }
+												</c:otherwise>
+											</c:choose>
+										</span><br/>
 										<span>${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span><br/>
 										<span>${codeConvert:getLastSchool(result.inidLastSchool) }</span>
 									</td>
@@ -271,7 +309,7 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<tr><th></th><td class="desc00" colspan="5">내역이 없습니다.</td></tr>
+							<tr><th></th><td width="790px" style="text-align:center;">내역이 없습니다.</td></tr>
 						</c:otherwise>
 					</c:choose>
 				</tbody>
@@ -284,7 +322,16 @@
 								<tr>
 									<th></th>
 									<td class="desc00">
-										<span>${convert:getPersonNameHidden(result.name) }</span><br/>
+										<span>
+											<c:choose>
+												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+													${result.name }
+												</c:when>
+												<c:otherwise>
+													${convert:getPersonNameHidden(result.name) }
+												</c:otherwise>
+											</c:choose>
+										</span><br/>
 										<span>${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span><br/>
 										<span>${codeConvert:getLastSchool(result.inidLastSchool) }</span>
 									</td>
@@ -316,7 +363,7 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<tr><th></th><td class="desc00" colspan="5">내역이 없습니다.</td></tr>
+							<tr><th></th><td width="790px" style="text-align:center;">내역이 없습니다.</td></tr>
 						</c:otherwise>
 					</c:choose>
 				</tbody>

@@ -81,9 +81,24 @@ public class NetfuMemberServiceImpl implements NetfuMemberService{
 		return netfuMemberDao.updatePw(map);
 	}
 	
+	// 유료 서비스 정보 update
 	@Override
 	public int updatePayServiceInfo(Map<String, Object> map) throws Exception {
 		return netfuMemberDao.updatePayServiceInfo(map);
+	}
+	
+
+	// 유료 서비스1 기한 만료 update
+	@Override
+	public int updatePayService1Info(Map<String, Object> map) throws Exception {
+		return netfuMemberDao.updatePayService1Info(map);
+	}
+	
+
+	// 유료 서비스2 기한 만료 update
+	@Override
+	public int updatePayService2Info(Map<String, Object> map) throws Exception {
+		return netfuMemberDao.updatePayService2Info(map);
 	}
 	
 	@Override

@@ -86,9 +86,10 @@ public class HomeController {
 			List<Map<String, Object>> rollBannerList = homeCommonService.selectMainRollBannerList(commandMap.getMap());
 			
 			// 채용정보 1
-			List<Map<String, Object>> mainRecruitList = homeCommonService.selectMainRecruitList(commandMap.getMap());
-			
-			// 광고사 정보
+			List<Map<String, Object>> mainRecruitList = homeCommonService.selectMainPayRecruitList(commandMap.getMap());
+			if(mainRecruitList.size() <= 5){
+				mainRecruitList = homeCommonService.selectMainRecruitList(commandMap.getMap());
+			}
 			
 			//헤디헌팅 채용공고
 			ApiRecruitItemModel model = new ApiRecruitItemModel();

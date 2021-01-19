@@ -36,6 +36,7 @@ import allwork.service.NetfuMemberService;
 import allwork.service.NetfuMyServiceService;
 import allwork.service.NetfuOnlineRecruitService;
 import allwork.service.NetfuScrapService;
+import allwork.service.PaymentInfoService;
 import allwork.service.RecruitViewService;
 
 @Controller
@@ -68,7 +69,10 @@ public class CompanyController {
 	private FileUtils fileUtils;			
 
 	@Resource(name="recruitViewService")
-	private RecruitViewService recruitViewService;	
+	private RecruitViewService recruitViewService;
+
+	@Resource(name="paymentInfoService")
+	private PaymentInfoService paymentInfoService;	
 
 	//(begin) 2020.12.30 by s.yoo
 	@Resource(name="aiMatchingRecruitService")
@@ -83,6 +87,8 @@ public class CompanyController {
 	private String filePathPhoto;
    	//(end) 2021.01.04 by s.yoo
 
+	
+	
 	
 	/*
 	 * 기업회원 홈
@@ -139,12 +145,16 @@ public class CompanyController {
 			// 최근 본 인재
 			List<Map<String, Object>> resumeViewList = recruitViewService.selectResumeViewList(commandMap.getMap());
 			
+			// 결제 정보
+			int paymentTotal = paymentInfoService.selectPaymentTotal(commandMap.getMap());
+			
 			mv.addObject("memberMap", memberMap);
 			mv.addObject("recruitList", recruitList);
 			mv.addObject("recommandResumeList", recommandResumeList);	//++2020.12.30 by s.yoo
 			mv.addObject("myServiceResumeList", myServiceResumeList);
 			mv.addObject("resumeScrapList", resumeScrapList);
 			mv.addObject("resumeViewList", resumeViewList);
+			mv.addObject("paymentTotal", paymentTotal);
 			mv.addObject("map", commandMap.getMap());
 			
 		}catch(Exception e){

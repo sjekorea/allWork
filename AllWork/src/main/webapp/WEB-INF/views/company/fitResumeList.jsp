@@ -103,7 +103,16 @@
 								<c:forEach var="result" items="${myServiceResumeList}"
 									varStatus="status">
 									<tr class="desc">
-										<td class="desc01">${convert:getPersonNameHidden(result.name) }</td>
+										<td class="desc01">
+											<c:choose>
+												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+													${result.name }
+												</c:when>
+												<c:otherwise>
+													${convert:getPersonNameHidden(result.name) }
+												</c:otherwise>
+											</c:choose>
+										</td>
 										<td class="desc02"><a
 											href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">${convert:compByte(result.inidTitle, 80, "...")}</a>
 										</td>

@@ -80,5 +80,74 @@
 		) aa
 		order by rand() limit 6
 	</select>
+	
+	
+	<!-- 메인 페이지 유료 채용공고 리스트 -->
+	<select id="selectMainPayRecruitList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
+		select aa.*
+		from 
+		(
+				SELECT 'head' type, a.ser no, '' uid, concat(a.company_initial, '사') bizName, b.recruit_item_contents bizTitle, b.men bizMen, b.place_work bizArea1Name
+						, b.biz_end_type bizEndType, DATE_FORMAT(b.biz_end_day, '%m/%d') bizEndDay
+						, DATE_FORMAT(b.date_req, '%m/%d') wdate
+						, CASE b.prs WHEN 'P' THEN 'yes' ELSE 'no' END bizIng
+				FROM recruit_company AS a, recruit_item AS b
+				WHERE 1=1
+					and a.prs='P' AND b.prs='P' AND a.ser=b.target_ser 
+					and date_req BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+
+				UNION ALL
+				
+				select 'free' type , nic.no, nic.uid,  nic.biz_name bizName, nic.biz_title bizTitle, nic.biz_men bizMen
+						, concat(getCodeName(nic.biz_area1),' ', ifnull(getCodeName(nic.biz_area2), '')) bizArea1Name 
+						, nic.biz_end_type bizEndType, DATE_FORMAT(nic.biz_end_day, '%m/%d') bizEndDay
+						, DATE_FORMAT(nic.wdate, '%m/%d') wdate
+						, nic.biz_ing bizIng
+				from netfu_item_company nic
+				where 1=1
+					and nic.biz_ing = 'yes'
+					and (nic.biz_jobfrom LIKE '%netfu_34537_33276%' OR nic.biz_jobfrom LIKE '%freelancer%')
+					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+					and nic.uid in (
+										select uid from netfu_member 
+										where service1_flag = 'Y' and service1_end_date >  DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
+									)
+										
+				UNION ALL
+				
+				select 'alba' type , nic.no, nic.uid,  nic.biz_name bizName, nic.biz_title bizTitle, nic.biz_men bizMen
+						, concat(getCodeName(nic.biz_area1),' ', ifnull(getCodeName(nic.biz_area2), '')) bizArea1Name
+						, nic.biz_end_type bizEndType, DATE_FORMAT(nic.biz_end_day, '%m/%d') bizEndDay
+						, DATE_FORMAT(nic.wdate, '%m/%d') wdate
+						, nic.biz_ing bizIng
+				from netfu_item_company nic
+				where 1=1
+					and nic.biz_ing = 'yes'
+					and (nic.biz_jobfrom LIKE '%netfu_34537_33276%' OR nic.biz_jobfrom LIKE '%arbeit%')
+					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+					and nic.uid in (
+										select uid from netfu_member 
+										where service1_flag = 'Y' and service1_end_date >  DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
+									)
+					
+				UNION ALL
+				
+				select 'recruit' type , nic.no, nic.uid,  nic.biz_name bizName, nic.biz_title bizTitle, nic.biz_men bizMen
+						, concat(getCodeName(nic.biz_area1),' ', ifnull(getCodeName(nic.biz_area2), '')) bizArea1Name
+						, nic.biz_end_type bizEndType, DATE_FORMAT(nic.biz_end_day, '%m/%d') bizEndDay
+						, DATE_FORMAT(nic.wdate, '%m/%d') wdate
+						, nic.biz_ing bizIng
+				from netfu_item_company nic
+				where 1=1
+					and nic.biz_ing = 'yes'
+					and (nic.biz_jobfrom LIKE '%netfu_48782_57525%' OR nic.biz_jobfrom LIKE '%netfu_85884_14481%')
+					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+					and nic.uid in (
+										select uid from netfu_member 
+										where service1_flag = 'Y' and service1_end_date >  DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
+									)
+		) aa
+		order by rand() limit 6
+	</select>
 
 </mapper>

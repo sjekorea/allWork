@@ -250,6 +250,19 @@
 				and nir.no = #{no}
 			</if>
 	</select>
+	
+	
+	<!-- 유료 회원 이력서 정보  -->
+	<select id="selectPayResumeList" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
+		select 
+			${resumeColumn}
+		from netfu_item_resume nir
+		where 1=1
+			and nir.uid in (select uid from netfu_member where service1_flag = 'Y')
+			and nir.inid_secret <![CDATA[<>]]> 'yes'
+			order by nir.wdate desc
+			limit 0 , 4
+	</select>
 
 
 	<!-- 이력서 정보 등록 -->

@@ -58,6 +58,12 @@ public class NetfuItemResumeServiceImpl implements NetfuItemResumeService{
 		return netfuItemResumeDao.selectNetfuItemResumeMap(map);
 	}
 	
+	// 유료회원 이력서 목록
+	@Override
+	public List<Map<String, Object>> selectPayResumeList(Map<String, Object> map) throws Exception {
+		return netfuItemResumeDao.selectPayResumeList(map);
+	}
+	
 	// 이력서 정보 등록
 	@Override
 	public int insertNetfuItemResume(Map<String, Object> map) throws Exception {

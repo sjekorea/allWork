@@ -93,7 +93,7 @@ public class CommonColumnUtil {
 		rtnStr += ", nir.inid_area_job8, getCodeName(nir.inid_area_job8) inid_area_job8_name";
 		rtnStr += ", nir.inid_area_job9, getCodeName(nir.inid_area_job9) inid_area_job9_name";
 		rtnStr += ", nir.education_degree, nir.career_total";
-		rtnStr += ", portfolio_file";
+		rtnStr += ", nir.portfolio_file";
 		
 		return rtnStr;
 	}

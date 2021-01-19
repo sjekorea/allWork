@@ -22,56 +22,35 @@
 		<jsp:include page="/personInfoSubMenu.do" />
 	</div>
 	<div id="rightPart">
-		<!-- 
-		<div id="part01">
-			<ul class="adPart">
-				<li>
-					<a href="#none" title="유료인재광고01">
-						<div>
-							<p class="star"><i class="fas fa-star"></i></p>
-							<p class="desc01">함**(남/1962년생)</p>
-							<p class="desc02">34년 4개월</p>
-							<p class="desc03">회계법인 14년 근무 경험(회계/세무/공무)</p>
-							<p class="desc04">국제기구, 사단법인, NGO, 재단법인, 시민단체</p>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="#none" title="유료인재광고02">
-						<div>
-							<p class="star"><i class="fas fa-star"></i></p>
-							<p class="desc01">함**(남/1962년생)</p>
-							<p class="desc02">34년 4개월</p>
-							<p class="desc03">회계법인 14년 근무 경험(회계/세무/공무)</p>
-							<p class="desc04">국제기구, 사단법인, NGO, 재단법인, 시민단체</p>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="#none" title="유료인재광고03">
-						<div>
-							<p class="star"><i class="fas fa-star"></i></p>
-							<p class="desc01">함**(남/1962년생)</p>
-							<p class="desc02">34년 4개월</p>
-							<p class="desc03">회계법인 14년 근무 경험(회계/세무/공무)</p>
-							<p class="desc04">국제기구, 사단법인, NGO, 재단법인, 시민단체</p>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="#none" title="유료인재광고04">
-						<div>
-							<p class="star"><i class="fas fa-star"></i></p>
-							<p class="desc01">함**(남/1962년생)</p>
-							<p class="desc02">34년 4개월</p>
-							<p class="desc03">회계법인 14년 근무 경험(회계/세무/공무)</p>
-							<p class="desc04">국제기구, 사단법인, NGO, 재단법인, 시민단체</p>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-		 -->
+		<c:if test="${resumeList.size() > 0 }">
+			<div id="part01">
+				<ul class="adPart">
+					<c:forEach var="result" items="${payResumeList}" varStatus="status">
+						<li>
+							<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">
+								<div>
+									<p class="star"></p>
+									<p class="desc01">
+										<c:choose>
+											<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+												${result.name }
+											</c:when>
+											<c:otherwise>
+												${convert:getPersonNameHidden(result.name) }
+											</c:otherwise>
+										</c:choose>
+										(${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생)
+									</p>
+									<p class="desc02">${result.careerTotal }년</p>
+									<p class="desc03">${result.inidTitle }</p>
+									<p class="desc04">${result.inidMylskill }</p>
+								</div>
+							</a>
+						</li>
+					</c:forEach>
+				</ul>
+			</div>
+		</c:if>
 		<div id="part02">
 			<form id="" name="">
 				<fieldset>
@@ -185,7 +164,16 @@
 							<c:forEach var="result" items="${resumeList}" varStatus="status">
 								<tr class="desc">
 									<td class="desc00">
-										<span>${convert:getPersonNameHidden(result.name) }</span><br/>
+										<span>
+											<c:choose>
+												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+													${result.name }
+												</c:when>
+												<c:otherwise>
+													${convert:getPersonNameHidden(result.name) }
+												</c:otherwise>
+											</c:choose>
+										</span><br/>
 										<span>${codeConvert:getBizSex(result.sex)},${codeConvert:getBirthYear(result.birth)}년생</span>
 									</td>
 									<td class="desc01">
@@ -272,6 +260,19 @@
 	$(document).ready(function(){
 		
 		loadingOff();
+		
+		$(".tab").each(function(index, item){
+			$(this).find("li").on("mouseover", function(e){
+				if($("#searchKind").val() != $(this).attr("id")){
+					$(this).css("background-color", "#000");	
+				}
+			});
+			$(this).find("li").on("mouseleave", function(e){
+				if($("#searchKind").val() != $(this).attr("id")){
+					$(this).css("background-color", "#ddd");	
+				}
+			});
+		});
 		
 		$("#search_btn").on("click", function(e){
 			procSearch();
