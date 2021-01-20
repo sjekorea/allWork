@@ -154,6 +154,7 @@ public class HomeController {
 
 			//검색결과 View 표출.
 			mv.addObject("item", item);
+			mv.addObject("map", commandMap.getMap());
 			//(end) 2020.12.30 by s.yoo
 			
 		}catch(Exception e){
@@ -181,6 +182,7 @@ public class HomeController {
 
 			//검색결과 View 표출.
 			mv.addObject("item", item);
+			mv.addObject("map", commandMap.getMap());
 			
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".indexResumeSearchList Exception !!!!! \n"+e.toString());

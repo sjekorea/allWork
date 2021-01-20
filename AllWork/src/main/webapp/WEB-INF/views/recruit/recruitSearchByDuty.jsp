@@ -108,8 +108,8 @@
 									<td><span class="desc_title">지역</span>
 										<span class="desc_desc00">${result.bizArea1Name }${convert:checkNull(result.bizArea2Name) eq '' ? '' : '>'.concat(result.bizArea2Name) }</span>
 									</td>
-									<td><span class="desc_title">학력</span><span class="desc_desc00">${result.bizAbility }<%-- ${codeConvert:getBizAbilityShort(result.bizAbility) } --%></span></td>
-									<td><span class="desc_title">성별</span><span class="desc_desc00">${codeConvert:getBizSex(result.bizSex) }</span></td>
+									<td><span class="desc_title">학력</span><span class="desc_desc00">${codeConvert:getBizAbilityShort(result.bizAbility) }</span></td>
+									<td><span class="desc_title">등록일</span><span class="desc_desc00">${result.wdate }</span></td>
 								</tr>
 								<tr class="margin"></tr>
 							</c:forEach>
@@ -276,8 +276,30 @@
 			$("#keywordTxt1").val("");
 			$("#keywordTxt2").val("");
 			$("#keywordTxt3").val("");
+			
+			//검색작업 수행.
+			recruitSearch(true);
 		});
 		
+		
+		$("#keywordTxt1").keydown( function() {
+			var kcode = event.keyCode;
+			if(kcode == 13) {
+				procSearch();
+			}
+		});
+		$("#keywordTxt2").keydown( function() {
+			var kcode = event.keyCode;
+			if(kcode == 13) {
+				procSearch();
+			}
+		});
+		$("#keywordTxt3").keydown( function() {
+			var kcode = event.keyCode;
+			if(kcode == 13) {
+				procSearch();
+			}
+		});
 		
 		$("#search_btn").on("click", function(e){
 			procSearch();
@@ -401,8 +423,10 @@
 	}
 	
 	
-	function recruitSearch(){
+	function recruitSearch(faurceReset){
 		
+		loadingOn();
+
 		var spanId = "", bizType = "", areaJob = "", bizArea = "";
 		
 		$(".keywords span input:button").each(function(index, item){
@@ -446,8 +470,12 @@
 		$("#keywordCondition").val($("input[name=keywordR]:checked").val());
 		
 		if(bizType.length <= 0 && areaJob.length <= 0 && bizArea.length <= 0 && $("#keyword1").val() == "" && $("#keyword2").val() == "" && $("#keyword3").val() == ""){
-			loadingOff();
-			alert("검색 조건이 없습니다. 검색조건을 확인하세요.");
+			if (faurceReset == true) {
+				$("#searchForm").submit();	
+			} else {
+				alert("검색 조건이 없습니다. 검색조건을 확인하세요.");
+				loadingOff();
+			}
 		}else{
 			$("#searchForm").submit();	
 		}

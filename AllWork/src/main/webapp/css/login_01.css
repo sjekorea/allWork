@@ -36,3 +36,6 @@
 
 #loginArea .snsLogin li a{display:block;width:100%;height:100%;font-size:12px;}
 #loginArea .snsLogin li a img{height:100%;vertical-align:middle;}
+
+#loginArea .logintextsub{width:600px;margin: 0 auto;text-align:center;padding-top: 1px;padding-bottom:10px;font-size:20px;line-height: 46px;color:#666;}
+#loginArea .logintextsub h4{font-size:14px;font-family:"NotoSansKR-Bold";color:#4F60E3;}

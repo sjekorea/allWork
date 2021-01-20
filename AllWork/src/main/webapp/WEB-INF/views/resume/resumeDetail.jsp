@@ -179,6 +179,10 @@
 								<td>${(resumeMap.inidSecret == 'yes')? "비공개" : "공개"}</td>
 							</tr>
 							<tr>
+								<th>등록일</th>
+								<td><p>등록일: ${resumeMap.wdate }, 최종수정일: ${resumeMap.uWdate }</p></td>
+							</tr>
+							<tr>
 								<th>이력서 제목</th>
 								<td>${resumeMap.inidTitle }</td>
 							</tr>

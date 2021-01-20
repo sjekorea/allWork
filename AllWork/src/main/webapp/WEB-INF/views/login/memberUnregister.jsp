@@ -5,6 +5,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+	<!-- 소셜 로그인 -->
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="296410191449-eh2l0asvq7kuf738k9v50jh039ik0tj3.apps.googleusercontent.com">
+
+	<!-- 소셜 로그인 -->
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script> 
+
 <!-- (begin) 2020.12.30 by s.yoo	-->
 <c:choose>
 	<c:when test="${SE_LOGIN_STATUS}">
@@ -133,6 +142,8 @@
 			if(data.rstCnt > 0){
 				alert("회원 탈퇴를 수행했습니다.\n그동안 이용해 주셔서 감사합니다.");
 				location.href = "/logout.do";
+				//procLogout();
+				//return;
 			}else{
 				alert("회원정보를 찾을 수 없습니다. 비밀번호를 확인해 주세요.");
 				loadingOff();
@@ -146,4 +157,26 @@
 		ajax('post', '/memberUnregisterProcess.ajax', param, callback);
 	}
 	
+	function procLogout() {
+		//Naver, Kakao, Google에 대한 logout 처리.
+		Kakao.init('${kakaoClientId}');
+		if (!Kakao.Auth.getAccessToken()) {
+			console.log('Not logged in.');
+			return;
+		}
+		Kakao.API.request({
+			url: '/v1/user/unlink',
+			success: function(response) {
+		    	console.log(response);
+				//Logout 처리.
+				location.href = "/logout.do";
+			},
+			fail: function(error) {
+		    	console.log(error);
+				//Logout 처리.
+				location.href = "/logout.do";
+			},
+		});
+	}
+
 </script>

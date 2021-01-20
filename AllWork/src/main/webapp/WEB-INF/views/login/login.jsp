@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,6 +15,7 @@
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
 	
+	<!-- 소셜 로그인 -->
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="296410191449-eh2l0asvq7kuf738k9v50jh039ik0tj3.apps.googleusercontent.com">
 	
@@ -32,7 +35,9 @@
 	<script type="text/javascript" src="/js/process.js?v=<%=System.currentTimeMillis() %>"></script>
 	<script type="text/javascript" src="/js/Cookie.js"></script>
 	
+	<!-- 소셜 로그인 -->
 	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script> 
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
@@ -79,15 +84,22 @@
 						</div>
 					</fieldset>
 				</form>
+				<!-- 소셜 Login -->
+				<div class="logintextsub">
+					<h4>[주의] 개인 PC가 아니면 , 절대로 소셜 Login을 사용하지 마세요. 개인정보 유출위험이 있습니다.</h4>
+				</div>
 				<ul class="snsLogin">
+					<li id="naverIdLogin">
+						<a id="naverIdLogin_loginButton" href="#"> <img src="img/login/sns01.png"></a>
+					</li>
+					<li>
+						<a id="kakao-login-btn" class="btn kakao font-mgb"><img id="kakao-login-btn" src="img/login/sns02.png"></a>
+					</li>
 					<!-- 
-					<div id="naverIdLogin"></div>
-					<div><a id="kakao-login-btn" class="btn kakao font-mgb">카카오로 로그인</a></div>
-					<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">dfd</div>
+					<li class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">
+						<a><img src="img/login/sns03.png"></a>
+					</li>
 					 -->
-					<li id="naverIdLogin"> <a id="naverIdLogin_loginButton" href="#"> <img src="img/login/sns01.png"></a> </li>
-					<li><a id="kakao-login-btn" class="btn kakao font-mgb"><img id="kakao-login-btn" src="img/login/sns02.png"></a></li>
-					<!-- <li class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"><a><img src="img/login/sns03.png"></a></li> -->
 				</ul>
 			</div>
 		</div>
@@ -116,6 +128,7 @@
 
 <script type="text/javascript">
 
+
 	window.onkeydown = function() {
 		var kcode = event.keyCode;
 		if(kcode == 13){
@@ -123,10 +136,15 @@
 		}
 	}
 	
+	//(1) 소셜 Login - Naver.
+	//alert('URL=${contextPath}');
+	var requetUrl = "${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${contextPath}/naverLogin.do";
 	var naverLogin = new naver.LoginWithNaverId(
 		{
-			clientId: "Dwg08lyiUIJtmpURlfNJ",
-			callbackUrl: "http://localhost:8080/naverLogin.do",
+			//clientId: "Dwg08lyiUIJtmpURlfNJ",
+			//callbackUrl: "http://localhost:8080/naverLogin.do",
+			clientId: "${naverClientId}",
+			callbackUrl: requetUrl,
 			isPopup: true, /* 팝업을 통한 연동처리 여부 */
 			loginButton: {color: "green", type: 2, height: 50} /* 로그인 버튼의 타입을 지정 */
 		}
@@ -136,12 +154,15 @@
 	naverLogin.init();
 	
 	
+	//(2) 소셜 Login - Kakao
 	// kakao 로그인 설정
-	Kakao.init('bea44c26b9547404f0b081cd46b351b8');
+	Kakao.init('${kakaoClientId}');
     // 카카오 로그인 버튼을 생성합니다.
     Kakao.Auth.createLoginButton({
 		container: '#kakao-login-btn',
+		size: "small",		// "small", "medium", "large"
 		success: function(authObj) {
+			///*
         	// 로그인 성공시, API를 호출합니다.
         	Kakao.API.request({
           		url: '/v2/user/me',
@@ -159,6 +180,20 @@
 	          		console.log(JSON.stringify(error));
 	          	}
 	        });
+			//*/
+			/*
+			Kakao.Auth.logout();
+			Kakao.Auth.cleanup();
+		    Kakao.Auth.login({
+		    	persistAccessToken: true,
+		    	  success: function(response) {
+		    	    console.log(response);
+		    	  },
+		    	  fail: function(error) {
+		    	    console.log(error);
+		    	  },
+		    	});
+		    */
 		},
 		fail: function(err) {
 	        alert(JSON.stringify(err));
@@ -214,11 +249,13 @@
 	});
 	
 	
+	//소셜 Login - Kakao
 	function goKakaoLogin(email, name, id){
 		var callback = function(data){
 			if(data.rstCnt > 0){
 				location.href = "/index.do";
 			}else{
+				if (!confirm('회원가입이 되어있지 않습니다. 먼저 회원가입을 해 주세요.\n회원가입이 된 경우에는 로그인 후에, 마이페이지에서 소셜계정을 설정하세요.\n회원가입 화면으로 이동할까요?')) return;
 				$("#ciKey").val(id);
 				$("#email").val(email);
 				$("#name").val(name);
@@ -237,6 +274,7 @@
 	
 	
 	
+	//소셜 Login - Google
 	// google 로그인 처리
 	function onSignIn(googleUser) {
        
@@ -255,9 +293,13 @@
         
         
         var callback = function(data){
+			//alert(data.rstCnt);
 			if(data.rstCnt > 0){
-				window.opener.location.href = "/index.do";
+				//alert('OK');
+				//window.opener.location.href = "/index.do";
+				location.href = "/index.do";
 			}else{
+				if (!confirm('회원가입이 되어있지 않습니다. 먼저 회원가입을 해 주세요.\n회원가입이 된 경우에는 로그인 후에, 마이페이지에서 소셜계정을 설정하세요.\n회원가입 화면으로 이동할까요?')) return;
 				$("#ciKey").val(profile.getId());
 				$("#email").val(profile.getEmail());
 				$("#snsLoginType").val("google");

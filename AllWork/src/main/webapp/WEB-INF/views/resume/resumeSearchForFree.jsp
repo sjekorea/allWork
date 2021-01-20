@@ -274,6 +274,26 @@
 			});
 		});
 		
+		
+		$("#keywordTxt1").keydown( function() {
+			var kcode = event.keyCode;
+			if(kcode == 13) {
+				procSearch();
+			}
+		});
+		$("#keywordTxt2").keydown( function() {
+			var kcode = event.keyCode;
+			if(kcode == 13) {
+				procSearch();
+			}
+		});
+		$("#keywordTxt3").keydown( function() {
+			var kcode = event.keyCode;
+			if(kcode == 13) {
+				procSearch();
+			}
+		});
+
 		$("#search_btn").on("click", function(e){
 			procSearch();
 			/*
@@ -473,6 +493,9 @@
 			$("#keywordTxt1").val("");
 			$("#keywordTxt2").val("");
 			$("#keywordTxt3").val("");
+			
+			//검색작업 수행.
+			resumeSearch(true);
 		});
 		
 		
@@ -609,8 +632,10 @@
 	}
 	
 	
-	function resumeSearch(){
+	function resumeSearch(faurceReset){
 		
+		loadingOn();
+
 		var spanId = "";
 		var inidType = "", inidAreaJob = "", inidArea = "", inidLicense = "";
 		var inidCareer = "", inidSchool = "", inidJobform = "", inidPay = "";
@@ -701,8 +726,12 @@
 				&& inidCareer.length <= 0 && inidSchool.length <= 0 && inidJobform.length <= 0 && inidPay.length <= 0
 				&& $("#keyword1").val() == "" && $("#keyword2").val() == "" && $("#keyword3").val() == ""){
 			
-			alert("검색 조건이 없습니다. 검색조건을 확인하세요.");
-			loadingOff();
+			if (faurceReset == true) {
+				$("#searchForm").submit();	
+			} else {
+				alert("검색 조건이 없습니다. 검색조건을 확인하세요.");
+				loadingOff();
+			}
 		}else{
 			$("#searchForm").submit();	
 		}

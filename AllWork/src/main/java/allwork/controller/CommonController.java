@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,12 +24,22 @@ public class CommonController {
 
 	@Resource(name="homeCommonService")
 	private HomeCommonService homeCommonService;	
+
+	//소셜 Login 정보.
+	@Value("${naver.clientId}")
+	private String naverClientId;
+
+	@Value("${kakao.clientId}")
+	private String kakaoClientId;
+
 	
 	@RequestMapping(value="/commonHeader.do")
 	public ModelAndView commonHeader(CommandMap commandMap) {
 		
 		ModelAndView mv = new ModelAndView("/include/commonHeader");
 		
+		mv.addObject("naverClientId", naverClientId); 
+		mv.addObject("kakaoClientId", kakaoClientId); 
 		return mv;
 	}
 	
@@ -49,6 +60,8 @@ public class CommonController {
 			System.out.println(this.getClass().getName()+".home Exception!!! \n"+e.toString());
 		}
 		
+		mv.addObject("naverClientId", naverClientId); 
+		mv.addObject("kakaoClientId", kakaoClientId); 
 		return mv;
 	}
 	
@@ -77,6 +90,9 @@ public class CommonController {
 	@RequestMapping(value="/personHeader.do")
 	public ModelAndView personalHeader(CommandMap commandMap) {
 		ModelAndView mv = new ModelAndView("/include/personHeader");
+		
+		mv.addObject("naverClientId", naverClientId); 
+		mv.addObject("kakaoClientId", kakaoClientId); 
 		return mv;
 	}
 	@RequestMapping(value="/personSubMenu.do")
@@ -92,6 +108,9 @@ public class CommonController {
 	@RequestMapping(value="/companyHeader.do")
 	public ModelAndView companyHeader(CommandMap commandMap) {
 		ModelAndView mv = new ModelAndView("/include/companyHeader");
+		
+		mv.addObject("naverClientId", naverClientId); 
+		mv.addObject("kakaoClientId", kakaoClientId); 
 		return mv;
 	}
 	@RequestMapping(value="/companySubMenu.do")
@@ -107,6 +126,9 @@ public class CommonController {
 	@RequestMapping(value="/communityHeader.do")
 	public ModelAndView communityHeader(CommandMap commandMap) {
 		ModelAndView mv = new ModelAndView("/include/communityHeader");
+		
+		mv.addObject("naverClientId", naverClientId); 
+		mv.addObject("kakaoClientId", kakaoClientId); 
 		return mv;
 	}
 	@RequestMapping(value="/communitySubMenu.do")
@@ -151,6 +173,9 @@ public class CommonController {
 	@RequestMapping(value="/introHeader.do")
 	public ModelAndView introHeader(CommandMap commandMap) {
 		ModelAndView mv = new ModelAndView("/include/introHeader");
+		
+		mv.addObject("naverClientId", naverClientId); 
+		mv.addObject("kakaoClientId", kakaoClientId); 
 		return mv;
 	}
 	@RequestMapping(value="/introSubMenu.do")

@@ -111,6 +111,10 @@
 								<td>${(recruitMap.bizIng == 'yes')? "채용진행중" : "채용마감" }</td>
 							</tr>
 							<tr>
+								<th>등록일</th>
+								<td>등록일: ${recruitMap.wdate }, 최종수정일: ${recruitMap.uWdate }</td>
+							</tr>
+							<tr>
 								<th>공고제목</th>
 								<td>${recruitMap.bizTitle }</td>
 							</tr>

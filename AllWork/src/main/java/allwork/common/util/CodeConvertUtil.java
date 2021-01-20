@@ -217,6 +217,24 @@ public class CodeConvertUtil {
 	// 채용 정보 "학력" ==> biz_ability 항목 
 	public static String getBizAbilityShort(String bizAbility){
 		String rtnStr = "";
+		if (bizAbility == null || bizAbility.length() < 1) return rtnStr;
+		switch(bizAbility) {
+			case "	netfu_63274_88718":
+				return "무관";
+			case "netfu_41476_98832":
+				return "고졸";
+			case "netfu_98974_79615":
+				return "대졸(2,3년)";
+			case "netfu_35887_12731":
+				return "대졸(4년)";
+			case "netfu_53810_38809":
+				return "석사";
+			case "netfu_47451_69200":
+				return "박사";
+			default:
+				break;
+		}
+		
 		int chkValue = ConvertUtil.checkNullToInt(bizAbility);
 		
 		switch(chkValue){

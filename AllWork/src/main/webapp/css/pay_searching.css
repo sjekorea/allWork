@@ -6,7 +6,7 @@ body{background: #EDF0F5;}
 
     /*###################################   leftpart   ###################################*/
     /*###################################   좌측메뉴는 common.css   ###################################*/
-        #menuTree ul .gnb .subMenu04_01{text-decoration: underline;}
+        #menuTree ul .gnb .subMenu04_02{text-decoration: underline;}
 
 /*###################################   reg_rightPart   ###################################*/
 #rightPart{width:790px;margin-left:10px;float:left;padding:40px;overflow:hidden;background-color:#fff;

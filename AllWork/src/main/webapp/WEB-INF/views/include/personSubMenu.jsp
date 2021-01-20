@@ -53,6 +53,7 @@
 			<h3>회원정보관리</h3>
 			<ol class="subMenu subMenu07">
 				<li class="subMenu07_01"><a href="/updateMyInfo.do" title="회원정보관리 ">회원정보관리</a></li>
+				<li class="subMenu07_03"><a href="/linkSocial.do" title="소셜계정연결 ">소셜계정연결</a></li>
 				<li class="subMenu07_02"><a href="/memberUnregister.do" title="회원탈퇴">회원탈퇴</a></li>
 			</ol>
 		</li>

@@ -143,6 +143,7 @@ public class AiSearchService {
 	protected List<AiMatchingRecommendationModel> parseAllworkRecruit(String strApiData) {
 		//데이터 초기화.
 		List<AiMatchingRecommendationModel> recruitDataAllwork = new ArrayList<AiMatchingRecommendationModel>();
+		List<AiMatchingRecommendationModel> listResult = new ArrayList<AiMatchingRecommendationModel>();
 
 		//데이터 파싱.
 		try {			
@@ -186,16 +187,28 @@ public class AiSearchService {
 				dataItem.setId(i);
 				recruitDataAllwork.add(dataItem);
 			}
+			
+			//[정렬] 채용진행중인 항목을 채용마감된 항목보다 앞에 표출한다.
+			for (int i = 0; i < recruitDataAllwork.size(); i++) {
+				if (!recruitDataAllwork.get(i).getBizIng().equalsIgnoreCase("yes")) continue;
+				listResult.add(recruitDataAllwork.get(i));
+			}
+			for (int i = 0; i < recruitDataAllwork.size(); i++) {
+				if (recruitDataAllwork.get(i).getBizIng().equalsIgnoreCase("yes")) continue;
+				listResult.add(recruitDataAllwork.get(i));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return recruitDataAllwork;
+		//return recruitDataAllwork;
+		return listResult;
 	}
 
 	//워크넷 채용정보 파싱.
 	protected List<AiMatchingRecommendationModel> parseWorknetRecruit(String strApiData) {
 		//데이터 초기화.
 		List<AiMatchingRecommendationModel> recruitDataWorknet = new ArrayList<AiMatchingRecommendationModel>();
+		List<AiMatchingRecommendationModel> listResult = new ArrayList<AiMatchingRecommendationModel>();
 
 		//데이터 파싱.
 		try {
@@ -227,10 +240,21 @@ public class AiSearchService {
 				dataItem.setId(i);
 				recruitDataWorknet.add(dataItem);
 			}
+			
+			//[정렬] 채용진행중인 항목을 채용마감된 항목보다 앞에 표출한다.
+			for (int i = 0; i < recruitDataWorknet.size(); i++) {
+				if (!recruitDataWorknet.get(i).getBizIng().equalsIgnoreCase("yes")) continue;
+				listResult.add(recruitDataWorknet.get(i));
+			}
+			for (int i = 0; i < recruitDataWorknet.size(); i++) {
+				if (recruitDataWorknet.get(i).getBizIng().equalsIgnoreCase("yes")) continue;
+				listResult.add(recruitDataWorknet.get(i));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return recruitDataWorknet;
+		//return recruitDataWorknet;
+		return listResult;
 	}
 
 	//올워크 인재정보 파싱.

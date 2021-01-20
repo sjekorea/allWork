@@ -26,7 +26,6 @@
 			<div id="regist00">
 				<div id="company_detail">
 					<p class="company_name">${companyMap.bizName}</p>
-					<p class="company_hp"><a href="#none" title="기업홈페이지">${companyMap.bizHome}</a></p>
 				<c:if test="${companyMap.bizLogo == null || companyMap.bizLogo == '' }">
 					<p class="company_logo"><img src="img/logoNo.jpg" alt="로고"/></p>
 				</c:if>
@@ -234,7 +233,7 @@
 											ㆍ모집직종 및 담당업무에 관련된 상세한 정보, 모집내용에 관련된자격요건, 제출서류, 전형방법, 근무조건, 회사위치 등을 입력해 주십시오.<br/>
 											ㆍ상세모집요강 작성에 많은 시간이 필요할 경우 메모장이나 워드프로그램에서 작성한 다음 붙여넣기를 하시기 바랍니다.
 											</p>
-											<textarea id="bizDetail" name="bizDetail">${recruitMap.bizDetail}</textarea>
+											<div><textarea id="bizDetail" name="bizDetail" style="width: 100%;" >${recruitMap.bizDetail}</textarea></div>
 										</td>
 									</tr>
 								</tbody>

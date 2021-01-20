@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,12 +28,22 @@ public class LoginController {
 	@Resource(name="netfuMemberService")
 	private NetfuMemberService netfuMemberService;
 	
+	//소셜 Login 정보.
+	@Value("${naver.clientId}")
+	private String naverClientId;
+
+	@Value("${kakao.clientId}")
+	private String kakaoClientId;
+
+	
 	@RequestMapping(value="/login.do")
 	public ModelAndView login(CommandMap commandMap, HttpServletRequest request) {
 		
 		ModelAndView mv = new ModelAndView("/login/login");
 		commandMap.put("requestUri", request.getSession().getAttribute("requestUri"));
 		mv.addObject("map", commandMap.getMap());
+		mv.addObject("naverClientId", naverClientId); 
+		mv.addObject("kakaoClientId", kakaoClientId); 
 		return mv;
 	}
 	

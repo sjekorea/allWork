@@ -7,6 +7,7 @@ public interface NetfuMemberService {
 	Map<String, Object> selectNetfuMemberMap(Map<String, Object> map) throws Exception;
 	int selectNetfuMemberLoginCnt(Map<String, Object> map) throws Exception; 
 	int selectNetfuMemberSNSLoginCnt(Map<String, Object> map) throws Exception; 
+	int updateNetfuMemberSNS(Map<String, Object> map) throws Exception;
 	int selectUidExistCnt(Map<String, Object> map) throws Exception; 
 	//(begin) 2021.01.03 by s.yoo
 	Map<String, Object> findId(Map<String, Object> map) throws Exception;

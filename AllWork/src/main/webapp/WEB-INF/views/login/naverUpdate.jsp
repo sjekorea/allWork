@@ -27,11 +27,11 @@
 
 	<!-- (2) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
 	<script>
-		var requetUrl = "${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${contextPath}/naverLogin.do";
-		var naverLogin = new naver.LoginWithNaverId(
+		var requetUrl = "${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${contextPath}/naverUpdate.do";
+		var naverUpdate = new naver.LoginWithNaverId(
 			{
 				//clientId: "Dwg08lyiUIJtmpURlfNJ",
-				//callbackUrl: "http://localhost:8080/naverLogin.do",
+				//callbackUrl: "http://localhost:8080/naverUpdate.do",
 				clientId: "${naverClientId}",
 				callbackUrl: requetUrl,
 				isPopup: false,
@@ -41,66 +41,47 @@
 		);
 
 		/* (3) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
-		naverLogin.init();
+		naverUpdate.init();
 
 		/* (4) Callback의 처리. 정상적으로 Callback 처리가 완료될 경우 main page로 redirect(또는 Popup close) */
 		window.addEventListener('load', function () {
-			naverLogin.getLoginStatus(function (status) {
+			naverUpdate.getLoginStatus(function (status) {
 				
 				if (status) {
 					/* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
-					var email = naverLogin.user.getEmail();
-					var age = naverLogin.user.getAge();
-					var id = naverLogin.user.getId();
-					var name = naverLogin.user.getName();
+					var email = naverUpdate.user.getEmail();
+					var age = naverUpdate.user.getAge();
+					var id = naverUpdate.user.getId();
+					var name = naverUpdate.user.getName();
 					
 					if( email == undefined || email == null) {
 						alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
 						/* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
-						naverLogin.reprompt();
+						naverUpdate.reprompt();
 						return;
 					}
 					
 					if( name == undefined || name == null) {
 						alert("성명은 필수정보입니다. 정보제공을 동의해주세요.");
 						/* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
-						naverLogin.reprompt();
+						naverUpdate.reprompt();
 						return;
 					}
 					
 					if( age == undefined || age == null) {
 						alert("연령대는 필수정보입니다. 정보제공을 동의해주세요.");
 						/* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
-						naverLogin.reprompt();
+						naverUpdate.reprompt();
 						return;
 					}
 					
 					var callback = function(data){
+						alert("소셜계정에 연결했습니다.\n이제부터 소셜 로그인 기능을 사용할 수 있습니다.");
+
 						if(data.rstCnt > 0){
-							window.opener.location.href = "/index.do";
-							
+							alert("소셜계정에 연결했습니다.\n이제부터 소셜 로그인 기능을 사용할 수 있습니다.");
 						}else{
-							if (!confirm('회원가입이 되어있지 않습니다. 먼저 회원가입을 해 주세요.\n회원가입이 된 경우에는 로그인 후에, 마이페이지에서 소셜계정을 설정하세요.\n회원가입 화면으로 이동할까요?')) return;
-						
-							if($(opener.document).find("#snsLoginEnt").val() == "login"){
-								$(opener.document).find("#ciKey").val(id);
-								$(opener.document).find("#name").val(name);
-								$(opener.document).find("#email").val(email);
-								$(opener.document).find("#snsLoginType").val("naver");
-								$(opener.document).find("#snsInfoForm").attr("action", "/personJoin.do");
-								$(opener.document).find("#snsInfoForm").submit();
-							
-							}else if($(opener.document).find("#snsLoginEnt").val() == "join"){
-								$(opener.document).find("#ciKey").val(id);
-								$(opener.document).find("#name").val(name);
-								$(opener.document).find("#email").val(email);
-								$(opener.document).find("#name").readonly(true);
-								$(opener.document).find("#name").css("background-color", "#A2A2A2");
-								$(opener.document).find("#snsLoginType").val("naver");
-							
-							}else{
-								
-							}
+							alert("오류가 발생해서 소셜계정에 연결하지 못했습니다.");
 						}
 						window.close();
 					};
@@ -108,8 +89,9 @@
 									id : id
 									, type : "1"
 									, snsLoginType : "naver"
-								};
-					ajax('post', '/snsLoginProcess.ajax', param, callback);
+									, uid : "${SE_LOGIN_ID}"
+						};
+					ajax('post', '/snsUpdateProcess.ajax', param, callback);
 					
 				} else {
 					console.log("callback 처리에 실패하였습니다.");

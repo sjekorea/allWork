@@ -32,9 +32,11 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
+		loadingOff();
+
 		//alert("${SE_SERVICE1}"+" || "+"${SE_SERVICE1_END}" + " || " + "${SE_SERVICE2}"+" || "+"${SE_SERVICE2_END}"+" || "+"${SE_VIEW_COUNT}");
 		
-		$("#search_btn00").click(function(e){
+		function procSemanticSearch() {
 		   	//(begin) 2020.12.30 by s.yoo
 		   	if (!$("#searchText").val()) {
 		   		alert('검색할 키워드를 입력하세요.');
@@ -48,8 +50,21 @@
 				//개인회원 또는 Login을 하지 않았다면, 채용정보 검색.
 				$("#aiSearchForm").attr("action", "/indexRecruitSearchList.do");
 			}
+			
+			loadingOn();
 			$("#aiSearchForm").submit();
 		   	//(end) 2020.12.30 by s.yoo
+		};
+
+		$("#searchText").keydown( function() {
+			var kcode = event.keyCode;
+			if(kcode == 13) {
+				procSemanticSearch();
+			}
+		});
+
+		$("#search_btn00").click(function(e) {
+			procSemanticSearch();
 		});
 	});
 	
@@ -319,7 +334,7 @@
 								<fieldset>
 									<legend>검색</legend>
 									<p class="textBox">
-										<input id="searchText" type="text" name="q" title="allwork 검색" maxlength="100" placeholder="검색어를 입력해주세요" />
+										<input id="searchText" type="text" name="q" title="allwork 검색" maxlength="100" placeholder="검색어를 입력해주세요" value="${map.q }" />
 									</p>
 									<p class="btnBox00">
 										<input id="search_btn00" type="button" name="searchBtn00" value="검색" />
@@ -336,3 +351,58 @@
 					<li class="scene scene1"><img src="/img/main/main01.jpg" alt="이미지01" /></li>
 				</ul>
 			</div>
+
+<script type="text/javascript">
+	
+	function procLogout() {
+		//Naver, Kakao, Google에 대한 logout 처리.
+		Kakao.init('${kakaoClientId}');
+		if (!Kakao.Auth.getAccessToken()) {
+			console.log('Not logged in.');
+			return;
+		}
+		///*
+		Kakao.Auth.logout(function() {
+			console.log(Kakao.Auth.getAccessToken());
+			//Logout 처리.
+			location.href = "/logout.do";
+
+			/*
+			Kakao.API.request({
+				url: '/v1/user/unlink',
+				success: function(response) {
+			    	console.log(response);
+					//Logout 처리.
+					location.href = "/logout.do";
+				},
+				fail: function(error) {
+			    	console.log(error);
+					//Logout 처리.
+					location.href = "/logout.do";
+				},
+			});
+			*/
+		});
+		//*/
+		/*
+		Kakao.API.request({
+			url: '/v1/user/unlink',
+			success: function(response) {
+		    	console.log(response);
+				//Logout 처리.
+				location.href = "/logout.do";
+			},
+			fail: function(error) {
+		    	console.log(error);
+				//Logout 처리.
+				location.href = "/logout.do";
+			},
+		});
+		*/
+
+		////Logout 처리.
+		//location.href = "/logout.do";
+	}
+	
+</script>
+			

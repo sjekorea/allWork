@@ -109,3 +109,13 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
   .agree_ok ul li:last-child{width:200px;height:50px;margin-right:0;background-color:#4F60E3;border:1px solid #4F60E3;}
   .agree_ok ul li a{display:block;width: 100%;height: 100%;}
   .agree_ok ul li:last-child a{color:#fff;}
+
+  
+
+ .snsLogin{width:600px;height:36px;margin:0 auto 100px;text-align: center;}
+ .snsLogin li{display:inline-block;height:36px;}
+ .snsLogin li:last-child{margin-right:0;}
+
+ .snsLogin li a{display:block;width:100%;height:100%;font-size:12px;}
+ .snsLogin li a img{height:100%;vertical-align:middle;}
+  

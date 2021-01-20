@@ -34,6 +34,11 @@ public class NetfuMemberServiceImpl implements NetfuMemberService{
 	}
 	
 	@Override
+	public int updateNetfuMemberSNS(Map<String, Object> map) throws Exception {
+		return netfuMemberDao.updateNetfuMemberSNS(map);
+	}
+	
+	@Override
 	public int selectUidExistCnt(Map<String, Object> map) throws Exception {
 		return netfuMemberDao.selectUidExistCnt(map);
 	}

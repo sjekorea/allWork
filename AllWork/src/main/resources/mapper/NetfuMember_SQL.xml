@@ -53,11 +53,24 @@
 	<select id="selectNetfuMemberSNSLoginCnt" parameterType="hashmap" resultType="int">
 		select count(uid) cnt from netfu_member
 		where 1=1
+			AND `left` <![CDATA[ <> ]]> 'yes'
 			and ci_key = #{id}
 			and type = #{type}
 			and sns_login_type = #{snsLoginType}
 	</select>
 	
+	<!-- sns 계정 연결 -->
+	<update id="updateNetfuMemberSNS" parameterType="hashmap">
+		update netfu_member
+		set
+			ci_key = #{id}
+			, sns_login_type = #{snsLoginType}
+		where
+			type = 1
+			AND uid = #{uid}
+			AND `left` <![CDATA[ <> ]]> 'yes'
+	</update>
+
 	
 	
 	<!-- ID 중복 확인, ID 찾기, PW 찾기 -->

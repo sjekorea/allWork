@@ -1,15 +1,16 @@
 package allwork.controller;
 
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,24 +26,33 @@ Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource(name="netfuMemberService")
 	private NetfuMemberService netfuMemberService;
+
+	//소셜 Login 정보.
+	@Value("${naver.clientId}")
+	private String naverClientId;
+
+	@Value("${kakao.clientId}")
+	private String kakaoClientId;
+
 	
 	
 	/********
 	 * Naver 로그인 
 	 */
 	@RequestMapping(value="/naverLogin.do")
-	public ModelAndView loginProcess(CommandMap commandMap, HttpServletRequest req, HttpServletResponse rep) throws IOException{
+	public ModelAndView naverLogin(CommandMap commandMap, HttpServletRequest req, HttpServletResponse rep) throws IOException{
 		
 		ModelAndView mv = new ModelAndView("/login/naverLogin");
+		mv.addObject("naverClientId", naverClientId); 
 		return mv;
 	}
-	
+
 	
 	/********
 	 * sns 로그인 처리
 	 */
 	@RequestMapping(value="/snsLoginProcess.ajax")
-	public ModelAndView naverLoginProcess(CommandMap commandMap, HttpServletRequest req, HttpServletResponse rep) throws IOException{
+	public ModelAndView snsLoginProcess(CommandMap commandMap, HttpServletRequest req, HttpServletResponse rep) throws IOException{
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -104,6 +114,70 @@ Logger log = Logger.getLogger(this.getClass());
 			
 		}catch(Exception e){
 			System.out.println(this.getClass().getName()+".googleLoginProcess.ajax Excepion!!!!!!!!! =====> "+e.toString());
+		}
+		return mv;
+	}
+	
+	
+	
+	/*
+	 * 소셜계정 연결.
+	 */
+	@RequestMapping(value="/linkSocial.do")
+	public ModelAndView linkSocial(CommandMap commandMap, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView("/login/linkSocial");
+		try{
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("naverClientId", naverClientId); 
+			mv.addObject("kakaoClientId", kakaoClientId); 
+		}catch(Exception e){
+			log.info(this.getClass().getName()+".linkSocial Exception !!!!! \n"+e.toString());
+		}
+		return mv;
+	}
+
+	/*
+	 * Naver 소셜계정 연결.
+	 */
+	@RequestMapping(value="/naverUpdate.do")
+	public ModelAndView naverUpdate(CommandMap commandMap, HttpServletRequest req, HttpServletResponse rep) throws IOException{
+		
+		ModelAndView mv = new ModelAndView("/login/naverUpdate");
+		mv.addObject("naverClientId", naverClientId); 
+		return mv;
+	}
+
+	/*
+	 * 소셜계정 연결 처리.
+	 * 
+	 */
+	@RequestMapping(value="/snsUpdateProcess.ajax")
+	public ModelAndView snsUpdateProcess(CommandMap commandMap, HttpServletRequest req, HttpServletResponse rep) throws IOException{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		try{
+			//사용자 계정을 소셜계정에 연결.
+			netfuMemberService.updateNetfuMemberSNS(commandMap.getMap());
+
+			//소셜계정에 연결된 정보 전달.
+			int userInfoCnt = netfuMemberService.selectNetfuMemberSNSLoginCnt(commandMap.getMap());
+
+			Map<String, Object> memberInfoMap = new HashMap<String, Object>();
+			
+			if(userInfoCnt > 0){
+				commandMap.put("ciKey", (String)commandMap.get("id"));
+				memberInfoMap = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
+				LoginSuccessProcess loginSuccessProcess = new LoginSuccessProcess();
+				loginSuccessProcess.loginSuccessMakeSession(req, memberInfoMap);
+			}
+			
+			mv.addObject("rstCnt", userInfoCnt); 
+			mv.addObject("memberInfoMap", memberInfoMap);
+			mv.setViewName("jsonView");
+			
+		}catch(Exception e){
+			System.out.println(this.getClass().getName()+".snsUpdateProcess Excepion!!!!!!!!! =====> "+e.toString());
 		}
 		return mv;
 	}

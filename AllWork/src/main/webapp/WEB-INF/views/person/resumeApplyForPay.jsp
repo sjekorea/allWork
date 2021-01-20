@@ -117,7 +117,6 @@
 			service1EndDate = moment(addDay(new Date(), 30)).format('YYYY-MM-DD');
 		}
 		
-		
 		// IMP.request_pay(param, callback) 호출
 		IMP.request_pay({ // param
 			pg : 'danal_tpay', //아임포트 관리자에서 danal_tpay를 기본PG로 설정하신 경우는 생략 가능

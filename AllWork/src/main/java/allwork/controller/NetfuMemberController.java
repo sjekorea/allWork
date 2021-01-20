@@ -49,6 +49,13 @@ public class NetfuMemberController {
 	//이력서 사진의 Upload folder 경로명.
 	@Value("${upload.path.photo}")
 	private String filePathPhoto;
+
+	//소셜 Login 정보.
+	@Value("${naver.clientId}")
+	private String naverClientId;
+
+	@Value("${kakao.clientId}")
+	private String kakaoClientId;
    	//(end) 2021.01.04 by s.yoo
 
 	
@@ -469,6 +476,9 @@ public class NetfuMemberController {
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".memberUnregister Exception !!!!! \n"+e.toString());
 		}
+		
+		mv.addObject("naverClientId", naverClientId); 
+		mv.addObject("kakaoClientId", kakaoClientId); 
 		return mv;
 	}
 	
