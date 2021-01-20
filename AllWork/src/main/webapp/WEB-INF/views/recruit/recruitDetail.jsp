@@ -234,7 +234,11 @@
 									</c:if>
 								</td>
 							</tr>
-						
+							<tr>
+								<th>입사지원현황</th>
+								<td>현재까지 ${applyCnt }명 지원</td>
+							</tr>
+
 						</tbody>
 					</table>
 				</div>

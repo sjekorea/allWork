@@ -43,6 +43,11 @@ public class NetfuItemCompanyDao extends AbstractDAO{
 		return (List<Map<String, Object>>)selectList("netfuItemCompany.selectNetfuItemCompanyListByCompany", map);
 	}
 	
+	// 채용공고별 지원자수
+	public int selectNetfuItemCompanyApplyCnt(Map<String, Object> map) {
+		return selectCnt("netfuItemCompany.selectNetfuItemCompanyApplyCnt", map);
+	}
+	
 	// 진행중인 채용공고 - selectbox 용
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectNetfuItemCompanyProceess(Map<String, Object> map) {

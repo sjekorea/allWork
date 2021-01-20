@@ -220,6 +220,17 @@
 		order by ${orderField} ${orderRule}
 		limit #{start}, #{pageSize}
 	</select>
+
+	<!-- 채용공고별 지원자수 -->
+	<select id="selectNetfuItemCompanyApplyCnt" parameterType="hashmap" resultType="int">
+		select 
+			count(nor.no)
+		from
+			netfu_online_recruit nor
+		where 1=1
+			AND nor.to_no = ${no}
+			AND nor.to_type in ('email', 'online', 'mobile')
+	</select>
 	
 	
 	<!-- 진행중인 채용공고 - selectbox 용 -->

@@ -58,6 +58,12 @@ public class NetfuItemCompanyServiceImpl implements NetfuItemCompanyService{
 		return netfuItemCompanyDao.selectNetfuItemCompanyListByCompany(map);
 	}
 	
+	// 기업별 채용공고  지원자수
+	@Override
+	public int selectNetfuItemCompanyApplyCnt(Map<String, Object> map) throws Exception {
+		return netfuItemCompanyDao.selectNetfuItemCompanyApplyCnt(map);
+	}
+
 	// 진행중인 채용공고-selectbox용
 	@Override
 	public List<Map<String, Object>> selectNetfuItemCompanyProceess(Map<String, Object> map) throws Exception {

@@ -64,7 +64,8 @@ public class CodeConvertUtil {
 						}else{
 							dateCompareResult = DateUtil.getCompareDate(bizEndDay);
 							if( dateCompareResult < 0){  // 오늘날짜가 마감일 이후
-								rtnStr = "<p class='deadline deadline01'>마감일 경과: " + bizEndDay.substring(5) +"</p>";
+								//rtnStr = "<p class='deadline deadline01'>마감일 경과: " + bizEndDay.substring(5) +"</p>";
+								rtnStr = "<p class='deadline deadline01'>" + bizEndDay.substring(5) +"</p>";
 							}else if( dateCompareResult > 0){  // 오늘날짜가 마감일 이전
 								rtnStr = "<p class='deadline deadline02'> ~"+bizEndDay.substring(5)+"("+DateUtil.getDayOfWeek(bizEndDay)+")"+"</p>";
 							}else{
@@ -268,10 +269,10 @@ public class CodeConvertUtil {
 	public static String getBizAge(String bizAge){
 		String rtnStr = "";
 		
-		if("none".equals(bizAge)){
+		if("none".equals(bizAge) || bizAge == null || bizAge.length() < 1){
 			rtnStr = "무관";
 		}else{
-			rtnStr = bizAge + "세";
+			rtnStr = bizAge + "세";				
 		}
 
 		return rtnStr;

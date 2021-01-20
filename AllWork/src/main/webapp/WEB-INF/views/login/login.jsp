@@ -207,20 +207,24 @@
 		if("${map.type}" == "company"){
 			$("input:radio[id='company_login']").prop("checked", true);  
 			$("input:radio[id='persnal_login']").prop("checked", false);
+			$(".logintextsub").css("display", "none");
 			$(".snsLogin").css("display", "none");
 		}else{
 			$("input:radio[id='company_login']").prop("checked", false);  
 			$("input:radio[id='persnal_login']").prop("checked", true); 
+			$(".logintextsub").css("display", "block");
 			$(".snsLogin").css("display", "block");
 		}
 		
 		$("input:radio[id='company_login']").click(function(){
 			$("input:radio[id='persnal_login']").prop("checked", false);
+			$(".logintextsub").css("display", "none");
 			$(".snsLogin").css("display", "none");
 		});
 		
 		$("input:radio[id='persnal_login']").click(function(){
 			$("input:radio[id='company_login']").prop("checked", false);
+			$(".logintextsub").css("display", "block");
 			$(".snsLogin").css("display", "block");
 		});
 		

@@ -554,6 +554,9 @@ public class RecruitController {
 			commandMap.put("uid", commandMap.get("loginId"));
 			int resumeCnt = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
 			
+			// 채용공고에 대한 입사지원자수
+			int applyCnt = netfuItemCompanyService.selectNetfuItemCompanyApplyCnt(commandMap.getMap());
+			
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("personMap", personMap);
 			mv.addObject("resumeList", resumeList);
@@ -562,6 +565,7 @@ public class RecruitController {
 			mv.addObject("scrapCnt", scrapCnt);
 			mv.addObject("concernCnt", concernCnt);
 			mv.addObject("resumeCnt", resumeCnt);
+			mv.addObject("applyCnt", applyCnt);
 			
 		}catch(Exception e){
 			e.printStackTrace();
