@@ -146,8 +146,7 @@
 			<h4>인재정보(<fmt:formatNumber value="${map.totalSize}" pattern="#,###"/>)</h4>
 			<ul class="rec_align">
 				<li><a href="#none" title="등록일순">등록일순&nbsp;&nbsp;|&nbsp;</a></li>
-                <li><a href="#none" title="등록일순">수정일순&nbsp;&nbsp;|&nbsp;</a></li>
-                <li><a href="#none" title="등록일순">마감일순</a></li>
+                <li><a href="#none" title="등록일순">수정일순&nbsp;&nbsp;</a></li>
 			</ul>
 			<table class="list">
 				<caption>리스트</caption>
