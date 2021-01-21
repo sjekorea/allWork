@@ -56,10 +56,16 @@
 							<th>${result.itemNo}</th>
 							<td class="board_Part">
 								<a href="javascript:goBoardView('${boardCode}', ${result.id}, ${map.get("pageNo")});">
+									<c:forEach begin="0" end="${result.replyLevel}" varStatus="loop">
+										&nbsp;&nbsp;
+									</c:forEach>
+									<c:if test="${result.replyLevel > 0 }">
+										<img src="img/community/reply_arrow.png" alt="답글이미지"/>
+									</c:if>
 									${result.subject}
 								</a>
 							</td>
-							<td class="board_Person">${result.uid}</td>
+							<td class="board_Person">${result.nickName}</td>
 							<td class="board_date">${result.strWdate}</td>
 							<td class="board_count"><fmt:formatNumber value="${result.hit}" pattern="#,###"/></td>
 						</tr>

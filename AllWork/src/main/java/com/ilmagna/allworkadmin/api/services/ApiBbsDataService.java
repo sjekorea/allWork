@@ -46,7 +46,24 @@ public class ApiBbsDataService {
 	}
 
 	public void insertBbsData(ApiBbsDataModel model) throws Exception {
+		//bbsDAO.insertBbsData(model);
+		int id = 0;
+		if (model.getId() != null) id = model.getId();
+
+		//답글 등록
+		//	1. reply_req 값을 1씩 증가.
+		if (model.getReplyReq() != null && model.getReplyReq() > 0) {
+			bbsDAO.updateRepyReq(model);
+		}	
+
+		//데이터 등록.
 		bbsDAO.insertBbsData(model);
+		
+		//답글 등록
+		//	2. ref에 값을 id 값으로 갱신.
+		if (id < 1) {
+			bbsDAO.updateRef(model);
+		}	
 	}
 
 	public void updateBbsData(ApiBbsDataModel model) throws Exception {

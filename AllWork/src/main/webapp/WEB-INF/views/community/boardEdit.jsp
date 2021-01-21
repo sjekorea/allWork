@@ -103,8 +103,7 @@
 	        }, 
 	        fOnAppLoad : function(){
 	            //textarea 내용을 에디터상에 바로 뿌려주고자 할때 사용
-            	//var data = '${map.content}'.replace(/\"/gi, "");
-	            //content_object.getById["content"].exec("PASTE_HTML", [ "${item.content}" ]);
+	            //content_object.getById["content"].exec("PASTE_HTML", [ "{item.content}" ]);
 	        }
 	    });
 	});
@@ -118,9 +117,9 @@
 		//게시판
 		<c:if test="${boardCode == 'netfu_41549_84812' }">
 			if ($("#id").val() > 0) {
-				goBoardView('${boardCode}', $("#id").val(), ${map.get("pageNo")});
+				return goBoardView('${boardCode}', $("#id").val(), ${map.get("pageNo")});
 			} else {
-				goBoardList('${boardCode}', 0, ${map.get("pageNo")});
+				return goBoardList('${boardCode}', ${map.get("pageNo")});
 			}
 		</c:if>
 	}
@@ -153,11 +152,14 @@
 		};
 		var param = {
 				  boardCode : '${boardCode}'
-				, uid: '${item.uid}'
+				, uid: '${SE_LOGIN_ID}'
 				, nickName: '${SE_USER_NM}'
 				, subject : $("#subject").val()
 				, content : $("#content").val()
 				, no: id
+				, ref: 0
+				, replyReq: 0
+				, replyLevel: 0
 			};
 		if (id > 0) {
 			ajax('post', '/boardUpdateProcess.ajax', param, callback);

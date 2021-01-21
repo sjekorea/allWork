@@ -37,8 +37,8 @@ public class ApiBbsDataDAO extends AbstractDAO {
 	}
 
 
-	public void insertBbsData(ApiBbsDataModel model) throws Exception {
-		insert("com.ilmagna.allworkadmin.api.daos.ApiBbsDataDAO.insertBbsData", model);
+	public int insertBbsData(ApiBbsDataModel model) throws Exception {
+		return insert("com.ilmagna.allworkadmin.api.daos.ApiBbsDataDAO.insertBbsData", model);
 	}
 
 	public void updateBbsData(ApiBbsDataModel model) throws Exception {
@@ -47,6 +47,14 @@ public class ApiBbsDataDAO extends AbstractDAO {
 	
 	public void deleteBbsData(ApiBbsDataModel model) throws Exception {
 		delete("com.ilmagna.allworkadmin.api.daos.ApiBbsDataDAO.deleteBbsData", model);		
+	}
+
+	public void updateRepyReq(ApiBbsDataModel model) throws Exception {
+		update("com.ilmagna.allworkadmin.api.daos.ApiBbsDataDAO.updateRepyReq", model);		
+	}
+
+	public void updateRef(ApiBbsDataModel model) throws Exception {
+		update("com.ilmagna.allworkadmin.api.daos.ApiBbsDataDAO.updateRef", model);		
 	}
 
 	

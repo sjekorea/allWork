@@ -353,8 +353,7 @@
 	        }, 
 	        fOnAppLoad : function(){
 	            //textarea 내용을 에디터상에 바로 뿌려주고자 할때 사용
-            	//var data = '${map.bizVision}'.replace(/\"/gi, "");
-	            //bizVision_object.getById["bizVision"].exec("PASTE_HTML", [ "${map.bizVision}" ]);
+	            //bizVision_object.getById["bizVision"].exec("PASTE_HTML", [ "{map.bizVision}" ]);
 	        }
 	    });
 		 
@@ -373,8 +372,7 @@
 	        fOnAppLoad : function(){
 	            //textarea 내용을 에디터상에 바로 뿌려주고자 할때 사용
 	            try {
-	            	//var data = '${map.bizHistory}'.replace(/\"/gi, "");
-		            //bizHistory_object.getById["bizHistory"].exec("PASTE_HTML", [ "${map.bizHistory}" ]);	            	
+		            //bizHistory_object.getById["bizHistory"].exec("PASTE_HTML", [ "{map.bizHistory}" ]);	            	
 	            } catch(error) {
 	            	console.log(error);
 	            }

@@ -14,9 +14,9 @@ public class ApiBbsDataModel extends ApiJqGridParams implements Serializable  {
 	
 	private Integer id;
 	private String boardCode;
-	private Integer ref;				// X
-	private Integer replyReq;			// X
-	private Integer replyLevel;			// X
+	private Integer ref;				// 답글에 해당하는 원본 Root 글의 ID.
+	private Integer replyReq;			// 답글 Order 0->1->2.
+	private Integer replyLevel;			// 답글 level. 원글은 0. 답글은 1 이상.
 	private Integer good;				// X
 	private String passwd;				// X
 	private String type;				// 게시판 Group code

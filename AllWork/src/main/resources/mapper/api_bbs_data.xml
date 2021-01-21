@@ -16,6 +16,9 @@
 			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strWdate
 			, A.subject AS subject
 			, A.content AS content
+			, A.ref AS ref
+			, A.reply_req AS replyReq
+			, A.reply_level AS replyLevel
 			, A.link AS link
 			, A.hit AS hit
 			, A.thumbnail AS thumbnail
@@ -46,7 +49,7 @@
 			</if>
 		</where>
 		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
-			ORDER BY A.no DESC
+			ORDER BY A.ref DESC, A.reply_req ASC
 		</if>
 		<if test=' sidx != null &amp;&amp; sidx != "" &amp;&amp; sidx != "hphone" &amp;&amp; sidx != "email" &amp;&amp; sidx != "board_name" &amp;&amp; sord != null &amp;&amp; sord != ""'>
 			ORDER BY A.${sidx} ${sord}, A.no DESC
@@ -75,6 +78,9 @@
 			, DATE_FORMAT(A.wdate, '%Y-%m-%d') AS strWdate
 			, A.subject AS subject
 			, A.content AS content
+			, A.ref AS ref
+			, A.reply_req AS replyReq
+			, A.reply_level AS replyLevel
 			, A.link AS link
 			, A.hit AS hit
 			, A.thumbnail AS thumbnail
@@ -147,6 +153,9 @@
 			, wdate
 			, subject
 			, content
+			, ref
+			, reply_req
+			, reply_level
 			, link
 			, hit
 			, thumbnail
@@ -159,6 +168,9 @@
 			, CURRENT_TIMESTAMP()
 			, #{subject}
 			, #{content}
+			, #{ref}
+			, #{replyReq}
+			, #{replyLevel}
 			, #{link}
 			, 0
 			, #{thumbnail}
@@ -217,6 +229,14 @@
 
 	<update id="incRefCount" parameterType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel">
 		UPDATE ${type} SET hit = hit + 1 WHERE board_code = #{boardCode} AND no = #{id}
+	</update>
+
+	<update id="updateRepyReq" parameterType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel">
+		UPDATE ${type} SET reply_req = reply_req + 1 WHERE board_code = #{boardCode} AND ref = #{ref} AND reply_req >= #{replyReq }
+	</update>
+
+	<update id="updateRef" parameterType="com.ilmagna.allworkadmin.api.domains.ApiBbsDataModel">
+		UPDATE ${type} SET ref = no WHERE board_code = #{boardCode} AND no = #{id}
 	</update>
 
 </mapper>

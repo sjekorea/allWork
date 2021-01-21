@@ -325,6 +325,12 @@ public class CommunityController {
 			model.setNickName((String) commandMap.get("nickName"));
 			model.setSubject((String) commandMap.get("subject"));
 			model.setContent((String) commandMap.get("content"));
+			
+			model.setId(Integer.parseInt((String) commandMap.get("no")));
+			model.setRef(Integer.parseInt((String) commandMap.get("ref")));
+			model.setReplyReq(Integer.parseInt((String) commandMap.get("replyReq")));
+			model.setReplyLevel(Integer.parseInt((String) commandMap.get("replyLevel")));
+
 			model.setLink("");
 			model.setHit(0);
 			model.setThumbnail("");
