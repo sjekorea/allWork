@@ -145,7 +145,7 @@
 		    pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
 		    merchant_uid : 'merchant_' + new Date().getTime()+'_${SE_LOGIN_ID}', //상점에서 관리하시는 고유 주문번호를 전달
 		    name : productName,
-		    amount : 100,
+		    amount : amount,
 		    buyer_email : "${memberInfoMap.email}",
 		    buyer_name : "${memberInfoMap.name}",
 		    buyer_tel : "${memberInfoMap.hphone}", //누락되면 카드사 인증에 실패할 수 있으니 기입해주세요

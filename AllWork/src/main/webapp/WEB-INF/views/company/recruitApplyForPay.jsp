@@ -110,6 +110,9 @@
 		});
 		
 		$(".apply").on("click", function(e){
+			
+			alert("${SE_SERVICE1}"+" || "+"${SE_SERVICE1_END}" + " || " + "${SE_SERVICE2}"+" || "+"${SE_SERVICE2_END}"+" || "+"${SE_VIEW_COUNT}");
+			
 			if("${SE_SERVICE1}" == "Y"){
 				alert("현재 유료 서비스 이용중입니다.");
 			}else{
@@ -137,10 +140,10 @@
 		// IMP.request_pay(param, callback) 호출
 		IMP.request_pay({ // param
 			pg : 'danal_tpay', //아임포트 관리자에서 danal_tpay를 기본PG로 설정하신 경우는 생략 가능
-		    pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
+		    pay_method : 'phone', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
 		    merchant_uid : 'merchant_' + new Date().getTime()+'_${SE_LOGIN_ID}', //상점에서 관리하시는 고유 주문번호를 전달
 		    name : productName,
-		    amount : 100,
+		    amount : amount,
 		    buyer_email : "${memberInfoMap.email}",
 		    buyer_name : "${memberInfoMap.name}",
 		    buyer_tel : "${memberInfoMap.hphone}", //누락되면 카드사 인증에 실패할 수 있으니 기입해주세요

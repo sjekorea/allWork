@@ -34,7 +34,7 @@
 		
 		loadingOff();
 
-		//alert("${SE_SERVICE1}"+" || "+"${SE_SERVICE1_END}" + " || " + "${SE_SERVICE2}"+" || "+"${SE_SERVICE2_END}"+" || "+"${SE_VIEW_COUNT}");
+		alert("${SE_SERVICE1}"+" || "+"${SE_SERVICE1_END}" + " || " + "${SE_SERVICE2}"+" || "+"${SE_SERVICE2_END}"+" || "+"${SE_VIEW_COUNT}");
 		
 		function procSemanticSearch() {
 		   	//(begin) 2020.12.30 by s.yoo
