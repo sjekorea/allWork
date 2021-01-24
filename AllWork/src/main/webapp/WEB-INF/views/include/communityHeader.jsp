@@ -44,8 +44,9 @@
 						</c:when>
 						<c:otherwise>
 							<li class="allworkHome"><a href="/index.do" title="allwork사이트">Allwork&nbsp;&nbsp;|&nbsp;</a></li>
-							<li><a href="/login.do" title="로그인">로그인&nbsp;|&nbsp;</a></li>
+							<li><a href="/introAbout.do" title="회사소개">회사소개&nbsp;|&nbsp;</a></li>
 							<li><a href="/sitemap.do" title="사이트맵">사이트맵&nbsp;|&nbsp;</a></li>
+							<li><a href="/login.do" title="로그인">로그인&nbsp;|&nbsp;</a></li>
 							<li><a href="/personJoin.do" title="회원가입">회원가입</a></li>
 						</c:otherwise>
 					</c:choose>

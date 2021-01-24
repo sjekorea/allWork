@@ -744,7 +744,7 @@
 		if(checkNull($("#inidAreaJob1 option:selected").val())){ alert("산업분야를 선택하세요."); return; }
 		if(checkNull($("#inidJobform").val())){ alert("희망근무형태를 선택하세요."); return; }
 		if(checkNull($("#payType option:selected").val())){ alert("급여 종류를 선택하세요."); return; }
-		if(checkNull($("#inidPay option:selected").val())){ alert("희망급여를 선택하세요."); return; }
+		if($("#payType option:selected").val() != 'payCheck01' && checkNull($("#inidPay option:selected").val())){ alert("희망급여를 선택하세요."); return; }
 		
 		
 		/*  #######  학력 정보 JSON  */
@@ -949,8 +949,13 @@
 		//console.log("{data:"+JSON.stringify(careerArray))+"}";
 		
 		//최종학력과 총경력년수.
-		$("#educationDegree").val($("#final_degree").val());
-		$("#careerTotal").val($("#total_year").val());
+		var educationDegree = $("#final_degree").val();
+		if (!educationDegree) educationDegree = 0;
+		$("#educationDegree").val(educationDegree);
+		
+		var careerTotal = $("#total_year").val();
+		if (!careerTotal) careerTotal = 0;
+		$("#careerTotal").val(careerTotal);
 
 		
 		$("#registForm").submit();

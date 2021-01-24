@@ -37,7 +37,7 @@
 						<tr class="list_title">
 							<th class="desc00"><input type="checkbox" name="all"/></th>
 							<th class="desc01">회사명</th>
-							<th class="desc02">지원내역</th>
+							<th class="desc02">채용공고</th>
 							<th class="desc03">이력서</th>
 							<th class="desc04">마감일</th>
 							<th class="desc05">지원일</th>

@@ -17,7 +17,7 @@
 	
 	<!-- 소셜 로그인 -->
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="296410191449-eh2l0asvq7kuf738k9v50jh039ik0tj3.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="${googleClientId}">
 	
 	<link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/common.css"/>
@@ -61,8 +61,10 @@
 		<div id="loginWrap">
 			<div id="loginArea">
 				<div class="logintext">
-					<h1>Allwork</h1>
-					시니어를 위한 재취업 포털
+					<a href="/index.do">
+						<h1>Allwork</h1>
+						시니어를 위한 재취업 포털
+					</a>
 				</div>
 				<form action="javascript:goLogin();" method="post">
 					<fieldset>

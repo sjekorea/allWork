@@ -18,7 +18,7 @@
 		</div>
 		<div id="rightPart">
 			<div id="listPart">
-				<h4>면접요청기업</h4>
+				<h4>면접을 제의한 기업</h4>
 				<p class="comment">* 회사명을 클릭하면 회사정보와 함께 현재 진행중이거나 마감된 모든 채용공고를 보실 수 있습니다.</p>
 				<table class="list">
 					<caption>리스트</caption>
@@ -26,7 +26,8 @@
 						<tr class="list_title">
 							<th class="desc01">회사명</th>
 							<th class="desc02">채용공고</th>
-							<th class="desc03">면접요청일</th>
+							<th class="desc03">채용마감</th>
+							<th class="desc04">면접요청일</th>
 						</tr>
 						<c:choose>
 							<c:when test="${list.size() > 0 }">
@@ -45,11 +46,12 @@
 										<td class="desc03">
 											${codeConvert:getRecruitStatusTextShort(result.bizIng, result.bizEndType, result.bizEndDay) }
 										</td>
+										<td class="desc04">${result.wdate }</td>
 									</tr>
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<tr class="desc"><td colspan="3">내역이 없습니다.</td></tr>
+								<tr class="desc"><td colspan="4">내역이 없습니다.</td></tr>
 							</c:otherwise>
 						</c:choose>
 					</tbody>

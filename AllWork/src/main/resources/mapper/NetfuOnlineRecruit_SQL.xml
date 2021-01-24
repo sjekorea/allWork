@@ -38,6 +38,7 @@
 	
 	<!-- 면접 요청 기업  -->
 	<select id="selectInterviewRequestCompanyList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
+	<!-- 
 	select 
 		${recruitColumn}
 	from netfu_item_company nic
@@ -48,6 +49,30 @@
                 and to_type = 'interview' and to_uid = #{loginId})
     order by wdate desc            
 	limit #{start}, #{pageSize}
+	 -->
+		select 	
+			nic.no, nic.uid, nic.biz_name, nic.biz_title, 'open'
+			, nic.biz_pay, getCodeName(nic.biz_pay) biz_pay_name ### 급여정보
+			, nic.biz_career ## 경력
+			, nic.biz_age ## 나이
+			, nic.biz_area1, getCodeName(nic.biz_area1) biz_area1_name ## 근무지역
+			, nic.biz_ability	## 학력
+			, nic.biz_sex
+			, nic.biz_end_day, nic.biz_end_type, nic.biz_ing
+			, nic.biz_type1, getCodeName(nic.biz_type1) biz_type1_name
+			, nic.biz_area1, getCodeName(nic.biz_area1) biz_area1_name
+			, nic.biz_area2, getCodeName(nic.biz_area2) biz_area2_name
+			, nic.biz_jobfrom, getCodeName(nic.biz_jobfrom) biz_jobfrom_name
+			, DATE_FORMAT(nor.wdate, '%Y-%m-%d') wdate
+		from netfu_online_recruit nor, netfu_item_company nic
+		where 1=1
+                and nor.type = 'job' 
+                and nor.sub_type = 'company'
+                and nor.to_type = 'interview' and nor.to_uid = #{loginId}
+
+			and nor.from_no = nic.no
+		order by nor.wdate desc 
+		LIMIT #{start}, #{pageSize}
 	</select>
 	
 	

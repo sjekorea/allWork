@@ -30,7 +30,7 @@
 			<ol class="subMenu subMenu03">
 				<li class="subMenu03_01"><a href="/recruitScrapList.do" title="스크랩">스크랩한 채용정보</a></li>
 				<li class="subMenu03_02"><a href="/interestCompanyList.do" title="관심기업">관심기업</a></li>
-				<li class="subMenu03_03"><a href="/interviewRequestCompany.do" title="면접요청기업">면접요청기업</a></li>
+				<li class="subMenu03_03"><a href="/interviewRequestCompany.do" title="면접을 제의한 기업">면접을 제의한 기업</a></li>
 			</ol></li>
 		<li class="menu menu04"><a href="/recruitViewList.do" title="내가 확인한 채용정보">내가 확인한 채용정보</a></li>
 		<li class="menu menu05"><a href="/fitRecruitList.do" title="맞춤서비스관리">맞춤서비스관리</a>

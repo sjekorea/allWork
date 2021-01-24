@@ -1,5 +1,6 @@
 package allwork.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -24,6 +25,7 @@ import allwork.service.HomeCommonService;
 import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuMyServiceService;
 import allwork.service.RecruitOtherService;
+import allwork.vo.NetfuItemCompanyVo;
 
 /**
  * Handles requests for the application home page.
@@ -85,10 +87,19 @@ public class HomeController {
 			// 롤 배너 정보
 			List<Map<String, Object>> rollBannerList = homeCommonService.selectMainRollBannerList(commandMap.getMap());
 			
-			// 채용정보 1
-			List<Map<String, Object>> mainRecruitList = homeCommonService.selectMainPayRecruitList(commandMap.getMap());
-			if(mainRecruitList.size() <= 5){
-				mainRecruitList = homeCommonService.selectMainRecruitList(commandMap.getMap());
+			// 채용정보 1 - 유료 채용공고 우선적으로 표출. 유료채용공고가 부족한 경우에는 일반정보 추가.
+			List<NetfuItemCompanyVo> mainRecruitList = new ArrayList<NetfuItemCompanyVo>();
+			List<Map<String, Object>> mainRecruitList1 = homeCommonService.selectMainPayRecruitList(commandMap.getMap());
+			for (int j = 0; j < mainRecruitList1.size(); j++) {
+				NetfuItemCompanyVo item = (NetfuItemCompanyVo) mainRecruitList1.get(j);
+				mainRecruitList.add(item);
+			}
+			if(mainRecruitList.size() < 6) {
+				List<Map<String, Object>> mainRecruitList2 = homeCommonService.selectMainRecruitList(commandMap.getMap());
+				for (int i = mainRecruitList.size(), j = 0; i < 6 && j < mainRecruitList2.size(); i++, j++) {
+					NetfuItemCompanyVo item = (NetfuItemCompanyVo) mainRecruitList2.get(j);
+					mainRecruitList.add(item);
+				}
 			}
 			
 			//헤디헌팅 채용공고

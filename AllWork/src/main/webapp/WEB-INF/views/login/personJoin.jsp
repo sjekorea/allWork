@@ -16,7 +16,7 @@
 	
 	<!-- 소셜 로그인 -->
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="296410191449-eh2l0asvq7kuf738k9v50jh039ik0tj3.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="${googleClientId}">
 	
 	<link rel="stylesheet" type="text/css" href="/css/header_mini.css" />
 	<link rel="stylesheet" type="text/css" href="/css/register_01.css" />

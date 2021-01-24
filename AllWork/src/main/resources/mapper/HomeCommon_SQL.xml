@@ -87,17 +87,6 @@
 		select aa.*
 		from 
 		(
-				SELECT 'head' type, a.ser no, '' uid, concat(a.company_initial, '사') bizName, b.recruit_item_contents bizTitle, b.men bizMen, b.place_work bizArea1Name
-						, b.biz_end_type bizEndType, DATE_FORMAT(b.biz_end_day, '%m/%d') bizEndDay
-						, DATE_FORMAT(b.date_req, '%m/%d') wdate
-						, CASE b.prs WHEN 'P' THEN 'yes' ELSE 'no' END bizIng
-				FROM recruit_company AS a, recruit_item AS b
-				WHERE 1=1
-					and a.prs='P' AND b.prs='P' AND a.ser=b.target_ser 
-					and date_req BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
-
-				UNION ALL
-				
 				select 'free' type , nic.no, nic.uid,  nic.biz_name bizName, nic.biz_title bizTitle, nic.biz_men bizMen
 						, concat(getCodeName(nic.biz_area1),' ', ifnull(getCodeName(nic.biz_area2), '')) bizArea1Name 
 						, nic.biz_end_type bizEndType, DATE_FORMAT(nic.biz_end_day, '%m/%d') bizEndDay

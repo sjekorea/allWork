@@ -41,7 +41,7 @@
 					<ol>
 						<li><a href="/recruitScrapList.do" title="스크랩">스크랩한 채용정보</a></li>
 						<li><a href="/interestCompanyList.do" title="관심기업">관심기업</a></li>
-						<li><a href="/interviewRequestCompany.do" title="면접요청기업">면접요청기업</a></li>
+						<li><a href="/interviewRequestCompany.do" title="면접을 제의한 기업">면접을 제의한 기업</a></li>
 					</ol>
 				</li>
 				<li class="gnb"><a href="/recruitViewList.do" title="내가 확인한 채용정보">내가 확인한 채용정보</a></li>

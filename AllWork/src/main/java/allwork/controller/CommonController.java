@@ -32,6 +32,9 @@ public class CommonController {
 	@Value("${kakao.clientId}")
 	private String kakaoClientId;
 
+	@Value("${google.clientId}")
+	private String googleClientId;
+
 	
 	@RequestMapping(value="/commonHeader.do")
 	public ModelAndView commonHeader(CommandMap commandMap) {
@@ -40,6 +43,7 @@ public class CommonController {
 		
 		mv.addObject("naverClientId", naverClientId); 
 		mv.addObject("kakaoClientId", kakaoClientId); 
+		mv.addObject("googleClientId", googleClientId); 
 		return mv;
 	}
 	
@@ -62,6 +66,7 @@ public class CommonController {
 		
 		mv.addObject("naverClientId", naverClientId); 
 		mv.addObject("kakaoClientId", kakaoClientId); 
+		mv.addObject("googleClientId", googleClientId); 
 		return mv;
 	}
 	
@@ -93,6 +98,7 @@ public class CommonController {
 		
 		mv.addObject("naverClientId", naverClientId); 
 		mv.addObject("kakaoClientId", kakaoClientId); 
+		mv.addObject("googleClientId", googleClientId); 
 		return mv;
 	}
 	@RequestMapping(value="/personSubMenu.do")
@@ -111,6 +117,7 @@ public class CommonController {
 		
 		mv.addObject("naverClientId", naverClientId); 
 		mv.addObject("kakaoClientId", kakaoClientId); 
+		mv.addObject("googleClientId", googleClientId); 
 		return mv;
 	}
 	@RequestMapping(value="/companySubMenu.do")
@@ -129,6 +136,7 @@ public class CommonController {
 		
 		mv.addObject("naverClientId", naverClientId); 
 		mv.addObject("kakaoClientId", kakaoClientId); 
+		mv.addObject("googleClientId", googleClientId); 
 		return mv;
 	}
 	@RequestMapping(value="/communitySubMenu.do")
@@ -176,6 +184,7 @@ public class CommonController {
 		
 		mv.addObject("naverClientId", naverClientId); 
 		mv.addObject("kakaoClientId", kakaoClientId); 
+		mv.addObject("googleClientId", googleClientId); 
 		return mv;
 	}
 	@RequestMapping(value="/introSubMenu.do")

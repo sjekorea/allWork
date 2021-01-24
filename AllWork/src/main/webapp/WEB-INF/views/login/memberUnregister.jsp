@@ -7,7 +7,7 @@
 
 	<!-- 소셜 로그인 -->
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="296410191449-eh2l0asvq7kuf738k9v50jh039ik0tj3.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="${googleClientId}">
 
 	<!-- 소셜 로그인 -->
 	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>

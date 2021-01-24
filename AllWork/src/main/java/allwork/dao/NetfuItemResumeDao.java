@@ -19,7 +19,11 @@ public class NetfuItemResumeDao extends AbstractDAO{
 	public int selectNetfuItemResumeCnt(Map<String, Object> map) throws Exception{
 		return selectCnt("netfuItemResume.selectNetfuItemResumeCnt", map);
 	}
-	
+
+	public int selectNetfuItemMyResumeCnt(Map<String, Object> map) throws Exception{
+		return selectCnt("netfuItemResume.selectNetfuItemMyResumeCnt", map);
+	}
+
 	// 이력서 리스트
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectNetfuItemResumeList(Map<String, Object> map) {

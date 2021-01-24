@@ -56,6 +56,9 @@ public class NetfuMemberController {
 
 	@Value("${kakao.clientId}")
 	private String kakaoClientId;
+
+	@Value("${google.clientId}")
+	private String googleClientId;
    	//(end) 2021.01.04 by s.yoo
 
 	
@@ -479,6 +482,7 @@ public class NetfuMemberController {
 		
 		mv.addObject("naverClientId", naverClientId); 
 		mv.addObject("kakaoClientId", kakaoClientId); 
+		mv.addObject("googleClientId", googleClientId); 
 		return mv;
 	}
 	

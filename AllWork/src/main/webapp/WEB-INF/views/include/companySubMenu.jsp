@@ -32,7 +32,7 @@
 			<h3>입사지원 관리</h3>
 			<ol class="subMenu subMenu03">
 				<li class="subMenu03_01"><a href="/companyApplicantList.do" title="입사지원 관리">입사지원자 관리</a></li>
-				<li class="subMenu03_02"><a href="/interviewSuggestList.do" title="면접제의 요청관리">면접제의 요청관리</a></li>
+				<li class="subMenu03_02"><a href="/interviewSuggestList.do" title="면접제의 구직자 목록">면접제의 구직자 목록</a></li>
 			</ol>
 		</li>
 		<li class="gnb gnb04"><a href="/recruitApplyForPay.do" title="유료서비스">유료서비스</a>

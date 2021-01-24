@@ -254,7 +254,7 @@ public class PersonController {
 	 * 이력서 등록 처리
 	 */
 	@RequestMapping(value="/registResume.do")
-	public void registResume(CommandMap commandMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+	public void registResume(CommandMap commandMap, HttpSession session, MultipartHttpServletRequest request, HttpServletResponse response) {
 		
 		//ModelAndView mv = new ModelAndView();
 		//String attachFileName = "";
@@ -262,10 +262,21 @@ public class PersonController {
 		//String redirectUrl = "";
 		try{
 			
-			commandMap = fileUtils.uploadFileMap(commandMap, request); // 첨부파일 업로드
+			//commandMap = fileUtils.uploadFileMap(commandMap, request); // 첨부파일 업로드
 			
+			//첨부파일 Upload.			
+			String strPortfolio = "";
+			MultipartFile filePortfolio = request.getFile("portfolioFile");
+			if(filePortfolio != null && !filePortfolio.isEmpty()) {
+				strPortfolio = ApiCommonUtils.uploadPhotoFile("portfolioFile", (String)session.getAttribute("SE_LOGIN_ID"), filePortfolio, filePathPhoto);
+				commandMap.put("portfolioFile", strPortfolio);
+			}else{
+				commandMap.put("portfolioFile", (String)commandMap.get("orgportfolioFile"));
+			}
+
+			//이력서 등록.
 			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
-			netfuItemResumeService.insertNetfuItemResume(commandMap.getMap()); // 채용공고 저장
+			netfuItemResumeService.insertNetfuItemResume(commandMap.getMap());
 			CommonUtil.Alert("등록되었습니다.", "/resumeList.do", request, response);
 			
 		}catch(Exception e){
@@ -392,6 +403,7 @@ public class PersonController {
 				commandMap.put("portfolioFile", (String)commandMap.get("orgportfolioFile"));
 			}
 			
+			//이력서 등록.
 			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
 			netfuItemResumeService.updateNetfuItemResume(commandMap.getMap()); // 이력서 수정
 			CommonUtil.Alert("수정되었습니다.", "/resumeList.do", request, response);

@@ -133,7 +133,7 @@ public class CodeConvertUtil {
 		
 		try{
 
-			if("yes".equals(bizIng)){
+			if(!"yes".equals(bizIng)){
 				rtnStr = "채용마감";
 			}else{
 				if("get".equals(bizEndType)){
@@ -141,6 +141,7 @@ public class CodeConvertUtil {
 				}else if("often".equals(bizEndType)){
 					rtnStr = "상시채용";
 				}else{
+					/*
 					if("".equals(ConvertUtil.checkNull(bizEndDay))){
 						rtnStr = "상시채용";
 					}else{
@@ -157,6 +158,8 @@ public class CodeConvertUtil {
 							}	
 						}
 					}
+					*/
+					rtnStr = bizEndDay+" ( "+DateUtil.getDayOfWeek(bizEndDay)+"요일 )";
 				}
 			}
 		}catch(Exception e){

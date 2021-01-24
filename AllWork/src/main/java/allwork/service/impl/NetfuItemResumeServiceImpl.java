@@ -36,6 +36,17 @@ public class NetfuItemResumeServiceImpl implements NetfuItemResumeService{
 		}
 		return rtnCnt;
 	}
+	
+	@Override
+	public int selectNetfuItemMyResumeCnt(Map<String, Object> map) throws Exception {
+		int rtnCnt = 0;
+		if("keyword".equals((String)map.get("searchFlag"))){
+			rtnCnt = netfuItemResumeDao.selectKeywordNetfuItemResumeCnt(map);
+		}else{
+			rtnCnt = netfuItemResumeDao.selectNetfuItemMyResumeCnt(map);
+		}
+		return rtnCnt;
+	}
 
 	@Override
 	public List<Map<String, Object>> selectNetfuItemResumeList(Map<String, Object> map) throws Exception {

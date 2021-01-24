@@ -36,7 +36,7 @@
 			, nic.biz_area1, getCodeName(nic.biz_area1) biz_area1_name
 			, nic.biz_area2, getCodeName(nic.biz_area2) biz_area2_name
 			, nic.biz_jobfrom, getCodeName(nic.biz_jobfrom) biz_jobfrom_name
-			, DATE_FORMAT(nic.wdate, '%Y-%m-%d') wdate
+			, DATE_FORMAT(ns.wdate, '%Y-%m-%d') wdate
 		from netfu_scrap ns, netfu_item_company nic
 		where 1=1
 			and ns.type = 'job'

@@ -35,6 +35,9 @@ public class LoginController {
 	@Value("${kakao.clientId}")
 	private String kakaoClientId;
 
+	@Value("${google.clientId}")
+	private String googleClientId;
+
 	
 	@RequestMapping(value="/login.do")
 	public ModelAndView login(CommandMap commandMap, HttpServletRequest request) {
@@ -44,6 +47,7 @@ public class LoginController {
 		mv.addObject("map", commandMap.getMap());
 		mv.addObject("naverClientId", naverClientId); 
 		mv.addObject("kakaoClientId", kakaoClientId); 
+		mv.addObject("googleClientId", googleClientId); 
 		return mv;
 	}
 	

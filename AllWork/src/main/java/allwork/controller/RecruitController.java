@@ -552,7 +552,7 @@ public class RecruitController {
 			
 			// 등록 이력서 갯수
 			commandMap.put("uid", commandMap.get("loginId"));
-			int resumeCnt = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
+			int resumeCnt = netfuItemResumeService.selectNetfuItemMyResumeCnt(commandMap.getMap());
 			
 			// 채용공고에 대한 입사지원자수
 			int applyCnt = netfuItemCompanyService.selectNetfuItemCompanyApplyCnt(commandMap.getMap());

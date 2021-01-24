@@ -51,7 +51,7 @@
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<tr class="desc"><td colspan="5" style="width:100%; height;50px;">내역이 없습니다.</div></li>
+								<tr class="desc"><td colspan="6" style="width:100%; height;50px;">내역이 없습니다.</div></li>
 							</c:otherwise>
 						</c:choose>
 					</tbody>	

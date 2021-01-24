@@ -34,6 +34,9 @@ Logger log = Logger.getLogger(this.getClass());
 	@Value("${kakao.clientId}")
 	private String kakaoClientId;
 
+	@Value("${google.clientId}")
+	private String googleClientId;
+
 	
 	
 	/********
@@ -130,6 +133,7 @@ Logger log = Logger.getLogger(this.getClass());
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("naverClientId", naverClientId); 
 			mv.addObject("kakaoClientId", kakaoClientId); 
+			mv.addObject("googleClientId", googleClientId); 
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".linkSocial Exception !!!!! \n"+e.toString());
 		}
