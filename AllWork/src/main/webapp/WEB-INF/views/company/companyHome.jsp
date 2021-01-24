@@ -86,7 +86,7 @@
 										<a href="javascript:deleteRecruit('${result.no }');" title="삭제"><span>삭제</span></a> --%>
 									</div>
 									<div class="desc2">
-										<a href="/companyApplicantList.do" title="전체 지원자" class="total">전체 지원자<span>${result.totalApplianceCnt }</span></a>
+										<a href="/companyApplicantList.do" title="전체 지원자" class="total">전체 지원자<span> &nbsp;${result.totalApplianceCnt }명</span></a>
 										<!-- 
 										<a href="#" title="전체 지원자" class="total">전체 지원자<span>${result.totalApplianceCnt }</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 										<a href="#" title="미열람">미열람<span>11</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;

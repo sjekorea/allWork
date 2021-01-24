@@ -119,19 +119,26 @@
 	
 	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
 		loadingOn();
-		$("#companyUid").val(companyUid);
-		$("#personUid").val(personUid);
-		$("#no").val(no);
-		$("#recruitNo").val(recruitNo);
-		$("#resumeNo").val(resumeNo);
 		
-		if(detailFlag == "recruit"){
-			$("#searchForm").attr("action", "/recruitDetail.do");	
+		if("no" != open){
+			alert("현재 비공개 상태로 설정되어 있습니다.");
+			loadingOff();
+
 		}else{
-			$("#searchForm").attr("action", "/resumeDetail.do");
-		}
-		
-		$("#searchForm").submit();
+			$("#companyUid").val(companyUid);
+			$("#personUid").val(personUid);
+			$("#no").val(no);
+			$("#recruitNo").val(recruitNo);
+			$("#resumeNo").val(resumeNo);
+			
+			if(detailFlag == "recruit"){
+				$("#searchForm").attr("action", "/recruitDetail.do");	
+			}else{
+				$("#searchForm").attr("action", "/resumeDetail.do");
+			}
+			
+			$("#searchForm").submit();
+		} 
 	}
 	
 	

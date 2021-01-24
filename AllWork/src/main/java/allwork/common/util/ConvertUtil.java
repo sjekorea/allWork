@@ -17,49 +17,68 @@ public class ConvertUtil {
 	
 	public static String checkNull(String arg){
 		String rtnStr = "";
-		if(arg == null || "".equals(arg) || "null".equals(arg) || "NULL".equals(arg)){
-			rtnStr = "";
-		}else{
-			rtnStr = arg;
+		try {
+			if(arg == null || "".equals(arg) || "null".equals(arg) || "NULL".equals(arg)){
+				rtnStr = "";
+			}else{
+				rtnStr = arg;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
 		return rtnStr;
 	}
 	
 	public static Object checkNull(Object arg){
 		Object rtnStr = new Object();
-		if(arg == null || "".equals(arg.toString())){
-			rtnStr = "";
-		}else{
-			rtnStr = arg;
+		try {
+			if(arg == null || "".equals(arg.toString())){
+				rtnStr = "";
+			}else{
+				rtnStr = arg;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
 		return rtnStr;
 	}
 	
 	public static String checkNullToStr(Object arg){
 		String rtnStr = "";
-		if(arg == null || "".equals(arg.toString())){
-			rtnStr = "";
-		}else{
-			rtnStr = (String)arg;
+		try {
+			if(arg == null || "".equals(arg.toString())){
+				rtnStr = "";
+			}else{
+				rtnStr = (String)arg;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
 		return rtnStr;
 	}
 	
 	public static int checkNullToInt(String arg){
 		int rtnNum = 0;
-		
-		if(arg == null || "".equals(arg) || "null".equals(arg) || "NULL".equals(arg)){
-			rtnNum = 0;
-		}else{
-			rtnNum = Integer.parseInt(arg);
+		try {
+			if(arg == null || "".equals(arg) || "null".equals(arg) || "NULL".equals(arg)){
+				rtnNum = 0;
+			}else{
+				rtnNum = Integer.parseInt(arg);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
 		return rtnNum;
 	}
 	
 	public static Map<String, Object> checkMapNull(Map<String, Object> arg){
 		Map<String, Object> rtnObj = new HashMap<String, Object>();
-		if(arg != null){
-			rtnObj = arg;
+		try {
+			if(arg != null){
+				rtnObj = arg;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
 		return rtnObj;
 	}
@@ -67,8 +86,12 @@ public class ConvertUtil {
 	public static String fillZero(int arg){
 		
 		String tmpStr = String.valueOf(arg);
-		if(tmpStr.length() == 1){
-			tmpStr = "0"+tmpStr;
+		try {
+			if(tmpStr.length() == 1){
+				tmpStr = "0"+tmpStr;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
 		return tmpStr;
 	}
@@ -107,18 +130,21 @@ public class ConvertUtil {
 	}
 	
 	public static String convertQueryQuotes(String org){
-
-		int pos = -2;
-		while((pos = org.indexOf("\"", pos + 2)) != -1){
-			String left = org.substring(0, pos);
-			String right = org.substring(pos, org.length());
-			org = left + "\\" + right;
-		}
-		pos = -2;
-		while((pos = org.indexOf("\'", pos + 2)) != -1){
-			String left = org.substring(0, pos);
-			String right = org.substring(pos, org.length());
-			org = left + "\\" + right;
+		try {
+			int pos = -2;
+			while((pos = org.indexOf("\"", pos + 2)) != -1){
+				String left = org.substring(0, pos);
+				String right = org.substring(pos, org.length());
+				org = left + "\\" + right;
+			}
+			pos = -2;
+			while((pos = org.indexOf("\'", pos + 2)) != -1){
+				String left = org.substring(0, pos);
+				String right = org.substring(pos, org.length());
+				org = left + "\\" + right;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
 		
 		return org;		
@@ -141,8 +167,12 @@ public class ConvertUtil {
 	public static String comp(String str, Integer i) {
 		if(str==null)	return "";
 		String tmp = str;
-		int cutLength = i.intValue();
-		if(tmp.length() > cutLength) tmp = tmp.substring(0, cutLength)+"...";
+		try {
+			int cutLength = i.intValue();
+			if(tmp.length() > cutLength) tmp = tmp.substring(0, cutLength)+"...";
+		} catch(Exception e) {
+			e.printStackTrace();			
+		}
 		return tmp;
 	}
 
@@ -163,11 +193,15 @@ public class ConvertUtil {
 	public static String compByte(String str, Integer i, String trail){
 		if(str == null)	return "";
 		String tmp = str;
-		int cutLength = i.intValue();
-		int slen = 0, blen = 0;
-		char c;
-		if(length(tmp) > cutLength+2){
-			tmp = substring(tmp, cutLength)+trail;
+		try {
+			int cutLength = i.intValue();
+			int slen = 0, blen = 0;
+			char c;
+			if(length(tmp) > cutLength+2){
+				tmp = substring(tmp, cutLength)+trail;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
 		return tmp;
 	}
@@ -201,19 +235,23 @@ public class ConvertUtil {
 	// 문자열 인코딩에 따라서 글자수 체크
 	public static int length(CharSequence sequence) {
 		int count = 0;
-		for (int i = 0, len = sequence.length(); i < len; i++) {
-			char ch = sequence.charAt(i);
- 
-			if (ch <= 0x7F) {
-				count++;
-			} else if (ch <= 0x7FF) {
-				count += 2;
-			} else if (Character.isHighSurrogate(ch)) {
-				count += 4;
-				++i;
-			} else {
-				count += 3;
+		try {
+			for (int i = 0, len = sequence.length(); i < len; i++) {
+				char ch = sequence.charAt(i);
+	 
+				if (ch <= 0x7F) {
+					count++;
+				} else if (ch <= 0x7FF) {
+					count += 2;
+				} else if (Character.isHighSurrogate(ch)) {
+					count += 4;
+					++i;
+				} else {
+					count += 3;
+				}
 			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
 		return count;
 	}
@@ -243,8 +281,8 @@ public class ConvertUtil {
 	
 	public static Mixed unserializeString(String serializeData)
 	{
-	int pos = 0;
-	int length = 0;
+		int pos = 0;
+		int length = 0;
 
 		pos = serializeData.indexOf(':', pos + 2);
 		length = Integer.parseInt(serializeData.substring(pos + 2, pos));
@@ -268,10 +306,14 @@ public class ConvertUtil {
 	 */
 	public static String getRecruitBizFormName(String bizForm) {
 		String strBizFormName = "";
-		if (bizForm == null || bizForm.length() < 1) return "";
-
-		if (bizForm.contains("online")) strBizFormName = "온라인 이력서";
-		if (bizForm.contains("confirm")) strBizFormName += (strBizFormName.length() > 0)? ", 자사 입사지원서 양식" : "자사 입사지원서 양식";
+		try {
+			if (bizForm == null || bizForm.length() < 1) return "";
+	
+			if (bizForm.contains("online")) strBizFormName = "온라인 이력서";
+			if (bizForm.contains("confirm")) strBizFormName += (strBizFormName.length() > 0)? ", 자사 입사지원서 양식" : "자사 입사지원서 양식";
+		} catch(Exception e) {
+			e.printStackTrace();			
+		}
 		
 		return strBizFormName;
 	}
@@ -290,23 +332,31 @@ public class ConvertUtil {
 	 */
 	public static String getEndCond(String bizIng, String bizEndType, String bizEndDay) {
 		String strBizEndCond = "";
-		if (!bizIng.equalsIgnoreCase("yes")) return "채용마감";
+		try {
+			if (!bizIng.equalsIgnoreCase("yes")) return "채용마감";
+	
+			if (bizEndType.equalsIgnoreCase("input")) strBizEndCond = bizEndDay;
+			else if (bizEndType.equalsIgnoreCase("get")) strBizEndCond = "채용시까지";
+			else if (bizEndType.equalsIgnoreCase("often")) strBizEndCond = "상시채용";
+		} catch(Exception e) {
+			e.printStackTrace();			
+		}
 
-		if (bizEndType.equalsIgnoreCase("input")) strBizEndCond = bizEndDay;
-		else if (bizEndType.equalsIgnoreCase("get")) strBizEndCond = "채용시까지";
-		else if (bizEndType.equalsIgnoreCase("often")) strBizEndCond = "상시채용";
-		
 		return strBizEndCond;
 	}
 
 	public static String getEndCond4Index(String bizIng, String bizEndType, String bizEndDay) {
 		String strBizEndCond = "";
-		if (!bizIng.equalsIgnoreCase("yes")) return "채용마감";
+		try {
+			if (!bizIng.equalsIgnoreCase("yes")) return "채용마감";
+	
+			if (bizEndType.equalsIgnoreCase("input")) strBizEndCond = "마감: " + bizEndDay;
+			else if (bizEndType.equalsIgnoreCase("get")) strBizEndCond = "채용시까지";
+			else if (bizEndType.equalsIgnoreCase("often")) strBizEndCond = "상시채용";
+		} catch(Exception e) {
+			e.printStackTrace();			
+		}
 
-		if (bizEndType.equalsIgnoreCase("input")) strBizEndCond = "마감: " + bizEndDay;
-		else if (bizEndType.equalsIgnoreCase("get")) strBizEndCond = "채용시까지";
-		else if (bizEndType.equalsIgnoreCase("often")) strBizEndCond = "상시채용";
-		
 		return strBizEndCond;
 	}
 	
@@ -315,38 +365,58 @@ public class ConvertUtil {
 	 */
 	public static String getPhone01(String strPhoneNo) {
 		String strValue = "";
-		if (strPhoneNo == null || strPhoneNo.length() < 1) return strValue;
-		String[] list = strPhoneNo.split("-");
-		if (list.length > 0) strValue = list[0];   	
+		try {
+			if (strPhoneNo == null || strPhoneNo.length() < 1) return strValue;
+			String[] list = strPhoneNo.split("-");
+			if (list.length > 0) strValue = list[0];   	
+		} catch(Exception e) {
+			e.printStackTrace();			
+		}
 		return strValue;
 	}
 	public static String getPhone02(String strPhoneNo) {
 		String strValue = "";
-		if (strPhoneNo == null || strPhoneNo.length() < 1) return strValue;
-		String[] list = strPhoneNo.split("-");
-		if (list.length > 1) strValue = list[1];   	
+		try {
+			if (strPhoneNo == null || strPhoneNo.length() < 1) return strValue;
+			String[] list = strPhoneNo.split("-");
+			if (list.length > 1) strValue = list[1];   	
+		} catch(Exception e) {
+			e.printStackTrace();			
+		}
 		return strValue;
 	}
 	public static String getPhone03(String strPhoneNo) {
 		String strValue = "";
-		if (strPhoneNo == null || strPhoneNo.length() < 1) return strValue;
-		String[] list = strPhoneNo.split("-");
-		if (list.length > 2) strValue = list[2];   	
+		try {
+			if (strPhoneNo == null || strPhoneNo.length() < 1) return strValue;
+			String[] list = strPhoneNo.split("-");
+			if (list.length > 2) strValue = list[2];   	
+		} catch(Exception e) {
+			e.printStackTrace();			
+		}
 		return strValue;
 	}
 
 	public static String getEmail01(String strEmail) {
 		String strValue = "";
-		if (strEmail == null || strEmail.length() < 1) return strValue;
-		String[] list = strEmail.split("\\@");
-		if (list.length > 0) strValue = list[0];   	
+		try {
+			if (strEmail == null || strEmail.length() < 1) return strValue;
+			String[] list = strEmail.split("\\@");
+			if (list.length > 0) strValue = list[0];   	
+		} catch(Exception e) {
+			e.printStackTrace();			
+		}
 		return strValue;
 	}
 	public static String getEmail02(String strEmail) {
 		String strValue = "";
-		if (strEmail == null || strEmail.length() < 1) return strValue;
-		String[] list = strEmail.split("\\@");
-		if (list.length > 1) strValue = list[1];   	
+		try {
+			if (strEmail == null || strEmail.length() < 1) return strValue;
+			String[] list = strEmail.split("\\@");
+			if (list.length > 1) strValue = list[1];   	
+		} catch(Exception e) {
+			e.printStackTrace();			
+		}
 		return strValue;
 	}
 

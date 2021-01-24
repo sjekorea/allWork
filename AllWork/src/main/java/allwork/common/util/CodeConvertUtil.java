@@ -8,13 +8,16 @@ public class CodeConvertUtil {
 	// 채용 정보 "성별" ==> biz_sex 항목 
 	public static String getBizSex(String bizSex){
 		String rtnStr = "";
-		
-		if("man".equals(bizSex)){
-			rtnStr = "남";
-		}else if("woman".equals(bizSex)){
-			rtnStr = "여";
-		}else{
-			rtnStr = "무관";
+		try {
+			if("man".equals(bizSex)){
+				rtnStr = "남";
+			}else if("woman".equals(bizSex)){
+				rtnStr = "여";
+			}else{
+				rtnStr = "무관";
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
 		return rtnStr;
 	}
@@ -102,6 +105,7 @@ public class CodeConvertUtil {
 					if("".equals(ConvertUtil.checkNull(bizEndDay))){
 						rtnStr = "상시채용";
 					}else{
+						/*
 						if(bizEndDay.length() != 10){
 							rtnStr = "상시채용";
 						}else{
@@ -114,6 +118,8 @@ public class CodeConvertUtil {
 								rtnStr = "오늘 마감";
 							}	
 						}
+						*/
+						rtnStr = bizEndDay;
 					}
 				}
 			}
@@ -159,7 +165,7 @@ public class CodeConvertUtil {
 						}
 					}
 					*/
-					rtnStr = bizEndDay+" ( "+DateUtil.getDayOfWeek(bizEndDay)+"요일 )";
+					rtnStr = bizEndDay;
 				}
 			}
 		}catch(Exception e){
@@ -172,48 +178,52 @@ public class CodeConvertUtil {
 	// 채용 정보 "학력" ==> biz_ability 항목 
 	public static String getBizAbility(String bizAbility){
 		String rtnStr = "";
-		if (bizAbility == null || bizAbility.length() < 1) return rtnStr;
-		switch(bizAbility) {
-			case "	netfu_63274_88718":
-				return "무관";
-			case "netfu_41476_98832":
-				return "고등학교졸업";
-			case "netfu_98974_79615":
-				return "대졸(2~3년)";
-			case "netfu_35887_12731":
-				return "대졸";
-			case "netfu_53810_38809":
-				return "석사";
-			case "netfu_47451_69200":
-				return "박사";
-			default:
-				break;
-		}
-		
-		int chkValue = ConvertUtil.checkNullToInt(bizAbility);
-		
-		switch(chkValue){
-			case 1 :
-				rtnStr = "고등학교졸업";
-				break;
-			case 2 : 
-				rtnStr = "대학졸업(2~3년)";
-				break;
-			case 3 : 
-				rtnStr = "대학교졸업(4년)";
-				break;
-			case 4 : 
-				rtnStr = "석사";
-				break;
-			case 5 :  
-				rtnStr = "박사";
-			  	break;
-			case 100 : 
-				rtnStr = "학력무관";
-			  	break;
-			default : 
-				rtnStr = "";
-				break;
+		try {
+			if (bizAbility == null || bizAbility.length() < 1) return rtnStr;
+			switch(bizAbility) {
+				case "	netfu_63274_88718":
+					return "무관";
+				case "netfu_41476_98832":
+					return "고등학교졸업";
+				case "netfu_98974_79615":
+					return "대졸(2~3년)";
+				case "netfu_35887_12731":
+					return "대졸";
+				case "netfu_53810_38809":
+					return "석사";
+				case "netfu_47451_69200":
+					return "박사";
+				default:
+					break;
+			}
+			
+			int chkValue = ConvertUtil.checkNullToInt(bizAbility);
+			
+			switch(chkValue){
+				case 1 :
+					rtnStr = "고등학교졸업";
+					break;
+				case 2 : 
+					rtnStr = "대학졸업(2~3년)";
+					break;
+				case 3 : 
+					rtnStr = "대학교졸업(4년)";
+					break;
+				case 4 : 
+					rtnStr = "석사";
+					break;
+				case 5 :  
+					rtnStr = "박사";
+				  	break;
+				case 100 : 
+					rtnStr = "학력무관";
+				  	break;
+				default : 
+					rtnStr = "";
+					break;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
 		return rtnStr;
 	}
@@ -221,49 +231,53 @@ public class CodeConvertUtil {
 	// 채용 정보 "학력" ==> biz_ability 항목 
 	public static String getBizAbilityShort(String bizAbility){
 		String rtnStr = "";
-		if (bizAbility == null || bizAbility.length() < 1) return rtnStr;
-		switch(bizAbility) {
-			case "	netfu_63274_88718":
-				return "무관";
-			case "netfu_41476_98832":
-				return "고졸";
-			case "netfu_98974_79615":
-				return "대졸(2,3년)";
-			case "netfu_35887_12731":
-				return "대졸(4년)";
-			case "netfu_53810_38809":
-				return "석사";
-			case "netfu_47451_69200":
-				return "박사";
-			default:
-				break;
-		}
-		
-		int chkValue = ConvertUtil.checkNullToInt(bizAbility);
-		
-		switch(chkValue){
+		try {
+			if (bizAbility == null || bizAbility.length() < 1) return rtnStr;
+			switch(bizAbility) {
+				case "	netfu_63274_88718":
+					return "무관";
+				case "netfu_41476_98832":
+					return "고졸";
+				case "netfu_98974_79615":
+					return "대졸(2,3년)";
+				case "netfu_35887_12731":
+					return "대졸(4년)";
+				case "netfu_53810_38809":
+					return "석사";
+				case "netfu_47451_69200":
+					return "박사";
+				default:
+					break;
+			}
 			
-			case 1 : 
-				rtnStr = "고졸";
-				break;
-			case 2 : 
-				rtnStr = "대졸(2,3년)";
-				break;
-			case 3 : 
-				rtnStr = "대졸(4년)";
-				break;
-			case 4 : 
-				rtnStr = "석사";
-				break;
-			case 5 :  
-				rtnStr = "박사";
-			  	break;
-			case 100 : 
-				rtnStr = "무관";
-			  	break;
-			default : 
-				rtnStr = "";
-				break;
+			int chkValue = ConvertUtil.checkNullToInt(bizAbility);
+			
+			switch(chkValue){
+				
+				case 1 : 
+					rtnStr = "고졸";
+					break;
+				case 2 : 
+					rtnStr = "대졸(2,3년)";
+					break;
+				case 3 : 
+					rtnStr = "대졸(4년)";
+					break;
+				case 4 : 
+					rtnStr = "석사";
+					break;
+				case 5 :  
+					rtnStr = "박사";
+				  	break;
+				case 100 : 
+					rtnStr = "무관";
+				  	break;
+				default : 
+					rtnStr = "";
+					break;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
 		return rtnStr;
 	}
@@ -271,27 +285,33 @@ public class CodeConvertUtil {
 	// 채용 정보 "연령" ==> biz_age 항목 
 	public static String getBizAge(String bizAge){
 		String rtnStr = "";
-		
-		if("none".equals(bizAge) || bizAge == null || bizAge.length() < 1){
-			rtnStr = "무관";
-		}else{
-			rtnStr = bizAge + "세";				
+		try {
+			if("none".equals(bizAge) || bizAge == null || bizAge.length() < 1){
+				rtnStr = "무관";
+			}else{
+				rtnStr = bizAge + "세";				
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
-
 		return rtnStr;
 	}
 	
 	// 채용정보 "경력" ==> biz_career 항목
 	public static String getBizCareer(String bizCareer){
 		String rtnStr = "";
-		if("100".equals(bizCareer)){
-			rtnStr = "무관";
-		}else if("102".equals(bizCareer)){
-			rtnStr = "신입";
-		}else if("".equals(bizCareer)){
-			rtnStr = "";
-		}else{
-			rtnStr = bizCareer+"년";
+		try {
+			if("100".equals(bizCareer)){
+				rtnStr = "무관";
+			}else if("102".equals(bizCareer)){
+				rtnStr = "신입";
+			}else if("".equals(bizCareer)){
+				rtnStr = "";
+			}else{
+				rtnStr = bizCareer+"년";
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
 		return rtnStr;
 	}
@@ -300,21 +320,24 @@ public class CodeConvertUtil {
 	public static String getBizCareerSplit(String career){
 		String rtnStr = "";
 		String[] careerArr;
-		
-		if(career.length() > 0){
-			careerArr = career.split(",");
-			
-			if(careerArr.length == 4){
-				if(careerArr[0] == "102"){
-					rtnStr += "신입";
-				}else{
-					rtnStr += "경력("+careerArr[1]+"년~"+careerArr[2]+"년)";
-				}
+		try {
+			if(career.length() > 0){
+				careerArr = career.split(",");
 				
-				if(careerArr[0] != "" && careerArr[3] != null){
-					rtnStr += " / 무관";
+				if(careerArr.length == 4){
+					if(careerArr[0] == "102"){
+						rtnStr += "신입";
+					}else{
+						rtnStr += "경력("+careerArr[1]+"년~"+careerArr[2]+"년)";
+					}
+					
+					if(careerArr[0] != "" && careerArr[3] != null){
+						rtnStr += " / 무관";
+					}
 				}
 			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
 		return rtnStr;
 	}
@@ -323,13 +346,15 @@ public class CodeConvertUtil {
 	public static String getBirthYear(String birth){
 		
 		String rtnStr = "00";
-		
-		String[] birthArr;
-		if(birth.length() > 4){
-			birthArr = birth.split("-");
-			rtnStr = birthArr[0];
+		try {
+			String[] birthArr;
+			if(birth.length() > 4){
+				birthArr = birth.split("-");
+				rtnStr = birthArr[0];
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
-		
 		return rtnStr;
 	}
 	
@@ -337,18 +362,21 @@ public class CodeConvertUtil {
 	// 현재상태 정보
 	public static String getCondition(String condition){
 		String rtnStr = "";
-		
-		switch(condition){
-			case "1" : 
-				rtnStr = "구직희망(미취업)"; break;
-			case "2" : 
-				rtnStr = "이직희망(재직중)"; break;
-			case "3" : 
-				rtnStr = "구직희망안함"; break;
-			default : 
-				rtnStr = ""; break;
+		try {
+			switch(condition){
+				case "1" : 
+					rtnStr = "구직희망(미취업)"; break;
+				case "2" : 
+					rtnStr = "이직희망(재직중)"; break;
+				case "3" : 
+					rtnStr = "구직희망안함"; break;
+				default : 
+					rtnStr = ""; break;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
-		
+
 		return rtnStr;
 	}
 	
@@ -356,17 +384,20 @@ public class CodeConvertUtil {
 	// 최종 학력 정보
 	public static String getLastSchool(String inidLastSchool){
 		String rtnStr = "";
-		
-		String lastSchoolArr[];
-		
-		if(!"".equals(ConvertUtil.checkNull(inidLastSchool)) && inidLastSchool.length() > 0){
-			lastSchoolArr = inidLastSchool.split("____");
+		try {
+			String lastSchoolArr[];
 			
-			if(lastSchoolArr.length > 1){
-				rtnStr = CodeConvertUtil.getBizAbility(lastSchoolArr[0]);
+			if(!"".equals(ConvertUtil.checkNull(inidLastSchool)) && inidLastSchool.length() > 0){
+				lastSchoolArr = inidLastSchool.split("____");
+				
+				if(lastSchoolArr.length > 1){
+					rtnStr = CodeConvertUtil.getBizAbility(lastSchoolArr[0]);
+				}
 			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
-		
+
 		return rtnStr;
 	}
 
@@ -374,17 +405,20 @@ public class CodeConvertUtil {
 	// 경력 정보
 	public static String getTotalCareer(String inidCareer){
 		String rtnStr = "";
-		
-		String totalCareerArr[];
-		
-		if(!"".equals(ConvertUtil.checkNull(inidCareer)) && inidCareer.length() > 0){
-			totalCareerArr = inidCareer.split("____");
+		try {
+			String totalCareerArr[];
 			
-			if(totalCareerArr.length > 2){
-				rtnStr = totalCareerArr[0]+"년 "+totalCareerArr[1]+"개월";
+			if(!"".equals(ConvertUtil.checkNull(inidCareer)) && inidCareer.length() > 0){
+				totalCareerArr = inidCareer.split("____");
+				
+				if(totalCareerArr.length > 2){
+					rtnStr = totalCareerArr[0]+"년 "+totalCareerArr[1]+"개월";
+				}
 			}
+		} catch(Exception e) {
+			e.printStackTrace();			
 		}
-		
+
 		return rtnStr;
 	}
 	

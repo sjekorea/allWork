@@ -33,9 +33,12 @@
 									<div class="desc">
 										<p class="desc0"><a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="모집공고타이틀">${result.bizTitle }</a></p>
 										<div class="desc1">
+											<!-- 
 											<span>${codeConvert:getRecruitStatusText(result.bizIng, result.bizEndType, result.bizEndDay) }</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+											 -->
 											<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="공고보기"><span>공고보기</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 											<%-- <a href="javascript:copyRecruit('${result.no }');" title="복사"><span>복사</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; --%>
+											<%-- 
 											<c:choose>
 												<c:when test="${result.bizIng eq 'yes' }">
 													<a href="javascript:updateBizIng('${result.no }', 'no');" title="비공개"><span>비공개</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -44,11 +47,12 @@
 													<a href="javascript:updateBizIng('${result.no }', 'yes');" title="공개"><span>공개</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 												</c:otherwise>
 											</c:choose>
+											 --%>
 											<a href="javascript:updateRecruit('${result.no }');" title="수정"><span>수정</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 											<a href="javascript:deleteRecruit('${result.no }');" title="삭제"><span>삭제</span></a>
 										</div>
 										<div class="desc2">
-											<a href="/companyApplicantList.do" title="전체 지원자" class="total">전체 지원자<span>${result.totalApplianceCnt }</span></a><!-- &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+											<a href="/companyApplicantList.do" title="전체 지원자" class="total">전체 지원자<span> &nbsp;${result.totalApplianceCnt }명</span></a><!-- &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 											<a href="#" title="미열람">미열람<span>11</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 											<a href="#" title="열람">열람<span>0</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 											<a href="#" title="서류합격">서류합격<span>0</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;

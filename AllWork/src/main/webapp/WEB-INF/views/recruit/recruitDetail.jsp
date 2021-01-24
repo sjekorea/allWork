@@ -275,7 +275,7 @@
 			<c:if test="${finishedStatus ne '채용마감' }">
 				<ul>
 					<c:if test="${recruitMap.bizFormFile != null and recruitMap.bizFormFile.length() > 0 }">
-						<li id="scrapBtn"><a href="/allwork/peg/${recruitMap.bizFormFile }" title="입사지원서 양식 다운로드">입사지원서 양식 다운로드</a></li>
+						<li id="downloadBtn"><a href="/allwork/peg/${recruitMap.bizFormFile }" title="입사지원서 양식 다운로드">입사지원서 양식 다운로드</a></li>
 					</c:if>
 					<c:if test="${scrapCnt <= 0 }">
 						<li id="scrapBtn"><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>

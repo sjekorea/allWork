@@ -19,7 +19,7 @@
 		<div id="rightPart">
 			<div id="listPart">
 				<h4>당사에 입사를 지원한 지원자 목록</h4>
-				<p class="listTotal">입사지원자 총<span>${totalSize }</span></p>
+				<p class="listTotal">입사지원자 총<span>${totalSize }명</span></p>
 				<select id="selRecruitNo" name="selRecruitNo" onchange="javascript:goList();">
 					<option value="">진행중인 채용공고</option>
 					<c:choose>
@@ -110,19 +110,26 @@
 	
 	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
 		loadingOn();
-		$("#companyUid").val(companyUid);
-		$("#personUid").val(personUid);
-		$("#no").val(no);
-		$("#recruitNo").val(recruitNo);
-		$("#resumeNo").val(resumeNo);
 		
-		if(detailFlag == "recruit"){
-			$("#searchForm").attr("action", "/recruitDetail.do");	
+		if("no" != open){
+			alert("현재 비공개 상태로 설정되어 있습니다.");
+			loadingOff();
+
 		}else{
-			$("#searchForm").attr("action", "/resumeDetail.do");
-		}
-		
-		$("#searchForm").submit();
+			$("#companyUid").val(companyUid);
+			$("#personUid").val(personUid);
+			$("#no").val(no);
+			$("#recruitNo").val(recruitNo);
+			$("#resumeNo").val(resumeNo);
+			
+			if(detailFlag == "recruit"){
+				$("#searchForm").attr("action", "/recruitDetail.do");	
+			}else{
+				$("#searchForm").attr("action", "/resumeDetail.do");
+			}
+			
+			$("#searchForm").submit();
+		} 
 	}
 	
 	

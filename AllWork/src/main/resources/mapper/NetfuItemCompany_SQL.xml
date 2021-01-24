@@ -226,10 +226,11 @@
 		select 
 			count(nor.no)
 		from
-			netfu_online_recruit nor
+			netfu_online_recruit nor, netfu_item_resume nir
 		where 1=1
 			AND nor.to_no = ${no}
 			AND nor.to_type in ('email', 'online', 'mobile')
+			AND (nir.no = nor.from_no)
 	</select>
 	
 	
