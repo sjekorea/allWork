@@ -68,7 +68,7 @@
 						<h5 class="period">이용기간</h5>
 						<div class="periodDesc"><input type="date" id="serviceEndDate" placeholder="yyyy-mm-dd" readonly/></div>
 					</div>
-					<p class="apply"><input type="botton" value="신청하기"/></p>
+					<p class="apply"><input type="button" value="신청하기"/></p>
 				</fieldset>
 			</form>
 		</div>
