@@ -69,6 +69,13 @@
 							<h5 class="period">이용기간</h5>
 							<div class="periodDesc"><input type="date" id="serviceEndDate" placeholder="yyyy-mm-dd" readonly/></div>
 						</div>
+						<div>
+							<select name="payMethodSel" id="payMethodSel">
+								<option value="">결제 방법 선택</option>
+								<option value="card">신용카드 결제</option>
+								<option value="phone">휴대폰 결제</option>
+							</select>
+						</div>
 						<p class="apply"><input type="button" value="신청하기"/></p>
 					</fieldset>
 				</form>
@@ -81,6 +88,8 @@
 <script type="text/javascript">
 
 	IMP.init("imp57220421");
+	var pgType = "danal_tpay";
+	var payMethod = "card";
 	
 	$(document).ready(function(){
 		
@@ -114,7 +123,17 @@
 			if("${SE_SERVICE2}" == "Y"){
 				alert("현재 유료 서비스 이용중입니다.");
 			}else{
-				requestPay();	
+				payMethod = $("#payMethodSel option:selected").val(); 
+				if(checkNull(payMethod)){
+					alert("결제 방법을 선택하세요.");
+				}else{
+					if(payMethod == 'phone'){
+						pgType = "danal";
+					}else{
+						pgType = "danal_tpay";
+					}
+					requestPay();
+				}
 			}
 		});
 	});	
@@ -141,8 +160,8 @@
 		
 		// IMP.request_pay(param, callback) 호출
 		IMP.request_pay({ // param
-			pg : 'danal_tpay', //아임포트 관리자에서 danal_tpay를 기본PG로 설정하신 경우는 생략 가능
-		    pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
+			pg : pgType, //아임포트 관리자에서 danal_tpay를 기본PG로 설정하신 경우는 생략 가능
+		    pay_method : payMethod, //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
 		    merchant_uid : 'merchant_' + new Date().getTime()+'_${SE_LOGIN_ID}', //상점에서 관리하시는 고유 주문번호를 전달
 		    name : productName,
 		    amount : amount,
