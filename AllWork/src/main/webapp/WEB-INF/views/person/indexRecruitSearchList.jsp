@@ -52,7 +52,7 @@
 					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type eq 'get' }">
 						<span class="state03">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
 					</c:if>
-					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type eq 'input' }">
+					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type ne 'often'and result.biz_end_type ne 'get' }">
 						<span class="state04">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
 					</c:if>
 					</td>
@@ -197,7 +197,7 @@
 					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type eq 'get' }">
 						<span class="state03">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
 					</c:if>
-					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type eq 'input' }">
+					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type ne 'often'and result.biz_end_type ne 'get' }">
 						<span class="state04">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
 					</c:if>
 					</td>

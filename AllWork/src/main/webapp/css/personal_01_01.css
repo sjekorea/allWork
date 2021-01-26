@@ -89,25 +89,27 @@ h4 span{padding-left:5px;font-size:14px;font-family:"NotoSansKR-Light";}
 .rec_align li a{font-size:11px;}
 
 /*###################################   listpart   ###################################*/
-.list{width:100%;border-top:1px solid #999;background-color:#fff;overflow: hidden;border-collapse:collapse;table-layout: fixed;word-wrap: break-word;}
+.list{width:790px;margin:0 auto;overflow: hidden;border-collapse: collapse;word-wrap: break-word;}
 .list caption{display:none;}
-.list thead{width:50%;box-shadow: 0 0 0 1px #000;}
+.list thead{width:790px;background-color:#fff;border-top:1px solid #000;border-bottom:1px solid #ccc;}
 .list thead tr{height:50px;}
-.list thead tr .t_desc01{width:170px;}
-.list thead tr .t_desc02{width:420px;}
-.list thead tr .t_desc03{width:120px;}
 
-.list tbody{width:100%;box-shadow: 0 0 0 1px #ccc;overflow:hidden;}
+.list tbody{width:100%;overflow:hidden;border-bottom:1px solid #ccc;}
 .list tbody tr{width:100%;font-size:14px;background-color:#fff;overflow:hidden;}
 .list tbody .margin{width:100%;height:20px;}
 
-.list tbody .desc01{text-align: center;}
-.list tbody .desc02{width:420px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.list tbody .desc03{color:#4F60E3;text-align: center;}
-.list tbody td span{font-size:12px;}
-.list tbody .desc_title{padding-right:5px;}
-.list tbody .desc_desc00{color:#666;}
+.list tbody td span{font-size:13px;}
+.list tbody .desc01{text-align: center;width:170px;padding:0 10px;}
+.list tbody .desc02{width:420px;padding:7px 0;text-align:left;line-height:22px;color:#000;font-family:"NotoSansKR-Medium";}
+.list tbody .desc03{text-align: center;}
+.list tbody .desc03 span{display:inline-block;width:120px;height:30px;line-height:30px;}
+/*채용마감*/.list tbody .desc03 span.state01{background-color: #eee;color:#999;}
+/*상시채용*/.list tbody .desc03 span.state02{background-color: #4F60E3;color:#fff;}
+/*채용시 마감*/.list tbody .desc03 span.state03{background-color: #000;color:#fff;}
+/*특정날짜*/.list tbody .desc03 span.state04{background-color: #E0F1FF;color:#333}
+.list tbody .desc_title{padding-right:5px;color:#999;}
+.list tbody .desc_desc00{color:#777;font-family:"NotoSansKR-Medium";}
 
 .list td a:hover{text-decoration: underline;}
 
-.numareaWrap{padding-bottom: 30px;border-top:1px solid #ccc;}
+.numareaWrap{padding-bottom: 30px;}

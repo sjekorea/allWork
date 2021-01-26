@@ -189,7 +189,7 @@
 											${result.bizTitle }
 										</a>
 									</td>
-									<td rowspan="3" class="desc05">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
+									<td rowspan="3" class="desc05">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
 								</tr>
 								<tr class="desc desc1">
 									<td class="desc03">급여</td>
@@ -227,7 +227,7 @@
 											${result.bizTitle }
 										</a>
 									</td>
-									<td rowspan="3" class="desc05">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
+									<td rowspan="3" class="desc05">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
 								</tr>
 								<tr class="desc desc1">
 									<td class="desc03">급여</td>
@@ -265,7 +265,7 @@
 											${result.bizTitle }
 										</a>
 									</td>
-									<td rowspan="3" class="desc05">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
+									<td rowspan="3" class="desc05">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
 								</tr>
 								<tr class="desc desc1">
 									<td class="desc03">급여</td>

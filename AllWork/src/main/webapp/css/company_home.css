@@ -1,10 +1,10 @@
-body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
+body{background: #EDF0F5;font-family:"NotoSansKR-Regular";letter-spacing:-0.8px;}
 
 /*###################################   containerWrap  ###################################*/
     #containerWrap{width:1000px;margin:20px auto 100px;overflow: hidden;}
 /*###################################   leftpart   ###################################*/
-      #leftPart{width:200px;height:100%;float: left;}
-      #mycompanyBox{width:200px;background-color:#fff;padding:30px 20px 20px;}
+      #leftPart{width:190px;height:100%;float: left;}
+      /*#mycompanyBox{width:200px;background-color:#fff;padding:30px 20px 20px;}
 
       #mycompanyBox p{text-align: center;}
       #mycompanyBox .settingBtn{width:100%;text-align: right;font-size: 12px;}
@@ -12,13 +12,13 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
       #mycompanyBox .uploadApplication a{width: 100%;height:100%;color:#4F60E3;}
 
             #mycompanyBox .uploadApplication:hover{border:1px solid #333;}
-            #mycompanyBox .uploadApplication:hover a{color:#333;}
+            #mycompanyBox .uploadApplication:hover a{color:#333;}*/
 
-      #paymentBox{width:200px;height:100px;padding:20px; background-color: #FFCE00;font-size:14px;line-height: 28px;color:#333;}
+      #paymentBox{width:190px;overflow: hidden;padding:20px; background-color: #FFCE00;font-size:14px;line-height: 28px;color:#333;}
           #paymentBox .payBtn{font-size:12px;text-decoration: underline;}
 
-      #menuTree{width:200px;height:100%;line-height:22px;font-size:16px;}
-      #menuTree ul{width:200px;font-size: 16px;text-indent:10px;background-color: #fff;padding:20px;}
+      #menuTree{width:190px;height:100%;line-height:22px;font-size:16px;}
+      #menuTree ul{width:190px;font-size: 16px;text-indent:10px;background-color: #fff;padding:20px;}
       #menuTree ul .gnb{padding-top:10px;padding-bottom: 20px;}
       /*#menuTree ul .payService{height:64px;background-color: #FFCE00;}*/
       #menuTree ul .payService li a{color:#666;}
@@ -26,11 +26,11 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
       #menuTree ol a{color:#666;}
 
 /*###################################   rightpart   ###################################*/
-#rightPart{width:790px;margin-left:10px;float: left;}
+#rightPart{width:790px;margin-left:20px;float: left;}
 
 /*###################################   part00/지원자관리  ###################################*/
 #part00{width:100%;overflow: hidden;margin-bottom: 20px;}
-#part00 h4{width:100%; height:40px;line-height: 50px;font-size: 12px;}
+#part00 h4{width:100%; height:40px;line-height:40px;font-size: 12px;}
 #part00 h4 a{color:#999;}
 #part00 ul{width:790px;overflow:hidden;}
 #part00 .list00 li{width:790px;height:100px;background-color: #fff;border: 1px solid #fff;border-bottom: 1px solid #ccc;}
@@ -46,14 +46,15 @@ white-space: nowrap;text-overflow:ellipsis;overflow:hidden;}
 
       #part00 .list00 .desc .desc1 a:hover{text-decoration: underline;}
 
-#part00 .list00 .desc .desc2{width:368px;height:40px;line-height:15px;font-size: 12px;float: left;}
+#part00 .list00 .desc .desc2{width:30%;height:40px;line-height:30px;font-size: 11px;float: right;text-align: right;padding-right:20px;}
 #part00 .list00 .desc .desc2 .total{color:#4F60E3;font-weight:700;}
 
       #part00 .list00 .desc .desc2 a:hover{text-decoration: underline;}
 
 /*###################################   part01/맞춤인재 관리    ###################################*/
 #part01{width:100%;overflow: hidden;}
-#part01 h4{width:100%; height:40px;line-height: 50px;font-size: 12px;}
+
+#part01 h4{width:100%; height:40px;line-height:40px;font-size: 12px;}
 #part01 h4 a{color:#999;}
 #part01 ul{width:100%;}
 #part01 ul li{width:790px;padding:10px;overflow: hidden;background-color:#fff;border: 1px solid #fff;border-bottom: 1px solid #ccc;}
@@ -101,4 +102,4 @@ word-wrap: break-word;}
 #listPart .list tr .desc01 .desc01_01{font-size:15px;}
 #listPart .list tr .desc02{width:120px;}
 #listPart .list tr .desc03{width:120px;}
-#listPart .list tr .date{width:80px;padding:20px 10px 20px 0px;}
+#listPart .list tr .date{width:90px;padding:20px 10px 20px 0px;}

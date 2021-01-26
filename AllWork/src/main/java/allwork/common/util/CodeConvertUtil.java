@@ -32,7 +32,7 @@ public class CodeConvertUtil {
 		
 		try{
 
-			if("no".equals(bizIng)){
+			if(!"yes".equals(bizIng)){
 				rtnStr = "<p class='deadline deadline01'>채용마감</p>";
 			}else{
 				if("get".equals(bizEndType)){
@@ -58,6 +58,7 @@ public class CodeConvertUtil {
 						}
 					}
 					*/
+					/*
 					//rtnStr = "<p class='deadline deadline02'> ~"+bizEndDay.substring(5)+"("+DateUtil.getDayOfWeek(bizEndDay)+")"+"</p>";
 					if("".equals(ConvertUtil.checkNull(bizEndDay))){
 						rtnStr = "<p class='deadline deadline00'>미정</p>";
@@ -75,7 +76,8 @@ public class CodeConvertUtil {
 								rtnStr = "<p class='deadline deadline00'>오늘 마감</p>";
 							}	
 						}
-					}
+					}*/
+					rtnStr = bizEndDay;
 				}
 			}
 		}catch(Exception e){

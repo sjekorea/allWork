@@ -70,7 +70,7 @@
 	</div>
 	<div id="rightPart">
 		<div id="part00">
-			<h4><a href="#" title="진행중인 채용정보">진행중인 채용정보<span><i class="fas fa-chevron-right"></i></span></a></h4>
+			<h4><a href="#" title="진행중인 채용정보">진행중인 채용정보&nbsp;<span><i class="fas fa-chevron-right"></i></span></a></h4>
 			<ul class="list00">
 				<c:choose>
 					<c:when test="${recruitList.size() > 0 }">
@@ -80,8 +80,11 @@
 								<div class="desc">
 									<p class="desc0"><a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="모집공고타이틀">${result.bizTitle }</a></p>
 									<div class="desc1">
+										<!-- 
 										<span>${codeConvert:getRecruitStatusText(result.bizIng, result.bizEndType, result.bizEndDay) }</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="공고보기"><span>공고보기</span></a>
+										 -->
+										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');" title="공고보기"><span>공고보기</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+										<a href="javascript:updateRecruit('${result.no }');" title="수정"><span>수정</span></a>
 										<%-- <a href="javascript:copyRecruit('${result.no }');" title="복사"><span>복사</span></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 										<a href="javascript:deleteRecruit('${result.no }');" title="삭제"><span>삭제</span></a> --%>
 									</div>
@@ -107,7 +110,10 @@
 		</div>
 		<!-- (begin) 2020.12.30 by s.yoo -->
 		<div id="part01">
-			<a href="#" title="AI 추천 인재정보">AI 추천 맞춤 인재정보</a>
+			<!-- 
+			<a href="#" title="AI 추천 맞춤 인재정보">AI 추천 맞춤 인재정보</a>
+			 -->
+			<h4><a href="#" title="AI 추천 인재정보">AI 추천 맞춤 인재정보&nbsp;<span><i class="fas fa-chevron-right"></i></span></a></h4>
 			<ul class="list00">
 				<c:choose>
 					<c:when test="${recommandResumeList.size() > 0 }">
@@ -397,6 +403,14 @@
 	});	
 	
 	
+	function updateRecruit(no){
+		
+		$("#no").val(no);
+		$("#recruitNo").val(no);
+		$("#searchForm").attr("action", "/recruitInfoUpt.do");
+		$("#searchForm").submit();
+	}
+
 	function goDetail(companyUid, personUid, no, recruitNo, resumeNo, open, detailFlag){
 		
 		loadingOn();

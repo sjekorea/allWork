@@ -78,6 +78,14 @@
 				</ul>
 			</div>
 			<table class="list">
+				<colgroup>
+					<col style="width:20%;">
+					<col style="width:20%;">
+					<col style="width:20%;">
+					<col style="width:20%;">
+					<col style="width:20%;">
+				</colgroup>
+
 				<thead>
 					<tr class="list_title">
 						<th class="t_desc01">회사명</th>
@@ -85,11 +93,11 @@
 						<th class="t_desc03">마감일</th>
 					</tr>
 				</thead>
-				<tbody>
 					<c:choose>
 						<c:when test="${recruitList.size() > 0 }">
 							<c:forEach var="result" items="${recruitList}" varStatus="status">
-								<tr class="margin"></tr>
+				<tbody>
+								<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
 								<tr>
 									<td rowspan="3" class="desc01">${result.bizName }</td>
 									<td colspan="3" class="desc02">
@@ -97,28 +105,43 @@
 											${convert:compByte(result.bizTitle, 100, "...")}
 										</a>
 									</td>
-									<td rowspan="3" class="desc03">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
-									</tr>
-									<tr>
+									<td rowspan="3" class="desc03">
+										<c:if test="${result.bizIng ne 'yes' }">
+											<span class="state01">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay)}</span>
+										</c:if>
+										<c:if test="${result.bizIng eq 'yes' and result.bizEndType eq 'often' }">
+											<span class="state02">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay)}</span>
+										</c:if>
+										<c:if test="${result.bizIng eq 'yes' and result.bizEndType eq 'get' }">
+											<span class="state03">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay)}</span>
+										</c:if>
+										<c:if test="${result.bizIng eq 'yes' and result.bizEndType ne 'often' and result.bizEndType ne 'get' }">
+											<span class="state04">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay)}</span>
+										</c:if>
+									</td>
+								</tr>
+								<tr>
 									<td><span class="desc_title">급여</span><span class="desc_desc00">${result.bizPayName }</span></td>
 									<td><span class="desc_title">경력</span><span class="desc_desc00">${codeConvert:getBizCareer(result.bizCareer) }</span></td>
 									<td><span class="desc_title">나이</span><span class="desc_desc00">${codeConvert:getBizAge(result.bizAge) }</span></td>
-									</tr>
-									<tr>
+								</tr>
+								<tr>
 									<td><span class="desc_title">지역</span>
 										<span class="desc_desc00">${result.bizArea1Name }${convert:checkNull(result.bizArea2Name) eq '' ? '' : '>'.concat(result.bizArea2Name) }</span>
 									</td>
 									<td><span class="desc_title">학력</span><span class="desc_desc00">${codeConvert:getBizAbilityShort(result.bizAbility) }</span></td>
 									<td><span class="desc_title">등록일</span><span class="desc_desc00">${result.wdate }</span></td>
 								</tr>
-								<tr class="margin"></tr>
+								<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				</tbody>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<tr class="desc"><td colspan="8" style="text-align:center;height:80px;">내역이 없습니다.</td></tr>
+				<tbody>
+							<tr class="desc"><td colspan="5" style="text-align:center;height:80px;">내역이 없습니다.</td></tr>
+				</tbody>
 						</c:otherwise>
 					</c:choose>
-				</tbody>
 			</table>
 			<div class="numareaWrap">
 				<ul class="numArea">

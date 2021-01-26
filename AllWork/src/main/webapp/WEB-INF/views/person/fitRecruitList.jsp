@@ -104,7 +104,7 @@
 												${convert:compByte(result.bizTitle, 100, "...")}
 											</a>
 										</td>
-										<td rowspan="3" class="desc03">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
+										<td rowspan="3" class="desc03">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
 									</tr>
 									
 									<tr>

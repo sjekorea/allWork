@@ -42,7 +42,7 @@
 												${convert:compByte(result.bizTitle, 100, "...")}
 											</a>
 										</td>
-										<td class="desc03">${codeConvert:getRecruitStatus(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
+										<td class="desc03">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay) }</td>
 										<td class="desc04">${result.viewDate }</td>
 									</tr>
 								</c:forEach>

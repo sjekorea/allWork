@@ -335,9 +335,10 @@ public class ConvertUtil {
 		try {
 			if (!bizIng.equalsIgnoreCase("yes")) return "채용마감";
 	
-			if (bizEndType.equalsIgnoreCase("input")) strBizEndCond = bizEndDay;
-			else if (bizEndType.equalsIgnoreCase("get")) strBizEndCond = "채용시까지";
+			if (bizEndType.equalsIgnoreCase("get")) strBizEndCond = "채용시까지";
 			else if (bizEndType.equalsIgnoreCase("often")) strBizEndCond = "상시채용";
+			//else if (bizEndType.equalsIgnoreCase("input")) strBizEndCond = bizEndDay;
+			else strBizEndCond = bizEndDay;
 		} catch(Exception e) {
 			e.printStackTrace();			
 		}
