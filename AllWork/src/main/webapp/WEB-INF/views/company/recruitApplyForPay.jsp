@@ -138,6 +138,9 @@
 				}
 			}
 		});
+		
+		//Default는 카드결제.
+		$("#payMethodSel").val("card").prop("selected", true);		
 	});	
 	
 	

@@ -51,7 +51,7 @@
 					</c:if>
 						<p>
 							<span class="write_title">작성자</span>
-							<span class="write_desc">${item.uid}</span>
+							<span class="write_desc">${item.nickName}</span>
 						</p>
 						<!-- 
 						<p>
@@ -115,7 +115,7 @@
 		</c:if>
 		
 		//게시판
-		<c:if test="${boardCode == 'netfu_41549_84812' }">
+		<c:if test="${boardCode == 'netfu_41549_84812' or boardCode == 'netfu_44304_38055' }">
 			if ($("#id").val() > 0) {
 				return goBoardView('${boardCode}', $("#id").val(), ${map.get("pageNo")});
 			} else {

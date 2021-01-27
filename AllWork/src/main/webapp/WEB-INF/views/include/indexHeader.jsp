@@ -310,7 +310,7 @@
 							</li>
 							<li class="menu menu05"><a href="/termsOfService.do" title="이용약관">이용약관</a></li>
 							<li class="menu menu06"><a href="/privacyPolicy.do" title="개인정보 취급방침">개인정보 취급방침</a></li>
-							<li class="menu menu07"><a href="/customerClaim.do" title="불편 및 신고상황 접수">불편 및 신고상황 접수</a></li>
+							<li class="menu menu07"><a href="/customerClaim.do" title="불편 및 신고사항 접수">불편 및 신고사항 접수</a></li>
 							<li class="menu menu08"><a href="/mobileGuide.do" title="모바일 서비스">모바일 서비스</a></li>
 							<li class="menu menu09"><a href="/libraryList.do" title="자료실">자료실</a></li>
 						</ul>

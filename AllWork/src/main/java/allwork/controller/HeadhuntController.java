@@ -75,6 +75,8 @@ public class HeadhuntController {
 
 			//(2) 이번 페이지의 데이터 목록.
 			model.setShowAll("Y");
+			if (commandMap.get("keyword") != null)
+				model.setKeyword((String) commandMap.get("keyword"));
 			item = headhuntService.getRecruitItemList(model);
 			
 			//(3) 항목 번호 할당 - N/A.

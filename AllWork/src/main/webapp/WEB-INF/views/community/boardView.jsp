@@ -43,7 +43,7 @@
 				<div class="titlePart">
 					<p class="title">${item.subject}</p>
 					<div class="detailArea">
-						<p class="writer">작성자&nbsp;<span>${item.uid}</span></p>
+						<p class="writer">작성자&nbsp;<span>${item.nickName}</span></p>
 						<p class="detail"><span>${item.strWdate}</span><span>&nbsp;</span>조회수<span><fmt:formatNumber value="${item.hit}" pattern="#,###"/></span></p>
 						<!-- 
 						<p class="attachment"><span class="attachment_title">첨부파일</span><span>없음</span></p>
@@ -57,11 +57,11 @@
 				<!-- 게시판에 대해서만 내가 쓴 글에 대해 수정/삭제 기능 지원 -->
 				<p class="golist"><a href="javascript:goBoardList('${boardCode}', ${map.get("pageNo")});" title="목록">목록보기</a></p>
 				<ul class="buttonPart">
-				<c:if test="${boardCode == 'netfu_41549_84812' && item.uid == SE_LOGIN_ID}">
+				<c:if test="${(boardCode == 'netfu_41549_84812' or boardCode == 'netfu_44304_38055') and item.uid == SE_LOGIN_ID}">
 					<li><a href="javascript:goBoardEdit('${boardCode}', ${item.id}, ${map.get("pageNo")});" title="수정">수정</a></li>
 					<li><a href="javascript:confirmDelete(${item.id})" title="삭제">삭제</a></li>
 				</c:if>
-				<c:if test="${boardCode == 'netfu_41549_84812'}">
+				<c:if test="${boardCode == 'netfu_41549_84812' or boardCode == 'netfu_44304_38055'}">
 					<li id="btn_reply"><a href="javascript:goBoardReply();" title="답변달기">답변달기</a></li>
 				</c:if>
 				</ul>

@@ -82,7 +82,8 @@ public class CommunityController {
 		//commandMap.put("pageNo", 1);
 		commandMap.put("boardCode", "netfu_44304_38055");
 		commandMap.put("no", 0);
-		return procBoardEdit(commandMap, session);
+		//return procBoardEdit(commandMap, session);
+		return procBoardList(commandMap);
 	}
 
 	//고객센터 - 자료실.
@@ -246,6 +247,7 @@ public class CommunityController {
 			} else {
 				model.setId(0);
 				model.setUid((String)session.getAttribute("SE_LOGIN_ID"));
+				model.setNickName((String)session.getAttribute("SE_USER_NM"));
 			}
 
 			//View에 데이터 전달.

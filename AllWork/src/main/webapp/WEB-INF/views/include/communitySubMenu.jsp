@@ -51,7 +51,7 @@
 	<c:if test="${SE_LOGIN_STATUS}">
 		<li class="menu menu07">
 			<a href="/customerClaim.do">
-				불편 및 신고상황 접수
+				불편 및 신고사항 접수
 			</a>
 		</li>
 	</c:if>

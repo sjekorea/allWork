@@ -15,7 +15,6 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 
     /*###################################   listpart   ###################################*/
     #listPart{width:710px;overflow: hidden;font-size: 14px;}
-
     .list{width:710px;overflow: hidden;border-collapse: collapse;table-layout: fixed;word-wrap: break-word;}
     .list caption{display:none;}
     .list thead{width:710px;background-color:#EDF0F5;border-top:1px solid #000;border-bottom:1px solid #ccc;}

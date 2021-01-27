@@ -108,7 +108,7 @@
 			</div>
 			
 				<!-- 게시판에 대해서만 목록화면에서 글쓰기를 허용. -->
-			<c:if test="${boardCode == 'netfu_41549_84812' }">
+			<c:if test="${boardCode == 'netfu_41549_84812' or boardCode == 'netfu_44304_38055' }">
 				<p class="delete"><a href="javascript:goBoardEdit('${boardCode}', 0, ${map.get("pageNo")});" title="등록">등록</a></p>
 			</c:if>
 
