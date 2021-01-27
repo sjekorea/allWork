@@ -15,8 +15,8 @@
     #header .nav li:hover{background-color:#4F60E3;}
     #header .nav li:hover a{color:#fff;}
 
-    #header .linkArea{width:260px;height:60px;float:left;}
-    #header .linkArea li{width:130px;height:60px;float:left;text-align: center;line-height:60px;font-size:12px;}
+    #header .linkArea{width:260px;height:60px;float:left;text-align: right;}
+    #header .linkArea li{display: inline-block;margin-right:-4px;width:130px;height:60px;text-align: center;line-height:60px;background-color: aqua;font-size:14px;}
       #header .linkArea .a01{background-color:#273245;}
       #header .linkArea .a02{background-color:#4F60E3;}
       #header .linkArea li a{color:#fff;}

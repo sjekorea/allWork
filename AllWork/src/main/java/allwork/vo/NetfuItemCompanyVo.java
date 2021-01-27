@@ -118,6 +118,7 @@ public class NetfuItemCompanyVo {
 	private String viewDate;
 	private String payType;
 	
+	private String jobDetail;
 	
 	
 	
@@ -909,4 +910,10 @@ public class NetfuItemCompanyVo {
 		this.orderView = orderView;
 	}
 	
+	public String getJobDetail() {
+		return jobDetail;
+	}
+	public void setJobDetail(String jobDetail) {
+		this.jobDetail = jobDetail;
+	}
 }

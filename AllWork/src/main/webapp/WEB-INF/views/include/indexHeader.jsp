@@ -189,7 +189,7 @@
 										<li class="a01"><a href="/personHome.do" title="개인회원 홈">개인회원 홈</a></li>
 									</c:when>
 									<c:otherwise>
-										<li class="a01"><a href="/companyHome.do" title="기업회원 홈">기업회원 홈</a></li>
+										<li class="a02"><a href="/companyHome.do" title="기업회원 홈">기업회원 홈</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:when>

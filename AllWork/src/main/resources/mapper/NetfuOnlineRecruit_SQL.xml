@@ -64,6 +64,7 @@
 			, nic.biz_area2, getCodeName(nic.biz_area2) biz_area2_name
 			, nic.biz_jobfrom, getCodeName(nic.biz_jobfrom) biz_jobfrom_name
 			, DATE_FORMAT(nor.wdate, '%Y-%m-%d') wdate
+			, nor.job_detail jobDetail
 		from netfu_online_recruit nor, netfu_item_company nic
 		where 1=1
                 and nor.type = 'job' 
@@ -114,6 +115,7 @@
 		nic.no recruitNo
 		, nir.no resumeNo
 		, nir.name name
+		, nir.inid_secret inidSecret
 		, nor.from_no
 		, nic.biz_name
 		, nic.biz_ing
@@ -127,6 +129,7 @@
 		, nir.inid_pay
 		, getCodeName(nir.inid_pay) inidPayName
 		, DATE_FORMAT(nor.wdate, '%m/%d') wdate
+		, nor.job_detail jobDetail
 		, nor.no no
 		, nor.uid uid
 		, nic.biz_end_type

@@ -74,7 +74,7 @@
 								<tr>
 									<th>비밀번호</th>
 									<td>
-										<input id="passwd" type="password" name="passwd" title="비밀번호" maxlength=100 placeholder="********" />
+										<input id="passwd" type="password" name="passwd" title="비밀번호" maxlength=16 placeholder="********" />
 										<span class="comment">비밀번호는 4~16자 영문, 숫자를 조합</span>
 									</td>
 								</tr>

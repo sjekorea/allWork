@@ -38,6 +38,7 @@
 		<div id="headerWrap">
 			<div id="topWrap">
 				<ul class="topMenu">
+					<li><a href="#" title="화상면접"><i class="fas fa-desktop"></i>&nbsp;화상면접&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 					<c:choose>
 						<c:when test="${SE_LOGIN_STATUS}">
 							<li><a href="/logout.do" title="로그아웃">로그아웃&nbsp;|&nbsp;</a></li>
@@ -87,7 +88,7 @@
 										<li class="a01"><a href="/personHome.do" title="개인회원 홈">개인회원 홈</a></li>
 									</c:when>
 									<c:otherwise>
-										<li class="a01"><a href="/companyHome.do" title="기업회원 홈">기업회원 홈</a></li>
+										<li class="a02"><a href="/companyHome.do" title="기업회원 홈">기업회원 홈</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:when>

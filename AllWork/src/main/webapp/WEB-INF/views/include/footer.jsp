@@ -17,9 +17,9 @@
 							<li><a href="/sitemap.do" title="사이트맵">사이트맵</a></li>
 						</ul>
 						<ul class="linkArea">
-							<li><a href="#" title="인스타페이지"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" title="유투브페이지"><i class="fab fa-youtube"></i></a></li>
-							<li><a href="#" title="페이스북페이지"><i class="fab fa-facebook"></i></a></li>
+							<li><a href="" title="인스타페이지"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="" title="유투브페이지"><i class="fab fa-youtube"></i></a></li>
+							<li><a href="" title="페이스북페이지"><i class="fab fa-facebook"></i></a></li>
 						</ul>
 						<div class="address">
 							<span>상호 : (주)올워크 | 대표이사 : 김봉갑 | 평일 : am 09:00 ~ pm 06:00 | 토요일, 일요일, 공휴일 휴무</span><br/>

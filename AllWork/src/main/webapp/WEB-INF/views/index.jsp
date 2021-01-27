@@ -74,11 +74,13 @@
 					<c:if test="${status.index < 6 }">
 						<li>
 							<c:if test="${result.link == null || result.link == '' }">
-									<p class="adImg"><div style="width: 155px; height: 50px;">${result.thumbnail}</div></p>
+								<a href="javascript:void();" title="롤 배너광고">
+									<p class="adImg">${result.thumbnail}</p>
+								</a>
 							</c:if>
 							<c:if test="${result.link != null && result.link != '' }">
 								<a href="${result.link }" target="_blank" title="롤 배너광고">
-									<p class="adImg"><div style="width: 155px; height: 50px;">${result.thumbnail}</div></p>
+									<p class="adImg">${result.thumbnail}</p>
 								</a>
 							</c:if>
 						</li>

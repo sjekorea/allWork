@@ -83,7 +83,7 @@
 							<p class="desc">
 								<span><i class="far fa-check-circle"></i>올워크 구인정보 무제한 검색</span>
 								<span><i class="far fa-check-circle"></i>기업의 채용대행, 헤드헌팅 우선추천</span>
-								<span><i class="far fa-check-circle"></i>정회원 전용 프리미엄좀 운영</span>
+								<span><i class="far fa-check-circle"></i>정회원 전용 프리미엄존 운영</span>
 								<span><i class="far fa-check-circle"></i>기타 정회원 우선 정책 유지</span>
 							</p>
 						</div>
@@ -121,15 +121,15 @@
 									<tr>
 										<th>아이디<span class="necessary">*</span></th>
 										<td>
-											<input id="uid" type="text" name="uid" title="아이디" maxlength=20 value=""/>
+											<input id="uid" type="text" name="uid" title="아이디" maxlength=16 value=""/>
 											<input id="btuChkDupUid" type="submit" value="중복확인" title="중복확인"/>
-											<span class="comment">영문과 숫자를 조합하여 4~20자 이내로 입력하세요.</span>
+											<span class="comment">영문과 숫자를 조합하여 4~16자 이내로 입력하세요.</span>
 										</td>
 									</tr>
 									<tr>
 										<th>비밀번호<span class="necessary">*</span></th>
 										<td>
-											<input id="passwd" type="password" name="passwd" maxlength=20 value="" title="비밀번호"/>
+											<input id="passwd" type="password" name="passwd" maxlength=16 value="" title="비밀번호"/>
 											<span class="comment">비밀번호는 4~16자 영문, 숫자를 조합하여 사용할 수 있습니다.</span>
 										</td>
 									</tr>
@@ -488,7 +488,11 @@
 	function chkDupUid(){
 
 		if(checkNull($("#uid").val())){
-			alertAndFocus("아이디를 입력하세요.", $("#uid"));
+			alertAndFocus("회원 ID를 입력하세요.", $("#uid"));
+			return;
+		}
+		if($("#uid").val().length < 4){
+			alertAndFocus("회원 ID는 최소 4자 이상을 사용하세요.", $("#uid"));
 			return;
 		}
 		
@@ -523,6 +527,10 @@
 		
 		if(checkNull($("#uid").val())){
 			alertAndFocus("회원 ID를 입력하세요.", $("#uid"));
+			return;
+		}
+		if($("#uid").val().length < 4){
+			alertAndFocus("회원 ID는 최소 4자 이상을 사용하세요.", $("#uid"));
 			return;
 		}
 		if($("#chkDupChk").val() != "Y"){

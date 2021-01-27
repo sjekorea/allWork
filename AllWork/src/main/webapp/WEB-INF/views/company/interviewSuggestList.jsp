@@ -38,8 +38,8 @@
 						<tr class="list_title">
 							<th class="desc00"><input type="checkbox" id="all" /></th>
 							<th class="desc01">면접요청자</th>
-							<th class="desc02">채용공고 제목</th>
-							<th class="desc03">이력서</th>
+							<th class="desc02">이력서</th>
+							<th class="desc03">메시지</th>
 							<th class="desc04">면접요청일</th>
 						</tr>
 						<c:choose>
@@ -57,11 +57,16 @@
 												</c:otherwise>
 											</c:choose>
 										</td>
-										<td class="desc02">${result.bizTitle }</td>
-										<td class="desc03">
+										<td class="desc02">
 											<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.personUid }', '', '', '${result.resumeNo }', '${result.inidSecret }', 'resume');">
 												<p class="t_desc01">${result.inidTitle}</p>
 											</a>
+										</td>
+										<td class="desc03">
+											${result.jobDetail }
+											<!-- 
+											${result.bizTitle }
+											 -->
 										</td>
 										<td class="desc04">${result.wdate }</td>
 									</tr>
@@ -161,7 +166,7 @@
 		loadingOn();
 		
 		var callback = function(data){
-			alert("면접요청을 전달했습니다.");
+			alert("항목을 삭제했습니다.");
 			$("#pageNo").val("1");
 			$("#searchForm").submit();
 		};

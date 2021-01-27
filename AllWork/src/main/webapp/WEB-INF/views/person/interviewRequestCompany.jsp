@@ -26,7 +26,10 @@
 						<tr class="list_title">
 							<th class="desc01">회사명</th>
 							<th class="desc02">채용공고</th>
+							<!-- 
 							<th class="desc03">채용마감</th>
+							 -->
+							<th class="desc03">메시지</th>
 							<th class="desc04">면접요청일</th>
 						</tr>
 						<c:choose>
@@ -44,7 +47,10 @@
 											</a>
 										</td>
 										<td class="desc03">
+											${result.jobDetail }
+											<!-- 
 											${codeConvert:getRecruitStatusTextShort(result.bizIng, result.bizEndType, result.bizEndDay) }
+											 -->
 										</td>
 										<td class="desc04">${result.wdate }</td>
 									</tr>

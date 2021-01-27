@@ -336,14 +336,14 @@
 									<tr>
 										<th>아이디<span class="necessary">*</span></th>
 										<td>
-											<input id="uid" type="text" name="uid" title="아이디" maxlength=20 value=""/>
+											<input id="uid" type="text" name="uid" title="아이디" maxlength=16 value=""/>
 											<input id="btuChkDupUid" type="submit" value="중복확인" title="중복확인"/>
 											<span class="comment">영문과 숫자를 조합하여 4~16자 이내로 입력하세요.</span>
 										</td>
 									</tr>
 									<tr>
 										<th>비밀번호<span class="necessary">*</span></th>
-										<td><input id="passwd" type="password" name="passwd" title="비밀번호" maxlength=20 /> <span class="comment">비밀번호는 6~16자 영문, 숫자를 조합하여 사용할 수 있습니다.</span></td>
+										<td><input id="passwd" type="password" name="passwd" title="비밀번호" maxlength=16 /> <span class="comment">비밀번호는 4~16자 영문, 숫자를 조합하여 사용할 수 있습니다.</span></td>
 									</tr>
 									<tr>
 										<th>비밀번호 확인<span class="necessary">*</span></th>
@@ -725,10 +725,14 @@
 	function chkDupUid(){
 
 		if(checkNull($("#uid").val())){
-			alertAndFocus("아이디를 입력하세요.", $("#uid"));
+			alertAndFocus("회원 ID를 입력하세요.", $("#uid"));
 			return;
 		}
-		
+		if($("#uid").val().length < 4){
+			alertAndFocus("회원 ID는 최소 4자 이상을 사용하세요.", $("#uid"));
+			return;
+		}
+
 		loadingOn();
 		
 		var callback = function(data){
@@ -804,6 +808,10 @@
 		}
 		if(checkNull($("#uid").val())){
 			alertAndFocus("회원 ID를 입력하세요.", $("#uid"));
+			return;
+		}
+		if($("#uid").val().length < 4){
+			alertAndFocus("회원 ID는 최소 4자 이상을 사용하세요.", $("#uid"));
 			return;
 		}
 		if($("#chkDupChk").val() != "Y"){

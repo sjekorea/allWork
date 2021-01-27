@@ -32,6 +32,7 @@
 		<div class="descArea">
 			<p>구직자에게 ${SE_USER_NM }님의 채용공고가 전송됩니다.</p>
 			<form>
+			</form>
 				<fieldset>
 					<legend>면접 제의</legend>
 					<ul class="title">
@@ -44,8 +45,7 @@
 					<ul class="desc">
 						<li>${companyMap.name }(${companyMap.email })</li>
 						<li>${convert:getPersonNameHidden(memberMap.name) }(${convert:getEmailHidden(memberMap.email) })</li>
-						<li><input type="text" id="resumeTitle" name="resumeTitle"
-							value="" /></li>
+						<li><input type="text" id="resumeTitle" name="resumeTitle" value="" /></li>
 						<li><select id="resumeSel" name="resumeSel">
 								<c:forEach var="result" items="${recruitList}"
 									varStatus="status">
@@ -57,7 +57,6 @@
 						</li> -->
 					</ul>
 				</fieldset>
-			</form>
 		</div>
 		<div class="btnArea">
 			<p class="a01">
@@ -254,17 +253,16 @@
 						<li class="edu_title">
 							<p class="edu_desc01">재학기간</p>
 							<p class="edu_desc02">학교명</p>
-							<p class="edu_desc03">전공</p>
+							<p class="edu_desc03">학과/전공</p>
 							<p class="edu_desc04">학위</p>
 							<p class="edu_desc05">졸업상태</p>
 						</li>
 						<c:forEach var="result" items="${resumeEducation.data}"
 							varStatus="status">
 							<li class="edu_desc">
-								<p class="edu_desc01">${result.lesson_sdate}.${result.lesson_sdate2}
-									~ ${result.lesson_edate}.${result.lesson_edate2}</p>
+								<p class="edu_desc01">${result.lesson_sdate}.${result.lesson_sdate2}~${result.lesson_edate}.${result.lesson_edate2}</p>
 								<p class="edu_desc02">${result.school}</p>
-								<p class="edu_desc03">${result.lesson}</p>
+								<p class="edu_desc03">${result.lesson2}/${result.lesson}</p>
 								<p class="edu_desc04">${result.strDegree}</p>
 								<p class="edu_desc05">${result.strState}</p>
 							</li>
@@ -389,6 +387,13 @@
 
 
 <script type="text/javascript">
+	$("#resumeTitle").keydown( function() {
+		var kcode = event.keyCode;
+		if(kcode == 13) {
+			registApply();
+		}
+	});
+
 	$(document).ready(function() {
 
 		$(".close_btn, .btnArea .a01").on("click", function(e) {
@@ -458,8 +463,17 @@
 		}
 	}
 
-	// 입사지원 등록
+	// 면접제의 등록
 	function registApply() {
+		if(checkNull($("#resumeTitle").val())){
+			alert("면접제의 메시지를 입력해 주세요.");
+			return;
+		}
+		if(checkNull($("#resumeSel").val())){
+			alert("구직자에게 제의하려는 채용정보를 선택해 주세요.");
+			return;
+		}
+		
 		loadingOn();
 		var callback = function(data) {
 			loadingOff();

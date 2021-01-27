@@ -34,6 +34,7 @@
 				<div id="topWrap">
 					<h1><a href="/index.do" title="올워크홈">Allwork</a></h1>
 					<ul class="topMenu">
+						<li><a href="#" title="화상면접"><i class="fas fa-desktop"></i>&nbsp;화상면접&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 						<li><a href="/logout.do" title="로그아웃">로그아웃&nbsp;|&nbsp;</a></li>
 						<li><a href="/updateMyInfo.do" title="마이페이지">마이페이지</a></li>
 					</ul>

@@ -96,11 +96,13 @@
 		$("#serviceEndDate").val(moment(addDay(new Date(), 7)).format('YYYY-MM-DD'));
 		
 		$(".refund_btn a").on("click", function(e){
-			$(".containerWrap").scrollTop(0);
+			//$(".containerWrap").scrollTop(0);
+			e.preventDefault();
+			$('html').scrollTop(0);
 			$("#popupWrap_payService").css("display", "block");
 		});
 		
-		$(".popupClose span").on("click", function(e){
+		$(".popup_close span").on("click", function(e){
 			$("#popupWrap_payService").css("display", "none");
 		});
 		

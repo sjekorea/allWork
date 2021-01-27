@@ -12,10 +12,11 @@ public class PaginationUtil {
 		
 		if(totalSize > 0){			
 			
+			pageHtml += "<li><a href=\"javascript:"+functionName+"('1')\" title='prev'><i class='fas fa-chevron-left'></i><i class='fas fa-chevron-left'></i></a></li>";
 			if(Integer.parseInt(pageNo) <= 1){
 				pageHtml += "<li><a href=\"javascript:"+functionName+"('1')\" title='prev'><i class='fas fa-chevron-left'></i></a></li>";
 			}else{
-				pageHtml += "<li class='prev on' onclick=\"javascript:"+functionName+"('"+(Integer.parseInt(pageNo)-1)+"')\"></li>";
+				pageHtml += "<li><a href=\"javascript:"+functionName+"('"+(Integer.parseInt(pageNo)-1)+"')\"><i class='fas fa-chevron-left'></i></a></li>";
 			}
 			
 			
@@ -43,6 +44,7 @@ public class PaginationUtil {
 			}else{
 				pageHtml += "<li><a href=\"javascript:"+functionName+"('"+(Integer.parseInt(pageNo)+1)+"')\" title='next'><i class='fas fa-chevron-right'></i></a></li>";
 			}
+			pageHtml += "<li><a href=\"javascript:"+functionName+"('"+totalPage+"')\" title='next'><i class='fas fa-chevron-right'></i><i class='fas fa-chevron-right'></i></a></li>";
 		}
 		
 		rtnMap.put("pageNo", pageNo);

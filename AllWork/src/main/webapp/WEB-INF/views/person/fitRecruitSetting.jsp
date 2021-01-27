@@ -91,7 +91,7 @@
 											<option value = "2">대학졸업(2~3년)</option>
 											<option value = "3">대학교졸업(4년)</option>
 											<option value = "4">석사</option>
-											<option value = "5">석사</option>
+											<option value = "5">박사</option>
 										</select>
 									</td>
 								</tr>

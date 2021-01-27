@@ -29,6 +29,7 @@
 				채용 담당자에게 ${SE_USER_NM }님의 이력서가 전송됩니다.
 			</p>
 			<form>
+			</form>
 				<fieldset>
 					<legend>이메일 입사지원</legend>
 					<ul class="title">
@@ -54,7 +55,6 @@
 						</li> -->
 					</ul>
 				</fieldset>
-			</form>
 		</div>
 		<div class="btnArea">
 			<p class="a01"><a href="#" title="취소">취소</a></p>
@@ -310,7 +310,13 @@
 
 
 <script type="text/javascript">
-	
+	$("#resumeTitle").keydown( function() {
+		var kcode = event.keyCode;
+		if(kcode == 13) {
+			registApply();
+		}
+	});
+
 	$(document).ready(function(){
 		
 		$(".close_btn, .a01").on("click", function(e){
@@ -409,6 +415,15 @@
 	
 	// 입사지원 등록
 	function registApply(){
+		if(checkNull($("#resumeTitle").val())){
+			alert("입사지원 메시지를 입력해 주세요.");
+			return;
+		}
+		if(checkNull($("#resumeSel").val())){
+			alert("입사지원하려는 이력서를 선택해 주세요.");
+			return;
+		}
+		
 		loadingOn();
 		var callback = function(data){
 			loadingOff();

@@ -117,7 +117,32 @@
 			$("#searchForm").submit();	
 		});
 
-	});	
+	});
 	
+	$("#search_company").keydown( function() {
+		var kcode = event.keyCode;
+		if(kcode == 13) {
+			$("#searchForm").submit();	
+		}
+	});
+	$("#search_title").keydown( function() {
+		var kcode = event.keyCode;
+		if(kcode == 13) {
+			$("#searchForm").submit();	
+		}
+	});
+	$("#search_loc").keydown( function() {
+		var kcode = event.keyCode;
+		if(kcode == 13) {
+			$("#searchForm").submit();	
+		}
+	});
+	$("#search_keyword").keydown( function() {
+		var kcode = event.keyCode;
+		if(kcode == 13) {
+			$("#searchForm").submit();	
+		}
+	});
+
 </script>
 

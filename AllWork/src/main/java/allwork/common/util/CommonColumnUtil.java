@@ -40,9 +40,9 @@ public class CommonColumnUtil {
 		rtnStr += ", nic.biz_career, nic.biz_detail, nic.biz_end_day, nic.biz_end_type, nic.biz_ing";
 		rtnStr += ", nic.biz_method, getCodeName(nic.biz_method) biz_method_name";
 		rtnStr += ", nic.biz_person, nic.biz_pemail, nic.biz_pphone, nic.biz_pfax";
-		rtnStr += ", DATE_FORMAT(nic.wdate, '%m/%d') wdate";
-		rtnStr += ", DATE_FORMAT(nic.u_wdate, '%m/%d') u_wdate";
-		rtnStr += ", DATE_FORMAT(nic.j_wdate, '%m/%d') j_wdate";
+		rtnStr += ", DATE_FORMAT(nic.wdate, '%Y-%m-%d') wdate";
+		rtnStr += ", DATE_FORMAT(nic.u_wdate, '%Y-%m-%d') u_wdate";
+		rtnStr += ", DATE_FORMAT(nic.j_wdate, '%Y-%m-%d') j_wdate";
 		rtnStr += ", nic.service1, nic.service2, nic.service3, nic.service4, nic.service5, nic.service100";
 		rtnStr += ", nic.service6, nic.service7, nic.service8, nic.service9, nic.service10, nic.service11";
 		rtnStr += ", nic.biz_paper, getCodeName(nic.biz_paper) biz_paper_name";
