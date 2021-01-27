@@ -59,7 +59,9 @@
 											</a>
 									       	<!-- (end) 2020.12.30 by s.yoo -->
 										</td>
-										<td rowspan="3" class="desc03">${result.strEdate }</td>
+										<td rowspan="3" class="desc03">
+											${convert:getEndCondOther(result.strEdate)}
+										</td>
 									</tr>
 									<tr>
 										<td><span class="desc_title">연락처</span><span class="desc_desc00">${result.phone }</span></td>

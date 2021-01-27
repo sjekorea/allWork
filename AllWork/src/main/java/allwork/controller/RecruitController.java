@@ -86,8 +86,8 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nic.no");
-				commandMap.put("orderRule", "desc");
+				//commandMap.put("orderField", "nic.no");
+				//commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);
@@ -158,8 +158,8 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nic.no");
-				commandMap.put("orderRule", "desc");
+				//commandMap.put("orderField", "nic.no");
+				//commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);
@@ -216,8 +216,8 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nic.no");
-				commandMap.put("orderRule", "desc");
+				//commandMap.put("orderField", "nic.no");
+				//commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);
@@ -274,8 +274,8 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nic.no");
-				commandMap.put("orderRule", "desc");
+				//commandMap.put("orderField", "nic.no");
+				//commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);
@@ -332,8 +332,8 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nic.no");
-				commandMap.put("orderRule", "desc");
+				//commandMap.put("orderField", "nic.no");
+				//commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);
@@ -405,8 +405,8 @@ public class RecruitController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nic.no");
-				commandMap.put("orderRule", "desc");
+				//commandMap.put("orderField", "nic.no");
+				//commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
 			commandMap.put("pageSize", pageSize);

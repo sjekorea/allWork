@@ -101,6 +101,14 @@
 		 </function-signature>
 	</function>
 	<function>
+		 <description>Get the biz end condition of Other recruitment</description>
+		 <name>getEndCondOther</name>
+		 <function-class>allwork.common.util.ConvertUtil</function-class>
+		 <function-signature>
+			  String getEndCondOther(java.lang.String)
+		 </function-signature>
+	</function>
+	<function>
 		 <description>Get the biz end condition for index.do</description>
 		 <name>getEndCond4Index</name>
 		 <function-class>allwork.common.util.ConvertUtil</function-class>

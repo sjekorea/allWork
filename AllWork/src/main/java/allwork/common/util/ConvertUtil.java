@@ -346,6 +346,23 @@ public class ConvertUtil {
 		return strBizEndCond;
 	}
 
+	/*
+	 * 채용마감 - 기타채용정보
+	 */
+	public static String getEndCondOther(String bizEndDay) {
+		String strBizEndCond = "";
+		try {
+			if (bizEndDay == null || bizEndDay.length() < 1) return "";
+			String[] listDay = bizEndDay.split(" ");
+			//strBizEndCond = (listDay.length > 1)? listDay[0] : listDay[1];
+			strBizEndCond = listDay[0];
+		} catch(Exception e) {
+			e.printStackTrace();			
+		}
+
+		return strBizEndCond;
+	}
+
 	public static String getEndCond4Index(String bizIng, String bizEndType, String bizEndDay) {
 		String strBizEndCond = "";
 		try {

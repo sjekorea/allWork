@@ -477,7 +477,13 @@
 					$("#orderRule").val(orderRuleUwdate);
 					break;
 				case 2 : 
+					/*
 					$("#orderField").val("biz_end_day");
+					orderRuleBizEndDay = (orderRuleBizEndDay == "desc") ? "" : "desc";
+					$("#orderRuleBizEndDay").val(orderRuleBizEndDay);
+					$("#orderRule").val(orderRuleBizEndDay);
+					*/
+					$("#orderField").val("biz_ing");
 					orderRuleBizEndDay = (orderRuleBizEndDay == "desc") ? "" : "desc";
 					$("#orderRuleBizEndDay").val(orderRuleBizEndDay);
 					$("#orderRule").val(orderRuleBizEndDay);
