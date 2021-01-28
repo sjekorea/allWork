@@ -19,6 +19,7 @@ import com.ilmagna.allworkadmin.api.services.ApiCategoryService;
 import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
 import allwork.service.NetfuItemCompanyService;
+import allwork.service.RecruitOtherService;
 
 @Service("aiMatchingResumeService")
 public class AiMatchingResumeService {
@@ -34,6 +35,9 @@ public class AiMatchingResumeService {
 
 	@Resource(name="netfuItemCompanyService")
 	private NetfuItemCompanyService netfuItemCompanyService;	
+
+	@Resource(name="recruitOtherService")
+	private RecruitOtherService recruitOtherService;		
 
 	
 	public AiMatchingResumeModel getResumeByMember(AiMatchingResumeModel model) throws Exception {
@@ -61,12 +65,24 @@ public class AiMatchingResumeService {
 							//채용마감상태와 채용마감일 등록.
 							String strBizIng = "yes";
 							if (obj.getType() == 1) {
+								//채용정보의 채용진행현황 검색.
 								CommandMap commandMap = new CommandMap();
 								commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 								commandMap.put("no", itemData.getData().get(j).getRecommend_id());
 								recruitMap = netfuItemCompanyService.selectNetfuItemCompanyMap(commandMap.getMap());
 								strBizIng = (String) recruitMap.get("bizIng");								
 								if (recruitMap == null || recruitMap.isEmpty()) continue;
+							} else if (obj.getType() == 2) {
+								//기타 채용정보 ID 추출.
+								CommandMap commandMap = new CommandMap();
+								commandMap.put("wantedAuthNo", itemData.getData().get(j).getRecommend_id());
+								Map<String, Object> recruitOtherMap = recruitOtherService.selectRecruitOtherMap(commandMap.getMap());
+								int nID = 0;
+								if (recruitOtherMap.get("ser") != null) {
+									nID = (Integer) recruitOtherMap.get("ser");
+								}
+								if (nID < 1) continue;
+								itemData.getData().get(j).setId(nID);
 							}
 							itemData.getData().get(j).setBizIng(strBizIng);
 

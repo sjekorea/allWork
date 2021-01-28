@@ -183,7 +183,12 @@
 				<tr>
 					<td rowspan="3" class="desc01">${result.name }</td>
 					<td colspan="3" class="desc02">
+						<!-- 
 						<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.recommend_id }" target="_blank">
+							${result.title }
+						</a>
+						 -->
+						<a href="javascript:goOtherDetail('${result.id }');">
 							${result.title }
 						</a>
 					</td>
@@ -461,4 +466,13 @@
 		//}
 	}
 	
+	// 기타 채용정보 상세보기 화면으로 이동.
+	function goOtherDetail(no){
+		loadingOn();
+		
+		$("#no").val(no);
+		$("#searchForm").attr("action", "/recruitOtherDetail.do");
+		$("#searchForm").submit();
+	}
+
 </script>

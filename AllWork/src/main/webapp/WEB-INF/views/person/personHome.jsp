@@ -103,7 +103,16 @@
 					                  	</a>
 									</c:if>
 									<c:if test="${result.type == 2 }">
+										<!-- 
 										<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.recommend_id }" target="_blank">
+					                    	<div class="descBox">
+					                      		<p class="desc01">${result.name }</p>
+					                      		<p class="desc02">${convert:compByte(result.title, 30, "...")}</p>
+					                     		<span class="desc03">${result.loc }</span>
+					                    	</div>
+					                  	</a>
+										 -->
+										<a href="javascript:goOtherDetail('${result.id }');">
 					                    	<div class="descBox">
 					                      		<p class="desc01">${result.name }</p>
 					                      		<p class="desc02">${convert:compByte(result.title, 30, "...")}</p>
@@ -153,7 +162,12 @@
 											</a>
 										</c:if>
 										<c:if test="${result.type == 2 }">
+											<!-- 
 											<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.recommend_id }" target="_blank">
+												${result.title }
+											</a>
+											 -->
+											<a href="javascript:goOtherDetail('${result.id }');">
 												${result.title }
 											</a>
 										</c:if>
@@ -347,4 +361,13 @@
 		//}
 	}
 	
+	// 기타 채용정보 상세보기 화면으로 이동.
+	function goOtherDetail(no){
+		loadingOn();
+		
+		$("#no").val(no);
+		$("#searchForm").attr("action", "/recruitOtherDetail.do");
+		$("#searchForm").submit();
+	}
+
 </script>

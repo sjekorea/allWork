@@ -80,4 +80,36 @@
 		limit #{start}, #{pageSize}
 	</select>
 
+	<select id="selectRecruitOtherMap" parameterType="hashmap" resultType="allwork.vo.RecruitOtherVo">
+		select 
+			ser
+			, DATE_FORMAT(reg, '%m/%d') reg
+			, prs
+			, DATE_FORMAT(beg, '%m/%d') beg
+			, company_title
+			, phone
+			, recruit_item
+			, whereis
+			, men
+			, DATE_FORMAT(wdate, '%m/%d') wdate
+			, DATE_FORMAT(edate, '%m/%d') edate
+			, order_view
+			, memo
+			, job_type
+			, wantedAuthNo
+			, salary
+			, preference
+			, strEdate
+		from recruit_other
+		where 1=1
+			<if test='no != null &amp;&amp; no != "" &amp;&amp; no > 0'>
+				AND ser = #{no}
+			</if>
+			<if test='wantedAuthNo != null &amp;&amp; wantedAuthNo != ""'>
+				AND wantedAuthNo = #{wantedAuthNo}
+			</if>
+		ORDER BY wdate DESC, ser DESC 
+		limit 1
+	</select>
+
 </mapper>

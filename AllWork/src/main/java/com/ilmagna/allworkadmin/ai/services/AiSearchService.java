@@ -28,6 +28,7 @@ import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
 import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuItemResumeService;
+import allwork.service.RecruitOtherService;
 
 @Service("aiSearchService")
 public class AiSearchService {
@@ -42,6 +43,9 @@ public class AiSearchService {
 
 	@Resource(name="netfuItemResumeService")
 	private NetfuItemResumeService netfuItemResumeService;
+
+	@Resource(name="recruitOtherService")
+	private RecruitOtherService recruitOtherService;		
 
 	
 	//시멘틱 검색 작업 수행.
@@ -184,7 +188,7 @@ public class AiSearchService {
 				if (recruitMap == null || recruitMap.isEmpty()) continue;
 
 				//채용정보 등록.
-				dataItem.setId(i);
+				//dataItem.setId(i);
 				recruitDataAllwork.add(dataItem);
 			}
 			
@@ -235,9 +239,20 @@ public class AiSearchService {
 				//채용마감일 등록.
 				String strEdate = ApiConvertorUtil.getBizEndDay(dataItem.getBizIng(), dataItem.getBiz_end_type(), dataItem.getBiz_end_day());
 				dataItem.setStrEdate(strEdate);
+				
+				//기타 채용정보 ID 추출.
+				CommandMap commandMap = new CommandMap();
+				commandMap.put("wantedAuthNo", dataItem.getRecommend_id());
+				Map<String, Object> recruitOtherMap = recruitOtherService.selectRecruitOtherMap(commandMap.getMap());
+				int nID = 0;
+				if (recruitOtherMap.get("ser") != null) {
+					nID = (Integer) recruitOtherMap.get("ser");
+				}
+				if (nID < 1) continue;
+				dataItem.setId(nID);
 
 				//채용정보 등록.
-				dataItem.setId(i);
+				//dataItem.setId(i);
 				recruitDataWorknet.add(dataItem);
 			}
 			
@@ -301,7 +316,7 @@ public class AiSearchService {
 
 				
 				//인재정보 등록.
-				dataItem.setId(i);
+				//dataItem.setId(i);
 				resumeDataAllwork.add(dataItem);
 			}
 		} catch (Exception e) {

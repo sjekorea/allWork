@@ -504,7 +504,27 @@ public class RecruitController {
 		
 		return mv;
 	}
-	
+
+	@RequestMapping(value="/recruitOtherDetail.do")
+	public ModelAndView recruitOtherDetail(CommandMap commandMap, HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView("/recruit/recruitOtherDetail");
+		
+		try{				
+			// 채용정보 
+			Map<String, Object> recruitMap = recruitOtherService.selectRecruitOtherMap(commandMap.getMap());
+			
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("recruitMap", recruitMap);
+		
+		}catch(Exception e){
+			e.printStackTrace();
+			log.info(this.getClass().getName()+".recruitOtherDetail Exception !!!!! \n"+e.toString());
+		}
+		
+		return mv;
+	}
+
 	
 	/*
 	 * 채용정보 상세

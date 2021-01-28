@@ -23,7 +23,7 @@ public class AiMatchingRecommendationModel implements Serializable  {
 	private Integer id;
 	private Integer type;						//X				allwork(1)			worknet(2)
 	private String recommend_id;				//이력서 ID		올워크 채용공고 ID		워크넷 채용공고 Key
-	private String uid;							//구직자 사용자 ID	구인자 사용자 ID				Null/Empty String
+	private String uid;							//구직자 사용자 ID	구인자 사용자 ID			Null/Empty String
 	private String name;						//구직자 이름		구인회사 이름			구인회사이름
 	private String title;						//X				채용공고 제목			채용공고 제목
 	private String loc;							//희망근무지		근무지				근무지

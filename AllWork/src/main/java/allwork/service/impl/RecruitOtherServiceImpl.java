@@ -32,4 +32,9 @@ public class RecruitOtherServiceImpl implements RecruitOtherService{
 		return recruitOtherDao.selectRecruitOtherList(map);
 	}
 
+	@Override
+	public Map<String, Object> selectRecruitOtherMap(Map<String, Object> map) throws Exception {
+		return recruitOtherDao.selectRecruitOtherMap(map);
+	}
+
 }

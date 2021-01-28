@@ -260,13 +260,23 @@
 					<c:forEach var="result" items="${recruitOtherList}" varStatus="status">
 						<tr style="cursor: pointer">
 							<th>
+								<!-- 
 								<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.wantedAuthNo }" target="_blank">
-                                ${result.companyTitle }
+                                	${result.companyTitle }
+                           		</a>
+								 -->
+								<a href="javascript:goOtherDetail('${result.ser }');">
+                                	${result.companyTitle }
                            		</a>
                            	</th>
 							<td class="jPart">
+								<!-- 
 								<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.wantedAuthNo }" target="_blank">
-								${result.recruitItem }
+									${result.recruitItem }
+								</a>
+								 -->
+								<a href="javascript:goOtherDetail('${result.ser }');">
+									${result.recruitItem }
 								</a>
 							</td>
 							<td class="jPerson">${result.men }</td>
@@ -329,4 +339,14 @@
 		//	ajax('post', '/selectNetfuItemResumeCnt.ajax', param, callback);
 		//}
 	}
+	
+	// 기타 채용정보 상세보기 화면으로 이동.
+	function goOtherDetail(no){
+		loadingOn();
+		
+		$("#no").val(no);
+		$("#searchForm").attr("action", "/recruitOtherDetail.do");
+		$("#searchForm").submit();
+	}
+
 </script>

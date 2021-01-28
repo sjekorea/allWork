@@ -32,6 +32,8 @@
 						<p><input type="text" id="search_keyword" name="search_keyword" value="${map.search_keyword }" placeholder="키워드" /></p>
 						<p class="btnBox"><input id="search_btn" type="button" name="search_btn" value="검색" style="cursor:pointer;"/></p>
 						<p class="btnBox"><input id="reset_btn" type="button" name="reset_btn" value="초기화" style="cursor:pointer;"/></p>
+						<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo }"/>
+						<input type="hidden" id="no" name="no" value="" />
 					</fieldset>
 				</form>
 			</div>	
@@ -54,7 +56,12 @@
 										<td rowspan="3" class="desc01">${result.companyTitle }</td>
 										<td colspan="3" class="desc02">
 									       	<!-- (begin) 2020.12.30 by s.yoo -->
+									       	<!-- 
 											<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.wantedAuthNo }" target="_blank">
+												${result.recruitItem }
+											</a>
+									       	 -->
+											<a href="javascript:goOtherDetail('${result.ser }');">
 												${result.recruitItem }
 											</a>
 									       	<!-- (end) 2020.12.30 by s.yoo -->
@@ -95,10 +102,6 @@
 </div>
 
 <jsp:include page="/footer.do" />
-
-<form name="searchForm" id="searchForm" method="post" action="/recruitOther.do">
-	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo }"/>
-</form>
 
 <script type="text/javascript">
 	
@@ -143,6 +146,15 @@
 			$("#searchForm").submit();	
 		}
 	});
+	
+	// 기타 채용정보 상세보기 화면으로 이동.
+	function goOtherDetail(no){
+		loadingOn();
+		
+		$("#no").val(no);
+		$("#searchForm").attr("action", "/recruitOtherDetail.do");
+		$("#searchForm").submit();
+	}
 
 </script>
 

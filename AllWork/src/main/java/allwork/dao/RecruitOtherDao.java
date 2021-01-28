@@ -20,4 +20,9 @@ public class RecruitOtherDao extends AbstractDAO{
 	public List<Map<String, Object>> selectRecruitOtherList(Map<String, Object> map) {
 		return (List<Map<String, Object>>)selectList("recruitOther.selectRecruitOtherList", map);
 	}
+
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectRecruitOtherMap(Map<String, Object> map) {
+		return (Map<String, Object>)selectOne("recruitOther.selectRecruitOtherMap", map);
+	}
 }
