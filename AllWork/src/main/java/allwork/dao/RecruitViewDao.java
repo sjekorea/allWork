@@ -11,9 +11,14 @@ import allwork.common.dao.AbstractDAO;
 public class RecruitViewDao extends AbstractDAO{
 
 	
-	// 열람정보 갯수
+	// 사용자가 열람한 이력서 또는 채용정보 개수
 	public int selectRecruitViewCnt(Map<String, Object> map) throws Exception{
 		return selectCnt("recruitView.selectRecruitViewCnt", map);
+	}
+	
+	// 사용자의 이력서 또는 채용정보를 다른 사용자가 참조하 개수
+	public int selectReferenceViewCnt(Map<String, Object> map) throws Exception{
+		return selectCnt("recruitView.selectReferenceViewCnt", map);
 	}
 	
 	// 채용정보 열람정보 리스트

@@ -577,6 +577,7 @@ public class ResumeController {
 			
 			// 열람 정보 저장
 			commandMap.put("no", commandMap.get("resumeNo"));
+			commandMap.put("toUid", commandMap.get("personUid"));
 			commandMap.put("viewType", "resume");
 			recruitViewService.insertRecruitView(commandMap.getMap());
 			

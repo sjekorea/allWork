@@ -522,6 +522,7 @@ public class RecruitController {
 			
 			// 열람 정보 저장
 			commandMap.put("no", commandMap.get("recruitNo"));
+			commandMap.put("toUid", commandMap.get("companyUid"));
 			commandMap.put("viewType", "recruit");
 			recruitViewService.insertRecruitView(commandMap.getMap());
 			

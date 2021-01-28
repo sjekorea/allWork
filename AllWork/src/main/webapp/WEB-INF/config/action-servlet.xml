@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans 
-    xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:p="http://www.springframework.org/schema/p"
-    xmlns:mvc="http://www.springframework.org/schema/mvc"
-    xmlns:task="http://www.springframework.org/schema/task"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:task="http://www.springframework.org/schema/task"
 	xmlns:tx="http://www.springframework.org/schema/tx"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
-       	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
-       	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
-       	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd" >
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	   	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+	   	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+	   	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+	   	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd" >
 
 
 	<mvc:annotation-driven>
@@ -22,24 +22,24 @@
 	</mvc:annotation-driven>
 	
 	<context:component-scan base-package="allwork">
-    	<context:include-filter type="annotation" expression="org.springframework.context.annotation.Configuration"/>
-    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
-    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
-    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
-    	<context:include-filter type="regex" expression="(service|controller|dao)\..*"/>
-    </context:component-scan>
-	
-    <!-- (begin) 2020.12.30 by s.yoo -->
-	<context:component-scan base-package="com.ilmagna.allworkadmin">
-    	<context:include-filter type="annotation" expression="org.springframework.context.annotation.Configuration"/>
-    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
-    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
-    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
-    	<context:include-filter type="regex" expression="(services|controllers|daos)\..*"/>
+		<context:include-filter type="annotation" expression="org.springframework.context.annotation.Configuration"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+		<context:include-filter type="regex" expression="(service|controller|dao)\..*"/>
 	</context:component-scan>
-    <!-- (end) 2020.12.30 by s.yoo -->
+	
+	<!-- (begin) 2020.12.30 by s.yoo -->
+	<context:component-scan base-package="com.ilmagna.allworkadmin">
+		<context:include-filter type="annotation" expression="org.springframework.context.annotation.Configuration"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+		<context:include-filter type="regex" expression="(services|controllers|daos)\..*"/>
+	</context:component-scan>
+	<!-- (end) 2020.12.30 by s.yoo -->
 
 	<mvc:resources location="/font/" mapping="/font/**" /> 
  	<mvc:resources location="/img/" mapping="/img/**" />  
@@ -50,50 +50,60 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-            <mvc:exclude-mapping path="/"/>
-            <mvc:exclude-mapping path="/index.do"/>
-            <mvc:exclude-mapping path="/login.do"/>
-            <mvc:exclude-mapping path="/naverLogin.do"/>
-            <mvc:exclude-mapping path="/kakaoLogin.do"/>
-            <mvc:exclude-mapping path="/googleLogin.do"/>
-            <mvc:exclude-mapping path="/logout.do"/>
-            <mvc:exclude-mapping path="/findId.do"/>
-            <mvc:exclude-mapping path="/findPw.do"/>
-            <mvc:exclude-mapping path="/mainWinPop.do"/>
-            <mvc:exclude-mapping path="/personJoin.do"/>
-            <mvc:exclude-mapping path="/companyJoin.do"/>
-            <mvc:exclude-mapping path="/*Header.do"/>
-            <mvc:exclude-mapping path="/*SubMenu.do"/>
-            <mvc:exclude-mapping path="/footer.do"/>
-            <mvc:exclude-mapping path="/memberAgree*.do"/>
-            <mvc:exclude-mapping path="/intro*.do"/>
-            <mvc:exclude-mapping path="/partnership*.do"/>
-            <mvc:exclude-mapping path="/sitemap.do"/>
-    	<!-- (begin) 2020.12.30 by s.yoo -->
-    	<!-- 
-            <mvc:exclude-mapping path="/privatePolicy.do"/>
-    	 -->
-    	<!-- (end) 2020.12.30 by s.yoo -->
-            <mvc:exclude-mapping path="/termsOfService.do"/>
-            <mvc:exclude-mapping path="/*.ajax"/>
-    	<!-- (begin) 2020.12.30 by s.yoo -->
-            <mvc:exclude-mapping path="/registNetfuMemberProcess.do"/>
-            <mvc:exclude-mapping path="/registNetfuCompanyProcess.do"/>
-            <mvc:exclude-mapping path="/privacyPolicy.do"/>
-            <mvc:exclude-mapping path="/mobileGuide.do"/>
-            <mvc:exclude-mapping path="/paymentGuide.do"/>
-            <mvc:exclude-mapping path="/noticeList.do"/>
-            <mvc:exclude-mapping path="/faqList.do"/>
-            <mvc:exclude-mapping path="/libraryList.do"/>
-            <mvc:exclude-mapping path="/indexRecruitSearchList.do"/>
-            <mvc:exclude-mapping path="/boardView.do"/>
-    	<!-- (end) 2020.12.30 by s.yoo -->
+			<mvc:exclude-mapping path="/"/>
+			<mvc:exclude-mapping path="/index.do"/>
+			<mvc:exclude-mapping path="/login.do"/>
+			<mvc:exclude-mapping path="/naverLogin.do"/>
+			<mvc:exclude-mapping path="/kakaoLogin.do"/>
+			<mvc:exclude-mapping path="/googleLogin.do"/>
+			<mvc:exclude-mapping path="/logout.do"/>
+			<mvc:exclude-mapping path="/findId.do"/>
+			<mvc:exclude-mapping path="/findPw.do"/>
+			<mvc:exclude-mapping path="/mainWinPop.do"/>
+			<mvc:exclude-mapping path="/personJoin.do"/>
+			<mvc:exclude-mapping path="/companyJoin.do"/>
+			<mvc:exclude-mapping path="/*Header.do"/>
+			<mvc:exclude-mapping path="/*SubMenu.do"/>
+			<mvc:exclude-mapping path="/footer.do"/>
+			<mvc:exclude-mapping path="/memberAgree*.do"/>
+			<mvc:exclude-mapping path="/intro*.do"/>
+			<mvc:exclude-mapping path="/partnership*.do"/>
+			<mvc:exclude-mapping path="/sitemap.do"/>
+		<!-- (begin) 2020.12.30 by s.yoo -->
+		<!-- 
+			<mvc:exclude-mapping path="/privatePolicy.do"/>
+		 -->
+		<!-- (end) 2020.12.30 by s.yoo -->
+			<mvc:exclude-mapping path="/termsOfService.do"/>
+			<mvc:exclude-mapping path="/*.ajax"/>
+		<!-- (begin) 2020.12.30 by s.yoo -->
+			<mvc:exclude-mapping path="/registNetfuMemberProcess.do"/>
+			<mvc:exclude-mapping path="/registNetfuCompanyProcess.do"/>
+			<mvc:exclude-mapping path="/privacyPolicy.do"/>
+			<mvc:exclude-mapping path="/mobileGuide.do"/>
+			<mvc:exclude-mapping path="/paymentGuide.do"/>
+			<mvc:exclude-mapping path="/noticeList.do"/>
+			<mvc:exclude-mapping path="/faqList.do"/>
+			<mvc:exclude-mapping path="/libraryList.do"/>
+			<mvc:exclude-mapping path="/indexRecruitSearchList.do"/>
+			<mvc:exclude-mapping path="/boardView.do"/>
+		<!-- (end) 2020.12.30 by s.yoo -->
 			<bean id="loginCheckInterceptor" class="allwork.common.interceptor.LoginCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 
+
+	<!-- 첨부파일 용량 제한: 30MB(30 000 000) -->	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" p:maxUploadSize="30000000" />
+	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">/error/attachFileOverSizeErr</prop>
+			</props>
+		</property>
+	</bean>
+
 	
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" p:maxUploadSize="1000000000" />
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 	<bean id="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView" p:contentType="application/json;charset=UTF-8" />
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />
@@ -106,7 +116,7 @@
 			
 			
 	
-    <!-- (begin) 2020.12.30 by s.yoo -->
+	<!-- (begin) 2020.12.30 by s.yoo -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="/WEB-INF/config/config.properties"/>
 		<property name="fileEncoding" value="UTF-8" />
@@ -230,7 +240,7 @@
 		<property name="mapperInterface" value="com.ilmagna.allworkadmin.migration.daos.MigResumeDAO"/>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
-    <!-- (end) 2020.12.30 by s.yoo -->
+	<!-- (end) 2020.12.30 by s.yoo -->
 
 	<context:annotation-config />
 	<!-- <task:annotation-driven scheduler="scheduler" />

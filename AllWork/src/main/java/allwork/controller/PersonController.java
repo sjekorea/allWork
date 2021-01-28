@@ -122,8 +122,10 @@ public class PersonController {
 			// 온라인 입사지원 수
 			int onlineRecruitCnt = netfuOnlineRecruitService.selectOnlineRecruitCnt(commandMap.getMap());
 			
-			// 스크랩한 채용정보
-			int netfuOpenResumeCnt = netfuOpenResumeService.selectNetfuOpenResumeCnt(commandMap.getMap());
+			// 자신의 이력서 열람회수
+			//int netfuOpenResumeCnt = netfuOpenResumeService.selectNetfuOpenResumeCnt(commandMap.getMap());
+			commandMap.put("viewType", "resume");
+			int netfuOpenResumeCnt = recruitViewService.selectReferenceViewCnt(commandMap.getMap());
 			
 			// 스크랩한 채용정보
 			int netfuScrapCnt = netfuScrapService.selectRecruitScrapCnt(commandMap.getMap());
@@ -455,6 +457,7 @@ public class PersonController {
 			commandMap.put("recruitColumn", CommonColumnUtil.getRecruitColumn());
 			
 			// 열람정보  검색 리스트
+			commandMap.put("viewType", "recruit");
 			List<Map<String, Object>> recruitViewList = recruitViewService.selectRecruitViewList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitViewList.size() > 0){

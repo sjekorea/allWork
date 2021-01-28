@@ -41,11 +41,11 @@
 
 				<table class="list" style="table-layout:fixed;">
 					<colgroup>
-						<col style="width:20%;">
-						<col style="width:30%;">
-						<col style="width:20%;">
 						<col style="width:15%;">
-						<col style="width:15%;">
+						<col style="width:25%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
 					</colgroup>
 					<caption>리스트</caption>
 					<thead>
@@ -65,7 +65,20 @@
 							<td colspan="3" class="desc02">
 								${result.recruitContents}
 							</td>
-							<td rowspan="2" class="desc03">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay)}</td>
+							<td rowspan="2" class="desc03">
+								<c:if test="${result.bizIng ne 'yes' }">
+									<span class="state01">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay)}</span>
+								</c:if>
+								<c:if test="${result.bizIng eq 'yes' and result.bizEndType eq 'often' }">
+									<span class="state02">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay)}</span>
+								</c:if>
+								<c:if test="${result.bizIng eq 'yes' and result.bizEndType eq 'get' }">
+									<span class="state03">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay)}</span>
+								</c:if>
+								<c:if test="${result.bizIng eq 'yes' and result.bizEndType ne 'often' and result.bizEndType ne 'get' }">
+									<span class="state04">${convert:getEndCond(result.bizIng, result.bizEndType, result.bizEndDay)}</span>
+								</c:if>
+							</td>
 						</tr>
 						<tr>
 							<td><span class="desc_title">근무지:</span><span class="desc_desc00">${result.placeWork}</span></td>

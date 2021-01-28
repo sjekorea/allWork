@@ -47,6 +47,7 @@ public class AiMatchingResumeService {
 			
 				//추천목록 구성.
 				List<AiMatchingRecommendationModel> listResult = new ArrayList<AiMatchingRecommendationModel>();
+				List<AiMatchingRecommendationModel> listResultTemp = new ArrayList<AiMatchingRecommendationModel>();
 				for (int i = 0; i < list.size(); i++) {
 					AiMatchingResumeModel itemData = procDataItem(list.get(i));
 					for (int j = 0; j < itemData.getData().size(); j++) {
@@ -81,7 +82,19 @@ public class AiMatchingResumeService {
 						if (bDeletedItem) continue;
 
 						//추천정보 등록.
-						listResult.add(itemData.getData().get(j));
+						listResultTemp.add(itemData.getData().get(j));
+					}
+					
+					//채용진행중인것을 우선순위로 표출.
+					for (int j = 0; j < listResultTemp.size(); j++) {
+						AiMatchingRecommendationModel objItem = listResultTemp.get(j);
+						if (objItem.getBizIng().equalsIgnoreCase("no")) continue;
+						listResult.add(objItem);
+					}
+					for (int j = 0; j < listResultTemp.size(); j++) {
+						AiMatchingRecommendationModel objItem = listResultTemp.get(j);
+						if (!objItem.getBizIng().equalsIgnoreCase("no")) continue;
+						listResult.add(objItem);
 					}
 				}
 				item.setData(listResult);

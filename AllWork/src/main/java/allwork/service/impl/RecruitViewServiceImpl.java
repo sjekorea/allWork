@@ -24,6 +24,11 @@ public class RecruitViewServiceImpl implements RecruitViewService{
 	public int selectRecruitViewCnt(Map<String, Object> map) throws Exception {
 		return recruitViewDao.selectRecruitViewCnt(map);
 	}
+	
+	@Override
+	public int selectReferenceViewCnt(Map<String, Object> map) throws Exception {
+		return recruitViewDao.selectReferenceViewCnt(map);
+	}
 
 	@Override
 	public List<Map<String, Object>> selectRecruitViewList(Map<String, Object> map) throws Exception {

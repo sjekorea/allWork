@@ -102,9 +102,9 @@ td{width:570px;font-size:14px;padding:5px 20px;}
     #resForm06 ul .edu_title{background-color:#eee;}
     #resForm06 ul .edu_desc{background-color:#fff;border-bottom:1px solid #ccc;}
     #resForm06 ul li p{float:left;}
-    #resForm06 ul li .edu_desc01{width:200px;}
-    #resForm06 ul li .edu_desc02{width:130px;}
-    #resForm06 ul li .edu_desc03{width:380px;}
+    #resForm06 ul li .edu_desc01{width:150px;}
+    #resForm06 ul li .edu_desc02{width:280px;}
+    #resForm06 ul li .edu_desc03{width:280px;}
 
     /*###############################   resForm07 외국어  ###############################*/
     #resume07{width:100%;overflow:hidden;margin-bottom:10px;border:1px solid #ccc;}

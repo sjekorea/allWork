@@ -2,10 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="recruitView">
 
-	<!-- 열람 정보 검색 Count -->
+	<!-- 사용자가 열람한 이력서 또는 채용정보 개수 -->
 	<select id="selectRecruitViewCnt" parameterType="hashmap" resultType="int">
-		select count(*) cnt from recruit_view
-		where uid = #{loginId}
+		select count(*) cnt
+		from recruit_view rv
+		where
+			rv.uid = #{loginId}
+			and rv.view_type = #{viewType}
+	</select>
+
+
+	<!-- 사용자의 이력서 또는 채용정보를 다른 사용자가 참조하 개수 -->
+	<select id="selectReferenceViewCnt" parameterType="hashmap" resultType="int">
+		select count(*) cnt
+		from recruit_view rv
+		where
+			rv.to_uid = #{loginId}
+			and rv.view_type = #{viewType}
 	</select>
 	
 	
@@ -41,7 +54,7 @@
 	<insert id="insertRecruitView" parameterType="hashmap">
 		<![CDATA[
 			INSERT INTO recruit_view 
-				(uid, to_no, view_type, view_date) VALUES (#{loginId}, #{no}, #{viewType}, current_timestamp()) 
+				(uid, to_uid, to_no, view_type, view_date) VALUES (#{loginId}, #{toUid}, #{no}, #{viewType}, current_timestamp()) 
 				ON DUPLICATE KEY UPDATE view_date = current_timestamp();
 		]]>
 	</insert>
