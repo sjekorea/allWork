@@ -48,7 +48,7 @@
 									</c:if>
 										 -->
 										<td class="desc02">
-											${convert:getPersonNameHidden(result.name) }<br/>
+											${convert:getPersonNameHidden(result.name, result.paidResume) }<br/>
 											${result.birthYear}년생</span>
 										</td>
 										<td class="desc03">

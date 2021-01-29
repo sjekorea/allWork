@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
+
 import allwork.common.CommandMap;
 import allwork.common.QueryParser;
 import allwork.common.util.CommonColumnUtil;
@@ -25,7 +27,9 @@ import allwork.service.NetfuItemResumeService;
 import allwork.service.NetfuMemberService;
 import allwork.service.NetfuOnlineRecruitService;
 import allwork.service.NetfuScrapService;
+import allwork.service.PaymentInfoService;
 import allwork.service.RecruitViewService;
+import allwork.vo.NetfuItemResumeVo;
 
 @Controller
 public class ResumeController {
@@ -55,7 +59,10 @@ public class ResumeController {
 
 	@Resource(name="netfuCompanyService")
 	private NetfuCompanyService netfuCompanyService;
-	
+
+	@Resource(name="paymentInfoService")
+	private PaymentInfoService paymentInfoService;	
+
 	
 	/*
 	 * 인재정보 검색
@@ -99,7 +106,12 @@ public class ResumeController {
 			commandMap.put("inidSchool", strQuerySchool);
 			commandMap.put("inidJobform", strQueryJobForm);
 			commandMap.put("inidPay", strQueryPay);
-			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+
+			commandMap.put("loginId2", (String)session.getAttribute("SE_LOGIN_ID"));
+			String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
+			boolean bPaidUser = service2Flag.equalsIgnoreCase("Y");
+			//List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			List<NetfuItemResumeVo> resumeList = netfuItemResumeService.selectNetfuItemResumeList(bPaidUser, commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(resumeList.size() > 0){
 				totalSize = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
@@ -107,6 +119,7 @@ public class ResumeController {
 				commandMap.put("totalSize", totalSize);
 			}
 			
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			List<Map<String, Object>> payResumeList = netfuItemResumeService.selectPayResumeList(commandMap.getMap());
 			
 			commandMap.put("pCode", "");
@@ -192,7 +205,12 @@ public class ResumeController {
 
 			// 채용정보 검색 리스트
 			commandMap.put("inidType", strQueryBizType);
-			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			
+			commandMap.put("loginId2", (String)session.getAttribute("SE_LOGIN_ID"));
+			String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
+			boolean bPaidUser = service2Flag.equalsIgnoreCase("Y");
+			//List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			List<NetfuItemResumeVo> resumeList = netfuItemResumeService.selectNetfuItemResumeList(bPaidUser, commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(resumeList.size() > 0){
 				totalSize = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
@@ -200,6 +218,7 @@ public class ResumeController {
 				commandMap.put("totalSize", totalSize);
 			}
 			
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			List<Map<String, Object>> payResumeList = netfuItemResumeService.selectPayResumeList(commandMap.getMap());
 			
 			commandMap.put("pCode", "");
@@ -251,7 +270,12 @@ public class ResumeController {
 
 			// 채용정보 검색 리스트
 			commandMap.put("inidAreaJob", strQueryIndustry);
-			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			
+			commandMap.put("loginId2", (String)session.getAttribute("SE_LOGIN_ID"));
+			String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
+			boolean bPaidUser = service2Flag.equalsIgnoreCase("Y");
+			//List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			List<NetfuItemResumeVo> resumeList = netfuItemResumeService.selectNetfuItemResumeList(bPaidUser, commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(resumeList.size() > 0){
 				totalSize = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
@@ -259,6 +283,7 @@ public class ResumeController {
 				commandMap.put("totalSize", totalSize);
 			}
 			
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			List<Map<String, Object>> payResumeList = netfuItemResumeService.selectPayResumeList(commandMap.getMap());
 			
 			commandMap.put("pCode", "");
@@ -309,7 +334,12 @@ public class ResumeController {
 
 			// 채용정보 검색 리스트
 			commandMap.put("inidArea", strQueryArea);
-			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			
+			commandMap.put("loginId2", (String)session.getAttribute("SE_LOGIN_ID"));
+			String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
+			boolean bPaidUser = service2Flag.equalsIgnoreCase("Y");
+			//List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			List<NetfuItemResumeVo> resumeList = netfuItemResumeService.selectNetfuItemResumeList(bPaidUser, commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(resumeList.size() > 0){
 				totalSize = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
@@ -317,6 +347,7 @@ public class ResumeController {
 				commandMap.put("totalSize", totalSize);
 			}
 			
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			List<Map<String, Object>> payResumeList = netfuItemResumeService.selectPayResumeList(commandMap.getMap());
 			
 			commandMap.put("pCode", "");
@@ -385,7 +416,12 @@ public class ResumeController {
 			commandMap.put("inidSchool", strQuerySchool);
 			commandMap.put("inidJobform", strQueryJobForm);
 			commandMap.put("inidPay", strQueryPay);
-			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			
+			commandMap.put("loginId2", (String)session.getAttribute("SE_LOGIN_ID"));
+			String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
+			boolean bPaidUser = service2Flag.equalsIgnoreCase("Y");
+			//List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			List<NetfuItemResumeVo> resumeList = netfuItemResumeService.selectNetfuItemResumeList(bPaidUser, commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(resumeList.size() > 0){
 				totalSize = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
@@ -393,6 +429,7 @@ public class ResumeController {
 				commandMap.put("totalSize", totalSize);
 			}
 			
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			List<Map<String, Object>> payResumeList = netfuItemResumeService.selectPayResumeList(commandMap.getMap());
 			
 			commandMap.put("pCode", "");
@@ -494,7 +531,12 @@ public class ResumeController {
 			commandMap.put("inidSchool", strQuerySchool);
 			commandMap.put("inidJobform", strQueryJobForm);
 			commandMap.put("inidPay", strQueryPay);
-			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			
+			commandMap.put("loginId2", (String)session.getAttribute("SE_LOGIN_ID"));
+			String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
+			boolean bPaidUser = service2Flag.equalsIgnoreCase("Y");
+			//List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			List<NetfuItemResumeVo> resumeList = netfuItemResumeService.selectNetfuItemResumeList(bPaidUser, commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(resumeList.size() > 0){
 				totalSize = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());
@@ -502,6 +544,7 @@ public class ResumeController {
 				commandMap.put("totalSize", totalSize);
 			}
 			
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			List<Map<String, Object>> payResumeList = netfuItemResumeService.selectPayResumeList(commandMap.getMap());
 			
 			commandMap.put("pCode", "");
@@ -570,7 +613,6 @@ public class ResumeController {
 		
 		try{
 			
-			String service2Flag = (String)session.getAttribute("SE_SERVICE2");
 		
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
@@ -581,7 +623,9 @@ public class ResumeController {
 			commandMap.put("viewType", "resume");
 			recruitViewService.insertRecruitView(commandMap.getMap());
 			
-			// 유료 열람 서비스 count down
+			/*
+			// 유료열람서비스 count down
+			String service2Flag = (String)session.getAttribute("SE_SERVICE2");
 			if("Y".equals(service2Flag)){
 				netfuMemberService.updateViewCount(commandMap.getMap());
 				int viewCount = ConvertUtil.checkNullToInt(((Integer)session.getAttribute("SE_VIEW_COUNT")).toString());
@@ -591,6 +635,7 @@ public class ResumeController {
 				}
 				session.setAttribute("SE_VIEW_COUNT", (viewCount - 1));
 			}
+			*/
 			
 			
 			// 회사정보 
@@ -627,6 +672,19 @@ public class ResumeController {
 			// 진행중인 채용정보 목록
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyProceess(commandMap.getMap());
 			
+			// 유료열람서비스 등록현황.
+			String service2Flag = (String)session.getAttribute("SE_SERVICE2");
+			if (service2Flag.equalsIgnoreCase("Y")) {
+				int paidResume = 0;
+				try {
+					//commandMap.get("resumeNo")"resumeNo", commandMap.get("resumeNo"));
+					int prsCnt = paymentInfoService.selectPaidResumeSearchCount(commandMap.getMap());
+					if (prsCnt > 0) paidResume = 1;
+				} catch (Exception e2) { }					
+				resumeMap.put("paidResume", paidResume);
+			}
+
+			//이력서 정보 전달.
 			ObjectMapper mapper = new ObjectMapper();
 			Map<String, String> resumeEducation = mapper.readValue((String)resumeMap.get("education2"), Map.class);
 			Map<String, String> resumeCareer = mapper.readValue((String)resumeMap.get("career2"), Map.class);
@@ -702,7 +760,11 @@ public class ResumeController {
 			commandMap.put("resumeColumn", CommonColumnUtil.getResumeColumn());
 			
 			// 채용정보 검색 리스트
-			List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			commandMap.put("loginId2", (String)session.getAttribute("SE_LOGIN_ID"));
+			String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
+			boolean bPaidUser = service2Flag.equalsIgnoreCase("Y");
+			//List<Map<String, Object>> resumeList = netfuItemResumeService.selectNetfuItemResumeList(commandMap.getMap());
+			List<NetfuItemResumeVo> resumeList = netfuItemResumeService.selectNetfuItemResumeList(bPaidUser, commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(resumeList.size() > 0){
 				totalSize = netfuItemResumeService.selectNetfuItemResumeCnt(commandMap.getMap());

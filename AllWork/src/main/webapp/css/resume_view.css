@@ -136,5 +136,7 @@ td{width:570px;font-size:14px;padding:5px 20px;}
     #rightPart .buttons li a{display: block;width:100%;height:100%;color:#666;}
     #rightPart .buttons li.res_ok{background-color:#4F60E3;border:1px solid #4F60E3;}
     #rightPart .buttons li.res_ok a{color:#fff;}
+    #rightPart .buttons li.pay_info{background-color:#4F60E3;border:1px solid #4F60E3;margin-left:20px;}
+    #rightPart .buttons li.pay_info a{color:#fff;}
 
     #rightPart .buttons li:first-child:hover{background-color:#000;}

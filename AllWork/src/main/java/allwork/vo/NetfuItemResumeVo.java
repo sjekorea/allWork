@@ -105,7 +105,8 @@ public class NetfuItemResumeVo {
 	private String language2;
 	private int educationDegree;
 	private int careerTotal;
-	
+
+	private int paidResume;				//1 = 유료열람서비스를 선택한 경우, 0 = 유료열람서비스를 선택하지 않은 경우.
 	
 	
 	
@@ -727,6 +728,19 @@ public class NetfuItemResumeVo {
 	}
 	public void setaInsert(String aInsert) {
 		this.aInsert = aInsert;
+	}
+
+	/**
+	 * @return the paidResume
+	 */
+	public int getPaidResume() {
+		return paidResume;
+	}
+	/**
+	 * @param paidResume the paidResume to set
+	 */
+	public void setPaidResume(int paidResume) {
+		this.paidResume = paidResume;
 	}
 	
 }	

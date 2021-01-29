@@ -165,7 +165,7 @@
 		 <name>getPersonNameHidden</name>
 		 <function-class>allwork.common.util.ConvertUtil</function-class>
 		 <function-signature>
-			  String getPersonNameHidden(java.lang.String)
+			  String getPersonNameHidden(java.lang.String, java.lang.Integer)
 		 </function-signature>
 	</function>
 	<function>
@@ -173,7 +173,7 @@
 		 <name>getUidHidden</name>
 		 <function-class>allwork.common.util.ConvertUtil</function-class>
 		 <function-signature>
-			  String getUidHidden(java.lang.String)
+			  String getUidHidden(java.lang.String, java.lang.Integer)
 		 </function-signature>
 	</function>
 	<function>
@@ -181,7 +181,7 @@
 		 <name>getPhoneNoHidden</name>
 		 <function-class>allwork.common.util.ConvertUtil</function-class>
 		 <function-signature>
-			  String getPhoneNoHidden(java.lang.String)
+			  String getPhoneNoHidden(java.lang.String, java.lang.Integer)
 		 </function-signature>
 	</function>
 	<function>
@@ -189,7 +189,7 @@
 		 <name>getEmailHidden</name>
 		 <function-class>allwork.common.util.ConvertUtil</function-class>
 		 <function-signature>
-			  String getEmailHidden(java.lang.String)
+			  String getEmailHidden(java.lang.String, java.lang.Integer)
 		 </function-signature>
 	</function>
 	<function>
@@ -197,7 +197,7 @@
 		 <name>getAddressHidden</name>
 		 <function-class>allwork.common.util.ConvertUtil</function-class>
 		 <function-signature>
-			  String getAddressHidden(java.lang.String, java.lang.String, java.lang.String)
+			  String getAddressHidden(java.lang.String, java.lang.String, java.lang.String, java.lang.Integer)
 		 </function-signature>
 	</function>
 	<!-- (end) 2021.01.08 by s.yoo	-->

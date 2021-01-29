@@ -40,7 +40,9 @@
 	<select id="selectResumeViewList" parameterType="hashmap" resultType="allwork.vo.NetfuItemResumeVo">
 		select 
 			${resumeColumn}, DATE_FORMAT(rv.view_date, '%m/%d') view_date
-		from netfu_item_resume nir, recruit_view rv
+			, CASE WHEN prs.no IS NULL THEN 0 ELSE 1 END paidResume
+		from
+			recruit_view rv LEFT JOIN paid_resume_search prs ON rv.to_no = prs.resume_no AND prs.uid = #{loginId}, netfu_item_resume nir
 		where 1=1
 			and rv.uid = #{loginId}
 			and rv.view_type = 'resume'

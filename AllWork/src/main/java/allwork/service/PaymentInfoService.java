@@ -9,4 +9,7 @@ public interface PaymentInfoService {
 	List<Map<String, Object>> selectPaymentInfoList(Map<String, Object> map) throws Exception;
 	int selectPaymentTotal(Map<String, Object> map) throws Exception;
 	int insertPaymentInfo(Map<String, Object> map) throws Exception;
+	//유료열람서비스
+	int insertPaidResumeSearch(Map<String, Object> map) throws Exception;
+	int selectPaidResumeSearchCount(Map<String, Object> map) throws Exception;
 }

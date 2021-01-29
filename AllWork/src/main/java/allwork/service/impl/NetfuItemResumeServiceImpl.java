@@ -9,8 +9,13 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
+
+import allwork.common.CommandMap;
 import allwork.dao.NetfuItemResumeDao;
 import allwork.service.NetfuItemResumeService;
+import allwork.service.PaymentInfoService;
+import allwork.vo.NetfuItemResumeVo;
 
 @Service("netfuItemResumeService")
 public class NetfuItemResumeServiceImpl implements NetfuItemResumeService{
@@ -19,6 +24,9 @@ public class NetfuItemResumeServiceImpl implements NetfuItemResumeService{
 
 	@Resource(name="netfuItemResumeDao")
 	private NetfuItemResumeDao netfuItemResumeDao;
+
+	@Resource(name="paymentInfoService")
+	private PaymentInfoService paymentInfoService;	
 
 	
 	@Override
@@ -29,34 +37,67 @@ public class NetfuItemResumeServiceImpl implements NetfuItemResumeService{
 	@Override
 	public int selectNetfuItemResumeCnt(Map<String, Object> map) throws Exception {
 		int rtnCnt = 0;
+		/*
 		if("keyword".equals((String)map.get("searchFlag"))){
 			rtnCnt = netfuItemResumeDao.selectKeywordNetfuItemResumeCnt(map);
 		}else{
 			rtnCnt = netfuItemResumeDao.selectNetfuItemResumeCnt(map);
 		}
+		*/
+		rtnCnt = netfuItemResumeDao.selectNetfuItemResumeCnt(map);
+
 		return rtnCnt;
 	}
 	
 	@Override
 	public int selectNetfuItemMyResumeCnt(Map<String, Object> map) throws Exception {
 		int rtnCnt = 0;
+		/*
 		if("keyword".equals((String)map.get("searchFlag"))){
 			rtnCnt = netfuItemResumeDao.selectKeywordNetfuItemResumeCnt(map);
 		}else{
 			rtnCnt = netfuItemResumeDao.selectNetfuItemMyResumeCnt(map);
 		}
+		*/
+		rtnCnt = netfuItemResumeDao.selectNetfuItemMyResumeCnt(map);
+
 		return rtnCnt;
 	}
 
 	@Override
-	public List<Map<String, Object>> selectNetfuItemResumeList(Map<String, Object> map) throws Exception {
+	//public List<Map<String, Object>> selectNetfuItemResumeList(Map<String, Object> map) throws Exception {
+	public List<NetfuItemResumeVo> selectNetfuItemResumeList(boolean bPaidUser, Map<String, Object> map) throws Exception {
 		List<Map<String, Object>> rtnList = new ArrayList<Map<String, Object>>();
+		/*
 		if("keyword".equals((String)map.get("searchFlag"))){
 			rtnList = netfuItemResumeDao.selectKeywordNetfuItemResumeList(map);
 		}else{
 			rtnList = netfuItemResumeDao.selectNetfuItemResumeList(map);
 		}
-		return rtnList;
+		*/
+		List<NetfuItemResumeVo> listResult = new ArrayList<NetfuItemResumeVo>();
+		rtnList = netfuItemResumeDao.selectNetfuItemResumeList(map);
+		for (int i = 0; i < rtnList.size(); i++) {
+			NetfuItemResumeVo item = (NetfuItemResumeVo) rtnList.get(i);
+			
+			if (bPaidUser) {
+				int paidResume = 0;
+				CommandMap commandMap = new CommandMap();
+				commandMap.put("loginId", map.get("loginId2"));
+				try {
+					commandMap.put("resumeNo", item.getNo());
+					int prsCnt = paymentInfoService.selectPaidResumeSearchCount(commandMap.getMap());
+					if (prsCnt > 0) paidResume = 1;
+				} catch (Exception e2) { }					
+
+				item.setPaidResume(paidResume);
+			}
+
+			listResult.add(item);				
+		}
+
+		//return rtnList;
+		return listResult;
 	}
 
 	@Override

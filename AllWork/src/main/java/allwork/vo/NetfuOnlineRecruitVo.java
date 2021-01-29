@@ -34,7 +34,9 @@ public class NetfuOnlineRecruitVo {
 	private String photo;
 	private String name;
 	private String inidSecret;
-	
+
+	private int paidResume;				//1 = 유료열람서비스를 선택한 경우, 0 = 유료열람서비스를 선택하지 않은 경우.
+
 	
 	public String getInidSecret() {
 		return inidSecret;
@@ -241,4 +243,16 @@ public class NetfuOnlineRecruitVo {
 		this.wdate = wdate;
 	}
 
+	/**
+	 * @return the paidResume
+	 */
+	public int getPaidResume() {
+		return paidResume;
+	}
+	/**
+	 * @param paidResume the paidResume to set
+	 */
+	public void setPaidResume(int paidResume) {
+		this.paidResume = paidResume;
+	}
 }

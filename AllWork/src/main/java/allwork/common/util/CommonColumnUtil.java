@@ -77,9 +77,9 @@ public class CommonColumnUtil {
 		rtnStr += ", nir.inid_pay, getCodeName(nir.inid_pay) inid_pay_name";
 		rtnStr += ", nir.pay_type, getCodeName(nir.pay_type) pay_type_name";
 		rtnStr += ", nir.inid_last_school, nir.inid_career, nir.inid_license, nir.inid_languages, nir.inid_introduce, nir.inid_secret";
-		rtnStr += ", DATE_FORMAT(nir.wdate, '%m/%d') wdate";
-		rtnStr += ", DATE_FORMAT(nir.u_wdate, '%m/%d') u_wdate";
-		rtnStr += ", DATE_FORMAT(nir.j_wdate, '%m/%d') j_wdate";
+		rtnStr += ", DATE_FORMAT(nir.wdate, '%Y-%m-%d') wdate";
+		rtnStr += ", DATE_FORMAT(nir.u_wdate, '%Y-%m-%d') u_wdate";
+		rtnStr += ", DATE_FORMAT(nir.j_wdate, '%Y-%m-%d') j_wdate";
 		rtnStr += ", nir.hit, nir.service11, nir.service12, nir.service13, nir.service101, nir.service14, nir.service15, nir.service16, nir.service17";
 		rtnStr += ", nir.inid_sex, nir.sms_send, nir.a_insert";
 		rtnStr += ", nir.education2, nir.career2, nir.license2, nir.language2";

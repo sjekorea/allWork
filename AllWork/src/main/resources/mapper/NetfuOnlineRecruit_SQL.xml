@@ -136,7 +136,16 @@
 		, nic.biz_end_day
 		, nic.uid companyUid
 		, nir.uid personUid
-	FROM netfu_online_recruit nor, netfu_item_resume nir , netfu_item_company nic
+		, CASE WHEN prs.no IS NULL THEN 0 ELSE 1 END paidResume
+	FROM
+		<choose>
+			<when test="applyType == 'interview'">
+				netfu_online_recruit nor LEFT JOIN paid_resume_search prs ON nor.to_no = prs.resume_no AND prs.uid = #{loginId}, netfu_item_resume nir, netfu_item_company nic
+			</when>
+			<otherwise>
+				netfu_online_recruit nor LEFT JOIN paid_resume_search prs ON nor.from_no = prs.resume_no AND prs.uid = #{loginId}, netfu_item_resume nir, netfu_item_company nic
+			</otherwise>
+		</choose>
 	WHERE 1=1
 		and (
 				nor.type = 'job' and nor.sub_type = 'company'

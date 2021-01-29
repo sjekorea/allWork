@@ -35,7 +35,7 @@
 			<tbody>
 				<tr class="margin"><td></td><td></td><td></td><td></td></tr>
 				<tr>
-					<td rowspan="3" class="desc01">${convert:getPersonNameHidden(result.name) }</td>
+					<td rowspan="3" class="desc01">${convert:getPersonNameHidden(result.name, result.paidResume) }</td>
 					<td colspan="2" class="desc02">
 						<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.recommend_id }', '${result.inid_secret }', 'resume');">
 							${result.detail }

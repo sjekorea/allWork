@@ -42,7 +42,7 @@
 		<li class="menu menu06"><a href="/resumeApplyForPay.do" title="유료서비스">유료서비스</a>
 			<h3>유료서비스</h3>
 			<ol class="subMenu subMenu06">
-				<li class="subMenu06_02"><a href="/resumeApplyForPay.do" title="유료옵션서비스 신청">유료 옵션 서비스 신청</a></li>
+				<li class="subMenu06_02"><a href="/resumeApplyForPay.do" title="유료옵션서비스 신청">유료옵션 서비스 신청</a></li>
 				<li class="subMenu06_01"><a href="/resumePaidList.do" title="결제내역조회">결제내역조회</a></li>
 			</ol></li>
 		<!-- (begin) 2021.01.03 by s.yoo	-->

@@ -96,10 +96,10 @@ word-wrap: break-word;}
 #listPart .list td{padding:20px 10px;}
 
 
-#listPart .list tr .desc00{width:130px;text-indent:10px;text-align: center;}
-#listPart .list tr .desc01{width:330px;color:#666;}
+#listPart .list tr .desc00{width:110px;text-indent:10px;text-align: center;}
+#listPart .list tr .desc01{width:310px;color:#666;}
 #listPart .list tr .desc01 a:hover{text-decoration:underline;}
 #listPart .list tr .desc01 .desc01_01{font-size:15px;}
-#listPart .list tr .desc02{width:120px;}
+#listPart .list tr .desc02{width:160px;}
 #listPart .list tr .desc03{width:120px;}
 #listPart .list tr .date{width:90px;padding:20px 10px 20px 0px;}

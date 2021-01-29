@@ -140,9 +140,10 @@
 		select 
 			${resumeColumn}
 			, nm.sex, nm.birth
-		from netfu_item_resume nir left outer join netfu_member nm on nir.uid = nm.uid
+		from
+			netfu_item_resume nir LEFT JOIN netfu_member nm ON nir.uid = nm.uid
 		where 1=1
-			and nir.inid_secret <![CDATA[<>]]> 'yes'
+			AND nir.inid_secret <![CDATA[<>]]> 'yes'
 			<if test="jobCondition != null and jobCondition != ''">
 				${jobCondition}
 			</if>

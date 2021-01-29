@@ -50,16 +50,17 @@ public class PaymentInfoController {
 			rstCnt += netfuMemberService.updatePayServiceInfo(commandMap.getMap());
 			
 			String service1EndDate = ConvertUtil.checkNull((String)commandMap.get("service1EndDate"));
-			String service2EndDate = ConvertUtil.checkNull((String)commandMap.get("service1EndDate"));
-			
 			if(!"".equals(service1EndDate)){
 				session.setAttribute("SE_SERVICE1", "Y");
 				session.setAttribute("SE_SERVICE1_END", (String)commandMap.get("service1EndDate"));
 			}
 			
-			if(!"".equals(service2EndDate)){
+			String service2EndDate = ConvertUtil.checkNull((String)commandMap.get("service2EndDate"));
+			int viewCount = ConvertUtil.checkNullToInt(((Integer)commandMap.get("viewCount")).toString());			
+			if(viewCount > 0 && !"".equals(service2EndDate)){
 				session.setAttribute("SE_SERVICE2", "Y");
 				session.setAttribute("SE_SERVICE2_END", (String)commandMap.get("service2EndDate"));
+				session.setAttribute("SE_VIEW_COUNT", viewCount);
 			}
 			
 			mv.addObject("map", commandMap.getMap());
@@ -113,6 +114,11 @@ public class PaymentInfoController {
 			commandMap.put("pageSize", pageSize);
 			
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			
+			String startDtTime = ((String) commandMap.get("startDt")) + " 00:00:00";
+			commandMap.put("startDtTime", startDtTime);
+			String endDtTime = ((String) commandMap.get("endDt")) + " 23:59:59";
+			commandMap.put("endDtTime", endDtTime);
 			
 			List<Map<String, Object>> paymentList = paymentInfoService.selectPaymentInfoList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
@@ -196,6 +202,11 @@ public class PaymentInfoController {
 			
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			
+			String startDtTime = ((String) commandMap.get("startDt")) + " 00:00:00";
+			commandMap.put("startDtTime", startDtTime);
+			String endDtTime = ((String) commandMap.get("endDt")) + " 23:59:59";
+			commandMap.put("endDtTime", endDtTime);
+
 			List<Map<String, Object>> paymentList = paymentInfoService.selectPaymentInfoList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(paymentList.size() > 0){
@@ -213,5 +224,44 @@ public class PaymentInfoController {
 		}
 		return mv;
 	}
+
+
+	/*
+	 * 이력서에 대한 유료인재정보 확인신청 등록.
+	 */
+	@RequestMapping(value="/insertPaidResumeSearch.ajax")
+	public ModelAndView insertPaidResumeSearch(CommandMap commandMap, HttpSession session) throws IOException{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		try{
+			//유료인재정보 신청요청 등록.
+			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
+			int rstCnt = paymentInfoService.insertPaidResumeSearch(commandMap.getMap());
+			
+			//사용자가 이용한 유료열람서비스 개수 1 감소.
+			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+			netfuMemberService.updateViewCount(commandMap.getMap());
+			//유료열람 서비스를 모두 사용한 경우, 유료 서비스 기능을 disable 시킴.
+			int viewCount = ConvertUtil.checkNullToInt(((Integer)session.getAttribute("SE_VIEW_COUNT")).toString());
+			/*
+			if(viewCount < 1){
+				netfuMemberService.updatePayService2Info(commandMap.getMap());
+				session.setAttribute("SE_SERVICE2", "");
+			}
+			*/
+			session.setAttribute("SE_VIEW_COUNT", (viewCount - 1));
+
+			//작업결과 전달.
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("paidResume", true);
+			mv.setViewName("jsonView");
+			
+		}catch(Exception e){
+			System.out.println(this.getClass().getName()+".insertPaidResumeSearch.ajax Excepion!!!!!!!!! =====> "+e.toString());
+		}
+		return mv;
+	}
 	
+
 }

@@ -21,6 +21,7 @@ import allwork.common.util.MakeQueryUtil;
 import allwork.common.util.PaginationUtil;
 import allwork.service.NetfuCateService;
 import allwork.service.NetfuMyServiceService;
+import allwork.vo.NetfuItemResumeVo;
 
 @Controller
 public class NetfuMyServiceController {
@@ -157,11 +158,15 @@ public class NetfuMyServiceController {
 			
 			// 맞춤 인재 정보 목록
 			Map<String, Object> myServiceMap = netfuMyServiceService.selectNetfuMyServiceMap(commandMap.getMap());
-			List<Map<String, Object>> myServiceResumeList = new ArrayList<Map<String, Object>>();
+			//List<Map<String, Object>> myServiceResumeList = new ArrayList<Map<String, Object>>();
+			List<NetfuItemResumeVo> myServiceResumeList = new ArrayList<NetfuItemResumeVo>();
 			if (myServiceMap != null && !myServiceMap.isEmpty()) {
 				//맞춤서비스가 설정된 경우.
 				commandMap = MakeQueryUtil.makeMyResumeQuery(commandMap, myServiceMap);
-				myServiceResumeList = netfuMyServiceService.selectMyServiceResumeList(commandMap.getMap());
+
+				String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
+				boolean bPaidUser = service2Flag.equalsIgnoreCase("Y");
+				myServiceResumeList = netfuMyServiceService.selectMyServiceResumeList(bPaidUser, commandMap.getMap());
 			}
 			
 			Map<String, Object> pageMap = new HashMap<String, Object>();

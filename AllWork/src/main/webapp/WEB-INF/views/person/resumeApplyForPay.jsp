@@ -184,6 +184,8 @@
 								, cardQuota : rsp.card_quota
 								, cardNumber : rsp.card_number
 								, service1EndDate : service1EndDate
+								, service2EndDate : ""
+								, viewCount : 0
 							};
 				ajax('post', 'insertPaymentInfo.ajax', param, callback);
 				

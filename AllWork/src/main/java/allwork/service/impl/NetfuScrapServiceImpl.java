@@ -8,8 +8,12 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
+
+import allwork.common.CommandMap;
 import allwork.dao.NetfuScrapDao;
 import allwork.service.NetfuScrapService;
+import allwork.service.PaymentInfoService;
 
 @Service("netfuScrapService")
 public class NetfuScrapServiceImpl implements NetfuScrapService{
@@ -18,6 +22,9 @@ public class NetfuScrapServiceImpl implements NetfuScrapService{
 
 	@Resource(name="netfuScrapDao")
 	private NetfuScrapDao netfuScrapDao;
+
+	@Resource(name="paymentInfoService")
+	private PaymentInfoService paymentInfoService;	
 
 	
 	// 스크랩한 채용정보 Count 

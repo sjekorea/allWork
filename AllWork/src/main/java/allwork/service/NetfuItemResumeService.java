@@ -3,10 +3,13 @@ package allwork.service;
 import java.util.List;
 import java.util.Map;
 
+import allwork.vo.NetfuItemResumeVo;
+
 public interface NetfuItemResumeService {
 
 	int selectRecentlyResumeNo(Map<String, Object> map) throws Exception; 
-	List<Map<String, Object>> selectNetfuItemResumeList(Map<String, Object> map) throws Exception;
+	//List<Map<String, Object>> selectNetfuItemResumeList(Map<String, Object> map) throws Exception;
+	List<NetfuItemResumeVo> selectNetfuItemResumeList(boolean bPaidUser, Map<String, Object> map) throws Exception;
 	List<Map<String, Object>> selectNetfuItemResumeAllList(Map<String, Object> map) throws Exception;
 	int selectNetfuItemResumeCnt(Map<String, Object> map) throws Exception; 
 	int selectNetfuItemMyResumeCnt(Map<String, Object> map) throws Exception; 

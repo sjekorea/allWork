@@ -40,5 +40,15 @@ Logger log = Logger.getLogger(this.getClass());
 		return paymentInfoDao.insertPaymentInfo(map);
 	}
 	
+	//유료열람서비스
+	@Override
+	public int insertPaidResumeSearch(Map<String, Object> map) throws Exception {
+		return paymentInfoDao.insertPaidResumeSearch(map);
+	}
+	
+	@Override
+	public int selectPaidResumeSearchCount(Map<String, Object> map) throws Exception {
+		return paymentInfoDao.selectPaidResumeSearchCount(map);
+	}
 
 }

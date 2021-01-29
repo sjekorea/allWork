@@ -44,7 +44,7 @@
 					</ul>
 					<ul class="desc">
 						<li>${companyMap.name }(${companyMap.email })</li>
-						<li>${convert:getPersonNameHidden(memberMap.name) }(${convert:getEmailHidden(memberMap.email) })</li>
+						<li>${convert:getPersonNameHidden(memberMap.name, resumeMap.paidResume) }(${convert:getEmailHidden(memberMap.email, resumeMap.paidResume) })</li>
 						<li><input type="text" id="resumeTitle" name="resumeTitle" value="" /></li>
 						<li><select id="resumeSel" name="resumeSel">
 								<c:forEach var="result" items="${recruitList}"
@@ -88,63 +88,85 @@
 				<div id="detailArea">
 					<p class="detail_title">기본정보</p>
 					<div id="imgArea">
-						<c:if test="${memberMap.photo == null || memberMap.photo == '' }">
-							<p>
-								<img src="img/userNo.png" alt="본인사진" />
-							</p>
-						</c:if>
-						<c:if test="${memberMap.photo != null && memberMap.photo != '' }">
+					<c:choose>
+						<c:when test="${memberMap.photo != null and memberMap.photo != '' and SE_SERVICE2 eq 'Y' and resumeMap.paidResume == 1  }">
 							<p>
 								<img src="/allwork/peg/${memberMap.photo}" alt="이력서 사진" />
 							</p>
-						</c:if>
+						</c:when>
+						<c:otherwise>
+							<p>
+								<img src="img/userNo.png" alt="본인사진" />
+							</p>
+						</c:otherwise>
+					</c:choose>
 					</div>
 					<table>
 						<caption>이력 등록하기</caption>
 						<tbody class="tabelArea">
 							<tr>
 								<th class="table_title">이름</th>
-								<td class="table_desc"><c:choose>
-										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT >= 0}'>
+								<td class="table_desc">
+									<!-- 
+									<c:choose>
+										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
 											${memberMap.name} (${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${memberMap.uid }
 										</c:when>
 										<c:otherwise>
-											${convert:getPersonNameHidden(memberMap.name) }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${convert:getUidHidden(memberMap.uid) }
+											${convert:getPersonNameHidden(memberMap.name, resumeMap.paidResume) }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${convert:getUidHidden(memberMap.uid, resumeMap.paidResume) }
 										</c:otherwise>
-									</c:choose></td>
+									</c:choose>
+									 -->
+									${convert:getPersonNameHidden(memberMap.name, resumeMap.paidResume) }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${convert:getUidHidden(memberMap.uid, resumeMap.paidResume) }
+								</td>
 							</tr>
 							<tr>
 								<th class="table_title">이메일</th>
-								<td class="table_desc"><c:choose>
-										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT >= 0}'>
+								<td class="table_desc">
+									<!-- 
+									<c:choose>
+										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
 											${memberMap.email }
 										</c:when>
 										<c:otherwise>
-											${convert:getEmailHidden(memberMap.email) }
+											${convert:getEmailHidden(memberMap.email, resumeMap.paidResume) }
 										</c:otherwise>
-									</c:choose></td>
+									</c:choose>
+									 -->
+									${convert:getEmailHidden(memberMap.email, resumeMap.paidResume) }
+								</td>
 							</tr>
 							<tr>
 								<th class="table_title">휴대폰</th>
-								<td class="table_desc"><c:choose>
-										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT >= 0}'>
+								<td class="table_desc">
+									<!-- 
+									<c:choose>
+										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
 											${memberMap.hphone }
 										</c:when>
 										<c:otherwise>
-											${convert:getPhoneNoHidden(memberMap.hphone) }
+											${convert:getPhoneNoHidden(memberMap.hphone, resumeMap.paidResume) }
 										</c:otherwise>
-									</c:choose></td>
+									</c:choose>
+									 -->
+									${convert:getPhoneNoHidden(memberMap.hphone, resumeMap.paidResume) }
+								</td>
 							</tr>
 							<tr>
 								<th class="table_title">연락처</th>
-								<td class="table_desc"><c:choose>
-										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT >= 0}'>
+								<td class="table_desc">
+									<!-- 
+									<c:choose>
+										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
 											${memberMap.phone }
 										</c:when>
 										<c:otherwise>
-											${convert:getPhoneNoHidden(memberMap.phone) }
+											${convert:getPhoneNoHidden(memberMap.phone, resumeMap.paidResume) }
 										</c:otherwise>
-									</c:choose></td>
+									</c:choose>
+									 -->
+									${convert:getPhoneNoHidden(memberMap.phone, resumeMap.paidResume) }
+								</td>
 							</tr>
 							<tr>
 								<th class="table_title">주소</th>
@@ -153,14 +175,17 @@
 								 -->
 								<td class="table_desc">
 									<p>
+										<!-- 
 										<c:choose>
-											<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT >= 0}'>
+											<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
 												[${memberMap.post }] ${memberMap.address1 } ${memberMap.address2 }
 											</c:when>
 											<c:otherwise>
-												${convert:getAddressHidden(memberMap.post, memberMap.address1, memberMap.address2) }
+												${convert:getAddressHidden(memberMap.post, memberMap.address1, memberMap.address2, resumeMap.paidResume) }
 											</c:otherwise>
 										</c:choose>
+										 -->
+										${convert:getAddressHidden(memberMap.post, memberMap.address1, memberMap.address2, resumeMap.paidResume) }
 									</p>
 								</td>
 							</tr>
@@ -354,18 +379,20 @@
 			<c:if test="${SE_USER_TYPE == 'company' }">
 				<ul class="buttons">
 					<ul>
-						<c:if
-							test="${resumeMap.portfolioFile != null and resumeMap.portfolioFile.length() > 0 }">
-							<li><a href="/allwork/peg/${resumeMap.portfolioFile}"
-								title="포트폴리오 다운로드">포트폴리오 다운로드</a></li>
+						<c:if test="${resumeMap.portfolioFile != null and resumeMap.portfolioFile.length() > 0 }">
+							<li><a href="/allwork/peg/${resumeMap.portfolioFile}" title="포트폴리오 다운로드">포트폴리오 다운로드</a></li>
 						</c:if>
 						<c:if test="${scrapCnt <= 0 }">
 							<li id="scrapBtn"><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>
 						</c:if>
 						<c:if test="${interviewCnt <= 0 }">
-							<li class="res_ok"><a href="javascript:applyPopup();"
-								title="면접제의">면접제의</a></li>
+							<li class="res_ok"><a href="javascript:applyPopup();" title="면접제의">면접제의</a></li>
 						</c:if>
+						
+						<c:if test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0 and resumeMap.paidResume != 1}'>
+							<li id="pay_info" class="pay_info"><a href="javascript:payInfoPopup('${SE_LOGIN_ID }', '${resumeMap.no}');" title="유료열람서비스 사용">유료열람서비스 사용</a></li>
+						</c:if>
+
 					</ul>
 				</ul>
 			</c:if>
@@ -383,6 +410,16 @@
 	<input type="hidden" name="interviewCnt" id="interviewCnt"
 		value="${interviewCnt }"> <input type="hidden"
 		name="recruitCnt" id="recruitCnt" value="${recruitCnt }">
+</form>
+
+
+<form id="searchForm" name="searchForm" method="post" action="/resumeDetail.do">
+	<input type="hidden" name="no" id="no" value="" />
+	<input type="hidden" name="personUid" id="personUid" value="${map.personUid}" />
+	<input type="hidden" name="companyUid" id="companyUid" value="${map.companyUid}" />
+	<input type="hidden" name="recruitNo" id="recruitNo" value="" />
+	<input type="hidden" name="resumeNo" id="resumeNo" value="" />
+	<input type="hidden" name="leftMenuUrl" id="leftMenuUrl" value="/personInfoSubMenu.do" />
 </form>
 
 
@@ -460,6 +497,41 @@
 			};
 			ajax('post', '/getNetfuOnlineRecruitRegistCnt.ajax', param,
 					callback);
+		}
+	}
+
+	// 유료정보 보기 popup
+	function payInfoPopup(uid, resumeNo) {
+
+		if (!confirm("유료열람서비스를 사용할까요?")) {
+			return;
+		} else {
+			var callback = function(data) {
+				/*
+				if (data.paidResume) {
+					alert("이미 유료열람서비스를 사용하고 있습니다.");
+					loadingOff();
+					return;
+				}
+				*/
+				//유료열람서비스 버튼 감추기.
+				$("#pay_info").css("display", "none");
+				
+				//이력서 화면 갱신.
+				$("#companyUid").val('${SE_LOGIN_ID }');
+				$("#personUid").val('${resumeMap.uid }');
+				$("#no").val('');
+				$("#recruitNo").val('');
+				$("#resumeNo").val('${resumeMap.no }');
+				$("#searchForm").attr("action", "/resumeDetail.do");
+				$("#searchForm").submit();
+			};
+
+			var param = {
+				uid : uid,
+				resumeNo : resumeNo
+			};
+			ajax('post', '/insertPaidResumeSearch.ajax', param, callback);
 		}
 	}
 

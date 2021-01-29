@@ -48,14 +48,17 @@
 									<tr class="desc">
 										<td class="desc00"><input type="checkbox" name="chk" value="${result.no }" /></td>
 										<td class="desc01">
+											<!-- 
 											<c:choose>
 												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
 													${result.name }
 												</c:when>
 												<c:otherwise>
-													${convert:getPersonNameHidden(result.name) }
+													${convert:getPersonNameHidden(result.name, result.paidResume) }
 												</c:otherwise>
 											</c:choose>
+											 -->
+											${convert:getPersonNameHidden(result.name, result.paidResume) }
 										</td>
 										<td class="desc02">
 											<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.personUid }', '', '', '${result.resumeNo }', '${result.inidSecret }', 'resume');">

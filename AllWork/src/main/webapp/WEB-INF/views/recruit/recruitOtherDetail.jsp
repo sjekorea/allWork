@@ -52,10 +52,12 @@
 					<table>
 						<caption>모집요강</caption>
 						<tbody>
+							<!-- 
 							<tr>
 								<th>채용진행상태</th>
 								<td>${(recruitMap.prs == 'P')? "채용진행중" : "채용마감" }</td>
 							</tr>
+							 -->
 							<tr>
 								<th>등록일</th>
 								<td>등록일: ${recruitMap.wdate }, 최종수정일: ${recruitMap.edate }</td>

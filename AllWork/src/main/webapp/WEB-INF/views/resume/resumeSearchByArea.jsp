@@ -31,14 +31,17 @@
 								<div>
 									<p class="star"></p>
 									<p class="desc01">
+										<!-- 
 										<c:choose>
 											<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
 												${result.name }
 											</c:when>
 											<c:otherwise>
-												${convert:getPersonNameHidden(result.name) }
+												${convert:getPersonNameHidden(result.name, result.paidResume) }
 											</c:otherwise>
 										</c:choose>
+										 -->
+										${convert:getPersonNameHidden(result.name, result.paidResume) }
 										(${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생)
 									</p>
 									<p class="desc02">${result.careerTotal }년</p>
@@ -116,14 +119,17 @@
 								<tr class="desc">
 									<td class="desc00">
 										<span>
+											<!-- 
 											<c:choose>
 												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
 													${result.name }
 												</c:when>
 												<c:otherwise>
-													${convert:getPersonNameHidden(result.name) }
+													${convert:getPersonNameHidden(result.name, result.paidResume) }
 												</c:otherwise>
 											</c:choose>
+											 -->
+											${convert:getPersonNameHidden(result.name, result.paidResume) }
 										</span><br/>
 										<span>${codeConvert:getBizSex(result.sex)},${codeConvert:getBirthYear(result.birth)}년생</span>
 									</td>

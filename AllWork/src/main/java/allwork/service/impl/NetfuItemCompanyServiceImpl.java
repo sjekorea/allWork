@@ -26,11 +26,15 @@ public class NetfuItemCompanyServiceImpl implements NetfuItemCompanyService{
 	@Override
 	public int selectNetfuItemCompanyCnt(Map<String, Object> map) throws Exception {
 		int rtnCnt = 0;
+		/*
 		if("keyword".equals((String)map.get("searchFlag"))){
 			rtnCnt = netfuItemCompanyDao.selectKeywordNetfuItemCompanyCnt(map);
 		}else{
 			rtnCnt = netfuItemCompanyDao.selectNetfuItemCompanyCnt(map);
 		}
+		*/
+		rtnCnt = netfuItemCompanyDao.selectNetfuItemCompanyCnt(map);
+
 		return rtnCnt;
 	}
 	
@@ -38,11 +42,14 @@ public class NetfuItemCompanyServiceImpl implements NetfuItemCompanyService{
 	@Override
 	public List<Map<String, Object>> selectNetfuItemCompanyList(Map<String, Object> map) throws Exception {
 		List<Map<String, Object>> rtnList = new ArrayList<Map<String, Object>>();
+		/*
 		if("keyword".equals((String)map.get("searchFlag"))){
 			rtnList = netfuItemCompanyDao.selectKeywordNetfuItemCompanyList(map);
 		}else{
 			rtnList = netfuItemCompanyDao.selectNetfuItemCompanyList(map);
 		}
+		*/
+		rtnList = netfuItemCompanyDao.selectNetfuItemCompanyList(map);
 		return rtnList;
 	}
 	

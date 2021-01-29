@@ -18,6 +18,7 @@ import com.ilmagna.allworkadmin.api.services.ApiCategoryService;
 import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
 import allwork.service.NetfuItemResumeService;
+import allwork.service.PaymentInfoService;
 
 @Service("aiMatchingRecruitService")
 public class AiMatchingRecruitService {
@@ -34,6 +35,9 @@ public class AiMatchingRecruitService {
 	@Resource(name="netfuItemResumeService")
 	private NetfuItemResumeService netfuItemResumeService;
 
+	@Resource(name="paymentInfoService")
+	private PaymentInfoService paymentInfoService;	
+
 	
 	public AiMatchingRecruitModel getRecruitByCompany(AiMatchingRecruitModel model) throws Exception {
 		//return userDAO.getRecruit(model);
@@ -45,6 +49,7 @@ public class AiMatchingRecruitService {
 				item = list.get(0);
 				
 				//추천목록 구성.
+				int nCount = 0;
 				List<AiMatchingRecommendationModel> listResult = new ArrayList<AiMatchingRecommendationModel>();
 				for (int i = 0; i < list.size(); i++) {
 					AiMatchingRecruitModel itemData = procDataItem(list.get(i));
@@ -72,15 +77,31 @@ public class AiMatchingRecruitService {
 								//구직자 이력서 사진.
 								itemData.getData().get(j).setPhoto((String) resumeMap.get("photo"));							
 							}
-						} catch (Exception e2) {
-						}
+						} catch (Exception e2) { }
 						//사라진 이력서는 무시.
 						if (resumeMap == null || resumeMap.isEmpty()) continue;		
 						//비공개 이력서는 무시.
 						if (itemData.getData().get(j).getInid_secret().equalsIgnoreCase("yes"))	continue;
 
+						//기업회원 유료열람서비스 선택상태 검색.
+						int paidResume = 0;
+						try {
+							if (!ApiCommonUtils.isNullOrEmpty(data.getRecommend_id())) {
+								int recommend_id = Integer.parseInt(data.getRecommend_id());
+								
+								CommandMap commandMap = new CommandMap();
+								commandMap.put("loginId", model.getUid());
+								commandMap.put("resumeNo", recommend_id);
+								int prsCnt = paymentInfoService.selectPaidResumeSearchCount(commandMap.getMap());
+								if (prsCnt > 0) paidResume = 1;
+							}
+						} catch (Exception e2) { }					
+						itemData.getData().get(j).setPaidResume(paidResume);
+						
 						//추천정보 등록.
 						listResult.add(itemData.getData().get(j));
+						nCount++;
+						if (nCount >= 5) break;
 					}
 				}
 				item.setData(listResult);

@@ -123,15 +123,18 @@
 									<p class="img00"><img src="img/userNo.png" alt="인재사진"/></p>
 									<p class="desc00">
 										<span class="name">
+											<!-- 
 											<c:choose>
 												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
 													${result.name }
 												</c:when>
 												<c:otherwise>
-													${convert:getPersonNameHidden(result.name) }
+													${convert:getPersonNameHidden(result.name, result.paidResume) }
 												</c:otherwise>
 											</c:choose>
-										</span><br/>
+											 -->
+											${convert:getPersonNameHidden(result.name, result.paidResume) }
+										</span>
 									</p>
 									<p class="desc01">
 										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.recommend_id }', '${result.inid_secret }', 'resume');"><span class="detail">${convert:compByte(result.detail, 150, "...")}</span></a>
@@ -181,15 +184,18 @@
 									<th></th>
 									<td class="desc00">
 										<span>
+											<!-- 
 											<c:choose>
 												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
 													${result.name }
 												</c:when>
 												<c:otherwise>
-													${convert:getPersonNameHidden(result.name) }
+													${convert:getPersonNameHidden(result.name, result.paidResume) }
 												</c:otherwise>
 											</c:choose>
-										</span><br/>
+											 -->
+											${convert:getPersonNameHidden(result.name, result.paidResume) }
+										</span>
 									</td>
 									<td class="desc01" colspan=3>
 										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.recommend_id }', '${result.inid_secret }', 'resume');" title="AI 추천 인재정보">
@@ -221,17 +227,21 @@
 									<th></th>
 									<td class="desc00">
 										<span>
+											<!-- 
 											<c:choose>
 												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
 													${result.name }
 												</c:when>
 												<c:otherwise>
-													${convert:getPersonNameHidden(result.name) }
+													${convert:getPersonNameHidden(result.name, result.paidResume) }
 												</c:otherwise>
 											</c:choose>
-										</span><br/>
+											 -->
+											${convert:getPersonNameHidden(result.name, result.paidResume) }
+										</span><!-- <br/>
 										<span>${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span><br/>
-										<span>${codeConvert:getLastSchool(result.inidLastSchool) }</span>
+										<span>${codeConvert:getBizAbility(result.educationDegree) }</span>
+										 -->
 									</td>
 									<td class="desc01">
 										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');" title="AI 맞춤인재정보">
@@ -275,17 +285,21 @@
 									<th></th>
 									<td class="desc00">
 										<span>
+											<!-- 
 											<c:choose>
 												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
 													${result.name }
 												</c:when>
 												<c:otherwise>
-													${convert:getPersonNameHidden(result.name) }
+													${convert:getPersonNameHidden(result.name, result.paidResume) }
 												</c:otherwise>
 											</c:choose>
-										</span><br/>
+											 -->
+											${convert:getPersonNameHidden(result.name, result.paidResume) }
+										</span><!-- <br/>
 										<span>${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span><br/>
-										<span>${codeConvert:getLastSchool(result.inidLastSchool) }</span>
+										<span>${codeConvert:getBizAbility(result.educationDegree) }</span>
+										 -->
 									</td>
 									<td class="desc01">
 										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');" title="스크랩인재정보">
@@ -329,17 +343,21 @@
 									<th></th>
 									<td class="desc00">
 										<span>
+											<!-- 
 											<c:choose>
 												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
 													${result.name }
 												</c:when>
 												<c:otherwise>
-													${convert:getPersonNameHidden(result.name) }
+													${convert:getPersonNameHidden(result.name, result.paidResume) }
 												</c:otherwise>
 											</c:choose>
-										</span><br/>
+											 -->
+											${convert:getPersonNameHidden(result.name, result.paidResume) }
+										</span><!-- <br/>
 										<span>${codeConvert:getBizSex(result.sex)}/${codeConvert:getBirthYear(result.birth)}년생</span><br/>
-										<span>${codeConvert:getLastSchool(result.inidLastSchool) }</span>
+										<span>${codeConvert:getBizAbility(result.educationDegree) }</span>
+										 -->
 									</td>
 									<td class="desc01">
 										<a href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');" title="최근본인재정보">

@@ -21,7 +21,7 @@
 		where 1=1
 			and uid = #{loginId}
 			<if test="startDt != null and endDt != null">
-				and pay_date between #{startDt} and #{endDt}
+				and pay_date between #{startDtTime} and #{endDtTime}
 			</if>
 		order by pay_date desc
 		limit #{start}, #{pageSize}
@@ -57,6 +57,30 @@
 			)
 		]]>
 	</insert>
+	
+	
+	<!-- 유료열람서비스 등록 -->
+	<insert id="insertPaidResumeSearch" parameterType="hashmap">
+		<![CDATA[
+			insert into paid_resume_search
+			(	
+				uid, resume_no, wdate
+			)
+			values
+			(
+				#{uid}, #{resumeNo}, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+			)
+		]]>
+	</insert>
+	
+	<!-- 유료열람서비스 확인 -->
+	<select id="selectPaidResumeSearchCount" parameterType="hashmap" resultType="int">
+		select COUNT(*) cnt
+		from paid_resume_search
+		where 1=1
+			AND uid = #{loginId}
+			AND resume_no = #{resumeNo}
+	</select>
 
 
 </mapper>

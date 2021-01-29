@@ -104,20 +104,23 @@
 									varStatus="status">
 									<tr class="desc">
 										<td class="desc01">
+											<!-- 
 											<c:choose>
 												<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
 													${result.name }
 												</c:when>
 												<c:otherwise>
-													${convert:getPersonNameHidden(result.name) }
+													${convert:getPersonNameHidden(result.name, result.paidResume) }
 												</c:otherwise>
 											</c:choose>
+											 -->
+											${convert:getPersonNameHidden(result.name, result.paidResume) }
 										</td>
 										<td class="desc02"><a
 											href="javascript:goDetail('${SE_LOGIN_ID }', '${result.uid }', '', '', '${result.no }', '${result.inidSecret }', 'resume');">${convert:compByte(result.inidTitle, 80, "...")}</a>
 										</td>
-										<td class="desc03">${codeConvert:getLastSchool(result.inidLastSchool) }</td>
-										<td class="desc04">${codeConvert:getTotalCareer(result.inidCareer) }</td>
+										<td class="desc03">${codeConvert:getBizAbility(result.educationDegree) }</td>
+										<td class="desc04">${result.careerTotal }년</td>
 									</tr>
 								</c:forEach>
 							</c:when>

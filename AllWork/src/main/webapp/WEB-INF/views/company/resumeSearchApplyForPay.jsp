@@ -148,18 +148,18 @@
 		
 		var amount = $("input[name=payAmount]:checked").val();
 		var productName = "인재검색서칭 서비스"; // 개인회원 유료옵션 서비스, 유료 채용광고 서비스, 인재검색서칭 서비스
-		var service1EndDate = "";
+		var serviceEndDate = "";
 		var viewCount = 0;
 		if(amount == 100000){
-			service1EndDate = moment(addDay(new Date(), 7)).format('YYYY-MM-DD');
+			serviceEndDate = moment(addDay(new Date(), 7)).format('YYYY-MM-DD');
 			viewCount = 100;
 		}
 		if(amount == 150000){
-			service1EndDate = moment(addDay(new Date(), 15)).format('YYYY-MM-DD');
+			serviceEndDate = moment(addDay(new Date(), 15)).format('YYYY-MM-DD');
 			viewCount = 200;
 		}
 		if(amount == 200000){
-			service1EndDate = moment(addDay(new Date(), 30)).format('YYYY-MM-DD');
+			serviceEndDate = moment(addDay(new Date(), 30)).format('YYYY-MM-DD');
 			viewCount = 400;
 		}
 		
@@ -207,6 +207,7 @@
 								, bankName : rsp.bank_name
 								, cardQuota : rsp.card_quota
 								, cardNumber : rsp.card_number
+								, service1EndDate : ""
 								, service2EndDate : serviceEndDate
 								, viewCount : viewCount
 							};

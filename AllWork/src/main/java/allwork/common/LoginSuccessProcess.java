@@ -32,8 +32,9 @@ public class LoginSuccessProcess{
 			session.setAttribute("SE_LOGIN_STATUS", true);
 			
 			long dateCompareResult = 0;
+			String serviceFlag = ConvertUtil.checkNull((String)memberInfoMap.get("service1Flag"));
 			String serviceEndDate = ConvertUtil.checkNull((String)memberInfoMap.get("service1EndDate"));
-			if(!"".equals(serviceEndDate)){
+			if(serviceFlag.equalsIgnoreCase("Y") && !"".equals(serviceEndDate)){
 				dateCompareResult = DateUtil.getCompareDate(serviceEndDate);
 				
 				if(dateCompareResult >= 0){
@@ -42,12 +43,16 @@ public class LoginSuccessProcess{
 					session.setAttribute("SE_SERVICE1", "N");
 				}
 				session.setAttribute("SE_SERVICE1_END", memberInfoMap.get("service1EndDate"));
-				session.setAttribute("SE_VIEW_COUNT", 0);
+				//session.setAttribute("SE_VIEW_COUNT", 0);
+			} else {
+				session.setAttribute("SE_SERVICE1", "N");
+				session.setAttribute("SE_SERVICE1_END", "");
 			}
 			
+			serviceFlag = ConvertUtil.checkNull((String)memberInfoMap.get("service2Flag"));
 			serviceEndDate = ConvertUtil.checkNull((String)memberInfoMap.get("service2EndDate"));
 			int viewCount = ConvertUtil.checkNullToInt(((Integer)memberInfoMap.get("viewCount")).toString());
-			if(!"".equals(serviceEndDate)){
+			if(serviceFlag.equalsIgnoreCase("Y") && !"".equals(serviceEndDate)){
 				dateCompareResult = DateUtil.getCompareDate(serviceEndDate);
 				if(dateCompareResult >= 0 && viewCount > 0 ){
 					session.setAttribute("SE_SERVICE2", "Y");
@@ -56,6 +61,10 @@ public class LoginSuccessProcess{
 				}
 				session.setAttribute("SE_SERVICE2_END", memberInfoMap.get("service2EndDate"));
 				session.setAttribute("SE_VIEW_COUNT", viewCount);
+			} else {
+				session.setAttribute("SE_SERVICE2", "N");
+				session.setAttribute("SE_SERVICE2_END", "");
+				session.setAttribute("SE_VIEW_COUNT", 0);
 			}
 	        
 		}catch(Exception e){

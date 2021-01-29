@@ -99,7 +99,7 @@
 					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
 					and nic.uid in (
 										select uid from netfu_member 
-										where service1_flag = 'Y' and service1_end_date >  DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
+										where service1_flag = 'Y' and service1_end_date >= DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
 									)
 										
 				UNION ALL
@@ -116,7 +116,7 @@
 					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
 					and nic.uid in (
 										select uid from netfu_member 
-										where service1_flag = 'Y' and service1_end_date >  DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
+										where service1_flag = 'Y' and service1_end_date >= DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
 									)
 					
 				UNION ALL
@@ -133,7 +133,7 @@
 					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
 					and nic.uid in (
 										select uid from netfu_member 
-										where service1_flag = 'Y' and service1_end_date >  DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
+										where service1_flag = 'Y' and service1_end_date >= DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
 									)
 		) aa
 		order by rand() limit 6

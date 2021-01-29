@@ -27,6 +27,7 @@ import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
 import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
 import allwork.common.util.CommonUtil;
+import allwork.common.util.ConvertUtil;
 import allwork.common.util.FileUtils;
 import allwork.common.util.MakeQueryUtil;
 import allwork.service.NetfuCateService;
@@ -38,6 +39,7 @@ import allwork.service.NetfuOnlineRecruitService;
 import allwork.service.NetfuScrapService;
 import allwork.service.PaymentInfoService;
 import allwork.service.RecruitViewService;
+import allwork.vo.NetfuItemResumeVo;
 
 @Controller
 public class CompanyController {
@@ -132,11 +134,15 @@ public class CompanyController {
 
 			// 맞춤 인재 정보 목록
 			Map<String, Object> myServiceMap = netfuMyServiceService.selectNetfuMyServiceMap(commandMap.getMap());
-			List<Map<String, Object>> myServiceResumeList = new ArrayList<Map<String, Object>>();
+			//List<Map<String, Object>> myServiceResumeList = new ArrayList<Map<String, Object>>();
+			List<NetfuItemResumeVo> myServiceResumeList = new ArrayList<NetfuItemResumeVo>();
 			if (myServiceMap != null && !myServiceMap.isEmpty()) {
 				//맞춤서비스가 설정된 경우.
 				commandMap = MakeQueryUtil.makeMyResumeQuery(commandMap, myServiceMap);
-				myServiceResumeList = netfuMyServiceService.selectMyServiceResumeList(commandMap.getMap());
+
+				String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
+				boolean bPaidUser = service2Flag.equalsIgnoreCase("Y");
+				myServiceResumeList = netfuMyServiceService.selectMyServiceResumeList(bPaidUser, commandMap.getMap());
 			}
 			
 			// 스크랩 이력서 정보

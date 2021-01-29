@@ -442,19 +442,25 @@ public class ConvertUtil {
 	 * 개인 신상정보 감추기 지원
 	 */
 	//구직자 이름
-	public static String getPersonNameHidden(String strName) {
+	public static String getPersonNameHidden(String strName, Integer paidResume) {
+		if (paidResume != null && paidResume == 1) return strName;
+		
 		if (strName == null || strName.length() < 2) return "";
 		return strName.substring(0, 1) + "OO";
 	}
 
 	//구직자 UID
-	public static String getUidHidden(String strUid) {
+	public static String getUidHidden(String strUid, Integer paidResume) {
+		if (paidResume != null && paidResume == 1) return strUid;
+		
 		if (strUid == null || strUid.length() < 1) return "";
 		return "OOOOOO";
 	}
 
 	//전화번호
-	public static String getPhoneNoHidden(String strPhoneNo) {
+	public static String getPhoneNoHidden(String strPhoneNo, Integer paidResume) {
+		if (paidResume != null && paidResume == 1) return strPhoneNo;
+		
 		if (strPhoneNo == null || strPhoneNo.length() < 4) return "";
 		String[] list = strPhoneNo.split("-");
 		if (list.length < 2)
@@ -468,7 +474,9 @@ public class ConvertUtil {
 	}
 
 	//이메일
-	public static String getEmailHidden(String strEmail) {
+	public static String getEmailHidden(String strEmail, Integer paidResume) {
+		if (paidResume != null && paidResume == 1) return strEmail;
+		
 		if (strEmail == null || strEmail.length() < 1) return "";
 		String[] list = strEmail.split("@");
 		if (list.length < 2) return "";
@@ -476,7 +484,9 @@ public class ConvertUtil {
 	}
 
 	//주소
-	public static String getAddressHidden(String strPost, String strAddress1, String strAddress2) {
+	public static String getAddressHidden(String strPost, String strAddress1, String strAddress2, Integer paidResume) {
+		if (paidResume != null && paidResume == 1) return strPost + " " + strAddress1 + " " + strAddress2;
+		
 		if (strAddress1 == null || strAddress1.length() < 1) return "";
 		String[] list = strAddress1.split(" ");
 

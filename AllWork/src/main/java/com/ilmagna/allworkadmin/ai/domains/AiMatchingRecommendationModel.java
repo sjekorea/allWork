@@ -42,6 +42,8 @@ public class AiMatchingRecommendationModel implements Serializable  {
 	private String biz_end_day;					//				채용마감 일.
 	private String bizIng;						//				yes = 채용진행중, no = 채용마감.
 	
+	private Integer paidResume;					//기업회원이 유료열람서비스를 선택한 경우.
+	
 	public AiMatchingRecommendationModel() {
 		this.id				= 0;
 		this.type			= 1;
@@ -425,5 +427,18 @@ public class AiMatchingRecommendationModel implements Serializable  {
 	 */
 	public void setBizIng(String bizIng) {
 		this.bizIng = bizIng;
+	}
+
+	/**
+	 * @return the paidResume
+	 */
+	public Integer getPaidResume() {
+		return paidResume;
+	}
+	/**
+	 * @param paidResume the paidResume to set
+	 */
+	public void setPaidResume(Integer paidResume) {
+		this.paidResume = paidResume;
 	}
 }
