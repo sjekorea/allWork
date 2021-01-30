@@ -38,7 +38,7 @@
 				<ul class="topMenu">
 					<li><a href="#" title="화상면접"><i class="fas fa-desktop"></i>&nbsp;화상면접&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 					<c:if test='${SE_SERVICE1 eq "Y" or (SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0)}'>
-						<li style="font-weight:bold;color:red;">&nbsp;유료 서비스 사용중&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li style="font-weight:bold;color:red;">&nbsp;유료서비스 사용중&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					</c:if> 
 					<c:choose>
 						<c:when test="${SE_LOGIN_STATUS}">

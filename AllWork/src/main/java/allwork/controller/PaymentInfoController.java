@@ -242,7 +242,7 @@ public class PaymentInfoController {
 			//사용자가 이용한 유료열람서비스 개수 1 감소.
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			netfuMemberService.updateViewCount(commandMap.getMap());
-			//유료열람 서비스를 모두 사용한 경우, 유료 서비스 기능을 disable 시킴.
+			//유료열람 서비스를 모두 사용한 경우, 유료서비스 기능을 disable 시킴.
 			int viewCount = ConvertUtil.checkNullToInt(((Integer)session.getAttribute("SE_VIEW_COUNT")).toString());
 			/*
 			if(viewCount < 1){

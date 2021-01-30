@@ -50,6 +50,7 @@ public class AiMatchingResumeService {
 				item = list.get(0);
 			
 				//추천목록 구성.
+				int nCount = 0;
 				List<AiMatchingRecommendationModel> listResult = new ArrayList<AiMatchingRecommendationModel>();
 				List<AiMatchingRecommendationModel> listResultTemp = new ArrayList<AiMatchingRecommendationModel>();
 				for (int i = 0; i < list.size(); i++) {
@@ -99,6 +100,10 @@ public class AiMatchingResumeService {
 
 						//추천정보 등록.
 						listResultTemp.add(itemData.getData().get(j));
+						if (!itemData.getData().get(j).getBizIng().equalsIgnoreCase("no")) {
+							nCount++;
+							if (nCount >= 5) break;
+						}
 					}
 					
 					//채용진행중인것을 우선순위로 표출.

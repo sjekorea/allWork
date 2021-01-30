@@ -245,7 +245,7 @@
 	</update>
 	
 	
-	<!--  유료 서비스 변경 -->
+	<!--  유료서비스 변경 -->
 	<update id="updatePayServiceInfo" parameterType="hashmap">
 		update netfu_member
 		set 
@@ -264,29 +264,32 @@
 	</update>
 	
 	
-	<!--  유료 서비스1 만료 -->
+	<!--  유료서비스1 만료 -->
 	<update id="updatePayService1Info" parameterType="hashmap">
 		update netfu_member
 		set 
 			service1_flag = ''
 			, service1_end_date = ''
-		where service1_end_date <![CDATA[<]]> DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
+		where
+			uid = #{loginId}
+			AND service1_end_date <![CDATA[<]]> DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
 	</update>
 	
 	
-	<!--  유료 서비스2 만료 -->
+	<!--  유료서비스2 만료 -->
 	<update id="updatePayService2Info" parameterType="hashmap">
 		update netfu_member
 		set 
 			service2_flag = ''
 			, service2_end_date = ''
 			, view_count = 0
-		where service2_end_date <![CDATA[<]]> DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
-			or view_count <![CDATA[<=]]> 0
+		where
+			uid = #{loginId}
+			AND service2_end_date <![CDATA[<]]> DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
 	</update>
 	
 	
-	<!--  유료 서비스 변경 -->
+	<!--  유료서비스 변경 -->
 	<update id="updateViewCount" parameterType="hashmap">
 		update netfu_member
 		set 

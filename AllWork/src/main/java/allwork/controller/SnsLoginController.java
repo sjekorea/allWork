@@ -71,6 +71,12 @@ Logger log = Logger.getLogger(this.getClass());
 				LoginSuccessProcess loginSuccessProcess = new LoginSuccessProcess();
 				loginSuccessProcess.loginSuccessMakeSession(req, memberInfoMap);
 				
+				//시간이 만료된 경우, 유료 사용중 flag 해제.
+				HttpSession session = req.getSession();
+				commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
+				netfuMemberService.updatePayService1Info(commandMap.getMap());
+				netfuMemberService.updatePayService2Info(commandMap.getMap());
+
 				//(begin) 2021.01.03 by s.yoo
 				//가장 최근의 login 시각 등록.
 				netfuMemberService.updateLoginInfo(commandMap.getMap());

@@ -107,65 +107,65 @@
 							<tr>
 								<th class="table_title">이름</th>
 								<td class="table_desc">
-									<!-- 
 									<c:choose>
-										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+										<c:when test='${SE_LOGIN_ID eq resumeMap.uid}'>
 											${memberMap.name} (${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${memberMap.uid }
 										</c:when>
 										<c:otherwise>
 											${convert:getPersonNameHidden(memberMap.name, resumeMap.paidResume) }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${convert:getUidHidden(memberMap.uid, resumeMap.paidResume) }
 										</c:otherwise>
 									</c:choose>
-									 -->
+									<!-- 
 									${convert:getPersonNameHidden(memberMap.name, resumeMap.paidResume) }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${convert:getUidHidden(memberMap.uid, resumeMap.paidResume) }
+									 -->
 								</td>
 							</tr>
 							<tr>
 								<th class="table_title">이메일</th>
 								<td class="table_desc">
-									<!-- 
 									<c:choose>
-										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+										<c:when test='${SE_LOGIN_ID eq resumeMap.uid}'>
 											${memberMap.email }
 										</c:when>
 										<c:otherwise>
 											${convert:getEmailHidden(memberMap.email, resumeMap.paidResume) }
 										</c:otherwise>
 									</c:choose>
-									 -->
+									<!-- 
 									${convert:getEmailHidden(memberMap.email, resumeMap.paidResume) }
+									 -->
 								</td>
 							</tr>
 							<tr>
 								<th class="table_title">휴대폰</th>
 								<td class="table_desc">
-									<!-- 
 									<c:choose>
-										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+										<c:when test='${SE_LOGIN_ID eq resumeMap.uid}'>
 											${memberMap.hphone }
 										</c:when>
 										<c:otherwise>
 											${convert:getPhoneNoHidden(memberMap.hphone, resumeMap.paidResume) }
 										</c:otherwise>
 									</c:choose>
-									 -->
+									<!-- 
 									${convert:getPhoneNoHidden(memberMap.hphone, resumeMap.paidResume) }
+									 -->
 								</td>
 							</tr>
 							<tr>
 								<th class="table_title">연락처</th>
 								<td class="table_desc">
-									<!-- 
 									<c:choose>
-										<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+										<c:when test='${SE_LOGIN_ID eq resumeMap.uid}'>
 											${memberMap.phone }
 										</c:when>
 										<c:otherwise>
 											${convert:getPhoneNoHidden(memberMap.phone, resumeMap.paidResume) }
 										</c:otherwise>
 									</c:choose>
-									 -->
+									<!-- 
 									${convert:getPhoneNoHidden(memberMap.phone, resumeMap.paidResume) }
+									 -->
 								</td>
 							</tr>
 							<tr>
@@ -175,17 +175,17 @@
 								 -->
 								<td class="table_desc">
 									<p>
-										<!-- 
 										<c:choose>
-											<c:when test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0}'>
+											<c:when test='${SE_LOGIN_ID eq resumeMap.uid}'>
 												[${memberMap.post }] ${memberMap.address1 } ${memberMap.address2 }
 											</c:when>
 											<c:otherwise>
 												${convert:getAddressHidden(memberMap.post, memberMap.address1, memberMap.address2, resumeMap.paidResume) }
 											</c:otherwise>
 										</c:choose>
-										 -->
+										<!-- 
 										${convert:getAddressHidden(memberMap.post, memberMap.address1, memberMap.address2, resumeMap.paidResume) }
+										 -->
 									</p>
 								</td>
 							</tr>

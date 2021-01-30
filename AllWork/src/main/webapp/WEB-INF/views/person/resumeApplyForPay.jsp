@@ -103,7 +103,7 @@
 		$(".apply").on("click", function(e){
 			
 			if("${SE_SERVICE1}" == "Y"){
-				alert("현재 유료 서비스 이용중입니다.");
+				alert("현재 유료서비스 이용중입니다.");
 			}else{
 				payMethod = $("#payMethodSel option:selected").val(); 
 				if(checkNull(payMethod)){
