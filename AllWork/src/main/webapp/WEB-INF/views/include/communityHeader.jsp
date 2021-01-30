@@ -37,7 +37,7 @@
 		<div id="headerWrap">
 			<div id="topWrap">
 				<ul class="topMenu">
-					<li><a href="#" title="화상면접"><i class="fas fa-desktop"></i>&nbsp;화상면접&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li><a href="https://allwork.officecall.cloud/" target="_blank" title="화상면접"><i class="fas fa-desktop"></i>&nbsp;화상면접&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 					<c:if test='${SE_SERVICE1 eq "Y" or (SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0)}'>
 						<li style="font-weight:bold;color:red;">&nbsp;유료서비스 사용중&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					</c:if> 
@@ -183,7 +183,7 @@
 							<h4>헤드헌팅</h4>
 							<ul>
 								<li class="sitemap_depth01"><a href="/headhuntList.do" title="채용정보">채용정보</a></li>
-								<li class="sitemap_depth01"><a href="#" title="화상면접">화상면접</a></li>
+								<li class="sitemap_depth01"><a href="https://allwork.officecall.cloud/" target="_blank" title="화상면접">화상면접</a></li>
 							</ul>
 						</div>
 						<div class="sitemap">
