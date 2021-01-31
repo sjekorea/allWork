@@ -16,6 +16,7 @@
 
 <div id="containerWrap">
 	<div id="container">
+	<c:if test="${!SE_LOGIN_STATUS or SE_USER_TYPE == 'person'}">
 		<div class="sitemap">
 			<h4>개인회원</h4>
 			<ul>
@@ -40,6 +41,8 @@
 				<li class="sitemap_depth02"><a href="/memberUnregister.do" title="회원탈퇴">회원탈퇴</a></li>
 			</ul>
 		</div>
+	</c:if>
+	<c:if test="${!SE_LOGIN_STATUS or SE_USER_TYPE == 'company'}">
 		<div class="sitemap">
 			<h4>기업회원</h4>
 			<ul>
@@ -64,6 +67,8 @@
 				<li class="sitemap_depth02"><a href="/memberUnregister.do" title="회원탈퇴">회원탈퇴</a></li>
 			</ul>
 		</div>
+	</c:if>
+	<c:if test="${!SE_LOGIN_STATUS or SE_USER_TYPE == 'person'}">
 		<div class="sitemap">
 			<h4>채용정보</h4>
 			<ul>
@@ -77,6 +82,8 @@
 				<li class="sitemap_depth01"><a href="/recruitOther.do" title="기타채용정보">기타채용정보</a></li>
 			</ul>
 		</div>
+	</c:if>
+	<c:if test="${!SE_LOGIN_STATUS or SE_USER_TYPE == 'company'}">
 		<div class="sitemap">
 			<h4>인재검색</h4>
 			<ul>
@@ -91,6 +98,7 @@
 				<li class="sitemap_depth01"><a href="/resumeRecommendList.do" title="우수추천인재">우수추천인재</a></li>
 			</ul>
 		</div>
+	</c:if>
 		<div class="sitemap">
 			<h4>헤드헌팅</h4>
 			<ul>

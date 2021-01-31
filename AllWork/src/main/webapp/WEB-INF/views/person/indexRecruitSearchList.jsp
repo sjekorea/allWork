@@ -14,13 +14,82 @@
 
 
 	<div id="content01Wrap">
+		
 		<table class="list" style="table-layout:fixed;">
 			<colgroup>
-				<col style="width:25%;">
-				<col style="width:25%;">
-				<col style="width:15%;">
-				<col style="width:15%;">
 				<col style="width:20%;">
+				<col style="width:25%;">
+				<col style="width:20%;">
+				<col style="width:20%;">
+				<col style="width:15%;">
+			</colgroup>
+			<caption>AI 통합검색 채용정보</caption>
+			<thead>
+				<tr>
+					<th class="t_desc01">회사명</th>
+					<th colspan="3" class="t_desc02">채용정보</th>
+					<th class="t_desc03">채용마감</th>
+				</tr>
+			</thead>
+<c:choose>
+	<c:when test="${item.recruitDataWorknet.size() > 0 }">
+		<c:forEach var="result" items="${item.recruitDataWorknet}" varStatus="status">
+			<tbody>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+				<tr>
+					<td rowspan="3" class="desc01">${result.name }</td>
+					<td colspan="3" class="desc02">
+						<!-- 
+						<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.recommend_id }" target="_blank">
+							${result.title }
+						</a>
+						 -->
+						<a href="javascript:goOtherDetail('${result.id }');">
+							${result.title }
+						</a>
+					</td>
+					<td rowspan="3" class="desc03">
+					<c:if test="${result.bizIng ne 'yes' }">
+						<span class="state01">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
+					</c:if>
+					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type eq 'often' }">
+						<span class="state02">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
+					</c:if>
+					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type eq 'get' }">
+						<span class="state03">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
+					</c:if>
+					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type ne 'often'and result.biz_end_type ne 'get' }">
+						<span class="state04">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
+					</c:if>
+					</td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">급여:</span><span class="desc_desc00">${result.salary }</span></td>
+					<td colspan="2"><span class="desc_title">고용형태:</span><span class="desc_desc00">${result.job_form }</span></td>
+				</tr>
+				<tr>
+					<td><span class="desc_title">등록일:</span><span class="desc_desc00">${result.strWdate }</span></td>
+					<td colspan="2"><span class="desc_title">근무지:</span><span class="desc_desc00">${result.loc }</span></td>
+				</tr>
+				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
+			</tbody>
+		</c:forEach>
+	</c:when>
+	<c:otherwise>
+			<tbody>
+				<tr><td class="desc00" colspan="5">주어진 조건을 만족하는 기타 채용정보를 찾을 수 없습니다.</td></tr>
+			</tbody>
+	</c:otherwise>
+</c:choose>
+		</table>
+
+		<table class="list" style="table-layout:fixed;">
+			<colgroup>
+				<col style="width:20%;">
+				<col style="width:25%;">
+				<col style="width:20%;">
+				<col style="width:20%;">
+				<col style="width:15%;">
 			</colgroup>
 			<caption>AI 통합검색 회원등록 채용정보</caption>
 			<thead>
@@ -158,74 +227,6 @@
 			 -->
 		</table>
 		
-		
-		<table class="list" style="table-layout:fixed;">
-			<colgroup>
-				<col style="width:25%;">
-				<col style="width:25%;">
-				<col style="width:15%;">
-				<col style="width:15%;">
-				<col style="width:20%;">
-			</colgroup>
-			<caption>AI 통합검색 기타채용정보</caption>
-			<thead>
-				<tr>
-					<th class="t_desc01">회사명</th>
-					<th colspan="3" class="t_desc02">채용정보</th>
-					<th class="t_desc03">채용마감</th>
-				</tr>
-			</thead>
-<c:choose>
-	<c:when test="${item.recruitDataWorknet.size() > 0 }">
-		<c:forEach var="result" items="${item.recruitDataWorknet}" varStatus="status">
-			<tbody>
-				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
-				<tr>
-					<td rowspan="3" class="desc01">${result.name }</td>
-					<td colspan="3" class="desc02">
-						<!-- 
-						<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.recommend_id }" target="_blank">
-							${result.title }
-						</a>
-						 -->
-						<a href="javascript:goOtherDetail('${result.id }');">
-							${result.title }
-						</a>
-					</td>
-					<td rowspan="3" class="desc03">
-					<c:if test="${result.bizIng ne 'yes' }">
-						<span class="state01">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
-					</c:if>
-					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type eq 'often' }">
-						<span class="state02">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
-					</c:if>
-					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type eq 'get' }">
-						<span class="state03">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
-					</c:if>
-					<c:if test="${result.bizIng eq 'yes' and result.biz_end_type ne 'often'and result.biz_end_type ne 'get' }">
-						<span class="state04">${convert:getEndCond(result.bizIng, result.biz_end_type, result.biz_end_day)}</span>
-					</c:if>
-					</td>
-				</tr>
-				<tr>
-					<td><span class="desc_title">급여:</span><span class="desc_desc00">${result.salary }</span></td>
-					<td colspan="2"><span class="desc_title">고용형태:</span><span class="desc_desc00">${result.job_form }</span></td>
-				</tr>
-				<tr>
-					<td><span class="desc_title">등록일:</span><span class="desc_desc00">${result.strWdate }</span></td>
-					<td colspan="2"><span class="desc_title">근무지:</span><span class="desc_desc00">${result.loc }</span></td>
-				</tr>
-				<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
-			</tbody>
-		</c:forEach>
-	</c:when>
-	<c:otherwise>
-			<tbody>
-				<tr><td class="desc00" colspan="5">주어진 조건을 만족하는 기타 채용정보를 찾을 수 없습니다.</td></tr>
-			</tbody>
-	</c:otherwise>
-</c:choose>
-		</table>
 
 		<!-- 
 		<table class="list" style="table-layout:fixed;">

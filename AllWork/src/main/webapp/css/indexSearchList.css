@@ -48,10 +48,10 @@ body{font-family:"NotoSansKR-Regular";}
 .list tbody .margin{width:100%;height:20px;}
 
 .list tbody td span{font-size:13px;}
-.list tbody .desc01{text-align: center;width:170px;}
-.list tbody .desc02{width:420px;padding:7px 0;text-align:left;line-height:22px;}
+.list tbody .desc01{text-align: center;width:150px;}
+.list tbody .desc02{width:460px;padding:7px 0;text-align:left;line-height:22px;}
 .list tbody .desc03{text-align: center;}
-.list tbody .desc03 span{display:inline-block;width:120px;height:30px;line-height:30px;}
+.list tbody .desc03 span{display:inline-block;width:100px;height:30px;line-height:30px;}
 /*채용마감*/.list tbody .desc03 span.state01{background-color: #eee;color:#999;}
 /*상시채용*/.list tbody .desc03 span.state02{background-color: #4F60E3;color:#fff;}
 /*채용시 마감*/.list tbody .desc03 span.state03{background-color: #000;color:#fff;}
