@@ -14,58 +14,58 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 	
 	private Integer id;
 	private String uid;
-	private Integer info_type;					//일반직, 알바, 프리랜서
-	private String biz_name;					//회사명
-	private String biz_title;					//공고제목
-	private String biz_post;					//X -> 우편번호
-	private String biz_address1;				//X -> 주소
-	private String biz_address2;
+	private Integer infoType;					//일반직, 알바, 프리랜서
+	private String bizName;						//회사명
+	private String bizTitle;					//공고제목
+	private String bizPost;						//X -> 우편번호
+	private String bizAddress1;					//X -> 주소
+	private String bizAddress2;
 	private String strAddress;
 	private String strAddressMini;
-	private String biz_type1;					//직종
-	private String biz_type2;
-	private String biz_type3;
-	private String biz_type4;
-	private String biz_type5;
-	private String biz_type6;
+	private String bizType1;					//직종
+	private String bizType2;
+	private String bizType3;
+	private String bizType4;
+	private String bizType5;
+	private String bizType6;
 	private String strBizType;
-	private String biz_position;				//X -> 직책
-	private String biz_area1;					//근무지역
-	private String biz_area2;
-	private String biz_area3;
-	private String biz_area4;
-	private String biz_area5;
-	private String biz_area6;
+	private String bizPosition;					//X -> 직책
+	private String bizArea1;					//근무지역
+	private String bizArea2;
+	private String bizArea3;
+	private String bizArea4;
+	private String bizArea5;
+	private String bizArea6;
 	private String strArea;
-	private String biz_business;				//담당업무
-	private String biz_men;						//채용인원
-	private String biz_jobfrom;					//고용형태
+	private String bizBusiness;					//담당업무
+	private String bizMen;						//채용인원
+	private String bizJobfrom;					//고용형태
 	private String strJobForm;
 	private String strPay;
-	private String pay_type;					//급여 종류 - 연봉, 월급, ..., 시급.
-	private String biz_pay;						//급여.
-	private String biz_welfare;					//복리후생
+	private String payType;					//급여 종류 - 연봉, 월급, ..., 시급.
+	private String bizPay;						//급여.
+	private String bizWelfare;					//복리후생
 	private String strWelfare;
-	private String biz_age;						//나이
+	private String bizAge;						//나이
 	private String strAge;
-	private String biz_sex;						//성별
+	private String bizSex;						//성별
 	private String strSex;
-	private String biz_ability;					//학력 - 1 : "고등학교졸업", 2 : "대학졸업(2~3년)", 3 : "대학교졸업(4년)", 4 : "석사", 5 :  "박사", 100 : "학력무관"
+	private String bizAbility;					//학력 - 1 : "고등학교졸업", 2 : "대학졸업(2~3년)", 3 : "대학교졸업(4년)", 4 : "석사", 5 :  "박사", 100 : "학력무관"
 	private String strAbility;
-	private String biz_preferential;			//우대사항
+	private String bizPreferential;				//우대사항
 	private String strPreference;
-	private Integer biz_career;					//경력.
+	private Integer bizCareer;					//경력.
 	private String strBizCareer;
-	private String biz_detail;					//세부내용
-	private String biz_end_day;					//마감일
-	private String biz_end_type;				//마감방법 - 마감일(input), 채용시(get), 상시채용(often).
+	private String bizDetail;					//세부내용
+	private String bizEndDay;					//마감일
+	private String bizEndType;					//마감방법 - 마감일(input), 채용시(get), 상시채용(often).
 	private String strEndCond;
-	private String biz_ing;
-	private String biz_method;					//지원방법
+	private String bizIng;
+	private String bizMethod;					//지원방법
 	private String strMethod;
-	private String biz_person;					//담당자
-	private String biz_pemail;
-	private String biz_pphone;
+	private String bizPerson;					//담당자
+	private String bizPemail;
+	private String bizPphone;
 	private String strWdate;					//등록일
 	private String strUwdate;
 	private String strJwdate;
@@ -83,23 +83,23 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 	private String strService100;
 	private String biz_paper;					//제출서류
 	private String strPaper;
-	private String biz_form;
-	private String biz_form_file;
-	private String sms_send;
-	private String biz_page;
+	private String bizForm;
+	private String bizFormFile;
+	private String smsSend;
+	private String bizPage;
 	private Integer hit;						//조회수.
-	private String type_r;						//???
-	private Integer order_view;
+	private String typeR;						//???
+	private Integer orderView;
 	private String memo;						//관리자 메모.
 
-	private Integer find_company_info;			//검색조건 - 기업정보 등록현황.
-	private String search_loc;					//검색조건 - 지역.
-	private String search_biz_type;				//검색조건 - 직무.
+	private Integer findCompanyInfo;			//검색조건 - 기업정보 등록현황.
+	private String searchLoc;					//검색조건 - 지역.
+	private String searchBizType;				//검색조건 - 직무.
 	String fromDate, toDate;					//검색조건 - 채용마감일.
 
 	private ApiCompanyModel company;
-	private String member_uid;					//이력서 등록현황을 검사하는 개인회원 사용자 ID.
-	private Integer resume_count;				//사용자가 등록한 이력서 개수.
+	private String memberUid;					//이력서 등록현황을 검사하는 개인회원 사용자 ID.
+	private Integer resumeCount;				//사용자가 등록한 이력서 개수.
 	
 	private List<Integer> ids;
 	private String sidx;	//sorting field.
@@ -131,40 +131,76 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.uid = uid;
 	}
 	/**
-	 * @return the info_type
+	 * @return the infoType
 	 */
-	public Integer getInfo_type() {
-		return info_type;
+	public Integer getInfoType() {
+		return infoType;
 	}
 	/**
-	 * @param info_type the info_type to set
+	 * @param infoType the infoType to set
 	 */
-	public void setInfo_type(Integer info_type) {
-		this.info_type = info_type;
+	public void setInfoType(Integer infoType) {
+		this.infoType = infoType;
 	}
 	/**
-	 * @return the biz_name
+	 * @return the bizName
 	 */
-	public String getBiz_name() {
-		return biz_name;
+	public String getBizName() {
+		return bizName;
 	}
 	/**
-	 * @param biz_name the biz_name to set
+	 * @param bizName the bizName to set
 	 */
-	public void setBiz_name(String biz_name) {
-		this.biz_name = biz_name;
+	public void setBizName(String bizName) {
+		this.bizName = bizName;
 	}
 	/**
-	 * @return the biz_title
+	 * @return the bizTitle
 	 */
-	public String getBiz_title() {
-		return biz_title;
+	public String getBizTitle() {
+		return bizTitle;
 	}
 	/**
-	 * @param biz_title the biz_title to set
+	 * @param bizTitle the bizTitle to set
 	 */
-	public void setBiz_title(String biz_title) {
-		this.biz_title = biz_title;
+	public void setBizTitle(String bizTitle) {
+		this.bizTitle = bizTitle;
+	}
+	/**
+	 * @return the bizPost
+	 */
+	public String getBizPost() {
+		return bizPost;
+	}
+	/**
+	 * @param bizPost the bizPost to set
+	 */
+	public void setBizPost(String bizPost) {
+		this.bizPost = bizPost;
+	}
+	/**
+	 * @return the bizAddress1
+	 */
+	public String getBizAddress1() {
+		return bizAddress1;
+	}
+	/**
+	 * @param bizAddress1 the bizAddress1 to set
+	 */
+	public void setBizAddress1(String bizAddress1) {
+		this.bizAddress1 = bizAddress1;
+	}
+	/**
+	 * @return the bizAddress2
+	 */
+	public String getBizAddress2() {
+		return bizAddress2;
+	}
+	/**
+	 * @param bizAddress2 the bizAddress2 to set
+	 */
+	public void setBizAddress2(String bizAddress2) {
+		this.bizAddress2 = bizAddress2;
 	}
 	/**
 	 * @return the strAddress
@@ -191,40 +227,76 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.strAddressMini = strAddressMini;
 	}
 	/**
-	 * @return the biz_post
+	 * @return the bizType1
 	 */
-	public String getBiz_post() {
-		return biz_post;
+	public String getBizType1() {
+		return bizType1;
 	}
 	/**
-	 * @param biz_post the biz_post to set
+	 * @param bizType1 the bizType1 to set
 	 */
-	public void setBiz_post(String biz_post) {
-		this.biz_post = biz_post;
+	public void setBizType1(String bizType1) {
+		this.bizType1 = bizType1;
 	}
 	/**
-	 * @return the biz_address1
+	 * @return the bizType2
 	 */
-	public String getBiz_address1() {
-		return biz_address1;
+	public String getBizType2() {
+		return bizType2;
 	}
 	/**
-	 * @param biz_address1 the biz_address1 to set
+	 * @param bizType2 the bizType2 to set
 	 */
-	public void setBiz_address1(String biz_address1) {
-		this.biz_address1 = biz_address1;
+	public void setBizType2(String bizType2) {
+		this.bizType2 = bizType2;
 	}
 	/**
-	 * @return the biz_address2
+	 * @return the bizType3
 	 */
-	public String getBiz_address2() {
-		return biz_address2;
+	public String getBizType3() {
+		return bizType3;
 	}
 	/**
-	 * @param biz_address2 the biz_address2 to set
+	 * @param bizType3 the bizType3 to set
 	 */
-	public void setBiz_address2(String biz_address2) {
-		this.biz_address2 = biz_address2;
+	public void setBizType3(String bizType3) {
+		this.bizType3 = bizType3;
+	}
+	/**
+	 * @return the bizType4
+	 */
+	public String getBizType4() {
+		return bizType4;
+	}
+	/**
+	 * @param bizType4 the bizType4 to set
+	 */
+	public void setBizType4(String bizType4) {
+		this.bizType4 = bizType4;
+	}
+	/**
+	 * @return the bizType5
+	 */
+	public String getBizType5() {
+		return bizType5;
+	}
+	/**
+	 * @param bizType5 the bizType5 to set
+	 */
+	public void setBizType5(String bizType5) {
+		this.bizType5 = bizType5;
+	}
+	/**
+	 * @return the bizType6
+	 */
+	public String getBizType6() {
+		return bizType6;
+	}
+	/**
+	 * @param bizType6 the bizType6 to set
+	 */
+	public void setBizType6(String bizType6) {
+		this.bizType6 = bizType6;
 	}
 	/**
 	 * @return the strBizType
@@ -239,88 +311,88 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.strBizType = strBizType;
 	}
 	/**
-	 * @return the biz_type1
+	 * @return the bizPosition
 	 */
-	public String getBiz_type1() {
-		return biz_type1;
+	public String getBizPosition() {
+		return bizPosition;
 	}
 	/**
-	 * @param biz_type1 the biz_type1 to set
+	 * @param bizPosition the bizPosition to set
 	 */
-	public void setBiz_type1(String biz_type1) {
-		this.biz_type1 = biz_type1;
+	public void setBizPosition(String bizPosition) {
+		this.bizPosition = bizPosition;
 	}
 	/**
-	 * @return the biz_type2
+	 * @return the bizArea1
 	 */
-	public String getBiz_type2() {
-		return biz_type2;
+	public String getBizArea1() {
+		return bizArea1;
 	}
 	/**
-	 * @param biz_type2 the biz_type2 to set
+	 * @param bizArea1 the bizArea1 to set
 	 */
-	public void setBiz_type2(String biz_type2) {
-		this.biz_type2 = biz_type2;
+	public void setBizArea1(String bizArea1) {
+		this.bizArea1 = bizArea1;
 	}
 	/**
-	 * @return the biz_type3
+	 * @return the bizArea2
 	 */
-	public String getBiz_type3() {
-		return biz_type3;
+	public String getBizArea2() {
+		return bizArea2;
 	}
 	/**
-	 * @param biz_type3 the biz_type3 to set
+	 * @param bizArea2 the bizArea2 to set
 	 */
-	public void setBiz_type3(String biz_type3) {
-		this.biz_type3 = biz_type3;
+	public void setBizArea2(String bizArea2) {
+		this.bizArea2 = bizArea2;
 	}
 	/**
-	 * @return the biz_type4
+	 * @return the bizArea3
 	 */
-	public String getBiz_type4() {
-		return biz_type4;
+	public String getBizArea3() {
+		return bizArea3;
 	}
 	/**
-	 * @param biz_type4 the biz_type4 to set
+	 * @param bizArea3 the bizArea3 to set
 	 */
-	public void setBiz_type4(String biz_type4) {
-		this.biz_type4 = biz_type4;
+	public void setBizArea3(String bizArea3) {
+		this.bizArea3 = bizArea3;
 	}
 	/**
-	 * @return the biz_type5
+	 * @return the bizArea4
 	 */
-	public String getBiz_type5() {
-		return biz_type5;
+	public String getBizArea4() {
+		return bizArea4;
 	}
 	/**
-	 * @param biz_type5 the biz_type5 to set
+	 * @param bizArea4 the bizArea4 to set
 	 */
-	public void setBiz_type5(String biz_type5) {
-		this.biz_type5 = biz_type5;
+	public void setBizArea4(String bizArea4) {
+		this.bizArea4 = bizArea4;
 	}
 	/**
-	 * @return the biz_type6
+	 * @return the bizArea5
 	 */
-	public String getBiz_type6() {
-		return biz_type6;
+	public String getBizArea5() {
+		return bizArea5;
 	}
 	/**
-	 * @param biz_type6 the biz_type6 to set
+	 * @param bizArea5 the bizArea5 to set
 	 */
-	public void setBiz_type6(String biz_type6) {
-		this.biz_type6 = biz_type6;
+	public void setBizArea5(String bizArea5) {
+		this.bizArea5 = bizArea5;
 	}
 	/**
-	 * @return the biz_position
+	 * @return the bizArea6
 	 */
-	public String getBiz_position() {
-		return biz_position;
+	public String getBizArea6() {
+		return bizArea6;
 	}
 	/**
-	 * @param biz_position the biz_position to set
+	 * @param bizArea6 the bizArea6 to set
 	 */
-	public void setBiz_position(String biz_position) {
-		this.biz_position = biz_position;
+	public void setBizArea6(String bizArea6) {
+		this.bizArea6 = bizArea6;
 	}
 	/**
 	 * @return the strArea
@@ -335,100 +407,40 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.strArea = strArea;
 	}
 	/**
-	 * @return the biz_area1
+	 * @return the bizBusiness
 	 */
-	public String getBiz_area1() {
-		return biz_area1;
+	public String getBizBusiness() {
+		return bizBusiness;
 	}
 	/**
-	 * @param biz_area1 the biz_area1 to set
+	 * @param bizBusiness the bizBusiness to set
 	 */
-	public void setBiz_area1(String biz_area1) {
-		this.biz_area1 = biz_area1;
+	public void setBizBusiness(String bizBusiness) {
+		this.bizBusiness = bizBusiness;
 	}
 	/**
-	 * @return the biz_area2
+	 * @return the bizMen
 	 */
-	public String getBiz_area2() {
-		return biz_area2;
+	public String getBizMen() {
+		return bizMen;
 	}
 	/**
-	 * @param biz_area2 the biz_area2 to set
+	 * @param bizMen the bizMen to set
 	 */
-	public void setBiz_area2(String biz_area2) {
-		this.biz_area2 = biz_area2;
+	public void setBizMen(String bizMen) {
+		this.bizMen = bizMen;
 	}
 	/**
-	 * @return the biz_area3
+	 * @return the bizJobfrom
 	 */
-	public String getBiz_area3() {
-		return biz_area3;
+	public String getBizJobfrom() {
+		return bizJobfrom;
 	}
 	/**
-	 * @param biz_area3 the biz_area3 to set
+	 * @param bizJobfrom the bizJobfrom to set
 	 */
-	public void setBiz_area3(String biz_area3) {
-		this.biz_area3 = biz_area3;
-	}
-	/**
-	 * @return the biz_area4
-	 */
-	public String getBiz_area4() {
-		return biz_area4;
-	}
-	/**
-	 * @param biz_area4 the biz_area4 to set
-	 */
-	public void setBiz_area4(String biz_area4) {
-		this.biz_area4 = biz_area4;
-	}
-	/**
-	 * @return the biz_area5
-	 */
-	public String getBiz_area5() {
-		return biz_area5;
-	}
-	/**
-	 * @param biz_area5 the biz_area5 to set
-	 */
-	public void setBiz_area5(String biz_area5) {
-		this.biz_area5 = biz_area5;
-	}
-	/**
-	 * @return the biz_area6
-	 */
-	public String getBiz_area6() {
-		return biz_area6;
-	}
-	/**
-	 * @param biz_area6 the biz_area6 to set
-	 */
-	public void setBiz_area6(String biz_area6) {
-		this.biz_area6 = biz_area6;
-	}
-	/**
-	 * @return the biz_business
-	 */
-	public String getBiz_business() {
-		return biz_business;
-	}
-	/**
-	 * @param biz_business the biz_business to set
-	 */
-	public void setBiz_business(String biz_business) {
-		this.biz_business = biz_business;
-	}
-	/**
-	 * @return the biz_men
-	 */
-	public String getBiz_men() {
-		return biz_men;
-	}
-	/**
-	 * @param biz_men the biz_men to set
-	 */
-	public void setBiz_men(String biz_men) {
-		this.biz_men = biz_men;
+	public void setBizJobfrom(String bizJobfrom) {
+		this.bizJobfrom = bizJobfrom;
 	}
 	/**
 	 * @return the strJobForm
@@ -443,18 +455,6 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.strJobForm = strJobForm;
 	}
 	/**
-	 * @return the biz_jobfrom
-	 */
-	public String getBiz_jobfrom() {
-		return biz_jobfrom;
-	}
-	/**
-	 * @param biz_jobfrom the biz_jobfrom to set
-	 */
-	public void setBiz_jobfrom(String biz_jobfrom) {
-		this.biz_jobfrom = biz_jobfrom;
-	}
-	/**
 	 * @return the strPay
 	 */
 	public String getStrPay() {
@@ -467,28 +467,40 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.strPay = strPay;
 	}
 	/**
-	 * @return the pay_type
+	 * @return the payType
 	 */
-	public String getPay_type() {
-		return pay_type;
+	public String getPayType() {
+		return payType;
 	}
 	/**
-	 * @param pay_type the pay_type to set
+	 * @param payType the payType to set
 	 */
-	public void setPay_type(String pay_type) {
-		this.pay_type = pay_type;
+	public void setPayType(String payType) {
+		this.payType = payType;
 	}
 	/**
-	 * @return the biz_pay
+	 * @return the bizPay
 	 */
-	public String getBiz_pay() {
-		return biz_pay;
+	public String getBizPay() {
+		return bizPay;
 	}
 	/**
-	 * @param biz_pay the biz_pay to set
+	 * @param bizPay the bizPay to set
 	 */
-	public void setBiz_pay(String biz_pay) {
-		this.biz_pay = biz_pay;
+	public void setBizPay(String bizPay) {
+		this.bizPay = bizPay;
+	}
+	/**
+	 * @return the bizWelfare
+	 */
+	public String getBizWelfare() {
+		return bizWelfare;
+	}
+	/**
+	 * @param bizWelfare the bizWelfare to set
+	 */
+	public void setBizWelfare(String bizWelfare) {
+		this.bizWelfare = bizWelfare;
 	}
 	/**
 	 * @return the strWelfare
@@ -503,16 +515,16 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.strWelfare = strWelfare;
 	}
 	/**
-	 * @return the biz_welfare
+	 * @return the bizAge
 	 */
-	public String getBiz_welfare() {
-		return biz_welfare;
+	public String getBizAge() {
+		return bizAge;
 	}
 	/**
-	 * @param biz_welfare the biz_welfare to set
+	 * @param bizAge the bizAge to set
 	 */
-	public void setBiz_welfare(String biz_welfare) {
-		this.biz_welfare = biz_welfare;
+	public void setBizAge(String bizAge) {
+		this.bizAge = bizAge;
 	}
 	/**
 	 * @return the strAge
@@ -527,16 +539,16 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.strAge = strAge;
 	}
 	/**
-	 * @return the biz_age
+	 * @return the bizSex
 	 */
-	public String getBiz_age() {
-		return biz_age;
+	public String getBizSex() {
+		return bizSex;
 	}
 	/**
-	 * @param biz_age the biz_age to set
+	 * @param bizSex the bizSex to set
 	 */
-	public void setBiz_age(String biz_age) {
-		this.biz_age = biz_age;
+	public void setBizSex(String bizSex) {
+		this.bizSex = bizSex;
 	}
 	/**
 	 * @return the strSex
@@ -551,16 +563,16 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.strSex = strSex;
 	}
 	/**
-	 * @return the biz_sex
+	 * @return the bizAbility
 	 */
-	public String getBiz_sex() {
-		return biz_sex;
+	public String getBizAbility() {
+		return bizAbility;
 	}
 	/**
-	 * @param biz_sex the biz_sex to set
+	 * @param bizAbility the bizAbility to set
 	 */
-	public void setBiz_sex(String biz_sex) {
-		this.biz_sex = biz_sex;
+	public void setBizAbility(String bizAbility) {
+		this.bizAbility = bizAbility;
 	}
 	/**
 	 * @return the strAbility
@@ -575,16 +587,16 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.strAbility = strAbility;
 	}
 	/**
-	 * @return the biz_ability
+	 * @return the bizPreferential
 	 */
-	public String getBiz_ability() {
-		return biz_ability;
+	public String getBizPreferential() {
+		return bizPreferential;
 	}
 	/**
-	 * @param biz_ability the biz_ability to set
+	 * @param bizPreferential the bizPreferential to set
 	 */
-	public void setBiz_ability(String biz_ability) {
-		this.biz_ability = biz_ability;
+	public void setBizPreferential(String bizPreferential) {
+		this.bizPreferential = bizPreferential;
 	}
 	/**
 	 * @return the strPreference
@@ -599,16 +611,16 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.strPreference = strPreference;
 	}
 	/**
-	 * @return the biz_preferential
+	 * @return the bizCareer
 	 */
-	public String getBiz_preferential() {
-		return biz_preferential;
+	public Integer getBizCareer() {
+		return bizCareer;
 	}
 	/**
-	 * @param biz_preferential the biz_preferential to set
+	 * @param bizCareer the bizCareer to set
 	 */
-	public void setBiz_preferential(String biz_preferential) {
-		this.biz_preferential = biz_preferential;
+	public void setBizCareer(Integer bizCareer) {
+		this.bizCareer = bizCareer;
 	}
 	/**
 	 * @return the strBizCareer
@@ -623,28 +635,40 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.strBizCareer = strBizCareer;
 	}
 	/**
-	 * @return the biz_career
+	 * @return the bizDetail
 	 */
-	public Integer getBiz_career() {
-		return biz_career;
+	public String getBizDetail() {
+		return bizDetail;
 	}
 	/**
-	 * @param biz_career the biz_career to set
+	 * @param bizDetail the bizDetail to set
 	 */
-	public void setBiz_career(Integer biz_career) {
-		this.biz_career = biz_career;
+	public void setBizDetail(String bizDetail) {
+		this.bizDetail = bizDetail;
 	}
 	/**
-	 * @return the biz_detail
+	 * @return the bizEndDay
 	 */
-	public String getBiz_detail() {
-		return biz_detail;
+	public String getBizEndDay() {
+		return bizEndDay;
 	}
 	/**
-	 * @param biz_detail the biz_detail to set
+	 * @param bizEndDay the bizEndDay to set
 	 */
-	public void setBiz_detail(String biz_detail) {
-		this.biz_detail = biz_detail;
+	public void setBizEndDay(String bizEndDay) {
+		this.bizEndDay = bizEndDay;
+	}
+	/**
+	 * @return the bizEndType
+	 */
+	public String getBizEndType() {
+		return bizEndType;
+	}
+	/**
+	 * @param bizEndType the bizEndType to set
+	 */
+	public void setBizEndType(String bizEndType) {
+		this.bizEndType = bizEndType;
 	}
 	/**
 	 * @return the strEndCond
@@ -659,40 +683,28 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.strEndCond = strEndCond;
 	}
 	/**
-	 * @return the biz_end_day
+	 * @return the bizIng
 	 */
-	public String getBiz_end_day() {
-		return biz_end_day;
+	public String getBizIng() {
+		return bizIng;
 	}
 	/**
-	 * @param biz_end_day the biz_end_day to set
+	 * @param bizIng the bizIng to set
 	 */
-	public void setBiz_end_day(String biz_end_day) {
-		this.biz_end_day = biz_end_day;
+	public void setBizIng(String bizIng) {
+		this.bizIng = bizIng;
 	}
 	/**
-	 * @return the biz_end_type
+	 * @return the bizMethod
 	 */
-	public String getBiz_end_type() {
-		return biz_end_type;
+	public String getBizMethod() {
+		return bizMethod;
 	}
 	/**
-	 * @param biz_end_type the biz_end_type to set
+	 * @param bizMethod the bizMethod to set
 	 */
-	public void setBiz_end_type(String biz_end_type) {
-		this.biz_end_type = biz_end_type;
-	}
-	/**
-	 * @return the biz_ing
-	 */
-	public String getBiz_ing() {
-		return biz_ing;
-	}
-	/**
-	 * @param biz_ing the biz_ing to set
-	 */
-	public void setBiz_ing(String biz_ing) {
-		this.biz_ing = biz_ing;
+	public void setBizMethod(String bizMethod) {
+		this.bizMethod = bizMethod;
 	}
 	/**
 	 * @return the strMethod
@@ -707,52 +719,40 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.strMethod = strMethod;
 	}
 	/**
-	 * @return the biz_method
+	 * @return the bizPerson
 	 */
-	public String getBiz_method() {
-		return biz_method;
+	public String getBizPerson() {
+		return bizPerson;
 	}
 	/**
-	 * @param biz_method the biz_method to set
+	 * @param bizPerson the bizPerson to set
 	 */
-	public void setBiz_method(String biz_method) {
-		this.biz_method = biz_method;
+	public void setBizPerson(String bizPerson) {
+		this.bizPerson = bizPerson;
 	}
 	/**
-	 * @return the biz_person
+	 * @return the bizPemail
 	 */
-	public String getBiz_person() {
-		return biz_person;
+	public String getBizPemail() {
+		return bizPemail;
 	}
 	/**
-	 * @param biz_person the biz_person to set
+	 * @param bizPemail the bizPemail to set
 	 */
-	public void setBiz_person(String biz_person) {
-		this.biz_person = biz_person;
+	public void setBizPemail(String bizPemail) {
+		this.bizPemail = bizPemail;
 	}
 	/**
-	 * @return the biz_pemail
+	 * @return the bizPphone
 	 */
-	public String getBiz_pemail() {
-		return biz_pemail;
+	public String getBizPphone() {
+		return bizPphone;
 	}
 	/**
-	 * @param biz_pemail the biz_pemail to set
+	 * @param bizPphone the bizPphone to set
 	 */
-	public void setBiz_pemail(String biz_pemail) {
-		this.biz_pemail = biz_pemail;
-	}
-	/**
-	 * @return the biz_pphone
-	 */
-	public String getBiz_pphone() {
-		return biz_pphone;
-	}
-	/**
-	 * @param biz_pphone the biz_pphone to set
-	 */
-	public void setBiz_pphone(String biz_pphone) {
-		this.biz_pphone = biz_pphone;
+	public void setBizPphone(String bizPphone) {
+		this.bizPphone = bizPphone;
 	}
 	/**
 	 * @return the strWdate
@@ -935,18 +935,6 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.strService100 = strService100;
 	}
 	/**
-	 * @return the strPaper
-	 */
-	public String getStrPaper() {
-		return strPaper;
-	}
-	/**
-	 * @param strPaper the strPaper to set
-	 */
-	public void setStrPaper(String strPaper) {
-		this.strPaper = strPaper;
-	}
-	/**
 	 * @return the biz_paper
 	 */
 	public String getBiz_paper() {
@@ -959,52 +947,64 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.biz_paper = biz_paper;
 	}
 	/**
-	 * @return the biz_form
+	 * @return the strPaper
 	 */
-	public String getBiz_form() {
-		return biz_form;
+	public String getStrPaper() {
+		return strPaper;
 	}
 	/**
-	 * @param biz_form the biz_form to set
+	 * @param strPaper the strPaper to set
 	 */
-	public void setBiz_form(String biz_form) {
-		this.biz_form = biz_form;
+	public void setStrPaper(String strPaper) {
+		this.strPaper = strPaper;
 	}
 	/**
-	 * @return the biz_form_file
+	 * @return the bizForm
 	 */
-	public String getBiz_form_file() {
-		return biz_form_file;
+	public String getBizForm() {
+		return bizForm;
 	}
 	/**
-	 * @param biz_form_file the biz_form_file to set
+	 * @param bizForm the bizForm to set
 	 */
-	public void setBiz_form_file(String biz_form_file) {
-		this.biz_form_file = biz_form_file;
+	public void setBizForm(String bizForm) {
+		this.bizForm = bizForm;
 	}
 	/**
-	 * @return the sms_send
+	 * @return the bizFormFile
 	 */
-	public String getSms_send() {
-		return sms_send;
+	public String getBizFormFile() {
+		return bizFormFile;
 	}
 	/**
-	 * @param sms_send the sms_send to set
+	 * @param bizFormFile the bizFormFile to set
 	 */
-	public void setSms_send(String sms_send) {
-		this.sms_send = sms_send;
+	public void setBizFormFile(String bizFormFile) {
+		this.bizFormFile = bizFormFile;
 	}
 	/**
-	 * @return the biz_page
+	 * @return the smsSend
 	 */
-	public String getBiz_page() {
-		return biz_page;
+	public String getSmsSend() {
+		return smsSend;
 	}
 	/**
-	 * @param biz_page the biz_page to set
+	 * @param smsSend the smsSend to set
 	 */
-	public void setBiz_page(String biz_page) {
-		this.biz_page = biz_page;
+	public void setSmsSend(String smsSend) {
+		this.smsSend = smsSend;
+	}
+	/**
+	 * @return the bizPage
+	 */
+	public String getBizPage() {
+		return bizPage;
+	}
+	/**
+	 * @param bizPage the bizPage to set
+	 */
+	public void setBizPage(String bizPage) {
+		this.bizPage = bizPage;
 	}
 	/**
 	 * @return the hit
@@ -1019,28 +1019,28 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.hit = hit;
 	}
 	/**
-	 * @return the type_r
+	 * @return the typeR
 	 */
-	public String getType_r() {
-		return type_r;
+	public String getTypeR() {
+		return typeR;
 	}
 	/**
-	 * @param type_r the type_r to set
+	 * @param typeR the typeR to set
 	 */
-	public void setType_r(String type_r) {
-		this.type_r = type_r;
+	public void setTypeR(String typeR) {
+		this.typeR = typeR;
 	}
 	/**
-	 * @return the order_view
+	 * @return the orderView
 	 */
-	public Integer getOrder_view() {
-		return order_view;
+	public Integer getOrderView() {
+		return orderView;
 	}
 	/**
-	 * @param order_view the order_view to set
+	 * @param orderView the orderView to set
 	 */
-	public void setOrder_view(Integer order_view) {
-		this.order_view = order_view;
+	public void setOrderView(Integer orderView) {
+		this.orderView = orderView;
 	}
 	/**
 	 * @return the memo
@@ -1055,40 +1055,40 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.memo = memo;
 	}
 	/**
-	 * @return the find_company_info
+	 * @return the findCompanyInfo
 	 */
-	public Integer getFind_company_info() {
-		return find_company_info;
+	public Integer getFindCompanyInfo() {
+		return findCompanyInfo;
 	}
 	/**
-	 * @param find_company_info the find_company_info to set
+	 * @param findCompanyInfo the findCompanyInfo to set
 	 */
-	public void setFind_company_info(Integer find_company_info) {
-		this.find_company_info = find_company_info;
+	public void setFindCompanyInfo(Integer findCompanyInfo) {
+		this.findCompanyInfo = findCompanyInfo;
 	}
 	/**
-	 * @return the search_loc
+	 * @return the searchLoc
 	 */
-	public String getSearch_loc() {
-		return search_loc;
+	public String getSearchLoc() {
+		return searchLoc;
 	}
 	/**
-	 * @param search_loc the search_loc to set
+	 * @param searchLoc the searchLoc to set
 	 */
-	public void setSearch_loc(String search_loc) {
-		this.search_loc = search_loc;
+	public void setSearchLoc(String searchLoc) {
+		this.searchLoc = searchLoc;
 	}
 	/**
-	 * @return the search_biz_type
+	 * @return the searchBizType
 	 */
-	public String getSearch_biz_type() {
-		return search_biz_type;
+	public String getSearchBizType() {
+		return searchBizType;
 	}
 	/**
-	 * @param search_biz_type the search_biz_type to set
+	 * @param searchBizType the searchBizType to set
 	 */
-	public void setSearch_biz_type(String search_biz_type) {
-		this.search_biz_type = search_biz_type;
+	public void setSearchBizType(String searchBizType) {
+		this.searchBizType = searchBizType;
 	}
 	/**
 	 * @return the fromDate
@@ -1127,28 +1127,28 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 		this.company = company;
 	}
 	/**
-	 * @return the member_uid
+	 * @return the memberUid
 	 */
-	public String getMember_uid() {
-		return member_uid;
+	public String getMemberUid() {
+		return memberUid;
 	}
 	/**
-	 * @param member_uid the member_uid to set
+	 * @param memberUid the memberUid to set
 	 */
-	public void setMember_uid(String member_uid) {
-		this.member_uid = member_uid;
+	public void setMemberUid(String memberUid) {
+		this.memberUid = memberUid;
 	}
 	/**
-	 * @return the resume_count
+	 * @return the resumeCount
 	 */
-	public Integer getResume_count() {
-		return resume_count;
+	public Integer getResumeCount() {
+		return resumeCount;
 	}
 	/**
-	 * @param resume_count the resume_count to set
+	 * @param resumeCount the resumeCount to set
 	 */
-	public void setResume_count(Integer resume_count) {
-		this.resume_count = resume_count;
+	public void setResumeCount(Integer resumeCount) {
+		this.resumeCount = resumeCount;
 	}
 	/**
 	 * @return the ids

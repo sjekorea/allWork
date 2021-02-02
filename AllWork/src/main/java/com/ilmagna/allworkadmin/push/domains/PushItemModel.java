@@ -14,15 +14,15 @@ public class PushItemModel extends ApiJqGridParams implements Serializable  {
 	private static final long serialVersionUID = 4850708721418549451L;
 	
 	private Integer id;
-	private Integer type;			//메시지 종류.	1 = 채용공고,		2 = 이력서
-	private Integer ref_id;			//			채용공고 ID			이력서 ID
-	private String name;			//			회사이름			구직자 이음
-	private String title;			//			채용공고 제목		이력서 제목
+	private Integer type;			//메시지 종류.	1 = 채용공고,		2 = 이력서,		3 = 면접요청.
+	private Integer ref_id;			//			채용공고 ID			이력서 ID			채용공고 ID
+	private String name;			//			회사이름			구직자 이음			회사이름
+	private String title;			//			채용공고 제목		이력서 제목			채용공고 제목
 	//private String detail;			//			핵심내용			보유기술
-	private String wdate;			//			등록일			등록일
-	private Long wtimestamp;		//			등록일 Timestamp	등록일 Timestamp
+	private String wdate;			//			등록일			등록일			등록일
+	private Long wtimestamp;		//			등록일 Timestamp	등록일 Timestamp	등록일 Timestamp
 
-	private String uid;				//내부 테스트용 사용자 ID.
+	private String uid;				//			수신자 사용자 ID.
 
 	public PushItemModel() {
 		this.id = 0;

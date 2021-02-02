@@ -224,7 +224,7 @@ public class ApiRecruitService {
 			
 			//나이
 			String strAge = item.getBiz_age();
-			strAge = strAge.replaceAll("NaN", "");
+			strAge = (ApiCommonUtils.isNullOrEmpty(strAge))? "" : strAge.replaceAll("NaN", "");
 			
 			if (strAge.compareToIgnoreCase("none") == 0 || strAge.compareToIgnoreCase("-") == 0) strAge = "무관";
 			else strAge += "세";

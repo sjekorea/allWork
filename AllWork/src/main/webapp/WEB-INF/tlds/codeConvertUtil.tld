@@ -113,4 +113,12 @@
               String getTotalCareer(java.lang.String)
          </function-signature>
     </function>
+    <function>
+         <description>급여정보</description>
+         <name>getPayInfo</name>
+         <function-class>allwork.common.util.CodeConvertUtil</function-class>
+         <function-signature>
+              String getPayInfo(java.lang.String, java.lang.String, java.lang.String)
+         </function-signature>
+    </function>
 </taglib>

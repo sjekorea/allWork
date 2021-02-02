@@ -3,7 +3,9 @@ package com.ilmagna.allworkadmin.api.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
@@ -13,27 +15,18 @@ import com.ilmagna.allworkadmin.api.domains.ApiMemberModel;
 import com.ilmagna.allworkadmin.api.domains.ApiRecruitModel;
 import com.ilmagna.allworkadmin.api.domains.ApiResumeModel;
 
-@Service
+@Service("apiMemberService")
 public class ApiMemberService {
 		
-	@Autowired private ApiMemberDAO memberDAO;
-	
-	
-	public List<ApiMemberModel> getMemberList(ApiMemberModel model) throws Exception {
-		//return memberDAO.getMemberList(model);
-		List<ApiMemberModel> list = memberDAO.getMemberList(model);
+	//@Autowired private ApiMemberDAO memberDAO;
+	@Resource(name="apiMemberDAO")
+	private ApiMemberDAO memberDAO;
 
-		List<ApiMemberModel> listResult = new ArrayList<ApiMemberModel>();
-		for(int i = 0; i < list.size(); i++) {
-			listResult.add(procDataItem(list.get(i)));
-		}
-		return listResult;
-	}
 	
 	public ApiMemberModel getMember(ApiMemberModel model) throws Exception {
 		//return userDAO.getMember(model);
 		ApiMemberModel item = new ApiMemberModel();		
-		if((model.getId() != null && model.getId() > 0) || !ApiCommonUtils.isNullOrEmpty(model.getUser_id())) {
+		if((model.getId() != null && model.getId() > 0) || !ApiCommonUtils.isNullOrEmpty(model.getUserId())) {
 			List<ApiMemberModel> list = memberDAO.getMember(model);
 			
 			if(list != null && list.size() > 0) {
@@ -53,6 +46,18 @@ public class ApiMemberService {
 			e.printStackTrace();
 		}
 		return item;
+	}
+
+	/*
+	public List<ApiMemberModel> getMemberList(ApiMemberModel model) throws Exception {
+		//return memberDAO.getMemberList(model);
+		List<ApiMemberModel> list = memberDAO.getMemberList(model);
+
+		List<ApiMemberModel> listResult = new ArrayList<ApiMemberModel>();
+		for(int i = 0; i < list.size(); i++) {
+			listResult.add(procDataItem(list.get(i)));
+		}
+		return listResult;
 	}
 	
 	
@@ -145,8 +150,7 @@ public class ApiMemberService {
 	public void updateMemberInfo(ApiMemberModel model) throws Exception {
 		memberDAO.updateMemberInfo(model);
 	}
-	
-	
+	*/
 	
 	
 
@@ -156,8 +160,8 @@ public class ApiMemberService {
 	
 	public List<ApiMemberModel> getPushMemberList(ApiRecruitModel model) throws Exception {
 		//지역과 직종이 Null 또는 전체인 항목 제외.
-		if ( (ApiCommonUtils.isNullOrEmpty(model.getBiz_area1()) || model.getBiz_area1().equalsIgnoreCase("netfu_78942_85121"))
-					&& (ApiCommonUtils.isNullOrEmpty(model.getBiz_type1())) ) {
+		if ( (ApiCommonUtils.isNullOrEmpty(model.getBizArea1()) || model.getBizArea1().equalsIgnoreCase("netfu_78942_85121"))
+					&& (ApiCommonUtils.isNullOrEmpty(model.getBizType1())) ) {
 			return new ArrayList<ApiMemberModel>();
 		}
 		
@@ -173,8 +177,8 @@ public class ApiMemberService {
 	
 	public List<ApiMemberModel> getPushCompanyList(ApiResumeModel model) throws Exception {
 		//지역과 직종이 Null 또는 전체인 항목 제외.
-		if ( (ApiCommonUtils.isNullOrEmpty(model.getInid_area1()) || model.getInid_area1().equalsIgnoreCase("netfu_78942_85121"))
-				&& (ApiCommonUtils.isNullOrEmpty(model.getInid_type1())) ) {
+		if ( (ApiCommonUtils.isNullOrEmpty(model.getInidArea1()) || model.getInidArea1().equalsIgnoreCase("netfu_78942_85121"))
+				&& (ApiCommonUtils.isNullOrEmpty(model.getInidType1())) ) {
 			return new ArrayList<ApiMemberModel>();
 		}
 		

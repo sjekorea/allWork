@@ -18,49 +18,49 @@ public class ApiResumeModel extends ApiJqGridParams implements Serializable  {
 	
 	private Integer id;
 	private String uid;
-	private Integer info_type;					//일반직, 알바, 프리랜서
+	private Integer infoType;					//일반직, 알바, 프리랜서
 	private String name;						//회원이름
-	private String inid_photo;					//사진
-	private String inid_hphone;					//연락처
-	private String inid_email;
-	private String inid_phone;
+	private String inidPhoto;					//사진
+	private String inidHphone;					//연락처
+	private String inidEmail;
+	private String inidPhone;
 	private String strAddress;
 	private String strAddressMini;
-	private String inid_post;					//우편번호
-	private String inid_address1;				//주소
-	private String inid_address2;
-	private String inid_home;					//홈페이지
-	private String inid_title;					//이력서 제목
-	private Integer indi_condition;				//현재상태 - 미취업, 취업중, 구직희망 안함.
+	private String inidPost;					//우편번호
+	private String inidAddress1;				//주소
+	private String inidAddress2;
+	private String inidHome;					//홈페이지
+	private String inidTitle;					//이력서 제목
+	private Integer indiCondition;				//현재상태 - 미취업, 취업중, 구직희망 안함.
 	private String strArea;
-	private String inid_area1;					//근무지역
-	private String inid_area2;
-	private String inid_area3;
-	private String inid_area4;
-	private String inid_area5;
-	private String inid_area6;
+	private String inidArea1;					//근무지역
+	private String inidArea2;
+	private String inidArea3;
+	private String inidArea4;
+	private String inidArea5;
+	private String inidArea6;
 	private String strBizType;
-	private String inid_type1;					//직종
-	private String inid_type2;
-	private String inid_type3;
-	private String inid_type4;
-	private String inid_type5;
-	private String inid_type6;
-	private String inid_type7;
-	private String inid_type8;
-	private String inid_type9;
-	private String inid_mylskill;				//보유기술
+	private String inidType1;					//직종
+	private String inidType2;
+	private String inidType3;
+	private String inidType4;
+	private String inidType5;
+	private String inidType6;
+	private String inidType7;
+	private String inidType8;
+	private String inidType9;
+	private String inidMylskill;				//보유기술
 	private String strJobForm;
-	private String inid_jobform;				//고용형태
+	private String inidJobform;					//고용형태
 	private String strPay;
-	private String pay_type;					//급여종류.
-	private String inid_pay;					//급여.
-	private String inid_last_school;			//최종학력
-	private String inid_career;					//경력.
-	private String inid_license;				//자격증.
-	private String inid_languages;				//외국어 능력.
-	private String inid_introduce;				//자기소개서
-	private String inid_secret;					//이력서 비공개.
+	private String payType;						//급여종류.
+	private String inidPay;						//급여.
+	private String inidLastSchool;				//최종학력
+	private String inidCareer;					//경력.
+	private String inidLicense;					//자격증.
+	private String inidLanguages;				//외국어 능력.
+	private String inidIntroduce;				//자기소개서
+	private String inidSecret;					//이력서 비공개.
 	private String strSecret;
 	private String strWdate;					//등록일
 	private String strUwdate;
@@ -74,10 +74,10 @@ public class ApiResumeModel extends ApiJqGridParams implements Serializable  {
 	private String strService16;
 	private String strService17;
 	private String strService101;
-	private String strSex;
-	private String inid_sex;					//성별
-	private String sms_send;					//SMS 수신동의.
-	private String a_insert;					//???
+	private String strSex;	
+	private String inidSex;						//성별
+	private String smsSend;						//SMS 수신동의.
+	private String aInsert;						//???
 	private String memo;						//관리자 메모.
 	
 	private String education2;					//JSON 형식으로 변환된 최종학력
@@ -92,13 +92,13 @@ public class ApiResumeModel extends ApiJqGridParams implements Serializable  {
 	
 	private String birth;						//생년월일.
 
-	private String search_loc;					//검색조건 - 지역.
-	private String search_biz_type;				//검색조건 - 직무.
+	private String searchLoc;					//검색조건 - 지역.
+	private String searchBizType;				//검색조건 - 직무.
 	String fromDate, toDate;
 
 	private ApiMemberModel member;
-	private String company_uid;					//채용공고 등록현황을 검사하는 기업회원 사용자 ID.
-	private Integer recruit_count;				//사용자가 등록한 채용공고 개수.
+	private String companyUid;					//채용공고 등록현황을 검사하는 기업회원 사용자 ID.
+	private Integer recruitCount;				//사용자가 등록한 채용공고 개수.
 
 	private List<Integer> ids;
 	private String sidx;	//sorting field.
@@ -130,16 +130,16 @@ public class ApiResumeModel extends ApiJqGridParams implements Serializable  {
 		this.uid = uid;
 	}
 	/**
-	 * @return the info_type
+	 * @return the infoType
 	 */
-	public Integer getInfo_type() {
-		return info_type;
+	public Integer getInfoType() {
+		return infoType;
 	}
 	/**
-	 * @param info_type the info_type to set
+	 * @param infoType the infoType to set
 	 */
-	public void setInfo_type(Integer info_type) {
-		this.info_type = info_type;
+	public void setInfoType(Integer infoType) {
+		this.infoType = infoType;
 	}
 	/**
 	 * @return the name
@@ -154,52 +154,52 @@ public class ApiResumeModel extends ApiJqGridParams implements Serializable  {
 		this.name = name;
 	}
 	/**
-	 * @return the inid_photo
+	 * @return the inidPhoto
 	 */
-	public String getInid_photo() {
-		return inid_photo;
+	public String getInidPhoto() {
+		return inidPhoto;
 	}
 	/**
-	 * @param inid_photo the inid_photo to set
+	 * @param inidPhoto the inidPhoto to set
 	 */
-	public void setInid_photo(String inid_photo) {
-		this.inid_photo = inid_photo;
+	public void setInidPhoto(String inidPhoto) {
+		this.inidPhoto = inidPhoto;
 	}
 	/**
-	 * @return the inid_hphone
+	 * @return the inidHphone
 	 */
-	public String getInid_hphone() {
-		return inid_hphone;
+	public String getInidHphone() {
+		return inidHphone;
 	}
 	/**
-	 * @param inid_hphone the inid_hphone to set
+	 * @param inidHphone the inidHphone to set
 	 */
-	public void setInid_hphone(String inid_hphone) {
-		this.inid_hphone = inid_hphone;
+	public void setInidHphone(String inidHphone) {
+		this.inidHphone = inidHphone;
 	}
 	/**
-	 * @return the inid_email
+	 * @return the inidEmail
 	 */
-	public String getInid_email() {
-		return inid_email;
+	public String getInidEmail() {
+		return inidEmail;
 	}
 	/**
-	 * @param inid_email the inid_email to set
+	 * @param inidEmail the inidEmail to set
 	 */
-	public void setInid_email(String inid_email) {
-		this.inid_email = inid_email;
+	public void setInidEmail(String inidEmail) {
+		this.inidEmail = inidEmail;
 	}
 	/**
-	 * @return the inid_phone
+	 * @return the inidPhone
 	 */
-	public String getInid_phone() {
-		return inid_phone;
+	public String getInidPhone() {
+		return inidPhone;
 	}
 	/**
-	 * @param inid_phone the inid_phone to set
+	 * @param inidPhone the inidPhone to set
 	 */
-	public void setInid_phone(String inid_phone) {
-		this.inid_phone = inid_phone;
+	public void setInidPhone(String inidPhone) {
+		this.inidPhone = inidPhone;
 	}
 	/**
 	 * @return the strAddress
@@ -226,76 +226,76 @@ public class ApiResumeModel extends ApiJqGridParams implements Serializable  {
 		this.strAddressMini = strAddressMini;
 	}
 	/**
-	 * @return the inid_post
+	 * @return the inidPost
 	 */
-	public String getInid_post() {
-		return inid_post;
+	public String getInidPost() {
+		return inidPost;
 	}
 	/**
-	 * @param inid_post the inid_post to set
+	 * @param inidPost the inidPost to set
 	 */
-	public void setInid_post(String inid_post) {
-		this.inid_post = inid_post;
+	public void setInidPost(String inidPost) {
+		this.inidPost = inidPost;
 	}
 	/**
-	 * @return the inid_address1
+	 * @return the inidAddress1
 	 */
-	public String getInid_address1() {
-		return inid_address1;
+	public String getInidAddress1() {
+		return inidAddress1;
 	}
 	/**
-	 * @param inid_address1 the inid_address1 to set
+	 * @param inidAddress1 the inidAddress1 to set
 	 */
-	public void setInid_address1(String inid_address1) {
-		this.inid_address1 = inid_address1;
+	public void setInidAddress1(String inidAddress1) {
+		this.inidAddress1 = inidAddress1;
 	}
 	/**
-	 * @return the inid_address2
+	 * @return the inidAddress2
 	 */
-	public String getInid_address2() {
-		return inid_address2;
+	public String getInidAddress2() {
+		return inidAddress2;
 	}
 	/**
-	 * @param inid_address2 the inid_address2 to set
+	 * @param inidAddress2 the inidAddress2 to set
 	 */
-	public void setInid_address2(String inid_address2) {
-		this.inid_address2 = inid_address2;
+	public void setInidAddress2(String inidAddress2) {
+		this.inidAddress2 = inidAddress2;
 	}
 	/**
-	 * @return the inid_home
+	 * @return the inidHome
 	 */
-	public String getInid_home() {
-		return inid_home;
+	public String getInidHome() {
+		return inidHome;
 	}
 	/**
-	 * @param inid_home the inid_home to set
+	 * @param inidHome the inidHome to set
 	 */
-	public void setInid_home(String inid_home) {
-		this.inid_home = inid_home;
+	public void setInidHome(String inidHome) {
+		this.inidHome = inidHome;
 	}
 	/**
-	 * @return the inid_title
+	 * @return the inidTitle
 	 */
-	public String getInid_title() {
-		return inid_title;
+	public String getInidTitle() {
+		return inidTitle;
 	}
 	/**
-	 * @param inid_title the inid_title to set
+	 * @param inidTitle the inidTitle to set
 	 */
-	public void setInid_title(String inid_title) {
-		this.inid_title = inid_title;
+	public void setInidTitle(String inidTitle) {
+		this.inidTitle = inidTitle;
 	}
 	/**
-	 * @return the indi_condition
+	 * @return the indiCondition
 	 */
-	public Integer getIndi_condition() {
-		return indi_condition;
+	public Integer getIndiCondition() {
+		return indiCondition;
 	}
 	/**
-	 * @param indi_condition the indi_condition to set
+	 * @param indiCondition the indiCondition to set
 	 */
-	public void setIndi_condition(Integer indi_condition) {
-		this.indi_condition = indi_condition;
+	public void setIndiCondition(Integer indiCondition) {
+		this.indiCondition = indiCondition;
 	}
 	/**
 	 * @return the strArea
@@ -310,76 +310,76 @@ public class ApiResumeModel extends ApiJqGridParams implements Serializable  {
 		this.strArea = strArea;
 	}
 	/**
-	 * @return the inid_area1
+	 * @return the inidArea1
 	 */
-	public String getInid_area1() {
-		return inid_area1;
+	public String getInidArea1() {
+		return inidArea1;
 	}
 	/**
-	 * @param inid_area1 the inid_area1 to set
+	 * @param inidArea1 the inidArea1 to set
 	 */
-	public void setInid_area1(String inid_area1) {
-		this.inid_area1 = inid_area1;
+	public void setInidArea1(String inidArea1) {
+		this.inidArea1 = inidArea1;
 	}
 	/**
-	 * @return the inid_area2
+	 * @return the inidArea2
 	 */
-	public String getInid_area2() {
-		return inid_area2;
+	public String getInidArea2() {
+		return inidArea2;
 	}
 	/**
-	 * @param inid_area2 the inid_area2 to set
+	 * @param inidArea2 the inidArea2 to set
 	 */
-	public void setInid_area2(String inid_area2) {
-		this.inid_area2 = inid_area2;
+	public void setInidArea2(String inidArea2) {
+		this.inidArea2 = inidArea2;
 	}
 	/**
-	 * @return the inid_area3
+	 * @return the inidArea3
 	 */
-	public String getInid_area3() {
-		return inid_area3;
+	public String getInidArea3() {
+		return inidArea3;
 	}
 	/**
-	 * @param inid_area3 the inid_area3 to set
+	 * @param inidArea3 the inidArea3 to set
 	 */
-	public void setInid_area3(String inid_area3) {
-		this.inid_area3 = inid_area3;
+	public void setInidArea3(String inidArea3) {
+		this.inidArea3 = inidArea3;
 	}
 	/**
-	 * @return the inid_area4
+	 * @return the inidArea4
 	 */
-	public String getInid_area4() {
-		return inid_area4;
+	public String getInidArea4() {
+		return inidArea4;
 	}
 	/**
-	 * @param inid_area4 the inid_area4 to set
+	 * @param inidArea4 the inidArea4 to set
 	 */
-	public void setInid_area4(String inid_area4) {
-		this.inid_area4 = inid_area4;
+	public void setInidArea4(String inidArea4) {
+		this.inidArea4 = inidArea4;
 	}
 	/**
-	 * @return the inid_area5
+	 * @return the inidArea5
 	 */
-	public String getInid_area5() {
-		return inid_area5;
+	public String getInidArea5() {
+		return inidArea5;
 	}
 	/**
-	 * @param inid_area5 the inid_area5 to set
+	 * @param inidArea5 the inidArea5 to set
 	 */
-	public void setInid_area5(String inid_area5) {
-		this.inid_area5 = inid_area5;
+	public void setInidArea5(String inidArea5) {
+		this.inidArea5 = inidArea5;
 	}
 	/**
-	 * @return the inid_area6
+	 * @return the inidArea6
 	 */
-	public String getInid_area6() {
-		return inid_area6;
+	public String getInidArea6() {
+		return inidArea6;
 	}
 	/**
-	 * @param inid_area6 the inid_area6 to set
+	 * @param inidArea6 the inidArea6 to set
 	 */
-	public void setInid_area6(String inid_area6) {
-		this.inid_area6 = inid_area6;
+	public void setInidArea6(String inidArea6) {
+		this.inidArea6 = inidArea6;
 	}
 	/**
 	 * @return the strBizType
@@ -394,124 +394,124 @@ public class ApiResumeModel extends ApiJqGridParams implements Serializable  {
 		this.strBizType = strBizType;
 	}
 	/**
-	 * @return the inid_type1
+	 * @return the inidType1
 	 */
-	public String getInid_type1() {
-		return inid_type1;
+	public String getInidType1() {
+		return inidType1;
 	}
 	/**
-	 * @param inid_type1 the inid_type1 to set
+	 * @param inidType1 the inidType1 to set
 	 */
-	public void setInid_type1(String inid_type1) {
-		this.inid_type1 = inid_type1;
+	public void setInidType1(String inidType1) {
+		this.inidType1 = inidType1;
 	}
 	/**
-	 * @return the inid_type2
+	 * @return the inidType2
 	 */
-	public String getInid_type2() {
-		return inid_type2;
+	public String getInidType2() {
+		return inidType2;
 	}
 	/**
-	 * @param inid_type2 the inid_type2 to set
+	 * @param inidType2 the inidType2 to set
 	 */
-	public void setInid_type2(String inid_type2) {
-		this.inid_type2 = inid_type2;
+	public void setInidType2(String inidType2) {
+		this.inidType2 = inidType2;
 	}
 	/**
-	 * @return the inid_type3
+	 * @return the inidType3
 	 */
-	public String getInid_type3() {
-		return inid_type3;
+	public String getInidType3() {
+		return inidType3;
 	}
 	/**
-	 * @param inid_type3 the inid_type3 to set
+	 * @param inidType3 the inidType3 to set
 	 */
-	public void setInid_type3(String inid_type3) {
-		this.inid_type3 = inid_type3;
+	public void setInidType3(String inidType3) {
+		this.inidType3 = inidType3;
 	}
 	/**
-	 * @return the inid_type4
+	 * @return the inidType4
 	 */
-	public String getInid_type4() {
-		return inid_type4;
+	public String getInidType4() {
+		return inidType4;
 	}
 	/**
-	 * @param inid_type4 the inid_type4 to set
+	 * @param inidType4 the inidType4 to set
 	 */
-	public void setInid_type4(String inid_type4) {
-		this.inid_type4 = inid_type4;
+	public void setInidType4(String inidType4) {
+		this.inidType4 = inidType4;
 	}
 	/**
-	 * @return the inid_type5
+	 * @return the inidType5
 	 */
-	public String getInid_type5() {
-		return inid_type5;
+	public String getInidType5() {
+		return inidType5;
 	}
 	/**
-	 * @param inid_type5 the inid_type5 to set
+	 * @param inidType5 the inidType5 to set
 	 */
-	public void setInid_type5(String inid_type5) {
-		this.inid_type5 = inid_type5;
+	public void setInidType5(String inidType5) {
+		this.inidType5 = inidType5;
 	}
 	/**
-	 * @return the inid_type6
+	 * @return the inidType6
 	 */
-	public String getInid_type6() {
-		return inid_type6;
+	public String getInidType6() {
+		return inidType6;
 	}
 	/**
-	 * @param inid_type6 the inid_type6 to set
+	 * @param inidType6 the inidType6 to set
 	 */
-	public void setInid_type6(String inid_type6) {
-		this.inid_type6 = inid_type6;
+	public void setInidType6(String inidType6) {
+		this.inidType6 = inidType6;
 	}
 	/**
-	 * @return the inid_type7
+	 * @return the inidType7
 	 */
-	public String getInid_type7() {
-		return inid_type7;
+	public String getInidType7() {
+		return inidType7;
 	}
 	/**
-	 * @param inid_type7 the inid_type7 to set
+	 * @param inidType7 the inidType7 to set
 	 */
-	public void setInid_type7(String inid_type7) {
-		this.inid_type7 = inid_type7;
+	public void setInidType7(String inidType7) {
+		this.inidType7 = inidType7;
 	}
 	/**
-	 * @return the inid_type8
+	 * @return the inidType8
 	 */
-	public String getInid_type8() {
-		return inid_type8;
+	public String getInidType8() {
+		return inidType8;
 	}
 	/**
-	 * @param inid_type8 the inid_type8 to set
+	 * @param inidType8 the inidType8 to set
 	 */
-	public void setInid_type8(String inid_type8) {
-		this.inid_type8 = inid_type8;
+	public void setInidType8(String inidType8) {
+		this.inidType8 = inidType8;
 	}
 	/**
-	 * @return the inid_type9
+	 * @return the inidType9
 	 */
-	public String getInid_type9() {
-		return inid_type9;
+	public String getInidType9() {
+		return inidType9;
 	}
 	/**
-	 * @param inid_type9 the inid_type9 to set
+	 * @param inidType9 the inidType9 to set
 	 */
-	public void setInid_type9(String inid_type9) {
-		this.inid_type9 = inid_type9;
+	public void setInidType9(String inidType9) {
+		this.inidType9 = inidType9;
 	}
 	/**
-	 * @return the inid_mylskill
+	 * @return the inidMylskill
 	 */
-	public String getInid_mylskill() {
-		return inid_mylskill;
+	public String getInidMylskill() {
+		return inidMylskill;
 	}
 	/**
-	 * @param inid_mylskill the inid_mylskill to set
+	 * @param inidMylskill the inidMylskill to set
 	 */
-	public void setInid_mylskill(String inid_mylskill) {
-		this.inid_mylskill = inid_mylskill;
+	public void setInidMylskill(String inidMylskill) {
+		this.inidMylskill = inidMylskill;
 	}
 	/**
 	 * @return the strJobForm
@@ -526,16 +526,16 @@ public class ApiResumeModel extends ApiJqGridParams implements Serializable  {
 		this.strJobForm = strJobForm;
 	}
 	/**
-	 * @return the inid_jobform
+	 * @return the inidJobform
 	 */
-	public String getInid_jobform() {
-		return inid_jobform;
+	public String getInidJobform() {
+		return inidJobform;
 	}
 	/**
-	 * @param inid_jobform the inid_jobform to set
+	 * @param inidJobform the inidJobform to set
 	 */
-	public void setInid_jobform(String inid_jobform) {
-		this.inid_jobform = inid_jobform;
+	public void setInidJobform(String inidJobform) {
+		this.inidJobform = inidJobform;
 	}
 	/**
 	 * @return the strPay
@@ -550,100 +550,100 @@ public class ApiResumeModel extends ApiJqGridParams implements Serializable  {
 		this.strPay = strPay;
 	}
 	/**
-	 * @return the pay_type
+	 * @return the payType
 	 */
-	public String getPay_type() {
-		return pay_type;
+	public String getPayType() {
+		return payType;
 	}
 	/**
-	 * @param pay_type the pay_type to set
+	 * @param payType the payType to set
 	 */
-	public void setPay_type(String pay_type) {
-		this.pay_type = pay_type;
+	public void setPayType(String payType) {
+		this.payType = payType;
 	}
 	/**
-	 * @return the inid_pay
+	 * @return the inidPay
 	 */
-	public String getInid_pay() {
-		return inid_pay;
+	public String getInidPay() {
+		return inidPay;
 	}
 	/**
-	 * @param inid_pay the inid_pay to set
+	 * @param inidPay the inidPay to set
 	 */
-	public void setInid_pay(String inid_pay) {
-		this.inid_pay = inid_pay;
+	public void setInidPay(String inidPay) {
+		this.inidPay = inidPay;
 	}
 	/**
-	 * @return the inid_last_school
+	 * @return the inidLastSchool
 	 */
-	public String getInid_last_school() {
-		return inid_last_school;
+	public String getInidLastSchool() {
+		return inidLastSchool;
 	}
 	/**
-	 * @param inid_last_school the inid_last_school to set
+	 * @param inidLastSchool the inidLastSchool to set
 	 */
-	public void setInid_last_school(String inid_last_school) {
-		this.inid_last_school = inid_last_school;
+	public void setInidLastSchool(String inidLastSchool) {
+		this.inidLastSchool = inidLastSchool;
 	}
 	/**
-	 * @return the inid_career
+	 * @return the inidCareer
 	 */
-	public String getInid_career() {
-		return inid_career;
+	public String getInidCareer() {
+		return inidCareer;
 	}
 	/**
-	 * @param inid_career the inid_career to set
+	 * @param inidCareer the inidCareer to set
 	 */
-	public void setInid_career(String inid_career) {
-		this.inid_career = inid_career;
+	public void setInidCareer(String inidCareer) {
+		this.inidCareer = inidCareer;
 	}
 	/**
-	 * @return the inid_license
+	 * @return the inidLicense
 	 */
-	public String getInid_license() {
-		return inid_license;
+	public String getInidLicense() {
+		return inidLicense;
 	}
 	/**
-	 * @param inid_license the inid_license to set
+	 * @param inidLicense the inidLicense to set
 	 */
-	public void setInid_license(String inid_license) {
-		this.inid_license = inid_license;
+	public void setInidLicense(String inidLicense) {
+		this.inidLicense = inidLicense;
 	}
 	/**
-	 * @return the inid_languages
+	 * @return the inidLanguages
 	 */
-	public String getInid_languages() {
-		return inid_languages;
+	public String getInidLanguages() {
+		return inidLanguages;
 	}
 	/**
-	 * @param inid_languages the inid_languages to set
+	 * @param inidLanguages the inidLanguages to set
 	 */
-	public void setInid_languages(String inid_languages) {
-		this.inid_languages = inid_languages;
+	public void setInidLanguages(String inidLanguages) {
+		this.inidLanguages = inidLanguages;
 	}
 	/**
-	 * @return the inid_introduce
+	 * @return the inidIntroduce
 	 */
-	public String getInid_introduce() {
-		return inid_introduce;
+	public String getInidIntroduce() {
+		return inidIntroduce;
 	}
 	/**
-	 * @param inid_introduce the inid_introduce to set
+	 * @param inidIntroduce the inidIntroduce to set
 	 */
-	public void setInid_introduce(String inid_introduce) {
-		this.inid_introduce = inid_introduce;
+	public void setInidIntroduce(String inidIntroduce) {
+		this.inidIntroduce = inidIntroduce;
 	}
 	/**
-	 * @return the inid_secret
+	 * @return the inidSecret
 	 */
-	public String getInid_secret() {
-		return inid_secret;
+	public String getInidSecret() {
+		return inidSecret;
 	}
 	/**
-	 * @param inid_secret the inid_secret to set
+	 * @param inidSecret the inidSecret to set
 	 */
-	public void setInid_secret(String inid_secret) {
-		this.inid_secret = inid_secret;
+	public void setInidSecret(String inidSecret) {
+		this.inidSecret = inidSecret;
 	}
 	/**
 	 * @return the strSecret
@@ -814,40 +814,40 @@ public class ApiResumeModel extends ApiJqGridParams implements Serializable  {
 		this.strSex = strSex;
 	}
 	/**
-	 * @return the inid_sex
+	 * @return the inidSex
 	 */
-	public String getInid_sex() {
-		return inid_sex;
+	public String getInidSex() {
+		return inidSex;
 	}
 	/**
-	 * @param inid_sex the inid_sex to set
+	 * @param inidSex the inidSex to set
 	 */
-	public void setInid_sex(String inid_sex) {
-		this.inid_sex = inid_sex;
+	public void setInidSex(String inidSex) {
+		this.inidSex = inidSex;
 	}
 	/**
-	 * @return the sms_send
+	 * @return the smsSend
 	 */
-	public String getSms_send() {
-		return sms_send;
+	public String getSmsSend() {
+		return smsSend;
 	}
 	/**
-	 * @param sms_send the sms_send to set
+	 * @param smsSend the smsSend to set
 	 */
-	public void setSms_send(String sms_send) {
-		this.sms_send = sms_send;
+	public void setSmsSend(String smsSend) {
+		this.smsSend = smsSend;
 	}
 	/**
-	 * @return the a_insert
+	 * @return the aInsert
 	 */
-	public String getA_insert() {
-		return a_insert;
+	public String getaInsert() {
+		return aInsert;
 	}
 	/**
-	 * @param a_insert the a_insert to set
+	 * @param aInsert the aInsert to set
 	 */
-	public void setA_insert(String a_insert) {
-		this.a_insert = a_insert;
+	public void setaInsert(String aInsert) {
+		this.aInsert = aInsert;
 	}
 	/**
 	 * @return the memo
@@ -970,28 +970,28 @@ public class ApiResumeModel extends ApiJqGridParams implements Serializable  {
 		this.birth = birth;
 	}
 	/**
-	 * @return the search_loc
+	 * @return the searchLoc
 	 */
-	public String getSearch_loc() {
-		return search_loc;
+	public String getSearchLoc() {
+		return searchLoc;
 	}
 	/**
-	 * @param search_loc the search_loc to set
+	 * @param searchLoc the searchLoc to set
 	 */
-	public void setSearch_loc(String search_loc) {
-		this.search_loc = search_loc;
+	public void setSearchLoc(String searchLoc) {
+		this.searchLoc = searchLoc;
 	}
 	/**
-	 * @return the search_biz_type
+	 * @return the searchBizType
 	 */
-	public String getSearch_biz_type() {
-		return search_biz_type;
+	public String getSearchBizType() {
+		return searchBizType;
 	}
 	/**
-	 * @param search_biz_type the search_biz_type to set
+	 * @param searchBizType the searchBizType to set
 	 */
-	public void setSearch_biz_type(String search_biz_type) {
-		this.search_biz_type = search_biz_type;
+	public void setSearchBizType(String searchBizType) {
+		this.searchBizType = searchBizType;
 	}
 	/**
 	 * @return the fromDate
@@ -1030,28 +1030,28 @@ public class ApiResumeModel extends ApiJqGridParams implements Serializable  {
 		this.member = member;
 	}
 	/**
-	 * @return the company_uid
+	 * @return the companyUid
 	 */
-	public String getCompany_uid() {
-		return company_uid;
+	public String getCompanyUid() {
+		return companyUid;
 	}
 	/**
-	 * @param company_uid the company_uid to set
+	 * @param companyUid the companyUid to set
 	 */
-	public void setCompany_uid(String company_uid) {
-		this.company_uid = company_uid;
+	public void setCompanyUid(String companyUid) {
+		this.companyUid = companyUid;
 	}
 	/**
-	 * @return the recruit_count
+	 * @return the recruitCount
 	 */
-	public Integer getRecruit_count() {
-		return recruit_count;
+	public Integer getRecruitCount() {
+		return recruitCount;
 	}
 	/**
-	 * @param recruit_count the recruit_count to set
+	 * @param recruitCount the recruitCount to set
 	 */
-	public void setRecruit_count(Integer recruit_count) {
-		this.recruit_count = recruit_count;
+	public void setRecruitCount(Integer recruitCount) {
+		this.recruitCount = recruitCount;
 	}
 	/**
 	 * @return the ids

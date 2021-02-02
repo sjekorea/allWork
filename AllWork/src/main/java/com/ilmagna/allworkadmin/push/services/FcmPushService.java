@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.auth.oauth2.GoogleCredentials;
@@ -24,10 +26,14 @@ import com.ilmagna.allworkadmin.api.domains.ApiResumeModel;
 import com.ilmagna.allworkadmin.api.services.ApiMemberService;
 import com.ilmagna.allworkadmin.push.domains.PushItemModel;
 
-@Service
+import allwork.common.CommandMap;
+
+@Service("fcmPushService")
 public class FcmPushService {
 	
-	@Autowired protected ApiMemberService memberService;
+	//@Autowired protected ApiMemberService memberService;
+	@Resource(name="apiMemberService")
+	private ApiMemberService memberService;
 
 	
 	// Push Notification 발송 대상 선정 및 발송.
@@ -37,14 +43,14 @@ public class FcmPushService {
 		try {
 			//회원정보에서 Push Token 읽어오기.
 			ApiMemberModel modelMember = new ApiMemberModel();
-			modelMember.setUser_id(model.getUid());
+			modelMember.setUserId(model.getUid());
 			modelMember = memberService.getMember(modelMember);
-			if (modelMember == null || modelMember.getPush_token() == null || modelMember.getPush_token().length() < 1) return true;
-			//System.out.println("push_token = " + modelMember.getPush_token());
+			if (modelMember == null || modelMember.getPushToken() == null || modelMember.getPushToken().length() < 1) return true;
+			//System.out.println("push_token = " + modelMember.getPushToken());
 			
 			//사용자의 Push Token을 이용해 Device에 Push Notification 발송.
 			List<String> listToken = new ArrayList<String>();
-			listToken.add(modelMember.getPush_token());
+			listToken.add(modelMember.getPushToken());
 
 			bResult = send_Multi_FCMtoken(fcm_key_loc, listToken, model);
 		} catch (Exception e) {
@@ -68,14 +74,14 @@ public class FcmPushService {
 		try {
 			//Push 전송 대상 Token 검색.
 			ApiRecruitModel model = new ApiRecruitModel();
-			model.setBiz_type1(bizTypeCode);
-			model.setBiz_area1(areaCode);
+			model.setBizType1(bizTypeCode);
+			model.setBizArea1(areaCode);
 			List<ApiMemberModel> list = memberService.getPushMemberList(model);
 			if (list == null || list.size() < 1) return true;
 			
 			List<String> listToken = new ArrayList<String>();
 			for (int i = 0; i < list.size(); i++) {
-				listToken.add(list.get(i).getPush_token());
+				listToken.add(list.get(i).getPushToken());
 			}
 
 			//현재날짜와 시각정보 획득.
@@ -116,14 +122,14 @@ public class FcmPushService {
 		try {
 			//Push 전송 대상 Token 검색.
 			ApiResumeModel model = new ApiResumeModel();
-			model.setInid_type1(bizTypeCode);
-			model.setInid_area1(areaCode);
+			model.setInidType1(bizTypeCode);
+			model.setInidArea1(areaCode);
 			List<ApiMemberModel> list = memberService.getPushCompanyList(model);
 			if (list == null || list.size() < 1) return true;
 
 			List<String> listToken = new ArrayList<String>();
 			for (int i = 0; i < list.size(); i++) {
-				listToken.add(list.get(i).getPush_token());
+				listToken.add(list.get(i).getPushToken());
 			}
 
 			//현재날짜와 시각정보 획득.
@@ -140,6 +146,55 @@ public class FcmPushService {
 			modelPushItem.setWdate(strToday);
 			modelPushItem.setWtimestamp(calToday.getTime().getTime());
 			
+			//Push Notification 전송.
+			bResult = send_Multi_FCMtoken(fcm_key_loc, listToken, modelPushItem);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bResult;
+	}
+
+	
+	/**
+	 * 기업회원이 개인회원에게 면접요청을 한 경우에 발송하는 Push Notification.
+	 * @param fcm_key_loc = FCM Push 키 파일의 Full 경로명 - Properties에서 정의.
+	 * @param commandMap = 면접요청 정보.
+	 * @return true = Push 메시지 전송에 성공한 경우. false = 오류가 발생해서 Push 메시지를 전송하지 못한 경우.
+	 */
+	public boolean sendPushNotificationOnInterview(String fcm_key_loc, CommandMap commandMap) {
+		boolean bResult = false;
+		try {
+			String toType = (String) commandMap.get("toType");
+			if (toType == null || !toType.equalsIgnoreCase("interview")) return true;
+
+			//Notification 정보 준비.
+			PushItemModel modelPushItem = new PushItemModel();
+			modelPushItem.setType(3); 														//면접요청.
+			modelPushItem.setRef_id(Integer.parseInt((String) commandMap.get("fromNo"))); 	//채용공고 ID.
+			modelPushItem.setName((String) commandMap.get("senderName"));					//회사이름.
+			modelPushItem.setTitle((String) commandMap.get("senderTitle"));					//채용공고 제목.
+			modelPushItem.setUid((String) commandMap.get("toUid"));							//수신 사용자 ID.
+
+			//Push 전송 대상 Token 검색.
+			ApiMemberModel modelMember = new ApiMemberModel();
+			modelMember.setUserId(modelPushItem.getUid());
+			modelMember = memberService.getMember(modelMember);
+			if (modelMember == null || modelMember.getPushToken() == null || modelMember.getPushToken().length() < 1) return true;
+			//System.out.println("push_token = " + modelMember.getPushToken());
+			
+			//사용자의 Push Token을 이용해 Device에 Push Notification 발송.
+			List<String> listToken = new ArrayList<String>();
+			listToken.add(modelMember.getPushToken());
+
+			//현재날짜와 시각정보 획득.
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Calendar calToday = Calendar.getInstance();
+			String strToday = sdf.format(calToday.getTime());
+
+			//메시지 데이터 구성.
+			modelPushItem.setWdate(strToday);
+			modelPushItem.setWtimestamp(calToday.getTime().getTime());
+
 			//Push Notification 전송.
 			bResult = send_Multi_FCMtoken(fcm_key_loc, listToken, modelPushItem);
 		} catch (Exception e) {

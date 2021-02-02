@@ -133,6 +133,8 @@
 									</tr>
 								</tbody>
 							</table>
+
+							<span class="comment">희망근문지, 직무, 산업분야는 최대 3개까지 선택 가능. 추가 버튼과 삭제 버튼을 사용하세요.</span>
 							<table>
 								<tbody id="area">
 									<tr>
@@ -144,7 +146,7 @@
 													<option value="${result.code}">${result.name}</option>
 												</c:forEach>
 											</select>
-											<select id="inidArea2" name="inidArea2">
+											<select id="inidArea2" name="inidArea2" style="width: 200px">
 												<option value="">시구군선택</option>
 											</select>
 											<input type="button" name="appendItem" kind="area" value="+ 추가" />
@@ -156,7 +158,7 @@
 							<table>
 								<tbody id="job">
 									<tr>
-										<th>직무분야<span class="necessary">*</span></th>
+										<th>직무<span class="necessary">*</span></th>
 										<td>
 											<select id="inidType1" name="inidType1" title="1차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'inidType2', true, true);">
 												<option value="">1차직무선택</option>
@@ -213,13 +215,13 @@
 									<tr>
 										<th>희망연봉<span class="necessary">*</span></th>
 										<td>
-											<select id="payType" name="payType" onchange="javascript:getNetfuCateListForSelect('inid_pay', this, '', 'inidPay', true, false);">
+											<select id="payType" name="payType" onchange="javascript:getNetfuCateListForSelect('inid_pay', this, '', 'inidPay', true, false);" >
 												<option value="">선택</option>
 												<c:forEach var="result" items="${inidPayList}" varStatus="status">
 													<option value="${result.code}">${result.name}</option>
 												</c:forEach>
 											</select>
-											<select id="inidPay" name="inidPay">
+											<select id="inidPay" name="inidPay" style="width: 200px" >
 											</select>
 										</td>
 									</tr>
@@ -582,7 +584,7 @@
 				trHtml += "		<select id='inidArea"+((appendNum*2)+1)+"' name='inidArea"+((appendNum*2)+1)+"' onchange=\"javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'inidArea"+((appendNum*2)+2)+"', true, true);\">";
 				trHtml += "			<option value=''>시도 선택</option>\n";
 				trHtml += "		</select>";
-				trHtml += "		<select id='inidArea"+((appendNum*2)+2)+"' name='inidArea"+((appendNum*2)+2)+"' >";
+				trHtml += "		<select id='inidArea"+((appendNum*2)+2)+"' name='inidArea"+((appendNum*2)+2)+"' style=\"width: 200px\" >";
 				trHtml += "			<option value=''>시구군선택</option>\n";
 				trHtml += "		</select>";
 				trHtml += "	</td>";
@@ -740,7 +742,7 @@
 		if(checkNull($("#inidSecret").val())){ alert("이력서 공개 여부를 체크하세요."); return; }
 		if(checkNull($("#inidTitle").val())){ alertAndFocus("이력서 제목을 입력하세요.", $("#inidTitle")); return; }
 		if(checkNull($("#inidArea1 option:selected").val())){ alert("근무지역을 선택하세요."); return; }
-		if(checkNull($("#inidType1 option:selected").val())){ alert("직무분야를 선택하세요."); return; }
+		if(checkNull($("#inidType1 option:selected").val())){ alert("직무를 선택하세요."); return; }
 		if(checkNull($("#inidAreaJob1 option:selected").val())){ alert("산업분야를 선택하세요."); return; }
 		if(checkNull($("#inidJobform").val())){ alert("희망근무형태를 선택하세요."); return; }
 		if(checkNull($("#payType option:selected").val())){ alert("급여 종류를 선택하세요."); return; }

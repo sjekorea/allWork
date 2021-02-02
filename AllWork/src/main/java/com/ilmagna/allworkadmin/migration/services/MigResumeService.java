@@ -56,27 +56,27 @@ public class MigResumeService {
 		try {
 			//이력서 공개/비공개
 			String strSecret = "";
-			if (item.getInid_secret().compareToIgnoreCase("no") == 0) strSecret = "공개";
-			else if (item.getInid_secret().compareToIgnoreCase("yes") == 0) strSecret = "비공개";
+			if (item.getInidSecret().compareToIgnoreCase("no") == 0) strSecret = "공개";
+			else if (item.getInidSecret().compareToIgnoreCase("yes") == 0) strSecret = "비공개";
 			
 			item.setStrSecret(strSecret);
 
 			//학력, 경력, 자격증, 외국어 능력.
 			ResumeEducationModel modelEducation = new ResumeEducationModel();
 			item.setModelEducation(modelEducation);
-			modelEducation.parseEducation(categoryService, item.getInid_last_school());
+			modelEducation.parseEducation(categoryService, item.getInidLastSchool());
 			
 			ResumeCareerModel modelCareer = new ResumeCareerModel();
 			item.setModelCareer(modelCareer);
-			modelCareer.parseCareer(item.getInid_career());
+			modelCareer.parseCareer(item.getInidCareer());
 
 			ResumeLicenseModel modelLicense = new ResumeLicenseModel();
 			item.setModelLicense(modelLicense);
-			modelLicense.parseLicense(item.getInid_license());
+			modelLicense.parseLicense(item.getInidLicense());
 
 			ResumeLanguageModel modelLanguage = new ResumeLanguageModel();
 			item.setModelLanguage(modelLanguage);
-			modelLanguage.parseLanguage(item.getInid_languages());
+			modelLanguage.parseLanguage(item.getInidLanguages());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

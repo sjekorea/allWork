@@ -207,7 +207,7 @@
 								</tr>
 								<tr class="desc desc1">
 									<td class="desc03">급여</td>
-									<td class="desc04">${result.bizPayName }</td>
+									<td class="desc04">${codeConvert:getPayInfo(result.payType, result.payTypeName, result.bizPayName) }</td>
 									<td class="desc03">경력</td>
 									<td class="desc04">${codeConvert:getBizCareer(result.bizCareer) }</td>
 									<td class="desc03">나이</td>
@@ -245,7 +245,7 @@
 								</tr>
 								<tr class="desc desc1">
 									<td class="desc03">급여</td>
-									<td class="desc04">${result.bizPayName }</td>
+									<td class="desc04">${codeConvert:getPayInfo(result.payType, result.payTypeName, result.bizPayName) }</td>
 									<td class="desc03">경력</td>
 									<td class="desc04">${codeConvert:getBizCareer(result.bizCareer) }</td>
 									<td class="desc03">나이</td>
@@ -283,7 +283,7 @@
 								</tr>
 								<tr class="desc desc1">
 									<td class="desc03">급여</td>
-									<td class="desc04">${result.bizPayName }</td>
+									<td class="desc04">${codeConvert:getPayInfo(result.payType, result.payTypeName, result.bizPayName) }</td>
 									<td class="desc03">경력</td>
 									<td class="desc04">${codeConvert:getBizCareer(result.bizCareer) }</td>
 									<td class="desc03">나이</td>

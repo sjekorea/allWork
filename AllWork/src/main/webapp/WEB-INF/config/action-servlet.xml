@@ -146,11 +146,11 @@
 		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiCompanyDAO"/>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
+	<!-- 
 	<bean id="apiMemberDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiMemberDAO"/>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
-	<!-- 
 	<bean id="apiRecommendPersonDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.ilmagna.allworkadmin.api.daos.ApiRecommendPersonDAO"/>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>

@@ -117,7 +117,8 @@ public class NetfuItemCompanyVo {
 	private String bizManiMen;
 	private String viewDate;
 	private String payType;
-	
+	private String payTypeName;
+
 	private String jobDetail;
 	
 	
@@ -128,6 +129,13 @@ public class NetfuItemCompanyVo {
 	public void setPayType(String payType) {
 		this.payType = payType;
 	}
+	public String getPayTypeName() {
+		return payTypeName;
+	}
+	public void setPayTypeName(String payTypeName) {
+		this.payTypeName = payTypeName;
+	}
+	
 	public String getViewDate() {
 		return viewDate;
 	}

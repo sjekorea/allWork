@@ -264,7 +264,7 @@
 									</td>
 									<td class="desc03">
 										<span>${result.inidJobformName }</span><br/>
-										<span>${result.inidPayName }</span>
+										<span>${codeConvert:getPayInfo(result.payType, result.payTypeName, result.inidPayName) }</span>
 									</td>
 									<td class="date">${result.wdate }</td>
 								</tr>
@@ -322,7 +322,7 @@
 									</td>
 									<td class="desc03">
 										<span>${result.inidJobformName }</span><br/>
-										<span>${result.inidPayName }</span>
+										<span>${codeConvert:getPayInfo(result.payType, result.payTypeName, result.inidPayName) }</span>
 									</td>
 									<td class="date">${result.wdate }</td>
 								</tr>
@@ -380,7 +380,7 @@
 									</td>
 									<td class="desc03">
 										<span>${result.inidJobformName }</span><br/>
-										<span>${result.inidPayName }</span>
+										<span>${codeConvert:getPayInfo(result.payType, result.payTypeName, result.inidPayName) }</span>
 									</td>
 									<td class="date">${result.wdate }</td>
 								</tr>

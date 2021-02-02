@@ -425,4 +425,18 @@ public class CodeConvertUtil {
 	}
 	
 
+	
+	// 급여정보
+	public static String getPayInfo(String payType, String payTypeName, String payName){
+		
+		String rtnStr = "";
+		try {
+			if (payType.equalsIgnoreCase("payCheck01")) return "협의";
+			rtnStr = payTypeName + " " + payName;
+		} catch(Exception e) {
+			e.printStackTrace();			
+		}
+		return rtnStr;
+	}
+
 }

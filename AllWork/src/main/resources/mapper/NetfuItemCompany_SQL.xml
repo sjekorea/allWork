@@ -256,7 +256,7 @@
 	
 	
 	<!-- 채용공고 정보 등록 -->
-	<insert id="insertNetfuItemCompany" parameterType="hashmap">
+	<insert id="insertNetfuItemCompany" useGeneratedKeys="true" keyProperty="no" parameterType="hashmap">
 			insert into netfu_item_company
 			(
 				uid, info_type, biz_name, biz_title, biz_post, biz_address1, biz_address2

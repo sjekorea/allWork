@@ -226,7 +226,7 @@
 								</td>
 							</tr>
 							<tr>
-								<th>직무분야</th>
+								<th>직무</th>
 								<td>
 									<p>${resumeMap.inidType1Name }&nbsp;
 										${convert:checkNull(resumeMap.inidType2Name) eq '' ? '</p>' : '>&nbsp;'.concat(resumeMap.inidType2Name).concat('&nbsp;') }
@@ -261,8 +261,7 @@
 							</tr>
 							<tr>
 								<th>희망연봉</th>
-								<td><p>${resumeMap.payTypeName }/
-										${resumeMap.inidPayName }</p></td>
+								<td><p>${codeConvert:getPayInfo(resumeMap.payType, resumeMap.payTypeName, resumeMap.inidPayName) }</p></td>
 							</tr>
 						</tbody>
 					</table>
@@ -386,7 +385,7 @@
 							<li id="scrapBtn"><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>
 						</c:if>
 						<c:if test="${interviewCnt <= 0 }">
-							<li class="res_ok"><a href="javascript:applyPopup();" title="면접제의">면접제의</a></li>
+							<li id="btn_reg_ok" class="reg_ok"><a href="javascript:applyPopup();" title="면접제의">면접제의</a></li>
 						</c:if>
 						
 						<c:if test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0 and resumeMap.paidResume != 1}'>
@@ -549,11 +548,17 @@
 		loadingOn();
 		var callback = function(data) {
 			loadingOff();
-			$("#resumeSel").val("");
+			//$("#resumeSel").val("");
 			$("#popupWrap_applyWrap").css("display", "none");
+			$("#btn_reg_ok").css("display", "none");
 			alert("면접제의가 완료 되었습니다.");
 		};
 
+		//사용자가 선택한 채용공고 제목.
+		var targetResumeSel = document.getElementById("resumeSel");
+		var recruitTitle = targetResumeSel.options[targetResumeSel.selectedIndex].text;
+		
+		//Ajax를 통해 면접요청 전달.
 		var param = {
 			toType : "interview",
 			type : "job",
@@ -563,6 +568,8 @@
 			toNo : $("#no").val(),
 			fromNo : $("#resumeSel option:selected").val(),
 			opened : "no",
+			senderName: "${companyMap.name }",
+			senderTitle: recruitTitle,
 			jobDetail : $("#resumeTitle").val()
 		};
 		ajax('post', '/insertNetfuOnlineRecruit.ajax', param, callback);

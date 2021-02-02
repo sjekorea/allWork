@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -23,6 +22,7 @@ import com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel;
 import com.ilmagna.allworkadmin.ai.services.AiMatchingRecruitService;
 import com.ilmagna.allworkadmin.ai.services.AiMatchingResumeService;
 import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
+import com.ilmagna.allworkadmin.push.services.FcmPushService;
 
 import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
@@ -45,6 +45,14 @@ import allwork.vo.NetfuItemResumeVo;
 public class CompanyController {
 	
 	Logger log = Logger.getLogger(this.getClass());
+
+	
+	@Value("${fcm.key.loc}")
+	private String fcm_key_loc;
+	
+	@Resource(name="fcmPushService")
+	private FcmPushService fcmPushService;
+
 	
 	@Resource(name="netfuMemberService")
 	private NetfuMemberService netfuMemberService;
@@ -259,8 +267,6 @@ public class CompanyController {
 		//String alertMsg = "";
 		//String redirectUrl = "";
 		try{
-			
-			
 			//attachFileName = fileUtils.uploadFile(commandMap.getMap(), request); // 첨부파일 업로드
 			//commandMap.put("bizFormFile", attachFileName);
 			
@@ -274,8 +280,27 @@ public class CompanyController {
 				commandMap.put("bizFormFile", "");
 			}
 
+			//채용공고 등록.
 			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
 			netfuItemCompanyService.insertNetfuItemCompany(commandMap.getMap()); // 채용공고 저장
+			
+			//Push Notification 메시지 전달.
+			try {
+				int idRecruit = ((Long) commandMap.get("no")).intValue();
+				//int idRecruit = Integer.parseInt((String) commandMap.get("no"));
+				String nameRecruit = (String) commandMap.get("bizName");
+				String bizTypeCodeRecruit = (String) commandMap.get("bizType1");
+				String areaCodeRecruit = (String) commandMap.get("bizArea1");
+				String titleRecruit = (String) commandMap.get("bizTitle");
+				boolean bResult = fcmPushService.sendPushNotificationOnRecruit(fcm_key_loc, idRecruit, nameRecruit, bizTypeCodeRecruit, areaCodeRecruit, titleRecruit);
+				if (!bResult) {
+					log.info(this.getClass().getName()+".registRecruit - Fail to send notificaation !!!!! \n");					
+				}
+			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
+
+			//작업결과 전달.
 			CommonUtil.Alert("등록되었습니다.", "/recruitListProgress.do", request, response);
 			
 		}catch(Exception e){

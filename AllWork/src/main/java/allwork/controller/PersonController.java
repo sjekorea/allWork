@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -24,6 +23,7 @@ import com.ilmagna.allworkadmin.ai.domains.AiMatchingResumeModel;
 import com.ilmagna.allworkadmin.ai.services.AiMatchingRecruitService;
 import com.ilmagna.allworkadmin.ai.services.AiMatchingResumeService;
 import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
+import com.ilmagna.allworkadmin.push.services.FcmPushService;
 
 import allwork.common.CommandMap;
 import allwork.service.NetfuMemberService;
@@ -48,6 +48,14 @@ import allwork.common.util.MakeQueryUtil;
 public class PersonController {
 	
 	Logger log = Logger.getLogger(this.getClass());
+
+	
+	@Value("${fcm.key.loc}")
+	private String fcm_key_loc;
+	
+	@Resource(name="fcmPushService")
+	private FcmPushService fcmPushService;
+
 	
 	@Resource(name="netfuMemberService")
 	private NetfuMemberService netfuMemberService;
@@ -279,6 +287,24 @@ public class PersonController {
 			//이력서 등록.
 			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
 			netfuItemResumeService.insertNetfuItemResume(commandMap.getMap());
+			
+			
+			//Push Notification 메시지 전달.
+			try {
+				int idResume = ((Long) commandMap.get("no")).intValue();
+				String nameResume = (String) commandMap.get("name");
+				String bizTypeCodeResume = (String) commandMap.get("inidType1");
+				String areaCodeResume = (String) commandMap.get("inidArea1");
+				String titleResume = (String) commandMap.get("inidTitle");
+				boolean bResult = fcmPushService.sendPushNotificationOnResume(fcm_key_loc, idResume, nameResume, bizTypeCodeResume, areaCodeResume, titleResume);
+				if (!bResult) {
+					log.info(this.getClass().getName()+".registResume - Fail to send notificaation !!!!! \n");					
+				}
+			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
+
+			//작업결과 전달.
 			CommonUtil.Alert("등록되었습니다.", "/resumeList.do", request, response);
 			
 		}catch(Exception e){

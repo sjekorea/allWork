@@ -8,9 +8,12 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ilmagna.allworkadmin.push.services.FcmPushService;
 
 import allwork.common.CommandMap;
 import allwork.common.util.CommonColumnUtil;
@@ -22,7 +25,15 @@ import allwork.service.NetfuOnlineRecruitService;
 
 @Controller
 public class NetfuOnlineRecruitController {
-Logger log = Logger.getLogger(this.getClass());
+	Logger log = Logger.getLogger(this.getClass());
+
+	
+	@Value("${fcm.key.loc}")
+	private String fcm_key_loc;
+	
+	@Resource(name="fcmPushService")
+	private FcmPushService fcmPushService;
+
 	
 	@Resource(name="netfuItemCompanyService")
 	private NetfuItemCompanyService netfuItemCompanyService;
@@ -240,7 +251,22 @@ Logger log = Logger.getLogger(this.getClass());
 	public ModelAndView insertNetfuOnlineRecruit(CommandMap commandMap, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		try{
-			int rstCnt = netfuOnlineRecruitService.insertNetfuOnlineRecruit(commandMap.getMap());
+			//입사지원 또는 면접요청 전달.
+			int rstCnt = 0;
+			rstCnt = netfuOnlineRecruitService.insertNetfuOnlineRecruit(commandMap.getMap());
+			
+			//면접요청을 전달하는 경우, 대상자에게 Push Notification 전달.
+			try {
+				String toType = (String) commandMap.get("toType");
+				if (toType != null && toType.equalsIgnoreCase("interview")) {
+					boolean bResult = fcmPushService.sendPushNotificationOnInterview(fcm_key_loc, commandMap);
+					if (!bResult) {
+						log.info(this.getClass().getName()+".insertNetfuOnlineRecruit - Fail to send notificaation !!!!! \n");					
+					}
+				}
+			} catch(Exception e2) { }
+
+			//작업결과 전달.
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("rstCnt", rstCnt);
 			mv.setViewName("jsonView");

@@ -19,6 +19,7 @@ public class ApiConvertorUtil {
 
 	public static String getSex(String sex) {
 		String strSex = "";
+		if (ApiCommonUtils.isNullOrEmpty(sex))	return strSex;
 		if (sex.compareToIgnoreCase("man") == 0) strSex = "남";
 		else if (sex.compareToIgnoreCase("woman") == 0) strSex = "여";
 

@@ -14,33 +14,33 @@ public class ApiMemberModel extends ApiJqGridParams implements Serializable  {
 	private static final long serialVersionUID = 4850708721418549451L;
 	
 	private Integer id;
-	private String user_id;
-	private String user_pw;
-	private String password_que;
-	private String password_chk;
+	private String userId;
+	private String userPw;
+	private String passwordQue;
+	private String passwordChk;
 	//private String junnum;			// 사용하지 않음.
-	private String user_name;
+	private String userName;
 	private String phone;				// 02-1234-5678
 	private String hphone;				// 010-1234-5678
 	private String birth;				// 1963-1-2
 	private String sex;					// 성별 - man, woman
 	private String strSex;
 	private String email;
-	private String use_mail;			// yes, no
-	private String use_sms;
-	private String use_push;
+	private String useMail;				// yes, no
+	private String useSms;
+	private String usePush;
 	private String post;
 	private String address1;
 	private String address2;
 	private String strWdate;
 	private String strLastLogin;
-	private Date last_login_at;
+	private Date lastLoginAt;
 	private String home;
 	private String photo;
-	private String p_chk;				// yes, no. 용도???
-	private Integer user_type;			// 1, 2
-	//private String last_school;		// 사용하지 않음.
-	//private String high_school;		// 사용하지 않음.
+	private String pChk;				// yes, no. 용도???
+	private Integer userType;			// 1, 2
+	//private String lastSchool;		// 사용하지 않음.
+	//private String highSchool;		// 사용하지 않음.
 	//private String university;		// 사용하지 않음.
 	private String left;				// yes, no
 	private String secession;			// 용도: 회워탈퇴 남김말.
@@ -50,19 +50,18 @@ public class ApiMemberModel extends ApiJqGridParams implements Serializable  {
 	private Integer tosa180422;			// 0, 1. 용도???
 	private String strTosa180422Date;
 	
-	private String role_name;			// 개인회원, 기업회원
+	private String roleName;			// 개인회원, 기업회원
 	private String token;				// Login 정보 token.
-	private String push_token;			// FCM Push Notification을 위한 device token.
+	private String pushToken;			// FCM Push Notification을 위한 device token.
 
-	private String new_pw;				// 비밀번호 변경.
-	private Integer find_type;			// 1, 2. 사용자 ID와 비밀번호 찾는 방법.
+	private String newPw;				// 비밀번호 변경.
+	private Integer findType;			// 1, 2. 사용자 ID와 비밀번호 찾는 방법.
 
 	private List<Integer> ids;
 	private String sidx;	//sorting field.
 	private String sord;	//asc 또는 desc
 	private String showAll;
 
-	
 	/**
 	 * @return the id
 	 */
@@ -76,64 +75,64 @@ public class ApiMemberModel extends ApiJqGridParams implements Serializable  {
 		this.id = id;
 	}
 	/**
-	 * @return the user_id
+	 * @return the userId
 	 */
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
 	/**
-	 * @param user_id the user_id to set
+	 * @param userId the userId to set
 	 */
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	/**
-	 * @return the user_pw
+	 * @return the userPw
 	 */
-	public String getUser_pw() {
-		return user_pw;
+	public String getUserPw() {
+		return userPw;
 	}
 	/**
-	 * @param user_pw the user_pw to set
+	 * @param userPw the userPw to set
 	 */
-	public void setUser_pw(String user_pw) {
-		this.user_pw = user_pw;
+	public void setUserPw(String userPw) {
+		this.userPw = userPw;
 	}
 	/**
-	 * @return the password_que
+	 * @return the passwordQue
 	 */
-	public String getPassword_que() {
-		return password_que;
+	public String getPasswordQue() {
+		return passwordQue;
 	}
 	/**
-	 * @param password_que the password_que to set
+	 * @param passwordQue the passwordQue to set
 	 */
-	public void setPassword_que(String password_que) {
-		this.password_que = password_que;
+	public void setPasswordQue(String passwordQue) {
+		this.passwordQue = passwordQue;
 	}
 	/**
-	 * @return the password_chk
+	 * @return the passwordChk
 	 */
-	public String getPassword_chk() {
-		return password_chk;
+	public String getPasswordChk() {
+		return passwordChk;
 	}
 	/**
-	 * @param password_chk the password_chk to set
+	 * @param passwordChk the passwordChk to set
 	 */
-	public void setPassword_chk(String password_chk) {
-		this.password_chk = password_chk;
+	public void setPasswordChk(String passwordChk) {
+		this.passwordChk = passwordChk;
 	}
 	/**
-	 * @return the user_name
+	 * @return the userName
 	 */
-	public String getUser_name() {
-		return user_name;
+	public String getUserName() {
+		return userName;
 	}
 	/**
-	 * @param user_name the user_name to set
+	 * @param userName the userName to set
 	 */
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	/**
 	 * @return the phone
@@ -172,18 +171,6 @@ public class ApiMemberModel extends ApiJqGridParams implements Serializable  {
 		this.birth = birth;
 	}
 	/**
-	 * @return the strSex
-	 */
-	public String getStrSex() {
-		return strSex;
-	}
-	/**
-	 * @param strSex the strSex to set
-	 */
-	public void setStrSex(String strSex) {
-		this.strSex = strSex;
-	}
-	/**
 	 * @return the sex
 	 */
 	public String getSex() {
@@ -194,6 +181,18 @@ public class ApiMemberModel extends ApiJqGridParams implements Serializable  {
 	 */
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+	/**
+	 * @return the strSex
+	 */
+	public String getStrSex() {
+		return strSex;
+	}
+	/**
+	 * @param strSex the strSex to set
+	 */
+	public void setStrSex(String strSex) {
+		this.strSex = strSex;
 	}
 	/**
 	 * @return the email
@@ -208,40 +207,40 @@ public class ApiMemberModel extends ApiJqGridParams implements Serializable  {
 		this.email = email;
 	}
 	/**
-	 * @return the use_mail
+	 * @return the useMail
 	 */
-	public String getUse_mail() {
-		return use_mail;
+	public String getUseMail() {
+		return useMail;
 	}
 	/**
-	 * @param use_mail the use_mail to set
+	 * @param useMail the useMail to set
 	 */
-	public void setUse_mail(String use_mail) {
-		this.use_mail = use_mail;
+	public void setUseMail(String useMail) {
+		this.useMail = useMail;
 	}
 	/**
-	 * @return the use_sms
+	 * @return the useSms
 	 */
-	public String getUse_sms() {
-		return use_sms;
+	public String getUseSms() {
+		return useSms;
 	}
 	/**
-	 * @param use_sms the use_sms to set
+	 * @param useSms the useSms to set
 	 */
-	public void setUse_sms(String use_sms) {
-		this.use_sms = use_sms;
+	public void setUseSms(String useSms) {
+		this.useSms = useSms;
 	}
 	/**
-	 * @return the use_push
+	 * @return the usePush
 	 */
-	public String getUse_push() {
-		return use_push;
+	public String getUsePush() {
+		return usePush;
 	}
 	/**
-	 * @param use_push the use_push to set
+	 * @param usePush the usePush to set
 	 */
-	public void setUse_push(String use_push) {
-		this.use_push = use_push;
+	public void setUsePush(String usePush) {
+		this.usePush = usePush;
 	}
 	/**
 	 * @return the post
@@ -304,16 +303,16 @@ public class ApiMemberModel extends ApiJqGridParams implements Serializable  {
 		this.strLastLogin = strLastLogin;
 	}
 	/**
-	 * @return the last_login_at
+	 * @return the lastLoginAt
 	 */
-	public Date getLast_login_at() {
-		return last_login_at;
+	public Date getLastLoginAt() {
+		return lastLoginAt;
 	}
 	/**
-	 * @param last_login_at the last_login_at to set
+	 * @param lastLoginAt the lastLoginAt to set
 	 */
-	public void setLast_login_at(Date last_login_at) {
-		this.last_login_at = last_login_at;
+	public void setLastLoginAt(Date lastLoginAt) {
+		this.lastLoginAt = lastLoginAt;
 	}
 	/**
 	 * @return the home
@@ -340,28 +339,28 @@ public class ApiMemberModel extends ApiJqGridParams implements Serializable  {
 		this.photo = photo;
 	}
 	/**
-	 * @return the p_chk
+	 * @return the pChk
 	 */
-	public String getP_chk() {
-		return p_chk;
+	public String getpChk() {
+		return pChk;
 	}
 	/**
-	 * @param p_chk the p_chk to set
+	 * @param pChk the pChk to set
 	 */
-	public void setP_chk(String p_chk) {
-		this.p_chk = p_chk;
+	public void setpChk(String pChk) {
+		this.pChk = pChk;
 	}
 	/**
-	 * @return the user_type
+	 * @return the userType
 	 */
-	public Integer getUser_type() {
-		return user_type;
+	public Integer getUserType() {
+		return userType;
 	}
 	/**
-	 * @param user_type the user_type to set
+	 * @param userType the userType to set
 	 */
-	public void setUser_type(Integer user_type) {
-		this.user_type = user_type;
+	public void setUserType(Integer userType) {
+		this.userType = userType;
 	}
 	/**
 	 * @return the left
@@ -448,16 +447,16 @@ public class ApiMemberModel extends ApiJqGridParams implements Serializable  {
 		this.strTosa180422Date = strTosa180422Date;
 	}
 	/**
-	 * @return the role_name
+	 * @return the roleName
 	 */
-	public String getRole_name() {
-		return role_name;
+	public String getRoleName() {
+		return roleName;
 	}
 	/**
-	 * @param role_name the role_name to set
+	 * @param roleName the roleName to set
 	 */
-	public void setRole_name(String role_name) {
-		this.role_name = role_name;
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
 	}
 	/**
 	 * @return the token
@@ -472,40 +471,40 @@ public class ApiMemberModel extends ApiJqGridParams implements Serializable  {
 		this.token = token;
 	}
 	/**
-	 * @return the push_token
+	 * @return the pushToken
 	 */
-	public String getPush_token() {
-		return push_token;
+	public String getPushToken() {
+		return pushToken;
 	}
 	/**
-	 * @param push_token the push_token to set
+	 * @param pushToken the pushToken to set
 	 */
-	public void setPush_token(String push_token) {
-		this.push_token = push_token;
+	public void setPushToken(String pushToken) {
+		this.pushToken = pushToken;
 	}
 	/**
-	 * @return the new_pw
+	 * @return the newPw
 	 */
-	public String getNew_pw() {
-		return new_pw;
+	public String getNewPw() {
+		return newPw;
 	}
 	/**
-	 * @param new_pw the new_pw to set
+	 * @param newPw the newPw to set
 	 */
-	public void setNew_pw(String new_pw) {
-		this.new_pw = new_pw;
+	public void setNewPw(String newPw) {
+		this.newPw = newPw;
 	}
 	/**
-	 * @return the find_type
+	 * @return the findType
 	 */
-	public Integer getFind_type() {
-		return find_type;
+	public Integer getFindType() {
+		return findType;
 	}
 	/**
-	 * @param find_type the find_type to set
+	 * @param findType the findType to set
 	 */
-	public void setFind_type(Integer find_type) {
-		this.find_type = find_type;
+	public void setFindType(Integer findType) {
+		this.findType = findType;
 	}
 	/**
 	 * @return the ids

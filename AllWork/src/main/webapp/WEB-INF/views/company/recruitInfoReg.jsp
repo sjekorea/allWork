@@ -17,9 +17,11 @@
 		<div id="leftPart">
 			<jsp:include page="/companySubMenu.do" />
 			<div id="leftPart_buttom">
+				<!-- 
 				<ul>
 					<li class="reg_ok"><a href="#none" title="등록">등록</a></li>
 				</ul>
+				 -->
 			</div>
 		</div>
 		<div id="rightPart">
@@ -73,10 +75,12 @@
 								</tr>
 							</tbody>
 							</table>
+
+							<span class="comment">직무, 산업분야, 근무지역은 최대 3개까지 선택 가능. 추가 버튼과 삭제 버튼을 사용하세요.</span>
 							<table>
 							<tbody id="job">
 								<tr>
-									<th>모집업종<span class="necessary">*</span></th>
+									<th>직무<span class="necessary">*</span></th>
 									<td>
 										<select id="bizType1" name="bizType1" title="1차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'bizType2', true, true);">
 											<option value="">1차직무선택</option>
@@ -130,12 +134,12 @@
 												<option value="${result.code}">${result.name}</option>
 											</c:forEach>
 										</select>
-										<select id="bizArea2" name="bizArea2">
+										<select id="bizArea2" name="bizArea2" style="width: 200px;">
 											<option value="">시구군선택</option>
 										</select>
 										<input type="button" name="appendItem" kind="area" value="+ 추가" />
 										<input type="button" name="deleteItem" kind="area" value="- 삭제" />
-										<span class="comment">최대 3개까지 선택 가능</span>
+										<!-- span class="comment">최대 3개까지 선택 가능</span -->
 									</td>
 								</tr>
 							</tbody>
@@ -194,7 +198,7 @@
 								<tr>
 									<th>최종학력</th>
 									<td>
-										<select id="bizAbility" name="bizAbility" title="학력 선택">
+										<select id="bizAbility" name="bizAbility" title="학력 선택" style="width: 300px;">
 											<option value="">학력 선택</option>
 											<option value="100">학력무관</option>
 											<option value="1">고등학교졸업</option>
@@ -516,7 +520,7 @@
 				trHtml += "		<select id='bizArea"+((appendNum*2)+1)+"' name='bizArea"+((appendNum*2)+1)+"' onchange=\"javascript:getNetfuCateListForSelect('area', this, '시구군선택', 'bizArea"+((appendNum*2)+2)+"', true, true);\">";
 				trHtml += "			<option value=''>시구군선택</option>\n";
 				trHtml += "		</select>";
-				trHtml += "		<select id='bizArea"+((appendNum*2)+2)+"' name='bizArea"+((appendNum*2)+2)+"' >";
+				trHtml += "		<select id='bizArea"+((appendNum*2)+2)+"' name='bizArea"+((appendNum*2)+2)+"' style=\"width: 200px;\" >";
 				trHtml += "			<option value=''>시도 선택</option>\n";
 				trHtml += "		</select>";
 				trHtml += "	</td>";
@@ -543,7 +547,7 @@
 		
 		
 		if(checkNull($("#bizTitle").val())){ alertAndFocus("공고제목을 입력하세요.", $("#bizTitle")); return; }
-		if(checkNull($("#bizType3 option:selected").val())){ alert("모집업종을 선택하세요."); return; }
+		if(checkNull($("#bizType3 option:selected").val())){ alert("직무를 선택하세요."); return; }
 		if(checkNull($("#bizAreaJob3 option:selected").val())){ alert("산업분야를 선택하세요."); return; }
 		if(checkNull($("#bizArea2 option:selected").val())){ alert("근무지역을 선택하세요."); return; }
 		if(checkNull($("#bizBusiness").val())){ alertAndFocus("담당업무를 입력하세요.", $("#bizBusiness")); return; }

@@ -108,7 +108,7 @@
 									</tr>
 									
 									<tr>
-                      					<td><span class="desc_title">급여</span><span class="desc_desc00">${result.bizPayName }</span></td>
+                      					<td><span class="desc_title">급여</span><span class="desc_desc00">${codeConvert:getPayInfo(result.payType, result.payTypeName, result.bizPayName) }</span></td>
                       					<td><span class="desc_title">경력</span><span class="desc_desc00">${codeConvert:getBizCareer(result.bizCareer) }</span></td>
                       					<td><span class="desc_title">나이</span><span class="desc_desc00">${result.bizAge }</span></td>
                     				</tr>

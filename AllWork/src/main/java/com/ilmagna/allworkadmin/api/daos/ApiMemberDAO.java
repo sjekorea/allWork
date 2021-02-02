@@ -8,10 +8,34 @@ import com.ilmagna.allworkadmin.api.domains.ApiMemberModel;
 import com.ilmagna.allworkadmin.api.domains.ApiRecruitModel;
 import com.ilmagna.allworkadmin.api.domains.ApiResumeModel;
 
+import allwork.common.dao.AbstractDAO;
 
-@Repository
-public interface ApiMemberDAO {
 
+@Repository("apiMemberDAO")
+public class ApiMemberDAO extends AbstractDAO {
+
+	@SuppressWarnings("unchecked")
+	public List<ApiMemberModel> getMember(ApiMemberModel model) throws Exception {
+		return (List<ApiMemberModel>) selectList("com.ilmagna.allworkadmin.api.daos.ApiMemberDAO.getMember", model);		
+	}
+
+
+	public void updatePushToken(ApiMemberModel model) throws Exception {
+		update("com.ilmagna.allworkadmin.api.daos.ApiMemberDAO.updatePushToken", model);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<ApiMemberModel> getPushMemberList(ApiRecruitModel model) throws Exception {
+		return (List<ApiMemberModel>) selectList("com.ilmagna.allworkadmin.api.daos.ApiMemberDAO.getPushMemberList", model);		
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<ApiMemberModel> getPushCompanyList(ApiResumeModel model) throws Exception {
+		return (List<ApiMemberModel>) selectList("com.ilmagna.allworkadmin.api.daos.ApiMemberDAO.getPushCompanyList", model);				
+	}
+
+	
+	/*
 	List<ApiMemberModel> getMemberList(ApiMemberModel model) throws Exception;
 
 	List<ApiMemberModel> getMember(ApiMemberModel model) throws Exception;
@@ -61,5 +85,5 @@ public interface ApiMemberDAO {
 	List<ApiMemberModel> getPushMemberList(ApiRecruitModel model) throws Exception;
 
 	List<ApiMemberModel> getPushCompanyList(ApiResumeModel model) throws Exception;
-
+	*/
 }

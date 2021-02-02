@@ -172,7 +172,7 @@
 							</tr>
 							<tr>
 								<th>급여조건</th>
-								<td>${recruitMap.bizPayName }</td>
+								<td>${codeConvert:getPayInfo(recruitMap.payType, recruitMap.payTypeName, recruitMap.bizPayName) }</td>
 							</tr>
 							<tr>
 								<th>우대조건</th>
@@ -281,7 +281,7 @@
 						<li id="scrapBtn"><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>
 					</c:if>
 					<c:if test="${recruitMap.bizMethodName.contains('온라인')}">
-						<li class="reg_ok"><a href="javascript:applyPopup('online');" title="입사지원">온라인입사지원</a></li>
+						<li id="btn_reg_ok" class="reg_ok"><a href="javascript:applyPopup('online');" title="입사지원">온라인입사지원</a></li>
 					</c:if>
 					<!-- 
 					<c:if test="${recruitMap.bizMethodName.contains('이메일')}">
@@ -428,9 +428,15 @@
 		var callback = function(data){
 			loadingOff();
 			$("#popupWrap_applyWrap").css("display", "none");
+			$("#btn_reg_ok").css("display", "none");
 			alert("입사지원이 완료 되었습니다.");
 		};
-		
+
+		//사용자가 선택한 이력서 제목.
+		var targetResumeSel = document.getElementById("resumeSel");
+		var resumeTitle = targetResumeSel.options[targetResumeSel.selectedIndex].text;
+
+		//Ajax를 통해 입사지원 전달.
 		var param = {
 					toType : $("#applyType").val()
 					, type : "job"
@@ -440,6 +446,8 @@
 					, toNo : $("#no").val()
 					, fromNo : $("#resumeSel option:selected").val()
 					, opened : "no"
+					, senderName: "${companyMap.name }"
+					, senderTitle: resumeTitle
 					, jobDetail : $("#resumeTitle").val()
 				}; 
 		ajax('post', '/insertNetfuOnlineRecruit.ajax', param, callback);
