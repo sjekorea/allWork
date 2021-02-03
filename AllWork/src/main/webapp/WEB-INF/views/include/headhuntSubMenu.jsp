@@ -17,9 +17,20 @@
 			</a>
 		</li>
 		<li class="menu menu02">
-			<a href="#">
-				화상면접
-			</a>
+<c:choose>
+	<c:when test="${SE_LOGIN_STATUS}">
+		<c:if test="${SE_USER_TYPE == 'person' }">
+			<a href="https://allwork.officecall.cloud/" target="_blank" title="화상면접">화상면접</a>
+		</c:if>
+				
+		<c:if test="${SE_USER_TYPE == 'company' }">
+			<a href="https://allwork.officecall.cloud/?user_check=admin" target="_blank" title="화상면접">화상면접</a>
+		</c:if>
+	</c:when>
+	<c:otherwise>
+			<a href="javascript:alert('로그인 이후에 사용할 수 있습니다.');" title="화상면접">화상면접</a>
+	</c:otherwise>
+</c:choose>
 		</li>
 	</ul>
 </div>

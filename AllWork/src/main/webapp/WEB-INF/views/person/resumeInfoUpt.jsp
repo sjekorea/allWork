@@ -32,7 +32,7 @@
 			<input type="hidden" name="inidPhotoOrg" id="inidPhotoOrg" value="${memberMap.photo}" />
 			<input type="hidden" name="inidPhone" id="inidPhone" value="${memberMap.phone}" />
 			<input type="hidden" name="inidHphone" id="inidHphone" value="${memberMap.hphone}" />
-			<input type="hidden" name="inidEmail" id="inidEmail" value="${memberMap.hphone}" />
+			<input type="hidden" name="inidEmail" id="inidEmail" value="${memberMap.email}" />
 			<input type="hidden" name="inidPost" id="inidPost" value="${memberMap.post}" />
 			<input type="hidden" name="inidAddress1" id="inidAddress1" value="${memberMap.address1}" />
 			<input type="hidden" name="inidAddress2" id="inidAddress2" value="${memberMap.address2}" />

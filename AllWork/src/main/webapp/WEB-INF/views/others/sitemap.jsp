@@ -103,7 +103,20 @@
 			<h4>헤드헌팅</h4>
 			<ul>
 				<li class="sitemap_depth01"><a href="/headhuntList.do" title="채용정보">채용정보</a>
+	<c:choose>
+		<c:when test="${SE_LOGIN_STATUS}">
+			<c:if test="${SE_USER_TYPE == 'person' }">
 				<li class="sitemap_depth01"><a href="https://allwork.officecall.cloud/" target="_blank" title="화상면접">화상면접</a>
+			</c:if>
+
+			<c:if test="${SE_USER_TYPE == 'company' }">
+				<li class="sitemap_depth01"><a href="https://allwork.officecall.cloud/?user_check=admin" target="_blank" title="화상면접">화상면접</a>
+			</c:if>
+		</c:when>
+		<c:otherwise>
+				<li class="sitemap_depth01"><a href="javascript:alert('로그인 이후에 사용할 수 있습니다.');" title="화상면접">화상면접</a>
+		</c:otherwise>
+	</c:choose>
 			</ul>
 		</div>
 		<div class="sitemap">
