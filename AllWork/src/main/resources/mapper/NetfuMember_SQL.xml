@@ -249,16 +249,32 @@
 	<update id="updatePayServiceInfo" parameterType="hashmap">
 		update netfu_member
 		set 
-			<if test="service1EndDate != null and service1EndDate != ''">
-			service1_flag = 'Y'
-			, service1_end_date = #{service1EndDate}
-			, view_count = 0
-			</if>
-			<if test="service2EndDate != null and service2EndDate != ''">
-			service2_flag = 'Y'
-			, service2_end_date = #{service2EndDate}
-			, view_count = #{viewCount}
-			</if>
+			<choose>
+				<when test="dealType == 'buy'">
+					<if test="service1EndDate != null and service1EndDate != ''">
+					service1_flag = 'Y'
+					, service1_end_date = #{service1EndDate}
+					, view_count = 0
+					</if>
+					<if test="service2EndDate != null and service2EndDate != ''">
+					service2_flag = 'Y'
+					, service2_end_date = #{service2EndDate}
+					, view_count = #{viewCount}
+					</if>
+				</when>
+				<otherwise>
+					<if test='productType == "1" or productType == "2"'>
+					service1_flag = 'N'
+					, service1_end_date = ''
+					, view_count = 0
+					</if>
+					<if test='productType == "3"'>
+					service2_flag = 'N'
+					, service2_end_date = ''
+					, view_count = 0
+					</if>
+				</otherwise>
+			</choose>
 		where uid = #{uid}
 		AND `left` <![CDATA[<>]]> 'yes'
 	</update>
