@@ -16,14 +16,16 @@
 	
 	<!-- 결제 정보 목록 -->
 	<select id="selectPaymentInfoList" parameterType="hashmap" resultType="allwork.vo.PaymentInfoVo">
-		select * 
-		from payment_info
+		select pi.* 
+			, DATEDIFF (now(), pi.pay_date) date_diff
+			, (select count(uid) from recruit_view where uid = #{loginId} and view_type = 'resume' and view_date > pi.pay_date) view_cnt
+		from payment_info pi
 		where 1=1
-			and uid = #{loginId}
+			and pi.uid = #{loginId}
 			<if test="startDt != null and endDt != null">
-				and pay_date between #{startDtTime} and #{endDtTime}
+				and pi.pay_date between #{startDtTime} and #{endDtTime}
 			</if>
-		order by pay_date desc
+		order by pi.pay_date desc
 		limit #{start}, #{pageSize}
 	</select>
 	
@@ -47,6 +49,7 @@
 				, pay_amount, buyer_name, buyer_email
 				, buyer_tel, buyer_addr, buyer_postcode, apply_num, status, success_status
 				, receipt_url, card_name, bank_name, card_quota, card_number
+				, product_type
 			)
 			values
 			(	#{uid}, #{merchantUid}, #{impUid}, #{buyerType}, #{productName}, #{payMethod}
@@ -54,7 +57,24 @@
 				, #{payAmount}, #{buyerName}, #{buyerEmail}
 				, #{buyerTel}, #{buyerAddr}, #{buyerPostcode}, #{applyNum}, #{status}, #{successStatus}
 				, #{receiptUrl}, #{cardName}, #{bankName}, #{cardQuota}, #{cardNumber}
+				, #{productType}
 			)
+		]]>
+	</insert>
+	
+	
+	<!-- 결제 취소(환불) 정보 수정 -->
+	<insert id="updateRefundPaymentInfo" parameterType="hashmap">
+		<![CDATA[
+			update payment_info
+			set 
+				refund_date = DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+				, refund_status = #{refundStatus}
+				, refund_amount = #{refundAmount}
+			where 1=1
+				and uid = #{uid}
+				and merchant_uid = #{merchantUid}
+				and imp_uid = #{impUid}
 		]]>
 	</insert>
 	
