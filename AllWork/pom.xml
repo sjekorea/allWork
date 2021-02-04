@@ -23,8 +23,15 @@
        	 -->
        	<!-- (end) 2020.12.30 by s.yoo -->
 	</properties>
+	
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+	
 	<dependencies>
-		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -353,6 +360,12 @@
 			<version>30.0-jre</version>
 		</dependency>
         <!-- (end) 2020.12.30 by s.yoo -->
+        
+		<dependency>
+		    <groupId>com.github.iamport</groupId>
+		    <artifactId>iamport-rest-client-java</artifactId>
+		    <version>0.2.14</version>
+		</dependency>
 
 	</dependencies>
     <build>
