@@ -165,7 +165,7 @@
 		        var callback = function(data){
 		        	alert("처리 되었습니다.");
 		        	loadingOn();
-					location.href = "/index.do";
+					location.href = "/resumePaidList.do";
 				};
 				var param = {
 								merchantUid : rsp.merchant_uid 

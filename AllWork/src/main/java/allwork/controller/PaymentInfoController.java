@@ -110,12 +110,12 @@ public class PaymentInfoController {
 			
 			int productType = ConvertUtil.checkNullToInt((String)commandMap.get("productType"));
 			
-			if("1".equals(productType) || "2".equals(productType)){
+			if(productType == 1 || productType == 2){
 				session.setAttribute("SE_SERVICE1", "N");
 				session.setAttribute("SE_SERVICE1_END", "");
 			}
 			
-			if("3".equals(productType)){
+			if(productType == 3){
 				session.setAttribute("SE_SERVICE2", "N");
 				session.setAttribute("SE_SERVICE2_END", "");
 				session.setAttribute("SE_VIEW_COUNT", "0");

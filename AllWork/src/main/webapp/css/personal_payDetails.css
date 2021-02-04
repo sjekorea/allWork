@@ -40,15 +40,17 @@ body{background: #EDF0F5;}
     #listPart .list .list_title div{float:left;line-height:50px;text-align: center;}
     #listPart .list .list_title .desc01{width:170px;height:100%;}
     #listPart .list .list_title .desc02{width:240px;height:50px;text-align:center;line-height:50px;padding-top:0px;}
-    #listPart .list .list_title .desc03{width:170px;height:100%;}
-    #listPart .list .list_title .desc04{width:120px;height:100%;}
+    #listPart .list .list_title .desc03{width:130px;height:100%;}
+    #listPart .list .list_title .desc04{width:80px;height:100%;}
+    #listPart .list .list_title .desc05{width:80px;height:100%;}
 
     #listPart .list .desc{width:100%;height:50px;border-bottom:1px solid #ccc;}
       #listPart .list .desc p{height:50px;line-height:50px;float:left;text-align: center;font-size:14px;}
       #listPart .list .desc .desc01{width:170px;}
       #listPart .list .desc .desc02{width:240px;}
-      #listPart .list .desc .desc03{width:170px;}
-      #listPart .list .desc .desc04{width:120px;}
+      #listPart .list .desc .desc03{width:130px;}
+      #listPart .list .desc .desc04{width:80px;}
+      #listPart .list .desc .desc05{width:80px;}
 
     #listPart .part02{display:none;}
     #listPart .part03{display:none;}

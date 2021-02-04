@@ -44,7 +44,7 @@
 							<div class="desc02">신청상품</div>
 							<div class="desc03">결제금액</div>
 							<div class="desc04">결제상태</div>
-							<div class="desc05"></div>
+							<div class="desc05">환불</div>
 						</li>
 						<c:choose>
 							<c:when test="${paymentList.size() > 0 }">
