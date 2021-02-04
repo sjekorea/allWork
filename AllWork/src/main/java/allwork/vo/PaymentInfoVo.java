@@ -23,6 +23,51 @@ public class PaymentInfoVo {
 	private String bankName;
 	private String cardQuota;
 	private String cardNumber;
+	private int dateDiff;
+	private int viewCnt;
+	private String productType;
+	private String refundDate;
+	private String refundStatus;
+	private int refundAmount;
+	
+	
+	
+	public String getRefundDate() {
+		return refundDate;
+	}
+	public void setRefundDate(String refundDate) {
+		this.refundDate = refundDate;
+	}
+	public String getRefundStatus() {
+		return refundStatus;
+	}
+	public void setRefundStatus(String refundStatus) {
+		this.refundStatus = refundStatus;
+	}
+	public int getRefundAmount() {
+		return refundAmount;
+	}
+	public void setRefundAmount(int refundAmount) {
+		this.refundAmount = refundAmount;
+	}
+	public String getProductType() {
+		return productType;
+	}
+	public void setProductType(String productType) {
+		this.productType = productType;
+	}
+	public int getViewCnt() {
+		return viewCnt;
+	}
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
+	}
+	public int getDateDiff() {
+		return dateDiff;
+	}
+	public void setDateDiff(int dateDiff) {
+		this.dateDiff = dateDiff;
+	}
 	public String getUid() {
 		return uid;
 	}

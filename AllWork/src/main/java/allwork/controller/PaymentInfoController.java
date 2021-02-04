@@ -1,6 +1,7 @@
 package allwork.controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,9 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.siot.IamportRestClient.IamportClient;
+import com.siot.IamportRestClient.request.CancelData;
+import com.siot.IamportRestClient.response.IamportResponse;
+import com.siot.IamportRestClient.response.Payment;
 
 import allwork.common.CommandMap;
 import allwork.common.LoginSuccessProcess;
@@ -34,7 +41,7 @@ public class PaymentInfoController {
 	
 	@Resource(name="netfuMemberService")
 	private NetfuMemberService netfuMemberService;
-
+	
 	
 	/*
 	 * 결제 정보 저장
@@ -56,7 +63,7 @@ public class PaymentInfoController {
 			}
 			
 			String service2EndDate = ConvertUtil.checkNull((String)commandMap.get("service2EndDate"));
-			int viewCount = ConvertUtil.checkNullToInt(((Integer)commandMap.get("viewCount")).toString());			
+			int viewCount = ConvertUtil.checkNullToInt((String)commandMap.get("viewCount"));			
 			if(viewCount > 0 && !"".equals(service2EndDate)){
 				session.setAttribute("SE_SERVICE2", "Y");
 				session.setAttribute("SE_SERVICE2_END", (String)commandMap.get("service2EndDate"));
@@ -69,6 +76,57 @@ public class PaymentInfoController {
 			
 		}catch(Exception e){
 			System.out.println(this.getClass().getName()+".insertPaymentInfo.ajax Excepion!!!!!!!!! =====> "+e.toString());
+		}
+		return mv;
+	}
+	
+	
+	/*
+	 * 결제 취소 (환불 )정보 저장
+	 */
+	@RequestMapping(value="/updateRefundPaymentInfo.ajax")
+	public ModelAndView updateRefundPaymentInfo(CommandMap commandMap, HttpSession session) throws IOException{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		try{
+			
+			String api_key = "8582761692674432";
+			String api_secret = "3kRjvBjj9bxWQEBNSfvlHRDdAVvFnLNq5EJBf2Vodsl47XRZcnlUeZ7PUDvipiIvWs6cu1BIuWNCTEC6";
+			IamportClient client = new IamportClient(api_key, api_secret);
+			
+			String test_already_cancelled_imp_uid = (String)commandMap.get("impUid");
+			CancelData cancel_data = new CancelData(test_already_cancelled_imp_uid, true); //imp_uid를 통한 전액취소
+			cancel_data.setChecksum(BigDecimal.valueOf(Integer.valueOf((String)commandMap.get("refundAmount")))); // checksum 으로 검증 추가
+
+			IamportResponse<Payment> payment_response = client.cancelPaymentByImpUid(cancel_data);
+			
+			//System.out.println("payment_response : "+payment_response.getResponse().getStartedAt());
+			
+			commandMap.put("uid", (String)session.getAttribute("SE_LOGIN_ID"));
+			commandMap.put("refundStatus", payment_response.getResponse().getStatus());
+			int rstCnt = paymentInfoService.updateRefundPaymentInfo(commandMap.getMap());
+			rstCnt += netfuMemberService.updatePayServiceInfo(commandMap.getMap());
+			
+			int productType = ConvertUtil.checkNullToInt((String)commandMap.get("productType"));
+			
+			if("1".equals(productType) || "2".equals(productType)){
+				session.setAttribute("SE_SERVICE1", "N");
+				session.setAttribute("SE_SERVICE1_END", "");
+			}
+			
+			if("3".equals(productType)){
+				session.setAttribute("SE_SERVICE2", "N");
+				session.setAttribute("SE_SERVICE2_END", "");
+				session.setAttribute("SE_VIEW_COUNT", "0");
+			}
+						
+			mv.addObject("map", commandMap.getMap());
+			mv.addObject("rstCnt", rstCnt);
+			mv.setViewName("jsonView");
+			
+		}catch(Exception e){
+			System.out.println(this.getClass().getName()+".updateRefundPaymentInfo.ajax Excepion!!!!!!!!! =====> "+e.toString());
 		}
 		return mv;
 	}

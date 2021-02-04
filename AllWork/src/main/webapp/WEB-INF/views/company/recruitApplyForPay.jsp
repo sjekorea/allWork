@@ -151,6 +151,7 @@
 		
 		var amount = $("input[name=payAmount]:checked").val();
 		var productName = "유료 채용광고 서비스"; // 개인회원 유료옵션 서비스, 유료 채용광고 서비스, 인재검색서칭 서비스
+		var productType = "2";
 		var serviceEndDate = "";
 		if(amount == 100000){
 			serviceEndDate = moment(addDay(new Date(), 7)).format('YYYY-MM-DD');
@@ -168,7 +169,8 @@
 		    pay_method : payMethod, //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
 		    merchant_uid : 'merchant_' + new Date().getTime()+'_${SE_LOGIN_ID}', //상점에서 관리하시는 고유 주문번호를 전달
 		    name : productName,
-		    amount : amount,
+		    //amount : amount,
+		    amount : 100,
 		    buyer_email : "${memberInfoMap.email}",
 		    buyer_name : "${memberInfoMap.name}",
 		    buyer_tel : "${memberInfoMap.hphone}", //누락되면 카드사 인증에 실패할 수 있으니 기입해주세요
@@ -191,6 +193,7 @@
 								, impUid : rsp.imp_uid
 								, buyerType : "2"
 								, productName : rsp.name
+								, productType : productType
 								, payMethod : rsp.pay_method
 								, payAmount : rsp.paid_amount
 								, buyerName : rsp.buyer_name
@@ -209,6 +212,7 @@
 								, service1EndDate : serviceEndDate
 								, service2EndDate : ""
 								, viewCount : 0
+								, dealType : "buy"
 							};
 				ajax('post', 'insertPaymentInfo.ajax', param, callback);
 				

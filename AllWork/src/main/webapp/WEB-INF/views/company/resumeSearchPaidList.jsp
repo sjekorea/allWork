@@ -44,16 +44,31 @@
 							<div class="desc02">신청상품</div>
 							<div class="desc03">결제금액</div>
 							<div class="desc04">결제상태</div>
+							<div class="desc05"></div>
 						</li>
 						<c:choose>
 							<c:when test="${paymentList.size() > 0 }">
 								<c:forEach var="result" items="${paymentList}" varStatus="status">
 									<li>
 										<div class="desc">
-										<p class="desc01">${result.payDate}</p>
+										<p class="desc01">${result.impUid}</p>
 										<p class="desc02">${result.productName }</p>
 										<p class="desc03"><fmt:formatNumber value="${result.payAmount}" pattern="#,###.##"/>원</p>
-										<p class="desc04">${result.status }</p>
+										<p class="desc04">
+											<c:choose>
+												<c:when test="${result.refundStatus eq 'cancelled' }">
+													결제 취소
+												</c:when>
+												<c:otherwise>
+													${result.status eq 'paid' ? '결제완료' : '' }	
+												</c:otherwise>	
+											</c:choose>
+										</p>
+										<p class="desc05">
+											<c:if test="${result.refundStatus ne 'cancelled' and ((result.productType ne '3' and result.dateDiff <= 3) or (result.productType eq '3' and result.viewCnt <= 0)) }">
+												<a href="javascript:requestRefund('${result.merchantUid }', '${result.impUid }', '${result.productType }', '${result.payAmount }');">환불요청</a>
+											</c:if>
+										</p>
 										</div>
 									</li>
 								</c:forEach>
@@ -102,4 +117,23 @@
 		});
 		
 	});
+	
+	
+	function requestRefund(merchantUid, impUid, productType, payAmount){
+
+    	loadingOn();
+    	
+		// 결제 성공 시 로직
+        var callback = function(data){
+        	alert("처리 되었습니다.");
+			location.href = "/resumeSearchPaidList.do";
+		};
+		var param = {
+						merchantUid : merchantUid 
+						, impUid : impUid
+						, productType : productType
+						, refundAmount : payAmount
+					};
+		ajax('post', '/updateRefundPaymentInfo.ajax', param, callback);
+	}
 </script>

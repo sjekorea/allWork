@@ -131,6 +131,7 @@
 		
 		var amount = $("input[name=payAmount]:checked").val();
 		var productName = "개인회원 유료옵션 서비스"; // 개인회원 유료옵션 서비스, 유료 채용광고 서비스, 인재검색서칭 서비스
+		var productType = "1";
 		var service1EndDate = "";
 		if(amount == 100000){
 			service1EndDate = moment(addDay(new Date(), 7)).format('YYYY-MM-DD');
@@ -171,6 +172,7 @@
 								, impUid : rsp.imp_uid
 								, buyerType : "1"
 								, productName : rsp.name
+								, productType : productType
 								, payMethod : rsp.pay_method
 								, payAmount : rsp.paid_amount
 								, buyerName : rsp.buyer_name
@@ -189,6 +191,7 @@
 								, service1EndDate : service1EndDate
 								, service2EndDate : ""
 								, viewCount : 0
+								, dealType : "buy"
 							};
 				ajax('post', 'insertPaymentInfo.ajax', param, callback);
 				

@@ -30,6 +30,11 @@ public class PaymentInfoDao extends AbstractDAO{
 	public int insertPaymentInfo(Map<String, Object> map) throws Exception{
 		return insert("paymentInfo.insertPaymentInfo", map);
 	}
+	
+	// 결제 정보 등록
+	public int updateRefundPaymentInfo(Map<String, Object> map) throws Exception{
+		return update("paymentInfo.updateRefundPaymentInfo", map);
+	}
 
 	
 	//유료열람서비스 등록.
