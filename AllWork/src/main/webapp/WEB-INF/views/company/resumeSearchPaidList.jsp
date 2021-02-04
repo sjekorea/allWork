@@ -51,7 +51,7 @@
 								<c:forEach var="result" items="${paymentList}" varStatus="status">
 									<li>
 										<div class="desc">
-										<p class="desc01">${result.impUid}</p>
+										<p class="desc01">${result.payDate}</p>
 										<p class="desc02">${result.productName }</p>
 										<p class="desc03"><fmt:formatNumber value="${result.payAmount}" pattern="#,###.##"/>원</p>
 										<p class="desc04">
