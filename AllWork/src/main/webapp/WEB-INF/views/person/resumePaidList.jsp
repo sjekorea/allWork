@@ -121,12 +121,13 @@
 	
 	
 	function requestRefund(merchantUid, impUid, productType, payAmount){
+		if (!confirm("환불요청을 진행할까요?")) return;
 
     	loadingOn();
     	
 		// 결제 성공 시 로직
         var callback = function(data){
-        	alert("처리 되었습니다.");
+        	alert("환불요청을 처리했습니다.");
 			location.href = "/resumePaidList.do";
 		};
 		var param = {

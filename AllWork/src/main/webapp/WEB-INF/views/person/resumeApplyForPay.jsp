@@ -163,7 +163,7 @@
 
 		    	// 결제 성공 시 로직
 		        var callback = function(data){
-		        	alert("처리 되었습니다.");
+		        	alert("유료서비스 신청을 처리했습니다.");
 		        	loadingOn();
 					location.href = "/resumePaidList.do";
 				};
