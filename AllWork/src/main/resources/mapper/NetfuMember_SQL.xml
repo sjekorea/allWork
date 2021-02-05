@@ -192,6 +192,7 @@
 			, use_mail = #{useMail}
 			, use_sms = #{useSms}
 			, use_push = #{usePush}
+			, biz_category = #{bizCategory}
 		where uid = #{uid}
 			AND `left` <![CDATA[ <> ]]> 'yes'
 	</update>
@@ -206,7 +207,7 @@
 		<if test="photo != null and photo != ''">
 			 photo,
 		</if>
-			 sex, use_mail, use_sms, use_push, email, wdate, 
+			 sex, use_mail, use_sms, use_push, email, wdate, biz_category,
 			 type, post, address1, address2, ci_key, sns_login_type)
 			values
 			(
@@ -225,6 +226,7 @@
 				, #{usePush}
 				, #{email}
 				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+				, #{bizCategory}
 				, #{type}
 				, #{post}
 				, #{address1}

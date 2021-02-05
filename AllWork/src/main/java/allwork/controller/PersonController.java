@@ -289,6 +289,7 @@ public class PersonController {
 			netfuItemResumeService.insertNetfuItemResume(commandMap.getMap());
 			
 			
+			/*
 			//Push Notification 메시지 전달.
 			try {
 				int idResume = ((Long) commandMap.get("no")).intValue();
@@ -303,6 +304,7 @@ public class PersonController {
 			} catch(Exception e2) {
 				e2.printStackTrace();
 			}
+			*/
 
 			//작업결과 전달.
 			CommonUtil.Alert("등록되었습니다.", "/resumeList.do", request, response);

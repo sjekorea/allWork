@@ -67,7 +67,9 @@
 					<h3>회원정보관리</h3>
 					<ol>
 						<li><a href="/updateMyInfo.do" title="회원정보관리 ">회원정보관리</a></li>
+						<!-- 
 						<li><a href="/linkSocial.do" title="소셜계정연결 ">소셜계정연결</a></li>
+						 -->
 						<li><a href="/memberUnregister.do" title="회원탈퇴">회원탈퇴</a></li>
 					</ol>
 				</li>

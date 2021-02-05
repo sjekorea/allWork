@@ -30,6 +30,7 @@ public class ApiRecommendPersonModel extends ApiJqGridParams implements Serializ
 
 	private String photo;				//사진.
 	private String inidSecret;			//이력서 비공개.
+	private int paidResume;				//1 = 유료열람서비스를 선택한 경우, 0 = 유료열람서비스를 선택하지 않은 경우.
 
 	private List<Integer> ids;
 	private String sidx;	//sorting field.
@@ -239,6 +240,18 @@ public class ApiRecommendPersonModel extends ApiJqGridParams implements Serializ
 	 */
 	public void setInidSecret(String inidSecret) {
 		this.inidSecret = inidSecret;
+	}
+	/**
+	 * @return the paidResume
+	 */
+	public int getPaidResume() {
+		return paidResume;
+	}
+	/**
+	 * @param paidResume the paidResume to set
+	 */
+	public void setPaidResume(int paidResume) {
+		this.paidResume = paidResume;
 	}
 	/**
 	 * @return the ids

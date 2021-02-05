@@ -87,16 +87,20 @@
 					</fieldset>
 				</form>
 				<!-- 소셜 Login -->
+				<!-- 
 				<div class="logintextsub">
 					<h4>[주의] 개인 PC가 아니면 , 절대로 소셜 Login을 사용하지 마세요. 개인정보 유출위험이 있습니다.</h4>
 				</div>
+				 -->
 				<ul class="snsLogin">
+					<!-- 
 					<li id="naverIdLogin">
 						<a id="naverIdLogin_loginButton" href="#"> <img src="img/login/sns01.png"></a>
 					</li>
 					<li>
 						<a id="kakao-login-btn" class="btn kakao font-mgb"><img id="kakao-login-btn" src="img/login/sns02.png"></a>
 					</li>
+					 -->
 					<!-- 
 					<li class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">
 						<a><img src="img/login/sns03.png"></a>

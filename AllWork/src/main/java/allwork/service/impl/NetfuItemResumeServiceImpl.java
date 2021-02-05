@@ -80,8 +80,8 @@ public class NetfuItemResumeServiceImpl implements NetfuItemResumeService{
 		for (int i = 0; i < rtnList.size(); i++) {
 			NetfuItemResumeVo item = (NetfuItemResumeVo) rtnList.get(i);
 			
+			int paidResume = 0;
 			if (bPaidUser) {
-				int paidResume = 0;
 				CommandMap commandMap = new CommandMap();
 				commandMap.put("loginId", map.get("loginId2"));
 				try {
@@ -89,9 +89,8 @@ public class NetfuItemResumeServiceImpl implements NetfuItemResumeService{
 					int prsCnt = paymentInfoService.selectPaidResumeSearchCount(commandMap.getMap());
 					if (prsCnt > 0) paidResume = 1;
 				} catch (Exception e2) { }					
-
-				item.setPaidResume(paidResume);
 			}
+			item.setPaidResume(paidResume);
 
 			listResult.add(item);				
 		}

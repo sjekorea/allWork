@@ -13,6 +13,9 @@ import com.ilmagna.allworkadmin.api.common.ApiConvertorUtil;
 import com.ilmagna.allworkadmin.api.daos.ApiRecommendPersonDAO;
 import com.ilmagna.allworkadmin.api.domains.ApiRecommendPersonModel;
 
+import allwork.common.CommandMap;
+import allwork.service.PaymentInfoService;
+
 @Service("apiRecommendPersonService")
 public class ApiRecommendPersonService {
 		
@@ -20,14 +23,31 @@ public class ApiRecommendPersonService {
 	@Resource(name="apiRecommendPersonDAO")
 	private ApiRecommendPersonDAO recommendDAO;
 
+	@Resource(name="paymentInfoService")
+	private PaymentInfoService paymentInfoService;	
+
 	
-	public List<ApiRecommendPersonModel> getRecommendPersonList(ApiRecommendPersonModel model) throws Exception {
+	public List<ApiRecommendPersonModel> getRecommendPersonList(boolean bPaidUser, String loginId, ApiRecommendPersonModel model) throws Exception {
 		//return recommendDAO.getRecommendPersonList(model);
 		List<ApiRecommendPersonModel> list = recommendDAO.getRecommendPersonList(model);
 
 		List<ApiRecommendPersonModel> listResult = new ArrayList<ApiRecommendPersonModel>();
 		for(int i = 0; i < list.size(); i++) {
-			listResult.add(procDataItem(list.get(i)));
+			ApiRecommendPersonModel item = procDataItem(list.get(i));
+			
+			int paidResume = 0;
+			if (bPaidUser) {
+				CommandMap commandMap = new CommandMap();
+				commandMap.put("loginId", loginId);
+				try {
+					commandMap.put("resumeNo", item.getUno());
+					int prsCnt = paymentInfoService.selectPaidResumeSearchCount(commandMap.getMap());
+					if (prsCnt > 0) paidResume = 1;
+				} catch (Exception e2) { }					
+			}
+			item.setPaidResume(paidResume);
+
+			listResult.add(item);
 		}
 		return listResult;
 	}

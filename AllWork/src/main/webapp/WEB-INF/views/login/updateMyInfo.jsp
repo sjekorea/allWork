@@ -128,7 +128,19 @@
 										</span>
 									</td>
 								</tr>
-	
+
+									<tr>
+										<th>직무<span class="necessary">*</span></th>
+										<td>
+											<select id="bizCategory" name="bizCategory">
+												<option value="">-- 직무 선택 --</option>
+												<c:forEach var="result" items="${businesstypeList}" varStatus="status">
+													<option value="${result.code}">${result.name}</option>
+												</c:forEach>
+											</select>
+										</td>
+									</tr>
+
 								<tr>
 									<th>성별<span class="necessary">*</span></th>
 									<td>
@@ -398,6 +410,10 @@
 		}
 		if((getNowYear() - $("#year").val() + 1) < 40){
 			alert("개인회원은 40세 이상만 가입이 가능합니다.");
+			return;
+		}	
+		if(checkNull($("#bizCategory").val())){
+			alertAndFocus("직무를 선택하세요.", $("#bizCategory"));
 			return;
 		}
 		if(checkNull(sex)){

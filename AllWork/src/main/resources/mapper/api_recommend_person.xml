@@ -15,17 +15,19 @@
 			, A.uno AS uno
 			, A.name AS name
 			, A.birth_year AS birthYear
+			, B.sex AS sex
 			, A.sex AS sex
 			, A.schooling AS schooling
 			, A.career_main AS careerMain
 			, A.work_area AS workArea
 			, DATE_FORMAT(A.reg_date, '%Y-%m-%d') AS strRegDate
 			, A.memo AS memo
-			, IFNULL(C.inid_secret, "yes") AS inidSecret
+			, IFNULL(C.inid_secret, "no") AS inidSecret
 		FROM 
-			recommend_person A LEFT JOIN netfu_item_resume C ON A.uno = C.no
+			recommend_person A JOIN netfu_item_resume C ON A.uno = C.no AND C.inid_secret <![CDATA[ <> ]]> 'yes', netfu_member B
 		<where>
 			A.prs = 'P'
+			AND B.uid = A.uid
 			<if test='id != null &amp;&amp; id > 0'>
 				AND A.ser = #{id}
 			</if>
@@ -70,7 +72,7 @@
 			, A.work_area AS workArea
 			, DATE_FORMAT(A.reg_date, '%Y-%m-%d') AS strRegDate
 			, A.memo AS memo
-			, IFNULL(C.inid_secret, "yes") AS inidSecret
+			, IFNULL(C.inid_secret, "no") AS inidSecret
 		FROM 
 			recommend_person A LEFT JOIN netfu_item_resume C ON A.uno = C.no
 		<where>

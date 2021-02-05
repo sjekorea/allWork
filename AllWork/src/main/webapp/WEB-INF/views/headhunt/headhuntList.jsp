@@ -24,7 +24,7 @@
 		</div>
 		<div id="rightPart">
 			<h4>헤드헌팅</h4>
-			<p>아래 채용분야에 해당하시는 분은 <span>mail@allwork.co.kr</span>로 경력 위주의 상세이력서(지원회사 명기)를 보내주시기 바랍니다.</p>
+			<p>헤드헌팅 채용공고는 기업회원이 유료신청한 내용입니다.<br />세부사항은 올워크 고객센터 <span>mail@allwork.co.kr</span> 또는 <span>02-585-0108</span>로 문의 바랍니다.</p>
 
 			<div id="listPart">
 			

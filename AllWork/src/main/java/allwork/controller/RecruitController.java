@@ -718,7 +718,10 @@ public class RecruitController {
 			commandMap.put("pageSize", pageSize);
 
 			//(2) 이번 페이지의 데이터 목록.
-			resumeScrapList = recommendService.getRecommendPersonList(model);
+			String loginId = (String) session.getAttribute("SE_LOGIN_ID");
+			String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
+			boolean bPaidUser = service2Flag.equalsIgnoreCase("Y");
+			resumeScrapList = recommendService.getRecommendPersonList(bPaidUser, loginId, model);
 
 			//(4) Page 목록.
 			Map<String, Object> pageMap = new HashMap<String, Object>();

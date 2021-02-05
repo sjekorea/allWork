@@ -48,6 +48,7 @@ public class NetfuMemberVo {
 	private String tosa180422Date;
 	//(begin) 2021.01.04 by s.yoo
 	private String usePush;
+	private String bizCategory;
 	
 	private int showAll;					// 1 = Ż���� ����� ���� ����(showAll), 0 = Ż���� ����� ���� ����(not showAll)
 	//(end) 2021.01.04 by s.yoo
@@ -380,6 +381,18 @@ public class NetfuMemberVo {
 	 */
 	public void setUsePush(String usePush) {
 		this.usePush = usePush;
+	}
+	/**
+	 * @return the bizCategory
+	 */
+	public String getBizCategory() {
+		return bizCategory;
+	}
+	/**
+	 * @param bizCategory the bizCategory to set
+	 */
+	public void setBizCategory(String bizCategory) {
+		this.bizCategory = bizCategory;
 	}
 	/**
 	 * @return the showAll

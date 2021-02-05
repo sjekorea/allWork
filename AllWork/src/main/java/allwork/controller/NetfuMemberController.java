@@ -96,6 +96,10 @@ public class NetfuMemberController {
 
 		//(begin) 2021.01.05 by s.yoo
 		try {
+			// 기업회원 가입  - 업종 ( netfu_cate : type = 'job')
+			commandMap.put("type", "businesstype");
+			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+
 			//이용약관과 개인정보 취급방침 전달.
 			ApiSiteBasicModel modeSiteBasic = new ApiSiteBasicModel();
 			ApiSiteBasicModel item = siteBasicService.getSiteBasic(modeSiteBasic);
@@ -106,6 +110,7 @@ public class NetfuMemberController {
 			mv.addObject("item", item);
 			mv.addObject("rstCnt", 2);
 			mv.addObject("map", commandMap.getMap());
+			mv.addObject("businesstypeList", businesstypeList);
 		}catch(Exception e){
 			System.out.println(this.getClass().getName()+".personalJoin.do Exception!!! \n"+e.toString());
 		}
@@ -416,12 +421,17 @@ public class NetfuMemberController {
 
 		//(begin) 2021.01.04 by s.yoo
 		try {
+			// 기업회원 가입  - 업종 ( netfu_cate : type = 'job')
+			commandMap.put("type", "businesstype");
+			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+
 			//Login 사용자의 회원정보 전달.
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));
 			Map<String, Object> mapResult = netfuMemberService.selectNetfuMemberMap(commandMap.getMap());
 		
 			mv.addObject("rstCnt", 2);
 			mv.addObject("map", mapResult);
+			mv.addObject("businesstypeList", businesstypeList);
 		}catch(Exception e){
 			log.info(this.getClass().getName()+".updateMyInfo Exception !!!!! \n"+e.toString());
 		}

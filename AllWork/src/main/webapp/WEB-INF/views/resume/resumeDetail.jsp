@@ -375,12 +375,13 @@
 					<p>${resumeMap.inidIntroduce }</p>
 				</div>
 			</div>
-			<c:if test="${SE_USER_TYPE == 'company' }">
+			<c:if test="${SE_USER_TYPE == 'company' || SE_LOGIN_ID eq resumeMap.uid }">
 				<ul class="buttons">
 					<ul>
 						<c:if test="${resumeMap.portfolioFile != null and resumeMap.portfolioFile.length() > 0 }">
 							<li><a href="/allwork/peg/${resumeMap.portfolioFile}" title="포트폴리오 다운로드">포트폴리오 다운로드</a></li>
 						</c:if>
+					<c:if test="${SE_USER_TYPE == 'company'}">
 						<c:if test="${scrapCnt <= 0 }">
 							<li id="scrapBtn"><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>
 						</c:if>
@@ -391,6 +392,7 @@
 						<c:if test='${SE_SERVICE2 eq "Y" and SE_VIEW_COUNT > 0 and resumeMap.paidResume != 1}'>
 							<li id="pay_info" class="pay_info"><a href="javascript:payInfoPopup('${SE_LOGIN_ID }', '${resumeMap.no}');" title="유료열람서비스 사용">유료열람서비스 사용</a></li>
 						</c:if>
+					</c:if>
 
 					</ul>
 				</ul>

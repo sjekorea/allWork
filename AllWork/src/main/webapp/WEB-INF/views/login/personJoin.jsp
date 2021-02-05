@@ -190,6 +190,18 @@
 								</tr>
 
 									<tr>
+										<th>직무<span class="necessary">*</span></th>
+										<td>
+											<select id="bizCategory" name="bizCategory">
+												<option value="">-- 직무 선택 --</option>
+												<c:forEach var="result" items="${businesstypeList}" varStatus="status">
+													<option value="${result.code}">${result.name}</option>
+												</c:forEach>
+											</select>
+										</td>
+									</tr>
+
+									<tr>
 										<th>성별<span class="necessary">*</span></th>
 										<td>
 											<span class="male">&nbsp;<input id="man" type="radio" name="sex" value="man" checked="checked"/><label for="man">남자</label></span>
@@ -561,6 +573,11 @@
 		}
 		var birth = $("#year").val() + "-" + $("#month").val() + "-" + $("#day").val();
 		
+		if(checkNull($("#bizCategory").val())){
+			alertAndFocus("직무를 선택하세요.", $("#bizCategory"));
+			return;
+		}
+
 		var sex = $("input[name=sex]:checked").val();
 		if(checkNull(sex)){
 			alertAndFocus("성별을 선택하세요.", $("#man"));
