@@ -201,9 +201,12 @@ public class CompanyController {
 			
 			commandMap.put("pCode", "");
 			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
-			commandMap.put("type", "job");
-			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
-			
+			//commandMap.put("type", "job");
+			//List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			commandMap.put("pCode", "");
+			commandMap.put("incOldCode", 0);
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
+
 			// 산업별 목록  ( netfu_cate : type = 'area_job' )
 			commandMap.put("type", "area_job");
 			List<Map<String, Object>> areaJobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
@@ -339,9 +342,12 @@ public class CompanyController {
 			
 			commandMap.put("pCode", "");
 			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
-			commandMap.put("type", "job");
-			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
-			
+			//commandMap.put("type", "job");
+			//List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			commandMap.put("pCode", "");
+			commandMap.put("incOldCode", 0);
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
+
 			// 산업별 목록  ( netfu_cate : type = 'area_job' )
 			commandMap.put("type", "area_job");
 			List<Map<String, Object>> areaJobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
@@ -482,8 +488,10 @@ public class CompanyController {
 
 		try {
 			// 기업회원 가입  - 업종 ( netfu_cate : type = 'job')
-			commandMap.put("type", "businesstype");
-			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			//commandMap.put("type", "businesstype");
+			commandMap.put("pCode", "");
+			commandMap.put("incOldCode", 0);
+			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
 			
 			// 기업회원 가입  - 상장여부 ( netfu_cate : type = 'biz_list')
 			commandMap.put("type", "biz_list");
@@ -571,8 +579,10 @@ public class CompanyController {
 			}
 			
 			// 기업회원 가입  - 업종 ( netfu_cate : type = 'job')
-			commandMap.put("type", "businesstype");
-			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			//commandMap.put("type", "businesstype");
+			commandMap.put("pCode", "");
+			commandMap.put("incOldCode", 0);
+			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
 			
 			// 기업회원 가입  - 상장여부 ( netfu_cate : type = 'biz_list')
 			commandMap.put("type", "biz_list");

@@ -88,13 +88,13 @@
 									<tr>
 										<th>직무<span class="necessary">*</span></th>
 										<td>
-											<select id="bizType1" name="bizType1" title="1차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'bizType2', true, true);">
+											<select id="bizType1" name="bizType1" title="1차직무선택" onchange="javascript:getCodeJobTypeAllListAjax('job', this, '2차직무선택', 'bizType2', true, true);">
 												<option value="">1차직무선택</option>
 												<c:forEach var="result" items="${jobList}" varStatus="status">
 													<option value="${result.code}">${result.name}</option>
 												</c:forEach>
 											</select>
-											<select id="bizType2" name="bizType2" title="2차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'bizType3', true, true);">
+											<select id="bizType2" name="bizType2" title="2차직무선택" onchange="javascript:getCodeJobTypeAllListAjax('job', this, '3차직무선택', 'bizType3', true, true);">
 												<option value="">2차직무선택</option>
 											</select>
 											<select id="bizType3" name="bizType3" title="3차직무선택">
@@ -482,12 +482,12 @@
 			// 모집 업종
 			if(!checkNull("${recruitMap.bizType1}")){
 				$("#bizType1").val("${recruitMap.bizType1}");
-				getNetfuCateListForSelect('job', $("#bizType1"), '2차직무선택', 'bizType2', false, true);
+				getCodeJobTypeAllListAjax('job', $("#bizType1"), '2차직무선택', 'bizType2', false, true);
 			}
 			
 			if(!checkNull("${recruitMap.bizType2}")){
 				$("#bizType2").val("${recruitMap.bizType2}");
-				getNetfuCateListForSelect('job', $("#bizType2"), '3차직무선택', 'bizType3', false, true);
+				getCodeJobTypeAllListAjax('job', $("#bizType2"), '3차직무선택', 'bizType3', false, true);
 			}
 			
 			if(!checkNull("${recruitMap.bizType3}")){
@@ -497,12 +497,12 @@
 			if(!checkNull("${recruitMap.bizType4}")){
 				appendItem("job");
 				$("#bizType4").val("${recruitMap.bizType4}");
-				getNetfuCateListForSelect('job', $("#bizType4"), '2차직무선택', 'bizType5', false, true);
+				getCodeJobTypeAllListAjax('job', $("#bizType4"), '2차직무선택', 'bizType5', false, true);
 			}
 			
 			if(!checkNull("${recruitMap.bizType5}")){
 				$("#bizType5").val("${recruitMap.bizType5}");
-				getNetfuCateListForSelect('job', $("#bizType5"), '3차직무선택', 'bizType6', false, true);
+				getCodeJobTypeAllListAjax('job', $("#bizType5"), '3차직무선택', 'bizType6', false, true);
 			}
 			
 			if(!checkNull("${recruitMap.bizType6}")){
@@ -512,12 +512,12 @@
 			if(!checkNull("${recruitMap.bizType7}")){
 				appendItem("job");
 				$("#bizType7").val("${recruitMap.bizType7}");
-				getNetfuCateListForSelect('job', $("#bizType7"), '2차직무선택', 'bizType8', false, true);
+				getCodeJobTypeAllListAjax('job', $("#bizType7"), '2차직무선택', 'bizType8', false, true);
 			}
 			
 			if(!checkNull("${recruitMap.bizType8}")){
 				$("#bizType8").val("${recruitMap.bizType8}");
-				getNetfuCateListForSelect('job', $("#bizType8"), '3차직무선택', 'bizType9', false, true);
+				getCodeJobTypeAllListAjax('job', $("#bizType8"), '3차직무선택', 'bizType9', false, true);
 			}
 			
 			if(!checkNull("${recruitMap.bizType9}")){
@@ -769,10 +769,10 @@
 				trHtml += "<tr id='job'>";
 				trHtml += "<th></th>";
 				trHtml += "<td>";
-				trHtml += "<select id='bizType"+((appendNum*3)+1)+"' name='bizType"+((appendNum*3)+1)+"' onchange=\"javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'bizType"+((appendNum*3)+2)+"', true, true);\">";
+				trHtml += "<select id='bizType"+((appendNum*3)+1)+"' name='bizType"+((appendNum*3)+1)+"' onchange=\"javascript:getCodeJobTypeAllListAjax('job', this, '2차직무선택', 'bizType"+((appendNum*3)+2)+"', true, true);\">";
 				trHtml += "<option value=''>1차직무선택</option>\n";
 				trHtml += "</select>\n";
-				trHtml += "<select id='bizType"+((appendNum*3)+2)+"' name='bizType"+((appendNum*3)+2)+"' onchange=\"javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'bizType"+((appendNum*3)+3)+"', true, true);\">";
+				trHtml += "<select id='bizType"+((appendNum*3)+2)+"' name='bizType"+((appendNum*3)+2)+"' onchange=\"javascript:getCodeJobTypeAllListAjax('job', this, '3차직무선택', 'bizType"+((appendNum*3)+3)+"', true, true);\">";
 				trHtml += "<option value=''>2차직무선택</option>\n";
 				trHtml += "</select>\n";
 				trHtml += "<select id='bizType"+((appendNum*3)+3)+"' name='bizType"+((appendNum*3)+3)+"' >";

@@ -29,6 +29,42 @@ function getNetfuCateListForSelect(type, pObj, allTitle, selectObjId, loadingFla
 	
 }
 
+
+function getCodeJobTypeAllListAjax(type, pObj, allTitle, selectObjId, loadingFlag, allFlag){
+	
+	if(loadingFlag) loadingOn();
+	
+	var pCode = (pObj != null && pObj != "") ? $(pObj).val() : "";
+			
+	var callback = function(data){
+		
+		var selectObj = $("#"+selectObjId);
+		
+		$(selectObj).empty();
+		
+		if(allFlag) $(selectObj).append("<option value=''>"+allTitle+"</option>");
+		
+		if (data == null || data.list == null || data.list.length < 1) {
+			var option = $("<option value=all>전체</option>");
+			$(selectObj).append(option);			
+		} else {
+			for(var count = 0 ; count < data.list.length ; count++){
+				var option = $("<option value="+data.list[count].code+">"+data.list[count].name+"</option>");
+				$(selectObj).append(option);
+			}			
+		}
+		
+		if(loadingFlag) loadingOff();
+		
+	};
+	var param = {
+				type : type
+				, pCode : pCode
+			};
+	ajaxNonAsync('post', '/getCodeJobTypeAllListAjax.ajax', param, callback);
+	
+}
+
 function getNetfuCateListForSelectUsingSelectObj(type, pObj, allTitle, selectObj, loadingFlag, allFlag){
 
 	if(loadingFlag) loadingOn();
@@ -117,7 +153,13 @@ function getNetfuCateListForUl(type, pCode, appendObjId, selfId, loadingFlag){
 	var param = {
 				type : type
 				, pCode : pCode
+				, incOldCode: 1
 			};
+	if (selfId == "job2" || selfId == "job3") {
+		//직무코드 처리.
+		ajax('post', '/getCodeJobTypeAllListAjax.ajax', param, callback);
+		return;
+	}
 	ajax('post', '/getCodeListAjax.ajax', param, callback);
 	
 }

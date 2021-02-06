@@ -97,9 +97,12 @@ public class NetfuMyServiceController {
 			
 			commandMap.put("pCode", "");
 			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
-			commandMap.put("type", "job");
-			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
-			
+			//commandMap.put("type", "job");
+			//List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			commandMap.put("pCode", "");
+			commandMap.put("incOldCode", 1);
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
+
 			// 지역별  ( netfu_cate : type ='area' )
 			commandMap.put("type", "area");
 			List<Map<String, Object>> areaList = netfuCateService.selectNetfuCateList(commandMap.getMap());
@@ -201,9 +204,12 @@ public class NetfuMyServiceController {
 			
 			commandMap.put("pCode", "");
 			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
-			commandMap.put("type", "job");
-			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
-			
+			//commandMap.put("type", "job");
+			//List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			commandMap.put("pCode", "");
+			commandMap.put("incOldCode", 1);
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
+
 			// 지역별  ( netfu_cate : type ='area' )
 			commandMap.put("type", "area");
 			List<Map<String, Object>> areaList = netfuCateService.selectNetfuCateList(commandMap.getMap());

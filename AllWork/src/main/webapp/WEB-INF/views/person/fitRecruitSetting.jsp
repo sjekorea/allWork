@@ -25,13 +25,13 @@
 								<tr>
 									<th>모집업종</th>
 									<td>
-										<select id="job1" name="job1" title="1차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'job2', true, true);">
+										<select id="job1" name="job1" title="1차직무선택" onchange="javascript:getCodeJobTypeAllListAjax('job', this, '2차직무선택', 'job2', true, true);">
 											<option value="">1차직무선택</option>
 											<c:forEach var="result" items="${jobList}" varStatus="status">
 												<option value="${result.code}">${result.name}</option>
 											</c:forEach>
 										</select>
-										<select id="job2" name="job2" title="2차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'job3', true, true);">
+										<select id="job2" name="job2" title="2차직무선택" onchange="javascript:getCodeJobTypeAllListAjax('job', this, '3차직무선택', 'job3', true, true);">
 											<option value="">2차직무선택</option>
 										</select>
 										<select id="job3" name="job3" title="3차직무선택">
@@ -173,12 +173,12 @@
 			
 			if(!checkNull("${msMap.job1}")){
 				$("#job1").val("${msMap.job1}");
-				getNetfuCateListForSelect('job', $("#job1"), '2차직무선택', 'job2', false, true);
+				getCodeJobTypeAllListAjax('job', $("#job1"), '2차직무선택', 'job2', false, true);
 			}
 			
 			if(!checkNull("${msMap.job2}")){
 				$("#job2").val("${msMap.job2}");
-				getNetfuCateListForSelect('job', $("#job2"), '3차직무선택', 'job3', false, true);
+				getCodeJobTypeAllListAjax('job', $("#job2"), '3차직무선택', 'job3', false, true);
 			}
 			
 			if(!checkNull("${msMap.job3}")){
@@ -188,12 +188,12 @@
 			if(!checkNull("${msMap.job4}")){
 				appendItem("job");
 				$("#job4").val("${msMap.job4}");
-				getNetfuCateListForSelect('job', $("#job4"), '2차직무선택', 'job5', false, true);
+				getCodeJobTypeAllListAjax('job', $("#job4"), '2차직무선택', 'job5', false, true);
 			}
 			
 			if(!checkNull("${msMap.job5}")){
 				$("#job5").val("${msMap.job5}");
-				getNetfuCateListForSelect('job', $("#job5"), '3차직무선택', 'job6', false, true);
+				getCodeJobTypeAllListAjax('job', $("#job5"), '3차직무선택', 'job6', false, true);
 			}
 			
 			if(!checkNull("${msMap.job6}")){
@@ -203,12 +203,12 @@
 			if(!checkNull("${msMap.job7}")){
 				appendItem("job");
 				$("#job7").val("${msMap.job7}");
-				getNetfuCateListForSelect('job', $("#job7"), '2차직무선택', 'job8', false, true);
+				getCodeJobTypeAllListAjax('job', $("#job7"), '2차직무선택', 'job8', false, true);
 			}
 			
 			if(!checkNull("${msMap.job8}")){
 				$("#job8").val("${msMap.job8}");
-				getNetfuCateListForSelect('job', $("#job8"), '3차직무선택', 'job9', false, true);
+				getCodeJobTypeAllListAjax('job', $("#job8"), '3차직무선택', 'job9', false, true);
 			}
 			
 			if(!checkNull("${msMap.job9}")){
@@ -311,10 +311,10 @@
 				trHtml += "<tr id='job'>";
 				trHtml += "<th></th>";
 				trHtml += "<td>";
-				trHtml += "<select id='job"+((appendNum*3)+1)+"' name='job"+((appendNum*3)+1)+"' title='1차직무선택' onchange=\"javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'job"+((appendNum*3)+2)+"', true, true);\">";
+				trHtml += "<select id='job"+((appendNum*3)+1)+"' name='job"+((appendNum*3)+1)+"' title='1차직무선택' onchange=\"javascript:getCodeJobTypeAllListAjax('job', this, '2차직무선택', 'job"+((appendNum*3)+2)+"', true, true);\">";
 				trHtml += "		<option value=''>1차직무선택</option>";
 				trHtml += "</select>\n";
-				trHtml += "<select id='job"+((appendNum*3)+2)+"' name='job"+((appendNum*3)+2)+"' title='2차직무선택' onchange=\"javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'job"+((appendNum*3)+3)+"', true, true);\">";
+				trHtml += "<select id='job"+((appendNum*3)+2)+"' name='job"+((appendNum*3)+2)+"' title='2차직무선택' onchange=\"javascript:getCodeJobTypeAllListAjax('job', this, '3차직무선택', 'job"+((appendNum*3)+3)+"', true, true);\">";
 				trHtml += "		<option value=''>2차직무선택</option>";
 				trHtml += "</select>\n";
 				trHtml += "<select id='job"+((appendNum*3)+3)+"' name='job"+((appendNum*3)+3)+"' title='3차직무선택'>";

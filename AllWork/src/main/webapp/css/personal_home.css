@@ -48,8 +48,8 @@ body{font-family:"NotoSansKR-Regular";background-color:#}
 #recommendPart{width:100%;margin-top: 30px;overflow: hidden;}
 #recommendPart h4{width:100%;padding-bottom:10px;}
 #recommendPart ul{width:100%;height:140px;}
-#recommendPart li{width:200px;height:140px;float:left;border: 1px solid #ccc;}
-#recommendPart li:last-child{width:190px;}
+#recommendPart li{width:270px;height:140px;float:left;border: 1px solid #ccc;}
+#recommendPart li:last-child{width:250px;}
 
       #recommendPart li:hover{border: 1px solid #666;}
 

@@ -116,9 +116,12 @@ public class RecruitController {
 			commandMap.put("pCode", "");
 			
 			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
-			commandMap.put("type", "job");
-			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
-			
+			//commandMap.put("type", "job");
+			//List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			commandMap.put("pCode", "");
+			commandMap.put("incOldCode", 1);
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
+
 			// 산업별 목록  ( netfu_cate : type = 'area_job' )
 			commandMap.put("type", "area_job");
 			List<Map<String, Object>> areaJobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
@@ -184,9 +187,12 @@ public class RecruitController {
 			commandMap.put("pCode", "");
 			
 			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
-			commandMap.put("type", "job");
-			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
-			
+			//commandMap.put("type", "job");
+			//List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			commandMap.put("pCode", "");
+			commandMap.put("incOldCode", 1);
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
+
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("jobList", jobList);
 			mv.addObject("recruitList", recruitList);
@@ -363,9 +369,12 @@ public class RecruitController {
 			commandMap.put("pCode", "");
 			
 			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
-			commandMap.put("type", "job");
-			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
-			
+			//commandMap.put("type", "job");
+			//List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			commandMap.put("pCode", "");
+			commandMap.put("incOldCode", 1);
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
+
 			// 산업별 목록  ( netfu_cate : type = 'area_job' )
 			commandMap.put("type", "area_job");
 			List<Map<String, Object>> areaJobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
@@ -436,9 +445,12 @@ public class RecruitController {
 			commandMap.put("pCode", "");
 			
 			// 직무별  목록 ( netfu_cate : type = 'job' || 'task_job' )
-			commandMap.put("type", "job");
-			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
-			
+			//commandMap.put("type", "job");
+			//List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			commandMap.put("pCode", "");
+			commandMap.put("incOldCode", 1);
+			List<Map<String, Object>> jobList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
+
 			// 산업별 목록  ( netfu_cate : type = 'area_job' )
 			commandMap.put("type", "area_job");
 			List<Map<String, Object>> areaJobList = netfuCateService.selectNetfuCateList(commandMap.getMap());

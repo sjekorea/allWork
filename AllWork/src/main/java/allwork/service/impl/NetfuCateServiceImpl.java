@@ -26,6 +26,11 @@ public class NetfuCateServiceImpl implements NetfuCateService{
 	}
 
 	@Override
+	public List<Map<String, Object>> selectNetfuCateJobTypeAllList(Map<String, Object> map) throws Exception {
+		return netfuCateDao.selectNetfuCateJobTypeAllList(map);
+	}
+
+	@Override
 	public Map<String, Object> selectNetfuCateMap(Map<String, Object> map) throws Exception {
 		return netfuCateDao.selectNetfuCateMap(map);
 	}

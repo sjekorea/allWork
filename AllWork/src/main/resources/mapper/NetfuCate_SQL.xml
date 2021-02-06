@@ -6,9 +6,40 @@
 		select * from netfu_cate
 		where 1=1
 			AND view = 'yes'
-			and type = #{type}
-			and p_code = IFNULL(#{pCode}, '')
+			AND type = #{type}
+			AND p_code = IFNULL(#{pCode}, '')
 		order by rank
+	</select>
+
+	
+	<select id="selectNetfuCateJobTypeAllList" parameterType="hashmap" resultType="allwork.vo.NetfuCateVo">
+		SELECT
+			code AS code,
+		<choose>
+			<when test="pCode == null || pCode == ''">
+			CASE
+				 WHEN type = 'alba_job' THEN CONCAT(name, '(알바)')
+				 WHEN type = 'area_job' THEN CONCAT(name, '(일반직)')
+				 WHEN type = 'job' THEN CONCAT(name, '(구형 직무/업종)')
+				 ELSE name
+			END AS name
+			</when>
+			<otherwise>
+			name AS name
+			</otherwise>
+		</choose>
+		FROM netfu_cate
+		WHERE  view = 'yes'
+		<choose>
+			<when test="incOldCode != null and incOldCode > 0">
+			AND type IN ('alba_job', 'area_job', 'job')
+			</when>
+			<otherwise>
+			AND type IN ('alba_job', 'area_job')
+			</otherwise>
+		</choose>
+			AND p_code = IFNULL(#{pCode}, '')
+		ORDER BY type DESC, rank ASC
 	</select>
 	
 	

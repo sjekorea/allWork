@@ -93,13 +93,13 @@
 				<c:choose>
 					<c:when test="${recommandRecruitList.size() > 0 }">
 						<c:forEach var="result" items="${recommandRecruitList}" varStatus="status">
-							<c:if test="${status.index < 4 }">
+							<c:if test="${status.index < 3 }">
 								<li>
 									<c:if test="${result.type == 1 }">
 										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.recommend_id }', '', '${result.bizIng }', '');">
 					                    	<div class="descBox">
 					                      		<p class="desc01">${result.name }</p>
-					                      		<p class="desc02">${convert:compByte(result.title, 30, "...")}</p>
+					                      		<p class="desc02">${convert:compByte(result.title, 70, "...")}</p>
 					                     		<span class="desc03">${result.loc }</span>
 					                    	</div>
 					                  	</a>
@@ -109,7 +109,7 @@
 										<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.recommend_id }" target="_blank">
 					                    	<div class="descBox">
 					                      		<p class="desc01">${result.name }</p>
-					                      		<p class="desc02">${convert:compByte(result.title, 30, "...")}</p>
+					                      		<p class="desc02">${convert:compByte(result.title, 70, "...")}</p>
 					                     		<span class="desc03">${result.loc }</span>
 					                    	</div>
 					                  	</a>
@@ -117,7 +117,7 @@
 										<a href="javascript:goOtherDetail('${result.id }');">
 					                    	<div class="descBox">
 					                      		<p class="desc01">${result.name }</p>
-					                      		<p class="desc02">${convert:compByte(result.title, 30, "...")}</p>
+					                      		<p class="desc02">${convert:compByte(result.title, 70, "...")}</p>
 					                     		<span class="desc03">${result.loc }</span>
 					                    	</div>
 					                  	</a>

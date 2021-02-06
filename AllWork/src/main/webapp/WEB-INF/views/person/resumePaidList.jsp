@@ -66,7 +66,7 @@
 											</c:choose>
 										</p>
 										<p class="desc05">
-											<c:if test="${result.refundStatus ne 'cancelled' and ((result.productType ne '3' and result.dateDiff <= 3) or (result.productType eq '3' and result.viewCnt <= 0)) }">
+											<c:if test="${result.refundStatus ne 'cancelled' and ((result.productType ne '3' and result.dateDiff <= 7) or (result.productType eq '3' and result.viewCnt <= 0)) }">
 												<a href="javascript:requestRefund('${result.merchantUid }', '${result.impUid }', '${result.productType }', '${result.payAmount }');">환불요청</a>
 											</c:if>
 										</p>

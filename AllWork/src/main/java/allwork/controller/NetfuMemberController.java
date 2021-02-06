@@ -97,8 +97,10 @@ public class NetfuMemberController {
 		//(begin) 2021.01.05 by s.yoo
 		try {
 			// 기업회원 가입  - 업종 ( netfu_cate : type = 'job')
-			commandMap.put("type", "businesstype");
-			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			//commandMap.put("type", "businesstype");
+			commandMap.put("pCode", "");
+			commandMap.put("incOldCode", 0);
+			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
 
 			//이용약관과 개인정보 취급방침 전달.
 			ApiSiteBasicModel modeSiteBasic = new ApiSiteBasicModel();
@@ -127,8 +129,10 @@ public class NetfuMemberController {
 		
 		try {
 			// 기업회원 가입  - 업종 ( netfu_cate : type = 'job')
-			commandMap.put("type", "businesstype");
-			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			//commandMap.put("type", "businesstype");
+			commandMap.put("pCode", "");
+			commandMap.put("incOldCode", 0);
+			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
 			
 			// 기업회원 가입  - 상장여부 ( netfu_cate : type = 'biz_list')
 			commandMap.put("type", "biz_list");
@@ -422,8 +426,10 @@ public class NetfuMemberController {
 		//(begin) 2021.01.04 by s.yoo
 		try {
 			// 기업회원 가입  - 업종 ( netfu_cate : type = 'job')
-			commandMap.put("type", "businesstype");
-			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateList(commandMap.getMap());
+			//commandMap.put("type", "businesstype");
+			commandMap.put("pCode", "");
+			commandMap.put("incOldCode", 0);
+			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
 
 			//Login 사용자의 회원정보 전달.
 			commandMap.put("loginId", (String)session.getAttribute("SE_LOGIN_ID"));

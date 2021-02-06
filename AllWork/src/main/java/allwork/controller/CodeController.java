@@ -36,5 +36,20 @@ public class CodeController {
 		}
 		return mv;
 	}
+	
+	@RequestMapping(value="/getCodeJobTypeAllListAjax.ajax")
+	public ModelAndView getCodeJobTypeAllListAjax(CommandMap commandMap) {
+		
+		ModelAndView mv = new ModelAndView();
+		try{
+			List<Map<String, Object>> netfuCateList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
+			mv.addObject("list", netfuCateList);
+			mv.addObject("map", commandMap.getMap());
+			mv.setViewName("jsonView");
+		}catch(Exception e){
+			System.out.println(this.getClass().getName()+" getCodeJobTypeAllListAjax.ajax Exception!!!!  "+e.toString());
+		}
+		return mv;
+	}
 
 }

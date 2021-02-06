@@ -160,13 +160,13 @@
 									<tr>
 										<th>직무<span class="necessary">*</span></th>
 										<td>
-											<select id="inidType1" name="inidType1" title="1차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'inidType2', true, true);">
+											<select id="inidType1" name="inidType1" title="1차직무선택" onchange="javascript:getCodeJobTypeAllListAjax('job', this, '2차직무선택', 'inidType2', true, true);">
 												<option value="">1차직무선택</option>
 												<c:forEach var="result" items="${jobList}" varStatus="status">
 													<option value="${result.code}">${result.name}</option>
 												</c:forEach>
 											</select>
-											<select id="inidType2" name="inidType2" title="2차직무선택" onchange="javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'inidType3', true, true);">
+											<select id="inidType2" name="inidType2" title="2차직무선택" onchange="javascript:getCodeJobTypeAllListAjax('job', this, '3차직무선택', 'inidType3', true, true);">
 												<option value="">2차직무선택</option>
 											</select>
 											<select id="inidType3" name="inidType3" title="3차직무선택">
@@ -529,10 +529,10 @@
 				trHtml += "<tr id='job'>";
 				trHtml += "<th></th>";
 				trHtml += "<td>";
-				trHtml += "<select id='inidType"+((appendNum*3)+1)+"' name='inidType"+((appendNum*3)+1)+"' onchange=\"javascript:getNetfuCateListForSelect('job', this, '2차직무선택', 'inidType"+((appendNum*3)+2)+"', true, true);\">";
+				trHtml += "<select id='inidType"+((appendNum*3)+1)+"' name='inidType"+((appendNum*3)+1)+"' onchange=\"javascript:getCodeJobTypeAllListAjax('job', this, '2차직무선택', 'inidType"+((appendNum*3)+2)+"', true, true);\">";
 				trHtml += "<option value=''>1차직무선택</option>\n";
 				trHtml += "</select>\n";
-				trHtml += "<select id='inidType"+((appendNum*3)+2)+"' name='inidType"+((appendNum*3)+2)+"' onchange=\"javascript:getNetfuCateListForSelect('job', this, '3차직무선택', 'inidType"+((appendNum*3)+3)+"', true, true);\">";
+				trHtml += "<select id='inidType"+((appendNum*3)+2)+"' name='inidType"+((appendNum*3)+2)+"' onchange=\"javascript:getCodeJobTypeAllListAjax('job', this, '3차직무선택', 'inidType"+((appendNum*3)+3)+"', true, true);\">";
 				trHtml += "<option value=''>2차직무선택</option>\n";
 				trHtml += "</select>\n";
 				trHtml += "<select id='inidType"+((appendNum*3)+3)+"' name='inidType"+((appendNum*3)+3)+"' >";
