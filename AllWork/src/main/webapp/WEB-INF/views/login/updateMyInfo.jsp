@@ -333,6 +333,9 @@
 			if (listPhone.length > 2)	$("#phone3").val(listPhone[2]);		
 		}
 		
+		//직무
+		$("#bizCategory").val("${map.bizCategory}");
+		
 		//작업결과 Popup.
 	<c:if test="${rstCnt == 1 }">
 		alert("성공적으로 회원정보를 수정했습니다.");
