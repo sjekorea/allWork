@@ -23,7 +23,7 @@
 			, IFNULL(B.company_title, '') AS companyTitle
 			, IFNULL(B.company_initial, '') AS companyInitial
 		FROM
-			recruit_item A LEFT JOIN recruit_company B ON A.target_ser = B.ser
+			recruit_item A JOIN recruit_company B ON A.target_ser = B.ser
 		<where>
 			1 = 1
 			<if test='showAll != "Y"'>

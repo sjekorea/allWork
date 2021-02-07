@@ -27,9 +27,9 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
   #rightPart .list .list_title th{height:50px;line-height: 50px;margin:0;background-color:#EDF0F5;}
   #rightPart .list .desc td{padding:20px 0;}
   #rightPart .list .desc00{width:30px;}
-  #rightPart .list .desc01{width:140px;}
+  #rightPart .list .desc01{width:180px;}
   #rightPart .list .desc01 .fa-heart{color:#ddd;}
-  #rightPart .list .desc02{width:340px;}
+  #rightPart .list .desc02{width:300px;}
   #rightPart .list .desc03{width:100px;}
   #rightPart .list .desc04{width:100px;}
 

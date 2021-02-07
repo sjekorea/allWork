@@ -109,11 +109,6 @@
 	});
 	
 	function goBack() {
-		//불편사항 신고 및 접수
-		<c:if test="${boardCode == 'netfu_44304_38055' }">
-			location.href = "/noticeList.do";
-		</c:if>
-		
 		//게시판
 		<c:if test="${boardCode == 'netfu_41549_84812' or boardCode == 'netfu_44304_38055' }">
 			if ($("#id").val() > 0) {
@@ -160,6 +155,7 @@
 				, ref: 0
 				, replyReq: 0
 				, replyLevel: 0
+				, view: 'yes'
 			};
 		if (id > 0) {
 			ajax('post', '/boardUpdateProcess.ajax', param, callback);

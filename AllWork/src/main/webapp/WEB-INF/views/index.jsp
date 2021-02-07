@@ -20,7 +20,7 @@
 					<c:if test="${result.type == 'head' }">
 						<li class="headhunting">
 							<a href="/headhuntList.do" title="기업회원등록공고">
-							<span class="desc00">헤드헌팅</span><span class="desc01">${result.bizMen}명</span>
+							<span class="desc00">헤드헌팅</span><span class="desc01">${result.bizMen}</span>
 					</c:if>
 					<c:if test="${result.type == 'recruit' }">
 						<li class="regular">
@@ -153,7 +153,7 @@
 							<div class="descBox">
 								<p class="desc01">${result.companyInitial }사</p>
 								<p class="desc02">${convert:compByte(result.recruitContents, 70, "...")}</p>
-								<span class="desc03">${result.men }명</span>
+								<span class="desc03">${result.men }</span>
 								<span class="desc04">
 									${result.placeWork }
 								</span><span class="desc05">${convert:getEndCond4Index(result.bizIng, result.bizEndType, result.bizEndDay)}</span>

@@ -86,6 +86,9 @@
 		case "netfu_92829_39479":		//FAQ.
 			strUrl = "/faqList.do";
 			break;
+		case "netfu_44304_38055":		//불편 및 신고사항 접수.
+			strUrl = "/customerClaim.do";
+			break;
 		case "netfu_94498_34711":		//자료실.
 			strUrl = "/libraryList.do";
 			break;

@@ -37,7 +37,7 @@
 				FROM recruit_company AS a, recruit_item AS b
 				WHERE 1=1
 					and a.prs='P' AND b.prs='P' AND a.ser=b.target_ser 
-					and date_req BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+					and date_req BETWEEN DATE_ADD(NOW(),INTERVAL - 2 MONTH ) AND NOW()
 
 				UNION ALL
 				
@@ -50,7 +50,7 @@
 				where 1=1
 					and nic.biz_ing = 'yes'
 					and (nic.biz_jobfrom LIKE '%netfu_34537_33276%' OR nic.biz_jobfrom LIKE '%freelancer%')
-					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 2 MONTH ) AND NOW()
 					
 				UNION ALL
 				
@@ -63,7 +63,7 @@
 				where 1=1
 					and nic.biz_ing = 'yes'
 					and (nic.biz_jobfrom LIKE '%netfu_34537_33276%' OR nic.biz_jobfrom LIKE '%arbeit%')
-					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 2 MONTH ) AND NOW()
 					
 				UNION ALL
 				
@@ -76,7 +76,7 @@
 				where 1=1
 					and nic.biz_ing = 'yes'
 					and (nic.biz_jobfrom LIKE '%netfu_48782_57525%' OR nic.biz_jobfrom LIKE '%netfu_85884_14481%')
-					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 2 MONTH ) AND NOW()
 		) aa
 		order by rand() limit 6
 	</select>
@@ -96,7 +96,7 @@
 				where 1=1
 					and nic.biz_ing = 'yes'
 					and (nic.biz_jobfrom LIKE '%netfu_34537_33276%' OR nic.biz_jobfrom LIKE '%freelancer%')
-					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 2 MONTH ) AND NOW()
 					and nic.uid in (
 										select uid from netfu_member 
 										where service1_flag = 'Y' and service1_end_date >= DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
@@ -113,7 +113,7 @@
 				where 1=1
 					and nic.biz_ing = 'yes'
 					and (nic.biz_jobfrom LIKE '%netfu_34537_33276%' OR nic.biz_jobfrom LIKE '%arbeit%')
-					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 2 MONTH ) AND NOW()
 					and nic.uid in (
 										select uid from netfu_member 
 										where service1_flag = 'Y' and service1_end_date >= DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
@@ -130,7 +130,7 @@
 				where 1=1
 					and nic.biz_ing = 'yes'
 					and (nic.biz_jobfrom LIKE '%netfu_48782_57525%' OR nic.biz_jobfrom LIKE '%netfu_85884_14481%')
-					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 5 MONTH ) AND NOW()
+					and wdate BETWEEN DATE_ADD(NOW(),INTERVAL - 2 MONTH ) AND NOW()
 					and nic.uid in (
 										select uid from netfu_member 
 										where service1_flag = 'Y' and service1_end_date >= DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
