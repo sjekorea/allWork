@@ -22,6 +22,8 @@
 			, A.link AS link
 			, A.hit AS hit
 			, A.thumbnail AS thumbnail
+			, A.file_id1 AS fileId1
+			, A.file_name1 AS fileName1
 			, IFNULL(B.hphone,'') AS hphone
 			, IFNULL(B.email, '') AS email
 			, IFNULL(C.board_name, '') AS boardName
@@ -84,6 +86,8 @@
 			, A.link AS link
 			, A.hit AS hit
 			, A.thumbnail AS thumbnail
+			, A.file_id1 AS fileId1
+			, A.file_name1 AS fileName1
 			, IFNULL(B.hphone,'') AS hphone
 			, IFNULL(B.email, '') AS email
 			, IFNULL(C.board_name, '') AS boardName

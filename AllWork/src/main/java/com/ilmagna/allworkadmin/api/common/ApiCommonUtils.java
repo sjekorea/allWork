@@ -481,7 +481,7 @@ public class ApiCommonUtils {
 	/**
 	 * 이미지 파일 Upload.
 	 */
-	public static String uploadPhotoFile(String uid, String prefix, MultipartFile photoFile, String filePathPhoto) {
+	public static String uploadPhotoFile(String prefix, String uid, MultipartFile photoFile, String filePathPhoto) {
 		String strFilename = "";
 		try {
 			//Upload 폴더 생성.

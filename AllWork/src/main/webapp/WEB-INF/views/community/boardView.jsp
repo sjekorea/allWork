@@ -57,10 +57,15 @@
 				<!-- 게시판에 대해서만 내가 쓴 글에 대해 수정/삭제 기능 지원 -->
 				<p class="golist"><a href="javascript:goBoardList('${boardCode}', ${map.get("pageNo")});" title="목록">목록보기</a></p>
 				<ul class="buttonPart">
+				<c:if test="${item.fileName1 ne null && item.fileName1 ne ''}">
+					<li><a href="/allwork/peg/${item.fileId1}" title="첨부파일 다운로드">첨부파일 다운로드</a></li>
+				</c:if>
+
 				<c:if test="${(boardCode == 'netfu_41549_84812' or boardCode == 'netfu_44304_38055') and item.uid == SE_LOGIN_ID}">
 					<li><a href="javascript:goBoardEdit('${boardCode}', ${item.id}, ${map.get("pageNo")});" title="수정">수정</a></li>
 					<li><a href="javascript:confirmDelete(${item.id})" title="삭제">삭제</a></li>
 				</c:if>
+				
 				<c:if test="${boardCode == 'netfu_41549_84812' or boardCode == 'netfu_44304_38055'}">
 					<li id="btn_reply"><a href="javascript:goBoardReply();" title="답변달기">답변달기</a></li>
 				</c:if>
@@ -83,20 +88,20 @@
 							<legend>댓글입력</legend>
 							<textarea class="textArea" id="content" name="content"></textarea>
 							<p class="reply_btn"><a href="javascript:goSubmitForm();" title="댓글입력">댓글<br/>입력</a></p>
-							
-							<input type="hidden" id="type" name="type" value="${item.type}" />
-							<input type="hidden" id="subType" name="subType" value="${item.subType}" />
-							<input type="hidden" id="boardCode" name="boardCode" value="${item.boardCode}" />
-							<input type="hidden" id="uid" name="uid" value="${SE_LOGIN_ID }" />
-							<input type="hidden" id="nickName" name="nickName" value="${SE_USER_NM}" />
-							<input type="hidden" id="thumbnail" name="thumbnail" value="" />
-		
-							<input type="hidden" id="id" name="id" value="${item.id}" />
-							<input type="hidden" id="ref" name="ref" value="${item.ref}" />
-							<input type="hidden" id="replyReq" name="replyReq" value="${item.replyReq + 1}" />
-							<input type="hidden" id="replyLevel" name="replyLevel" value="${item.replyLevel + 1}" />
 							</fieldset>
 						</div>
+							
+						<input type="hidden" id="type" name="type" value="${item.type}" />
+						<input type="hidden" id="subType" name="subType" value="${item.subType}" />
+						<input type="hidden" id="boardCode" name="boardCode" value="${item.boardCode}" />
+						<input type="hidden" id="uid" name="uid" value="${SE_LOGIN_ID }" />
+						<input type="hidden" id="nickName" name="nickName" value="${SE_USER_NM}" />
+						<input type="hidden" id="thumbnail" name="thumbnail" value="" />
+		
+						<input type="hidden" id="id" name="id" value="${item.id}" />
+						<input type="hidden" id="ref" name="ref" value="${item.ref}" />
+						<input type="hidden" id="replyReq" name="replyReq" value="${item.replyReq + 1}" />
+						<input type="hidden" id="replyLevel" name="replyLevel" value="${item.replyLevel + 1}" />
 					</form>
 				</div>
 			</div>
