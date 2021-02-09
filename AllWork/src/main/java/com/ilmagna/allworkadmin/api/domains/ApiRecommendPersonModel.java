@@ -28,6 +28,7 @@ public class ApiRecommendPersonModel extends ApiJqGridParams implements Serializ
 	private String strRegDate;
 	private String memo;
 
+	private String inidTitle;			//이력서 제목.
 	private String photo;				//사진.
 	private String inidSecret;			//이력서 비공개.
 	private int paidResume;				//1 = 유료열람서비스를 선택한 경우, 0 = 유료열람서비스를 선택하지 않은 경우.
@@ -216,6 +217,18 @@ public class ApiRecommendPersonModel extends ApiJqGridParams implements Serializ
 	 */
 	public void setMemo(String memo) {
 		this.memo = memo;
+	}
+	/**
+	 * @return the inidTitle
+	 */
+	public String getInidTitle() {
+		return inidTitle;
+	}
+	/**
+	 * @param inidTitle the inidTitle to set
+	 */
+	public void setInidTitle(String inidTitle) {
+		this.inidTitle = inidTitle;
 	}
 	/**
 	 * @return the photo

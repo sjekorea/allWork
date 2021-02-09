@@ -23,6 +23,7 @@
 			, DATE_FORMAT(A.reg_date, '%Y-%m-%d') AS strRegDate
 			, A.memo AS memo
 			, IFNULL(C.inid_secret, "no") AS inidSecret
+			, C.inid_title AS inidTitle
 		FROM 
 			recommend_person A JOIN netfu_item_resume C ON A.uno = C.no AND C.inid_secret <![CDATA[ <> ]]> 'yes', netfu_member B
 		<where>
