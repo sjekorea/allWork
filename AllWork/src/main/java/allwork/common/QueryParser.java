@@ -15,8 +15,9 @@ public class QueryParser {
 
 	
 	//지역정보 전체에 해당하는 Code 목록.
-	private static String g_AreaDomesticAll = "netfu_78942_85121,netfu_73031_43959";
-	private static String[] g_AreaAll = {
+	public static String g_AreaCodeAll = "netfu_78942_85121";
+	public static String g_AreaDomesticAll = g_AreaCodeAll + ",netfu_73031_43959";
+	public static String[] g_AreaAll = {
 			  "netfu_1708_all",		"netfu_17301_37117",	"netfu_18659_23866",	"netfu_2279_12233",	"netfu_32425_73309"
 			, "netfu_39485_61331",	"netfu_4076_all",		"netfu_42819_10883",	"netfu_4374_all",	"netfu_4729_12233"
 			, "netfu_4954_12233",	"netfu_4956_all",		"netfu_5028_all",		"netfu_5271_all",	"netfu_59473_28205"

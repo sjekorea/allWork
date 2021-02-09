@@ -21,7 +21,7 @@ public class AdminBbsGroupSetupService {
 	public AdminBbsGroupSetupModel getBbsGroupSetup(AdminBbsGroupSetupModel model) throws Exception {
 		//return userDAO.getBbsGroupSetup(model);
 		AdminBbsGroupSetupModel item = new AdminBbsGroupSetupModel();		
-		if(model.getId() > 0) {
+		if(model.getId() != null && model.getId() > 0) {
 			List<AdminBbsGroupSetupModel> list = bbsDAO.getBbsGroupSetup(model);
 			
 			if(list != null && list.size() > 0) {

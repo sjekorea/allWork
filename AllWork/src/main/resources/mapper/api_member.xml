@@ -534,6 +534,19 @@
 		</where>
 	</select>
 
+	<select id="getPushMemberList2"
+			parameterType="com.ilmagna.allworkadmin.api.domains.ApiRecruitModel" 
+			resultType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">
+		SELECT
+			A.push_token AS pushToken
+		FROM
+			netfu_member A
+		<where>
+			A.left <![CDATA[ <> ]]> 'yes' AND A.use_push = 'yes' AND A.push_token is not null AND A.push_token <![CDATA[ <> ]]> ''
+			AND ${strQuery}
+		</where>
+	</select>
+
 	<select id="getPushCompanyList"
 			parameterType="com.ilmagna.allworkadmin.api.domains.ApiResumeModel" 
 			resultType="com.ilmagna.allworkadmin.api.domains.ApiMemberModel">

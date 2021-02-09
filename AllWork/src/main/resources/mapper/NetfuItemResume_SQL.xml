@@ -348,6 +348,7 @@
 			, inid_last_school = #{inidLastSchool}, inid_career = #{inidCareer}, inid_license = #{inidLicense}, inid_languages = #{inidLanguages}
 			, inid_introduce = #{inidIntroduce}, inid_secret = #{inidSecret}
 			, u_wdate = DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+			, j_wdate = DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
 			, service11 = #{service11}, service12 = #{service12}, service13 = #{service13}, service101 = #{service101}, service14 = #{service14}
 			, service15 = #{service15}, service16 = #{service16}, service17 = #{service17}
 			, inid_type7 = #{inidType7}, inid_type8 = #{inidType8}, inid_type9 = #{inidType9}

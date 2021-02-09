@@ -55,7 +55,7 @@ public class ApiRecommendPersonService {
 	public ApiRecommendPersonModel getRecommendPerson(ApiRecommendPersonModel model) throws Exception {
 		//return userDAO.getRecommendPerson(model);
 		ApiRecommendPersonModel item = new ApiRecommendPersonModel();		
-		if(model.getId() > 0) {
+		if(model.getId() != null && model.getId() > 0) {
 			List<ApiRecommendPersonModel> list = recommendDAO.getRecommendPerson(model);
 			
 			if(list != null && list.size() > 0) {

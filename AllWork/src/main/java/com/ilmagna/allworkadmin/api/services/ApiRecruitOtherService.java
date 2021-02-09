@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
 import com.ilmagna.allworkadmin.api.daos.ApiRecruitOtherDAO;
 import com.ilmagna.allworkadmin.api.domains.ApiRecruitOtherModel;
 
@@ -21,7 +22,7 @@ public class ApiRecruitOtherService {
 	public ApiRecruitOtherModel getRecruitOther(ApiRecruitOtherModel model) throws Exception {
 		//return userDAO.getRecruitOther(model);
 		ApiRecruitOtherModel item = new ApiRecruitOtherModel();		
-		if(model.getId() > 0) {
+		if((model.getId() != null && model.getId() > 0) || (!ApiCommonUtils.isNullOrEmpty(model.getWantedAuthNo()))) {
 			List<ApiRecruitOtherModel> list = recruitDAO.getRecruitOther(model);
 			
 			if(list != null && list.size() > 0) {

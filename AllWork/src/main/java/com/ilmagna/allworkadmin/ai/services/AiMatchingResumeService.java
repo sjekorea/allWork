@@ -74,6 +74,7 @@ public class AiMatchingResumeService {
 								strBizIng = (String) recruitMap.get("bizIng");								
 								if (recruitMap == null || recruitMap.isEmpty()) continue;
 							} else if (obj.getType() == 2) {
+								/*
 								//기타 채용정보 ID 추출.
 								CommandMap commandMap = new CommandMap();
 								commandMap.put("wantedAuthNo", itemData.getData().get(j).getRecommend_id());
@@ -84,6 +85,7 @@ public class AiMatchingResumeService {
 								}
 								if (nID < 1) continue;
 								itemData.getData().get(j).setId(nID);
+								*/
 							}
 							itemData.getData().get(j).setBizIng(strBizIng);
 

@@ -112,7 +112,7 @@
 							</tr>
 							<tr>
 								<th>등록일</th>
-								<td>등록일: ${recruitMap.wdate }, 최종수정일: ${recruitMap.uWdate }</td>
+								<td>등록일: ${recruitMap.wdate }, 최종수정일: ${recruitMap.jWdate }</td>
 							</tr>
 							<tr>
 								<th>공고제목</th>

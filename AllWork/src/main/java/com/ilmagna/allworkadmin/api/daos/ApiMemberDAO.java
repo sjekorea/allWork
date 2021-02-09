@@ -30,6 +30,11 @@ public class ApiMemberDAO extends AbstractDAO {
 	}
 
 	@SuppressWarnings("unchecked")
+	public List<ApiMemberModel> getPushMemberList2(ApiRecruitModel model) throws Exception {
+		return (List<ApiMemberModel>) selectList("com.ilmagna.allworkadmin.api.daos.ApiMemberDAO.getPushMemberList2", model);		
+	}
+
+	@SuppressWarnings("unchecked")
 	public List<ApiMemberModel> getPushCompanyList(ApiResumeModel model) throws Exception {
 		return (List<ApiMemberModel>) selectList("com.ilmagna.allworkadmin.api.daos.ApiMemberDAO.getPushCompanyList", model);				
 	}

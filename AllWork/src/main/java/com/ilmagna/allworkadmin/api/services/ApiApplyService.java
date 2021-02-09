@@ -37,7 +37,7 @@ public class ApiApplyService {
 	public ApiApplyModel getApply(ApiResumeService resumeService, ApiRecruitService recruitService, ApiApplyModel model) throws Exception {
 		//return userDAO.getApply(model);
 		ApiApplyModel item = new ApiApplyModel();		
-		if(model.getId() > 0) {
+		if(model.getId() != null && model.getId() > 0) {
 			List<ApiApplyModel> list = applyDAO.getApply(model);
 			
 			if(list != null && list.size() > 0) {

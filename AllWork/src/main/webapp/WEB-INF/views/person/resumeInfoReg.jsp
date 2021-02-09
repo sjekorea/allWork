@@ -543,7 +543,7 @@
 				
 				$("#job").find("tr").eq(appendNum-1).after(trHtml);	
 				
-				getNetfuCateListForSelect("job", "", "1차직무선택", "inidType"+((appendNum*3)+1), true, true);
+				getCodeJobTypeAllListAjax("job", "", "1차직무선택", "inidType"+((appendNum*3)+1), true, true);
 			}
 			
 			

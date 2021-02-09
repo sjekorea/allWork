@@ -37,7 +37,7 @@ public class ApiRecruitItemService {
 		return item;
 		/*
 		ApiRecruitItemModel item = new ApiRecruitItemModel();		
-		if(model.getId() > 0) {
+		if(model.getId() != null && model.getId() > 0) {
 			List<ApiRecruitItemModel> list = headhuntDAO.getRecruitItem(model);
 			
 			if(list != null && list.size() > 0) {

@@ -34,6 +34,7 @@
 						<p class="btnBox"><input id="reset_btn" type="button" name="reset_btn" value="초기화" style="cursor:pointer;"/></p>
 						<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo }"/>
 						<input type="hidden" id="no" name="no" value="" />
+						<input type="hidden" id="wantedAuthNo" name="wantedAuthNo" value="" />
 					</fieldset>
 				</form>
 			</div>	
@@ -61,7 +62,7 @@
 												${result.recruitItem }
 											</a>
 									       	 -->
-											<a href="javascript:goOtherDetail('${result.ser }');">
+											<a href="javascript:goOtherDetail('${result.wantedAuthNo }');">
 												${result.recruitItem }
 											</a>
 									       	<!-- (end) 2020.12.30 by s.yoo -->
@@ -148,10 +149,10 @@
 	});
 	
 	// 기타 채용정보 상세보기 화면으로 이동.
-	function goOtherDetail(no){
+	function goOtherDetail(wantedAuthNo){
 		loadingOn();
 		
-		$("#no").val(no);
+		$("#wantedAuthNo").val(wantedAuthNo);
 		$("#searchForm").attr("action", "/recruitOtherDetail.do");
 		$("#searchForm").submit();
 	}

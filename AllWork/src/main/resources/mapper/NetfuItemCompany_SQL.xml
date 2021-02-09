@@ -265,7 +265,7 @@
 				, biz_subway, biz_business, biz_men, biz_jobfrom, biz_pay, pay_type, biz_welfare
 				, biz_sex, biz_age, biz_ability, biz_preferential, biz_career, biz_detail
 				, biz_end_day, biz_end_type, biz_method, biz_person, biz_pemail, biz_pphone, biz_pfax
-				, wdate, service1, service2, service3, service4, service5
+				, wdate, u_wdate, j_wdate, service1, service2, service3, service4, service5
 				, service100, service6, service7, service8, service9, service10, service11
 				, biz_paper, biz_form, biz_form_file, biz_type7, biz_type8, biz_type9
 				, sms_send, biz_page, hit, type_r, memo
@@ -286,7 +286,7 @@
 				, CURRENT_TIMESTAMP()
 			</if>
 				, #{bizEndType}, #{bizMethod}, #{bizPerson}, #{bizPemail}, #{bizPphone}, #{bizPfax}
-				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s'), DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s'), DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
 				, #{service1}, #{service2}, #{service3}, #{service4}, #{service5}
 				, #{service100}, #{service6}, #{service7}, #{service8}, #{service9}, #{service10}, #{service11}
 				, #{bizPaper}, #{bizForm}, #{bizFormFile}, #{bizType7}, #{bizType8}, #{bizType9}
@@ -319,6 +319,7 @@
 				, biz_end_type = #{bizEndType}, biz_method = #{bizMethod}, biz_person = #{bizPerson}, biz_pemail = #{bizPemail}
 				, biz_pphone = #{bizPphone}, biz_pfax = #{bizPfax}
 				, u_wdate = DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+				, j_wdate = DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
 				, service1 = #{service1}, service2 = #{service2}, service3 = #{service3}, service4 = #{service4}, service5 = #{service5}
 				, service100 = #{service100}, service6 = #{service6}, service7 = #{service7}, service8 = #{service8}
 				, service9 = #{service9}, service10 = #{service10}, service11 = #{service11}

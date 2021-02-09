@@ -240,6 +240,7 @@ public class AiSearchService {
 				String strEdate = ApiConvertorUtil.getBizEndDay(dataItem.getBizIng(), dataItem.getBiz_end_type(), dataItem.getBiz_end_day());
 				dataItem.setStrEdate(strEdate);
 				
+				/*
 				//기타 채용정보 ID 추출.
 				CommandMap commandMap = new CommandMap();
 				commandMap.put("wantedAuthNo", dataItem.getRecommend_id());
@@ -250,6 +251,7 @@ public class AiSearchService {
 				}
 				if (nID < 1) continue;
 				dataItem.setId(nID);
+				*/
 
 				//채용정보 등록.
 				//dataItem.setId(i);

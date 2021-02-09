@@ -21,7 +21,7 @@ public class ApiRecruitCompanyService {
 	public ApiRecruitCompanyModel getRecruitCompany(ApiRecruitCompanyModel model) throws Exception {
 		//return userDAO.getRecruitCompany(model);
 		ApiRecruitCompanyModel item = new ApiRecruitCompanyModel();		
-		if(model.getId() > 0) {
+		if(model.getId() != null && model.getId() > 0) {
 			List<ApiRecruitCompanyModel> list = recommendDAO.getRecruitCompany(model);
 			
 			if(list != null && list.size() > 0) {

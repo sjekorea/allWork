@@ -21,7 +21,7 @@ public class AdminBbsVocService {
 	public AdminBbsVocModel getBbsVoc(AdminBbsVocModel model) throws Exception {
 		//return userDAO.getBbsVoc(model);
 		AdminBbsVocModel item = new AdminBbsVocModel();		
-		if(model.getId() > 0) {
+		if(model.getId() != null && model.getId() > 0) {
 			List<AdminBbsVocModel> list = bbsDAO.getBbsVoc(model);
 			
 			if(list != null && list.size() > 0) {

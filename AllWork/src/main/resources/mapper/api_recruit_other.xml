@@ -31,6 +31,9 @@
 			<if test='id != null &amp;&amp; id > 0'>
 				AND A.ser = #{id}
 			</if>
+			<if test='wantedAuthNo != null &amp;&amp; wantedAuthNo != ""'>
+				AND A.wantedAuthNo = #{wantedAuthNo}
+			</if>
 			<if test='fromWDate != null &amp;&amp; fromWDate != ""'>
 				AND A.wdate <![CDATA[ >= ]]> #{fromWDate}
 			</if>

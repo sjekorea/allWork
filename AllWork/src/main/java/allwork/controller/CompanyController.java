@@ -22,6 +22,8 @@ import com.ilmagna.allworkadmin.ai.domains.AiMatchingRecruitModel;
 import com.ilmagna.allworkadmin.ai.services.AiMatchingRecruitService;
 import com.ilmagna.allworkadmin.ai.services.AiMatchingResumeService;
 import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
+import com.ilmagna.allworkadmin.api.services.ApiCategoryService;
+import com.ilmagna.allworkadmin.push.domains.PushRequestModel;
 import com.ilmagna.allworkadmin.push.services.FcmPushService;
 
 import allwork.common.CommandMap;
@@ -89,6 +91,9 @@ public class CompanyController {
 	protected AiMatchingRecruitService matchingRecruitService;
 	@Resource(name="aiMatchingResumeService")
 	protected AiMatchingResumeService matchingResumeService;
+
+	@Resource(name="apiCategoryService")
+	protected ApiCategoryService categoryService;
 	//(end) 2020.12.30 by s.yoo
 
    	//(begin) 2021.01.04 by s.yoo
@@ -289,6 +294,7 @@ public class CompanyController {
 			
 			//Push Notification 메시지 전달.
 			try {
+				/*
 				int idRecruit = ((Long) commandMap.get("no")).intValue();
 				//int idRecruit = Integer.parseInt((String) commandMap.get("no"));
 				String nameRecruit = (String) commandMap.get("bizName");
@@ -296,6 +302,9 @@ public class CompanyController {
 				String areaCodeRecruit = (String) commandMap.get("bizArea1");
 				String titleRecruit = (String) commandMap.get("bizTitle");
 				boolean bResult = fcmPushService.sendPushNotificationOnRecruit(fcm_key_loc, idRecruit, nameRecruit, bizTypeCodeRecruit, areaCodeRecruit, titleRecruit);
+				*/
+				PushRequestModel pushRequestModel = PushRequestModel.generateRequestByRecruit(commandMap, categoryService);
+				boolean bResult = fcmPushService.sendPushNotificationOnRecruit2(fcm_key_loc, pushRequestModel);
 				if (!bResult) {
 					log.info(this.getClass().getName()+".registRecruit - Fail to send notificaation !!!!! \n");					
 				}

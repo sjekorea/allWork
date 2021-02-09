@@ -21,7 +21,7 @@ public class ApiRecruitProgressService {
 	public ApiRecruitProgressModel getRecruitProgress(ApiRecruitProgressModel model) throws Exception {
 		//return userDAO.getRecruitProgress(model);
 		ApiRecruitProgressModel item = new ApiRecruitProgressModel();		
-		if(model.getId() > 0) {
+		if(model.getId() != null && model.getId() > 0) {
 			List<ApiRecruitProgressModel> list = recommendDAO.getRecruitProgress(model);
 			
 			if(list != null && list.size() > 0) {

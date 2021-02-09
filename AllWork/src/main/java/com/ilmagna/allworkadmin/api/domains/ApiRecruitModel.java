@@ -101,6 +101,8 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 	private String memberUid;					//이력서 등록현황을 검사하는 개인회원 사용자 ID.
 	private Integer resumeCount;				//사용자가 등록한 이력서 개수.
 	
+	private String strQuery;					//Push Notification에서 사용하는 Query.
+	
 	private List<Integer> ids;
 	private String sidx;	//sorting field.
 	private String sord;	//asc 또는 desc
@@ -1149,6 +1151,18 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 	 */
 	public void setResumeCount(Integer resumeCount) {
 		this.resumeCount = resumeCount;
+	}
+	/**
+	 * @return the strQuery
+	 */
+	public String getStrQuery() {
+		return strQuery;
+	}
+	/**
+	 * @param strQuery the strQuery to set
+	 */
+	public void setStrQuery(String strQuery) {
+		this.strQuery = strQuery;
 	}
 	/**
 	 * @return the ids

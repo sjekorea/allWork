@@ -25,6 +25,7 @@ import com.ilmagna.allworkadmin.api.domains.ApiRecruitModel;
 import com.ilmagna.allworkadmin.api.domains.ApiResumeModel;
 import com.ilmagna.allworkadmin.api.services.ApiMemberService;
 import com.ilmagna.allworkadmin.push.domains.PushItemModel;
+import com.ilmagna.allworkadmin.push.domains.PushRequestModel;
 
 import allwork.common.CommandMap;
 
@@ -95,6 +96,61 @@ public class FcmPushService {
 			modelPushItem.setRef_id(id);
 			modelPushItem.setName(name);
 			modelPushItem.setTitle(title);
+			modelPushItem.setWdate(strToday);
+			modelPushItem.setWtimestamp(calToday.getTime().getTime());
+
+			//Push Notification 전송.
+			bResult = send_Multi_FCMtoken(fcm_key_loc, listToken, modelPushItem);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bResult;
+	}
+
+	public boolean sendPushNotificationOnRecruit2(String fcm_key_loc, PushRequestModel pushRequestModel) {
+		boolean bResult = false;
+		try {
+			//전송조건 확인.
+			//	1. 직무/업무 또는 지역이 설정되지 않은 경우에는 Push Notification을 발송하지 않는다.
+			if (pushRequestModel.getListBizType().size() < 1 || pushRequestModel.getListArea().size() < 1) return true;
+
+			//DB Query 생성.
+			String strQuery = "A.biz_category IN (";
+			for (int i = 0; i < pushRequestModel.getListBizType().size(); i++) {
+				String strBizTypeCode = pushRequestModel.getListBizType().get(i);
+				if (i > 0) strQuery += ", ";
+				strQuery += "'" + strBizTypeCode + "'";
+			}
+			strQuery += ") AND (";
+			for (int i = 0; i < pushRequestModel.getListArea().size(); i++) {
+				String strBizTypeCode = pushRequestModel.getListArea().get(i);
+				if (i > 0) strQuery += " OR ";
+				strQuery += "A.address1 LIKE '" + strBizTypeCode + "%'";
+			}
+			strQuery += ")";
+
+			//Push 전송 대상 Token 검색.
+			ApiRecruitModel model = new ApiRecruitModel();
+			model.setStrQuery(strQuery);
+			List<ApiMemberModel> list = memberService.getPushMemberList2(model);
+			if (list == null || list.size() < 1) return true;
+			
+			List<String> listToken = new ArrayList<String>();
+			for (int i = 0; i < list.size(); i++) {
+				listToken.add(list.get(i).getPushToken());
+			}
+
+			//현재날짜와 시각정보 획득.
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Calendar calToday = Calendar.getInstance();
+			String strToday = sdf.format(calToday.getTime());
+
+			//메시지 데이터 구성.
+			PushItemModel modelPushItem = new PushItemModel();
+			modelPushItem.setType(1);
+			modelPushItem.setRef_id(pushRequestModel.getRequestId());
+			modelPushItem.setName(pushRequestModel.getName());
+			modelPushItem.setTitle(pushRequestModel.getTitle());
 			modelPushItem.setWdate(strToday);
 			modelPushItem.setWtimestamp(calToday.getTime().getTime());
 

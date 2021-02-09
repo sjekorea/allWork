@@ -265,7 +265,7 @@
                                 	${result.companyTitle }
                            		</a>
 								 -->
-								<a href="javascript:goOtherDetail('${result.ser }');">
+								<a href="javascript:goOtherDetail('${result.wantedAuthNo }');">
                                 	${result.companyTitle }
                            		</a>
                            	</th>
@@ -275,7 +275,7 @@
 									${result.recruitItem }
 								</a>
 								 -->
-								<a href="javascript:goOtherDetail('${result.ser }');">
+								<a href="javascript:goOtherDetail('${result.wantedAuthNo }');">
 									${result.recruitItem }
 								</a>
 							</td>
@@ -301,6 +301,7 @@
 	<input type="hidden" name="recruitNo" id="recruitNo" value="" />
 	<input type="hidden" name="resumeNo" id="resumeNo" value="" />
 	<input type="hidden" name="leftMenuUrl" id="leftMenuUrl" value="/personSubMenu.do" />
+	<input type="hidden" id="wantedAuthNo" name="wantedAuthNo" value="" />
 </form>
 
 <script type="text/javascript">
@@ -341,10 +342,10 @@
 	}
 	
 	// 기타 채용정보 상세보기 화면으로 이동.
-	function goOtherDetail(no){
+	function goOtherDetail(wantedAuthNo){
 		loadingOn();
 		
-		$("#no").val(no);
+		$("#wantedAuthNo").val(wantedAuthNo);
 		$("#searchForm").attr("action", "/recruitOtherDetail.do");
 		$("#searchForm").submit();
 	}

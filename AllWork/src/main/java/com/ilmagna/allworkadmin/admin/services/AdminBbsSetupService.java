@@ -27,7 +27,7 @@ public class AdminBbsSetupService {
 		return bbsSetupDAO.getBbsSetup(model);
 		/*
 		AdminBbsSetupModel item = new AdminBbsSetupModel();		
-		if(model.getId() > 0) {
+		if(model.getId() != null && model.getId() > 0) {
 			List<AdminBbsSetupModel> list = bbsSetupDAO.getBbsSetup(model);
 			
 			if(list != null && list.size() > 0) {

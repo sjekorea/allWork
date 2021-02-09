@@ -175,6 +175,22 @@ public class ApiMemberService {
 		return listResult;
 	}
 	
+	public List<ApiMemberModel> getPushMemberList2(ApiRecruitModel model) throws Exception {
+		//지역과 직종에 대한 Query가 정의되지 않은경우, 무시.
+		if ( ApiCommonUtils.isNullOrEmpty(model.getStrQuery()) ) {
+			return new ArrayList<ApiMemberModel>();
+		}
+		
+		//return memberDAO.getPushMemberList2(model);
+		List<ApiMemberModel> list = memberDAO.getPushMemberList2(model);
+
+		List<ApiMemberModel> listResult = new ArrayList<ApiMemberModel>();
+		for(int i = 0; i < list.size(); i++) {
+			listResult.add(procDataItem(list.get(i)));
+		}
+		return listResult;
+	}
+	
 	public List<ApiMemberModel> getPushCompanyList(ApiResumeModel model) throws Exception {
 		//지역과 직종이 Null 또는 전체인 항목 제외.
 		if ( (ApiCommonUtils.isNullOrEmpty(model.getInidArea1()) || model.getInidArea1().equalsIgnoreCase("netfu_78942_85121"))
