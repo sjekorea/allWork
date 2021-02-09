@@ -70,8 +70,8 @@
 					<fieldset>
 						<legend>로그인</legend>
 						<div class="tab">
-							<span class="btn_persnal"><input id="persnal_login" type="radio" name="loginType" checked="checked" value="1"/>&nbsp;개인회원</span>
-							<span class="btn_company"><input id="company_login" type="radio" name="loginType" value="2"/>&nbsp;기업회원</span>
+							<span class="btn_persnal"><input id="persnal_login" type="radio" name="loginType" <c:if test="${param.type != 'company'}">checked='checked'</c:if> value="1"/>&nbsp;개인회원</span>
+							<span class="btn_company"><input id="company_login" type="radio" name="loginType" <c:if test="${param.type == 'company'}">checked='checked'</c:if> value="2"/>&nbsp;기업회원</span>
 						</div>
 						<div class="loginBox">
 							<p><input id="loginId" type="text" name="loginId" title="아이디" placeholder="아이디" /></p>
