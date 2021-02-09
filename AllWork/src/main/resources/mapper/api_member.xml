@@ -523,6 +523,7 @@
 			netfu_member A LEFT JOIN netfu_item_resume B ON A.uid = B.uid
 		<where>
 			A.left <![CDATA[ <> ]]> 'yes' AND A.use_push = 'yes' AND A.push_token is not null AND A.push_token <![CDATA[ <> ]]> ''
+			AND A.type = 1
 			<if test='bizArea1 != null &amp;&amp; bizArea1 != "" &amp;&amp; bizArea1 != "netfu_78942_85121"'>
 				AND ( (B.inid_area1 = #{bizArea1} AND B.inid_area2 = #{bizArea2})
 					OR (B.inid_area3 = #{bizArea1} AND B.inid_area4 = #{bizArea2})
@@ -542,7 +543,10 @@
 		FROM
 			netfu_member A
 		<where>
-			A.left <![CDATA[ <> ]]> 'yes' AND A.use_push = 'yes' AND A.push_token is not null AND A.push_token <![CDATA[ <> ]]> ''
+			A.left <![CDATA[ <> ]]> 'yes'
+			AND A.type = 1
+			AND A.use_push = 'yes'
+			AND A.push_token is not null AND A.push_token <![CDATA[ <> ]]> ''
 			AND ${strQuery}
 		</where>
 	</select>
@@ -556,6 +560,7 @@
 			netfu_member A LEFT JOIN netfu_item_company B ON A.uid = B.uid
 		<where>
 			A.left <![CDATA[ <> ]]> 'yes' AND A.use_push = 'yes' AND A.push_token is not null AND A.push_token <![CDATA[ <> ]]> ''
+			AND A.type = 2
 			<if test='inidArea1 != null &amp;&amp; inidArea1 != "" &amp;&amp; inidArea1 != "netfu_78942_85121"'>
 				AND ( (B.biz_area1 = #{inidArea1} AND B.biz_area2 = #{inidArea2})
 					OR (B.biz_area3 = #{inidArea1} AND B.biz_area4 = #{inidArea2})

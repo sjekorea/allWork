@@ -165,7 +165,8 @@ public class ApiMemberService {
 			return new ArrayList<ApiMemberModel>();
 		}
 		
-		//return memberDAO.getPushMemberList(model);
+		return memberDAO.getPushMemberList(model);
+		/*
 		List<ApiMemberModel> list = memberDAO.getPushMemberList(model);
 
 		List<ApiMemberModel> listResult = new ArrayList<ApiMemberModel>();
@@ -173,6 +174,7 @@ public class ApiMemberService {
 			listResult.add(procDataItem(list.get(i)));
 		}
 		return listResult;
+		*/
 	}
 	
 	public List<ApiMemberModel> getPushMemberList2(ApiRecruitModel model) throws Exception {
@@ -181,7 +183,8 @@ public class ApiMemberService {
 			return new ArrayList<ApiMemberModel>();
 		}
 		
-		//return memberDAO.getPushMemberList2(model);
+		return memberDAO.getPushMemberList2(model);
+		/*
 		List<ApiMemberModel> list = memberDAO.getPushMemberList2(model);
 
 		List<ApiMemberModel> listResult = new ArrayList<ApiMemberModel>();
@@ -189,6 +192,7 @@ public class ApiMemberService {
 			listResult.add(procDataItem(list.get(i)));
 		}
 		return listResult;
+		*/
 	}
 	
 	public List<ApiMemberModel> getPushCompanyList(ApiResumeModel model) throws Exception {
@@ -198,7 +202,8 @@ public class ApiMemberService {
 			return new ArrayList<ApiMemberModel>();
 		}
 		
-		//return memberDAO.getPushCompanyList(model);
+		return memberDAO.getPushCompanyList(model);
+		/*
 		List<ApiMemberModel> list = memberDAO.getPushCompanyList(model);
 
 		List<ApiMemberModel> listResult = new ArrayList<ApiMemberModel>();
@@ -206,6 +211,7 @@ public class ApiMemberService {
 			listResult.add(procDataItem(list.get(i)));
 		}
 		return listResult;
+		*/
 	}
 
 }
