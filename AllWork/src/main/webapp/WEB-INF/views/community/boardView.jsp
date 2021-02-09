@@ -53,6 +53,11 @@
 				<div class="descPart">
 					<p>${item.content}</p>
 				</div>
+			<c:if test="${item.fileName1 ne null && item.fileName1 ne ''}">
+				<div class="titlePart">
+					<p class="writer"><span><a href="/allwork/peg/${item.fileId1}" title="첨부파일 다운로드">첨부파일: ${item.fileName1}</a></span></p>
+				</div>
+			</c:if>
 
 				<!-- 게시판에 대해서만 내가 쓴 글에 대해 수정/삭제 기능 지원 -->
 				<p class="golist"><a href="javascript:goBoardList('${boardCode}', ${map.get("pageNo")});" title="목록">목록보기</a></p>

@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.api.client.util.ArrayMap;
 import com.ilmagna.allworkadmin.ai.domains.AiMatchingRecommendationModel;
 import com.ilmagna.allworkadmin.ai.domains.AiMatchingResumeModel;
 import com.ilmagna.allworkadmin.ai.services.AiMatchingRecruitService;
@@ -378,11 +379,39 @@ public class PersonController {
 			List<Map<String, Object>> inidMylskillList = netfuCateService.selectNetfuCateList(commandMap.getMap());
 			
 			ObjectMapper mapper = new ObjectMapper();
-			Map<String, String> resumeEducation = mapper.readValue((String)resumeMap.get("education2"), Map.class);
-			Map<String, String> resumeCareer = mapper.readValue((String)resumeMap.get("career2"), Map.class);
-			Map<String, String> resumeLicense = mapper.readValue((String)resumeMap.get("license2"), Map.class);
-			Map<String, String> resumeLanguage = mapper.readValue((String)resumeMap.get("language2"), Map.class);
-			
+			//Map<String, String> resumeEducation = mapper.readValue((String)resumeMap.get("education2"), Map.class);
+			//Map<String, String> resumeCareer = mapper.readValue((String)resumeMap.get("career2"), Map.class);
+			//Map<String, String> resumeLicense = mapper.readValue((String)resumeMap.get("license2"), Map.class);
+			//Map<String, String> resumeLanguage = mapper.readValue((String)resumeMap.get("language2"), Map.class);
+
+			Map<String, String> resumeCareer = new ArrayMap<String, String>();
+			Map<String, String> resumeEducation = new ArrayMap<String, String>();
+			Map<String, String> resumeLicense = new ArrayMap<String, String>();
+			Map<String, String> resumeLanguage = new ArrayMap<String, String>();
+
+			try {
+				if (resumeMap.get("education2") != null) {
+					String strData = (String)resumeMap.get("education2");
+					if (strData.length() > 0)
+						resumeEducation = mapper.readValue(strData, Map.class);
+				}
+				if (resumeMap.get("education2") != null) {
+					String strData = (String)resumeMap.get("career2");
+					if (strData.length() > 0)
+						resumeCareer = mapper.readValue(strData, Map.class);
+				}
+				if (resumeMap.get("education2") != null) {
+					String strData = (String)resumeMap.get("license2");
+					if (strData.length() > 0)
+						resumeLicense = mapper.readValue(strData, Map.class);
+				}
+				if (resumeMap.get("education2") != null) {
+					String strData = (String)resumeMap.get("language2");
+					if (strData.length() > 0)
+						resumeLanguage = mapper.readValue(strData, Map.class);
+				}
+			} catch(Exception e2) {}
+
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("memberMap", memberMap);
 			mv.addObject("resumeMap", resumeMap);

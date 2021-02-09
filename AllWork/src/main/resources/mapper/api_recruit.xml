@@ -310,6 +310,7 @@
 			, biz_pemail = #{biz_pemail}
 			, biz_pphone = #{biz_pphone}
 			, u_wdate = CURRENT_TIMESTAMP()
+			, j_wdate = CURRENT_TIMESTAMP()
 		WHERE
 			no = #{id}
 			<if test='uid != null &amp;&amp; uid != ""'>

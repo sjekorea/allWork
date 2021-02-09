@@ -338,6 +338,7 @@
 		SET
 			inid_secret = #{inid_secret}
 			, u_wdate = CURRENT_TIMESTAMP()
+			, j_wdate = CURRENT_TIMESTAMP()
 		WHERE
 			no = #{id}
 	</update>
@@ -361,6 +362,7 @@
 			, inid_pay = #{inid_pay}
 			, inid_introduce = #{inid_introduce}
 			, u_wdate = CURRENT_TIMESTAMP()
+			, j_wdate = CURRENT_TIMESTAMP()
 		WHERE
 			no = #{id}
 			<if test='uid != null &amp;&amp; uid != ""'>

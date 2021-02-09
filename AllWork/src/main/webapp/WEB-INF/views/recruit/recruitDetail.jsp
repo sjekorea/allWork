@@ -280,9 +280,7 @@
 					<c:if test="${scrapCnt <= 0 }">
 						<li id="scrapBtn"><a href="javascript:goScrapRegist();" title="스크랩">스크랩</a></li>
 					</c:if>
-					<c:if test="${recruitMap.bizMethodName.contains('온라인')}">
 						<li id="btn_reg_ok" class="reg_ok"><a href="javascript:applyPopup('online');" title="입사지원">온라인입사지원</a></li>
-					</c:if>
 					<!-- 
 					<c:if test="${recruitMap.bizMethodName.contains('이메일')}">
 						<li class="reg_ok"><a href="javascript:applyPopup('email');" title="입사지원">이메일입사지원</a></li>
