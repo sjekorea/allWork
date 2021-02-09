@@ -80,7 +80,7 @@ public class ResumeController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nir.no");
+				commandMap.put("orderField", "nir.u_wdate");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
@@ -197,7 +197,7 @@ public class ResumeController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nir.no");
+				commandMap.put("orderField", "nir.u_wdate");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
@@ -264,7 +264,7 @@ public class ResumeController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nir.no");
+				commandMap.put("orderField", "nir.u_wdate");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
@@ -329,7 +329,7 @@ public class ResumeController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nir.no");
+				commandMap.put("orderField", "nir.u_wdate");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
@@ -393,7 +393,7 @@ public class ResumeController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nir.no");
+				commandMap.put("orderField", "nir.u_wdate");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
@@ -513,7 +513,7 @@ public class ResumeController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nir.no");
+				commandMap.put("orderField", "nir.u_wdate");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));
@@ -786,7 +786,7 @@ public class ResumeController {
 				
 			if("".equals(ConvertUtil.checkNull(commandMap.get("pageNo")))){
 				commandMap.put("pageNo", "1");
-				commandMap.put("orderField", "nir.no");
+				commandMap.put("orderField", "nir.u_wdate");
 				commandMap.put("orderRule", "desc");
 			}
 			commandMap.put("start", pageSize * (Integer.parseInt((String)commandMap.get("pageNo"))-1));

@@ -204,7 +204,7 @@
 							</tr>
 							<tr>
 								<th>등록일</th>
-								<td><p>등록일: ${resumeMap.wdate }, 최종수정일: ${resumeMap.jWdate }</p></td>
+								<td><p>등록일: ${resumeMap.wdate }, 최종수정일: ${resumeMap.uWdate }</p></td>
 							</tr>
 							<tr>
 								<th>이력서 제목</th>

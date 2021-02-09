@@ -110,7 +110,7 @@
 			order by ${orderField} ${orderRule}
 		</if>
 		<if test="orderField == null or orderField == ''">
-			order by nic.biz_ing DESC, nic.no desc
+			order by nic.u_wdate desc
 		</if>
 		limit #{start}, #{pageSize}
 	</select>

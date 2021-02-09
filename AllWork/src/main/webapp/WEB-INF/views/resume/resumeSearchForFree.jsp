@@ -209,7 +209,7 @@
 										<span>${result.inidJobformName }</span><br/>
 										<span>${codeConvert:getPayInfo(result.payType, result.payTypeName, result.inidPayName) }</span>
 									</td>
-									<td class="desc04">${result.jWdate }</td>
+									<td class="desc04">${result.uWdate }</td>
 								</tr>
 							</c:forEach>
 						</c:when>
