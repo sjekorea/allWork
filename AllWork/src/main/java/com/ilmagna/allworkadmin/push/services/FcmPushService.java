@@ -151,6 +151,8 @@ public class FcmPushService {
 			modelPushItem.setRef_id(pushRequestModel.getRequestId());
 			modelPushItem.setName(pushRequestModel.getName());
 			modelPushItem.setTitle(pushRequestModel.getTitle());
+			modelPushItem.setUid(pushRequestModel.getUid());						//발신 사용자 ID.
+
 			modelPushItem.setWdate(strToday);
 			modelPushItem.setWtimestamp(calToday.getTime().getTime());
 
@@ -229,7 +231,7 @@ public class FcmPushService {
 			modelPushItem.setRef_id(Integer.parseInt((String) commandMap.get("fromNo"))); 	//채용공고 ID.
 			modelPushItem.setName((String) commandMap.get("senderName"));					//회사이름.
 			modelPushItem.setTitle((String) commandMap.get("senderTitle"));					//채용공고 제목.
-			modelPushItem.setUid((String) commandMap.get("toUid"));							//수신 사용자 ID.
+			modelPushItem.setUid((String) commandMap.get("uid"));							//발신 사용자 ID.
 
 			//Push 전송 대상 Token 검색.
 			ApiMemberModel modelMember = new ApiMemberModel();

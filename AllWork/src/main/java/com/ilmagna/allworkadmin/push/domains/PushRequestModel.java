@@ -9,10 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
-import org.json.simple.JSONObject;
-
 import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
 import com.ilmagna.allworkadmin.api.common.ApiJqGridParams;
 import com.ilmagna.allworkadmin.api.domains.ApiCategoryModel;
@@ -34,6 +30,8 @@ public class PushRequestModel extends ApiJqGridParams implements Serializable  {
 	private List<String> listBizType;				//직무코드 목록
 	private List<String> listArea;					//근무지 코드 목록 또는 희망근무지 코드 목록.
 
+	private String uid;								//Push 발신자 사용자 ID.
+
 	
 	/**
 	 * 채용공고에 의한 Push Request 정보 생성.
@@ -44,6 +42,7 @@ public class PushRequestModel extends ApiJqGridParams implements Serializable  {
 		PushRequestModel model = new PushRequestModel();
 
 		try {
+			String uid = (String) commandMap.get("uid");
 			int recruitId = ((Long) commandMap.get("no")).intValue();
 			//int recruitId = Integer.parseInt((String) commandMap.get("no"));
 			String nameRecruit = (String) commandMap.get("bizName");
@@ -77,6 +76,7 @@ public class PushRequestModel extends ApiJqGridParams implements Serializable  {
 				if (!ApiCommonUtils.isNullOrEmpty(strAreaName))	listArea.add(strAreaName);
 			}
 			
+			model.setUid(uid);
 			model.setRequestId(recruitId);
 			model.setName(nameRecruit);
 			model.setTitle(titleRecruit);
@@ -218,5 +218,17 @@ public class PushRequestModel extends ApiJqGridParams implements Serializable  {
 	 */
 	public void setListBizType(List<String> listBizType) {
 		this.listBizType = listBizType;
+	}
+	/**
+	 * @return the uid
+	 */
+	public String getUid() {
+		return uid;
+	}
+	/**
+	 * @param uid the uid to set
+	 */
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 }
