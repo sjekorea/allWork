@@ -7,6 +7,15 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72241187-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'UA-72241187-1');
+	</script>
 	<meta charset="utf-8"/>
 	<title> 인사말 </title>
 	<link rel="stylesheet" type="text/css" href="/css/header_main_1.css"/>
