@@ -351,6 +351,9 @@ public class NetfuMemberController {
 	public ModelAndView findIdProcess(CommandMap commandMap, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		try{
+			if (commandMap.get("email") != null)
+				commandMap.put("email", ApiCommonUtils.getPhoneFormatStr((String) commandMap.get("email")));
+			
 			Map<String, Object> mapResult = netfuMemberService.findId(commandMap.getMap());
 			Map<String, Object> memberInfoMap = new HashMap<String, Object>();
 			int rstCnt = 0;
@@ -395,6 +398,9 @@ public class NetfuMemberController {
 		ModelAndView mv = new ModelAndView();
 		try{
 			int rstCnt = 0;
+			
+			if (commandMap.get("email") != null)
+				commandMap.put("email", ApiCommonUtils.getPhoneFormatStr((String) commandMap.get("email")));
 			
 			Map<String, Object> mapResult = netfuMemberService.findPw(commandMap.getMap());
 			if (!mapResult.isEmpty()) {
