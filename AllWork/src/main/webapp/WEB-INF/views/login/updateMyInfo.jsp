@@ -6,9 +6,6 @@
 
 
 <!-- (begin) 2021.01.04 by s.yoo	-->
-<!-- 
-<jsp:include page="/personHeader.do" />
- -->
 <link rel="stylesheet" type="text/css" href="/css/myPage.css"/>
 <c:choose>
 	<c:when test="${SE_LOGIN_STATUS}">
@@ -321,8 +318,14 @@
 		if (birth != null && birth.length > 0) {
 			var listBirth = birth.split("-");
 			if (listBirth.length > 0)	$("#year").val(listBirth[0]);
-			if (listBirth.length > 1)	$("#month").val(listBirth[1]);		
-			if (listBirth.length > 2)	$("#day").val(listBirth[2]);		
+			if (listBirth.length > 1) {
+				listBirth[1] = (listBirth[1].length < 2)? ("0" + listBirth[1]) : ("" + listBirth[1]);
+				$("#month").val(listBirth[1]);		
+			}
+			if (listBirth.length > 2) {
+				listBirth[2] = (listBirth[2].length < 2)? ("0" + listBirth[2]) : ("" + listBirth[2]);
+				$("#day").val(listBirth[2]);		
+			}
 		}
 		
 		var hphone = "${map.hphone}";

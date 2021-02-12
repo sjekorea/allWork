@@ -235,7 +235,7 @@ public class FcmPushService {
 
 			//Push 전송 대상 Token 검색.
 			ApiMemberModel modelMember = new ApiMemberModel();
-			modelMember.setUserId(modelPushItem.getUid());
+			modelMember.setUserId((String) commandMap.get("toUid"));						//수신자 검색.
 			modelMember = memberService.getMember(modelMember);
 			if (modelMember == null || modelMember.getPushToken() == null || modelMember.getPushToken().length() < 1) return true;
 			//System.out.println("push_token = " + modelMember.getPushToken());

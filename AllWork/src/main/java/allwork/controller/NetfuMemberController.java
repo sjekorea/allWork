@@ -483,9 +483,16 @@ public class NetfuMemberController {
 				netfuMemberService.updateMyInfo(commandMap.getMap());
 				rstCnt = 1;
 			}
-				
+			
+			// 기업회원 가입  - 업종 ( netfu_cate : type = 'job')
+			//commandMap.put("type", "businesstype");
+			commandMap.put("pCode", "");
+			commandMap.put("incOldCode", 0);
+			List<Map<String, Object>> businesstypeList = netfuCateService.selectNetfuCateJobTypeAllList(commandMap.getMap());
+
 			mv.addObject("rstCnt", rstCnt);
 			mv.addObject("map", commandMap.getMap());
+			mv.addObject("businesstypeList", businesstypeList);
 		}catch(Exception e){
 			mv.addObject("rstCnt", 0);
 			log.info(this.getClass().getName()+".updateMyInfoProcess Exception !!!!! \n"+e.toString());

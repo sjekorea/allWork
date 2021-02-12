@@ -5,9 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!-- (begin) 2020.12.30 by s.yoo	-->
-<!-- 
-<jsp:include page="/indexHeader.do" />
- -->
 <c:choose>
 	<c:when test="${SE_LOGIN_STATUS}">
 		<c:if test="${SE_USER_TYPE == 'company' }">
