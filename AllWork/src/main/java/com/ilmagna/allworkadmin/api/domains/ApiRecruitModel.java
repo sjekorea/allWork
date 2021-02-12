@@ -50,7 +50,7 @@ public class ApiRecruitModel extends ApiJqGridParams implements Serializable  {
 	private String strAge;
 	private String bizSex;						//성별
 	private String strSex;
-	private String bizAbility;					//학력 - 1 : "고등학교졸업", 2 : "대학졸업(2~3년)", 3 : "대학교졸업(4년)", 4 : "석사", 5 :  "박사", 100 : "학력무관"
+	private String bizAbility;					//학력 - 1 : "고등학교졸업", 2 : "전문학사", 3 : "학사", 4 : "석사", 5 :  "박사", 100 : "학력무관"
 	private String strAbility;
 	private String bizPreferential;				//우대사항
 	private String strPreference;

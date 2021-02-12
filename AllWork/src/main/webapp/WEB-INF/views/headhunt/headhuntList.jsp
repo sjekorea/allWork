@@ -126,7 +126,7 @@
 						</tr>
 						<tr>
 							<td><span class="desc_title">지역</span><span class="desc_desc00">경기 광주시</span></td>
-							<td><span class="desc_title">학력</span><span class="desc_desc00">대학졸업(2,3년)</span></td>
+							<td><span class="desc_title">학력</span><span class="desc_desc00">전문학사</span></td>
 							<td><span class="desc_title">성별</span><span class="desc_desc00">무관</span></td>
 						</tr>
 						<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
@@ -142,7 +142,7 @@
 						</tr>
 						<tr>
 							<td><span class="desc_title">지역</span><span class="desc_desc00">경기 광주시</span></td>
-							<td><span class="desc_title">학력</span><span class="desc_desc00">대학졸업(2,3년)</span></td>
+							<td><span class="desc_title">학력</span><span class="desc_desc00">전문학사</span></td>
 							<td><span class="desc_title">성별</span><span class="desc_desc00">무관</span></td>
 						</tr>
 						<tr>
@@ -168,7 +168,7 @@
 						</tr>
 						<tr>
 							<td><span class="desc_title">지역</span><span class="desc_desc00">경기 광주시</span></td>
-							<td><span class="desc_title">학력</span><span class="desc_desc00">대학졸업(2,3년)</span></td>
+							<td><span class="desc_title">학력</span><span class="desc_desc00">전문학사</span></td>
 							<td><span class="desc_title">성별</span><span class="desc_desc00">무관</span></td>
 						</tr>
 						<tr>

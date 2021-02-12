@@ -239,9 +239,9 @@ public class ResumeEducationModel extends ApiJqGridParams implements Serializabl
 	private String getDegree(int nDegree) {
 		String strDegree = "";
 		
-		if (nDegree == 1) strDegree = "고등학교졸업";
-		else if (nDegree == 2) strDegree = "대학졸업(2~3년)";
-		else if (nDegree == 3) strDegree = "대학교졸업(4년)";
+		if (nDegree == 1) strDegree = "고등학교";
+		else if (nDegree == 2) strDegree = "전문학사";
+		else if (nDegree == 3) strDegree = "학사";
 		else if (nDegree == 4) strDegree = "석사";
 		else if (nDegree == 5) strDegree =  "박사";
 		

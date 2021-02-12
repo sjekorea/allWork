@@ -242,10 +242,10 @@
 										<td>
 											<select id="final_degree" name="final_degree" title="학력 선택">
 												<option value="">학력 선택</option>
-												<option value="100">학력무관</option>
+												<option value="100">기타</option>
 												<option value="1">고등학교졸업</option>
-												<option value="2">대학졸업(2~3년)</option>
-												<option value="3">대학교졸업(4년)</option>
+												<option value="2">전문학사</option>
+												<option value="3">학사</option>
 												<option value="4">석사</option>
 												<option value="5">박사</option>
 												<%-- <c:forEach var="result" items="${jobSchoolList}" varStatus="status">
@@ -261,10 +261,10 @@
 												<input id="lesson_sdate_full" type="date" placeholder="yyyy-mm-dd" name="lesson_sdate_full"/>
 												<select id="school2" name="school2" title="학교구분">
 													<option value="">학력 선택</option>
-													<option value="100">학력무관</option>
-													<option value="1">고등학교졸업</option>
-													<option value="2">대학졸업(2~3년)</option>
-													<option value="3">대학교졸업(4년)</option>
+													<option value="100">기타</option>
+													<option value="1">고등학교</option>
+													<option value="2">전문학사</option>
+													<option value="3">학사</option>
 													<option value="4">석사</option>
 													<option value="5">박사</option>
 													<%-- <c:forEach var="result" items="${jobSchoolList}" varStatus="status">
@@ -605,10 +605,10 @@
 			trHtml += "		<input id='lesson_sdate_full' type='date' placeholder='yyyy-mm-dd' name='lesson_sdate_full'/>";
 			trHtml += "		<select id='school2' name='school2' title='학교구분'>";
 			trHtml += "			<option value=''>학력 선택</option>";
-			trHtml += "			<option value='100'>학력무관</option>";
-			trHtml += "			<option value='1'>고등학교졸업</option>";
-			trHtml += "			<option value='2'>대학졸업(2~3년)</option>";
-			trHtml += "			<option value='3'>대학교졸업(4년)</option>";
+			trHtml += "			<option value='100'>기타</option>";
+			trHtml += "			<option value='1'>고등학교</option>";
+			trHtml += "			<option value='2'>전문학사</option>";
+			trHtml += "			<option value='3'>학사</option>";
 			trHtml += "			<option value='4'>석사</option>";
 			trHtml += "			<option value='5'>박사</option>";
 			trHtml += "		</select>";

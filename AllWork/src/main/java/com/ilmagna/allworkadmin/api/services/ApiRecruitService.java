@@ -241,9 +241,9 @@ public class ApiRecruitService {
 			//학력
 			String strAbility = "";
 			if (!ApiCommonUtils.isNullOrEmpty(strAbility)) {				
-				if (item.getBiz_ability().equalsIgnoreCase("1")) 	  strAbility = "고등학교졸업";
-				else if (item.getBiz_ability().equalsIgnoreCase("2")) strAbility = "대학졸업(2~3년)";
-				else if (item.getBiz_ability().equalsIgnoreCase("3")) strAbility = "대학교졸업(4년)";
+				if (item.getBiz_ability().equalsIgnoreCase("1")) 	  strAbility = "고등학교";
+				else if (item.getBiz_ability().equalsIgnoreCase("2")) strAbility = "전문학사";
+				else if (item.getBiz_ability().equalsIgnoreCase("3")) strAbility = "학사";
 				else if (item.getBiz_ability().equalsIgnoreCase("4")) strAbility = "석사";
 				else if (item.getBiz_ability().equalsIgnoreCase("5")) strAbility = "박사";
 			}

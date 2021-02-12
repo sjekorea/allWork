@@ -186,9 +186,9 @@ public class CodeConvertUtil {
 				case "	netfu_63274_88718":
 					return "무관";
 				case "netfu_41476_98832":
-					return "고등학교졸업";
+					return "고등학교";
 				case "netfu_98974_79615":
-					return "대졸(2~3년)";
+					return "전문학사";
 				case "netfu_35887_12731":
 					return "대졸";
 				case "netfu_53810_38809":
@@ -203,13 +203,13 @@ public class CodeConvertUtil {
 			
 			switch(chkValue){
 				case 1 :
-					rtnStr = "고등학교졸업";
+					rtnStr = "고등학교";
 					break;
 				case 2 : 
-					rtnStr = "대학졸업(2~3년)";
+					rtnStr = "전문학사";
 					break;
 				case 3 : 
-					rtnStr = "대학교졸업(4년)";
+					rtnStr = "학사";
 					break;
 				case 4 : 
 					rtnStr = "석사";
@@ -239,11 +239,11 @@ public class CodeConvertUtil {
 				case "	netfu_63274_88718":
 					return "무관";
 				case "netfu_41476_98832":
-					return "고졸";
+					return "고등학교";
 				case "netfu_98974_79615":
-					return "대졸(2,3년)";
+					return "전문학사";
 				case "netfu_35887_12731":
-					return "대졸(4년)";
+					return "학사";
 				case "netfu_53810_38809":
 					return "석사";
 				case "netfu_47451_69200":
@@ -257,13 +257,13 @@ public class CodeConvertUtil {
 			switch(chkValue){
 				
 				case 1 : 
-					rtnStr = "고졸";
+					rtnStr = "고등학교";
 					break;
 				case 2 : 
-					rtnStr = "대졸(2,3년)";
+					rtnStr = "전문학사";
 					break;
 				case 3 : 
-					rtnStr = "대졸(4년)";
+					rtnStr = "학사";
 					break;
 				case 4 : 
 					rtnStr = "석사";
