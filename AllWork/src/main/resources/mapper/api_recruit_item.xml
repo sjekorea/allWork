@@ -87,6 +87,9 @@
 			recruit_item A 
 		<where>
 			1 = 1
+			<if test='showAll != "Y"'>
+				AND A.prs = 'P'
+			</if>
 			<if test='id != null &amp;&amp; id > 0'>
 				AND A.ser = #{id}
 			</if>

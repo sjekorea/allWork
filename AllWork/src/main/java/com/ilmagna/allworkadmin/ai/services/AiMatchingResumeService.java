@@ -104,7 +104,7 @@ public class AiMatchingResumeService {
 						listResultTemp.add(itemData.getData().get(j));
 						if (!itemData.getData().get(j).getBizIng().equalsIgnoreCase("no")) {
 							nCount++;
-							if (nCount >= 5) break;
+							//if (nCount >= 5) break;
 						}
 					}
 					

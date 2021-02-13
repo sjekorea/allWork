@@ -6,7 +6,7 @@ import org.apache.commons.lang.StringUtils;
 
 public class ApiJqGridParams {
 	private int total;			
-	private int rows = 20;			
+	private int rows = 10;			
 	private int page;			
 	private String keyword;		
 	private int offset;

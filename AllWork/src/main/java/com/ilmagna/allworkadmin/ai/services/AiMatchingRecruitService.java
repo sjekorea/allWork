@@ -101,7 +101,7 @@ public class AiMatchingRecruitService {
 						//추천정보 등록.
 						listResult.add(itemData.getData().get(j));
 						nCount++;
-						if (nCount >= 5) break;
+						//if (nCount >= 5) break;
 					}
 				}
 				item.setData(listResult);
