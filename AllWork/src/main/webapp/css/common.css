@@ -40,7 +40,7 @@
 /* 페이지 번호   ###############################################*/
 .numareaWrap{width:100%;overflow: hidden;background-color:#fff;}
 .numArea{width:100%;height:24px;line-height:22px;margin-top:30px;text-align: center;}
-.numArea li{display:inline-block;width:24px;height:24px;font-size:12px;border:1px solid #fff;}
+.numArea li{display:inline-block;width:38px;height:24px;font-size:12px;border:1px solid #fff;}
 .numArea li a{width:100%;height:100%;color:#ccc;}
 
         .numArea li:hover{border: 1px solid #ccc;}

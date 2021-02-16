@@ -78,7 +78,7 @@
 									</tr>
 									<tr>
 										<td><span class="desc_title">근무처</span><span class="desc_desc00">${result.whereis }</span></td>
-										<td><span class="desc_title">등록일</span><span class="desc_desc00">${result.beg }</span></td>
+										<td><span class="desc_title">등록일</span><span class="desc_desc00">${result.wdate }</span></td>
 										<td><span class="desc_title"></span><span class="desc_desc00"></span></td>
 									</tr>
 									<tr class="margin"></tr>

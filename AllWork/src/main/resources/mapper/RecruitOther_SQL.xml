@@ -76,7 +76,7 @@
 					OR strEdate LIKE CONCAT('%', #{search_keyword}, '%')
 					)
 			</if>
-		ORDER BY wdate DESC, ser DESC 
+		ORDER BY ser DESC 
 		limit #{start}, #{pageSize}
 	</select>
 
