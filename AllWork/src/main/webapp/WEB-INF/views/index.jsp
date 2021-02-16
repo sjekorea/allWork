@@ -240,12 +240,12 @@
 	</div>
 	<div id="content06Wrap">
 		<div id="content06">
-			<h4>기타 채용정보</h4>
+			<h4>일반채용정보</h4>
 			<p>
 				<a href="/recruitOther.do" title="더보기">more+</a>
 			</p>
 			<table title="이름, 아이디, 비밀번호, 이메일 등의 정보입력">
-				<caption>기타 채용정보</caption>
+				<caption>일반채용정보</caption>
 				<thead id="boardTitle">
 					<tr>
 						<th>회사명</th>
@@ -341,7 +341,7 @@
 		//}
 	}
 	
-	// 기타 채용정보 상세보기 화면으로 이동.
+	// 일반채용정보 상세보기 화면으로 이동.
 	function goOtherDetail(wantedAuthNo){
 		loadingOn();
 		

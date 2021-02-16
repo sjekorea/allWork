@@ -20,7 +20,7 @@
 		</div>
 		<div id="rightPart">
 			<div id="listPart">
-				<h4>기타 채용정보(<fmt:formatNumber value="${map.totalSize}" pattern="#,###"/>)</h4>
+				<h4>일반채용정보(<fmt:formatNumber value="${map.totalSize}" pattern="#,###"/>)</h4>
 				
 			<div>
 				<form id="searchForm" name="searchForm" action="/recruitOther.do">
@@ -148,7 +148,7 @@
 		}
 	});
 	
-	// 기타 채용정보 상세보기 화면으로 이동.
+	// 일반채용정보 상세보기 화면으로 이동.
 	function goOtherDetail(wantedAuthNo){
 		loadingOn();
 		

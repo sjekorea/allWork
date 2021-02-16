@@ -77,7 +77,7 @@
 	</c:when>
 	<c:otherwise>
 			<tbody>
-				<tr><td class="desc00" colspan="5">주어진 조건을 만족하는 기타 채용정보를 찾을 수 없습니다.</td></tr>
+				<tr><td class="desc00" colspan="5">주어진 조건을 만족하는 일반채용정보를 찾을 수 없습니다.</td></tr>
 			</tbody>
 	</c:otherwise>
 </c:choose>
@@ -468,7 +468,7 @@
 		//}
 	}
 	
-	// 기타 채용정보 상세보기 화면으로 이동.
+	// 일반채용정보 상세보기 화면으로 이동.
 	function goOtherDetail(wantedAuthNo){
 		loadingOn();
 		

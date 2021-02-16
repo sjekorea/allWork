@@ -68,7 +68,7 @@ public class ApiMobileService {
 		List<ApiRecruitModel> listRecruit = recruitService.getRecruitList(modelRecruit);
 		mobileModel.setListRecruit(listRecruit);
 		
-		//기타 채용정보.
+		//일반채용정보.
 		ApiRecruitOtherModel modelRecruitOther = new ApiRecruitOtherModel();
 		modelRecruitOther.setStartIdx(0);
 		modelRecruitOther.setEndIdx(3);

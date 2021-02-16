@@ -20,7 +20,7 @@ public class ApiMobileModel extends ApiJqGridParams implements Serializable  {
 	private List<AiMatchingRecommendationModel> listMatchingRecruit;	//맟춤형 구직 정보.
 	private List<ApiRecruitItemModel> listHeadhunt;						//올워크 등록 채용정보.
 	private List<ApiRecruitModel> listRecruit;							//기업회원 등록 채용정보.
-	private List<ApiRecruitOtherModel> listRecruitOther;				//기타 채용정보.
+	private List<ApiRecruitOtherModel> listRecruitOther;				//일반채용정보.
 	
 	//구인업체 위한 Home Dashboard 정보.
 	private List<AiMatchingRecommendationModel> listMatchingResume;		//맟춤형 구인 정보.

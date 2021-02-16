@@ -75,7 +75,7 @@ public class AiMatchingResumeService {
 								if (recruitMap == null || recruitMap.isEmpty()) continue;
 							} else if (obj.getType() == 2) {
 								/*
-								//기타 채용정보 ID 추출.
+								//일반채용정보 ID 추출.
 								CommandMap commandMap = new CommandMap();
 								commandMap.put("wantedAuthNo", itemData.getData().get(j).getRecommend_id());
 								Map<String, Object> recruitOtherMap = recruitOtherService.selectRecruitOtherMap(commandMap.getMap());

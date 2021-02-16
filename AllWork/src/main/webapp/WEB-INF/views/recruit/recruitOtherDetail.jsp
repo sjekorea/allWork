@@ -40,7 +40,7 @@
 						</span>
 					</p>
 					<table>
-						<caption>기타채용정보 기본정보</caption>
+						<caption>일반채용정보 기본정보</caption>
 						<tbody class="tabelArea">
 							<tr><th class="table_title">회사명</th><td class="table_desc">${recruitMap.companyTitle }</td></tr>
 						</tbody>

@@ -476,7 +476,7 @@ public class RecruitController {
 	
 	
 	/*
-	 * 채용정보 검색 - 기타 채용 정보
+	 * 채용정보 검색 - 일반채용정보
 	 */
 	@RequestMapping(value="/recruitOther.do")
 	public ModelAndView recruitOther(CommandMap commandMap, HttpSession session) {

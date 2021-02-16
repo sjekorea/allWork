@@ -20,6 +20,6 @@
 		</li>
 		<li class="gnb gnb02"><a href="/recruitSearchForFree.do" title="프리랜서">프리랜서</a></li>
 		<li class="gnb gnb03"><a href="/recruitSearchForAlba.do" title="알바채용">알바채용</a></li>
-		<li class="gnb gnb04"><a href="/recruitOther.do" title="기타채용정보">기타채용정보</a></li>
+		<li class="gnb gnb04"><a href="/recruitOther.do" title="일반채용정보">일반채용정보</a></li>
 	</ul>
 </div>

@@ -241,7 +241,7 @@ public class AiSearchService {
 				dataItem.setStrEdate(strEdate);
 				
 				/*
-				//기타 채용정보 ID 추출.
+				//일반채용정보 ID 추출.
 				CommandMap commandMap = new CommandMap();
 				commandMap.put("wantedAuthNo", dataItem.getRecommend_id());
 				Map<String, Object> recruitOtherMap = recruitOtherService.selectRecruitOtherMap(commandMap.getMap());

@@ -21,7 +21,7 @@
 			<div id="boardPart">
 				<h4>기술개발전문용역현황</h4>
 				<table title="이름, 아이디, 비밀번호, 이메일 등의 정보입력">
-					<caption>기타 채용정보</caption>
+					<caption>일반채용정보</caption>
 					<thead id="boardTitle">
 						<tr>
 							<th>번호</th>

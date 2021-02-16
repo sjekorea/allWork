@@ -347,7 +347,7 @@ public class ConvertUtil {
 	}
 
 	/*
-	 * 채용마감 - 기타채용정보
+	 * 채용마감 - 일반채용정보
 	 */
 	public static String getEndCondOther(String bizEndDay) {
 		String strBizEndCond = "";

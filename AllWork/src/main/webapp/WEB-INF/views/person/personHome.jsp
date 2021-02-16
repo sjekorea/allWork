@@ -364,7 +364,7 @@
 		//}
 	}
 	
-	// 기타 채용정보 상세보기 화면으로 이동.
+	// 일반채용정보 상세보기 화면으로 이동.
 	function goOtherDetail(wantedAuthNo){
 		loadingOn();
 		
