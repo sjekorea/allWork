@@ -44,7 +44,7 @@
 					<thead>
 						<tr>
 							<th class="t_desc01">회사명</th>
-							<th colspan="3" class="t_desc02">채용공고</th>
+							<th colspan="4" class="t_desc02">채용공고</th>
 							<th class="t_desc03">마감일</th>
 						</tr>
 					</thead>
@@ -55,7 +55,7 @@
 									<tr class="margin"></tr>
 									<tr>
 										<td rowspan="3" class="desc01">${result.companyTitle }</td>
-										<td colspan="3" class="desc02">
+										<td colspan="4" class="desc02">
 									       	<!-- (begin) 2020.12.30 by s.yoo -->
 									       	<!-- 
 											<a href="http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=${result.wantedAuthNo }" target="_blank">
@@ -72,14 +72,13 @@
 										</td>
 									</tr>
 									<tr>
-										<td><span class="desc_title">연락처</span><span class="desc_desc00">${result.phone }</span></td>
+										<td colspan="2"><span class="desc_title">연락처</span><span class="desc_desc00">${result.phone }</span></td>
 										<td><span class="desc_title">인원</span><span class="desc_desc00">${result.men }</span></td>
-										<td><span class="desc_title">급여</span><span class="desc_desc00">${result.salary }</span></td>
+										<td><span class="desc_title">등록일</span><span class="desc_desc00">${result.wdate }</span></td>
 									</tr>
 									<tr>
-										<td><span class="desc_title">근무처</span><span class="desc_desc00">${result.whereis }</span></td>
-										<td><span class="desc_title">등록일</span><span class="desc_desc00">${result.wdate }</span></td>
-										<td><span class="desc_title"></span><span class="desc_desc00"></span></td>
+										<td colspan="2"><span class="desc_title">근무처</span><span class="desc_desc00">${result.whereis }</span></td>
+										<td colspan="2"><span class="desc_title">급여</span><span class="desc_desc00">${result.salary }</span></td>
 									</tr>
 									<tr class="margin"></tr>
 								</tbody>

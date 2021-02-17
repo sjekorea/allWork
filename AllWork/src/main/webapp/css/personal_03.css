@@ -34,8 +34,8 @@ input[type="button"]{height:40px;line-height:42px;color:#fff;border:none;font-si
   .list thead{width:50%;border-bottom:1px solid #000;background-color:#EDF0F5;}
   .list thead tr{height:50px;}
   .list thead tr .t_desc01{width:170px;}
-  .list thead tr .t_desc02{width:420px;}
-  .list thead tr .t_desc03{width:120px;}
+  .list thead tr .t_desc02{width:450px;}
+  .list thead tr .t_desc03{width:90px;}
 
   .list tbody{width:100%;border-bottom:1px solid #ccc;}
   .list tbody tr{width:100%;font-size:14px;background-color:#fff;overflow:hidden;}

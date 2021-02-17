@@ -282,7 +282,7 @@
 							<td class="jPerson">${result.men }</td>
 							<td class="jadd">${result.whereis }</td>
 							<td class="jcontact">${result.phone }</td>
-							<td class="jDate">${result.strEdate }</td>
+							<td class="jDate">${convert:getEndCondOther(result.strEdate)}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
