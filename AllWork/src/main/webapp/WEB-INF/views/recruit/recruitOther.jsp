@@ -74,7 +74,7 @@
 									<tr>
 										<td colspan="2"><span class="desc_title">연락처</span><span class="desc_desc00">${result.phone }</span></td>
 										<td><span class="desc_title">인원</span><span class="desc_desc00">${result.men }</span></td>
-										<td><span class="desc_title">등록일</span><span class="desc_desc00">${result.wdate }</span></td>
+										<td><span class="desc_title">등록일</span><span class="desc_desc00">${result.reg }</span></td>
 									</tr>
 									<tr>
 										<td colspan="2"><span class="desc_title">근무처</span><span class="desc_desc00">${result.whereis }</span></td>

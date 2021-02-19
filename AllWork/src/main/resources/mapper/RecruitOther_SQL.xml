@@ -36,9 +36,9 @@
 	<select id="selectRecruitOtherList" parameterType="hashmap" resultType="allwork.vo.RecruitOtherVo">
 		select 
 			ser
-			, DATE_FORMAT(reg, '%m/%d') reg
+			, DATE_FORMAT(reg, '%Y-%m-%d') reg
 			, prs
-			, DATE_FORMAT(beg, '%m/%d') beg
+			, DATE_FORMAT(beg, '%Y-%m-%d') beg
 			, company_title
 			, phone
 			, recruit_item
@@ -83,9 +83,9 @@
 	<select id="selectRecruitOtherMap" parameterType="hashmap" resultType="allwork.vo.RecruitOtherVo">
 		select 
 			ser
-			, DATE_FORMAT(reg, '%m/%d') reg
+			, DATE_FORMAT(reg, '%Y-%m-%d') reg
 			, prs
-			, DATE_FORMAT(beg, '%m/%d') beg
+			, DATE_FORMAT(beg, '%Y-%m-%d') beg
 			, company_title
 			, phone
 			, recruit_item
@@ -108,7 +108,7 @@
 			<if test='wantedAuthNo != null &amp;&amp; wantedAuthNo != ""'>
 				AND wantedAuthNo = #{wantedAuthNo}
 			</if>
-		ORDER BY wdate DESC, ser DESC 
+		ORDER BY reg DESC, ser DESC 
 		limit 1
 	</select>
 

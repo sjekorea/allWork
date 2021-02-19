@@ -94,7 +94,12 @@
 		FROM
 			recruit_other A
 		<where>
-			A.ser = #{id}
+			<if test='id != null &amp;&amp; id != "" &amp;&amp; id > 0'>
+				AND A.ser = #{id}
+			</if>
+			<if test='wantedAuthNo != null &amp;&amp; wantedAuthNo != ""'>
+				AND A.wantedAuthNo = #{wantedAuthNo}
+			</if>
 		</where>
 	</select>
 

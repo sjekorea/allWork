@@ -60,7 +60,7 @@
 							 -->
 							<tr>
 								<th>등록일</th>
-								<td>등록일: ${recruitMap.wdate }, 최종수정일: ${recruitMap.edate }</td>
+								<td>${recruitMap.reg }</td>
 							</tr>
 							<tr>
 								<th>채용정보</th>
