@@ -188,12 +188,17 @@ public class NetfuMemberController {
 
 	
 	/*
-	 * 사업자 번호 중복 확인
+	 * 사업자번호 중복 확인
 	 */
 	@RequestMapping(value="/chkDupBizNo.ajax")
 	public ModelAndView chkDupBizNo(CommandMap commandMap, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		try{
+			//사업자번호를 표준형태로 변환.
+			String strBizNo = ApiCommonUtils.getBizNoFormatStr((String) commandMap.get("bizNo"));
+			commandMap.put("bizNo", strBizNo);
+			
+			//사업자번호 중복검사.
 			int rstCnt = netfuCompanyService.selectBizNoCnt(commandMap.getMap());
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("rstCnt", rstCnt);
@@ -306,6 +311,10 @@ public class NetfuMemberController {
 			if (!ApiCommonUtils.isNullOrEmpty(strFilePhoto3))	commandMap.put("photo3", strFilePhoto3);
 			if (!ApiCommonUtils.isNullOrEmpty(strFilePhoto4))	commandMap.put("photo4", strFilePhoto4);
 			netfuCompanyService.insertNetfuCompany(commandMap.getMap());
+
+			//사업자번호를 표준형태로 변환.
+			String strBizNo = ApiCommonUtils.getBizNoFormatStr((String) commandMap.get("bizNo"));
+			commandMap.put("bizNo", strBizNo);
 
 			//회원정보 등록.
 			int rstCnt = 0;

@@ -490,7 +490,10 @@
 			return;
 		}
 		if(checkNull($("#bizNo").val())){
-			alertAndFocus("사업자등록번호를 입력하세요.", $("#bizNo"));
+			alertAndFocus("사업자번호를 입력하세요.", $("#bizNo"));
+			return;
+		} else if($("#bizNo").val().length < 10){
+			alertAndFocus("사업자번호를 정확하게 입력하세요.", $("#bizNo"));
 			return;
 		}
 		if(checkNull($("#bizCategory").val())){

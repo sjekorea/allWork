@@ -25,6 +25,7 @@ import allwork.service.HomeCommonService;
 import allwork.service.NetfuItemCompanyService;
 import allwork.service.NetfuMyServiceService;
 import allwork.service.RecruitOtherService;
+import allwork.vo.NetfuBannerVo;
 import allwork.vo.NetfuItemCompanyVo;
 
 /**
@@ -86,6 +87,11 @@ public class HomeController {
 			
 			// 롤 배너 정보
 			List<Map<String, Object>> rollBannerList = homeCommonService.selectMainRollBannerList(commandMap.getMap());
+			List<NetfuBannerVo> rollBannerList02 = new ArrayList<NetfuBannerVo>();
+			if (rollBannerList.size() > 6) {
+				for (int index = 6; index < rollBannerList.size(); index++)
+					rollBannerList02.add((NetfuBannerVo) rollBannerList.get(index));
+			}
 			
 			// 채용정보 1 - 유료 채용공고 우선적으로 표출. 유료채용공고가 부족한 경우에는 일반정보 추가.
 			List<NetfuItemCompanyVo> mainRecruitList = new ArrayList<NetfuItemCompanyVo>();
@@ -132,6 +138,7 @@ public class HomeController {
 			
 			mv.addObject("bannerList", bannerList);
 			mv.addObject("rollBannerList", rollBannerList);
+			mv.addObject("rollBannerList02", rollBannerList02);
 			mv.addObject("mainRecruitList", mainRecruitList);
 			mv.addObject("headhuntList", headhuntList);
 			mv.addObject("recruitList", recruitList);

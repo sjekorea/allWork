@@ -692,11 +692,14 @@
 	});	
 
 	
-	// 사업자 번호 복 확인
+	// 사업자번호 복 확인
 	function chkDupBizNo(){
 
 		if($("#bizNo").val().length <= 0){
-			alertAndFocus("사업자 번호를 입력하세요.", $("#bizNo"));
+			alertAndFocus("사업자번호를 입력하세요.", $("#bizNo"));
+			return;
+		} else if($("#bizNo").val().length < 10){
+			alertAndFocus("사업자번호를 정확하게 입력하세요.", $("#bizNo"));
 			return;
 		}
 		
@@ -704,10 +707,10 @@
 		
 		var callback = function(data){
 			if(data.rstCnt > 0){
-				alert("등록된 사업자 번호 입니다.");
+				alert("등록된 사업자번호 입니다.");
 				$("#chkDupBizNoChk").val("N");
 			}else{
-				alert("사용가능한 사업자 번호 입니다.");
+				alert("사용가능한 사업자번호 입니다.");
 				$("#btuChkDupBizNo").css("display", "none");
 				$("#chkDupBizNoChk").val("Y");
 			}
@@ -769,11 +772,14 @@
 			return;
 		}
 		if(checkNull($("#bizNo").val())){
-			alertAndFocus("사업자등록번호를 입력하세요.", $("#bizNo"));
+			alertAndFocus("사업자번호를 입력하세요.", $("#bizNo"));
+			return;
+		} else if($("#bizNo").val().length < 10){
+			alertAndFocus("사업자번호를 정확하게 입력하세요.", $("#bizNo"));
 			return;
 		}
 		if($("#chkDupBizNoChk").val() != "Y"){
-			alert("사업자등록번호 중복확인은 필수 입니다.");
+			alert("사업자번호 중복확인은 필수 입니다.");
 			return;
 		}
 		if(checkNull($("#bizCategory").val())){

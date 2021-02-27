@@ -9,7 +9,7 @@ import allwork.common.dao.AbstractDAO;
 @Repository("netfuCompanyDao")
 public class NetfuCompanyDao extends AbstractDAO{
 	
-	// 사업자 번호 중복 검사 
+	// 사업자번호 중복 검사 
 	public int selectBizNoCnt(Map<String, Object> map) throws Exception{
 		return selectCnt("netfuCompany.selectBizNoCnt", map);
 	}

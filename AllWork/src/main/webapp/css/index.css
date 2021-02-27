@@ -61,17 +61,25 @@ body{font-family:"NotoSansKR-Regular";}
 /*###################################   content01_ad 유료광고 모음 ###################################*/
 #content01_ad{width:250px;height:500px;float: left;}
 #content01_ad ul{width:100%;height:100%;}
-#content01_ad ul li{display:inline-block;width:250px;height:110px;line-height:104px;text-align: center;border:1px solid #ccc;
+#content01_ad ul .ad_info{display:inline-block;width:250px;height:240px;line-height:104px;text-align: center;border:1px solid #ccc;
+  box-shadow:5px 5px 1px rgba(220,220,220,1);margin-right:15px;margin-bottom:8px;overflow: hidden;}
+#content01_ad ul .ad_roll{display:inline-block;width:250px;height:110px;line-height:104px;text-align: center;border:1px solid #ccc;
   box-shadow:5px 5px 1px rgba(220,220,220,1);margin-right:15px;margin-bottom:8px;overflow: hidden;}
 #content01_ad ul li img{width:100%;vertical-align:middle;}
 
 #content01_ad ul li:hover{border:1px solid #333;}
 
+#content01_ad ul li div h2{display:inline-block;width:100%;height:100%;padding:10%;position: relative;}
+#content01_ad ul li div h4{display:inline-block;width:100%;height:100%;padding:10%;position: relative;}
+#content01_ad ul li div h2 span{display:inline-block;font-size:14px;}
+#content01_ad ul li div h4 span{display:inline-block;font-size:14px;}
+
+
 /*###################################   content02 기업광고 모음 ###################################*/
 
   #content02Wrap{width:100%;border-top: 1px solid #ccc;}
-  #content02{width:1000px;height:50px;margin:0 auto;}
-  #adArea{width:100%;height:100%;}
+  #content02{width:1000px;height:100px;margin:0 auto;}
+  #adArea{width:90%;height:50%;margin: auto;}
   #adArea p{width:35px;height:35px;margin-top:7px;float:left;}
   #adArea p a{display: block;width:100%;height:100%;}
   #adArea p a img{width:100%;}

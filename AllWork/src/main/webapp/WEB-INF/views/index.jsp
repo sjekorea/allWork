@@ -14,6 +14,7 @@
 <!-- 메인 채용공고와 배너광고 -->
 <div id="content01Wrap">
 	<div id="content01">
+		<!-- 메인 채용공고 -->
 		<div id="content01_offer">
 			<ul>
 				<c:forEach var="result" items="${mainRecruitList}" varStatus="status">
@@ -45,11 +46,23 @@
 				</c:forEach>
 			</ul>
 		</div>
+		
+		<!-- 배너광고 -->
 		<div id="content01_ad">
 			<ul>
+				<!-- 
+				<li class="ad_info">
+					<div>
+<span style="color: rgb(8, 82, 148);">오늘</span><span style="color: rgb(8, 82, 148);">일반채용정보</span>
+<span style="color: rgb(57, 132, 198);">1,234</span> <span style="color: rgb(8, 82, 148);">건</span>
+<span style="color: rgb(8, 82, 148); font-weight: normal;">개인회원에 가입하시면 보다 많은</span><span style="color: rgb(8, 82, 148); font-weight: normal;">채용정보를 보실수 있습니다.</span>
+					</div>
+				</li>
+				 -->
+
 				<c:forEach var="result" items="${bannerList}" varStatus="status">
 					<c:if test="${status.index < 4 }">
-						<li class="headhunting">
+						<li class="ad_roll">
 							<c:if test="${result.link == null || result.link == '' }">
 								<div>${result.thumbnail}</div>
 							</c:if>
@@ -64,81 +77,7 @@
 	</div>
 </div>
 
-<!-- 롤 배너광고	-->
 <div id="content02Wrap">
-	<div id="content02">
-		<div id="adArea">
-			<p class="btn btn_prev"><a href="" title="이전보기"><img src="img/main/btn_prev.jpg" alt="이전버튼" /></a></p>
-			<ul id="adList">
-				<c:forEach var="result" items="${rollBannerList}" varStatus="status">
-					<c:if test="${status.index < 6 }">
-						<li>
-							<c:if test="${result.link == null || result.link == '' }">
-								<a href="javascript:void();" title="롤 배너광고">
-									<p class="adImg">${result.thumbnail}</p>
-								</a>
-							</c:if>
-							<c:if test="${result.link != null && result.link != '' }">
-								<a href="${result.link }" target="_blank" title="롤 배너광고">
-									<p class="adImg">${result.thumbnail}</p>
-								</a>
-							</c:if>
-						</li>
-					</c:if>
-				</c:forEach>
-			</ul>
-			<p class="btn btn_prev"><a href="" title="다음보기"><img src="img/main/btn_next.jpg" alt="다음버튼" /></a></p>
-		</div>
-	</div>
-
-<!-- 
-<div id="content02Wrap">
-	<div id="content02">
-		<div id="adArea">
-			<p class="btn btn_prev"><a href="01_aboutMMCA.html" title="이전보기"><img src="img/main/btn_prev.jpg" alt="이전버튼" /></a></p>
-			<ul id="adList">
-				<li>
-					<a href="01_aboutMMCA.html" title="기업홈">
-						<p class="adImg"><img src="/img/main/ad00.jpg" alt="기업광고00" /></p>
-						<p class="adText"><span class="w_subtitle">삼성전자</span><br /> <span class="w_title">경력직 채용</span></p>
-					</a>
-				</li>
-				<li>
-					<a href="01_aboutMMCA.html" title="기업홈">
-						<p class="adImg"><img src="/img/main/ad01.jpg" alt="기업광고01" /></p>
-						<p class="adText"><span class="w_subtitle">LG전자</span><br /> <span class="w_title">경력직 채용</span>
-						</p>
-					</a>
-				</li>
-				<li>
-					<a href="01_aboutMMCA.html" title="기업홈">
-						<p class="adImg"><img src="/img/main/ad02.jpg" alt="기업광고02" /></p>
-						<p class="adText"><span class="w_subtitle">HANSAE패션</span><br /> <span class="w_title">경력직 채용</span></p>
-					</a>
-				</li>
-				<li>
-					<a href="01_aboutMMCA.html" title="기업홈">
-						<p class="adImg"><img src="/img/main/ad03.jpg" alt="기업광고03" /></p>
-						<p class="adText"><span class="w_subtitle">현대백화점</span><br /> <span class="w_title">경력직 채용</span></p>
-					</a>
-				</li>
-				<li>
-					<a href="01_aboutMMCA.html" title="기업홈">
-						<p class="adImg"><img src="/img/main/ad04.jpg" alt="기업광고04" /></p>
-						<p class="adText"><span class="w_subtitle">오리온</span><br /> <span class="w_title">경력직 채용</span></p>
-					</a>
-				</li>
-				<li>
-					<a href="01_aboutMMCA.html" title="기업홈">
-						<p class="adImg"><img src="/img/main/ad05.jpg" alt="기업광고05" /></p>
-						<p class="adText"><span class="w_subtitle">KB</span><br /> <span class="w_title">경력직 채용</span></p>
-					</a>
-				</li>
-			</ul>
-			<p class="btn btn_prev"><a href="01_aboutMMCA.html" title="다음보기"><img src="img/main/btn_next.jpg" alt="다음버튼" /></a></p>
-		</div>
-	</div>
- -->
 
 	<div id="content04Wrap">
 		<div id="content04">
@@ -289,6 +228,117 @@
 			</table>
 		</div>
 	</div>
+
+	<!-- 롤 배터 광고 -->
+	<div id="content02">
+		<div id="adArea">
+			<!-- 
+			<p class="btn btn_prev"><a href="" title="이전보기"><img src="img/main/btn_prev.jpg" alt="이전버튼" /></a></p>
+			 -->
+			<ul id="adList">
+				<c:forEach var="result" items="${rollBannerList}" varStatus="status">
+					<c:if test="${status.index < 6 }">
+						<li>
+							<c:if test="${result.link == null || result.link == '' }">
+								<a href="javascript:void();" title="롤 배너광고">
+									<p class="adImg">${result.thumbnail}</p>
+								</a>
+							</c:if>
+							<c:if test="${result.link != null && result.link != '' }">
+								<a href="${result.link }" target="_blank" title="롤 배너광고">
+									<p class="adImg">${result.thumbnail}</p>
+								</a>
+							</c:if>
+						</li>
+					</c:if>
+				</c:forEach>
+			</ul>
+			<!-- 
+			<p class="btn btn_prev"><a href="" title="다음보기"><img src="img/main/btn_next.jpg" alt="다음버튼" /></a></p>
+			 -->
+		</div>
+		
+	<c:if test="${rollBannerList02.size() > 0 }">
+		<div id="adArea">
+			<!-- 
+			<p class="btn btn_prev"><a href="" title="이전보기"><img src="img/main/btn_prev.jpg" alt="이전버튼" /></a></p>
+			 -->
+			<ul id="adList">
+				<c:forEach var="result" items="${rollBannerList02}" varStatus="status">
+					<c:if test="${status.index < 6 }">
+						<li>
+							<c:if test="${result.link == null || result.link == '' }">
+								<a href="javascript:void();" title="롤 배너광고">
+									<p class="adImg">${result.thumbnail}</p>
+								</a>
+							</c:if>
+							<c:if test="${result.link != null && result.link != '' }">
+								<a href="${result.link }" target="_blank" title="롤 배너광고">
+									<p class="adImg">${result.thumbnail}</p>
+								</a>
+							</c:if>
+						</li>
+					</c:if>
+				</c:forEach>
+			</ul>
+			<!-- 
+			<p class="btn btn_prev"><a href="" title="다음보기"><img src="img/main/btn_next.jpg" alt="다음버튼" /></a></p>
+			 -->
+		</div>
+	</c:if>
+	</div>
+
+<!-- 
+<div id="content02Wrap">
+	<div id="content02">
+		<div id="adArea">
+			<p class="btn btn_prev"><a href="01_aboutMMCA.html" title="이전보기"><img src="img/main/btn_prev.jpg" alt="이전버튼" /></a></p>
+			<ul id="adList">
+				<li>
+					<a href="01_aboutMMCA.html" title="기업홈">
+						<p class="adImg"><img src="/img/main/ad00.jpg" alt="기업광고00" /></p>
+						<p class="adText"><span class="w_subtitle">삼성전자</span><br /> <span class="w_title">경력직 채용</span></p>
+					</a>
+				</li>
+				<li>
+					<a href="01_aboutMMCA.html" title="기업홈">
+						<p class="adImg"><img src="/img/main/ad01.jpg" alt="기업광고01" /></p>
+						<p class="adText"><span class="w_subtitle">LG전자</span><br /> <span class="w_title">경력직 채용</span>
+						</p>
+					</a>
+				</li>
+				<li>
+					<a href="01_aboutMMCA.html" title="기업홈">
+						<p class="adImg"><img src="/img/main/ad02.jpg" alt="기업광고02" /></p>
+						<p class="adText"><span class="w_subtitle">HANSAE패션</span><br /> <span class="w_title">경력직 채용</span></p>
+					</a>
+				</li>
+				<li>
+					<a href="01_aboutMMCA.html" title="기업홈">
+						<p class="adImg"><img src="/img/main/ad03.jpg" alt="기업광고03" /></p>
+						<p class="adText"><span class="w_subtitle">현대백화점</span><br /> <span class="w_title">경력직 채용</span></p>
+					</a>
+				</li>
+				<li>
+					<a href="01_aboutMMCA.html" title="기업홈">
+						<p class="adImg"><img src="/img/main/ad04.jpg" alt="기업광고04" /></p>
+						<p class="adText"><span class="w_subtitle">오리온</span><br /> <span class="w_title">경력직 채용</span></p>
+					</a>
+				</li>
+				<li>
+					<a href="01_aboutMMCA.html" title="기업홈">
+						<p class="adImg"><img src="/img/main/ad05.jpg" alt="기업광고05" /></p>
+						<p class="adText"><span class="w_subtitle">KB</span><br /> <span class="w_title">경력직 채용</span></p>
+					</a>
+				</li>
+			</ul>
+			<p class="btn btn_prev"><a href="01_aboutMMCA.html" title="다음보기"><img src="img/main/btn_next.jpg" alt="다음버튼" /></a></p>
+		</div>
+	</div>
+ -->
+
+
+
 </div>
 
 <jsp:include page="/footer.do" />

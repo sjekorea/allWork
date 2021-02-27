@@ -14,7 +14,7 @@ public class ApiCompanyModel extends ApiJqGridParams implements Serializable  {
 	
 	private Integer id;
 	private String uid;						// 기업에 대한 사용자 UID
-	private String biz_no;					// 사업자 등록번호.
+	private String biz_no;					// 사업자번호.
 	private String strBizCopY;				// 법인/개인사업자 구분.
 	private String biz_copy;
 	private String biz_name;				// 기업명

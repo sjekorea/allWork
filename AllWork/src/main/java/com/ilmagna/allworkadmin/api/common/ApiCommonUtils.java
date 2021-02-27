@@ -798,6 +798,26 @@ public class ApiCommonUtils {
 	
 	
 	/*
+	 * 사업자번호 변환.
+	 */
+	public static String getBizNoFormatStr(String strBizNo) {
+		String strResult = getBizNoStr(strBizNo);
+		
+		int nLen = strResult.length();
+		if (nLen == 10)
+			strResult = strResult.substring(0, 3) + "-" + strResult.substring(3, 5) + "-" + strResult.substring(5, nLen);
+		
+		return strResult;
+	}
+	public static String getBizNoStr(String strBizNo) {
+		if (ApiCommonUtils.isNullOrEmpty(strBizNo)) return "";
+		
+		String strResult = strBizNo.trim().replaceAll("-", "");
+		return strResult;
+	}
+
+	
+	/*
 	 * Smart Editor 지원.
 	 */
 	public static String cnvtDoubleQuote2SingleQuote(String data) {

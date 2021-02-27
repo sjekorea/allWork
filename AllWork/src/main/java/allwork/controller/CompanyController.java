@@ -573,6 +573,10 @@ public class CompanyController {
 			commandMap.put("bizHistory", ApiCommonUtils.cnvtDoubleQuote2SingleQuote((String) commandMap.get("bizHistory")));
 			*/
 
+			//사업자번호를 표준형태로 변환.
+			String strBizNo = ApiCommonUtils.getBizNoFormatStr((String) commandMap.get("bizNo"));
+			commandMap.put("bizNo", strBizNo);
+
 			//기업정보 등록.
 			int rstCnt = 0;
 			//commandMap.put("loginId", uid);
