@@ -335,6 +335,9 @@ function loadingOff(){
 function goPage(targetPage){
 	loadingOn();
 	$("#pageNo").val(targetPage);
+	try {
+		$("#keywordsHtml").val($(".keywords").html());
+	} catch(e) {}
 	$("#searchForm").submit();
 }
 

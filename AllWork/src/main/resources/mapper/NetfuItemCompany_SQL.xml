@@ -28,14 +28,14 @@
 			<if test='infoType == 2'>
 				and (nic.biz_jobfrom like '%arbeit%' or nic.biz_jobfrom like '%netfu_34537_33276%')
 			</if>
-			<if test="bizType3 != null and bizType3 != ''">
-				AND ${bizType3}
+			<if test="queryBizType != null and queryBizType != ''">
+				AND ${queryBizType}
 			</if>
-			<if test="areaJob3 != null and areaJob3 != ''">
-				AND ${areaJob3}
+			<if test="queryAreaJob != null and queryAreaJob != ''">
+				AND ${queryAreaJob}
 			</if>
-			<if test="bizArea2 != null and bizArea2 != ''">
-				AND ${bizArea2}
+			<if test="queryBizArea != null and queryBizArea != ''">
+				AND ${queryBizArea}
 			</if>
 		) nic
 		where 1=1
@@ -84,14 +84,14 @@
 			<if test='infoType == 2'>
 				and (nic.biz_jobfrom like '%arbeit%' or nic.biz_jobfrom like '%netfu_34537_33276%')
 			</if>
-			<if test="bizType3 != null and bizType3 != ''">
-				AND ${bizType3}
+			<if test="queryBizType != null and queryBizType != ''">
+				AND ${queryBizType}
 			</if>
-			<if test="areaJob3 != null and areaJob3 != ''">
-				AND ${areaJob3}
+			<if test="queryAreaJob != null and queryAreaJob != ''">
+				AND ${queryAreaJob}
 			</if>
-			<if test="bizArea2 != null and bizArea2 != ''">
-				AND ${bizArea2}
+			<if test="queryBizArea != null and queryBizArea != ''">
+				AND ${queryBizArea}
 			</if>
 		) nic
 		where 1=1

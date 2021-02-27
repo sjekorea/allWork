@@ -99,14 +99,14 @@ public class ResumeController {
 			String strQueryPay = QueryParser.genQueryResumePay((String) commandMap.get("inidPay"));
 
 			// 채용정보 검색 리스트
-			commandMap.put("inidType", strQueryBizType);
-			commandMap.put("inidAreaJob", strQueryIndustry);
-			commandMap.put("inidArea", strQueryArea);
-			commandMap.put("inidLicense", strQueryLicense);
-			commandMap.put("inidCareer", strQueryCareer);
-			commandMap.put("inidSchool", strQuerySchool);
-			commandMap.put("inidJobform", strQueryJobForm);
-			commandMap.put("inidPay", strQueryPay);
+			commandMap.put("queryInidType", strQueryBizType);
+			commandMap.put("queryInidAreaJob", strQueryIndustry);
+			commandMap.put("queryInidArea", strQueryArea);
+			commandMap.put("queryInidLicense", strQueryLicense);
+			commandMap.put("queryInidCareer", strQueryCareer);
+			commandMap.put("queryInidSchool", strQuerySchool);
+			commandMap.put("queryInidJobForm", strQueryJobForm);
+			commandMap.put("queryInidPay", strQueryPay);
 
 			commandMap.put("loginId2", (String)session.getAttribute("SE_LOGIN_ID"));
 			String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
@@ -208,7 +208,7 @@ public class ResumeController {
 			String strQueryBizType = QueryParser.genQueryResumeBizType((String) commandMap.get("inidType"));
 
 			// 채용정보 검색 리스트
-			commandMap.put("inidType", strQueryBizType);
+			commandMap.put("queryInidType", strQueryBizType);
 			
 			commandMap.put("loginId2", (String)session.getAttribute("SE_LOGIN_ID"));
 			String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
@@ -276,7 +276,7 @@ public class ResumeController {
 			String strQueryIndustry = QueryParser.genQueryResumeIndustry((String) commandMap.get("inidAreaJob"));
 
 			// 채용정보 검색 리스트
-			commandMap.put("inidAreaJob", strQueryIndustry);
+			commandMap.put("queryInidAreaJob", strQueryIndustry);
 			
 			commandMap.put("loginId2", (String)session.getAttribute("SE_LOGIN_ID"));
 			String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
@@ -340,7 +340,7 @@ public class ResumeController {
 			String strQueryArea = QueryParser.genQueryResumeArea((String) commandMap.get("inidArea"));
 
 			// 채용정보 검색 리스트
-			commandMap.put("inidArea", strQueryArea);
+			commandMap.put("queryInidArea", strQueryArea);
 			
 			commandMap.put("loginId2", (String)session.getAttribute("SE_LOGIN_ID"));
 			String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
@@ -415,14 +415,14 @@ public class ResumeController {
 			String strQueryPay = QueryParser.genQueryResumePay((String) commandMap.get("inidPay"));
 
 			// 채용정보 검색 리스트
-			commandMap.put("inidType", strQueryBizType);
-			commandMap.put("inidAreaJob", strQueryIndustry);
-			commandMap.put("inidArea", strQueryArea);
-			commandMap.put("inidLicense", strQueryLicense);
-			commandMap.put("inidCareer", strQueryCareer);
-			commandMap.put("inidSchool", strQuerySchool);
-			commandMap.put("inidJobform", strQueryJobForm);
-			commandMap.put("inidPay", strQueryPay);
+			commandMap.put("queryInidType", strQueryBizType);
+			commandMap.put("queryInidAreaJob", strQueryIndustry);
+			commandMap.put("queryInidArea", strQueryArea);
+			commandMap.put("queryInidLicense", strQueryLicense);
+			commandMap.put("queryInidCareer", strQueryCareer);
+			commandMap.put("queryInidSchool", strQuerySchool);
+			commandMap.put("queryInidJobForm", strQueryJobForm);
+			commandMap.put("queryInidPay", strQueryPay);
 			
 			commandMap.put("loginId2", (String)session.getAttribute("SE_LOGIN_ID"));
 			String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));
@@ -533,14 +533,14 @@ public class ResumeController {
 			String strQueryPay = QueryParser.genQueryResumePay((String) commandMap.get("inidPay"));
 
 			// 채용정보 검색 리스트
-			commandMap.put("inidType", strQueryBizType);
-			commandMap.put("inidAreaJob", strQueryIndustry);
-			commandMap.put("inidArea", strQueryArea);
-			commandMap.put("inidLicense", strQueryLicense);
-			commandMap.put("inidCareer", strQueryCareer);
-			commandMap.put("inidSchool", strQuerySchool);
-			commandMap.put("inidJobform", strQueryJobForm);
-			commandMap.put("inidPay", strQueryPay);
+			commandMap.put("queryInidType", strQueryBizType);
+			commandMap.put("queryInidAreaJob", strQueryIndustry);
+			commandMap.put("queryInidArea", strQueryArea);
+			commandMap.put("queryInidLicense", strQueryLicense);
+			commandMap.put("queryInidCareer", strQueryCareer);
+			commandMap.put("queryInidSchool", strQuerySchool);
+			commandMap.put("queryInidJobForm", strQueryJobForm);
+			commandMap.put("queryInidPay", strQueryPay);
 			
 			commandMap.put("loginId2", (String)session.getAttribute("SE_LOGIN_ID"));
 			String service2Flag = ConvertUtil.checkNull((String) session.getAttribute("SE_SERVICE2"));

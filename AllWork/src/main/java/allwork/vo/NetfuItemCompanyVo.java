@@ -121,6 +121,9 @@ public class NetfuItemCompanyVo {
 
 	private String jobDetail;
 	
+	private String queryBizType;			//상세 Query 문자열 - 직무.
+	private String queryAreaJob;			//상세 Query 문자열 - 산업.
+	private String queryBizArea;			//상세 Query 문자열 - 지역.
 	
 	
 	public String getPayType() {
@@ -923,5 +926,41 @@ public class NetfuItemCompanyVo {
 	}
 	public void setJobDetail(String jobDetail) {
 		this.jobDetail = jobDetail;
+	}
+	/**
+	 * @return the queryBizType
+	 */
+	public String getQueryBizType() {
+		return queryBizType;
+	}
+	/**
+	 * @param queryBizType the queryBizType to set
+	 */
+	public void setQueryBizType(String queryBizType) {
+		this.queryBizType = queryBizType;
+	}
+	/**
+	 * @return the queryAreaJob
+	 */
+	public String getQueryAreaJob() {
+		return queryAreaJob;
+	}
+	/**
+	 * @param queryAreaJob the queryAreaJob to set
+	 */
+	public void setQueryAreaJob(String queryAreaJob) {
+		this.queryAreaJob = queryAreaJob;
+	}
+	/**
+	 * @return the queryBizArea
+	 */
+	public String getQueryBizArea() {
+		return queryBizArea;
+	}
+	/**
+	 * @param queryBizArea the queryBizArea to set
+	 */
+	public void setQueryBizArea(String queryBizArea) {
+		this.queryBizArea = queryBizArea;
 	}
 }

@@ -530,6 +530,7 @@
 		inidPay = inidPay.length > 0 ? inidPay.substring(0, inidPay.length - 1) : "";
 		*/
 		
+		$("#pageNo").val(1);							//검색을 하면 1페이지로 이동.
 		$("#inidType").val(inidType);
 		$("#inidAreaJob").val(inidAreaJob);
 		$("#inidArea").val(inidArea);

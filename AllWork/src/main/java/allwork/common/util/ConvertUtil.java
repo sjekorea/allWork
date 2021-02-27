@@ -66,7 +66,7 @@ public class ConvertUtil {
 				rtnNum = Integer.parseInt(arg);
 			}
 		} catch(Exception e) {
-			e.printStackTrace();			
+			//e.printStackTrace();			
 		}
 		return rtnNum;
 	}

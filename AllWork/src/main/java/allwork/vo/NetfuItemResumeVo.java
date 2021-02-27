@@ -109,6 +109,15 @@ public class NetfuItemResumeVo {
 	private int paidResume;				//1 = 유료열람서비스를 선택한 경우, 0 = 유료열람서비스를 선택하지 않은 경우.
 	
 	
+	private String queryInidType;			//상세 Query 문자열 - 직무.
+	private String queryInidAreaJob;		//상세 Query 문자열 - 산업.
+	private String queryInidArea;			//상세 Query 문자열 - 지역.
+	private String queryInidLicense;		//상세 Query 문자열 - 자격증.
+	private String queryInidCareer;			//상세 Query 문자열 - 경력.
+	private String queryInidSchool;			//상세 Query 문자열 - 학력.
+	private String queryInidJobForm;		//상세 Query 문자열 - 고용형태.
+	private String queryInidPay;			//상세 Query 문자열 - 급여.
+
 	
 	
 	public int getEducationDegree() {
@@ -742,6 +751,101 @@ public class NetfuItemResumeVo {
 	public void setPaidResume(int paidResume) {
 		this.paidResume = paidResume;
 	}
-	
+	/**
+	 * @return the queryInidType
+	 */
+	public String getQueryInidType() {
+		return queryInidType;
+	}
+	/**
+	 * @param queryInidType the queryInidType to set
+	 */
+	public void setQueryInidType(String queryInidType) {
+		this.queryInidType = queryInidType;
+	}
+	/**
+	 * @return the queryInidAreaJob
+	 */
+	public String getQueryInidAreaJob() {
+		return queryInidAreaJob;
+	}
+	/**
+	 * @param queryInidAreaJob the queryInidAreaJob to set
+	 */
+	public void setQueryInidAreaJob(String queryInidAreaJob) {
+		this.queryInidAreaJob = queryInidAreaJob;
+	}
+	/**
+	 * @return the queryInidArea
+	 */
+	public String getQueryInidArea() {
+		return queryInidArea;
+	}
+	/**
+	 * @param queryInidArea the queryInidArea to set
+	 */
+	public void setQueryInidArea(String queryInidArea) {
+		this.queryInidArea = queryInidArea;
+	}
+	/**
+	 * @return the queryInidLicense
+	 */
+	public String getQueryInidLicense() {
+		return queryInidLicense;
+	}
+	/**
+	 * @param queryInidLicense the queryInidLicense to set
+	 */
+	public void setQueryInidLicense(String queryInidLicense) {
+		this.queryInidLicense = queryInidLicense;
+	}
+	/**
+	 * @return the queryInidCareer
+	 */
+	public String getQueryInidCareer() {
+		return queryInidCareer;
+	}
+	/**
+	 * @param queryInidCareer the queryInidCareer to set
+	 */
+	public void setQueryInidCareer(String queryInidCareer) {
+		this.queryInidCareer = queryInidCareer;
+	}
+	/**
+	 * @return the queryInidSchool
+	 */
+	public String getQueryInidSchool() {
+		return queryInidSchool;
+	}
+	/**
+	 * @param queryInidSchool the queryInidSchool to set
+	 */
+	public void setQueryInidSchool(String queryInidSchool) {
+		this.queryInidSchool = queryInidSchool;
+	}
+	/**
+	 * @return the queryInidJobForm
+	 */
+	public String getQueryInidJobForm() {
+		return queryInidJobForm;
+	}
+	/**
+	 * @param queryInidJobForm the queryInidJobForm to set
+	 */
+	public void setQueryInidJobForm(String queryInidJobForm) {
+		this.queryInidJobForm = queryInidJobForm;
+	}
+	/**
+	 * @return the queryInidPay
+	 */
+	public String getQueryInidPay() {
+		return queryInidPay;
+	}
+	/**
+	 * @param queryInidPay the queryInidPay to set
+	 */
+	public void setQueryInidPay(String queryInidPay) {
+		this.queryInidPay = queryInidPay;
+	}
 }	
 	

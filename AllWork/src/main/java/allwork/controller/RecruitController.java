@@ -102,9 +102,9 @@ public class RecruitController {
 			
 			// 채용정보 검색 리스트
 			commandMap.put("showAll", 1);
-			commandMap.put("bizType3", strQueryBizType);
-			commandMap.put("areaJob3", strQueryIndustry);
-			commandMap.put("bizArea2", strQueryArea);
+			commandMap.put("queryBizType", strQueryBizType);
+			commandMap.put("queryAreaJob", strQueryIndustry);
+			commandMap.put("queryBizArea", strQueryArea);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -175,7 +175,7 @@ public class RecruitController {
 
 			// 채용정보 검색 리스트
 			commandMap.put("showAll", 1);
-			commandMap.put("bizType3", strQueryBizType);
+			commandMap.put("queryBizType", strQueryBizType);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -236,7 +236,7 @@ public class RecruitController {
 
 			// 채용정보 검색 리스트
 			commandMap.put("showAll", 1);
-			commandMap.put("areaJob3", strQueryIndustry);
+			commandMap.put("queryAreaJob", strQueryIndustry);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -294,7 +294,7 @@ public class RecruitController {
 			
 			// 채용정보 검색 리스트
 			commandMap.put("showAll", 1);
-			commandMap.put("bizArea2", strQueryArea);
+			commandMap.put("queryBizArea", strQueryArea);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -355,9 +355,9 @@ public class RecruitController {
 
 			// 채용정보 검색 리스트
 			commandMap.put("showAll", 1);
-			commandMap.put("bizType3", strQueryBizType);
-			commandMap.put("areaJob3", strQueryIndustry);
-			commandMap.put("bizArea2", strQueryArea);
+			commandMap.put("queryBizType", strQueryBizType);
+			commandMap.put("queryAreaJob", strQueryIndustry);
+			commandMap.put("queryBizArea", strQueryArea);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){
@@ -431,9 +431,9 @@ public class RecruitController {
 
 			// 채용정보 검색 리스트
 			commandMap.put("showAll", 1);
-			commandMap.put("bizType3", strQueryBizType);
-			commandMap.put("areaJob3", strQueryIndustry);
-			commandMap.put("bizArea2", strQueryArea);
+			commandMap.put("queryBizType", strQueryBizType);
+			commandMap.put("queryAreaJob", strQueryIndustry);
+			commandMap.put("queryBizArea", strQueryArea);
 			List<Map<String, Object>> recruitList = netfuItemCompanyService.selectNetfuItemCompanyList(commandMap.getMap());
 			Map<String, Object> pageMap = new HashMap<String, Object>();
 			if(recruitList.size() > 0){

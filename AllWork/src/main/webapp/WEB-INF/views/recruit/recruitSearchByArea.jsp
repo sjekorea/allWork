@@ -487,6 +487,7 @@
 		bizArea = bizArea.length > 0 ? bizArea.substring(0, bizArea.length - 1) : "";
 		*/
 		
+		$("#pageNo").val(1);							//검색을 하면 1페이지로 이동.
 		$("#bizType3").val(bizType);
 		$("#areaJob3").val(areaJob);
 		$("#bizArea2").val(bizArea);

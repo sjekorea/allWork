@@ -46,29 +46,29 @@
 			<if test='infoType == 2'>
 				and (nir.inid_jobform like '%arbeit%' or nir.inid_jobform like '%netfu_34537_33276%')
 			</if>
-			<if test="inidType != null and inidType != ''">
-				AND ${inidType}
+			<if test="queryInidType != null and queryInidType != ''">
+				AND ${queryInidType}
 			</if>
-			<if test="inidAreaJob != null and inidAreaJob != ''">
-				AND ${inidAreaJob}
+			<if test="queryInidAreaJob != null and queryInidAreaJob != ''">
+				AND ${queryInidAreaJob}
 			</if>
-			<if test="inidArea != null and inidArea != ''">
-				AND ${inidArea}
+			<if test="queryInidArea != null and queryInidArea != ''">
+				AND ${queryInidArea}
 			</if>
-			<if test="inidLicense != null and inidLicense != ''">
-				AND ${inidLicense}
+			<if test="queryInidLicense != null and queryInidLicense != ''">
+				AND ${queryInidLicense}
 			</if>
-			<if test="inidCareer != null and inidCareer != ''">
-				AND ${inidCareer}
+			<if test="queryInidCareer != null and queryInidCareer != ''">
+				AND ${queryInidCareer}
 			</if>
-			<if test="inidSchool != null and inidSchool != ''">
-				AND ${inidSchool}
+			<if test="queryInidSchool != null and queryInidSchool != ''">
+				AND ${queryInidSchool}
 			</if>
-			<if test="inidJobform != null and inidJobform != ''">
-				AND ${inidJobform}
+			<if test="queryInidJobForm != null and queryInidJobForm != ''">
+				AND ${queryInidJobForm}
 			</if>
-			<if test="inidPay != null and inidPay != ''">
-				AND ${inidPay}
+			<if test="queryInidPay != null and queryInidPay != ''">
+				AND ${queryInidPay}
 			</if>
 		) nir
 		where 1=1
@@ -123,29 +123,29 @@
 			<if test='infoType == 2'>
 				and (nir.inid_jobform like '%arbeit%' or nir.inid_jobform like '%netfu_34537_33276%')
 			</if>
-			<if test="inidType != null and inidType != ''">
-				AND ${inidType}
+			<if test="queryInidType != null and queryInidType != ''">
+				AND ${queryInidType}
 			</if>
-			<if test="inidAreaJob != null and inidAreaJob != ''">
-				AND ${inidAreaJob}
+			<if test="queryInidAreaJob != null and queryInidAreaJob != ''">
+				AND ${queryInidAreaJob}
 			</if>
-			<if test="inidArea != null and inidArea != ''">
-				AND ${inidArea}
+			<if test="queryInidArea != null and queryInidArea != ''">
+				AND ${queryInidArea}
 			</if>
-			<if test="inidLicense != null and inidLicense != ''">
-				AND ${inidLicense}
+			<if test="queryInidLicense != null and queryInidLicense != ''">
+				AND ${queryInidLicense}
 			</if>
-			<if test="inidCareer != null and inidCareer != ''">
-				AND ${inidCareer}
+			<if test="queryInidCareer != null and queryInidCareer != ''">
+				AND ${queryInidCareer}
 			</if>
-			<if test="inidSchool != null and inidSchool != ''">
-				AND ${inidSchool}
+			<if test="queryInidSchool != null and queryInidSchool != ''">
+				AND ${queryInidSchool}
 			</if>
-			<if test="inidJobform != null and inidJobform != ''">
-				AND ${inidJobform}
+			<if test="queryInidJobForm != null and queryInidJobForm != ''">
+				AND ${queryInidJobForm}
 			</if>
-			<if test="inidPay != null and inidPay != ''">
-				AND ${inidPay}
+			<if test="queryInidPay != null and queryInidPay != ''">
+				AND ${queryInidPay}
 			</if>
 		) nir
 		where 1=1

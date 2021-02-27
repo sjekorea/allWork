@@ -439,7 +439,7 @@
 				}
 				
 				if("cate_industry" == ulClass){ // 산업별
-					$("#searchKind").val("areaJob");
+					$("#searchKind").val("area_job");
 					$(".tab:eq(0)").find("li").eq(1).css("background-color", "#000").siblings("li").css("background-color", "#ddd");
 					$(".select01").html($(".cate_industry").html());
 				}
@@ -734,6 +734,7 @@
 		inidPay = inidPay.length > 0 ? inidPay.substring(0, inidPay.length - 1) : "";
 		*/
 		
+		$("#pageNo").val(1);							//검색을 하면 1페이지로 이동.
 		$("#inidType").val(inidType);
 		$("#inidAreaJob").val(inidAreaJob);
 		$("#inidArea").val(inidArea);
