@@ -706,7 +706,10 @@
 		loadingOn();
 		
 		var callback = function(data){
-			if(data.rstCnt > 0){
+			if(data.rstCnt >= 100){
+				alert("잘못된 사업자번호 입니다.");
+				$("#chkDupBizNoChk").val("N");
+			} else if(data.rstCnt > 0){
 				alert("등록된 사업자번호 입니다.");
 				$("#chkDupBizNoChk").val("N");
 			}else{

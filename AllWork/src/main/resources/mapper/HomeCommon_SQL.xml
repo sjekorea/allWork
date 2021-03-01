@@ -20,9 +20,14 @@
 		select link, thumbnail from netfu_58558_26593 where board_code = 'netfu_90000_90001' AND view = 'yes' order by rand() limit 4
 	</select>
 
-	<!-- 메인 페이지 롤 배너 리스트 -->
+	<!-- 메인 페이지 롤배너 리스트 -->
 	<select id="selectMainRollBannerList" parameterType="hashmap" resultType="allwork.vo.NetfuBannerVo">
 		select link, thumbnail from netfu_58558_26593 where board_code = 'netfu_90000_90002' AND view = 'yes' order by rand() limit 12
+	</select>
+
+	<!-- 메인 페이지 상단 롤배너 리스트 -->
+	<select id="selectMainTopRollBannerList" parameterType="hashmap" resultType="allwork.vo.NetfuBannerVo">
+		select link, thumbnail from netfu_58558_26593 where board_code = 'netfu_90000_90003' AND view = 'yes' order by rand() limit 12
 	</select>
 	
 	<!-- 메인 페이지 채용공고 리스트 -->

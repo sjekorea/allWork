@@ -9,4 +9,5 @@ public interface RecruitOtherService {
 	List<Map<String, Object>> selectRecruitOtherList(Map<String, Object> map) throws Exception;
 	Map<String, Object> selectRecruitOtherMap(Map<String, Object> map) throws Exception;
 
+	int selectTodayRecruitOtherCnt(Map<String, Object> map) throws Exception;
 }

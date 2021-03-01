@@ -50,18 +50,16 @@
 		<!-- 배너광고 -->
 		<div id="content01_ad">
 			<ul>
-				<!-- 
-				<li class="ad_info">
+				<li class="ad_roll ad_roll01">
 					<div>
-<span style="color: rgb(8, 82, 148);">오늘</span><span style="color: rgb(8, 82, 148);">일반채용정보</span>
-<span style="color: rgb(57, 132, 198);">1,234</span> <span style="color: rgb(8, 82, 148);">건</span>
-<span style="color: rgb(8, 82, 148); font-weight: normal;">개인회원에 가입하시면 보다 많은</span><span style="color: rgb(8, 82, 148); font-weight: normal;">채용정보를 보실수 있습니다.</span>
+						<p class="today_count">오늘<br/>일반채용정보<br/>
+						<span><fmt:formatNumber value="${todayRecruitCount}" pattern="#,###"/></span>건</p>
+                    	<p>개인회원에 가입하시면 보다 많은<br/> 채용정보를 보실 수 있습니다.</p>
 					</div>
 				</li>
-				 -->
 
 				<c:forEach var="result" items="${bannerList}" varStatus="status">
-					<c:if test="${status.index < 4 }">
+					<c:if test="${status.index < 2 }">
 						<li class="ad_roll">
 							<c:if test="${result.link == null || result.link == '' }">
 								<div>${result.thumbnail}</div>
@@ -79,6 +77,39 @@
 
 <div id="content02Wrap">
 
+	<!-- 상단 롤 배터 광고 -->
+<c:if test="${rollBannerListTop.size() > 0 }">
+	<div id="content02Top">
+		<div id="adAreaTop">
+			<!-- 
+			<p class="btn btn_prev"><a href="" title="이전보기"><img src="img/main/btn_prev.jpg" alt="이전버튼" /></a></p>
+			 -->
+			<ul id="adList">
+				<c:forEach var="result" items="${rollBannerListTop}" varStatus="status">
+					<c:if test="${status.index < 6 }">
+						<li>
+							<c:if test="${result.link == null || result.link == '' }">
+								<a href="javascript:void();" title="롤배너광고">
+									<p class="adImg">${result.thumbnail}</p>
+								</a>
+							</c:if>
+							<c:if test="${result.link != null && result.link != '' }">
+								<a href="${result.link }" target="_blank" title="롤배너광고">
+									<p class="adImg">${result.thumbnail}</p>
+								</a>
+							</c:if>
+						</li>
+					</c:if>
+				</c:forEach>
+			</ul>
+			<!-- 
+			<p class="btn btn_prev"><a href="" title="다음보기"><img src="img/main/btn_next.jpg" alt="다음버튼" /></a></p>
+			 -->
+		</div>
+	</div>
+</c:if>
+
+	<!-- 채용공공들 -->
 	<div id="content04Wrap">
 		<div id="content04">
 			<h4>헤드헌팅 채용공고</h4>
@@ -229,7 +260,7 @@
 		</div>
 	</div>
 
-	<!-- 롤 배터 광고 -->
+	<!-- 하단 롤 배터 광고 -->
 	<div id="content02">
 		<div id="adArea">
 			<!-- 
@@ -240,12 +271,12 @@
 					<c:if test="${status.index < 6 }">
 						<li>
 							<c:if test="${result.link == null || result.link == '' }">
-								<a href="javascript:void();" title="롤 배너광고">
+								<a href="javascript:void();" title="롤배너광고">
 									<p class="adImg">${result.thumbnail}</p>
 								</a>
 							</c:if>
 							<c:if test="${result.link != null && result.link != '' }">
-								<a href="${result.link }" target="_blank" title="롤 배너광고">
+								<a href="${result.link }" target="_blank" title="롤배너광고">
 									<p class="adImg">${result.thumbnail}</p>
 								</a>
 							</c:if>
@@ -268,12 +299,12 @@
 					<c:if test="${status.index < 6 }">
 						<li>
 							<c:if test="${result.link == null || result.link == '' }">
-								<a href="javascript:void();" title="롤 배너광고">
+								<a href="javascript:void();" title="롤배너광고">
 									<p class="adImg">${result.thumbnail}</p>
 								</a>
 							</c:if>
 							<c:if test="${result.link != null && result.link != '' }">
-								<a href="${result.link }" target="_blank" title="롤 배너광고">
+								<a href="${result.link }" target="_blank" title="롤배너광고">
 									<p class="adImg">${result.thumbnail}</p>
 								</a>
 							</c:if>

@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
+import com.ilmagna.allworkadmin.api.common.ApiTaxTypeFromNTS;
 import com.ilmagna.allworkadmin.api.domains.ApiSiteBasicModel;
 import com.ilmagna.allworkadmin.api.services.ApiSiteBasicService;
 
@@ -197,6 +198,16 @@ public class NetfuMemberController {
 			//사업자번호를 표준형태로 변환.
 			String strBizNo = ApiCommonUtils.getBizNoFormatStr((String) commandMap.get("bizNo"));
 			commandMap.put("bizNo", strBizNo);
+			
+			//사업자번호 유표성 검사.
+			boolean bValidBizNo = ApiTaxTypeFromNTS.getTaxTypeFromNts(strBizNo);
+			if (!bValidBizNo) {
+				mv.addObject("map", commandMap.getMap());
+				mv.addObject("rstCnt", 100);
+				mv.setViewName("jsonView");
+
+				return mv;
+			}
 			
 			//사업자번호 중복검사.
 			int rstCnt = netfuCompanyService.selectBizNoCnt(commandMap.getMap());

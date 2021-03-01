@@ -112,4 +112,16 @@
 		limit 1
 	</select>
 
+
+	
+	<!-- 금일등록 일반채용정보  Count -->
+	<select id="selectTodayRecruitOtherCnt" parameterType="hashmap" resultType="int">
+		SELECT 
+			count(ser) cnt
+		FROM recruit_other
+		WHERE 1=1
+			AND prs='P'
+			AND reg <![CDATA[ >= ]]> CONCAT(CURDATE() - INTERVAL #{interval} DAY, ' 00:00:00') AND reg <![CDATA[ <= ]]> CONCAT(CURDATE(), '23:59:59')
+	</select>
+
 </mapper>

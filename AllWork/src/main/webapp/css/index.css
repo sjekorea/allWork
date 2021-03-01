@@ -61,23 +61,42 @@ body{font-family:"NotoSansKR-Regular";}
 /*###################################   content01_ad 유료광고 모음 ###################################*/
 #content01_ad{width:250px;height:500px;float: left;}
 #content01_ad ul{width:100%;height:100%;}
-#content01_ad ul .ad_info{display:inline-block;width:250px;height:240px;line-height:104px;text-align: center;border:1px solid #ccc;
-  box-shadow:5px 5px 1px rgba(220,220,220,1);margin-right:15px;margin-bottom:8px;overflow: hidden;}
-#content01_ad ul .ad_roll{display:inline-block;width:250px;height:110px;line-height:104px;text-align: center;border:1px solid #ccc;
+#content01_ad ul li{display:inline-block;width:250px;height:110px;text-align: center;border:1px solid #ccc;
   box-shadow:5px 5px 1px rgba(220,220,220,1);margin-right:15px;margin-bottom:8px;overflow: hidden;}
 #content01_ad ul li img{width:100%;vertical-align:middle;}
 
+#content01_ad ul li.ad_roll01{height:236px;}
+#content01_ad ul li.ad_roll01 div{width:100%;height:100%;font-size:14px;}
+#content01_ad ul li.ad_roll01 div .today_count{font-family:"NotoSansKR-Medium";font-size:36px;letter-spacing:-1px;line-height:46px;padding:20px 0 20px;}
+#content01_ad ul li.ad_roll01 div .today_count span{font-family:"NotoSansKR-Bold";color:#4F60E3;font-size:46px;}
+
+
 #content01_ad ul li:hover{border:1px solid #333;}
-
-#content01_ad ul li div h2{display:inline-block;width:100%;height:100%;padding:10%;position: relative;}
-#content01_ad ul li div h4{display:inline-block;width:100%;height:100%;padding:10%;position: relative;}
-#content01_ad ul li div h2 span{display:inline-block;font-size:14px;}
-#content01_ad ul li div h4 span{display:inline-block;font-size:14px;}
-
 
 /*###################################   content02 기업광고 모음 ###################################*/
 
   #content02Wrap{width:100%;border-top: 1px solid #ccc;}
+  
+  /* 상단 롤배너	*/
+  #content02Top{width:1000px;height:50px;margin:0 auto;}
+  #adAreaTop{width:90%;height:100%;margin: auto;}
+  #adAreaTop p{width:35px;height:35px;margin-top:7px;float:left;}
+  #adAreaTop p a{display: block;width:100%;height:100%;}
+  #adAreaTop p a img{width:100%;}
+
+  #adAreaTop #adList{width:930px;height:50px;overflow: hidden;float:left;}
+  #adAreaTop #adList li{width:155px;height:100%;float:left;}
+  #adAreaTop #adList li a{display: block;width:100%;height:100%;position: relative;}
+  #adAreaTop #adList li a p{width:100%;height:100%;position: absolute;top:0;left:0;margin-top:0;}
+  #adAreaTop #adList li a .adImg{width:100%;height:100%;}
+  #adAreaTop #adList li a .adImg img{width:100%;}
+
+  #adAreaTop #adList li a .adText{width:100%;height:50px;text-align: center;font-size:12px;color:#fff;background-color:#43425D;padding:7px 0 3px;opacity:0;}
+
+  #adAreaTop #adList li:hover a .adText{opacity:1;}
+  #adAreaTop .btn:hover{filter: contrast(80%);}
+
+  /* 하단 롤배너	*/
   #content02{width:1000px;height:100px;margin:0 auto;}
   #adArea{width:90%;height:50%;margin: auto;}
   #adArea p{width:35px;height:35px;margin-top:7px;float:left;}

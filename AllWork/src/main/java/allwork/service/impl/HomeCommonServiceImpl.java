@@ -38,10 +38,16 @@ public class HomeCommonServiceImpl implements HomeCommonService{
 		return homeCommonDao.selectMainBannerList(map);
 	}
 	
-	// 메인화면 롤 배너 리스트
+	// 메인화면 롤배너 리스트
 	@Override
 	public List<Map<String, Object>> selectMainRollBannerList(Map<String, Object> map) throws Exception {
 		return homeCommonDao.selectMainRollBannerList(map);
+	}
+	
+	// 메인화면 상단 롤배너 리스트
+	@Override
+	public List<Map<String, Object>> selectMainTopRollBannerList(Map<String, Object> map) throws Exception {
+		return homeCommonDao.selectMainTopRollBannerList(map);
 	}
 	
 	// 메인 채용공고 리스트

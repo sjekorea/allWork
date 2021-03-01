@@ -84,8 +84,12 @@ public class HomeController {
 			
 			// banner 정보
 			List<Map<String, Object>> bannerList = homeCommonService.selectMainBannerList(commandMap.getMap());
-			
-			// 롤 배너 정보
+
+			// 롤배너 정보 - 상단 롤배너
+			//(TBD)
+			List<Map<String, Object>> rollBannerListTop = homeCommonService.selectMainTopRollBannerList(commandMap.getMap());
+
+			// 롤배너 정보 - 하단 롤배너
 			List<Map<String, Object>> rollBannerList = homeCommonService.selectMainRollBannerList(commandMap.getMap());
 			List<NetfuBannerVo> rollBannerList02 = new ArrayList<NetfuBannerVo>();
 			if (rollBannerList.size() > 6) {
@@ -93,6 +97,14 @@ public class HomeController {
 					rollBannerList02.add((NetfuBannerVo) rollBannerList.get(index));
 			}
 			
+			//금일등록 일반채용공고 개수.
+			int todayRecruitCount = 0;
+			for (int interval = 0; interval < 7; interval++) {
+				commandMap.put("interval", interval);
+				todayRecruitCount = recruitOtherService.selectTodayRecruitOtherCnt(commandMap.getMap());
+				if (todayRecruitCount > 100) break;
+			}
+	
 			// 채용정보 1 - 유료 채용공고 우선적으로 표출. 유료채용공고가 부족한 경우에는 일반정보 추가.
 			List<NetfuItemCompanyVo> mainRecruitList = new ArrayList<NetfuItemCompanyVo>();
 			List<Map<String, Object>> mainRecruitList1 = homeCommonService.selectMainPayRecruitList(commandMap.getMap());
@@ -137,8 +149,10 @@ public class HomeController {
 			List<Map<String, Object>> recruitOtherList = recruitOtherService.selectRecruitOtherList(commandMap.getMap());
 			
 			mv.addObject("bannerList", bannerList);
+			mv.addObject("rollBannerListTop", rollBannerListTop);
 			mv.addObject("rollBannerList", rollBannerList);
 			mv.addObject("rollBannerList02", rollBannerList02);
+			mv.addObject("todayRecruitCount", todayRecruitCount);
 			mv.addObject("mainRecruitList", mainRecruitList);
 			mv.addObject("headhuntList", headhuntList);
 			mv.addObject("recruitList", recruitList);

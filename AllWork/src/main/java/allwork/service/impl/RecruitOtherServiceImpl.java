@@ -37,4 +37,11 @@ public class RecruitOtherServiceImpl implements RecruitOtherService{
 		return recruitOtherDao.selectRecruitOtherMap(map);
 	}
 
+	
+	
+	// 금일등록 채용정보 갯수 
+	@Override
+	public int selectTodayRecruitOtherCnt(Map<String, Object> map) throws Exception {
+		return recruitOtherDao.selectTodayRecruitOtherCnt(map);
+	}
 }

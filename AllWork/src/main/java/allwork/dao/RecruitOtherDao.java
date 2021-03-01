@@ -25,4 +25,9 @@ public class RecruitOtherDao extends AbstractDAO{
 	public Map<String, Object> selectRecruitOtherMap(Map<String, Object> map) {
 		return (Map<String, Object>)selectOne("recruitOther.selectRecruitOtherMap", map);
 	}
+	
+	// 금일등록 채용정보 갯수 
+	public int selectTodayRecruitOtherCnt(Map<String, Object> map) throws Exception{
+		return selectCnt("recruitOther.selectTodayRecruitOtherCnt", map);
+	}
 }
