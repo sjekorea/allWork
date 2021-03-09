@@ -53,5 +53,6 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
     .list tbody .desc_desc00{color:#666;}
 
     .list td a:hover{text-decoration: underline;}
+    .list tr:hover{background-color: lightyellow;}
 
     .numareaWrap{padding-bottom: 30px;border-top:1px solid #ccc;}

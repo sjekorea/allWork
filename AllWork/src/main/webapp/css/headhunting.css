@@ -13,13 +13,14 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 #rightPart p{width:100%;border:1px solid #ccc;height:60px;line-height:30px;font-size:13px;margin-bottom:10px;text-align: center;}
 #rightPart p span{color:#4F60E3;}
 
+
 /*###################################  키워드 검색 부분   ###################################*/
 form{width:100%;}
 fieldset{border:none;}
 legend{display:none;}
-#searchForm p{width:468px;height:40px;background-color: pink;border:1px solid #ccc;float:left;}
+#searchForm p{width:173px;height:40px;background-color: pink;border:1px solid #ccc;float:left;}
 #searchForm p input{width:100%;height:100%;border:none;background-color: #fff;text-indent:10px;line-height:40px;}
-#searchForm p.btnBox{width:120px;}
+#searchForm p.btnBox{width:90px;}
 #searchForm p.btnBox input{background-color:#4F60E3;color:#fff;}
 #searchForm #reset_btn{background-color:#000;}
 
@@ -52,5 +53,6 @@ legend{display:none;}
     .list tbody .desc_desc00{color:#666;}
 
     .list td a:hover{text-decoration: underline;}
+	.list tr.row:hover { background-color: lightyellow; }
 
     .numareaWrap{padding-bottom: 30px;}

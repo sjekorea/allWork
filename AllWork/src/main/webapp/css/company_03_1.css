@@ -8,6 +8,7 @@ body{background: #EDF0F5;font-family:"NotoSansKR-Regular";}
 /*###################################   rightpart   ###################################*/
 #rightPart{width:790px;margin-left:10px;float: left;}
 
+
 /*###################################   part01/추천인재  ###################################*/
 #part01{width:790px;overflow:hidden;margin-bottom:20px;}
 #part01 ul.adPart{width:800px;height:100%;}
@@ -165,6 +166,7 @@ input{outline:none;}
 
   #listPart .list .desc .desc01{text-align: left;}
   #listPart .list td a:hover{text-decoration: underline;}
+  #listPart .list tr:hover { background-color: lightyellow; }
 
 
 .numareaWrap{padding-bottom:30px;}

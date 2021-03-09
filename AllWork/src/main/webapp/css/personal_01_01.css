@@ -111,5 +111,6 @@ h4 span{padding-left:5px;font-size:14px;font-family:"NotoSansKR-Light";}
 .list tbody .desc_desc00{color:#777;font-family:"NotoSansKR-Medium";}
 
 .list td a:hover{text-decoration: underline;}
+.list tr.row:hover { background-color: lightyellow; }
 
 .numareaWrap{padding-bottom: 30px;}

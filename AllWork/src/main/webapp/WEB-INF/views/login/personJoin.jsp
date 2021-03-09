@@ -123,14 +123,14 @@
 										<td>
 											<input id="uid" type="text" name="uid" title="아이디" maxlength=16 value=""/>
 											<input id="btuChkDupUid" type="submit" value="중복확인" title="중복확인"/>
-											<span class="comment">영문과 숫자를 조합하여 4~16자 이내로 입력하세요.</span>
+											<span class="comment">영문, 숫자, 기호를 조합하여 4~16자 이내로 입력하세요.</span>
 										</td>
 									</tr>
 									<tr>
 										<th>비밀번호<span class="necessary">*</span></th>
 										<td>
 											<input id="passwd" type="password" name="passwd" maxlength=16 value="" title="비밀번호"/>
-											<span class="comment">비밀번호는 4~16자 영문, 숫자를 조합하여 사용할 수 있습니다.</span>
+											<span class="comment">비밀번호는 4~16자 영문, 숫자, 기호를 조합하여 사용할 수 있습니다.</span>
 										</td>
 									</tr>
 									<tr>
@@ -306,6 +306,11 @@
 									<span class="descBtn"><input id="desc_Btn02" type="button" name="desc_Btn02" value="내용보기 ∨" /></span>
 									<span class="agreeDesc02">${item.privacy}</span>
 								</li>
+								<li class="descArea"><span class="desc">
+									<input id="agree03" type="checkbox" name="agree03" />&nbsp;<label for="agree03">[필수] 위치기반서비스 이용 동의</label></span>
+									<span class="descBtn"><input id="desc_Btn03" type="button" name="desc_Btn03" value="내용보기 ∨" /></span>
+									<span class="agreeDesc03">${item.locGuide}</span>
+								</li>
 								<!-- 
 								<li><span><input id="agree03" type="checkbox" name="agree03" />&nbsp;<label for="agree03">[선택] 마케팅 정보 이메일 수신 동의</label></span></li>
 								<li><span><input id="agree04" type="checkbox" name="agree04" />&nbsp;<label for="agree04">[선택] 마케팅 정보 SMS 수신 동의</label></span></li>
@@ -379,11 +384,19 @@
 		$("#desc_Btn01").on("click", function(e){
 			$(".agreeDesc01").toggle();
 			$(".agreeDesc02").css("display", "none");
+			$(".agreeDesc03").css("display", "none");
 		});
 		
 		$("#desc_Btn02").on("click", function(e){
 			$(".agreeDesc01").css("display", "none");
 			$(".agreeDesc02").toggle();
+			$(".agreeDesc03").css("display", "none");
+		});
+		
+		$("#desc_Btn03").on("click", function(e){
+			$(".agreeDesc01").css("display", "none");
+			$(".agreeDesc02").css("display", "none");
+			$(".agreeDesc03").toggle();
 		});
 		
 				/*
@@ -555,7 +568,7 @@
 			return;
 		}
 		if($("#passwd").val().length < 4){
-			alertAndFocus("비밀번호는 4~16자 영문, 숫자를 조합하여 사용할 수 있습니다.\n비밀번호를 확인하세요.", $("#passwd"));
+			alertAndFocus("비밀번호는 4~16자 영문, 숫자, 기호를 조합하여 사용할 수 있습니다.\n비밀번호를 확인하세요.", $("#passwd"));
 			return;
 		}
 		if($("#passwd").val() != $("#passwdRe").val()){
@@ -624,6 +637,10 @@
 		}
 		if(!$("#agree02").is(":checked")){
 			alert("[필수]개인정보 수집 및 이용에 동의 하셔야 합니다.");
+			return;
+		}
+		if(!$("#agree03").is(":checked")){
+			alert("[필수]위치기반서비스 이용에 동의 하셔야 합니다.");
 			return;
 		}
 		

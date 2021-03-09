@@ -53,3 +53,5 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
   #listPart .list td.desc02{text-align: left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
   #listPart .list td a:hover{text-decoration: underline;}
+  #listPart .list tr:hover{background-color: lightyellow;}
+  

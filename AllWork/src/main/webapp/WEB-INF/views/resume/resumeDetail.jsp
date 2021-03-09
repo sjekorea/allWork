@@ -112,11 +112,11 @@
 											${memberMap.name} (${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${memberMap.uid }
 										</c:when>
 										<c:otherwise>
-											${convert:getPersonNameHidden(memberMap.name, resumeMap.paidResume) }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${convert:getUidHidden(memberMap.uid, resumeMap.paidResume) }
+											${convert:getPersonNameHidden(memberMap.name, resumeMap.paidResume) }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)
 										</c:otherwise>
 									</c:choose>
 									<!-- 
-									${convert:getPersonNameHidden(memberMap.name, resumeMap.paidResume) }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)/${convert:getUidHidden(memberMap.uid, resumeMap.paidResume) }
+									${convert:getPersonNameHidden(memberMap.name, resumeMap.paidResume) }(${codeConvert:getBizSex(memberMap.sex)},${codeConvert:getBirthYear(memberMap.birth)}년생)
 									 -->
 								</td>
 							</tr>

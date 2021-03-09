@@ -55,5 +55,6 @@ input[type="button"]{height:40px;line-height:42px;color:#fff;border:none;font-si
   .list tbody .desc_desc00{color:#666;}
 
   .list td a:hover{text-decoration: underline;}
+  .list tr:hover{background-color: lightyellow;}
 
   .numareaWrap{padding-bottom: 30px;}

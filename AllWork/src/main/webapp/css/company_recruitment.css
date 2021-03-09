@@ -38,3 +38,5 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 #rightPart .lists .desc .desc2 .total{color:#4F60E3;font-weight:700;}
 
       #rightPart .lists .desc .desc2 a:hover{text-decoration: underline;}
+
+      #rightPart .lists li:hover{background-color: lightyellow;}

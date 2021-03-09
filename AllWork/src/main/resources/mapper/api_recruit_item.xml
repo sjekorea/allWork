@@ -42,6 +42,20 @@
 					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
 					)
 			</if>
+			<if test='keyword02 != null &amp;&amp; keyword02 != ""'>
+				AND (
+					   A.place_work LIKE CONCAT('%', #{keyword02}, '%')
+					OR A.recruit_item_contents LIKE CONCAT('%', #{keyword02}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword02}, '%')
+					)
+			</if>
+			<if test='keyword03 != null &amp;&amp; keyword03 != ""'>
+				AND (
+					   A.place_work LIKE CONCAT('%', #{keyword03}, '%')
+					OR A.recruit_item_contents LIKE CONCAT('%', #{keyword03}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword03}, '%')
+					)
+			</if>
 		</where>
 		<if test=' sidx == null || sidx == "" || sord == null || sord == ""'>
 			ORDER BY A.ser DESC
@@ -101,6 +115,20 @@
 					   A.place_work LIKE CONCAT('%', #{keyword}, '%')
 					OR A.recruit_item_contents LIKE CONCAT('%', #{keyword}, '%')
 					OR A.memo LIKE CONCAT('%', #{keyword}, '%')
+					)
+			</if>
+			<if test='keyword02 != null &amp;&amp; keyword02 != ""'>
+				AND (
+					   A.place_work LIKE CONCAT('%', #{keyword02}, '%')
+					OR A.recruit_item_contents LIKE CONCAT('%', #{keyword02}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword02}, '%')
+					)
+			</if>
+			<if test='keyword03 != null &amp;&amp; keyword03 != ""'>
+				AND (
+					   A.place_work LIKE CONCAT('%', #{keyword03}, '%')
+					OR A.recruit_item_contents LIKE CONCAT('%', #{keyword03}, '%')
+					OR A.memo LIKE CONCAT('%', #{keyword03}, '%')
 					)
 			</if>
 		</where>

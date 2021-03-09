@@ -36,5 +36,6 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
   #rightPart .list td.desc02{text-align: left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
   #rightPart .list td a:hover{text-decoration: underline;}
+  #rightPart .list tr:hover{background-color: lightyellow;}
 
   .numareaWrap{padding-bottom:30px;}

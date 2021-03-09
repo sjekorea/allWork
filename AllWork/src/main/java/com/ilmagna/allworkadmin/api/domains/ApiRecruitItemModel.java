@@ -25,6 +25,9 @@ public class ApiRecruitItemModel extends ApiJqGridParams implements Serializable
 	private String progressContents;
 	private String bizEndType;
 	private String bizEndDay;
+	
+	private String keyword02;
+	private String keyword03;
 
 	private String companyTitle;
 	private String companyInitial;
@@ -190,6 +193,30 @@ public class ApiRecruitItemModel extends ApiJqGridParams implements Serializable
 	 */
 	public void setBizEndDay(String bizEndDay) {
 		this.bizEndDay = bizEndDay;
+	}
+	/**
+	 * @return the keyword02
+	 */
+	public String getKeyword02() {
+		return keyword02;
+	}
+	/**
+	 * @param keyword02 the keyword02 to set
+	 */
+	public void setKeyword02(String keyword02) {
+		this.keyword02 = keyword02;
+	}
+	/**
+	 * @return the keyword03
+	 */
+	public String getKeyword03() {
+		return keyword03;
+	}
+	/**
+	 * @param keyword03 the keyword03 to set
+	 */
+	public void setKeyword03(String keyword03) {
+		this.keyword03 = keyword03;
 	}
 	/**
 	 * @return the companyTitle

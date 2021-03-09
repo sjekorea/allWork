@@ -40,3 +40,5 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
 
   #listPart .list td a:hover{text-decoration: underline;}
   #listPart .list .desc05 a:hover{text-decoration:none;border:1px solid #999;}
+  #listPart .list tr:hover{background-color: lightyellow;}
+  

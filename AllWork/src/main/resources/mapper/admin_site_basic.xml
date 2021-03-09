@@ -13,9 +13,9 @@
 			, A.agreement AS agreement
 			, A.agreement3 AS agreement3
 			, A.privacy AS privacy
-			, A.privacy3 AS privacy3
 			, A.mobile_service AS mobileService
 			, A.mobile_payment_guide AS mobilePaymentGuide
+			, A.loc_guide AS locGuide
 		FROM
 			netfu_site_basic A 
 		LIMIT 1
@@ -31,9 +31,9 @@
 			, agreement = #{agreement}
 			, agreement3 = #{agreement3}
 			, privacy = #{privacy}
-			, privacy3 = #{privacy3}
 			, mobile_service = #{mobileService}
 			, mobile_payment_guide = #{mobilePaymentGuide}
+			, loc_guide = #{locGuide}
 
 		<!-- 
 		UPDATE
@@ -44,6 +44,7 @@
 			, hphone = #{hphone}
 			, mobile_service = #{mobileService}
 			, mobile_payment_guide = #{mobilePaymentGuide}
+			, loc_guide = #{locGuide}
 		 -->
 	</update>
 

@@ -40,3 +40,5 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
     #listPart .list .desc .desc01 img{width:100%;}
 
     #listPart .list td a:hover{text-decoration: underline;}
+    #listPart .list tr:hover{background-color: lightyellow;}
+    

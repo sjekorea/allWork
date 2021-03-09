@@ -98,7 +98,7 @@
 							<c:forEach var="result" items="${recruitList}" varStatus="status">
 				<tbody>
 								<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
-								<tr>
+								<tr class="row">
 									<td rowspan="3" class="desc01">${result.bizName }</td>
 									<td colspan="3" class="desc02">
 										<a href="javascript:goDetail('${result.uid }', '${SE_LOGIN_ID }', '', '${result.no }', '', '${result.bizIng }', '');">
@@ -120,12 +120,12 @@
 										</c:if>
 									</td>
 								</tr>
-								<tr>
+								<tr class="row">
 									<td><span class="desc_title">급여</span><span class="desc_desc00">${codeConvert:getPayInfo(result.payType, result.payTypeName, result.bizPayName) }</span></td>
 									<td><span class="desc_title">경력</span><span class="desc_desc00">${codeConvert:getBizCareer(result.bizCareer) }</span></td>
 									<td><span class="desc_title">나이</span><span class="desc_desc00">${codeConvert:getBizAge(result.bizAge) }</span></td>
 								</tr>
-								<tr>
+								<tr class="row">
 									<td><span class="desc_title">지역</span>
 										<span class="desc_desc00">${result.bizArea1Name }${convert:checkNull(result.bizArea2Name) eq '' ? '' : '>'.concat(result.bizArea2Name) }</span>
 									</td>

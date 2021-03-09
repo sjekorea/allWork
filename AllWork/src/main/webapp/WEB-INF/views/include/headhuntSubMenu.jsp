@@ -35,8 +35,4 @@
 	</ul>
 </div>
 
-
-<form id="searchForm" name="searchForm" method="post" action="/headhuntList.do">
-	<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
-</form>
 <!-- (end) 2020.12.30 by s.yoo -->

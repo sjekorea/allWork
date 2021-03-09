@@ -33,3 +33,5 @@ body{font-family:"NotoSansKR-Regular";background-color:#EDF0F5;}
   #listPart .list .desc04{width:100px;}
 
   #listPart .list td a:hover{text-decoration: underline;}
+  #listPart .list tr:hover{background-color: lightyellow;}
+  

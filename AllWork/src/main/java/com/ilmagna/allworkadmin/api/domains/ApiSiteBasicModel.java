@@ -17,10 +17,10 @@ public class ApiSiteBasicModel extends ApiJqGridParams implements Serializable  
 	private String hphone;					//SMS 발송 휴대폰 번호.
 	private String agreement;				//개인회원 이용약관.
 	private String agreement3;				//기업회원 이용약관.
-	private String privacy;					//개인회원 정보이용.
-	private String privacy3;				//기업회원 정보이용.
+	private String privacy;					//개인정보취급방침.
 	private String mobileService;			//모바일 서비스 안내.
 	private String mobilePaymentGuide;		//모바일 유료 안내.
+	private String locGuide;				//위치기반서비스 이용약관.
 
 	private List<Integer> ids;
 	private String sidx;	//sorting field.
@@ -100,18 +100,6 @@ public class ApiSiteBasicModel extends ApiJqGridParams implements Serializable  
 		this.privacy = privacy;
 	}
 	/**
-	 * @return the privacy3
-	 */
-	public String getPrivacy3() {
-		return privacy3;
-	}
-	/**
-	 * @param privacy3 the privacy3 to set
-	 */
-	public void setPrivacy3(String privacy3) {
-		this.privacy3 = privacy3;
-	}
-	/**
 	 * @return the mobileService
 	 */
 	public String getMobileService() {
@@ -134,6 +122,18 @@ public class ApiSiteBasicModel extends ApiJqGridParams implements Serializable  
 	 */
 	public void setMobilePaymentGuide(String mobilePaymentGuide) {
 		this.mobilePaymentGuide = mobilePaymentGuide;
+	}
+	/**
+	 * @return the locGuide
+	 */
+	public String getLocGuide() {
+		return locGuide;
+	}
+	/**
+	 * @param locGuide the locGuide to set
+	 */
+	public void setLocGuide(String locGuide) {
+		this.locGuide = locGuide;
 	}
 	/**
 	 * @return the ids

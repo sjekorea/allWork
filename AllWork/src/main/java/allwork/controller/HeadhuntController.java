@@ -67,6 +67,14 @@ public class HeadhuntController {
 			//model.setRows(pageSize);
 			model.setPage(pageNo);
 
+			model.setShowAll("Y");
+			if (commandMap.get("keyword") != null)
+				model.setKeyword((String) commandMap.get("keyword"));
+			if (commandMap.get("keyword02") != null)
+				model.setKeyword02((String) commandMap.get("keyword02"));
+			if (commandMap.get("keyword03") != null)
+				model.setKeyword03((String) commandMap.get("keyword03"));
+
 			//(1) 전체 항목 개수.
 			int totalRows = headhuntService.getRecruitItemTotalCnt(model);
 			model.calOffsetValue(totalRows);
@@ -74,9 +82,6 @@ public class HeadhuntController {
 			commandMap.put("pageSize", pageSize);
 
 			//(2) 이번 페이지의 데이터 목록.
-			model.setShowAll("Y");
-			if (commandMap.get("keyword") != null)
-				model.setKeyword((String) commandMap.get("keyword"));
 			item = headhuntService.getRecruitItemList(model);
 			
 			//(3) 항목 번호 할당 - N/A.
@@ -89,6 +94,7 @@ public class HeadhuntController {
 			}
 
 			//View에 데이터 전달.
+			mv.addObject("totalSize", totalRows);
 			mv.addObject("item", item);
 			mv.addObject("map", commandMap.getMap());
 			mv.addObject("pageMap", pageMap);

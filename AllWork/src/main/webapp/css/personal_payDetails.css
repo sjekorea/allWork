@@ -20,6 +20,7 @@ body{background: #EDF0F5;}
 
             #listPart .tab li:hover{border: 1px solid #999;}
             #listPart .tab li:hover a{color: #999;}
+            #listPart li:hover{background-color: lightyellow;}
 
     #listPart .tab li a.selected{background-color:#4F60E3;color:#fff;}
 

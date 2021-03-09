@@ -23,7 +23,7 @@
 			<jsp:include page="/headhuntSubMenu.do" />
 		</div>
 		<div id="rightPart">
-			<h4>헤드헌팅</h4>
+			<h4>헤드헌팅(<fmt:formatNumber value="${map.totalSize}" pattern="#,###"/>)</h4>
 			<p>헤드헌팅 채용공고는 기업회원이 유료신청한 내용입니다.<br />세부사항은 올워크 고객센터 <span>mail@allwork.co.kr</span> 또는 <span>02-585-0108</span>로 문의 바랍니다.</p>
 
 			<div id="listPart">
@@ -32,7 +32,11 @@
 					<form id="searchForm" name="searchForm" action="/headhuntList.do">
 						<fieldset>
 							<legend>검색</legend>
+							<input type="hidden" name="pageNo" id="pageNo" value="${map.pageNo}" />
+
 							<p><input type="text" id="keyword" name="keyword" value="${map.keyword }" placeholder="키워드" /></p>
+							<p><input type="text" id="keyword02" name="keyword02" value="${map.keyword02 }" placeholder="키워드 2" /></p>
+							<p><input type="text" id="keyword03" name="keyword03" value="${map.keyword03 }" placeholder="키워드 3" /></p>
 							<p class="btnBox"><input id="search_btn" type="button" name="search_btn" value="검색" style="cursor:pointer;"/></p>
 							<p class="btnBox"><input id="reset_btn" type="button" name="reset_btn" value="초기화" style="cursor:pointer;"/></p>
 						</fieldset>
@@ -60,7 +64,7 @@
 					<c:forEach var="result" items="${item}" varStatus="status">
 					<tbody>
 						<tr class="margin"><td></td><td></td><td></td><td></td><td></td></tr>
-						<tr>
+						<tr class="row">
 							<td rowspan="2" class="desc01">${result.companyInitial}사</td>
 							<td colspan="3" class="desc02">
 								${result.recruitContents}
@@ -80,7 +84,7 @@
 								</c:if>
 							</td>
 						</tr>
-						<tr>
+						<tr class="row">
 							<td><span class="desc_title">근무지:</span><span class="desc_desc00">${result.placeWork}</span></td>
 							<td><span class="desc_title">모집인원:</span><span class="desc_desc00">${result.men}</span></td>
 							<td><span class="desc_title">등록일:</span><span class="desc_desc00">${result.strReqDate}</span></td>
@@ -92,7 +96,7 @@
 				<c:otherwise>
 					<tbody>
 						<tr style="cursor:pointer">
-							<th colspan=3>데이터가 존재하지 않습니다.</th>
+							<th colspan=6>데이터가 존재하지 않습니다.</th>
 						</tr>
 					</tbody>
 				</c:otherwise>
@@ -197,11 +201,17 @@
 	$(document).ready(function(){
 		
 		$("#search_btn").on("click", function(e) {
+			$("#pageNo").val(1);
+
 			$("#searchForm").submit();	
 		});
 
 		$("#reset_btn").on("click", function(e) {
+			$("#pageNo").val(1);
+
 			$("#keyword").val("");
+			$("#keyword02").val("");
+			$("#keyword03").val("");
 
 			$("#searchForm").submit();	
 		});
@@ -210,6 +220,24 @@
 	$("#keyword").keydown( function() {
 		var kcode = event.keyCode;
 		if(kcode == 13) {
+			$("#pageNo").val(1);
+
+			$("#searchForm").submit();	
+		}
+	});
+	$("#keyword02").keydown( function() {
+		var kcode = event.keyCode;
+		if(kcode == 13) {
+			$("#pageNo").val(1);
+
+			$("#searchForm").submit();	
+		}
+	});
+	$("#keyword03").keydown( function() {
+		var kcode = event.keyCode;
+		if(kcode == 13) {
+			$("#pageNo").val(1);
+
 			$("#searchForm").submit();	
 		}
 	});

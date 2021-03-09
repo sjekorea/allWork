@@ -30,18 +30,9 @@
             </div>
             <div id="rightPart">
               <h4>개인정보 취급방침</h4>
-              <ul class="tab">
-                <li><a href="#" title="개인회원 취급방침">개인회원 취급방침</a></li>
-                <li><a href="#" title="기업회원 취급방침">기업회원 취급방침</a></li>
-              </ul>
               <ul class="privacy personalPrivacy">
 			  	<div>
 			  		${item.privacy}
-			  	</div>
-              </ul>
-              <ul class="privacy companyPrivacy" style="display:none">
-			  	<div>
-			  		${item.privacy3}
 			  	</div>
               </ul>
             </div>
