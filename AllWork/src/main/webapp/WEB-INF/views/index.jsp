@@ -52,8 +52,8 @@
 			<ul>
 				<li class="ad_roll ad_roll01">
 					<div>
-						<p class="today_count">오늘<br/>일반채용정보<br/>
-						<span><fmt:formatNumber value="${todayRecruitCount}" pattern="#,###"/></span>건</p>
+						<p class="today_count"><span id="todayDate">오늘</span><br/>일반채용정보<br/>
+						<span class="count"><fmt:formatNumber value="${todayRecruitCount}" pattern="#,###"/></span>건</p>
                     	<p>개인회원에 가입하시면 보다 많은<br/> 채용정보를 보실 수 있습니다.</p>
 					</div>
 				</li>
@@ -431,4 +431,9 @@
 		$("#searchForm").submit();
 	}
 
+	$(document).ready(function(){
+		var today = new Date();
+		var todayDate = today.getDay();
+		document.getElementById("todayDate").innerHTML = (todayDate == 0 || todayDate == 1)? "주말" : "오늘";	
+	});	
 </script>

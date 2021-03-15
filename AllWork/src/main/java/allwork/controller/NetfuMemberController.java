@@ -199,7 +199,7 @@ public class NetfuMemberController {
 			String strBizNo = ApiCommonUtils.getBizNoFormatStr((String) commandMap.get("bizNo"));
 			commandMap.put("bizNo", strBizNo);
 			
-			//사업자번호 유표성 검사.
+			//사업자번호 유효성 검사.
 			boolean bValidBizNo = ApiTaxTypeFromNTS.getTaxTypeFromNts(strBizNo);
 			if (!bValidBizNo) {
 				mv.addObject("map", commandMap.getMap());
