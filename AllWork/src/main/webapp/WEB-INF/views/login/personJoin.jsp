@@ -15,8 +15,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 	
 	<!-- 소셜 로그인 -->
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="${googleClientId}">
+	<meta name="google-signin-scope" content="profile email">
+	<meta name="google-signin-client_id" content="${googleClientId}">
 	
 	<link rel="stylesheet" type="text/css" href="/css/header_mini.css" />
 	<link rel="stylesheet" type="text/css" href="/css/register_01.css" />
@@ -39,15 +39,17 @@
 	<!-- 소셜 로그인 -->
 	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-    	<script src="https://apis.google.com/js/platform.js" async defer></script> 
-</head>
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		
+	<!-- iamport.payment.js -->
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script></head>
 
 <body>
 	<div id="progress_barWrap" style="display:none;">
 		<p id="progress_bar">
 			<img src="/img/main/loading_circle.gif" alt="로딩이미지"/>
 		</p>
-    </div>
+	</div>
 	<div id="allworkWrap">
 		<div id="topmenuWrap">
 			<ul class="topMenu">
@@ -208,6 +210,50 @@
 											<span class="female">&nbsp;<input id="woman" type="radio" name="sex" value="woman" /><label for="woman">여자</label></span>
 										</td>
 									</tr>
+									
+									<!-- 
+									<tr class="phone">
+										<th>휴대폰 인증<span class="necessary">*</span></th>
+										<td>
+											<p>
+												<label for="phoneNum">휴대폰 번호</label>
+												<input id="hphone" type="text" name="hphone" value="" title="휴대폰번호"/>
+												<input type="submit" value="인증번호 전송" title="인증번호 전송"/>
+											</p>
+											<p>
+												<label for="confirmNum">인증번호 입력</label>
+												<input id="confirmNum" type="text" name="confirmNum" title="인증번호"/>
+												<input class="ok" type="submit" value="확인" title="확인"/>
+												<input type="submit" value="재전송" title="재전송"/>
+											</p>
+										</td>
+									</tr>
+									 -->
+									<tr class="phone">
+										<th>휴대폰 인증<span class="necessary">*</span></th>
+										<td>
+											<p>
+												<label for="phoneNum">휴대폰 번호&nbsp;&nbsp;&nbsp;</label>
+												<input type="text" id="phone1" name="phone1" maxlength=3 title="휴대폰번호"/><span>&nbsp;-</span>
+												<input type="text" id="phone2" name="phone2" maxlength=4 title="휴대폰번호"/><span>&nbsp;-</span>
+												<input type="text" id="phone3" name="phone3" maxlength=4 title="휴대폰번호"/>
+												<!-- 
+												 -->
+												<input id="btuChkPhoneNo" type="submit" value="본인인증" title="본인인증"/>
+											</p>
+										</td>
+									</tr>
+								<!-- 
+								<tr class="email">
+									<th>휴대폰 번호<span class="necessary">*</span></th>
+									<td>
+										<span><input type="text" id="phone1" name="phone1" maxlength=3 /></span><span>&nbsp;-</span>
+										<span><input type="text" id="phone2" name="phone2" maxlength=4 /></span><span>&nbsp;-</span>
+										<span><input type="text" id="phone3" name="phone3" maxlength=4 /></span>
+									</td>
+								</tr>
+								 -->
+									
 									<tr class="email">
 										<th>이메일<span class="necessary">*</span></th>
 										<td>
@@ -231,36 +277,7 @@
 											<span class="female"><input type="radio" id="useMailNo" name="useMail" value="no"/><label for="useMailNo">아니오</label></span>
 										</td>
 									</tr>
-									<!-- 
-									<tr class="phone">
-										<th>휴대폰 인증<span class="necessary">*</span></th>
-										<td>
-											<p>
-												<label for="phoneNum">휴대폰 번호</label>
-												<input id="hphone" type="text" name="hphone" value="" title="휴대폰번호"/>
-												<input type="submit" value="인증번호 전송" title="인증번호 전송"/>
-											</p>
-											<p>
-												<label for="confirmNum">인증번호 입력</label>
-												<input id="confirmNum" type="text" name="confirmNum" title="인증번호"/>
-												<input class="ok" type="submit" value="확인" title="확인"/>
-												<input type="submit" value="재전송" title="재전송"/>
-											</p>
-										</td>
-									</tr>
-									 -->
-								<tr class="email">
-									<th>휴대폰 번호<span class="necessary">*</span></th>
-									<!-- 
-									<td><input id="hphone" type="text" name="hphone" title="휴대폰 번호" placeholder="010-1234-5678" value="${map.hphone}" /></td>
-									 -->
-									<td>
-										<span><input type="text" id="phone1" name="phone1" maxlength=3 /></span><span>&nbsp;-</span>
-										<span><input type="text" id="phone2" name="phone2" maxlength=4 /></span><span>&nbsp;-</span>
-										<span><input type="text" id="phone3" name="phone3" maxlength=4 /></span>
-									</td>
-								</tr>
-								
+
 									<tr>
 										<th>SMS 수신여부<span class="necessary">*</span></th>
 										<td>
@@ -335,11 +352,16 @@
 				</div>
 			</div>  
 <input type="hidden" name="chkDupChk" id="chkDupChk" value="N" />
+<input type="hidden" name="chkPhoneNo" id="chkPhoneNo" value="N" />
 <jsp:include page="/footer.do" />
 
 <script type="text/javascript">
-  
-    
+
+	//본인인증 초기화 작업 수행.
+	var IMP = window.IMP;		// 생략해도 괜찮습니다.
+	IMP.init("imp57220421");	// "가맹점 식별코드"를 사용합니다.
+
+
 	$(document).ready(function(){
 		
 		$("input:text[numberOnly]").on("keypress", function(e){
@@ -347,16 +369,62 @@
 				event.preventDefault();
 			}
 		});
-		
+
+		//사용자 ID 중복검사.
 		$("#uid").on("focus", function(e){
 			$("#btuChkDupUid").css("display", "inline-block");
 			$("#chkDupChk").val("N");
 		});
-				
+		
 		$("#btuChkDupUid").on("click", function(e){
 			e.preventDefault();
 			chkDupUid();
 		});
+		
+		
+		//휴대폰번호 본인인증.
+		$("#name").on("focus", function(e){
+			$("#btuChkPhoneNo").css("display", "inline-block");
+			$("#chkPhoneNo").val("N");
+		});
+
+		$("#year").on("focus", function(e){
+			$("#btuChkPhoneNo").css("display", "inline-block");
+			$("#chkPhoneNo").val("N");
+		});
+
+		$("#month").on("focus", function(e){
+			$("#btuChkPhoneNo").css("display", "inline-block");
+			$("#chkPhoneNo").val("N");
+		});
+
+		$("#day").on("focus", function(e){
+			$("#btuChkPhoneNo").css("display", "inline-block");
+			$("#chkPhoneNo").val("N");
+		});
+
+		$("#phone1").on("focus", function(e){
+			$("#btuChkPhoneNo").css("display", "inline-block");
+			$("#chkPhoneNo").val("N");
+		});
+
+		$("#phone2").on("focus", function(e){
+			$("#btuChkPhoneNo").css("display", "inline-block");
+			$("#chkPhoneNo").val("N");
+		});
+
+		$("#phone3").on("focus", function(e){
+			$("#btuChkPhoneNo").css("display", "inline-block");
+			$("#chkPhoneNo").val("N");
+		});
+
+		///*
+		$("#btuChkPhoneNo").on("click", function(e){
+			e.preventDefault();
+			chkPhoneNo();
+		});
+		//*/
+
 		
 		$("#selEmailHost").on("change", function(e){
 			if($(this).val() == ""){
@@ -474,38 +542,38 @@
 		location.href = "/login.do?type=person";
 	</c:if>
 	});	
-    
+	
 	//우편번호 검색.
 	function execDaumPostcode() {
-	    new daum.Postcode({
-	        oncomplete: function(data) {
-	            var addr = ''; // 주소 변수
-	            var extraAddr = ''; // 참고항목 변수
+		new daum.Postcode({
+			oncomplete: function(data) {
+				var addr = ''; // 주소 변수
+				var extraAddr = ''; // 참고항목 변수
 
-	            if (data.userSelectedType === 'R') {
-	                addr = data.roadAddress;
-	            } else {
-	                addr = data.jibunAddress;
-	            }
+				if (data.userSelectedType === 'R') {
+					addr = data.roadAddress;
+				} else {
+					addr = data.jibunAddress;
+				}
 
-	            if(data.userSelectedType === 'R'){
-	                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-	                    extraAddr += data.bname;
-	                }
-	                if(data.buildingName !== '' && data.apartment === 'Y'){
-	                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-	                }
-	                if(extraAddr !== ''){
-	                    extraAddr = ' (' + extraAddr + ')';
-	                }
-	            } else {
-	                //document.getElementById("sample6_extraAddress").value = '';
-	            }
-	            $("#post").val(data.zonecode);
-	            $("#address1").val(addr);
-	            $("#address2").focus();
-	        }
-	    }).open();
+				if(data.userSelectedType === 'R'){
+					if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+						extraAddr += data.bname;
+					}
+					if(data.buildingName !== '' && data.apartment === 'Y'){
+						extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+					}
+					if(extraAddr !== ''){
+						extraAddr = ' (' + extraAddr + ')';
+					}
+				} else {
+					//document.getElementById("sample6_extraAddress").value = '';
+				}
+				$("#post").val(data.zonecode);
+				$("#address1").val(addr);
+				$("#address2").focus();
+			}
+		}).open();
 	}
 
 	
@@ -525,10 +593,12 @@
 		
 		var callback = function(data){
 			if(data.rstCnt > 0){
-				alert("사용중인 아이디 입니다.");
+				//alert("사용중인 아이디 입니다.");
+				alertAndFocus("사용중인 아이디 입니다.", $("#uid"));
 				$("#chkDupChk").val("N");
 			}else{
-				alert("사용가능한 아이디 입니다.");
+				//alert("사용가능한 아이디 입니다.");
+				alertAndFocus("사용가능한 아이디 입니다.", $("#passwd"));
 				$("#btuChkDupUid").css("display", "none");
 				$("#chkDupChk").val("Y");
 			}
@@ -540,7 +610,104 @@
 				};
 		ajax('post', '/chkDupUid.ajax', param, callback);
 	}
+
 	
+	// 고유 주문번호 생성.
+	function gen_merchant_uid() {
+		var merchant_uid = "";	// "ALLWORK_20210328_0000001"
+		merchant_uid = "ALLWORK_" + new Date().getTime() + "_" + parseInt(Math.random() * 1000000);
+		
+		return merchant_uid;
+	}
+	// 휴대폰번호 본인인증.
+	function chkPhoneNo(){
+		///*
+		if(checkNull($("#name").val())){
+			alertAndFocus("회원 이름을 입력하세요.", $("#name"));
+			return;
+		}
+		//if(checkNull($("#year").val()) || checkNull($("#month").val()) || checkNull($("#day").val())){
+		//	alertAndFocus("생년월일을 입력하세요.", $("#year"));
+		//	return;
+		//}
+		if(checkNull($("#phone1").val()) || checkNull($("#phone2").val()) || checkNull($("#phone3").val())){
+			alertAndFocus("휴대폰 번호를 입력하세요.", $("#phone1"));
+			return;
+		}
+		//*/
+		
+		//고유 주문번호 생성.
+		var merchant_uid = "";	// "ALLWORK_20210328_0000001"
+		merchant_uid = gen_merchant_uid();
+		
+		//인증창 표출.
+		// IMP.certification(param, callback) 호출
+		IMP.certification({ // param
+			//popup: true,
+			merchant_uid: merchant_uid,
+			name: $('#name').val(),
+			phone: $('#phone1').val() + $('#phone2').val() + $('#phone3').val(),
+		}, function (rsp) { // callback
+			if (rsp.success) {
+				// 인증 성공 시 로직,
+				alert("본인인증을 확인했습니다.");
+
+				// jQuery로 HTTP 요청
+				chkPhoneNo2Server(rsp.imp_uid);
+			} else {
+				// 인증 실패 시 로직,
+				alert("인증에 실패하였습니다. 에러 내용: " + rsp.error_msg);
+			}
+		});
+	}
+	// 휴대폰번호 본인인증 - 서버 요청.
+	function chkPhoneNo2Server(imp_uid){
+		/*
+		jQuery.ajax({
+			url: "https://www.myservice.com/certifications", // 서비스 웹서버
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			data: { impUid: rsp.imp_uid }
+		});
+		*/
+		
+		//서버에 요청.
+		loadingOn();
+		
+		var callback = function(data){
+			if(data.rstCnt > 0){
+				$("#chkPhoneNo").val("N");
+				alert("본인인증정보를 확인하지 못했습니다. 다시 요청해 주세요.");
+			}else{
+				//인증정보 등록.
+				$("#name").val(data.certification.name);
+
+				$("#year").val("19" + data.certification.birth.year);
+				$("#month").val(((data.certification.birth.month + 1) < 10)? ("0" + (data.certification.birth.month + 1)) : (data.certification.birth.month + 1));
+				$("#day").val((data.certification.birth.date < 10)? ("0" + data.certification.birth.date) : data.certification.birth.date);
+				
+				var phoneNo = data.certification.phone;
+				if (phoneNo && phoneNo.length >= 10) {
+					$("#phone1").val(phoneNo.substr(0, 3));
+					var lenMiddle = ( phoneNo.length > 10)? 4 : 3
+					$("#phone2").val(phoneNo.substr(3, lenMiddle));
+					$("#phone3").val(phoneNo.substr(3 + lenMiddle, 4));					
+				}
+				
+				//인증 완료.
+				$("#btuChkPhoneNo").css("display", "none");
+				$("#chkPhoneNo").val("Y");
+				//alert("본인인증정보를 확인했습니다.");
+			}
+			loadingOff();
+		};
+		
+		var param = {
+				impUid: imp_uid
+				};
+		ajax('post', '/chkPhoneNo.ajax', param, callback);
+	}
+
 	
 	// 회원정보 등록
 	function goRegistMember(){
@@ -559,7 +726,8 @@
 			return;
 		}
 		if($("#chkDupChk").val() != "Y"){
-			alert("ID 중복확인은 필수 입니다.");
+			//alert("ID 중복확인은 필수 입니다.");
+			alertAndFocus("ID 중복확인은 필수 입니다.", $("#uid"));
 			return;
 		}
 		
@@ -581,7 +749,8 @@
 			return;
 		}
 		if((getNowYear() - $("#year").val() + 1) < 40){
-			alert("개인회원은 40세 이상만 가입이 가능합니다.");
+			//alert("개인회원은 40세 이상만 가입이 가능합니다.");
+			alertAndFocus("개인회원은 40세 이상만 가입이 가능합니다.", $("#year"));
 			return;
 		}
 		var birth = $("#year").val() + "-" + $("#month").val() + "-" + $("#day").val();
@@ -596,6 +765,19 @@
 			alertAndFocus("성별을 선택하세요.", $("#man"));
 			return;
 		}
+		
+		if(checkNull($("#phone1").val()) || checkNull($("#phone2").val()) || checkNull($("#phone3").val())){
+			alertAndFocus("휴대폰 번호를 입력하세요.", $("#phone1"));
+			return;
+		}
+		var hphone = $("#phone1").val() + "-" + $("#phone2").val() + "-" + $("#phone3").val();
+
+		///*
+		if($("#chkPhoneNo").val() != "Y"){
+			alert("본인인증은 필수 입니다.");
+			return;
+		}
+		//*/
 
 		if(checkNull($("#emailId").val()) || checkNull($("#emailHost").val())){
 			alertAndFocus("이메일을 입력하세요.", $("#emailId"));
@@ -608,12 +790,6 @@
 			alertAndFocus("이메일 수신동의를 선택하세요.", $("#useMailYes"));
 			return;
 		}
-		
-		if(checkNull($("#phone1").val()) || checkNull($("#phone2").val()) || checkNull($("#phone3").val())){
-			alertAndFocus("휴대폰 번호를 입력하세요.", $("#hphone"));
-			return;
-		}
-		var hphone = $("#phone1").val() + "-" + $("#phone2").val() + "-" + $("#phone3").val();
 
 		var useSms = $("input[name=useSms]:checked").val();
 		if(checkNull(useSms)){
@@ -632,15 +808,18 @@
 		}
 	
 		if(!$("#agree01").is(":checked")){
-			alert("[필수]이용약관에 동의 하셔야 합니다.");
+			//alert("[필수]이용약관에 동의 하셔야 합니다.");
+			alertAndFocus("[필수]이용약관에 동의 하셔야 합니다.", $("#agree01"));
 			return;
 		}
 		if(!$("#agree02").is(":checked")){
-			alert("[필수]개인정보 수집 및 이용에 동의 하셔야 합니다.");
+			//alert("[필수]개인정보 수집 및 이용에 동의 하셔야 합니다.");
+			alertAndFocus("[필수]개인정보 수집 및 이용에 동의 하셔야 합니다.", $("#agree02"));
 			return;
 		}
 		if(!$("#agree03").is(":checked")){
-			alert("[필수]위치기반서비스 이용에 동의 하셔야 합니다.");
+			//alert("[필수]위치기반서비스 이용에 동의 하셔야 합니다.");
+			alertAndFocus("[필수]위치기반서비스 이용에 동의 하셔야 합니다.", $("#agree03"));
 			return;
 		}
 		

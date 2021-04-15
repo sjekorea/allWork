@@ -24,13 +24,15 @@
        	<!-- (end) 2020.12.30 by s.yoo -->
 	</properties>
 	
+	<!-- (시작) 아임포트 결제서비스/본인인증을 위해 사용 -->
 	<repositories>
 		<repository>
 		    <id>jitpack.io</id>
 		    <url>https://jitpack.io</url>
 		</repository>
 	</repositories>
-	
+	<!-- (끝) 아임포트 결제서비스/본인인증을 위해 사용 -->
+
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -361,11 +363,13 @@
 		</dependency>
         <!-- (end) 2020.12.30 by s.yoo -->
         
+		<!-- (시작) 아임포트 결제서비스/본인인증을 위해 사용 -->
 		<dependency>
 		    <groupId>com.github.iamport</groupId>
 		    <artifactId>iamport-rest-client-java</artifactId>
 		    <version>0.2.14</version>
 		</dependency>
+		<!-- (끝) 아임포트 결제서비스/본인인증을 위해 사용 -->
 
 		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
 		<dependency>

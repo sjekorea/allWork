@@ -67,8 +67,9 @@ body{font-family:"NotoSansKR-Regular";}
 
 #content01_ad ul li.ad_roll01{height:236px;}
 #content01_ad ul li.ad_roll01 div{width:100%;height:100%;font-size:14px;}
-#content01_ad ul li.ad_roll01 div .today_count{font-family:"NotoSansKR-Medium";font-size:36px;letter-spacing:-1px;line-height:46px;padding:20px 0 20px;}
-#content01_ad ul li.ad_roll01 div .today_count span.count{font-family:"NotoSansKR-Bold";color:#4F60E3;font-size:46px;}
+#content01_ad ul li.ad_roll01 div .today_count{font-family:"NotoSansKR-Medium";font-size:36px;letter-spacing:-1px;line-height:36px;padding:10px 0 10px;}
+#content01_ad ul li.ad_roll01 div .today_count span.count{font-family:"NotoSansKR-Bold";color:#4F60E3;font-size:36px;}
+#content01_ad ul li.ad_roll01 div .today_count span.count02{font-family:"NotoSansKR-Bold";color:#000;font-size:18px;}
 
 
 #content01_ad ul li:hover{border:1px solid #333;}

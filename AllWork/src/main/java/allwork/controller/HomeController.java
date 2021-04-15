@@ -97,6 +97,10 @@ public class HomeController {
 					rollBannerList02.add((NetfuBannerVo) rollBannerList.get(index));
 			}
 			
+			//전체 일반채용공고 개수.
+			int totalRecruitCount = 0;
+			totalRecruitCount = recruitOtherService.selectRecruitOtherCnt(commandMap.getMap());
+
 			//금일등록 일반채용공고 개수.
 			int todayRecruitCount = 0;
 			for (int interval = 0; interval < 7; interval++) {
@@ -152,6 +156,7 @@ public class HomeController {
 			mv.addObject("rollBannerListTop", rollBannerListTop);
 			mv.addObject("rollBannerList", rollBannerList);
 			mv.addObject("rollBannerList02", rollBannerList02);
+			mv.addObject("totalRecruitCount", totalRecruitCount);
 			mv.addObject("todayRecruitCount", todayRecruitCount);
 			mv.addObject("mainRecruitList", mainRecruitList);
 			mv.addObject("headhuntList", headhuntList);

@@ -34,6 +34,10 @@
 
 <!-- Daum 주소검색 사용. -->
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+		
+<!-- iamport.payment.js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script></head>
 
 <div id="containerWrap">
 	<div id="container">
@@ -176,6 +180,11 @@
 										<span><input type="text" id="phone1" name="phone1" maxlength=3 /></span><span>&nbsp;-</span>
 										<span><input type="text" id="phone2" name="phone2" maxlength=4 /></span><span>&nbsp;-</span>
 										<span><input type="text" id="phone3" name="phone3" maxlength=4 /></span>
+										<!-- 
+										 -->
+										<c:if test="${SE_USER_TYPE == 'person' }">
+											<input id="btuChkPhoneNo" type="submit" style="display:none" value="본인인증" title="본인인증"/>
+										</c:if>
 									</td>
 								</tr>
 								<tr class="address">
@@ -239,6 +248,7 @@
 					<input type="hidden" name="email" id="email" value="${map.email}" />
 					<input type="hidden" name="hphone" id="hphone" value="${map.hphone}" />
 					<input type="hidden" name="photo" id="photo" value="${map.photo}" />
+<input type="hidden" name="chkPhoneNo" id="chkPhoneNo" value="Y" />
 				</fieldset>
 			</form>
 			<div class="agree_ok">
@@ -255,6 +265,10 @@
 <jsp:include page="/footer.do" />
 
 <script type="text/javascript">
+
+	//본인인증 초기화 작업 수행.
+	var IMP = window.IMP;		// 생략해도 괜찮습니다.
+	IMP.init("imp57220421");	// "가맹점 식별코드"를 사용합니다.
 
 	$(document).ready(function(){
 		
@@ -388,6 +402,150 @@
 		}).open();
 	}
 
+
+	///*
+	$("#btuChkPhoneNo").on("click", function(e){
+		e.preventDefault();
+		chkPhoneNo();
+	});
+	
+	// 휴대폰번호 본인인증.
+	<c:if test="${SE_USER_TYPE == 'person' }">
+		$("#name").on("focus", function(e){
+			$("#btuChkPhoneNo").css("display", "inline-block");
+			$("#chkPhoneNo").val("N");
+		});
+
+		$("#year").on("focus", function(e){
+			$("#btuChkPhoneNo").css("display", "inline-block");
+			$("#chkPhoneNo").val("N");
+		});
+
+		$("#month").on("focus", function(e){
+			$("#btuChkPhoneNo").css("display", "inline-block");
+			$("#chkPhoneNo").val("N");
+		});
+
+		$("#day").on("focus", function(e){
+			$("#btuChkPhoneNo").css("display", "inline-block");
+			$("#chkPhoneNo").val("N");
+		});
+
+		$("#phone1").on("focus", function(e){
+			$("#btuChkPhoneNo").css("display", "inline-block");
+			$("#chkPhoneNo").val("N");
+		});
+
+		$("#phone2").on("focus", function(e){
+			$("#btuChkPhoneNo").css("display", "inline-block");
+			$("#chkPhoneNo").val("N");
+		});
+
+		$("#phone3").on("focus", function(e){
+			$("#btuChkPhoneNo").css("display", "inline-block");
+			$("#chkPhoneNo").val("N");
+		});
+	</c:if>
+
+	// 고유 주문번호 생성.
+	function gen_merchant_uid() {
+		var merchant_uid = "";	// "ALLWORK_20210328_0000001"
+		merchant_uid = "ALLWORK_" + new Date().getTime() + "_" + parseInt(Math.random() * 1000000);
+		
+		return merchant_uid;
+	}
+	// 휴대폰번호 본인인증.
+	function chkPhoneNo(){
+		///*
+		if(checkNull($("#name").val())){
+			alertAndFocus("회원 이름을 입력하세요.", $("#name"));
+			return;
+		}
+		//if(checkNull($("#year").val()) || checkNull($("#month").val()) || checkNull($("#day").val())){
+		//	alertAndFocus("생년월일을 입력하세요.", $("#year"));
+		//	return;
+		//}
+		if(checkNull($("#phone1").val()) || checkNull($("#phone2").val()) || checkNull($("#phone3").val())){
+			alertAndFocus("휴대폰 번호를 입력하세요.", $("#phone1"));
+			return;
+		}
+		//*/
+		
+		//고유 주문번호 생성.
+		var merchant_uid = "";	// "ALLWORK_20210328_0000001"
+		merchant_uid = gen_merchant_uid();
+		
+		//인증창 표출.
+		// IMP.certification(param, callback) 호출
+		IMP.certification({ // param
+			//popup: true,
+			merchant_uid: merchant_uid,
+			name: $('#name').val(),
+			phone: $('#phone1').val() + $('#phone2').val() + $('#phone3').val(),
+		}, function (rsp) { // callback
+			if (rsp.success) {
+				// 인증 성공 시 로직,
+				alert("본인인증을 확인했습니다.");
+
+				// jQuery로 HTTP 요청
+				chkPhoneNo2Server(rsp.imp_uid);
+			} else {
+				// 인증 실패 시 로직,
+				alert("인증에 실패하였습니다. 에러 내용: " + rsp.error_msg);
+			}
+		});
+	}
+	
+	// 휴대폰번호 본인인증 - 서버 요청.
+	function chkPhoneNo2Server(imp_uid){
+		/*
+		jQuery.ajax({
+			url: "https://www.myservice.com/certifications", // 서비스 웹서버
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			data: { impUid: rsp.imp_uid }
+		});
+		*/
+		
+		//서버에 요청.
+		loadingOn();
+		
+		var callback = function(data){
+			if(data.rstCnt > 0){
+				$("#chkPhoneNo").val("N");
+				alert("본인인증정보를 확인하지 못했습니다. 다시 요청해 주세요.");
+			}else{
+				//인증정보 등록.
+				$("#name").val(data.certification.name);
+
+				$("#year").val("19" + data.certification.birth.year);
+				$("#month").val(((data.certification.birth.month + 1) < 10)? ("0" + (data.certification.birth.month + 1)) : (data.certification.birth.month + 1));
+				$("#day").val((data.certification.birth.date < 10)? ("0" + data.certification.birth.date) : data.certification.birth.date);
+				
+				var phoneNo = data.certification.phone;
+				if (phoneNo && phoneNo.length >= 10) {
+					$("#phone1").val(phoneNo.substr(0, 3));
+					var lenMiddle = ( phoneNo.length > 10)? 4 : 3
+					$("#phone2").val(phoneNo.substr(3, lenMiddle));
+					$("#phone3").val(phoneNo.substr(3 + lenMiddle, 4));					
+				}
+
+				//인증완료.
+				$("#btuChkPhoneNo").css("display", "none");
+				$("#chkPhoneNo").val("Y");
+				//alert("본인인증정보를 확인했습니다.");				
+			}
+			loadingOff();
+		};
+		
+		var param = {
+				impUid: imp_uid
+				};
+		ajax('post', '/chkPhoneNo.ajax', param, callback);
+	}
+	//*/
+
+	
 	function goUpdateMyInfo(){
 
 		var birth = $("#year").val() + "-" + $("#month").val() + "-" + $("#day").val();
@@ -434,6 +592,15 @@
 			alertAndFocus("휴대폰 번호를 입력하세요.", $("#phone1"));
 			return;
 		}
+		///*
+	<c:if test="${SE_USER_TYPE == 'person' }">
+		if($("#chkPhoneNo").val() != "Y"){
+			alert("본인인증은 필수 입니다.");
+			return;
+		}
+	</c:if>
+		//*/
+
 		if(checkNull(useSms)){
 			alertAndFocus("SMS 수신동의를 선택하세요.", $("#useSmsYes"));
 			return;
