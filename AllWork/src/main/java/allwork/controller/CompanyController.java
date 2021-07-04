@@ -1,10 +1,15 @@
 package allwork.controller;
 
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -619,5 +624,4 @@ public class CompanyController {
 		return mv;
 	}
 	//(end) 2021.01.04 by s.yoo
-
 }

@@ -29,7 +29,7 @@
 	select 
 		count(no) cnt
 	from netfu_item_company
-	where no in (select  to_no from netfu_online_recruit
+	where no in (select  from_no from netfu_online_recruit
                 where type = 'job' 
                 and sub_type = 'company'
                 and to_type = 'interview' and to_uid= #{loginId})
@@ -38,16 +38,42 @@
 	
 	<!-- 면접 요청 기업  -->
 	<select id="selectInterviewRequestCompanyList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
+	<!-- 
 	select 
 		${recruitColumn}
 	from netfu_item_company nic
 	where 1=1
-		and no in (select to_no from netfu_online_recruit
+		and no in (select from_no from netfu_online_recruit
                 where type = 'job' 
                 and sub_type = 'company'
                 and to_type = 'interview' and to_uid = #{loginId})
     order by wdate desc            
 	limit #{start}, #{pageSize}
+	 -->
+		select 	
+			nic.no, nic.uid, nic.biz_name, nic.biz_title, 'open'
+			, nic.biz_pay, getCodeName(nic.biz_pay) biz_pay_name ### 급여정보
+			, nic.biz_career ## 경력
+			, nic.biz_age ## 나이
+			, nic.biz_area1, getCodeName(nic.biz_area1) biz_area1_name ## 근무지역
+			, nic.biz_ability	## 학력
+			, nic.biz_sex
+			, nic.biz_end_day, nic.biz_end_type, nic.biz_ing
+			, nic.biz_type1, getCodeName(nic.biz_type1) biz_type1_name
+			, nic.biz_area1, getCodeName(nic.biz_area1) biz_area1_name
+			, nic.biz_area2, getCodeName(nic.biz_area2) biz_area2_name
+			, nic.biz_jobfrom, getCodeName(nic.biz_jobfrom) biz_jobfrom_name
+			, DATE_FORMAT(nor.wdate, '%Y-%m-%d') wdate
+			, nor.job_detail jobDetail
+		from netfu_online_recruit nor, netfu_item_company nic
+		where 1=1
+                and nor.type = 'job' 
+                and nor.sub_type = 'company'
+                and nor.to_type = 'interview' and nor.to_uid = #{loginId}
+
+			and nor.from_no = nic.no
+		order by nor.wdate desc 
+		LIMIT #{start}, #{pageSize}
 	</select>
 	
 	
@@ -64,22 +90,35 @@
 						and nor.to_type = #{applyType}
 					</when>
 					<otherwise>
-						and nor.to_type in ('email', 'online')
+						and nor.to_type in ('email', 'online', 'mobile')
 					</otherwise>
 				</choose>
 			) 
-		AND (nir.no = nor.from_no and nic.no = nor.to_no)
+		<if test="recruitNo != null and recruitNo != ''">
+			and nic.no = #{recruitNo}
+		</if>		
+		<choose>
+			<when test="applyType == 'interview'">
+				and (nir.no = nor.to_no and nic.no = nor.from_no)
+			</when>
+			<otherwise>
+				and (nir.no = nor.from_no and nic.no = nor.to_no)
+			</otherwise>
+		</choose>
 		and nor.uid = #{loginId}
 	</select>
 	
 	
-	<!-- 입사지원 현황(to_type:onlene:온라인 / to_type:email:이메일)  -->
+	<!-- 입사지원 현황(to_type:onlene:온라인 / to_type:email:이메일 / to_type:interview:면저제의")  -->
 	<select id="selectApplyList" parameterType="hashmap" resultType="allwork.vo.NetfuOnlineRecruitVo">
 	SELECT 
 		nic.no recruitNo
 		, nir.no resumeNo
+		, nir.name name
+		, nir.inid_secret inidSecret
 		, nor.from_no
 		, nic.biz_name
+		, nic.biz_ing
 		, nic.info_type
 		, nic.biz_title
 		, nir.inid_title
@@ -90,12 +129,23 @@
 		, nir.inid_pay
 		, getCodeName(nir.inid_pay) inidPayName
 		, DATE_FORMAT(nor.wdate, '%m/%d') wdate
+		, nor.job_detail jobDetail
 		, nor.no no
 		, nor.uid uid
+		, nic.biz_end_type
 		, nic.biz_end_day
 		, nic.uid companyUid
 		, nir.uid personUid
-	FROM netfu_online_recruit nor, netfu_item_resume nir , netfu_item_company nic
+		, CASE WHEN prs.no IS NULL THEN 0 ELSE 1 END paidResume
+	FROM
+		<choose>
+			<when test="applyType == 'interview'">
+				netfu_online_recruit nor LEFT JOIN paid_resume_search prs ON nor.to_no = prs.resume_no AND prs.uid = #{loginId}, netfu_item_resume nir, netfu_item_company nic
+			</when>
+			<otherwise>
+				netfu_online_recruit nor LEFT JOIN paid_resume_search prs ON nor.from_no = prs.resume_no AND prs.uid = #{loginId}, netfu_item_resume nir, netfu_item_company nic
+			</otherwise>
+		</choose>
 	WHERE 1=1
 		and (
 				nor.type = 'job' and nor.sub_type = 'company'
@@ -104,11 +154,21 @@
 						and nor.to_type = #{applyType}
 					</when>
 					<otherwise>
-						and nor.to_type in ('email', 'online')
+						and nor.to_type in ('email', 'online', 'mobile')
 					</otherwise>
 				</choose>
 			) 
-		and (nir.no = nor.from_no and nic.no = nor.to_no)
+		<if test="recruitNo != null and recruitNo != ''">
+			and nic.no = #{recruitNo}
+		</if>		
+		<choose>
+			<when test="applyType == 'interview'">
+				and (nir.no = nor.to_no and nic.no = nor.from_no)
+			</when>
+			<otherwise>
+				and (nir.no = nor.from_no and nic.no = nor.to_no)
+			</otherwise>
+		</choose>
 		and nor.uid = #{loginId}
     order by nor.no desc            
 	limit #{start}, #{pageSize}
@@ -117,8 +177,8 @@
 	
 	<!-- 입사지원자 현황 count(to_type:onlene:온라인 / to_type:email:이메일)  -->
 	<select id="selectApplicantCnt" parameterType="hashmap" resultType="int">
-	SELECT count(nic.no) cnt
-	FROM netfu_online_recruit AS nor, netfu_item_resume AS nir , netfu_item_company  AS nic
+	SELECT count(nor.no) cnt
+	FROM netfu_online_recruit AS nor, netfu_item_resume nir
 	WHERE 1=1
 		and (
 				nor.type = 'job' 
@@ -126,16 +186,14 @@
 				<choose>
 					<when test="applyType != null and applyType != ''">
 						and nor.to_type = #{applyType}
+						and (nir.no = nor.to_no)
 					</when>
 					<otherwise>
-						and nor.to_type in ('email', 'online')
+						and nor.to_type in ('email', 'online', 'mobile')
+						and (nir.no = nor.from_no)
 					</otherwise>
 				</choose>
 			)  
-		<if test="recruitNo != null and recruitNo != ''">
-			and nic.no = #{recruitNo}
-		</if>	
-		AND (nir.no = nor.from_no and nic.no = nor.to_no)
 		and nor.to_uid = #{loginId}
 	</select>
 	
@@ -175,19 +233,41 @@
 						and nor.to_type = #{applyType}
 					</when>
 					<otherwise>
-						and nor.to_type in ('email', 'online')
+						and nor.to_type in ('email', 'online', 'mobile')
 					</otherwise>
 				</choose>
 			) 
 		<if test="recruitNo != null and recruitNo != ''">
 			and nic.no = #{recruitNo}
 		</if>	
-		and (nir.no = nor.from_no and nic.no = nor.to_no)
+		and nic.no = nor.to_no
 		and nor.to_uid = #{loginId}
-		and nir.uid = nm.uid
+		and nir.no = nor.from_no
+		and nm.uid = nor.uid
     order by nor.no desc            
 	limit #{start}, #{pageSize}
 	</select>
+	
+
+	<insert id="insertNetfuOnlineRecruit" parameterType="hashmap">
+		<![CDATA[
+			insert into netfu_online_recruit
+			(to_type, type, sub_type, uid, to_uid, to_no, from_no, opened, job_detail, wdate)
+			values
+			(
+				#{toType}
+				, #{type}
+				, #{subType}
+				, #{uid}
+				, #{toUid}
+				, #{toNo}
+				, #{fromNo}
+				, #{opened}
+				, #{jobDetail}
+				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+			)
+		]]>
+	</insert>
 	
 	
 	<!-- 입사지원정보 삭제 -->

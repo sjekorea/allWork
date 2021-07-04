@@ -8,12 +8,29 @@
 			*
 		from netfu_member
 		where 1=1
+			<!-- (begin) 2021.01.03 by s.yoo	-->
+			AND `left` <![CDATA[ <> ]]> 'yes'
+			<!-- (end) 2021.01.03 by s.yoo	-->
 			<choose>
-				<when test="personUid != null and personUid != ''">
-					and uid = BINARY(#{personUid})	
+				<when test="ciKey != null and ciKey != ''">
+					and ci_key = #{ciKey}
 				</when>
 				<otherwise>
-					and uid = BINARY(#{loginId})
+					<choose>
+						<when test="uid != null and uid != ''">
+							and uid = BINARY(#{uid})	
+						</when>	
+						<otherwise>
+							<choose>
+								<when test="personUid != null and personUid != ''">
+									and uid = BINARY(#{personUid})	
+								</when>
+								<otherwise>
+									and uid = BINARY(#{loginId})
+								</otherwise>
+							</choose>
+						</otherwise>
+					</choose>
 				</otherwise>
 			</choose>
 	</select>
@@ -26,16 +43,53 @@
 			and uid = #{loginId}
 			and passwd = #{loginPw}
 			and type = #{type}
+			<!-- (begin) 2021.01.03 by s.yoo	-->
+			AND `left` <![CDATA[ <> ]]> 'yes'
+			<!-- (end) 2021.01.03 by s.yoo	-->
 	</select>
+	
+	
+	<!-- sns 로그인 회원 가입 여부 -->
+	<select id="selectNetfuMemberSNSLoginCnt" parameterType="hashmap" resultType="int">
+		select count(uid) cnt from netfu_member
+		where 1=1
+			AND `left` <![CDATA[ <> ]]> 'yes'
+			and ci_key = #{id}
+			and type = #{type}
+			and sns_login_type = #{snsLoginType}
+	</select>
+	
+	<!-- sns 계정 연결 -->
+	<update id="updateNetfuMemberSNS" parameterType="hashmap">
+		update netfu_member
+		set
+			ci_key = #{id}
+			, sns_login_type = #{snsLoginType}
+		where
+			type = 1
+			AND uid = #{uid}
+			AND `left` <![CDATA[ <> ]]> 'yes'
+	</update>
+
 	
 	
 	<!-- ID 중복 확인, ID 찾기, PW 찾기 -->
 	<select id="selectUidExistCnt" parameterType="hashmap" resultType="int">
 		select count(uid) cnt from netfu_member
 		where 1=1
+			<!-- (begin) 2021.01.03 by s.yoo	-->
+			<if test="showAll != 1">
+			AND `left` <![CDATA[ <> ]]> 'yes'
+			</if>
+			<!-- (end) 2021.01.03 by s.yoo	-->
 			<if test="uid != null and uid != ''">
 				and uid = #{uid}
 			</if>
+			<!-- (begin) 2021.01.03 by s.yoo	-->
+			<if test="passwd != null and passwd != ''">
+				and passwd = #{passwd}
+			</if>
+			<!-- (end) 2021.01.03 by s.yoo	-->
 			<if test="name != null and name != ''">
 				and name = #{name}
 			</if>
@@ -47,48 +101,219 @@
 			</if>
 	</select>
 
+	<!-- (begin) 2021.01.03 by s.yoo	-->
+	<!-- 사용자 ID 찾기 -->
+	<select id="findId" parameterType="hashmap" resultType="allwork.vo.NetfuMemberVo">
+		select 
+			*
+		from netfu_member
+		where name = #{name}
+			<if test="type == 1">
+				and email = #{email}
+			</if>
+			<if test="type == 2">
+				and (phone = #{email} OR hphone = #{email})
+			</if>
+			AND `left` <![CDATA[ <> ]]> 'yes'
+		order by no desc
+		limit 1
+	</select>
+
+	<!-- 사용자 비밀번호 찾기 -->
+	<select id="findPw" parameterType="hashmap" resultType="allwork.vo.NetfuMemberVo">
+		select 
+			*
+		from netfu_member
+		where name = #{name} AND uid = #{uid}
+			<if test="type == 1">
+				and email = #{email}
+			</if>
+			<if test="type == 2">
+				and (phone = #{email} OR hphone = #{email})
+			</if>
+			AND `left` <![CDATA[ <> ]]> 'yes'
+		order by no desc
+		limit 1
+	</select>
+
+	<!-- 사용자 비밀번호 초기화 -->
+	<update id="resetPw" parameterType="hashmap">
+		update netfu_member
+		set passwd = #{passwd}
+		where name = #{name} AND uid = #{uid}
+			<if test="type == 1">
+				and email = #{email}
+			</if>
+			<if test="type == 2">
+				and (phone = #{email} OR hphone = #{email})
+			</if>
+			AND `left` <![CDATA[ <> ]]> 'yes'
+	</update>
+
+
+	<!--  회원 탈퇴. -->
+	<update id="memberUnregister" parameterType="hashmap">
+		update netfu_member
+		set
+			secession = #{secession}
+			, `left` = 'yes'
+			, l_date = CURRENT_TIMESTAMP()
+		where uid = #{uid} AND passwd = #{passwd} 
+			AND `left` <![CDATA[ <> ]]> 'yes'
+	</update>
+	
+	<!--  사용자 Login 정보 등록 -->
+	<update id="updateLoginInfo" parameterType="hashmap">
+		update netfu_member
+		set
+			login_date = CURRENT_TIMESTAMP()
+		where uid = #{loginId}
+			AND `left` <![CDATA[ <> ]]> 'yes'
+	</update>
+
+
+	<!-- 회원정보 수정. -->
+	<update id="updateMyInfo" parameterType="hashmap">
+		update netfu_member
+		set
+			 name = #{name}
+			<if test="passwd != null and passwd != ''">
+			, passwd = #{passwd}
+			</if>
+			, photo = #{photo}
+			, birth = #{birth}
+			, sex = #{sex}
+			, email = #{email}
+			, phone = #{hphone}
+			, hphone = #{hphone}
+			, post = #{post}
+			, address1 = #{address1}
+			, address2 = #{address2}
+			, use_mail = #{useMail}
+			, use_sms = #{useSms}
+			, use_push = #{usePush}
+			, biz_category = #{bizCategory}
+		where uid = #{uid}
+			AND `left` <![CDATA[ <> ]]> 'yes'
+	</update>
+
+	<!-- (end) 2021.01.03 by s.yoo	-->
+
 
 	<!-- 회원가입 정보 등록 -->
 	<insert id="insertNetfuMember" parameterType="hashmap">
-		<![CDATA[
 			insert into netfu_member
-			(uid, passwd, name, hphone, birth, sex, use_mail, use_sms, email, wdate, login_date, memo, addr_coord, memo_coord
-			, type_r2, p_chk, type, hit, a_insert, tosa180422_date, post, address1, address2)
+			(uid, passwd, name, phone, hphone, birth,
+		<if test="photo != null and photo != ''">
+			 photo,
+		</if>
+			 sex, use_mail, use_sms, use_push, email, wdate, biz_category,
+			 type, post, address1, address2, ci_key, sns_login_type)
 			values
 			(
 				#{uid}
 				, #{passwd}
 				, #{name}
 				, #{hphone}
+				, #{hphone}
 				, #{birth}
+				<if test="photo != null and photo != ''">
+				, #{photo}
+				</if>
 				, #{sex}
 				, #{useMail}
 				, #{useSms}
+				, #{usePush}
 				, #{email}
 				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
-				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s') 
-				, #{memo}
-				, #{addrCoord}
-				, #{memoCoord}
-				, #{typeR2}
-				, #{pChk}
+				, #{bizCategory}
 				, #{type}
-				, #{hit}
-				, #{aInsert}
-				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s') 
 				, #{post}
 				, #{address1}
 				, #{address2}
+				, #{ciKey}
+				, #{snsLoginType}
 			)
-		]]>
 	</insert>
 	
+	<!--  비밀 번호 변경 -->
 	<update id="updatePw" parameterType="hashmap">
 		<![CDATA[ 
 			update netfu_member
 			set passwd = #{passwd}
 			where uid = #{uid}
+			AND `left` <> 'yes'
 		]]>
+	</update>
+	
+	
+	<!--  유료서비스 변경 -->
+	<update id="updatePayServiceInfo" parameterType="hashmap">
+		update netfu_member
+		set 
+			<choose>
+				<when test="dealType == 'buy'">
+					<if test="service1EndDate != null and service1EndDate != ''">
+					service1_flag = 'Y'
+					, service1_end_date = #{service1EndDate}
+					, view_count = 0
+					</if>
+					<if test="service2EndDate != null and service2EndDate != ''">
+					service2_flag = 'Y'
+					, service2_end_date = #{service2EndDate}
+					, view_count = #{viewCount}
+					</if>
+				</when>
+				<otherwise>
+					<if test='productType == "1" or productType == "2"'>
+					service1_flag = 'N'
+					, service1_end_date = ''
+					, view_count = 0
+					</if>
+					<if test='productType == "3"'>
+					service2_flag = 'N'
+					, service2_end_date = ''
+					, view_count = 0
+					</if>
+				</otherwise>
+			</choose>
+		where uid = #{uid}
+		AND `left` <![CDATA[<>]]> 'yes'
+	</update>
+	
+	
+	<!--  유료서비스1 만료 -->
+	<update id="updatePayService1Info" parameterType="hashmap">
+		update netfu_member
+		set 
+			service1_flag = ''
+			, service1_end_date = ''
+		where
+			uid = #{loginId}
+			AND service1_end_date <![CDATA[<]]> DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
+	</update>
+	
+	
+	<!--  유료서비스2 만료 -->
+	<update id="updatePayService2Info" parameterType="hashmap">
+		update netfu_member
+		set 
+			service2_flag = ''
+			, service2_end_date = ''
+			, view_count = 0
+		where
+			uid = #{loginId}
+			AND service2_end_date <![CDATA[<]]> DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d')
+	</update>
+	
+	
+	<!--  유료서비스 변경 -->
+	<update id="updateViewCount" parameterType="hashmap">
+		update netfu_member
+		set 
+			view_count = view_count-1
+		where uid = #{loginId}
+		AND `left` <![CDATA[<>]]> 'yes'
 	</update>
 
 </mapper>

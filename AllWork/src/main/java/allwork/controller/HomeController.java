@@ -1,21 +1,28 @@
 package allwork.controller;
 
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ilmagna.allworkadmin.ai.domains.AiSearchModel;
 import com.ilmagna.allworkadmin.ai.services.AiSearchService;
+import com.ilmagna.allworkadmin.api.common.ApiCommonUtils;
 import com.ilmagna.allworkadmin.api.domains.ApiRecruitItemModel;
 import com.ilmagna.allworkadmin.api.services.ApiRecruitItemService;
 
@@ -228,5 +235,4 @@ public class HomeController {
 
 		return mv;
 	}
-	
 }

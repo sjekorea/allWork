@@ -35,9 +35,17 @@ if (ServletFileUpload.isMultipartContent(request)){
             //FILE 태그가 1개이상일 경우
             if(item.getSize() > 0) {
             	
+            	/* AS-IS */
+            	/*
             	String filePath = "D:\\allWork\\allWork\\AllWork\\src\\main\\webapp\\peg\\";
             	//String filePath = "/usr/local/tomcat/webapps/ROOT/resources/photoUpload/";
-                String fileUrl = "/peg/";
+            	String fileUrl = "/peg/";           	
+            	*/
+            	/* TO-BE */
+            	//String filePath = "D:\\Projects\\J2EE\\peg\\";
+            	String filePath = "/var/lib/tomcat8/webapps/peg/";
+            	String fileUrl = "/allwork/peg/";
+            	
                 String serverIp = CommonUtil.getServerIp();
                 
             	// 확장자
@@ -67,7 +75,14 @@ if (ServletFileUpload.isMultipartContent(request)){
                 os.close();
                 ///////////////// 서버에 파일쓰기 /////////////////
                 
+            	/* AS-IS */
+            	/*
                 return3 += "&bNewLine=true&sFileName="+name+"&sFileURL=http://"+serverIp+":8080"+fileUrl+storedFileName;
+            	*/
+            	/* TO-BE */
+                //return3 += "&bNewLine=true&sFileName="+name+"&sFileURL=http://"+serverIp+":8080"+fileUrl+storedFileName;
+                return3 += "&bNewLine=true&sFileName="+name+"&sFileURL=http://www.allwork.co.kr"+fileUrl+storedFileName;
+            	//System.out.println(return3);
             }else {
                 return3 += "&errstr=error";
             }

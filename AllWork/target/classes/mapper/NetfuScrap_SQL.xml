@@ -36,7 +36,7 @@
 			, nic.biz_area1, getCodeName(nic.biz_area1) biz_area1_name
 			, nic.biz_area2, getCodeName(nic.biz_area2) biz_area2_name
 			, nic.biz_jobfrom, getCodeName(nic.biz_jobfrom) biz_jobfrom_name
-			, DATE_FORMAT(nic.wdate, '%Y-%m-%d') wdate
+			, DATE_FORMAT(ns.wdate, '%Y-%m-%d') wdate
 		from netfu_scrap ns, netfu_item_company nic
 		where 1=1
 			and ns.type = 'job'
@@ -119,9 +119,13 @@
 			, nir.inid_sex
 			, nir.sms_send
 			, nir.a_insert
+			, nir.education_degree
+			, nir.career_total
 			, nm.birth
 			, nm.sex
-		from netfu_scrap ns, netfu_item_resume nir, netfu_member nm
+			, CASE WHEN prs.no IS NULL THEN 0 ELSE 1 END paidResume
+		from
+			netfu_scrap ns LEFT JOIN paid_resume_search prs ON ns.no = prs.resume_no AND prs.uid = #{loginId}, netfu_item_resume nir, netfu_member nm
 		where 1=1
 			and ns.type = 'job'
 			and ns.uid = #{loginId}

@@ -4,28 +4,51 @@
 
 	<!-- 채용정보 검색 Count -->
 	<select id="selectNetfuItemCompanyCnt" parameterType="hashmap" resultType="int">
-		select count(no) cnt
+		select
+			count(nic.no) cnt
+		from
+		(
+		select 
+			${recruitColumn}
+			, concat(
+				ifnull(nic.biz_name, ''), '|' , ifnull(nic.biz_title, ''), '|' , ifnull(nic.biz_address1, ''), '|'
+				, ifnull(nic.biz_business, ''), '|' , ifnull(nic.biz_detail, ''), '|' , ifnull(nic.biz_pemail, ''), '|'
+			) fullStr
 		from netfu_item_company nic
 		where 1=1
-			and nic.biz_ing <![CDATA[<>]]> 'yes'
-			and ((nic.biz_end_type ='input' and nic.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+			<if test="showAll != 1">
+				and nic.biz_ing = 'yes'
+			</if>
 			<if test="uid != null and uid != ''">
 				and nic.uid = #{uid}
 			</if>
-			<if test='infoType == "4"'>
-				and nic.info_type = #{infoType}
+			<if test='infoType == 4'>
+				and (nic.biz_jobfrom like '%freelancer%' or nic.biz_jobfrom like '%netfu_34537_33276%')
 			</if>
-			<if test='infoType == "2"'>
-				and (nic.info_type = #{infoType} or nic.inid_jobform = 'netfu_34537_33276')
+			<if test='infoType == 2'>
+				and (nic.biz_jobfrom like '%arbeit%' or nic.biz_jobfrom like '%netfu_34537_33276%')
 			</if>
-			<if test="bizType3 != null and bizType3 != ''">
-				and (nic.biz_type3 in ('${bizType3}') or nic.biz_type6 in ('${bizType3}') or nic.biz_type9 in ('${bizType3}'))
+			<if test="queryBizType != null and queryBizType != ''">
+				AND ${queryBizType}
 			</if>
-			<if test="areaJob3 != null and areaJob3 != ''">
-				and (nic.area_job3 in ('${areaJob3}') or nic.area_job6 in ('${areaJob3}') or nic.area_job9 in ('${areaJob3}'))
+			<if test="queryAreaJob != null and queryAreaJob != ''">
+				AND ${queryAreaJob}
 			</if>
-			<if test="bizArea2 != null and bizArea2 != ''">
-				and (nic.biz_area2 in ('${bizArea2}') or nic.biz_area4 in ('${bizArea2}') or nic.biz_area6 in ('${bizArea2}'))
+			<if test="queryBizArea != null and queryBizArea != ''">
+				AND ${queryBizArea}
+			</if>
+		) nic
+		where 1=1
+			<if test="keyword1 != '' and keyword1 != null">
+				and (
+						nic.fullStr like '%${keyword1}%'
+						<if test="keyword2 != '' and keyword2 != null">
+							${keywordCondition} nic.fullStr like '%${keyword2}%'
+						</if>
+						<if test="keyword3 != '' and keyword3 != null">
+							${keywordCondition} nic.fullStr like '%${keyword3}%'
+						</if>
+					)	
 			</if>
 	</select>
 	
@@ -37,31 +60,58 @@
 		     상세요강 : 모집요강 ==> biz_detail
 	 -->
 	<select id="selectNetfuItemCompanyList" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
+		select
+			*
+		from
+		(
 		select 
 			${recruitColumn}
+			, concat(
+				ifnull(nic.biz_name, ''), '|' , ifnull(nic.biz_title, ''), '|' , ifnull(nic.biz_address1, ''), '|'
+				, ifnull(nic.biz_business, ''), '|' , ifnull(nic.biz_detail, ''), '|' , ifnull(nic.biz_pemail, ''), '|'
+			) fullStr
 		from netfu_item_company nic
 		where 1=1
-			and nic.biz_ing <![CDATA[<>]]> 'yes'
-			and ((nic.biz_end_type ='input' and nic.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or nic.biz_end_type ='get' or nic.biz_end_type ='often')
+			<if test="showAll != 1">
+				and nic.biz_ing = 'yes'
+			</if>
 			<if test="uid != null and uid != ''">
 				and nic.uid = #{uid}
 			</if>
-			<if test='infoType == "4"'>
-				and nic.info_type = #{infoType}
+			<if test='infoType == 4'>
+				and (nic.biz_jobfrom like '%freelancer%' or nic.biz_jobfrom like '%netfu_34537_33276%')
 			</if>
-			<if test='infoType == "2"'>
-				and (nic.info_type = #{infoType} or nic.inid_jobform = 'netfu_34537_33276')
+			<if test='infoType == 2'>
+				and (nic.biz_jobfrom like '%arbeit%' or nic.biz_jobfrom like '%netfu_34537_33276%')
 			</if>
-			<if test="bizType3 != null and bizType3 != ''">
-				and (nic.biz_type3 in ('${bizType3}') or nic.biz_type6 in ('${bizType3}') or nic.biz_type9 in ('${bizType3}'))
+			<if test="queryBizType != null and queryBizType != ''">
+				AND ${queryBizType}
 			</if>
-			<if test="areaJob3 != null and areaJob3 != ''">
-				and (nic.area_job3 in ('${areaJob3}') or nic.area_job6 in ('${areaJob3}') or nic.area_job9 in ('${areaJob3}'))
+			<if test="queryAreaJob != null and queryAreaJob != ''">
+				AND ${queryAreaJob}
 			</if>
-			<if test="bizArea2 != null and bizArea2 != ''">
-				and (nic.biz_area2 in ('${bizArea2}') or nic.biz_area4 in ('${bizArea2}') or nic.biz_area6 in ('${bizArea2}'))
+			<if test="queryBizArea != null and queryBizArea != ''">
+				AND ${queryBizArea}
 			</if>
-		order by ${orderField} ${orderRule}
+		) nic
+		where 1=1
+			<if test="keyword1 != '' and keyword1 != null">
+				and (
+						nic.fullStr like '%${keyword1}%'
+						<if test="keyword2 != '' and keyword2 != null">
+							${keywordCondition} nic.fullStr like '%${keyword2}%'
+						</if>
+						<if test="keyword3 != '' and keyword3 != null">
+							${keywordCondition} nic.fullStr like '%${keyword3}%'
+						</if>
+					)	
+			</if>
+		<if test="orderField != null and orderField != ''">
+			order by ${orderField} ${orderRule}
+		</if>
+		<if test="orderField == null or orderField == ''">
+			order by nic.u_wdate desc
+		</if>
 		limit #{start}, #{pageSize}
 	</select>
 	
@@ -80,8 +130,7 @@
 				) fullStr
 			from netfu_item_company recruit
 			where 1=1
-				and recruit.biz_ing <![CDATA[<>]]> 'yes'
-				and ((recruit.biz_end_type ='input' and recruit.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or recruit.biz_end_type ='get' or recruit.biz_end_type ='often')
+				and recruit.biz_ing = 'yes'
 		) aa
 		where 1=1
 			and (
@@ -114,8 +163,7 @@
 						) fullStr
 					from netfu_item_company recruit
 					where 1=1
-						and recruit.biz_ing <![CDATA[<>]]> 'yes'
-						and ((recruit.biz_end_type ='input' and recruit.biz_end_day <![CDATA[>=]]> CURRENT_TIMESTAMP()) or recruit.biz_end_type ='get' or recruit.biz_end_type ='often')
+						and recruit.biz_ing = 'yes'
 				) aa
 				where 1=1
 					and (
@@ -138,24 +186,17 @@
 	<!-- 기업별 채용공고 Count -->
 	<select id="selectNetfuItemCompanyCntByCompany" parameterType="hashmap" resultType="int">
 		select count(no) cnt
-		from netfu_item_company
+		from netfu_item_company nic
 		where 1=1
 			<if test="companyUid != null and companyUid != ''">
-				and uid = #{companyUid}
+				and nic.uid = #{companyUid}
 			</if>
-			<choose>
-				<when test = "bizIng != null and bizIng != ''">
-					and biz_ing = 'no'
-		            and ((biz_end_day >= curdate() and biz_end_type ='input') or biz_end_type !='input')
-		            and (service1 >= curdate() or service2 >= curdate() or service3 >= curdate() or service4 >= curdate() or service5 >= curdate() or service100 >= curdate())
-				</when>
-				<otherwise>
-					and ((biz_end_day <![CDATA[<]]> curdate() and biz_end_type ='input') or biz_ing='yes' 
-				            or (service1 <![CDATA[<]]> curdate() and service2 <![CDATA[<]]> curdate() and service3 <![CDATA[<]]> curdate() 
-				            	and service4 <![CDATA[<]]> curdate() and service5 <![CDATA[<]]> curdate() and service100 <![CDATA[<]]> curdate())
-				         )
-				</otherwise>
-			</choose>
+			<if test="bizIng == 'no'">
+				and (nic.biz_ing is null or nic.biz_ing <![CDATA[<>]]> 'yes')
+			</if>
+			<if test="bizIng == 'yes'">
+				and nic.biz_ing = 'yes'
+			</if>
 	</select>
 	
 	
@@ -164,42 +205,43 @@
 		select 
 			nic.no, 'open', nic.biz_name, nic.uid, nic.biz_title, nic.biz_ing, nic.biz_end_type, nic.biz_end_day
 			, count(nor.no) total_appliance_cnt
-		from netfu_item_company nic, netfu_online_recruit nor
+		from netfu_item_company nic left outer join netfu_online_recruit nor on nic.uid = nor.to_uid and nic.no = nor.to_no and nor.to_type in ('email', 'online', 'mobile')
 		where 1=1
 			<if test="companyUid != null and companyUid != ''">
 				and nic.uid = #{companyUid}
 			</if>
-			<choose>
-				<when test="bizIng != null and bizIng != ''">
-					and nic.biz_ing = 'no'
-		            and ((nic.biz_end_day >= curdate() and nic.biz_end_type ='input') or nic.biz_end_type !='input')
-		            and (nic.service1 >= curdate() or nic.service2 >= curdate() or nic.service3 >= curdate() or nic.service4 >= curdate() or nic.service5 >= curdate() or nic.service100 >= curdate())
-				</when>
-				<otherwise>
-					and ((nic.biz_end_day <![CDATA[<]]> curdate() and nic.biz_end_type ='input') or nic.biz_ing='yes' 
-				            or (nic.service1 <![CDATA[<]]> curdate() and nic.service2 <![CDATA[<]]> curdate() and nic.service3 <![CDATA[<]]> curdate() 
-				            	and nic.service4 <![CDATA[<]]> curdate() and nic.service5 <![CDATA[<]]> curdate() and nic.service100 <![CDATA[<]]> curdate())
-				         )
-				</otherwise>
-			</choose>
-		    and nic.uid = nor.to_uid
-    		and nic.no = nor.to_no 
-		    and nor.to_type in ('email', 'online')
+			<if test="bizIng == 'no'">
+				and (nic.biz_ing is null or nic.biz_ing <![CDATA[<>]]> 'yes')
+			</if>
+			<if test="bizIng == 'yes'">
+				and nic.biz_ing = 'yes'
+			</if>
 		group by nic.no, nic.uid, nic.biz_title, nic.biz_ing, nic.biz_end_type, nic.biz_end_day
 		order by ${orderField} ${orderRule}
 		limit #{start}, #{pageSize}
+	</select>
+
+	<!-- 채용공고별 지원자수 -->
+	<select id="selectNetfuItemCompanyApplyCnt" parameterType="hashmap" resultType="int">
+		select 
+			count(nor.no)
+		from
+			netfu_online_recruit nor, netfu_item_resume nir
+		where 1=1
+			AND nor.to_no = ${no}
+			AND nor.to_type in ('email', 'online', 'mobile')
+			AND (nir.no = nor.from_no)
 	</select>
 	
 	
 	<!-- 진행중인 채용공고 - selectbox 용 -->
 	<select id="selectNetfuItemCompanyProceess" parameterType="hashmap" resultType="allwork.vo.NetfuItemCompanyVo">
-		select no, biz_title
-		from netfu_item_company
+		select 
+			${recruitColumn}
+		from netfu_item_company nic
 		where 1=1
-			and uid = #{companyUid}
-			and biz_ing = 'no'
-            and ((biz_end_day >= curdate() and biz_end_type ='input') or biz_end_type !='input')
-            and (service1 >= curdate() or service2 >= curdate() or service3 >= curdate() or service4 >= curdate() or service5 >= curdate() or service100 >= curdate())
+			and nic.uid = #{companyUid}
+			and nic.biz_ing = 'yes'
 	</select>
 	
 	
@@ -214,8 +256,7 @@
 	
 	
 	<!-- 채용공고 정보 등록 -->
-	<insert id="insertNetfuItemCompany" parameterType="hashmap">
-		<![CDATA[
+	<insert id="insertNetfuItemCompany" useGeneratedKeys="true" keyProperty="no" parameterType="hashmap">
 			insert into netfu_item_company
 			(
 				uid, info_type, biz_name, biz_title, biz_post, biz_address1, biz_address2
@@ -224,11 +265,12 @@
 				, biz_subway, biz_business, biz_men, biz_jobfrom, biz_pay, pay_type, biz_welfare
 				, biz_sex, biz_age, biz_ability, biz_preferential, biz_career, biz_detail
 				, biz_end_day, biz_end_type, biz_method, biz_person, biz_pemail, biz_pphone, biz_pfax
-				, wdate, service1, service2, service3, service4, service5
+				, wdate, u_wdate, j_wdate, service1, service2, service3, service4, service5
 				, service100, service6, service7, service8, service9, service10, service11
 				, biz_paper, biz_form, biz_form_file, biz_type7, biz_type8, biz_type9
 				, sms_send, biz_page, hit, type_r, memo
 				, biz_area_job1, biz_area_job2, biz_area_job3, biz_area_job4, biz_area_job5, biz_area_job6, biz_area_job7, biz_area_job8, biz_area_job9
+				, biz_ing
 			)
 			values
 			(
@@ -237,17 +279,82 @@
 				, #{bizPosition}, #{bizArea1}, #{bizArea2}, #{bizArea3}, #{bizArea4}, #{bizArea5}, #{bizArea6}
 				, #{bizSubway}, #{bizBusiness}, #{bizMen}, #{bizJobfrom}, #{bizPay}, #{payType}, #{bizWelfare}
 				, #{bizSex}, #{bizAge}, #{bizAbility}, #{bizPreferential}, #{bizCareer}, #{bizDetail}
-				, #{bizEndDay}, #{bizEndType}, #{bizMethod}, #{bizPerson}, #{bizPemail}, #{bizPphone}, #{bizPfax}
-				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+			<if test='bizEndDay != null &amp;&amp; bizEndDay != ""'>
+				, #{bizEndDay}
+			</if>
+			<if test='bizEndDay == null || bizEndDay == ""'>
+				, CURRENT_TIMESTAMP()
+			</if>
+				, #{bizEndType}, #{bizMethod}, #{bizPerson}, #{bizPemail}, #{bizPphone}, #{bizPfax}
+				, DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s'), DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s'), DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
 				, #{service1}, #{service2}, #{service3}, #{service4}, #{service5}
 				, #{service100}, #{service6}, #{service7}, #{service8}, #{service9}, #{service10}, #{service11}
 				, #{bizPaper}, #{bizForm}, #{bizFormFile}, #{bizType7}, #{bizType8}, #{bizType9}
 				, #{smsSend}, #{bizPage}, 0, #{typeR}, #{memo}
 				, #{bizAreaJob1}, #{bizAreaJob2}, #{bizAreaJob3}, #{bizAreaJob4}, #{bizAreaJob5}, #{bizAreaJob6}, #{bizAreaJob7}, #{bizAreaJob8}, #{bizAreaJob9}
+				, 'yes'
 			)
-		]]>
 	</insert>
 	
-
+		
+	<!-- 채용정보 수정 -->
+	<delete id="updateNetfuItemCompany" parameterType="hashmap">
+		update netfu_item_company 
+			set
+				uid = #{uid}, info_type = #{infoType}, biz_name = #{bizName}, biz_title = #{bizTitle}
+				, biz_post = #{bizPost}, biz_address1 = #{bizAddress1}, biz_address2 = #{bizAddress2}
+				, biz_type1 = #{bizType1}, biz_type2 = #{bizType2}, biz_type3 = #{bizType3}, biz_type4 = #{bizType4}
+				, biz_type5 = #{bizType5}, biz_type6 = #{bizType6}
+				, biz_position = #{bizPosition}
+				, biz_area1 = #{bizArea1}, biz_area2 = #{bizArea2}, biz_area3 = #{bizArea3}, biz_area4 = #{bizArea4}, biz_area5 = #{bizArea5}, biz_area6 = #{bizArea6}
+				, biz_subway = #{bizSubway}, biz_business = #{bizBusiness}, biz_men = #{bizMen}, biz_jobfrom = #{bizJobfrom}
+				, biz_pay = #{bizPay}, pay_type = #{payType}, biz_welfare = #{bizWelfare}
+				, biz_sex = #{bizSex}, biz_age = #{bizAge}, biz_ability = #{bizAbility}, biz_preferential = #{bizPreferential}, biz_career = #{bizCareer}, biz_detail = #{bizDetail}
+			<if test='bizEndDay != null &amp;&amp; bizEndDay != ""'>
+				, biz_end_day = #{bizEndDay}
+			</if>
+			<if test='bizEndDay == null || bizEndDay == ""'>
+				, biz_end_day = CURRENT_TIMESTAMP()
+			</if>
+				, biz_end_type = #{bizEndType}, biz_method = #{bizMethod}, biz_person = #{bizPerson}, biz_pemail = #{bizPemail}
+				, biz_pphone = #{bizPphone}, biz_pfax = #{bizPfax}
+				, u_wdate = DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+				, j_wdate = DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%s')
+				, service1 = #{service1}, service2 = #{service2}, service3 = #{service3}, service4 = #{service4}, service5 = #{service5}
+				, service100 = #{service100}, service6 = #{service6}, service7 = #{service7}, service8 = #{service8}
+				, service9 = #{service9}, service10 = #{service10}, service11 = #{service11}
+				, biz_paper = #{bizPaper}, biz_form = #{bizForm}
+			<if test="bizFormFile != '' and bizFormFile != null">
+				, biz_form_file = #{bizFormFile}
+			</if>
+				, biz_type7 = #{bizType7}, biz_type8 = #{bizType8}, biz_type9 = #{bizType9}
+				, sms_send = #{smsSend}, biz_page = #{bizPage}, type_r = #{typeR}
+				, biz_area_job1 = #{bizAreaJob1}, biz_area_job2 = #{bizAreaJob2}, biz_area_job3 = #{bizAreaJob3}
+				, biz_area_job4 = #{bizAreaJob4}, biz_area_job5 = #{bizAreaJob5}, biz_area_job6 = #{bizAreaJob6}
+				, biz_area_job7 = #{bizAreaJob7}, biz_area_job8 = #{bizAreaJob8}, biz_area_job9 = #{bizAreaJob9}
+				, biz_ing = #{bizIng}
+		where 1=1
+			and uid = #{uid}
+			and no = #{no}
+	</delete>
+	
+	
+	<!-- 채용정보 삭제 -->
+	<delete id="deleteNetfuItemCompany" parameterType="hashmap">
+		delete from netfu_item_company 
+		where 1=1
+			and uid = #{loginId}
+			and no = #{no}
+	</delete>
+	
+	
+	<!-- 채용공고 공개/비공개 설정 -->
+	<update id="updateNetfuItemCompanyBizIng" parameterType="hashmap">
+		update netfu_item_company
+		set biz_ing = #{bizIng}
+		where 1=1
+			and uid = #{loginId}
+			and no = #{no}
+	</update>
 	
 </mapper>
